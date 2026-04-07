@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>6th Grade Homeschool Plan</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+
+    :root {
+      --green-dark:   #2D6A4F;
+      --green-mid:    #52B788;
+      --green-light:  #D8F3DC;
+      --purple-dark:  #5A3E8F;
+      --purple-mid:   #9B72CF;
+      --purple-light: #EDE7F6;
+      --gold:         #E9C46A;
+      --gold-light:   #FFF8E1;
+      --rust:         #C65D2A;
+      --rust-light:   #FBE9E0;
+      --blue-dark:    #1B6CA8;
+      --blue-light:   #E3F2FD;
+      --cream:        #FEFAE0;
+      --text:         #1A1A2E;
+      --text-light:   #4A4A6A;
+      --border:       #D0D0E0;
+      --white:        #FFFFFF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #1B4332 40%, var(--purple-dark) 100%);
+      color: var(--white);
+      padding: 56px 40px 48px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      color: #FFFFFF;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.9);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .hero .tag-row {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .hero .tag {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #FFFFFF;
+    }
+
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+
+    section { margin-bottom: 52px; }
+
+    h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      border-left: 5px solid var(--green-mid);
+      padding-left: 14px;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    p { margin-bottom: 10px; color: var(--text-light); }
+    p strong { color: var(--text); }
+
+    ul, ol { padding-left: 20px; color: var(--text-light); }
+    li { margin-bottom: 6px; }
+    li strong { color: var(--text); }
+
+    /* ── PHILOSOPHY BOX ─────────────────────────────────── */
+    .philosophy {
+      background: var(--green-light);
+      border-left: 6px solid var(--green-mid);
+      border-radius: 0 12px 12px 0;
+      padding: 22px 26px;
+      margin-bottom: 20px;
+    }
+    .philosophy p { color: var(--text); font-size: 0.97rem; }
+
+    /* ── SUBJECT CARDS ──────────────────────────────────── */
+    .subject-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+    @media (max-width: 680px) { .subject-grid { grid-template-columns: 1fr; } }
+
+    .subject-card {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      border: 1px solid var(--border);
+    }
+    .subject-card .card-header {
+      padding: 16px 20px 14px;
+      color: var(--white);
+    }
+    .subject-card .card-header h3 {
+      color: #FFFFFF;
+      font-size: 1.05rem;
+      margin: 0 0 3px 0;
+    }
+    .subject-card .card-header p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.8rem;
+      margin: 0;
+    }
+    .subject-card .card-body { padding: 18px 20px; background: var(--white); }
+
+    .la   .card-header { background: linear-gradient(135deg, #5A3E8F, #7B5EA7); }
+    .math .card-header { background: linear-gradient(135deg, #1B6CA8, #2196F3); }
+    .sci  .card-header { background: linear-gradient(135deg, #2D6A4F, #52B788); }
+    .ss   .card-header { background: linear-gradient(135deg, #C65D2A, #E07B45); }
+
+    /* ── SCHEDULE TABLE ─────────────────────────────────── */
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .schedule-table thead tr {
+      background: var(--green-dark);
+      color: var(--white);
+    }
+    .schedule-table th {
+      padding: 13px 16px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-align: left;
+      letter-spacing: 0.5px;
+      color: #FFFFFF;
+    }
+    .schedule-table td {
+      padding: 12px 16px;
+      vertical-align: top;
+      font-size: 0.88rem;
+      border-bottom: 1px solid #E8E8F0;
+      line-height: 1.5;
+    }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .schedule-table tr:nth-child(even) td { background: #F8F8FF; }
+    .schedule-table .time-col { color: var(--text-light); font-size: 0.82rem; white-space: nowrap; }
+
+    .block { display: inline-block; border-radius: 8px; padding: 3px 10px; font-size: 0.8rem; font-weight: 700; margin: 2px 0; }
+    .b-la   { background: var(--purple-light); color: var(--purple-dark); }
+    .b-math { background: var(--blue-light);   color: var(--blue-dark); }
+    .b-sci  { background: var(--green-light);  color: var(--green-dark); }
+    .b-ss   { background: var(--rust-light);   color: var(--rust); }
+    .b-proj { background: var(--gold-light);   color: #7A5A00; }
+
+    /* ── QUARTER TIMELINE ───────────────────────────────── */
+    .quarters { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 680px) { .quarters { grid-template-columns: 1fr; } }
+
+    .quarter-card {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .quarter-card .q-header {
+      padding: 12px 18px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #FFFFFF;
+    }
+    .q1 .q-header { background: var(--rust); }
+    .q2 .q-header { background: var(--purple-dark); }
+    .q3 .q-header { background: var(--blue-dark); }
+    .q4 .q-header { background: var(--green-dark); }
+    .quarter-card .q-body { padding: 14px 18px; background: var(--white); }
+    .quarter-card .q-body ul { font-size: 0.87rem; }
+
+    /* ── BOOK LIST ──────────────────────────────────────── */
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 680px) { .book-grid { grid-template-columns: 1fr 1fr; } }
+
+    .book-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 15px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+    .book-card .book-title { font-weight: 800; font-size: 0.88rem; color: var(--text); margin-bottom: 3px; }
+    .book-card .book-author { font-size: 0.78rem; color: var(--text-light); }
+    .book-card .book-note { font-size: 0.78rem; color: var(--purple-dark); font-style: italic; margin-top: 4px; }
+
+    /* ── PROJECT IDEAS ──────────────────────────────────── */
+    .project-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 680px) { .project-list { grid-template-columns: 1fr; } }
+
+    .project-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 15px 17px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+    .project-item .p-title { font-weight: 800; font-size: 0.9rem; color: var(--text); margin-bottom: 5px; }
+    .project-item .p-desc { font-size: 0.82rem; color: var(--text-light); }
+    .project-item .p-subject { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 1px 8px; border-radius: 8px; margin-top: 5px; }
+
+    /* ── FIELD TRIPS ────────────────────────────────────── */
+    .trips { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    @media (max-width: 680px) { .trips { grid-template-columns: 1fr; } }
+
+    .trip-card {
+      background: var(--white);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    }
+    .trip-card .t-title { font-weight: 800; font-size: 0.88rem; color: var(--text); margin-bottom: 4px; }
+    .trip-card .t-desc { font-size: 0.79rem; color: var(--text-light); }
+
+    /* ── SUPPLIES ───────────────────────────────────────── */
+    .supply-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+    @media (max-width: 680px) { .supply-cols { grid-template-columns: 1fr; } }
+
+    .supply-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .supply-box h3 { font-size: 0.9rem; margin-bottom: 10px; color: var(--green-dark); }
+    .supply-box ul { font-size: 0.83rem; }
+
+    /* ── TIPS BOX ───────────────────────────────────────── */
+    .tips-box {
+      background: var(--gold-light);
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      padding: 22px 26px;
+    }
+    .tips-box h3 { color: #7A5A00; margin-bottom: 12px; font-size: 1rem; }
+    .tips-box ul { color: #5A4200; font-size: 0.9rem; }
+
+    /* ── ASSESSMENT BOX ─────────────────────────────────── */
+    .assess-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 680px) { .assess-grid { grid-template-columns: 1fr; } }
+    .escape-box {
+      background: var(--purple-light);
+      border: 1px solid var(--purple-mid);
+      border-radius: 12px;
+      padding: 22px 26px;
+      margin-bottom: 20px;
+    }
+    .escape-box h3 { color: var(--purple-dark); margin-bottom: 10px; }
+    .escape-box p, .escape-box ul { color: #3A2460; font-size: 0.92rem; }
+    .escape-box ul { padding-left: 20px; }
+
+    .assess-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .assess-card h3 { font-size: 0.9rem; color: var(--purple-dark); margin-bottom: 8px; }
+    .assess-card ul { font-size: 0.83rem; }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 30px 20px 40px;
+      color: var(--text-light);
+      font-size: 0.83rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════ HERO ════════════════ -->
+<div class="hero">
+  <h1>6th Grade <span>Homeschool Plan</span></h1>
+  <p>An eclectic, hands-on curriculum designed around a learner who loves creatures, crafts, gardens, and the great outdoors.</p>
+  <div class="tag-row">
+    <span class="tag">Eclectic Approach</span>
+    <span class="tag">Hands-On Learning</span>
+    <span class="tag">Afternoon Schedule</span>
+    <span class="tag">4 Days / 3-4 Hours</span>
+    <span class="tag">Creature-Centered Reading</span>
+    <span class="tag">Escape Room Projects</span>
+    <span class="tag">Animal Quizzes</span>
+    <span class="tag">Project-Based Learning</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ════════════════ PHILOSOPHY ════════════════ -->
+<section>
+  <h2>Learning Philosophy</h2>
+  <div class="philosophy">
+    <p>This plan follows an <strong>eclectic, interest-led approach</strong> that meets 6th grade academic standards while keeping learning joyful and tactile. Every subject is connected to what already lights her up: animals, plants, art, storytelling, and the real world beyond the textbook. Afternoons are her time — unhurried, curious, and self-directed within a gentle structure.</p>
+    <p style="margin-bottom:0;"><strong>Core belief:</strong> when a child can touch it, make it, grow it, or visit it, the learning sticks.</p>
+  </div>
+  <p><strong>Daily rhythm:</strong> Each session opens with a short read-aloud or nature observation (10-15 min), moves into focused lessons, and ends with a hands-on activity or free creative time. Thursdays are reserved for field trips, big projects, nature study, or catch-up.</p>
+</section>
+
+<!-- ════════════════ ANNUAL OVERVIEW ════════════════ -->
+<section>
+  <h2>Annual Overview — Four Quarters</h2>
+  <div class="quarters">
+
+    <div class="quarter-card q1">
+      <div class="q-header">Quarter 1 — Fall: Creatures and Kingdoms</div>
+      <div class="q-body">
+        <ul>
+          <li><strong>Theme:</strong> Animal biology and classification</li>
+          <li><strong>Language Arts:</strong> Fantasy novel study + personal narrative writing</li>
+          <li><strong>Math:</strong> Ratios, unit rates, fractions review</li>
+          <li><strong>Science:</strong> Animal adaptations, food webs, vertebrates vs. invertebrates</li>
+          <li><strong>Social Studies:</strong> Ancient Mesopotamia and Egypt — first civilizations</li>
+          <li><strong>Big Project:</strong> Animal Adaptation Diorama</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quarter-card q2">
+      <div class="q-header">Quarter 2 — Winter: Ancient Worlds</div>
+      <div class="q-body">
+        <ul>
+          <li><strong>Theme:</strong> Mythology, ancient civilizations, and the natural world</li>
+          <li><strong>Language Arts:</strong> Mythology reading + compare/contrast essays</li>
+          <li><strong>Math:</strong> Percent, decimals, the number system, negative numbers</li>
+          <li><strong>Science:</strong> Ecosystems, biomes, weather and climate</li>
+          <li><strong>Social Studies:</strong> Ancient Greece and Rome — myths and society</li>
+          <li><strong>Big Project:</strong> Ancient Civilization Diorama or Map Art</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quarter-card q3">
+      <div class="q-header">Quarter 3 — Spring: Growing Things</div>
+      <div class="q-body">
+        <ul>
+          <li><strong>Theme:</strong> Plants, life cycles, and the natural world</li>
+          <li><strong>Language Arts:</strong> Nature writing + fantasy short story creation</li>
+          <li><strong>Math:</strong> Geometry — area, surface area, volume</li>
+          <li><strong>Science:</strong> Plant biology, photosynthesis, soil and growing</li>
+          <li><strong>Social Studies:</strong> Ancient China, India, and the Silk Road</li>
+          <li><strong>Big Project:</strong> Garden Journal and Spring Planting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quarter-card q4">
+      <div class="q-header">Quarter 4 — Early Summer: World Explorers</div>
+      <div class="q-body">
+        <ul>
+          <li><strong>Theme:</strong> Geography, exploration, and communities</li>
+          <li><strong>Language Arts:</strong> Research writing + portfolio review</li>
+          <li><strong>Math:</strong> Statistics, data, probability, expressions and equations</li>
+          <li><strong>Science:</strong> Earth and space — geology, landforms, the solar system</li>
+          <li><strong>Social Studies:</strong> Age of Exploration and world geography</li>
+          <li><strong>Big Project:</strong> "Explorer's Guide" — illustrated research book</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ WEEKLY SCHEDULE ════════════════ -->
+<section>
+  <h2>Sample Weekly Schedule</h2>
+  <p style="margin-bottom:16px;">Sessions run in the <strong>afternoon</strong> for 3-4 hours over 4 days. Thursday is flexible — used for projects, field trips, or deeper exploration of whatever sparked curiosity that week.</p>
+
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th style="width:90px;">Day</th>
+        <th style="width:130px;">Time Block</th>
+        <th>Activities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Monday</strong></td>
+        <td class="time-col">12:30 – 4:00</td>
+        <td>
+          <span class="block b-la">Language Arts</span> — Read-aloud from current fantasy novel (30 min)<br>
+          <span class="block b-la">Writing</span> — Grammar mini-lesson + writing practice (30 min)<br>
+          <span class="block b-math">Math</span> — New concept lesson with manipulatives or drawings (45 min)<br>
+          <span class="block b-proj">Creative Time</span> — Art, craft, or illustration tied to reading (30 min)
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Tuesday</strong></td>
+        <td class="time-col">12:30 – 4:00</td>
+        <td>
+          <span class="block b-sci">Science</span> — Lesson + hands-on experiment or observation (60 min)<br>
+          <span class="block b-math">Math</span> — Practice and review, word problems (40 min)<br>
+          <span class="block b-la">Independent Reading</span> — Fantasy novel with reading journal entry (30 min)
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Wednesday</strong></td>
+        <td class="time-col">12:30 – 4:00</td>
+        <td>
+          <span class="block b-ss">Social Studies</span> — Lesson, map work, or documentary clip (50 min)<br>
+          <span class="block b-la">Language Arts</span> — Essay, narrative, or vocabulary work (40 min)<br>
+          <span class="block b-proj">Garden / Nature Study</span> — Observation journal, planting, or pressing (45 min)
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Thursday</strong></td>
+        <td class="time-col">Flexible</td>
+        <td>
+          <span class="block b-proj">Project / Field Trip Day</span><br>
+          Rotate through: big hands-on project work · local field trips · nature walk and sketching · co-op or group activities · catch-up or enrichment on any subject
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ════════════════ SUBJECTS ════════════════ -->
+<section>
+  <h2>Subject Guides</h2>
+  <div class="subject-grid">
+
+    <!-- LANGUAGE ARTS -->
+    <div class="subject-card la">
+      <div class="card-header">
+        <h3>Language Arts</h3>
+        <p>Reading / Writing / Grammar / Vocabulary</p>
+      </div>
+      <div class="card-body">
+        <h3>Reading Focus</h3>
+        <p>One fantasy novel per quarter where an animal or creature is the main character (see book list). Keep a <strong>Reading Journal</strong> — 2-3 sentences after each session: what happened, how the creature felt, one question.</p>
+
+        <h3 style="margin-top:14px;">Writing</h3>
+        <ul>
+          <li><strong>Q1:</strong> Personal narrative — a real adventure or memory</li>
+          <li><strong>Q2:</strong> Compare/contrast essay — two mythological creatures</li>
+          <li><strong>Q3:</strong> Fantasy short story (she writes the creature protagonist)</li>
+          <li><strong>Q4:</strong> Research report — one animal or plant of her choice</li>
+        </ul>
+
+        <h3 style="margin-top:14px;">Grammar and Vocabulary</h3>
+        <ul>
+          <li>Grammar taught through her own writing, not worksheets</li>
+          <li>10 vocabulary words per week pulled from her current book</li>
+          <li>One grammar focus per month (punctuation, sentence variety, etc.)</li>
+        </ul>
+
+        <h3 style="margin-top:14px;">Hands-On Ideas</h3>
+        <ul>
+          <li>Illustrate a scene from the current book (pencil, collage, marker)</li>
+          <li>Create a "Creature Field Guide" for characters in her novel</li>
+          <li>Build a diorama of a key scene as a book report alternative</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MATH -->
+    <div class="subject-card math">
+      <div class="card-header">
+        <h3>Math</h3>
+        <p>6th Grade Core / Hands-On and Real-World</p>
+      </div>
+      <div class="card-body">
+        <h3>Topics by Quarter</h3>
+        <ul>
+          <li><strong>Q1:</strong> Ratios, rates, and unit conversion</li>
+          <li><strong>Q2:</strong> Fractions, decimals, percent; number system</li>
+          <li><strong>Q3:</strong> Geometry — perimeter, area, surface area, volume</li>
+          <li><strong>Q4:</strong> Expressions, equations, statistics and data</li>
+        </ul>
+
+        <h3 style="margin-top:14px;">Approach</h3>
+        <p>Teach concepts through real-life situations first, then formalize. Use math in her interests whenever possible.</p>
+
+        <h3 style="margin-top:14px;">Hands-On Connections</h3>
+        <ul>
+          <li><strong>Gardening + Geometry:</strong> Calculate bed areas, plan plant spacing using ratios</li>
+          <li><strong>Animals + Ratios:</strong> Compare body sizes, speed, lifespans of animals</li>
+          <li><strong>Art + Geometry:</strong> Draw geometric patterns, measure and tile shapes</li>
+          <li><strong>Cooking + Fractions:</strong> Scale recipes up and down</li>
+          <li><strong>Data + Animals:</strong> Graph animal population data, create charts</li>
+        </ul>
+
+        <h3 style="margin-top:14px;">Resources</h3>
+        <ul>
+          <li>Khan Academy (free, self-paced, great explanations)</li>
+          <li>Life of Fred series (story-based, quirky, fun)</li>
+          <li>Math Mammoth 6 (if a more structured workbook is helpful)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SCIENCE -->
+    <div class="subject-card sci">
+      <div class="card-header">
+        <h3>Science</h3>
+        <p>Life and Earth Science / Observation-First</p>
+      </div>
+      <div class="card-body">
+        <h3>Units by Quarter</h3>
+        <ul>
+          <li><strong>Q1:</strong> Animal adaptations, classification, food webs, vertebrates</li>
+          <li><strong>Q2:</strong> Ecosystems, biomes, weather, climate patterns</li>
+          <li><strong>Q3:</strong> Plant biology, photosynthesis, soil science, life cycles</li>
+          <li><strong>Q4:</strong> Earth science — rock cycle, landforms, the solar system</li>
+        </ul>
+
+        <h3 style="margin-top:14px;">Signature Activities</h3>
+        <ul>
+          <li><strong>Nature Observation Journal:</strong> Weekly entry — sketch, describe, wonder. Use for science and language arts.</li>
+          <li><strong>Garden Science:</strong> Germination experiments, soil composition tests, tracking plant growth over weeks</li>
+          <li><strong>Animal Studies:</strong> Deep dives on one animal per month — anatomy, habitat, behavior, diet, conservation status. Culminates in an illustrated "field guide" page.</li>
+          <li><strong>Simple Experiments:</strong> Owl pellet dissection, leaf chromatography, soil pH testing, building a simple food web mobile</li>
+        </ul>
+
+        <h3 style="margin-top:14px;">Resources</h3>
+        <ul>
+          <li><em>The Handbook of Nature Study</em> by Anna Botsford Comstock</li>
+          <li>Crash Course Kids (YouTube) for concept videos</li>
+          <li><em>Animal Anatomy for Artists</em> for combined art and science</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SOCIAL STUDIES -->
+    <div class="subject-card ss">
+      <div class="card-header">
+        <h3>Social Studies and History</h3>
+        <p>Ancient Civilizations / World Geography</p>
+      </div>
+      <div class="card-body">
+        <h3>Units by Quarter</h3>
+        <ul>
+          <li><strong>Q1:</strong> Mesopotamia and Ancient Egypt — origins, daily life, animals in culture</li>
+          <li><strong>Q2:</strong> Ancient Greece and Rome — mythology, government, arts</li>
+          <li><strong>Q3:</strong> Ancient China, India, and the Silk Road — trade, agriculture</li>
+          <li><strong>Q4:</strong> Age of Exploration, world geography, cultures today</li>
+        </ul>
+
+        <h3 style="margin-top:14px;">Connection to Her Interests</h3>
+        <ul>
+          <li>Ancient Egyptians revered cats, hawks, and crocodiles — ties to animal studies</li>
+          <li>Greek mythology features countless creature characters (perfect fantasy crossover)</li>
+          <li>Silk Road agriculture connects to the garden unit in Q3</li>
+          <li>Map art — draw and illustrate each civilization's territory</li>
+        </ul>
+
+        <h3 style="margin-top:14px;">Hands-On Projects</h3>
+        <ul>
+          <li>Build dioramas of Egyptian tombs, Greek agoras, or Silk Road trading posts</li>
+          <li>Illustrated timeline along a long strip of paper (running art project all year)</li>
+          <li>Cook one recipe from each civilization studied</li>
+          <li>Make a "creature in myth" research card for each civilization</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ ESCAPE ROOM PROJECTS ════════════════ -->
+<section>
+  <h2>Escape Room Projects</h2>
+  <p style="margin-bottom:16px;">Escape rooms are one of the best project-based learning formats for a hands-on, puzzle-loving learner. Each one turns a unit of study into an immersive challenge — she can solve one you design, or design one herself for someone else to solve (which requires even deeper mastery of the content).</p>
+
+  <div class="escape-box">
+    <h3>How Escape Rooms Work in Homeschool</h3>
+    <p>A homeschool escape room is a sequence of puzzles, clues, and challenges where solving each one unlocks the next. The theme and puzzle content are drawn directly from what she's been studying. She can play solo, with a sibling or friend, or with you. Building one herself is the highest-level version — it requires her to truly understand the material in order to write the clues.</p>
+  </div>
+
+  <div class="project-list">
+
+    <div class="project-item">
+      <div>
+        <div class="p-title">Animal Kingdom Escape Room — Solver</div>
+        <div class="p-desc">You design a room where each puzzle is based on animal facts she's learned — match adaptations to habitats, decode a message using scientific classification, identify an animal from clues. Tie to Q1 animal biology unit.</div>
+        <span class="p-subject b-sci" style="color:var(--green-dark);">Science + Critical Thinking</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <div class="p-title">Myth and Mystery Escape Room — Designer</div>
+        <div class="p-desc">She designs her own escape room themed around Greek or Roman mythology studied in Q2. She writes all the clues, builds the puzzles, and runs it for a parent, sibling, or friend. Requires full command of the material.</div>
+        <span class="p-subject b-ss" style="color:var(--rust);">Social Studies + Writing + Design</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <div class="p-title">Book Character Escape Room</div>
+        <div class="p-desc">After finishing a novel, she designs an escape room where every puzzle is drawn from the story — a coded message in the creature's language, a map clue based on the setting, a riddle only the main character would know. A creative book quiz alternative.</div>
+        <span class="p-subject b-la" style="color:var(--purple-dark);">Language Arts + Critical Thinking</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <div class="p-title">Garden Lab Escape Room</div>
+        <div class="p-desc">A Q3 science-based room built around plant biology puzzles — decode the parts of a plant cell, match seeds to the plants they grow into, solve a pH clue to "unlock" the greenhouse. Can be done with real physical objects around the garden.</div>
+        <span class="p-subject b-sci" style="color:var(--green-dark);">Science + Math + Design</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="margin-top:18px; font-size:0.88rem;"><strong>Design tip:</strong> Start simple — 3 to 4 linked puzzles with a satisfying final reveal. Use lockboxes, envelopes, coded messages, and physical objects. Canva or index cards work great for making clue cards. Jigsaws, invisible ink pens, and combination locks add drama without much expense.</p>
+</section>
+
+<!-- ════════════════ HANDS-ON PROJECTS ════════════════ -->
+<section>
+  <h2>Signature Hands-On Projects</h2>
+  <p style="margin-bottom:18px;">These are the big, memorable projects that anchor each quarter. Most combine multiple subjects at once.</p>
+
+  <div class="project-list">
+
+    <div class="project-item">
+      <div>
+        <div class="p-title">Animal Adaptation Diorama</div>
+        <div class="p-desc">Choose one animal and build a detailed diorama of its habitat. Include a written "creature profile" explaining how it's adapted to survive. Present it as if leading a nature tour.</div>
+        <span class="p-subject b-sci" style="color:var(--green-dark);">Science + Art + Writing</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <div class="p-title">Ancient Civilization Diorama</div>
+        <div class="p-desc">Build a scene from one ancient civilization studied in Q1 or Q2 — an Egyptian marketplace, a Roman forum, or a Greek temple. Label key elements and write a short "guide."</div>
+        <span class="p-subject b-ss" style="color:var(--rust);">Social Studies + Art</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <div class="p-title">Garden Science Journal</div>
+        <div class="p-desc">From first seeds to harvest, document the whole growing season. Sketch plants weekly, record data on growth, test soil, note insects and visitors. A living science portfolio.</div>
+        <span class="p-subject b-sci" style="color:var(--green-dark);">Science + Writing + Art</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <div class="p-title">Creature Field Guide</div>
+        <div class="p-desc">An ongoing illustrated reference book she adds to all year — one page per animal studied, with original drawings, facts, habitat, diet, and conservation notes. A proudly kept keepsake.</div>
+        <span class="p-subject b-sci" style="color:var(--green-dark);">Science + Art + Writing</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <div class="p-title">Original Fantasy Short Story</div>
+        <div class="p-desc">She writes and illustrates her own fantasy story with a creature as the hero. Goes through planning, drafting, revision, and a final illustrated "published" version. This is the Q3 writing project.</div>
+        <span class="p-subject b-la" style="color:var(--purple-dark);">Language Arts + Art</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <div class="p-title">Explorer's Guide</div>
+        <div class="p-desc">A Q4 research book on one region or ecosystem she cares about — illustrated maps, animal profiles, plants, climate, and human communities. Combines all four subjects into a final capstone.</div>
+        <span class="p-subject b-proj" style="color:#7A5A00;">All Subjects — Capstone</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <div class="p-title">History Timeline Scroll</div>
+        <div class="p-desc">An illustrated paper timeline that grows all year. Each civilization gets its own section with drawings, dates, and key facts. Hangs on the wall as a visual anchor for social studies.</div>
+        <span class="p-subject b-ss" style="color:var(--rust);">Social Studies + Art</span>
+      </div>
+    </div>
+
+    <div class="project-item">
+      <div>
+        <div class="p-title">Garden Math Layout</div>
+        <div class="p-desc">Plan this year's garden on graph paper — measure beds, calculate area, decide plant spacing using ratios, estimate yield. Real-life geometry and ratio practice tied to something she'll actually harvest.</div>
+        <span class="p-subject b-math" style="color:var(--blue-dark);">Math + Science</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ BOOK LIST ════════════════ -->
+<section>
+  <h2>Reading List — Creature Protagonists and Beyond</h2>
+  <p style="margin-bottom:18px;">These books are selected for 6th grade reading level with creature main characters. One novel per quarter as the core read; supplemental picks for independent reading anytime.</p>
+
+  <div class="book-grid">
+
+    <div class="book-card">
+      <div class="book-title">Redwall</div>
+      <div class="book-author">Brian Jacques</div>
+      <div class="book-note">Epic adventure. Mice, badgers, otters as heroes. Perfect Q1 anchor read.</div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-title">Wings of Fire (series)</div>
+      <div class="book-author">Tui T. Sutherland</div>
+      <div class="book-note">Dragons as fully realized characters. Great series to read across the year.</div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-title">Watership Down</div>
+      <div class="book-author">Richard Adams</div>
+      <div class="book-note">Rich rabbit society and mythology. Excellent for Q2 mythology connections.</div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-title">Guardians of Ga'Hoole</div>
+      <div class="book-author">Kathryn Lasky</div>
+      <div class="book-note">Owls on a quest. Includes real owl biology woven in — great for science.</div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-title">The Wild Robot</div>
+      <div class="book-author">Peter Brown</div>
+      <div class="book-note">Animal survival, ecosystems, belonging. Ties beautifully to science.</div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-title">The One and Only Ivan</div>
+      <div class="book-author">Katherine Applegate</div>
+      <div class="book-note">Gorilla's perspective. Touches on captivity and art. An emotional, important read.</div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-title">Hilo (graphic series)</div>
+      <div class="book-author">Judd Winick</div>
+      <div class="book-note">Great visual storytelling — fun independent read for lighter days.</div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-title">Fox at the Forest's Edge</div>
+      <div class="book-author">Abi Elphinstone</div>
+      <div class="book-note">Fox protagonist navigating magic and wilderness. Q3 spring read.</div>
+    </div>
+
+    <div class="book-card">
+      <div class="book-title">Island of the Blue Dolphins</div>
+      <div class="book-author">Scott O'Dell</div>
+      <div class="book-note">Survival, animals, and the natural world. Pairs with Q4 geography and exploration.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ FIELD TRIPS ════════════════ -->
+<section>
+  <h2>Field Trip Ideas</h2>
+  <p style="margin-bottom:18px;">Thursday is Field Trip Day. These ideas map to subjects being studied each quarter — but go whenever they fit best.</p>
+
+  <div class="trips">
+
+    <div class="trip-card">
+      <div class="t-title">Zoo or Wildlife Sanctuary</div>
+      <div class="t-desc">Observe real animals up close. Before going, research 3 animals you'll see. After, add a new page to the Creature Field Guide.</div>
+    </div>
+
+    <div class="trip-card">
+      <div class="t-title">Natural History Museum</div>
+      <div class="t-desc">Connects to Q1 animal studies and Q2 ancient civilizations. Look for mummies, fossils, and world culture exhibits.</div>
+    </div>
+
+    <div class="trip-card">
+      <div class="t-title">Botanical Garden</div>
+      <div class="t-desc">Perfect for Q3 plant biology. Sketch plants in your nature journal. Ask a docent about unusual species.</div>
+    </div>
+
+    <div class="trip-card">
+      <div class="t-title">Aquarium or Nature Center</div>
+      <div class="t-desc">Explore aquatic biomes and ecosystems. Ties to Q2 biome unit. Look for predator-prey relationships in action.</div>
+    </div>
+
+    <div class="trip-card">
+      <div class="t-title">Nature Hike or State Park</div>
+      <div class="t-desc">Quarterly nature walk with a purpose: identify 5 plants, sketch 3 animals or tracks, collect a soil or leaf sample.</div>
+    </div>
+
+    <div class="trip-card">
+      <div class="t-title">Art Museum</div>
+      <div class="t-desc">Find paintings or sculptures depicting animals or nature. Sketch one piece in her own style. Look for ancient art that connects to social studies.</div>
+    </div>
+
+    <div class="trip-card">
+      <div class="t-title">Farm or Nursery Visit</div>
+      <div class="t-desc">Talk to farmers about soil, seasons, and crops. Great extension of the Q3 garden unit. Bring math — how much does one plot yield?</div>
+    </div>
+
+    <div class="trip-card">
+      <div class="t-title">Planetarium or Observatory</div>
+      <div class="t-desc">Pairs with Q4 earth and space science. Great evening outing — stargazing with a star chart she's made herself.</div>
+    </div>
+
+    <div class="trip-card">
+      <div class="t-title">Library Research Days</div>
+      <div class="t-desc">Bring a list of research questions from current units. Let her choose her own books to check out. Counts toward Language Arts.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ ASSESSMENT ════════════════ -->
+<section>
+  <h2>Assessment — How to Know She's Learning</h2>
+  <p style="margin-bottom:16px;">For an eclectic learner, the best assessment tools are the ones she actually enjoys. Mix these approaches across the year:</p>
+
+  <div class="assess-grid">
+
+    <div class="assess-card">
+      <h3>Animal Quizzes</h3>
+      <ul>
+        <li>Short weekly quiz (5-10 questions) on animals studied that week — classification, adaptations, habitat, diet.</li>
+        <li>She can also write her own quiz questions and quiz you — teaching is one of the strongest forms of review.</li>
+        <li>Keep a running "Animal Facts" card deck she builds herself across the year.</li>
+      </ul>
+    </div>
+
+    <div class="assess-card">
+      <h3>Book Quizzes</h3>
+      <ul>
+        <li>After finishing each novel (or major section), a short conversational quiz: character motivations, plot, vocabulary words, themes.</li>
+        <li>Let her write her own quiz for a book she's finished — great comprehension check and creative exercise.</li>
+        <li>Optional: oral book club format where she presents the book to you as if recommending it.</li>
+      </ul>
+    </div>
+
+    <div class="assess-card">
+      <h3>Narration and Conversation</h3>
+      <ul>
+        <li>After each lesson, ask: "Tell me what you learned today in your own words."</li>
+        <li>For hands-on learners, this is one of the most reliable gauges of comprehension.</li>
+        <li>No pressure, no grades — just conversation.</li>
+      </ul>
+    </div>
+
+    <div class="assess-card">
+      <h3>Portfolios</h3>
+      <ul>
+        <li>Collect writing samples, nature journal pages, art projects, and dioramas quarterly.</li>
+        <li>Review together at the end of each quarter: "What are you most proud of?"</li>
+        <li>Keeps a tangible record of progress across the year.</li>
+      </ul>
+    </div>
+
+    <div class="assess-card">
+      <h3>Math Check-Ins</h3>
+      <ul>
+        <li>Short weekly review (5-10 problems) on concepts already taught.</li>
+        <li>Use Khan Academy progress reports for an objective look at mastery.</li>
+        <li>Focus on identifying gaps early, not on grades.</li>
+      </ul>
+    </div>
+
+    <div class="assess-card">
+      <h3>Project Presentations</h3>
+      <ul>
+        <li>At the end of each quarter, she presents her big project — to you, a family member, or a small group.</li>
+        <li>Builds communication skills and reinforces retention.</li>
+        <li>Can be informal: a kitchen table show-and-tell counts.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ SUPPLIES ════════════════ -->
+<section>
+  <h2>Supply List</h2>
+  <div class="supply-cols">
+
+    <div class="supply-box">
+      <h3>Art and Crafts</h3>
+      <ul>
+        <li>Sketchbook (at least 2)</li>
+        <li>Colored pencils (quality set)</li>
+        <li>Fine-point black pens</li>
+        <li>Acrylic or gouache paints</li>
+        <li>Scissors, glue, tape</li>
+        <li>Modeling clay or air-dry clay</li>
+        <li>Cardboard, foam board (for dioramas)</li>
+        <li>Collage materials (fabric, paper scraps)</li>
+      </ul>
+    </div>
+
+    <div class="supply-box">
+      <h3>Science and Garden</h3>
+      <ul>
+        <li>Nature journal (blank pages)</li>
+        <li>Magnifying glass</li>
+        <li>Ruler and measuring tape</li>
+        <li>Seeds and small pots or garden bed</li>
+        <li>Soil pH testing kit</li>
+        <li>Field guides (local birds, plants, insects)</li>
+        <li>Tweezers and small containers</li>
+        <li>Owl pellet dissection kit</li>
+      </ul>
+    </div>
+
+    <div class="supply-box">
+      <h3>Academics</h3>
+      <ul>
+        <li>Lined writing journal</li>
+        <li>Graph paper notebook</li>
+        <li>Index cards (vocabulary)</li>
+        <li>World map and globe</li>
+        <li>Library card (use it often)</li>
+        <li>Printer access for maps and visuals</li>
+        <li>Khan Academy account (free)</li>
+        <li>Binder or folder per subject</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ TIPS ════════════════ -->
+<section>
+  <div class="tips-box">
+    <h3>Tips for a Thriving Year</h3>
+    <ul>
+      <li><strong>Follow the spark.</strong> When she gets absorbed in something — a bug, a book, an idea — let her go deeper, even if it means pausing the planned lesson. That's learning at its best.</li>
+      <li><strong>The afternoon is hers.</strong> Keep mornings unschooled — free play, chores, reading for fun. A rested, unhurried learner absorbs more in two good hours than in five unfocused ones.</li>
+      <li><strong>Dioramas count.</strong> Building a scene from a book or a history lesson is reading comprehension, spatial reasoning, and art — all at once. Never apologize for the time it takes.</li>
+      <li><strong>Let the garden teach math.</strong> Measuring beds, spacing seeds, tracking rainfall, comparing growth — she'll learn ratios and geometry without a worksheet in sight.</li>
+      <li><strong>Read aloud longer than you think you should.</strong> Even at 6th grade, shared read-alouds build vocabulary, model fluency, and create the best conversations you'll have all week.</li>
+      <li><strong>Celebrate the portfolio, not the grade.</strong> Flip through it together at the end of each quarter. Ask what she's proud of. Her answer will tell you everything you need to know.</li>
+    </ul>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<footer>
+  6th Grade Homeschool Plan &nbsp;&middot;&nbsp; Eclectic Approach &nbsp;&middot;&nbsp; Four Roots Ranch
+</footer>
+
+</body>
+</html>
