@@ -1,4 +1,4 @@
-# Four Roots Ranch — Homeschool
+# Homeschool
 
 6th grade homeschool curriculum plan. Eclectic approach, afternoon schedule, 4 days a week.
 

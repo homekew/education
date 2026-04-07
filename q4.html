@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quarter 4: Early Summer - World Explorers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Variables */
+    :root {
+      --green-dark: #2D6A4F;
+      --green-mid: #52B788;
+      --green-light: #D8F3DC;
+      --purple-dark: #5A3E8F;
+      --purple-mid: #9B72CF;
+      --purple-light: #EDE7F6;
+      --gold: #E9C46A;
+      --gold-light: #FFF8E1;
+      --rust: #C65D2A;
+      --rust-light: #FBE9E0;
+      --blue-dark: #1B6CA8;
+      --blue-light: #E3F2FD;
+      --cream: #FEFAE0;
+      --text: #1A1A2E;
+      --text-light: #4A4A6A;
+      --border: #D0D0E0;
+      --white: #FFFFFF;
+    }
+
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lora', serif;
+      color: var(--text);
+      background-color: var(--cream);
+      line-height: 1.6;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: var(--blue-dark);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    nav a.active {
+      background-color: var(--gold);
+      color: var(--text);
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, #0d4a7a 100%);
+      color: var(--white);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    header h1 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      font-weight: 400;
+      opacity: 0.95;
+    }
+
+    header .dates {
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    /* Section Titles */
+    h2 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--blue-dark);
+      margin: 2.5rem 0 1.5rem 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--blue-light);
+    }
+
+    h3 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Week Cards */
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .week-card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .week-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .week-card.celebration {
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--rust-light) 100%);
+      border: 2px solid var(--gold);
+    }
+
+    .week-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .week-number {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--blue-dark);
+    }
+
+    .week-dates {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    .week-theme {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--rust);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    /* Subject Grid */
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .subject-box {
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .subject-box.la {
+      background-color: var(--purple-mid);
+    }
+
+    .subject-box.math {
+      background-color: var(--blue-dark);
+    }
+
+    .subject-box.science {
+      background-color: var(--green-mid);
+    }
+
+    .subject-box.ss {
+      background-color: var(--rust);
+    }
+
+    .subject-label {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-box {
+      background-color: var(--gold);
+      color: var(--text);
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 500;
+      grid-column: 1 / -1;
+    }
+
+    .project-label {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Explorer's Guide Section */
+    .project-section {
+      background: var(--white);
+      border: 2px solid var(--blue-light);
+      border-left: 6px solid var(--blue-dark);
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .project-section h2 {
+      border-bottom-color: var(--blue-light);
+    }
+
+    .chapter-list {
+      display: grid;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .chapter-item {
+      background: var(--blue-light);
+      padding: 1.25rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--blue-dark);
+    }
+
+    .chapter-title {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .chapter-description {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* Escape Room Section */
+    .escape-section {
+      background: linear-gradient(135deg, var(--purple-light) 0%, var(--blue-light) 100%);
+      border: 2px solid var(--purple-mid);
+      border-left: 6px solid var(--purple-dark);
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .escape-section h2 {
+      border-bottom-color: var(--purple-mid);
+    }
+
+    .puzzle-list {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .puzzle-item {
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--purple-dark);
+      font-size: 0.95rem;
+    }
+
+    /* Resources Section */
+    .resources-section {
+      background: var(--white);
+      border: 2px solid var(--green-light);
+      border-left: 6px solid var(--green-dark);
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .resources-section h2 {
+      border-bottom-color: var(--green-light);
+    }
+
+    .resource-category {
+      margin: 1.5rem 0;
+    }
+
+    .resource-category h3 {
+      color: var(--green-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .resource-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .resource-list li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .resource-list li:before {
+      content: "•";
+      color: var(--green-mid);
+      font-weight: bold;
+      display: absolute;
+      left: 0;
+      font-size: 1.2rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-top: 3rem;
+      border-top: 2px solid var(--border);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      nav ul {
+        gap: 1rem;
+        flex-direction: column;
+      }
+
+      nav a {
+        display: block;
+        text-align: center;
+      }
+
+      .subjects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Back to Plan</a></li>
+      <li><a href="q1.html">Q1</a></li>
+      <li><a href="q2.html">Q2</a></li>
+      <li><a href="q3.html">Q3</a></li>
+      <li><a href="q4.html" class="active">Q4</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1>Quarter 4: Early Summer - World Explorers</h1>
+    <p>Geography, exploration, and the natural world through Island of the Blue Dolphins</p>
+    <p class="dates">March 23 - May 21, 2027 (9 weeks)</p>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Introduction -->
+    <section>
+      <h2>Quarter Overview</h2>
+      <p>This quarter takes you on a journey around the world, exploring different ecosystems and learning how people navigate and understand our planet. You'll read Island of the Blue Dolphins, a story about a girl who survives alone on an island with animals, and you'll create your own illustrated Explorer's Guide to a place you care about. Each week combines language arts, math, science, and social studies into projects that build toward a final year-end celebration.</p>
+    </section>
+
+    <!-- Week Cards -->
+    <h2>Weekly Schedule</h2>
+
+    <div class="week-grid">
+      <!-- Week 1 -->
+      <div class="week-card">
+        <div class="week-header">
+          <span class="week-number">Week 1</span>
+          <span class="week-dates">Mar 23-26</span>
+        </div>
+        <p class="week-theme">Setting Sail</p>
+        <div class="subjects-grid">
+          <div class="subject-box la">
+            <span class="subject-label">Language Arts</span>
+            Begin Island of the Blue Dolphins ch. 1-4. Reading journal. Introduce research writing: what makes a good research question?
+          </div>
+          <div class="subject-box math">
+            <span class="subject-label">Math</span>
+            Intro to statistics: mean, median, mode, range using animal population data.
+          </div>
+          <div class="subject-box science">
+            <span class="subject-label">Science</span>
+            Earth science overview: layers of the Earth, plate tectonics basics. Why do continents look like puzzle pieces?
+          </div>
+          <div class="subject-box ss">
+            <span class="subject-label">Social Studies</span>
+            Age of Exploration overview: why did Europeans explore? Key explorers. Map major voyages.
+          </div>
+          <div class="project-box">
+            <span class="project-label">Thursday Project</span>
+            Choose your Explorer's Guide topic (one ecosystem, biome, or region). Options: ocean, rainforest, arctic tundra, Pacific islands, African savanna. Begin cover design.
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 2 -->
+      <div class="week-card">
+        <div class="week-header">
+          <span class="week-number">Week 2</span>
+          <span class="week-dates">Mar 30-Apr 2</span>
+        </div>
+        <p class="week-theme">The Natural World of Islands</p>
+        <div class="subjects-grid">
+          <div class="subject-box la">
+            <span class="subject-label">Language Arts</span>
+            Island of the Blue Dolphins ch. 5-10. Research writing: finding and evaluating sources, taking notes.
+          </div>
+          <div class="subject-box math">
+            <span class="subject-label">Math</span>
+            Data displays: bar graphs, line graphs, histograms. Create a graph using animal population data.
+          </div>
+          <div class="subject-box science">
+            <span class="subject-label">Science</span>
+            Plate tectonics continued: earthquakes, volcanoes, how islands form.
+          </div>
+          <div class="subject-box ss">
+            <span class="subject-label">Social Studies</span>
+            The explorers' maps: latitude and longitude, reading coordinates, finding locations on a world map.
+          </div>
+          <div class="project-box">
+            <span class="project-label">Thursday Project</span>
+            Explorer's Guide: Table of Contents and Chapter 1 outline. Begin first illustration (map of your region/ecosystem).
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 3 -->
+      <div class="week-card">
+        <div class="week-header">
+          <span class="week-number">Week 3</span>
+          <span class="week-dates">Apr 6-9</span>
+        </div>
+        <p class="week-theme">Oceans and Coasts</p>
+        <div class="subjects-grid">
+          <div class="subject-box la">
+            <span class="subject-label">Language Arts</span>
+            Island of the Blue Dolphins ch. 11-16. Organize research notes into categories.
+          </div>
+          <div class="subject-box math">
+            <span class="subject-label">Math</span>
+            Probability: what is probability? Simple experiments (coin flips, card draws). Connect to weather forecasting.
+          </div>
+          <div class="subject-box science">
+            <span class="subject-label">Science</span>
+            Ocean science: ocean zones (sunlight, twilight, midnight), ocean animals by zone, tides and currents.
+          </div>
+          <div class="subject-box ss">
+            <span class="subject-label">Social Studies</span>
+            Navigation tools: how did explorers navigate without GPS? Compass, stars, sextant. Make a simple compass or star map.
+          </div>
+          <div class="project-box">
+            <span class="project-label">Thursday Project</span>
+            Explorer's Guide Chapter 1: The Geography. Write about where your place is, what it looks like. Include your illustrated map.
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 4 -->
+      <div class="week-card">
+        <div class="week-header">
+          <span class="week-number">Week 4</span>
+          <span class="week-dates">Apr 13-16</span>
+        </div>
+        <p class="week-theme">Animals of the Region</p>
+        <div class="subjects-grid">
+          <div class="subject-box la">
+            <span class="subject-label">Language Arts</span>
+            Island of the Blue Dolphins ch. 17-22. Write first draft of one research section.
+          </div>
+          <div class="subject-box math">
+            <span class="subject-label">Math</span>
+            Probability continued: compound events, probability trees. Connect to genetics (probability of traits).
+          </div>
+          <div class="subject-box science">
+            <span class="subject-label">Science</span>
+            Geology: rock cycle, types of rocks (igneous, sedimentary, metamorphic). How to identify rocks.
+          </div>
+          <div class="subject-box ss">
+            <span class="subject-label">Social Studies</span>
+            What did explorers find? Native peoples and cultures of explored regions. The impact of exploration (not all positive).
+          </div>
+          <div class="project-box">
+            <span class="project-label">Thursday Project</span>
+            Explorer's Guide Chapter 2: The Animals. Create illustrated profiles of 3 key animals of your ecosystem with adaptations.
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 5 -->
+      <div class="week-card">
+        <div class="week-header">
+          <span class="week-number">Week 5</span>
+          <span class="week-dates">Apr 22-25</span>
+        </div>
+        <p class="week-theme">Plants and Climate</p>
+        <div class="subjects-grid">
+          <div class="subject-box la">
+            <span class="subject-label">Language Arts</span>
+            Finish Island of the Blue Dolphins. Book quiz prep.
+          </div>
+          <div class="subject-box math">
+            <span class="subject-label">Math</span>
+            Expressions and equations review: multi-step equations, real-world problems.
+          </div>
+          <div class="subject-box science">
+            <span class="subject-label">Science</span>
+            Solar system: the planets, moons, distances. Scale model of the solar system using toilet paper.
+          </div>
+          <div class="subject-box ss">
+            <span class="subject-label">Social Studies</span>
+            Columbian Exchange: what plants, animals, and diseases were exchanged between hemispheres? Corn, potatoes, horses, smallpox. How this changed diets and ecosystems worldwide.
+          </div>
+          <div class="project-box">
+            <span class="project-label">Thursday Project</span>
+            Explorer's Guide Chapter 3: The Plants. Create illustrated profiles of 3-4 key plants of your ecosystem.
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 6 -->
+      <div class="week-card">
+        <div class="week-header">
+          <span class="week-number">Week 6</span>
+          <span class="week-dates">Apr 28-May 1</span>
+        </div>
+        <p class="week-theme">Earth from Space</p>
+        <div class="subjects-grid">
+          <div class="subject-box la">
+            <span class="subject-label">Language Arts</span>
+            Island of the Blue Dolphins book quiz and reading journal completion. Research writing continues.
+          </div>
+          <div class="subject-box math">
+            <span class="subject-label">Math</span>
+            Algebra review: variables, expressions, solving equations. Connect to formulas in science.
+          </div>
+          <div class="subject-box science">
+            <span class="subject-label">Science</span>
+            Earth from space: time zones, seasons and Earth's tilt, the moon and tides.
+          </div>
+          <div class="subject-box ss">
+            <span class="subject-label">Social Studies</span>
+            World geography review: all civilizations studied this year on one big timeline. Mark key inventions and events.
+          </div>
+          <div class="project-box">
+            <span class="project-label">Thursday Project</span>
+            Explorer's Guide Chapter 4: The Climate and Seasons. Create charts, graphs, and illustrations of seasonal changes.
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 7 -->
+      <div class="week-card">
+        <div class="week-header">
+          <span class="week-number">Week 7</span>
+          <span class="week-dates">May 5-8</span>
+        </div>
+        <p class="week-theme">Putting It All Together</p>
+        <div class="subjects-grid">
+          <div class="subject-box la">
+            <span class="subject-label">Language Arts</span>
+            Research report: full draft. Practice citations (where did you learn this?).
+          </div>
+          <div class="subject-box math">
+            <span class="subject-label">Math</span>
+            Q4 math review: statistics, probability, expressions and equations.
+          </div>
+          <div class="subject-box science">
+            <span class="subject-label">Science</span>
+            Environmental science intro: human impact on ecosystems, endangered species, conservation. Are any animals you studied endangered?
+          </div>
+          <div class="subject-box ss">
+            <span class="subject-label">Social Studies</span>
+            Modern explorers: scientists, naturalists, oceanographers, conservationists. Jane Goodall, Jacques Cousteau, David Attenborough.
+          </div>
+          <div class="project-box">
+            <span class="project-label">Thursday Project</span>
+            Explorer's Guide Chapter 5: Human Impact and Conservation. Write the introduction and conclusion of the whole book.
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 8 -->
+      <div class="week-card">
+        <div class="week-header">
+          <span class="week-number">Week 8</span>
+          <span class="week-dates">May 12-15</span>
+        </div>
+        <p class="week-theme">Final Polish</p>
+        <div class="subjects-grid">
+          <div class="subject-box la">
+            <span class="subject-label">Language Arts</span>
+            Research report: final copy.
+          </div>
+          <div class="subject-box math">
+            <span class="subject-label">Math</span>
+            Final math review and fun applied problems. Calculate distances of explorer voyages. Graph historical data.
+          </div>
+          <div class="subject-box science">
+            <span class="subject-label">Science</span>
+            Year-in-review science quiz: you write the questions and quiz your parent. Cover topics from all 4 quarters.
+          </div>
+          <div class="subject-box ss">
+            <span class="subject-label">Social Studies</span>
+            Year-in-review social studies: create one final entry on the illustrated timeline scroll.
+          </div>
+          <div class="project-box">
+            <span class="project-label">Thursday Project</span>
+            Explorer's Guide: final illustrations, table of contents, cover. Bind the book (staple, string binding, or report cover).
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 9 - Celebration -->
+      <div class="week-card celebration">
+        <div class="week-header">
+          <span class="week-number">Week 9</span>
+          <span class="week-dates">May 19-21</span>
+        </div>
+        <p class="week-theme">Year-End Celebration</p>
+        <div class="subjects-grid">
+          <div class="subject-box la">
+            <span class="subject-label">Language Arts</span>
+            Present research report OR read a favorite passage from your fantasy story from Q3.
+          </div>
+          <div class="subject-box math">
+            <span class="subject-label">Math</span>
+            Celebrate! Review the year's math portfolio.
+          </div>
+          <div class="subject-box science">
+            <span class="subject-label">Science</span>
+            Final animal quiz celebration: hardest questions from all year.
+          </div>
+          <div class="subject-box ss">
+            <span class="subject-label">Social Studies</span>
+            Present the illustrated timeline: walk through the whole year of history.
+          </div>
+          <div class="project-box">
+            <span class="project-label">Thursday - Final Day</span>
+            EXPLORER'S GUIDE PRESENTATION and full year portfolio review. What was your favorite project? What was hardest? What do you want to learn next year?
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Explorer's Guide Project -->
+    <div class="project-section">
+      <h2>The Explorer's Guide: Capstone Project</h2>
+      <p>This is a multi-chapter illustrated research book that you'll build across Weeks 1-8. Choose one ecosystem, biome, or region that you really care about and become an expert on it. You'll combine all four subjects (writing, math, science, and social studies) into this beautiful final book.</p>
+
+      <div class="chapter-list">
+        <div class="chapter-item">
+          <div class="chapter-title">Chapter 1: The Geography</div>
+          <div class="chapter-description">Where is this place? Create an illustrated and labeled map showing where in the world your ecosystem is located, what it looks like, and what climate zone it's in.</div>
+        </div>
+
+        <div class="chapter-item">
+          <div class="chapter-title">Chapter 2: The Animals</div>
+          <div class="chapter-description">Create illustrated profiles of 3 key animals that live in your ecosystem. For each animal, describe its adaptations, diet, and current conservation status. Why are these animals special?</div>
+        </div>
+
+        <div class="chapter-item">
+          <div class="chapter-title">Chapter 3: The Plants</div>
+          <div class="chapter-description">Create illustrated profiles of 3-4 key plants found in your ecosystem. Describe what they look like, where they grow in the habitat, and how they're used by animals or people.</div>
+        </div>
+
+        <div class="chapter-item">
+          <div class="chapter-title">Chapter 4: Climate and Seasons</div>
+          <div class="chapter-description">What is it like to live there throughout the year? Use charts and graphs (math connection!) to show temperature, rainfall, and seasonal changes. Illustrate how the place looks in different seasons.</div>
+        </div>
+
+        <div class="chapter-item">
+          <div class="chapter-title">Chapter 5: Human Impact and Conservation</div>
+          <div class="chapter-description">What threats does this ecosystem face? Who is working to protect it? Research a real conservation project or scientist working in your region.</div>
+        </div>
+
+        <div class="chapter-item">
+          <div class="chapter-title">Introduction and Conclusion</div>
+          <div class="chapter-description">Write these last! Introduction: Why did you choose this place? Why does it matter? Conclusion: What surprised you most? What would you most want to see or do there?</div>
+        </div>
+
+        <div class="chapter-item">
+          <div class="chapter-title">Cover</div>
+          <div class="chapter-description">Design an original illustrated cover with your title and your name as author. Make it beautiful and inviting so someone will want to open your book.</div>
+        </div>
+      </div>
+
+      <h3>Binding Options</h3>
+      <p>Choose one way to bind your finished book:</p>
+      <ul style="list-style: none; padding-left: 0; margin: 1rem 0;">
+        <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0;">•</span> Staple the pages together</li>
+        <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0;">•</span> Use a 3-hole punch and tie it together with ribbon or string</li>
+        <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;"><span style="position: absolute; left: 0;">•</span> Place all pages in a clear-front report cover</li>
+      </ul>
+    </div>
+
+    <!-- Escape Room Section -->
+    <div class="escape-section">
+      <h2>The Final Expedition: Year-End Escape Room</h2>
+      <p>Design a final escape room using content from all 4 quarters of homeschool this year. Below are sample puzzles you can solve or use as inspiration to create your own. The final unlock reveals a year-end certificate or special message celebrating everything you've learned.</p>
+
+      <div class="puzzle-list">
+        <div class="puzzle-item">
+          <strong>Puzzle 1: Hieroglyphics Code (from Q2)</strong> - Decode a message using hieroglyphics symbols you learned in Q2 Ancient Egypt.
+        </div>
+
+        <div class="puzzle-item">
+          <strong>Puzzle 2: Biome Match (from Q1 + Q4)</strong> - Match animals to their biome, then describe one key adaptation that helps each animal survive.
+        </div>
+
+        <div class="puzzle-item">
+          <strong>Puzzle 3: Plant Biology Equation (from Q3)</strong> - Solve a photosynthesis or plant biology equation or word problem from Q3 life science.
+        </div>
+
+        <div class="puzzle-item">
+          <strong>Puzzle 4: Navigate the World (from Q4)</strong> - Use coordinates on a world map to locate landmarks or destinations from this quarter's exploration studies.
+        </div>
+
+        <div class="puzzle-item">
+          <strong>Puzzle 5: Timeline Challenge (All Quarters)</strong> - Place key historical events, inventions, and discoveries in chronological order from the whole year.
+        </div>
+
+        <div class="puzzle-item">
+          <strong>Puzzle 6: The Final Key</strong> - Answer a "big thinking" question that brings together your favorite learning moments from the year. What was your most exciting discovery?
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources Section -->
+    <div class="resources-section">
+      <h2>Resources and Supplies</h2>
+
+      <div class="resource-category">
+        <h3>Books</h3>
+        <ul class="resource-list">
+          <li>Island of the Blue Dolphins by Scott O'Dell (core novel)</li>
+          <li>National Geographic World Atlas (or online equivalent)</li>
+          <li>The Ocean Book by Emily Newell</li>
+        </ul>
+      </div>
+
+      <div class="resource-category">
+        <h3>Videos and Websites</h3>
+        <ul class="resource-list">
+          <li>Crash Course Kids: Plate Tectonics, Rock Cycle, Solar System</li>
+          <li>Khan Academy: statistics and probability lessons</li>
+          <li>Blue Planet II (BBC): ocean science exploration</li>
+          <li>Jane Goodall Institute website: conservation and modern explorers</li>
+        </ul>
+      </div>
+
+      <div class="resource-category">
+        <h3>Supplies Needed This Quarter</h3>
+        <ul class="resource-list">
+          <li>Report covers or binding materials for Explorer's Guide</li>
+          <li>World map for annotation and coordinate practice</li>
+          <li>Colored pencils for final illustrations and cover design</li>
+          <li>Sketchbook pages for chapter illustrations</li>
+          <li>Ruler for making maps and charts</li>
+          <li>Optional: compass (for navigation activity)</li>
+          <li>Optional: string or ribbon for book binding</li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Quarter 4: Early Summer - World Explorers | 6th Grade Homeschool</p>
+    <p>An eclectic, project-based learning journey through geography, exploration, and the natural world.</p>
+  </footer>
+
+</body>
+</html>

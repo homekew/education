@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q3 Homeschool Plan: Spring Growing Things</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+
+        :root {
+            --green-dark: #2D6A4F;
+            --green-mid: #52B788;
+            --green-light: #D8F3DC;
+            --purple-dark: #5A3E8F;
+            --purple-mid: #9B72CF;
+            --purple-light: #EDE7F6;
+            --gold: #E9C46A;
+            --gold-light: #FFF8E1;
+            --rust: #C65D2A;
+            --rust-light: #FBE9E0;
+            --blue-dark: #1B6CA8;
+            --blue-light: #E3F2FD;
+            --cream: #FEFAE0;
+            --text: #1A1A2E;
+            --text-light: #4A4A6A;
+            --border: #D0D0E0;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text);
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--green-dark);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--green-light);
+        }
+
+        header h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        header .subtitle {
+            font-size: 1.1rem;
+            color: var(--white);
+            opacity: 0.95;
+        }
+
+        .quarter-info {
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            color: var(--white);
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: var(--text);
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 1rem 1.5rem;
+            color: var(--white);
+            text-decoration: none;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+
+        nav a:last-child {
+            border-right: none;
+        }
+
+        nav a:hover {
+            background-color: var(--green-dark);
+        }
+
+        nav a.active {
+            background-color: var(--green-dark);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .theme-intro {
+            background-color: var(--green-light);
+            border-left: 5px solid var(--green-dark);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .theme-intro h2 {
+            color: var(--green-dark);
+            font-family: 'Lora', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .theme-intro p {
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .week-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(900px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .week-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .week-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .week-header {
+            background-color: var(--green-dark);
+            color: var(--white);
+            padding: 1.5rem;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .week-header h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+            color: var(--white);
+        }
+
+        .week-dates {
+            font-size: 0.95rem;
+            color: var(--white);
+            opacity: 0.95;
+        }
+
+        .week-theme {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .week-body {
+            padding: 1.5rem;
+        }
+
+        .week-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-box {
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem;
+            background-color: #fafafa;
+        }
+
+        .subject-tag {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            color: var(--white);
+        }
+
+        .subject-tag.la {
+            background-color: var(--purple-mid);
+        }
+
+        .subject-tag.math {
+            background-color: var(--blue-dark);
+        }
+
+        .subject-tag.science {
+            background-color: var(--green-mid);
+        }
+
+        .subject-tag.ss {
+            background-color: var(--rust);
+        }
+
+        .subject-tag.project {
+            background-color: var(--gold);
+            color: var(--text);
+        }
+
+        .subject-content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-light);
+        }
+
+        .thursday-box {
+            grid-column: 1 / -1;
+            background-color: var(--gold-light);
+            border: 2px solid var(--gold);
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .thursday-box .subject-tag {
+            background-color: var(--gold);
+            color: var(--text);
+        }
+
+        .thursday-content {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        section {
+            margin-top: 4rem;
+        }
+
+        section h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--green-dark);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--green-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .project-steps {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 1.5rem;
+            gap: 1.5rem;
+        }
+
+        .step-number {
+            background-color: var(--green-dark);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            font-family: 'Lora', serif;
+        }
+
+        .step-content h3 {
+            font-family: 'Lora', serif;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .resource-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--green-dark);
+        }
+
+        .resource-card h3 {
+            font-family: 'Lora', serif;
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .resource-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-card li {
+            color: var(--text-light);
+            padding: 0.4rem 0;
+            margin-left: 1rem;
+        }
+
+        .resource-card li:before {
+            content: "- ";
+            color: var(--green-dark);
+            font-weight: 700;
+        }
+
+        footer {
+            background-color: var(--text);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .week-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Q3 Homeschool Plan</h1>
+        <p class="subtitle">Spring: Growing Things</p>
+        <div class="quarter-info">
+            January 19 - March 20, 2027 (9 weeks)
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Back to Plan</a>
+        <a href="q1.html">Q1</a>
+        <a href="q2.html">Q2</a>
+        <a href="q3.html" class="active">Q3</a>
+        <a href="q4.html">Q4</a>
+    </nav>
+
+    <main>
+        <section class="theme-intro">
+            <h2>Q3 Theme: Spring Growing Things</h2>
+            <p>This quarter follows a naturalist's eye through the life cycle of plants. We start with the basics of plant biology, grow seeds of our own, and nurture a Garden Science Journal throughout all nine weeks. We read "The Wild Robot" by Peter Brown, a beautiful story about a robot learning to survive and adapt in nature alongside animals. This becomes our bridge into plant science. We'll also be working on a fantasy short story with a creature protagonist that we will write, illustrate, and publish. Math connects to geometry and spatial thinking. Social studies explores ancient civilizations (China, India, the Silk Road) and how cultures traded and shared knowledge across vast distances. This quarter invites hands-on growing, careful observation, imaginative storytelling, and careful study of a real garden.</p>
+        </section>
+
+        <div class="week-container">
+            <!-- Week 1 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 1</h3>
+                    <div class="week-dates">January 19-22, 2027</div>
+                    <div class="week-theme">The World Wakes Up</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                <strong>The Wild Robot begins:</strong> Read chapters 1-4. Start a reading journal; write your first entry about what you notice about the robot and the island. Begin fantasy short story project: brainstorm your creature protagonist. What kind of creature is it? What does it look like? What makes it special?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                <strong>Intro to Geometry:</strong> Points, lines, and line segments. Angles: acute, right, obtuse. Types of triangles (equilateral, isosceles, scalene). Types of quadrilaterals (squares, rectangles, parallelograms, trapezoids). Sketch and label each.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                <strong>Plant Kingdom Overview:</strong> What makes a plant a plant? Why do plants matter? Introduction to photosynthesis: light + water + CO2 = glucose + oxygen. Plants are living, growing, reproducing organisms.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                <strong>Ancient China:</strong> Geography of China. The Yellow River and its importance to early civilizations. The Great Wall. Early dynasties: Shang, Zhou, Qin. Map activity: label major geographic features and early cities.
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday / Project Day</span>
+                            <div class="thursday-content">
+                                <strong>Start Your Garden Science Journal:</strong> Sketch your garden space, a windowsill pot, or a corner you'd like to grow something. Write your first journal entry: describe what you see, what you want to grow, and when you'd like to start. Don't worry about perfect art, focus on careful observation and detail.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 2 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 2</h3>
+                    <div class="week-dates">January 26-29, 2027</div>
+                    <div class="week-theme">Seeds and Stories</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                <strong>The Wild Robot chapters 5-10:</strong> Reading journal entry #2. Fantasy story brainstorm expanded: What world does your creature live in? Is it similar to Earth? What is the problem or challenge your creature faces?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                <strong>Perimeter and Area:</strong> Rectangles and squares. Measure and calculate perimeter. Understand area as square units. Connect to the garden: if you're planning a garden bed, how much space does it take up? What is its perimeter?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                <strong>Seed Anatomy and Germination:</strong> The parts of a seed: seed coat, cotyledon (or cotyledons), embryo. What does a seed need to sprout? Warmth, water, oxygen. Plant a seed this week in a pot or clear cup (so you can watch the roots!).
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                <strong>Ancient China: Confucius and Trade:</strong> Who was Confucius? His ideas about family, respect, and order. Silk and the Silk Road: what is silk? Why was it valuable? Trace trade routes on a map from China westward.
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday / Project Day</span>
+                            <div class="thursday-content">
+                                <strong>Plant Seeds:</strong> Plant seeds in pots or start seeds indoors in egg cartons. Include herbs (basil, parsley), vegetables (tomatoes, beans, lettuce), or flowers. Garden Journal entry: draw the seed (label the parts you learned this week), record the date, soil type, water, and temperature where you planted.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 3 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 3</h3>
+                    <div class="week-dates">February 2-5, 2027</div>
+                    <div class="week-theme">Roots, Stems, Leaves</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                <strong>The Wild Robot chapters 11-16:</strong> Reading journal entry #3. Fantasy story outline: sketch the beginning (meet your creature), middle (the problem gets harder or more interesting), and end (how does the creature solve it or grow?). Use index cards if you like, one scene per card.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                <strong>Area of Triangles and Parallelograms:</strong> Derive the formulas yourself using graph paper and cut-outs. Practice with real-world problems: if a garden bed is triangular, how much area does it cover? How much soil would you need?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                <strong>Plant Anatomy:</strong> Roots (anchor the plant, absorb water and nutrients). Stems (transport water and nutrients, support the plant). Leaves (the photosynthesis factories, make food from sunlight). Flowers (the plant's reproductive organs). Dissect and label a plant or flower.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                <strong>Chinese Inventions:</strong> Paper, printing, the compass, gunpowder. How did each invention change the world? Why were they valuable to trade? How did these inventions spread to other cultures?
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday / Project Day</span>
+                            <div class="thursday-content">
+                                <strong>Observe and Sketch:</strong> Check your seeds from Week 2. Any sprouting? Garden Journal entry: draw what you see in detail (roots pushing down, shoots pushing up). Measure height of sprouts. Record observations and water needs. Continue working on your fantasy story outline on index cards.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 4 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 4</h3>
+                    <div class="week-dates">February 9-12, 2027</div>
+                    <div class="week-theme">How Plants Eat</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                <strong>The Wild Robot chapters 17-22:</strong> Reading journal entry #4. Fantasy story first draft: begin writing! Follow your outline. Don't worry about making it perfect, just get the story down. Aim for 2-3 pages by the end of the week.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                <strong>Surface Area:</strong> What is surface area? Explore nets and 3D shapes. Unfold boxes, cubes, and prisms to see their flat surface. Calculate total surface area. Visualize: how much paper would you need to wrap a gift box?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                <strong>Deep Dive on Photosynthesis:</strong> Chlorophyll: what is it, why are plants green? Light experiments: place a potted plant in bright sunlight and another in a shaded corner. Observe and measure growth over the coming weeks. Record in your journal which one grows faster.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                <strong>Ancient India:</strong> Geography of the Indian subcontinent. The Indus Valley civilization. Two major cities: Mohenjo-Daro and Harappa. What was life like? Evidence from archaeology. Map activity and notes.
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday / Project Day</span>
+                            <div class="thursday-content">
+                                <strong>Plant Check and Story Progress:</strong> Check your seeds. Measure height. Garden Journal entry: draw your plants again, showing growth since Week 3. Note any changes in appearance. Continue story draft (aim to finish this week or next).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 5 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 5</h3>
+                    <div class="week-dates">February 16-19, 2027</div>
+                    <div class="week-theme">The Life Cycle</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                <strong>The Wild Robot chapters 23-28:</strong> Reading journal entry #5. Fantasy story first draft continued: aim to complete the draft this week. Read it aloud to yourself. Notice where you get bored or confused. Those are places to revise later.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                <strong>Volume:</strong> What is volume? Cubic units. Volume of rectangular prisms (length x width x height). Use unit cubes or 1-cm squares to help visualize. Practice problems: how much space does a planter box hold?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                <strong>Plant Life Cycles:</strong> Annual plants (complete life cycle in one year), perennial plants (come back year after year). Seed to flower to fruit to seed again: the cycle. Pollination: how do bees, butterflies, and wind move pollen? Observe flowers and watch for insects.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                <strong>Ancient India: Beliefs and Culture:</strong> Hinduism and Buddhism in ancient India. The idea of sacred animals: the elephant in Indian culture and art. How do animals appear in art and religion? Compare to other cultures.
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday / Project Day</span>
+                            <div class="thursday-content">
+                                <strong>Pollinators and Story Progress:</strong> Go outside and observe insects visiting plants if possible. Watch bees or butterflies. Garden Journal entry: draw what you see. Label any insects. Note which flowers they visit. Finish story first draft if not already done.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 6 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 6</h3>
+                    <div class="week-dates">February 23-26, 2027</div>
+                    <div class="week-theme">Soil and What's in It</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                <strong>Finish The Wild Robot:</strong> Complete the novel. Book quiz prep: make notes on the main plot, the robot's growth, the animals, and major events. Reading journal final entry: what was your favorite part? How did the robot change throughout the story?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                <strong>Volume Continued:</strong> Irregular shapes and real-world problems. How much soil fills a garden bed? How many cubic feet of compost do you need? Combine rectangles and other shapes to solve complex volume problems.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                <strong>Soil Science:</strong> Layers of soil: topsoil (dark, rich), subsoil (lighter, less nutrients), bedrock. What makes healthy soil? Composting basics: what can you compost? Simple soil pH test: is your soil acidic or alkaline? Use a kit and record results.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                <strong>The Silk Road:</strong> What goods were traded along the Silk Road? Silk, spices, pottery, metals, ideas. How did goods travel such long distances? What role did merchants play? How did cultures mix and influence each other?
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday / Project Day</span>
+                            <div class="thursday-content">
+                                <strong>Soil Experiment:</strong> Compare three soil types: potting soil, sand, and garden soil. Plant a seed in each. Observe which sprouts first, which grows tallest. Garden Journal entry: draw and label each type. Record predictions and observations. Begin fantasy story revision with fresh eyes.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 7 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 7</h3>
+                    <div class="week-dates">March 2-5, 2027</div>
+                    <div class="week-theme">Wild Robot Book Week</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                <strong>Book Week:</strong> Take The Wild Robot book quiz. Review your reading journal entries and share your thoughts (aloud or in writing). Fantasy story revision: read your draft aloud, listen for slow parts or confusing sections. Add more detail to your creature's appearance and personality. What makes your creature unique?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                <strong>Expressions and Equations Intro:</strong> What is a variable? Use letters (x, y) to represent unknown numbers. Write and evaluate simple expressions. Example: if x equals 5, what is 2x + 3? Practice basic algebraic thinking.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                <strong>Plant Adaptations:</strong> How do plants survive in different habitats? Cacti in deserts (thick, waxy leaves to hold water). Mangroves in saltwater (special roots). Carnivorous plants (Venus flytraps, pitcher plants). Plants with thorns (protection). Research and sketch examples.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                <strong>A Merchant's Journey:</strong> Follow a trade route from China to Rome or the Mediterranean. Map activity: trace the route, note what goods would be traded at each stop, what you'd encounter (mountains, deserts, rivers, other cities). Imagine you are a merchant: what would you buy and sell?
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday / Project Day</span>
+                            <div class="thursday-content">
+                                <strong>Garden Check and Revision:</strong> Your plants should be growing well by now. Garden Journal entry: detailed observation and measurement of all your plants. Compare them to earlier weeks. How much have they grown? Story revision continues: aim to complete the second draft this week.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 8 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 8</h3>
+                    <div class="week-dates">March 9-12, 2027</div>
+                    <div class="week-theme">Story Writing and Garden Growing</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                <strong>Fantasy Story: Final Phase:</strong> Complete second draft and revision. Begin planning illustrations: which scenes from your story are the most important? Which would look best drawn? Sketch rough thumbnails of illustrations (one for each major scene). Choose art medium: colored pencil, pencil, or ink (no watercolor this time).
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                <strong>Solving Simple Equations:</strong> One-step equations using addition and subtraction. If x + 3 = 7, what is x? Practice solving for x. Use manipulatives or drawings to help visualize. Real-world context: if you plant seeds and 5 sprout, and 8 total seeds were planted, how many haven't sprouted yet?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                <strong>Herbs and Vegetables:</strong> Which plants do we eat? Parts of the plant we eat: roots (carrots, beets), stems (celery, asparagus), leaves (lettuce, spinach, kale), seeds (beans, peas, corn), flowers (broccoli). Plant an herb (basil, parsley, cilantro) if you haven't already. Plan what vegetables you'd like to grow for next season.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                <strong>Compare Three Civilizations:</strong> Create a graphic organizer or illustrated chart comparing Ancient China, Ancient India, and Silk Road civilizations. Include: geography, major inventions or contributions, beliefs and culture, trade and connections. How did they influence each other?
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday / Project Day</span>
+                            <div class="thursday-content">
+                                <strong>Finalize and Illustrate:</strong> Finalize all garden plantings for spring. Garden Journal final update: measure all plants, note soil conditions, record any new growth or observations. Begin story illustrations using your sketches as guides. Aim to complete 2-3 illustrations this week.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 9 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 9</h3>
+                    <div class="week-dates">March 16-19, 2027</div>
+                    <div class="week-theme">Q3 Celebration Week</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                <strong>Story Publishing:</strong> Complete all illustrations. Create a cover page with title, author (you!), and an illustration. Arrange all pages in order. Staple or bind together as a finished book. Practice reading your story aloud with expression. Prepare to share it on Thursday.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                <strong>Q3 Geometry and Equations Review Quiz:</strong> Review all concepts from the quarter: geometry (angles, triangles, quadrilaterals), area, surface area, volume, and simple equations. Create a study guide or flashcards. Take a quiz to assess understanding. Celebrate what you've learned!
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                <strong>Garden Science Journal Finale:</strong> Complete the final quarter entry. Measure all your plants one last time. Calculate growth rate (how much did each plant grow from first to last measurement?). Reflect in writing: what grew best? What surprised you? What would you do differently next season? Create a growth chart or graph.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                <strong>Q3 Review:</strong> Review Ancient China, Ancient India, and the Silk Road connections. Complete a final summary map or chart. Discuss how these civilizations shaped each other and the world. Think about trade, ideas, and cultural exchange then and now.
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday / Story Sharing Day</span>
+                            <div class="thursday-content">
+                                <strong>Q3 Celebration:</strong> Read your fantasy story aloud to family or friends. Share your completed illustrations. Do a final garden check together. Review your Garden Science Journal and discuss your findings. Portfolio review: gather your work from the quarter (reading journals, math work, science observations, story and illustrations, social studies projects) and reflect on your growth and learning.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Garden Science Journal Section -->
+        <section>
+            <h2>Garden Science Journal: Project Instructions</h2>
+            <div class="project-steps">
+                <p style="margin-bottom: 1.5rem; color: var(--text-light);">
+                    This is an ongoing project across all 9 weeks, not a one-time build. You will make entries weekly on Thursdays and watch your plants grow from seed to young plants ready for spring.
+                </p>
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Use a Blank Sketchbook</h3>
+                        <p>Dedicate a sketchbook or blank journal to your garden observations. This will become your science record and a work of art you can treasure.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Date Every Entry</h3>
+                        <p>Write the date at the top of each page. This helps you track time and growth over the 9 weeks.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Each Entry Includes Four Things</h3>
+                        <p><strong>Sketch:</strong> Draw your plants in pencil or colored pencil. Show leaves, stems, roots if visible, flowers if present. Be detailed and observant. <strong>Measurement:</strong> Use a ruler. Measure the height of the plant from soil to top. Record in centimeters or inches. <strong>Observation Note:</strong> Write a few sentences about what you notice. Is it growing? What color are the leaves? Are there any changes since last week? <strong>Question or Wonder:</strong> Write one question or curiosity: "Why are the leaves turning yellow?" or "When will it flower?" or "Does this plant like sun or shade better?"</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Weekly Check-Ins on Thursdays</h3>
+                        <p>Every Thursday, spend 15-20 minutes observing your plants, sketching, measuring, and writing. This consistent routine builds scientific thinking and careful observation skills.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Final Entry in Week 9</h3>
+                        <p>In Week 9, create a growth chart or graph showing measurements from Week 1 through Week 9. Write a final reflection: What grew best and why? What surprised you? What would you change or do differently next season? What did you learn about plants?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fantasy Story Section -->
+        <section>
+            <h2>Fantasy Short Story: Project Instructions</h2>
+            <div class="project-steps">
+                <p style="margin-bottom: 1.5rem; color: var(--text-light);">
+                    Over 9 weeks, you will brainstorm, outline, write, revise, illustrate, and publish a fantasy short story with a creature protagonist. This is YOUR story, so let your imagination guide you.
+                </p>
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Week 1 Thursday: Brainstorm</h3>
+                        <p>Who is your creature? What kind of animal or fantasy being is it? What does it look like? What are its special abilities or traits? What world does it live in? Is it similar to Earth? A magical realm? Underwater? A forest? Space? What is the problem or quest your creature faces? Spend time imagining and jotting down ideas.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Weeks 2-3: Outline</h3>
+                        <p>Create a simple outline or use index cards. Write one scene or main idea per card. Organize them in order: Beginning (introduce the creature and the world, what is the problem?), Middle (the problem gets harder or more interesting, what challenges does the creature face?), End (how does the creature solve the problem, learn something new, or grow?). You should have 5-8 cards or outline points.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Weeks 4-5: First Draft</h3>
+                        <p>Write the story! Follow your outline but don't worry about making it perfect. This is a first draft, so focus on getting the story down on paper. Aim for 3-5 pages handwritten or 1.5-2 pages typed. Don't stop to fix things. Let the story flow. Trust your imagination.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Weeks 6-7: Revision</h3>
+                        <p>Read your story aloud. Listen for places where it gets slow, confusing, or unclear. Mark those spots. Fix them: add more detail, clarify confusing parts, add dialogue if needed. Add more description of your creature: what does it look like? What color? Texture? Size? What does it feel like to be this creature? Read aloud again. Notice how it sounds.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Week 8: Final Draft and Illustrations</h3>
+                        <p>Write a clean, final copy of your story. Decide which scenes are most important or exciting and plan one illustration for each major scene (3-4 illustrations total). Sketch roughs first, then create finished illustrations using pencil, colored pencil, or ink. Design a cover page with your story title, your name as author, and an illustration that captures the essence of your story.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Week 9: Publish and Share</h3>
+                        <p>Arrange all pages in order: cover, title page (if you want one), story pages, illustration pages. Staple them together or bind them with brads or string to create a finished book. On Thursday, read your story aloud to family or friends. Share your illustrations. Celebrate what you created! This is YOUR published book.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Escape Room Section -->
+        <section>
+            <h2>Escape Room: Garden Lab (Solver Edition)</h2>
+            <div class="project-steps">
+                <p style="margin-bottom: 1.5rem; color: var(--text-light);">
+                    You are designing and building an escape room puzzle for a friend or family member to solve. The theme is "Garden Lab"—all puzzles connect to plants, seeds, soil, and what you're learning in Q3. Use real objects from your garden or home as props.
+                </p>
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Puzzle 1: Plant Cell Decoder</h3>
+                        <p>Create a matching puzzle where players match symbols to the parts of a plant cell: nucleus, chloroplast (where photosynthesis happens), cell wall, cell membrane, mitochondria. Each symbol has a letter. When matched correctly, the letters spell out a clue word that leads to the next puzzle. Example: symbols might be a sun (chloroplast = C), a wall (cell wall = W), a gate (cell membrane = M), etc.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Puzzle 2: Soil pH Puzzle</h3>
+                        <p>Create a logic puzzle: "If soil pH is 6.5, it is acidic. Blueberries like acidic soil. What other plants like acidic soil? If you plant 3 blueberry bushes, 2 azaleas, and 1 rhododendron, how many acid-loving plants do you have?" The answer might be a number that unlocks the next clue or opens a box.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Puzzle 3: Plant Name Cipher</h3>
+                        <p>Create a simple cipher (like a substitution code) where each letter is replaced by another letter or symbol. Write the names of 5 plants you've learned about: "tomato," "basil," "carrot," "lettuce," "bean." Players must decode the cipher to find the plant names. Once decoded, they might form an acrostic that spells out the next clue.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Puzzle 4: The Hidden Seed (Final Puzzle)</h3>
+                        <p>Create a treasure hunt using plant biology clues. Example: "I am found in the soil beneath roots. I hold the plant up and absorb water. Where would you find the next clue?" (Answer: the roots, and the clue is hidden near a potted plant.) Each clue leads to the next hiding spot: "I am the part where photosynthesis happens. Find the next clue in a leaf." Continue until they find a small box or envelope labeled "The Hidden Seed"—the final answer or prize.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Build Your Room</h3>
+                        <p>Set up the escape room in a room or corner of your home. Use real props: potted plants, soil, seed packets, a ruler (for measuring), magnifying glass, colored pencil, paper, books about plants. Arrange puzzles in order. Test your room with someone: can they solve all the puzzles? Is it too easy? Too hard? Just right? Make adjustments based on their feedback. Time them to see how long it takes to escape.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section>
+            <h2>Resources for Q3</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>Books</h3>
+                    <ul>
+                        <li>The Wild Robot by Peter Brown (core novel)</li>
+                        <li>The Handbook of Nature Study by Anna Botsford Comstock (detailed plant observations)</li>
+                        <li>Botany for Gardeners by Brian Capon (plant science made clear)</li>
+                        <li>Roots, Shoots, Buckets and Boots by Sharon Lovejoy (hands-on gardening for kids)</li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <h3>Videos and Online</h3>
+                    <ul>
+                        <li>Crash Course Kids: Photosynthesis (YouTube)</li>
+                        <li>Crash Course Kids: Plant Life Cycles (YouTube)</li>
+                        <li>Khan Academy: Geometry lessons (free, aligned to your math work)</li>
+                        <li>PBS Learning Media: Plant science videos (free, short segments)</li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <h3>Supplies You'll Need</h3>
+                    <ul>
+                        <li>Seeds: herbs (basil, parsley, cilantro), vegetables (tomatoes, beans, lettuce, carrots), or flowers</li>
+                        <li>Small pots, seed trays, or garden bed space</li>
+                        <li>Potting soil and garden soil</li>
+                        <li>Soil pH test kit (inexpensive, available at garden centers)</li>
+                        <li>Ruler or measuring tape</li>
+                        <li>Blank sketchbook for Garden Science Journal</li>
+                        <li>Index cards for story planning</li>
+                        <li>Colored pencils, pencils, or ink for story illustrations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Q3 Homeschool Plan: Spring Growing Things | 6th Grade Eclectic Homeschool</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1 Homeschool Plan: Creatures and Kingdoms</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+
+        :root {
+            --green-dark: #2D6A4F;
+            --green-mid: #52B788;
+            --green-light: #D8F3DC;
+            --purple-dark: #5A3E8F;
+            --purple-mid: #9B72CF;
+            --purple-light: #EDE7F6;
+            --gold: #E9C46A;
+            --gold-light: #FFF8E1;
+            --rust: #C65D2A;
+            --rust-light: #FBE9E0;
+            --blue-dark: #1B6CA8;
+            --blue-light: #E3F2FD;
+            --cream: #FEFAE0;
+            --text: #1A1A2E;
+            --text-light: #4A4A6A;
+            --border: #D0D0E0;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text);
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--rust);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--rust-light);
+        }
+
+        header h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        header .subtitle {
+            font-size: 1.1rem;
+            color: var(--white);
+            opacity: 0.95;
+        }
+
+        .quarter-info {
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            color: var(--white);
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: var(--text);
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 1rem 1.5rem;
+            color: var(--white);
+            text-decoration: none;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+
+        nav a:last-child {
+            border-right: none;
+        }
+
+        nav a:hover {
+            background-color: var(--rust);
+        }
+
+        nav a.active {
+            background-color: var(--rust);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .theme-intro {
+            background-color: var(--rust-light);
+            border-left: 5px solid var(--rust);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .theme-intro h2 {
+            color: var(--rust);
+            font-family: 'Lora', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .week-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(900px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .week-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .week-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .week-header {
+            background-color: var(--rust);
+            color: var(--white);
+            padding: 1.5rem;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .week-header h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+            color: var(--white);
+        }
+
+        .week-dates {
+            font-size: 0.95rem;
+            color: var(--white);
+            opacity: 0.95;
+        }
+
+        .week-theme {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .week-body {
+            padding: 1.5rem;
+        }
+
+        .week-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-box {
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem;
+            background-color: #fafafa;
+        }
+
+        .subject-tag {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            color: var(--white);
+        }
+
+        .subject-tag.la {
+            background-color: var(--purple-mid);
+        }
+
+        .subject-tag.math {
+            background-color: var(--blue-dark);
+        }
+
+        .subject-tag.science {
+            background-color: var(--green-mid);
+        }
+
+        .subject-tag.ss {
+            background-color: var(--rust);
+        }
+
+        .subject-tag.project {
+            background-color: var(--gold);
+            color: var(--text);
+        }
+
+        .subject-content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-light);
+        }
+
+        .thursday-box {
+            grid-column: 1 / -1;
+            background-color: var(--gold-light);
+            border: 2px solid var(--gold);
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .thursday-box .subject-tag {
+            background-color: var(--gold);
+            color: var(--text);
+        }
+
+        .thursday-content {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        section {
+            margin-top: 4rem;
+        }
+
+        section h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--rust);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--rust-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .project-steps {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 1.5rem;
+            gap: 1.5rem;
+        }
+
+        .step-number {
+            background-color: var(--rust);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            font-family: 'Lora', serif;
+        }
+
+        .step-content h3 {
+            font-family: 'Lora', serif;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .resource-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--rust);
+        }
+
+        .resource-card h3 {
+            font-family: 'Lora', serif;
+            color: var(--rust);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .resource-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-card li {
+            color: var(--text-light);
+            padding: 0.4rem 0;
+            margin-left: 1rem;
+        }
+
+        .resource-card li:before {
+            content: "- ";
+            color: var(--rust);
+            font-weight: 700;
+        }
+
+        footer {
+            background-color: var(--text);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .week-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Creatures and Kingdoms</h1>
+        <p class="subtitle">Quarter 1 Homeschool Plan</p>
+        <div class="quarter-info">
+            September 9 - November 6, 2026 (9 weeks)
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Back to Plan</a>
+        <a href="q1.html" class="active">Q1</a>
+        <a href="q2.html">Q2</a>
+        <a href="q3.html">Q3</a>
+        <a href="q4.html">Q4</a>
+    </nav>
+
+    <main>
+        <div class="theme-intro">
+            <h2>Quarter 1 Theme: Animal Biology and Classification</h2>
+            <p>This quarter, we explore the incredible diversity of animal life. We will read the adventure novel Redwall, studying animals through hands-on projects, observation, and creative work. Our big project is an Animal Adaptation Diorama that showcases one creature in its habitat. Through language arts, mathematics, science, and social studies, we will connect ancient civilizations with the animal world they depended on.</p>
+        </div>
+
+        <div class="week-container">
+            <!-- WEEK 1 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 1</h3>
+                    <div class="week-dates">September 9-12, 2026</div>
+                    <div class="week-theme">Welcome Week</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                Begin Redwall by Brian Jacques. Set up reading journal with date and chapter summaries. Introduce vocabulary system for new and interesting words encountered in the text.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                Pre-assessment and review of fractions. Introduce the concept of ratio using animal examples (e.g., comparing a giraffe's leg length to body height).
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                What is biology? Explore the Animal Kingdom overview and the five kingdoms of life. Begin thinking about how animals are classified.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                What is history? Develop map skills and locate Mesopotamia and Egypt on a world map. Discuss why geography matters.
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday Project</span>
+                            <div class="thursday-content">
+                                Decorate and personalize all notebooks and journals. Create the first entry in your Creature Field Guide. Choose one animal you've observed and make a detailed drawing with notes about what you see.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEEK 2 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 2</h3>
+                    <div class="week-dates">September 15-18, 2026</div>
+                    <div class="week-theme">Mammals</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                Read Redwall chapters 1-5. Continue reading journal. Brainstorm a real outdoor adventure you've had or witnessed. What happened? What did you see, hear, and feel?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                What is a ratio? Explore real-world examples using animal body proportions. Compare the ratio of a cat's tail length to its body length, for example.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                Mammal characteristics: fur or hair, warm-blooded, live birth, and milk production. Compare mammals to other animals. Why are we mammals?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                Mesopotamia: the Tigris and Euphrates rivers, the first cities, and Sumerian culture. Why did civilizations develop near rivers?
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday Project</span>
+                            <div class="thursday-content">
+                                Add a mammal entry to your Field Guide. Research one mammal (local or exotic) and create an original drawing. Include: name, habitat, diet, one special feature.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEEK 3 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 3</h3>
+                    <div class="week-dates">September 22-25, 2026</div>
+                    <div class="week-theme">Birds and Reptiles</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                Read Redwall chapters 6-10. Continue reading journal. Begin your personal narrative brainstorm and draft. Describe your outdoor adventure in your own voice.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                Equivalent ratios and ratio tables. Compare animal speeds as ratios. Create a table: cheetah, rabbit, human. How many times faster is one than the other?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                Bird anatomy: hollow bones, feathers, different types of beaks. Reptile adaptations: scales, ectothermic (cold-blooded) bodies, egg-laying. Observe the differences.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                Mesopotamia continued: cuneiform writing, ziggurats, and trade routes. What was the first form of writing? How did it change civilization?
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday Project</span>
+                            <div class="thursday-content">
+                                Find a real feather (or use a reference image) and observe it closely with a magnifying glass if possible. Create a detailed drawing in your Field Guide. Add a bird entry with habitat, diet, and one interesting fact.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEEK 4 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 4</h3>
+                    <div class="week-dates">September 29 - October 2, 2026</div>
+                    <div class="week-theme">Fish and Amphibians</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                Read Redwall chapters 11-15. Continue reading journal. Complete your personal narrative rough draft. Share with a trusted reader for feedback.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                Unit rates: what is a unit rate? Compare animals' speeds, lifespans, and sizes in unit rate form. (Example: miles per hour, years of life, pounds per body length.)
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                Fish anatomy: gills for breathing underwater, scales, lateral line system for sensing movement. Amphibian metamorphosis: eggs in water, tadpole stage, transformation to adult.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                Ancient Egypt: the Nile River and its geography. The role of pharaohs. Why was the Nile so important to Egyptian civilization?
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday Project</span>
+                            <div class="thursday-content">
+                                BEGIN your Animal Adaptation Diorama. Choose your animal. Sketch its habitat on graph paper. List all materials you will need to build this diorama (box, paint, clay, etc.). Research your animal's key adaptations.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEEK 5 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 5</h3>
+                    <div class="week-dates">October 6-9, 2026</div>
+                    <div class="week-theme">Invertebrates</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                Read Redwall chapters 16-20. Continue reading journal. Revise your personal narrative draft. Look for places to add sensory details and dialogue.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                Unit rates continued: miles per hour, price per unit, and real-world problems. Create your own word problems using animal data (e.g., "A hummingbird's heart beats 250 times per minute. How many beats in an hour?").
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                Insects: 6 legs, 3 body segments, diverse life cycles. Arachnids: spiders and their webs. Worms: segmented bodies and their role in soil. Study how invertebrates compare to vertebrates.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                Ancient Egypt: gods and animals. Ra as a falcon, Bastet as a cat, Sobek as a crocodile, Anubis as a jackal. How did Egyptians see animals as divine?
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday Project</span>
+                            <div class="thursday-content">
+                                Begin constructing your diorama. Build the base and paint or create the background habitat scene. Add terrain (clay, moss, fabric, painted cardboard, dried leaves). Create an insect entry in your Field Guide with a detailed drawing.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEEK 6 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 6</h3>
+                    <div class="week-dates">October 13-16, 2026</div>
+                    <div class="week-theme">Food Webs</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                Finish reading Redwall. Complete reading journal. Prepare for the book quiz by reviewing character names, plot points, and themes.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                Fractions review: simplifying fractions, comparing fractions, finding equivalent fractions. Create fraction bars with animal-themed labels for visual understanding.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                Food chains vs. food webs. Producers (plants), consumers (herbivores, carnivores, omnivores), and decomposers. Energy pyramids: how much energy transfers at each level?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                Ancient Egypt: daily life, farming, and the annual flooding of the Nile. What did Egyptians eat? How did geography shape their food and survival?
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday Project</span>
+                            <div class="thursday-content">
+                                Build a food web mobile (craft project). Draw animals and plants on index cards. Use yarn to connect them showing who eats what. Hang in a window or from a ceiling to display the connections in a food web.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEEK 7 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 7</h3>
+                    <div class="week-dates">October 20-23, 2026</div>
+                    <div class="week-theme">Animal Adaptations Deep Dive</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                Take the Redwall book quiz. Share your reading journal with a family member. Discuss favorite scenes, characters, and what surprised you about this adventure tale.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                Adding and subtracting fractions with unlike denominators. Use animal-themed problems. (Example: A fox eats 1/3 of a meal, a deer eats 2/5 of its meal. How much more did the deer eat?)
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                Animal Adaptations Deep Dive: camouflage, mimicry, hibernation, migration, venom, and armor. Choose one adaptation to research in depth. How does it help the animal survive?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                Ancient Egypt: pyramids, mummification, and hieroglyphics. Complete a hieroglyphics decoder activity. Translate your name or a short message into hieroglyphic symbols.
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday Project</span>
+                            <div class="thursday-content">
+                                Add final touches to your diorama. Place your animal (sculpted from clay, drawn and cut out, or made from felt) in the habitat. Add plants, other animals, food sources. Write a 2-paragraph creature profile: (1) Who is this animal? (2) How is it specifically adapted to survive in its habitat?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEEK 8 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 8</h3>
+                    <div class="week-dates">October 27-30, 2026</div>
+                    <div class="week-theme">Animal Survival Strategies</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                Begin Wings of Fire (or another fantasy creature novel of your choice). Start a new reading journal with the same format. Note characters, settings, and plot developments as you read.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                Multiplying fractions. Use animal examples and real-world contexts. (Example: A recipe calls for 3/4 cup of seeds. If you triple the recipe, how much do you need?)
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                Predator vs. prey: speed, heightened senses, camouflage, pack hunting strategies, and defense mechanisms. Research one predator and one prey animal. How are they adapted to their roles?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                Compare Egypt and Mesopotamia: similarities and differences. Create a graphic organizer (Venn diagram or chart). Begin an illustrated timeline showing key events from both civilizations.
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday Project</span>
+                            <div class="thursday-content">
+                                Diorama presentation rehearsal. Practice presenting your diorama as if leading a nature tour. You should be able to explain: the animal, its biome, three specific adaptations, and one interesting fact. Speak clearly and confidently.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEEK 9 -->
+            <div class="week-card">
+                <div class="week-header">
+                    <h3>Week 9</h3>
+                    <div class="week-dates">November 3-6, 2026</div>
+                    <div class="week-theme">Q1 Celebration Week</div>
+                </div>
+                <div class="week-body">
+                    <div class="week-grid">
+                        <div class="subject-box">
+                            <span class="subject-tag la">Language Arts</span>
+                            <div class="subject-content">
+                                Finalize your personal narrative for your portfolio. Create an illustrated cover if you like. You can also make a final copy with your best handwriting or type it.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag math">Math</span>
+                            <div class="subject-content">
+                                Quarter 1 Math Review: ratios, unit rates, and fractions. Complete a short quiz covering these concepts. Reflect: which topic was easiest? Which challenged you most?
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag science">Science</span>
+                            <div class="subject-content">
+                                Animal Kingdom review. Create an animal quiz and give it to a family member! Your questions should test knowledge about animal classification, adaptations, and characteristics.
+                            </div>
+                        </div>
+                        <div class="subject-box">
+                            <span class="subject-tag ss">Social Studies</span>
+                            <div class="subject-content">
+                                Quarter 1 Social Studies Review: Mesopotamia and Ancient Egypt. Finish your illustrated timeline. Prepare to discuss what you found most interesting about these ancient civilizations.
+                            </div>
+                        </div>
+                        <div class="thursday-box">
+                            <span class="subject-tag project">Thursday Project</span>
+                            <div class="thursday-content">
+                                DIORAMA PRESENTATION DAY! Present your Animal Adaptation Diorama to your family. Explain your chosen animal, its biome, three key adaptations, and one fact you discovered. Portfolio Review: What work from this quarter are you most proud of? What did you learn about yourself as a learner?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECT INSTRUCTIONS -->
+        <section id="project-instructions">
+            <h2>Animal Adaptation Diorama: Project Instructions</h2>
+            <div class="project-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Choose Your Animal (Week 4 Thursday)</h3>
+                        <p>Select an animal that fascinates you. Think about these questions: What biome does it live in? What makes it uniquely adapted to that environment? Is it a mammal, bird, reptile, fish, amphibian, or invertebrate? Sketch the habitat on graph paper and make a list of all the materials you will need to build this diorama.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Gather Materials (Week 5 Thursday)</h3>
+                        <p>Collect your supplies. Base: a shoebox, small cardboard box, or similar container. Background: draw or paint the habitat scene on cardstock or poster board. Terrain materials: air-dry clay, moss, fabric scraps, painted cardboard pieces, dried leaves, sand, or other natural items. Your animal: you will either sculpt it from clay, draw and cut it out, or make it from felt. Labels and markers for the final touches.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Build the Habitat (Week 6 Thursday)</h3>
+                        <p>Start with your base and background. Paint or draw the setting that your animal lives in. Consider: Is it a desert, forest, ocean, grassland, or arctic environment? Add terrain to your base. Use clay to sculpt hills or landscapes. Add moss, fabric, or other materials to create texture and depth. The habitat should look realistic and inviting for your animal.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Add Your Animal and Details (Week 7 Thursday)</h3>
+                        <p>Place your animal in its habitat. Add plants, other animals (if appropriate), and food sources. For example, if your animal is a deer, add grass and maybe a predator in the distance. If it's an owl, add a mouse or other prey. Write a 2-paragraph creature profile: (1) Who is this animal? Describe its physical features, diet, and family structure. (2) How is it adapted to survive? Explain at least 3 specific adaptations and how each helps it thrive.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Final Details and Labels (Week 8 Thursday)</h3>
+                        <p>Polish your diorama. Add any final touches like extra plants, rocks, or animals. Label key elements of the habitat (e.g., "oak tree," "burrow," "river"). Create an attractive title card with your animal's name. Double-check that everything is secure and the diorama will travel safely if needed.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Present Your Diorama (Week 9 Thursday)</h3>
+                        <p>Present your finished diorama to your family like a nature guide leading a tour. Explain: (1) What animal is this, and what class does it belong to? (2) Where does it live, and what is that biome like? (3) What are three specific adaptations that help it survive? (4) What is one interesting or surprising fact you learned about this animal? Speak clearly, make eye contact, and enjoy sharing your work.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESOURCES -->
+        <section id="resources">
+            <h2>Resources This Quarter</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>Books</h3>
+                    <ul>
+                        <li>Redwall by Brian Jacques (core novel)</li>
+                        <li>The Handbook of Nature Study by Anna Botsford Comstock</li>
+                        <li>DK Eyewitness: Animal</li>
+                        <li>National Geographic Animal Encyclopedia</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h3>Videos & Online Resources</h3>
+                    <ul>
+                        <li>Crash Course Kids on YouTube (Animal Kingdom, Food Webs, Adaptations)</li>
+                        <li>Khan Academy 6th Grade Math (ratios and fractions)</li>
+                        <li>BBC Nature clips and documentaries</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h3>Supplies for This Quarter</h3>
+                    <ul>
+                        <li>Shoebox (for diorama)</li>
+                        <li>Air-dry clay</li>
+                        <li>Cardstock and poster board</li>
+                        <li>Yarn (for food web mobile)</li>
+                        <li>Colored pencils and markers</li>
+                        <li>Field guide and nature journal</li>
+                        <li>Index cards and sketchbook</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Quarter 1: Creatures and Kingdoms - September through November 2026</p>
+        <p>An eclectic homeschool adventure in animal biology, adaptation, and ancient civilizations.</p>
+    </footer>
+</body>
+</html>
