@@ -344,6 +344,115 @@
             margin-top: 3rem;
         }
 
+        .standards-intro {
+            background-color: var(--blue-light);
+            border-left: 5px solid var(--blue-dark);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .standards-intro h2 {
+            color: var(--blue-dark);
+            font-family: 'Lora', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .standards-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--green-dark);
+        }
+
+        .standards-card h3 {
+            font-family: 'Lora', serif;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--white);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .standards-card.la h3 {
+            background-color: var(--purple-dark);
+        }
+
+        .standards-card.math h3 {
+            background-color: var(--blue-dark);
+        }
+
+        .standards-card.science h3 {
+            background-color: var(--green-dark);
+        }
+
+        .standards-card.ss h3 {
+            background-color: var(--rust);
+        }
+
+        .standards-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .standards-card li {
+            color: var(--text-light);
+            padding: 0.6rem 0;
+            margin-left: 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .standards-card li:before {
+            content: "";
+            margin: 0;
+        }
+
+        .standard-badge {
+            display: inline-block;
+            border-radius: 8px;
+            padding: 1px 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin: 2px;
+        }
+
+        .standard-badge.la {
+            background-color: #EDE7F6;
+            color: #5A3E8F;
+        }
+
+        .standard-badge.math {
+            background-color: #E3F2FD;
+            color: #1B6CA8;
+        }
+
+        .standard-badge.science {
+            background-color: #D8F3DC;
+            color: #2D6A4F;
+        }
+
+        .standard-badge.ss {
+            background-color: #FBE9E0;
+            color: #C65D2A;
+        }
+
+        .standards-line {
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
         @media (max-width: 768px) {
             header h1 {
                 font-size: 1.8rem;
@@ -383,6 +492,69 @@
             <p>This quarter follows a naturalist's eye through the life cycle of plants. We start with the basics of plant biology, grow seeds of our own, and nurture a Garden Science Journal throughout all nine weeks. We read "The Wild Robot" by Peter Brown, a beautiful story about a robot learning to survive and adapt in nature alongside animals. This becomes our bridge into plant science. We'll also be working on a fantasy short story with a creature protagonist that we will write, illustrate, and publish. Math connects to geometry and spatial thinking. Social studies explores ancient civilizations (China, India, the Silk Road) and how cultures traded and shared knowledge across vast distances. This quarter invites hands-on growing, careful observation, imaginative storytelling, and careful study of a real garden.</p>
         </section>
 
+        <section class="standards-intro">
+            <h2>Oregon State Standards - Quarter 3</h2>
+            <p>This quarter aligns with Oregon Common Core ELA and Math standards, as well as Next Generation Science Standards (NGSS) for middle school life science and Oregon Grade 6 Social Studies standards. The standards below guide all daily lessons and projects.</p>
+        </section>
+
+        <div class="standards-grid">
+            <!-- Language Arts Card -->
+            <div class="standards-card la">
+                <h3>Language Arts (ELA)</h3>
+                <ul>
+                    <li><strong>RL.6.1:</strong> Cite textual evidence from literature to support analysis</li>
+                    <li><strong>RL.6.2:</strong> Determine theme or central idea; summarize</li>
+                    <li><strong>RL.6.3:</strong> Describe how plot, character, and setting interact</li>
+                    <li><strong>RL.6.10:</strong> Read and comprehend literature grades 6-8</li>
+                    <li><strong>W.6.3:</strong> Write narratives to develop real or imagined experiences (fantasy short story)</li>
+                    <li><strong>W.6.4:</strong> Produce clear and coherent writing appropriate to task and audience</li>
+                    <li><strong>W.6.5:</strong> Develop and strengthen writing through planning, drafting, revising, editing</li>
+                    <li><strong>W.6.7:</strong> Conduct short research projects to answer a question</li>
+                    <li><strong>W.6.10:</strong> Write routinely over extended time frames and shorter time frames</li>
+                    <li><strong>L.6.4:</strong> Determine or clarify meaning of unknown words using context clues</li>
+                    <li><strong>SL.6.4:</strong> Present claims and findings using appropriate eye contact, volume, and pronunciation (story sharing day)</li>
+                </ul>
+            </div>
+
+            <!-- Math Card -->
+            <div class="standards-card math">
+                <h3>Math (Common Core Grade 6)</h3>
+                <ul>
+                    <li><strong>6.G.A.1:</strong> Find area of right triangles, other triangles, special quadrilaterals, and polygons</li>
+                    <li><strong>6.G.A.2:</strong> Find volume of right rectangular prisms with fractional edge lengths</li>
+                    <li><strong>6.G.A.3:</strong> Draw polygons in the coordinate plane given coordinates</li>
+                    <li><strong>6.G.A.4:</strong> Represent three-dimensional figures using nets; find surface area</li>
+                    <li><strong>6.EE.A.2:</strong> Write, read, and evaluate expressions in which letters stand for numbers</li>
+                    <li><strong>6.EE.B.6:</strong> Use variables to represent numbers and write expressions</li>
+                    <li><strong>6.EE.B.7:</strong> Solve real-world problems by writing and solving equations of the form x + p = q and px = q</li>
+                </ul>
+            </div>
+
+            <!-- Science Card -->
+            <div class="standards-card science">
+                <h3>Science (NGSS - Life Science)</h3>
+                <ul>
+                    <li><strong>MS-LS1-5:</strong> Construct a scientific explanation based on evidence for how environmental and genetic factors influence the growth of organisms</li>
+                    <li><strong>MS-LS1-6:</strong> Construct a scientific explanation based on evidence for the role of photosynthesis in the cycling of matter and flow of energy</li>
+                    <li><strong>MS-LS2-1:</strong> Analyze and interpret data to provide evidence for the effects of resource availability on organisms</li>
+                    <li><strong>MS-LS2-3:</strong> Develop a model to describe the cycling of matter and flow of energy among living and nonliving parts of an ecosystem</li>
+                </ul>
+            </div>
+
+            <!-- Social Studies Card -->
+            <div class="standards-card ss">
+                <h3>Social Studies (Grade 6)</h3>
+                <ul>
+                    <li><strong>SS.6.H.1:</strong> Analyze chronological reasoning and historical cause/effect in ancient civilizations</li>
+                    <li><strong>SS.6.H.2:</strong> Gather, evaluate, and use multiple sources to understand ancient history</li>
+                    <li><strong>SS.6.GEO.1:</strong> Use geographic tools and spatial thinking to analyze human patterns</li>
+                    <li><strong>SS.6.GEO.2:</strong> Analyze human-environment interaction in ancient China and India</li>
+                    <li><strong>SS.6.EC.1:</strong> Analyze economic systems, trade networks, and goods exchange (Silk Road)</li>
+                    <li><strong>SS.6.CV.1:</strong> Analyze how power and authority functioned in ancient China and India</li>
+                </ul>
+            </div>
+        </div>
+
         <div class="week-container">
             <!-- Week 1 -->
             <div class="week-card">
@@ -398,11 +570,17 @@
                             <div class="subject-content">
                                 <strong>The Wild Robot begins:</strong> Read chapters 1-4. Start a reading journal; write your first entry about what you notice about the robot and the island. Begin fantasy short story project: brainstorm your creature protagonist. What kind of creature is it? What does it look like? What makes it special?
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge la">RL.6.10</span> <span class="standard-badge la">W.6.3</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag math">Math</span>
                             <div class="subject-content">
                                 <strong>Intro to Geometry:</strong> Points, lines, and line segments. Angles: acute, right, obtuse. Types of triangles (equilateral, isosceles, scalene). Types of quadrilaterals (squares, rectangles, parallelograms, trapezoids). Sketch and label each.
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge math">6.G.A.1</span>
                             </div>
                         </div>
                         <div class="subject-box">
@@ -410,11 +588,17 @@
                             <div class="subject-content">
                                 <strong>Plant Kingdom Overview:</strong> What makes a plant a plant? Why do plants matter? Introduction to photosynthesis: light + water + CO2 = glucose + oxygen. Plants are living, growing, reproducing organisms.
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge science">MS-LS1-6</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag ss">Social Studies</span>
                             <div class="subject-content">
                                 <strong>Ancient China:</strong> Geography of China. The Yellow River and its importance to early civilizations. The Great Wall. Early dynasties: Shang, Zhou, Qin. Map activity: label major geographic features and early cities.
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge ss">SS.6.H.1</span> <span class="standard-badge ss">SS.6.GEO.1</span>
                             </div>
                         </div>
                         <div class="thursday-box">
@@ -441,11 +625,17 @@
                             <div class="subject-content">
                                 <strong>The Wild Robot chapters 5-10:</strong> Reading journal entry #2. Fantasy story brainstorm expanded: What world does your creature live in? Is it similar to Earth? What is the problem or challenge your creature faces?
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge la">RL.6.1</span> <span class="standard-badge la">RL.6.3</span> <span class="standard-badge la">W.6.3</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag math">Math</span>
                             <div class="subject-content">
                                 <strong>Perimeter and Area:</strong> Rectangles and squares. Measure and calculate perimeter. Understand area as square units. Connect to the garden: if you're planning a garden bed, how much space does it take up? What is its perimeter?
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge math">6.G.A.1</span>
                             </div>
                         </div>
                         <div class="subject-box">
@@ -453,11 +643,17 @@
                             <div class="subject-content">
                                 <strong>Seed Anatomy and Germination:</strong> The parts of a seed: seed coat, cotyledon (or cotyledons), embryo. What does a seed need to sprout? Warmth, water, oxygen. Plant a seed this week in a pot or clear cup (so you can watch the roots!).
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge science">MS-LS1-5</span> <span class="standard-badge science">MS-LS1-6</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag ss">Social Studies</span>
                             <div class="subject-content">
                                 <strong>Ancient China: Confucius and Trade:</strong> Who was Confucius? His ideas about family, respect, and order. Silk and the Silk Road: what is silk? Why was it valuable? Trace trade routes on a map from China westward.
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge ss">SS.6.H.1</span> <span class="standard-badge ss">SS.6.EC.1</span>
                             </div>
                         </div>
                         <div class="thursday-box">
@@ -484,11 +680,17 @@
                             <div class="subject-content">
                                 <strong>The Wild Robot chapters 11-16:</strong> Reading journal entry #3. Fantasy story outline: sketch the beginning (meet your creature), middle (the problem gets harder or more interesting), and end (how does the creature solve it or grow?). Use index cards if you like, one scene per card.
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge la">RL.6.3</span> <span class="standard-badge la">W.6.3</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag math">Math</span>
                             <div class="subject-content">
                                 <strong>Area of Triangles and Parallelograms:</strong> Derive the formulas yourself using graph paper and cut-outs. Practice with real-world problems: if a garden bed is triangular, how much area does it cover? How much soil would you need?
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge math">6.G.A.1</span>
                             </div>
                         </div>
                         <div class="subject-box">
@@ -496,11 +698,17 @@
                             <div class="subject-content">
                                 <strong>Plant Anatomy:</strong> Roots (anchor the plant, absorb water and nutrients). Stems (transport water and nutrients, support the plant). Leaves (the photosynthesis factories, make food from sunlight). Flowers (the plant's reproductive organs). Dissect and label a plant or flower.
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge science">MS-LS1-5</span> <span class="standard-badge science">MS-LS1-6</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag ss">Social Studies</span>
                             <div class="subject-content">
                                 <strong>Chinese Inventions:</strong> Paper, printing, the compass, gunpowder. How did each invention change the world? Why were they valuable to trade? How did these inventions spread to other cultures?
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge ss">SS.6.H.1</span> <span class="standard-badge ss">SS.6.H.2</span>
                             </div>
                         </div>
                         <div class="thursday-box">
@@ -527,11 +735,17 @@
                             <div class="subject-content">
                                 <strong>The Wild Robot chapters 17-22:</strong> Reading journal entry #4. Fantasy story first draft: begin writing! Follow your outline. Don't worry about making it perfect, just get the story down. Aim for 2-3 pages by the end of the week.
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge la">RL.6.1</span> <span class="standard-badge la">W.6.3</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag math">Math</span>
                             <div class="subject-content">
                                 <strong>Surface Area:</strong> What is surface area? Explore nets and 3D shapes. Unfold boxes, cubes, and prisms to see their flat surface. Calculate total surface area. Visualize: how much paper would you need to wrap a gift box?
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge math">6.G.A.4</span>
                             </div>
                         </div>
                         <div class="subject-box">
@@ -539,11 +753,17 @@
                             <div class="subject-content">
                                 <strong>Deep Dive on Photosynthesis:</strong> Chlorophyll: what is it, why are plants green? Light experiments: place a potted plant in bright sunlight and another in a shaded corner. Observe and measure growth over the coming weeks. Record in your journal which one grows faster.
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge science">MS-LS1-6</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag ss">Social Studies</span>
                             <div class="subject-content">
                                 <strong>Ancient India:</strong> Geography of the Indian subcontinent. The Indus Valley civilization. Two major cities: Mohenjo-Daro and Harappa. What was life like? Evidence from archaeology. Map activity and notes.
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge ss">SS.6.H.1</span> <span class="standard-badge ss">SS.6.GEO.2</span>
                             </div>
                         </div>
                         <div class="thursday-box">
@@ -570,11 +790,17 @@
                             <div class="subject-content">
                                 <strong>The Wild Robot chapters 23-28:</strong> Reading journal entry #5. Fantasy story first draft continued: aim to complete the draft this week. Read it aloud to yourself. Notice where you get bored or confused. Those are places to revise later.
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge la">RL.6.1</span> <span class="standard-badge la">RL.6.2</span> <span class="standard-badge la">W.6.3</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag math">Math</span>
                             <div class="subject-content">
                                 <strong>Volume:</strong> What is volume? Cubic units. Volume of rectangular prisms (length x width x height). Use unit cubes or 1-cm squares to help visualize. Practice problems: how much space does a planter box hold?
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge math">6.G.A.2</span>
                             </div>
                         </div>
                         <div class="subject-box">
@@ -582,11 +808,17 @@
                             <div class="subject-content">
                                 <strong>Plant Life Cycles:</strong> Annual plants (complete life cycle in one year), perennial plants (come back year after year). Seed to flower to fruit to seed again: the cycle. Pollination: how do bees, butterflies, and wind move pollen? Observe flowers and watch for insects.
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge science">MS-LS1-5</span> <span class="standard-badge science">MS-LS2-1</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag ss">Social Studies</span>
                             <div class="subject-content">
                                 <strong>Ancient India: Beliefs and Culture:</strong> Hinduism and Buddhism in ancient India. The idea of sacred animals: the elephant in Indian culture and art. How do animals appear in art and religion? Compare to other cultures.
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge ss">SS.6.GEO.2</span> <span class="standard-badge ss">SS.6.CV.1</span>
                             </div>
                         </div>
                         <div class="thursday-box">
@@ -613,11 +845,17 @@
                             <div class="subject-content">
                                 <strong>Finish The Wild Robot:</strong> Complete the novel. Book quiz prep: make notes on the main plot, the robot's growth, the animals, and major events. Reading journal final entry: what was your favorite part? How did the robot change throughout the story?
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge la">RL.6.1</span> <span class="standard-badge la">L.6.4</span> <span class="standard-badge la">W.6.5</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag math">Math</span>
                             <div class="subject-content">
                                 <strong>Volume Continued:</strong> Irregular shapes and real-world problems. How much soil fills a garden bed? How many cubic feet of compost do you need? Combine rectangles and other shapes to solve complex volume problems.
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge math">6.G.A.2</span>
                             </div>
                         </div>
                         <div class="subject-box">
@@ -625,11 +863,17 @@
                             <div class="subject-content">
                                 <strong>Soil Science:</strong> Layers of soil: topsoil (dark, rich), subsoil (lighter, less nutrients), bedrock. What makes healthy soil? Composting basics: what can you compost? Simple soil pH test: is your soil acidic or alkaline? Use a kit and record results.
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge science">MS-LS2-1</span> <span class="standard-badge science">MS-LS2-3</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag ss">Social Studies</span>
                             <div class="subject-content">
                                 <strong>The Silk Road:</strong> What goods were traded along the Silk Road? Silk, spices, pottery, metals, ideas. How did goods travel such long distances? What role did merchants play? How did cultures mix and influence each other?
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge ss">SS.6.EC.1</span> <span class="standard-badge ss">SS.6.GEO.1</span>
                             </div>
                         </div>
                         <div class="thursday-box">
@@ -656,11 +900,17 @@
                             <div class="subject-content">
                                 <strong>Book Week:</strong> Take The Wild Robot book quiz. Review your reading journal entries and share your thoughts (aloud or in writing). Fantasy story revision: read your draft aloud, listen for slow parts or confusing sections. Add more detail to your creature's appearance and personality. What makes your creature unique?
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge la">RL.6.1</span> <span class="standard-badge la">W.6.5</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag math">Math</span>
                             <div class="subject-content">
                                 <strong>Expressions and Equations Intro:</strong> What is a variable? Use letters (x, y) to represent unknown numbers. Write and evaluate simple expressions. Example: if x equals 5, what is 2x + 3? Practice basic algebraic thinking.
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge math">6.EE.A.2</span> <span class="standard-badge math">6.EE.B.6</span>
                             </div>
                         </div>
                         <div class="subject-box">
@@ -668,11 +918,17 @@
                             <div class="subject-content">
                                 <strong>Plant Adaptations:</strong> How do plants survive in different habitats? Cacti in deserts (thick, waxy leaves to hold water). Mangroves in saltwater (special roots). Carnivorous plants (Venus flytraps, pitcher plants). Plants with thorns (protection). Research and sketch examples.
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge science">MS-LS2-1</span> <span class="standard-badge science">MS-LS2-3</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag ss">Social Studies</span>
                             <div class="subject-content">
                                 <strong>A Merchant's Journey:</strong> Follow a trade route from China to Rome or the Mediterranean. Map activity: trace the route, note what goods would be traded at each stop, what you'd encounter (mountains, deserts, rivers, other cities). Imagine you are a merchant: what would you buy and sell?
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge ss">SS.6.EC.1</span> <span class="standard-badge ss">SS.6.GEO.1</span>
                             </div>
                         </div>
                         <div class="thursday-box">
@@ -699,11 +955,17 @@
                             <div class="subject-content">
                                 <strong>Fantasy Story: Final Phase:</strong> Complete second draft and revision. Begin planning illustrations: which scenes from your story are the most important? Which would look best drawn? Sketch rough thumbnails of illustrations (one for each major scene). Choose art medium: colored pencil, pencil, or ink (no watercolor this time).
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge la">W.6.3</span> <span class="standard-badge la">W.6.4</span> <span class="standard-badge la">W.6.5</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag math">Math</span>
                             <div class="subject-content">
                                 <strong>Solving Simple Equations:</strong> One-step equations using addition and subtraction. If x + 3 = 7, what is x? Practice solving for x. Use manipulatives or drawings to help visualize. Real-world context: if you plant seeds and 5 sprout, and 8 total seeds were planted, how many haven't sprouted yet?
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge math">6.EE.B.6</span> <span class="standard-badge math">6.EE.B.7</span>
                             </div>
                         </div>
                         <div class="subject-box">
@@ -711,11 +973,17 @@
                             <div class="subject-content">
                                 <strong>Herbs and Vegetables:</strong> Which plants do we eat? Parts of the plant we eat: roots (carrots, beets), stems (celery, asparagus), leaves (lettuce, spinach, kale), seeds (beans, peas, corn), flowers (broccoli). Plant an herb (basil, parsley, cilantro) if you haven't already. Plan what vegetables you'd like to grow for next season.
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge science">MS-LS1-5</span> <span class="standard-badge science">MS-LS2-1</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag ss">Social Studies</span>
                             <div class="subject-content">
                                 <strong>Compare Three Civilizations:</strong> Create a graphic organizer or illustrated chart comparing Ancient China, Ancient India, and Silk Road civilizations. Include: geography, major inventions or contributions, beliefs and culture, trade and connections. How did they influence each other?
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge ss">SS.6.H.1</span> <span class="standard-badge ss">SS.6.H.2</span>
                             </div>
                         </div>
                         <div class="thursday-box">
@@ -742,11 +1010,17 @@
                             <div class="subject-content">
                                 <strong>Story Publishing:</strong> Complete all illustrations. Create a cover page with title, author (you!), and an illustration. Arrange all pages in order. Staple or bind together as a finished book. Practice reading your story aloud with expression. Prepare to share it on Thursday.
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge la">W.6.3</span> <span class="standard-badge la">W.6.4</span> <span class="standard-badge la">SL.6.4</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag math">Math</span>
                             <div class="subject-content">
                                 <strong>Q3 Geometry and Equations Review Quiz:</strong> Review all concepts from the quarter: geometry (angles, triangles, quadrilaterals), area, surface area, volume, and simple equations. Create a study guide or flashcards. Take a quiz to assess understanding. Celebrate what you've learned!
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge math">6.G.A.1</span> <span class="standard-badge math">6.G.A.2</span> <span class="standard-badge math">6.EE.B.7</span>
                             </div>
                         </div>
                         <div class="subject-box">
@@ -754,11 +1028,17 @@
                             <div class="subject-content">
                                 <strong>Garden Science Journal Finale:</strong> Complete the final quarter entry. Measure all your plants one last time. Calculate growth rate (how much did each plant grow from first to last measurement?). Reflect in writing: what grew best? What surprised you? What would you do differently next season? Create a growth chart or graph.
                             </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge science">MS-LS1-6</span> <span class="standard-badge science">MS-LS2-3</span>
+                            </div>
                         </div>
                         <div class="subject-box">
                             <span class="subject-tag ss">Social Studies</span>
                             <div class="subject-content">
                                 <strong>Q3 Review:</strong> Review Ancient China, Ancient India, and the Silk Road connections. Complete a final summary map or chart. Discuss how these civilizations shaped each other and the world. Think about trade, ideas, and cultural exchange then and now.
+                            </div>
+                            <div class="standards-line">
+                                <strong>Standards:</strong> <span class="standard-badge ss">SS.6.H.1</span> <span class="standard-badge ss">SS.6.EC.1</span>
                             </div>
                         </div>
                         <div class="thursday-box">

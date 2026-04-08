@@ -367,6 +367,146 @@
       font-size: 1.2rem;
     }
 
+    /* Standards Section */
+    .standards-overview {
+      background: var(--white);
+      border: 2px solid var(--blue-light);
+      border-left: 6px solid var(--blue-dark);
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .standards-overview h2 {
+      border-bottom-color: var(--blue-light);
+    }
+
+    .standards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .standards-card {
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 2px solid;
+    }
+
+    .standards-card.la {
+      background: var(--purple-light);
+      border-color: var(--purple-dark);
+    }
+
+    .standards-card.math {
+      background: var(--blue-light);
+      border-color: var(--blue-dark);
+    }
+
+    .standards-card.science {
+      background: var(--green-light);
+      border-color: var(--green-dark);
+    }
+
+    .standards-card.ss {
+      background: var(--rust-light);
+      border-color: var(--rust);
+    }
+
+    .standards-card h3 {
+      color: var(--text);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .standards-card.la h3 {
+      color: var(--purple-dark);
+    }
+
+    .standards-card.math h3 {
+      color: var(--blue-dark);
+    }
+
+    .standards-card.science h3 {
+      color: var(--green-dark);
+    }
+
+    .standards-card.ss h3 {
+      color: var(--rust);
+    }
+
+    .standards-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .standards-list li {
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .standards-list li strong {
+      display: block;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .standards-list li span {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 0.25rem;
+    }
+
+    /* Standard Badges */
+    .standard-badge {
+      display: inline-block;
+      border-radius: 8px;
+      padding: 1px 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin: 2px;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .standard-badge.la {
+      background-color: var(--purple-light);
+      color: var(--purple-dark);
+    }
+
+    .standard-badge.math {
+      background-color: var(--blue-light);
+      color: var(--blue-dark);
+    }
+
+    .standard-badge.science {
+      background-color: var(--green-light);
+      color: var(--green-dark);
+    }
+
+    .standard-badge.ss {
+      background-color: var(--rust-light);
+      color: var(--rust);
+    }
+
+    .standards-line {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      font-size: 0.85rem;
+    }
+
+    .standards-line strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
     /* Footer */
     footer {
       text-align: center;
@@ -430,6 +570,72 @@
       <p>This quarter takes you on a journey around the world, exploring different ecosystems and learning how people navigate and understand our planet. You'll read Island of the Blue Dolphins, a story about a girl who survives alone on an island with animals, and you'll create your own illustrated Explorer's Guide to a place you care about. Each week combines language arts, math, science, and social studies into projects that build toward a final year-end celebration.</p>
     </section>
 
+    <!-- Oregon State Standards -->
+    <div class="standards-overview">
+      <h2>Oregon State Standards - Quarter 4</h2>
+      <p>This quarter builds toward the following Oregon educational standards across all subjects. Each week integrates multiple standards through our project-based learning approach.</p>
+
+      <div class="standards-grid">
+        <!-- Language Arts Standards -->
+        <div class="standards-card la">
+          <h3>Language Arts</h3>
+          <ul class="standards-list">
+            <li><strong>RI.6.1</strong><span>Cite textual evidence from informational text to support analysis</span></li>
+            <li><strong>RI.6.2</strong><span>Determine central idea of a text; provide summary</span></li>
+            <li><strong>RI.6.7</strong><span>Integrate information presented in different media or formats</span></li>
+            <li><strong>RL.6.10</strong><span>Read and comprehend literature grades 6-8</span></li>
+            <li><strong>W.6.2</strong><span>Write informational and explanatory texts to examine a topic</span></li>
+            <li><strong>W.6.4</strong><span>Produce clear and coherent writing appropriate to task and audience</span></li>
+            <li><strong>W.6.5</strong><span>Develop and strengthen writing through planning, drafting, and revision</span></li>
+            <li><strong>W.6.7</strong><span>Conduct short research projects to answer a question</span></li>
+            <li><strong>W.6.8</strong><span>Gather relevant information from multiple sources; assess credibility</span></li>
+            <li><strong>W.6.9</strong><span>Draw evidence from literary or informational texts to support analysis</span></li>
+            <li><strong>SL.6.4</strong><span>Present claims and findings clearly</span></li>
+          </ul>
+        </div>
+
+        <!-- Math Standards -->
+        <div class="standards-card math">
+          <h3>Math</h3>
+          <ul class="standards-list">
+            <li><strong>6.SP.A.1</strong><span>Recognize a statistical question as one that anticipates variability</span></li>
+            <li><strong>6.SP.A.2</strong><span>Understand that data has a distribution described by center, spread, and shape</span></li>
+            <li><strong>6.SP.A.3</strong><span>Recognize that a measure of center summarizes data with a single number</span></li>
+            <li><strong>6.SP.B.4</strong><span>Display numerical data in plots on a number line</span></li>
+            <li><strong>6.SP.B.5</strong><span>Summarize numerical data sets in relation to their context</span></li>
+            <li><strong>6.EE.A.2</strong><span>Write, read, and evaluate expressions in which letters stand for numbers</span></li>
+            <li><strong>6.EE.B.7</strong><span>Solve real-world problems by writing and solving equations</span></li>
+          </ul>
+        </div>
+
+        <!-- Science Standards -->
+        <div class="standards-card science">
+          <h3>Science</h3>
+          <ul class="standards-list">
+            <li><strong>MS-ESS1-1</strong><span>Model the Earth-Sun-Moon system to describe lunar phases, eclipses, seasons</span></li>
+            <li><strong>MS-ESS1-2</strong><span>Model the role of gravity in the solar system and galaxies</span></li>
+            <li><strong>MS-ESS2-2</strong><span>Explain how geoscience processes have changed Earth's surface</span></li>
+            <li><strong>MS-ESS2-3</strong><span>Analyze fossil and rock data to provide evidence of plate tectonics</span></li>
+            <li><strong>MS-ESS3-3</strong><span>Design a method for monitoring and minimizing human impact on the environment</span></li>
+            <li><strong>MS-LS2-4</strong><span>Argue that changes to physical or biological components affect ecosystem populations</span></li>
+          </ul>
+        </div>
+
+        <!-- Social Studies Standards -->
+        <div class="standards-card ss">
+          <h3>Social Studies</h3>
+          <ul class="standards-list">
+            <li><strong>SS.6.H.1</strong><span>Analyze chronological reasoning and historical cause/effect</span></li>
+            <li><strong>SS.6.H.2</strong><span>Gather, evaluate, and use multiple historical sources</span></li>
+            <li><strong>SS.6.GEO.1</strong><span>Use geographic tools and spatial thinking including maps and coordinates</span></li>
+            <li><strong>SS.6.GEO.2</strong><span>Analyze human-environment interaction during Age of Exploration</span></li>
+            <li><strong>SS.6.EC.1</strong><span>Analyze economic systems and trade routes</span></li>
+            <li><strong>SS.6.CV.1</strong><span>Analyze how power and authority functioned during the Age of Exploration</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <!-- Week Cards -->
     <h2>Weekly Schedule</h2>
 
@@ -445,18 +651,22 @@
           <div class="subject-box la">
             <span class="subject-label">Language Arts</span>
             Begin Island of the Blue Dolphins ch. 1-4. Reading journal. Introduce research writing: what makes a good research question?
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge la">RI.6.1</span><span class="standard-badge la">W.6.2</span></div>
           </div>
           <div class="subject-box math">
             <span class="subject-label">Math</span>
             Intro to statistics: mean, median, mode, range using animal population data.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge math">6.SP.A.1</span><span class="standard-badge math">6.SP.A.2</span></div>
           </div>
           <div class="subject-box science">
             <span class="subject-label">Science</span>
             Earth science overview: layers of the Earth, plate tectonics basics. Why do continents look like puzzle pieces?
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge science">MS-ESS2-2</span></div>
           </div>
           <div class="subject-box ss">
             <span class="subject-label">Social Studies</span>
             Age of Exploration overview: why did Europeans explore? Key explorers. Map major voyages.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge ss">SS.6.H.1</span><span class="standard-badge ss">SS.6.GEO.1</span></div>
           </div>
           <div class="project-box">
             <span class="project-label">Thursday Project</span>
@@ -476,18 +686,22 @@
           <div class="subject-box la">
             <span class="subject-label">Language Arts</span>
             Island of the Blue Dolphins ch. 5-10. Research writing: finding and evaluating sources, taking notes.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge la">RI.6.1</span><span class="standard-badge la">W.6.7</span></div>
           </div>
           <div class="subject-box math">
             <span class="subject-label">Math</span>
             Data displays: bar graphs, line graphs, histograms. Create a graph using animal population data.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge math">6.SP.B.4</span></div>
           </div>
           <div class="subject-box science">
             <span class="subject-label">Science</span>
             Plate tectonics continued: earthquakes, volcanoes, how islands form.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge science">MS-ESS2-2</span><span class="standard-badge science">MS-ESS2-3</span></div>
           </div>
           <div class="subject-box ss">
             <span class="subject-label">Social Studies</span>
             The explorers' maps: latitude and longitude, reading coordinates, finding locations on a world map.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge ss">SS.6.GEO.1</span><span class="standard-badge ss">SS.6.H.1</span></div>
           </div>
           <div class="project-box">
             <span class="project-label">Thursday Project</span>
@@ -507,18 +721,22 @@
           <div class="subject-box la">
             <span class="subject-label">Language Arts</span>
             Island of the Blue Dolphins ch. 11-16. Organize research notes into categories.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge la">W.6.7</span><span class="standard-badge la">W.6.8</span></div>
           </div>
           <div class="subject-box math">
             <span class="subject-label">Math</span>
             Probability: what is probability? Simple experiments (coin flips, card draws). Connect to weather forecasting.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge math">6.SP.A.1</span><span class="standard-badge math">6.SP.A.2</span></div>
           </div>
           <div class="subject-box science">
             <span class="subject-label">Science</span>
             Ocean science: ocean zones (sunlight, twilight, midnight), ocean animals by zone, tides and currents.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge science">MS-ESS1-1</span><span class="standard-badge science">MS-ESS2-3</span></div>
           </div>
           <div class="subject-box ss">
             <span class="subject-label">Social Studies</span>
             Navigation tools: how did explorers navigate without GPS? Compass, stars, sextant. Make a simple compass or star map.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge ss">SS.6.GEO.1</span><span class="standard-badge ss">SS.6.H.2</span></div>
           </div>
           <div class="project-box">
             <span class="project-label">Thursday Project</span>
@@ -538,18 +756,22 @@
           <div class="subject-box la">
             <span class="subject-label">Language Arts</span>
             Island of the Blue Dolphins ch. 17-22. Write first draft of one research section.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge la">RI.6.1</span><span class="standard-badge la">W.6.2</span></div>
           </div>
           <div class="subject-box math">
             <span class="subject-label">Math</span>
             Probability continued: compound events, probability trees. Connect to genetics (probability of traits).
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge math">6.SP.A.1</span></div>
           </div>
           <div class="subject-box science">
             <span class="subject-label">Science</span>
             Geology: rock cycle, types of rocks (igneous, sedimentary, metamorphic). How to identify rocks.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge science">MS-ESS2-3</span></div>
           </div>
           <div class="subject-box ss">
             <span class="subject-label">Social Studies</span>
             What did explorers find? Native peoples and cultures of explored regions. The impact of exploration (not all positive).
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge ss">SS.6.H.1</span><span class="standard-badge ss">SS.6.GEO.2</span></div>
           </div>
           <div class="project-box">
             <span class="project-label">Thursday Project</span>
@@ -569,18 +791,22 @@
           <div class="subject-box la">
             <span class="subject-label">Language Arts</span>
             Finish Island of the Blue Dolphins. Book quiz prep.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge la">RL.6.10</span><span class="standard-badge la">W.6.2</span></div>
           </div>
           <div class="subject-box math">
             <span class="subject-label">Math</span>
             Expressions and equations review: multi-step equations, real-world problems.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge math">6.EE.A.2</span><span class="standard-badge math">6.EE.B.7</span></div>
           </div>
           <div class="subject-box science">
             <span class="subject-label">Science</span>
             Solar system: the planets, moons, distances. Scale model of the solar system using toilet paper.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge science">MS-ESS1-1</span><span class="standard-badge science">MS-ESS1-2</span></div>
           </div>
           <div class="subject-box ss">
             <span class="subject-label">Social Studies</span>
             Columbian Exchange: what plants, animals, and diseases were exchanged between hemispheres? Corn, potatoes, horses, smallpox. How this changed diets and ecosystems worldwide.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge ss">SS.6.EC.1</span><span class="standard-badge ss">SS.6.GEO.2</span></div>
           </div>
           <div class="project-box">
             <span class="project-label">Thursday Project</span>
@@ -600,18 +826,22 @@
           <div class="subject-box la">
             <span class="subject-label">Language Arts</span>
             Island of the Blue Dolphins book quiz and reading journal completion. Research writing continues.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge la">RI.6.1</span><span class="standard-badge la">W.6.9</span></div>
           </div>
           <div class="subject-box math">
             <span class="subject-label">Math</span>
             Algebra review: variables, expressions, solving equations. Connect to formulas in science.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge math">6.EE.A.2</span><span class="standard-badge math">6.EE.B.7</span></div>
           </div>
           <div class="subject-box science">
             <span class="subject-label">Science</span>
             Earth from space: time zones, seasons and Earth's tilt, the moon and tides.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge science">MS-ESS1-1</span></div>
           </div>
           <div class="subject-box ss">
             <span class="subject-label">Social Studies</span>
             World geography review: all civilizations studied this year on one big timeline. Mark key inventions and events.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge ss">SS.6.H.1</span><span class="standard-badge ss">SS.6.EC.1</span></div>
           </div>
           <div class="project-box">
             <span class="project-label">Thursday Project</span>
@@ -631,18 +861,22 @@
           <div class="subject-box la">
             <span class="subject-label">Language Arts</span>
             Research report: full draft. Practice citations (where did you learn this?).
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge la">W.6.2</span><span class="standard-badge la">W.6.8</span></div>
           </div>
           <div class="subject-box math">
             <span class="subject-label">Math</span>
             Q4 math review: statistics, probability, expressions and equations.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge math">6.SP.A.3</span><span class="standard-badge math">6.SP.B.5</span></div>
           </div>
           <div class="subject-box science">
             <span class="subject-label">Science</span>
             Environmental science intro: human impact on ecosystems, endangered species, conservation. Are any animals you studied endangered?
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge science">MS-ESS3-3</span><span class="standard-badge science">MS-LS2-4</span></div>
           </div>
           <div class="subject-box ss">
             <span class="subject-label">Social Studies</span>
             Modern explorers: scientists, naturalists, oceanographers, conservationists. Jane Goodall, Jacques Cousteau, David Attenborough.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge ss">SS.6.H.1</span><span class="standard-badge ss">SS.6.H.2</span></div>
           </div>
           <div class="project-box">
             <span class="project-label">Thursday Project</span>
@@ -662,18 +896,22 @@
           <div class="subject-box la">
             <span class="subject-label">Language Arts</span>
             Research report: final copy.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge la">W.6.2</span><span class="standard-badge la">W.6.4</span><span class="standard-badge la">W.6.5</span></div>
           </div>
           <div class="subject-box math">
             <span class="subject-label">Math</span>
             Final math review and fun applied problems. Calculate distances of explorer voyages. Graph historical data.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge math">6.SP.B.4</span><span class="standard-badge math">6.SP.B.5</span></div>
           </div>
           <div class="subject-box science">
             <span class="subject-label">Science</span>
             Year-in-review science quiz: you write the questions and quiz your parent. Cover topics from all 4 quarters.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge science">MS-ESS1-1</span><span class="standard-badge science">MS-ESS3-3</span></div>
           </div>
           <div class="subject-box ss">
             <span class="subject-label">Social Studies</span>
             Year-in-review social studies: create one final entry on the illustrated timeline scroll.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge ss">SS.6.H.1</span><span class="standard-badge ss">SS.6.GEO.1</span></div>
           </div>
           <div class="project-box">
             <span class="project-label">Thursday Project</span>
@@ -693,18 +931,22 @@
           <div class="subject-box la">
             <span class="subject-label">Language Arts</span>
             Present research report OR read a favorite passage from your fantasy story from Q3.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge la">W.6.2</span><span class="standard-badge la">SL.6.4</span></div>
           </div>
           <div class="subject-box math">
             <span class="subject-label">Math</span>
             Celebrate! Review the year's math portfolio.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge math">6.SP.A.3</span><span class="standard-badge math">6.SP.B.5</span></div>
           </div>
           <div class="subject-box science">
             <span class="subject-label">Science</span>
             Final animal quiz celebration: hardest questions from all year.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge science">MS-ESS1-1</span><span class="standard-badge science">MS-ESS3-3</span></div>
           </div>
           <div class="subject-box ss">
             <span class="subject-label">Social Studies</span>
             Present the illustrated timeline: walk through the whole year of history.
+            <div class="standards-line"><strong>Standards:</strong> <span class="standard-badge ss">SS.6.H.1</span><span class="standard-badge ss">SS.6.GEO.1</span></div>
           </div>
           <div class="project-box">
             <span class="project-label">Thursday - Final Day</span>
