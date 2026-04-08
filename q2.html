@@ -147,6 +147,76 @@
             border-bottom: 3px solid var(--purple-mid);
         }
 
+        /* Standards Overview Section */
+        .standards-overview {
+            margin-bottom: 3rem;
+        }
+
+        .standards-overview h2 {
+            color: var(--purple-dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--purple-mid);
+        }
+
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .standards-card {
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .standards-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            margin-top: 0;
+            color: var(--white);
+        }
+
+        .standards-card.la {
+            background-color: var(--purple-dark);
+        }
+
+        .standards-card.math {
+            background-color: var(--blue-dark);
+        }
+
+        .standards-card.science {
+            background-color: var(--green-dark);
+        }
+
+        .standards-card.ss {
+            background-color: var(--rust);
+        }
+
+        .standards-card ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .standards-card li {
+            color: var(--white);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .standards-card li:before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: var(--white);
+        }
+
         /* Week Cards */
         .week-grid {
             display: grid;
@@ -168,6 +238,16 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         }
 
+        .week-card.short-week {
+            background-color: var(--gold-light);
+            border-left: 5px solid var(--gold);
+        }
+
+        .week-card.end-semester {
+            background-color: var(--green-light);
+            border-left: 5px solid var(--green-mid);
+        }
+
         .week-header {
             display: flex;
             justify-content: space-between;
@@ -177,6 +257,14 @@
             border-bottom: 2px solid var(--purple-light);
         }
 
+        .week-card.short-week .week-header {
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .week-card.end-semester .week-header {
+            border-bottom: 2px solid var(--green-mid);
+        }
+
         .week-number {
             font-size: 1.8rem;
             font-weight: 800;
@@ -184,9 +272,38 @@
             font-family: 'Lora', serif;
         }
 
+        .week-card.short-week .week-number {
+            color: var(--gold);
+        }
+
+        .week-card.end-semester .week-number {
+            color: var(--green-dark);
+        }
+
         .week-dates {
             color: var(--text-light);
             font-size: 0.9rem;
+        }
+
+        .week-label {
+            background-color: var(--purple-mid);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 0.5rem;
+        }
+
+        .week-card.short-week .week-label {
+            background-color: var(--gold);
+            color: var(--text);
+        }
+
+        .week-card.end-semester .week-label {
+            background-color: var(--green-mid);
+            color: var(--white);
         }
 
         .week-theme {
@@ -197,6 +314,53 @@
             font-weight: 600;
             margin-bottom: 1rem;
             text-align: center;
+        }
+
+        .week-card.short-week .week-theme {
+            background-color: var(--gold);
+            color: var(--text);
+        }
+
+        .week-card.end-semester .week-theme {
+            background-color: var(--green-mid);
+            color: var(--white);
+        }
+
+        /* Standards Badges */
+        .standards-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .standard-badge {
+            display: inline-block;
+            padding: 0.35rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .standard-badge.la {
+            background-color: var(--purple-light);
+            color: var(--purple-dark);
+        }
+
+        .standard-badge.math {
+            background-color: var(--blue-light);
+            color: var(--blue-dark);
+        }
+
+        .standard-badge.science {
+            background-color: var(--green-light);
+            color: var(--green-dark);
+        }
+
+        .standard-badge.ss {
+            background-color: var(--rust-light);
+            color: var(--rust);
         }
 
         /* Subject Grid within Week */
@@ -403,6 +567,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .standards-grid {
+                grid-template-columns: 1fr;
+            }
+
             .subjects-grid {
                 grid-template-columns: 1fr;
             }
@@ -430,13 +598,73 @@
         <h1>Quarter 2: Winter - Ancient Worlds</h1>
         <p>Mythology, Ancient Civilizations, and the Natural World</p>
         <div class="quarter-info">
-            November 9, 2026 - January 15, 2027 (9 weeks, with winter break Dec 22 - Jan 1)<br>
+            October 26 - December 11, 2026 (7 weeks)<br>
             Core Book: Watership Down by Richard Adams | Big Project: Ancient Civilization Diorama
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="container">
+        <!-- Oregon State Standards Overview -->
+        <div class="standards-overview">
+            <h2>Oregon State Standards - Quarter 2</h2>
+            <div class="standards-grid">
+                <div class="standards-card la">
+                    <h3>Language Arts</h3>
+                    <ul>
+                        <li>RL.6.1 - Cite textual evidence from literature to support analysis</li>
+                        <li>RL.6.2 - Determine theme and summarize</li>
+                        <li>RL.6.3 - Describe how plot, setting, and character interact</li>
+                        <li>RL.6.4 - Determine figurative and connotative meanings of words and phrases</li>
+                        <li>RL.6.9 - Compare and contrast texts in different forms or genres</li>
+                        <li>RL.6.10 - Read and comprehend literature grades 6-8</li>
+                        <li>W.6.1 - Write arguments to support claims with clear reasons and evidence</li>
+                        <li>W.6.2 - Write informational and explanatory texts</li>
+                        <li>W.6.4 - Produce clear and coherent writing</li>
+                        <li>W.6.5 - Strengthen writing through planning and revision</li>
+                        <li>W.6.9 - Draw evidence from literary texts to support analysis</li>
+                        <li>L.6.4 - Determine word meanings using context and word roots</li>
+                        <li>SL.6.4 - Present findings clearly</li>
+                    </ul>
+                </div>
+
+                <div class="standards-card math">
+                    <h3>Mathematics</h3>
+                    <ul>
+                        <li>6.RP.A.3 - Use ratio and rate reasoning including percent</li>
+                        <li>6.NS.B.3 - Fluently add, subtract, multiply, and divide decimals</li>
+                        <li>6.NS.C.5 - Understand positive and negative numbers in context</li>
+                        <li>6.NS.C.6 - Understand rational numbers on a number line</li>
+                        <li>6.NS.C.7 - Order and understand absolute value of rational numbers</li>
+                        <li>6.EE.A.1 - Write and evaluate numerical expressions</li>
+                    </ul>
+                </div>
+
+                <div class="standards-card science">
+                    <h3>Science (NGSS)</h3>
+                    <ul>
+                        <li>MS-LS2-1 - Analyze data on resource availability and its effects on organisms</li>
+                        <li>MS-LS2-2 - Construct explanation about matter cycling and energy flow in ecosystems</li>
+                        <li>MS-LS2-3 - Develop a model of cycling of matter and energy through an ecosystem</li>
+                        <li>MS-ESS2-4 - Develop a model to describe the cycling of water through Earth's systems</li>
+                        <li>MS-ESS2-6 - Develop and use a model to describe effects of plate tectonics</li>
+                    </ul>
+                </div>
+
+                <div class="standards-card ss">
+                    <h3>Social Studies</h3>
+                    <ul>
+                        <li>SS.6.H.1 - Analyze chronological reasoning and cause/effect in ancient civilizations</li>
+                        <li>SS.6.H.2 - Gather, evaluate, and use sources about ancient world history</li>
+                        <li>SS.6.GEO.1 - Use geographic tools and spatial thinking</li>
+                        <li>SS.6.GEO.2 - Analyze human-environment interaction in ancient civilizations</li>
+                        <li>SS.6.CV.1 - Analyze power and authority in ancient Greece and Rome</li>
+                        <li>SS.6.EC.1 - Analyze economic systems and trade in the ancient world</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <!-- Week Cards Section -->
         <section>
             <h2>Quarter 2 Schedule</h2>
@@ -445,30 +673,43 @@
             <div class="week-grid">
                 <div class="week-card">
                     <div class="week-header">
-                        <div class="week-number">Week 1</div>
-                        <div class="week-dates">Nov 9-12</div>
+                        <div>
+                            <div class="week-number">Week 1</div>
+                        </div>
+                        <div class="week-dates">Oct 26-29</div>
                     </div>
                     <div class="week-theme">Into the Ancient World</div>
+                    <div class="standards-badges">
+                        <span class="standard-badge la">RL.6.10</span>
+                        <span class="standard-badge la">RL.6.3</span>
+                        <span class="standard-badge la">W.6.2</span>
+                        <span class="standard-badge math">6.RP.A.3</span>
+                        <span class="standard-badge math">6.NS.B.3</span>
+                        <span class="standard-badge science">MS-LS2-1</span>
+                        <span class="standard-badge science">MS-LS2-3</span>
+                        <span class="standard-badge ss">SS.6.H.1</span>
+                        <span class="standard-badge ss">SS.6.GEO.1</span>
+                    </div>
                     <div class="subjects-grid">
                         <div class="subject-box la-box">
                             <div class="subject-tag la-tag">Language Arts</div>
-                            <p>Begin Watership Down ch. 1-4. Set up new reading journal. Introduce compare/contrast writing structure.</p>
+                            <p>Begin Watership Down ch. 1-5. New reading journal. Introduce compare/contrast writing structure.</p>
                         </div>
                         <div class="subject-box math-box">
                             <div class="subject-tag math-tag">Math</div>
-                            <p>Intro to percent. What does percent mean? Connect to fractions and decimals.</p>
+                            <p>Percent concept. Converting between fractions, decimals, and percents. Real examples with ancient city populations.</p>
                         </div>
                         <div class="subject-box science-box">
                             <div class="subject-tag science-tag">Science</div>
-                            <p>Ecosystems overview. What is an ecosystem? Biotic vs abiotic factors.</p>
+                            <p>Ecosystems overview. Biotic vs abiotic factors. Terrestrial biomes: forests, grasslands, deserts, tundra. Animal distribution by biome.</p>
                         </div>
                         <div class="subject-box ss-box">
                             <div class="subject-tag ss-tag">Social Studies</div>
-                            <p>What came after Mesopotamia and Egypt? Introduce Ancient Greece: geography, city-states, the Aegean Sea.</p>
+                            <p>Ancient Greece. Geography of the Mediterranean, city-states, the Aegean Sea. Draw and label a map.</p>
                         </div>
                         <div class="thursday-project">
                             <div class="subject-tag project-tag">Thursday Project</div>
-                            Create "Ancient World" map. Draw and label Mediterranean, Greece, Rome, Egypt; decorate with animals native to each region.
+                            Create "Ancient World Map." Draw and label the Mediterranean region. Illustrate with animals native to each area. Add to illustrated timeline scroll from Q1.
                         </div>
                     </div>
                 </div>
@@ -476,30 +717,43 @@
                 <!-- Week 2 -->
                 <div class="week-card">
                     <div class="week-header">
-                        <div class="week-number">Week 2</div>
-                        <div class="week-dates">Nov 17-20</div>
+                        <div>
+                            <div class="week-number">Week 2</div>
+                        </div>
+                        <div class="week-dates">Nov 2-5</div>
                     </div>
-                    <div class="week-theme">Greek Myths and Creature Characters</div>
+                    <div class="week-theme">Myths and Creature Characters</div>
+                    <div class="standards-badges">
+                        <span class="standard-badge la">RL.6.1</span>
+                        <span class="standard-badge la">RL.6.9</span>
+                        <span class="standard-badge la">W.6.2</span>
+                        <span class="standard-badge math">6.RP.A.3</span>
+                        <span class="standard-badge math">6.NS.B.3</span>
+                        <span class="standard-badge science">MS-LS2-1</span>
+                        <span class="standard-badge science">MS-LS2-3</span>
+                        <span class="standard-badge ss">SS.6.H.1</span>
+                        <span class="standard-badge ss">SS.6.H.2</span>
+                    </div>
                     <div class="subjects-grid">
                         <div class="subject-box la-box">
                             <div class="subject-tag la-tag">Language Arts</div>
-                            <p>Watership Down ch. 5-9. Introduce mythology as a genre. Read 2 Greek myths (Arachne, Pegasus).</p>
+                            <p>Watership Down ch. 6-12. Read 2 Greek myths (Arachne and Pegasus). Compare myth structure to novel structure.</p>
                         </div>
                         <div class="subject-box math-box">
                             <div class="subject-tag math-tag">Math</div>
-                            <p>Converting between fractions, decimals, and percents.</p>
+                            <p>Percent of a number. Find 10%, 25%, 50%, 75% of quantities. Apply to ancient census data.</p>
                         </div>
                         <div class="subject-box science-box">
                             <div class="subject-tag science-tag">Science</div>
-                            <p>Terrestrial biomes: forests, grasslands, deserts, tundra. What animals live where?</p>
+                            <p>Aquatic biomes. Freshwater vs saltwater. Coral reefs. Ocean zones and the animals that live in each.</p>
                         </div>
                         <div class="subject-box ss-box">
                             <div class="subject-tag ss-tag">Social Studies</div>
-                            <p>Greek mythology: gods, heroes, and creature characters (Minotaur, Cerberus, Hydra, Pegasus, Sphinx).</p>
+                            <p>Greek mythology. Gods, heroes, and creature characters (Minotaur, Cerberus, Hydra, Pegasus, Sphinx, Medusa).</p>
                         </div>
                         <div class="thursday-project">
                             <div class="subject-tag project-tag">Thursday Project</div>
-                            Draw a mythological creature in detail. Include anatomy, habitat, imagined diet and adaptations. Add to Creature Field Guide.
+                            Draw a mythological creature in detail. Include anatomy, habitat, diet, and adaptations. Add to Creature Field Guide. Start mythology quiz card deck.
                         </div>
                     </div>
                 </div>
@@ -507,30 +761,43 @@
                 <!-- Week 3 -->
                 <div class="week-card">
                     <div class="week-header">
-                        <div class="week-number">Week 3</div>
-                        <div class="week-dates">Nov 23-25</div>
+                        <div>
+                            <div class="week-number">Week 3</div>
+                        </div>
+                        <div class="week-dates">Nov 9-12</div>
                     </div>
-                    <div class="week-theme">Short Week / Deep Dive</div>
+                    <div class="week-theme">Ancient Rome</div>
+                    <div class="standards-badges">
+                        <span class="standard-badge la">RL.6.1</span>
+                        <span class="standard-badge la">RL.6.2</span>
+                        <span class="standard-badge la">W.6.2</span>
+                        <span class="standard-badge la">W.6.4</span>
+                        <span class="standard-badge math">6.RP.A.3</span>
+                        <span class="standard-badge science">MS-ESS2-4</span>
+                        <span class="standard-badge ss">SS.6.H.1</span>
+                        <span class="standard-badge ss">SS.6.CV.1</span>
+                        <span class="standard-badge ss">SS.6.EC.1</span>
+                    </div>
                     <div class="subjects-grid">
                         <div class="subject-box la-box">
                             <div class="subject-tag la-tag">Language Arts</div>
-                            <p>Watership Down ch. 10-12. Continue compare/contrast draft (two mythological creatures).</p>
+                            <p>Watership Down ch. 13-19. Compare/contrast essay first draft. Two mythological creatures OR rabbit society vs human society.</p>
                         </div>
                         <div class="subject-box math-box">
                             <div class="subject-tag math-tag">Math</div>
-                            <p>Percent of a number. Find 25%, 50%, 10%, 75% of quantities.</p>
+                            <p>Percent increase and decrease. Population growth in ancient cities. Trade route distance problems.</p>
                         </div>
                         <div class="subject-box science-box">
                             <div class="subject-tag science-tag">Science</div>
-                            <p>Aquatic biomes: freshwater vs saltwater, coral reefs, deep ocean.</p>
+                            <p>Weather vs climate. The difference. Reading weather maps. Mediterranean climate patterns.</p>
                         </div>
                         <div class="subject-box ss-box">
                             <div class="subject-tag ss-tag">Social Studies</div>
-                            <p>Greek city-states: Athens vs Sparta comparison (perfect compare/contrast model).</p>
+                            <p>Ancient Rome. The Republic, the Senate, Roman law. Roman gods parallel to Greek gods.</p>
                         </div>
                         <div class="thursday-project">
-                            <div class="subject-tag project-tag">Note</div>
-                            3-day week (Thanksgiving). No Thursday project this week.
+                            <div class="subject-tag project-tag">Thursday Project</div>
+                            BEGIN Ancient Civilization Diorama. Choose your scene (Greek agora, Roman forum, Egyptian tomb, Spartan training ground). Sketch the plan.
                         </div>
                     </div>
                 </div>
@@ -540,92 +807,179 @@
             <div class="week-grid">
                 <div class="week-card">
                     <div class="week-header">
-                        <div class="week-number">Week 4</div>
+                        <div>
+                            <div class="week-number">Week 4</div>
+                        </div>
+                        <div class="week-dates">Nov 16-19</div>
+                    </div>
+                    <div class="week-theme">Biomes and Negative Numbers</div>
+                    <div class="standards-badges">
+                        <span class="standard-badge la">RL.6.3</span>
+                        <span class="standard-badge la">W.6.5</span>
+                        <span class="standard-badge la">W.6.9</span>
+                        <span class="standard-badge math">6.NS.C.5</span>
+                        <span class="standard-badge math">6.NS.C.6</span>
+                        <span class="standard-badge math">6.NS.C.7</span>
+                        <span class="standard-badge science">MS-LS2-1</span>
+                        <span class="standard-badge science">MS-LS2-2</span>
+                        <span class="standard-badge ss">SS.6.H.1</span>
+                        <span class="standard-badge ss">SS.6.CV.1</span>
+                        <span class="standard-badge ss">SS.6.GEO.2</span>
+                    </div>
+                    <div class="subjects-grid">
+                        <div class="subject-box la-box">
+                            <div class="subject-tag la-tag">Language Arts</div>
+                            <p>Watership Down ch. 20-26. Compare/contrast essay revision.</p>
+                        </div>
+                        <div class="subject-box math-box">
+                            <div class="subject-tag math-tag">Math</div>
+                            <p>Negative numbers. Number lines, ordering, absolute value. Connect to elevation and temperature examples.</p>
+                        </div>
+                        <div class="subject-box science-box">
+                            <div class="subject-tag science-tag">Science</div>
+                            <p>Climate and animal adaptation. Hibernation, migration, thick coats, antifreeze proteins. How animals survive winter.</p>
+                        </div>
+                        <div class="subject-box ss-box">
+                            <div class="subject-tag ss-tag">Social Studies</div>
+                            <p>Greek city-states. Athens vs Sparta comparison. Origins of democracy.</p>
+                        </div>
+                        <div class="thursday-project">
+                            <div class="subject-tag project-tag">Thursday Project</div>
+                            Diorama construction. Build base, background, and architecture (columns from cardboard tubes). Mythology quiz: 10 questions she writes and gives to parent.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 5 - Short Week -->
+                <div class="week-card short-week">
+                    <div class="week-header">
+                        <div>
+                            <div class="week-number">Week 5<span class="week-label">Short Week (2 days)</span></div>
+                        </div>
+                        <div class="week-dates">Nov 23-24</div>
+                    </div>
+                    <div class="week-theme">Thanksgiving Week</div>
+                    <div class="standards-badges">
+                        <span class="standard-badge la">W.6.4</span>
+                        <span class="standard-badge la">W.6.5</span>
+                        <span class="standard-badge math">6.NS.C.5</span>
+                        <span class="standard-badge math">6.NS.C.7</span>
+                        <span class="standard-badge science">MS-LS2-2</span>
+                        <span class="standard-badge ss">SS.6.H.1</span>
+                        <span class="standard-badge ss">SS.6.H.2</span>
+                    </div>
+                    <div class="subjects-grid">
+                        <div class="subject-box la-box">
+                            <div class="subject-tag la-tag">Language Arts</div>
+                            <p>Watership Down ch. 27-29. Compare/contrast essay final draft.</p>
+                        </div>
+                        <div class="subject-box math-box">
+                            <div class="subject-tag math-tag">Math</div>
+                            <p>Integers review. Adding and subtracting with negative numbers.</p>
+                        </div>
+                        <div class="subject-box science-box">
+                            <div class="subject-tag science-tag">Science</div>
+                            <p>Quick ecosystem review. Connect biomes and weather to animal survival.</p>
+                        </div>
+                        <div class="subject-box ss-box">
+                            <div class="subject-tag ss-tag">Social Studies</div>
+                            <p>How did Rome fall? Brief overview of decline and legacy (roads, language, law, architecture used today).</p>
+                        </div>
+                        <div class="thursday-project">
+                            <div class="subject-tag project-tag">Note</div>
+                            Short week - no Thursday project day. Lighter lessons. Enjoy the holiday!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week 6 -->
+            <div class="week-grid">
+                <div class="week-card">
+                    <div class="week-header">
+                        <div>
+                            <div class="week-number">Week 6</div>
+                        </div>
                         <div class="week-dates">Dec 1-4</div>
                     </div>
-                    <div class="week-theme">Ancient Rome</div>
+                    <div class="week-theme">Watership Down Finale</div>
+                    <div class="standards-badges">
+                        <span class="standard-badge la">RL.6.1</span>
+                        <span class="standard-badge la">RL.6.2</span>
+                        <span class="standard-badge la">RL.6.4</span>
+                        <span class="standard-badge la">L.6.4</span>
+                        <span class="standard-badge math">6.NS.C.5</span>
+                        <span class="standard-badge math">6.EE.A.1</span>
+                        <span class="standard-badge science">MS-LS2-2</span>
+                        <span class="standard-badge science">MS-LS2-3</span>
+                        <span class="standard-badge ss">SS.6.H.1</span>
+                        <span class="standard-badge ss">SS.6.GEO.1</span>
+                        <span class="standard-badge ss">SS.6.EC.1</span>
+                    </div>
                     <div class="subjects-grid">
                         <div class="subject-box la-box">
                             <div class="subject-tag la-tag">Language Arts</div>
-                            <p>Watership Down ch. 13-18. Compare/contrast essay first draft.</p>
+                            <p>Finish Watership Down. Book quiz preparation. Vocabulary review from whole novel. Final reading journal entry.</p>
                         </div>
                         <div class="subject-box math-box">
                             <div class="subject-tag math-tag">Math</div>
-                            <p>Percent increase and decrease. Real examples (population growth in ancient cities).</p>
+                            <p>Multiplying and dividing with negative numbers. Rules and patterns. Real-world problems.</p>
                         </div>
                         <div class="subject-box science-box">
                             <div class="subject-tag science-tag">Science</div>
-                            <p>Weather and climate: difference between weather and climate. Reading weather maps.</p>
+                            <p>Food web review. Nutrient cycling, decomposers, nitrogen cycle introduction.</p>
                         </div>
                         <div class="subject-box ss-box">
                             <div class="subject-tag ss-tag">Social Studies</div>
-                            <p>Ancient Rome: the Republic, the Senate, gladiators. Roman gods (parallel to Greek gods).</p>
+                            <p>Survey of Ancient China and India as bridge to Q3. Silk Road preview, inventions, geography.</p>
                         </div>
                         <div class="thursday-project">
                             <div class="subject-tag project-tag">Thursday Project</div>
-                            Begin Ancient Civilization Diorama. Choose your scene (Greek agora, Roman forum, Egyptian tomb, etc.). Sketch the plan.
+                            Watership Down book quiz. Diorama final details. Add figures, labels, and write museum placard (3-4 sentences describing the scene).
                         </div>
                     </div>
                 </div>
 
-                <!-- Week 5 -->
-                <div class="week-card">
+                <!-- Week 7 - End of Semester -->
+                <div class="week-card end-semester">
                     <div class="week-header">
-                        <div class="week-number">Week 5</div>
+                        <div>
+                            <div class="week-number">Week 7<span class="week-label">End of Semester</span></div>
+                        </div>
                         <div class="week-dates">Dec 8-11</div>
                     </div>
-                    <div class="week-theme">Mythology Meets Science</div>
+                    <div class="week-theme">Q2 Celebration and Reflection</div>
+                    <div class="standards-badges">
+                        <span class="standard-badge la">RL.6.1</span>
+                        <span class="standard-badge la">RL.6.2</span>
+                        <span class="standard-badge la">SL.6.4</span>
+                        <span class="standard-badge math">6.RP.A.3</span>
+                        <span class="standard-badge math">6.NS.C.5</span>
+                        <span class="standard-badge science">MS-LS2-1</span>
+                        <span class="standard-badge science">MS-LS2-3</span>
+                        <span class="standard-badge ss">SS.6.H.1</span>
+                        <span class="standard-badge ss">SS.6.CV.1</span>
+                    </div>
                     <div class="subjects-grid">
                         <div class="subject-box la-box">
                             <div class="subject-tag la-tag">Language Arts</div>
-                            <p>Watership Down ch. 19-24. Compare/contrast essay revision.</p>
+                            <p>Reading journal reflection. Present book quiz. Plan winter reading list.</p>
                         </div>
                         <div class="subject-box math-box">
                             <div class="subject-tag math-tag">Math</div>
-                            <p>Negative numbers. What are they, number lines, ordering negative numbers.</p>
+                            <p>Q2 review. Percents, decimals, negative numbers. Fun math review games.</p>
                         </div>
                         <div class="subject-box science-box">
                             <div class="subject-tag science-tag">Science</div>
-                            <p>Climate patterns and seasons. Why do seasons happen? Animal behavior changes by season.</p>
+                            <p>Biomes quiz. She writes 15 questions covering all biomes studied, then gives it to parent.</p>
                         </div>
                         <div class="subject-box ss-box">
                             <div class="subject-tag ss-tag">Social Studies</div>
-                            <p>Roman mythology and its animal symbols (eagle for Jupiter, wolf for Rome and Romulus and Remus).</p>
+                            <p>Compare two ancient civilizations (graphic organizer). Add Greece and Rome to the illustrated timeline scroll.</p>
                         </div>
                         <div class="thursday-project">
                             <div class="subject-tag project-tag">Thursday Project</div>
-                            Diorama construction: build the base and background.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Week 6 -->
-                <div class="week-card">
-                    <div class="week-header">
-                        <div class="week-number">Week 6</div>
-                        <div class="week-dates">Dec 15-18</div>
-                    </div>
-                    <div class="week-theme">Before Winter Break</div>
-                    <div class="subjects-grid">
-                        <div class="subject-box la-box">
-                            <div class="subject-tag la-tag">Language Arts</div>
-                            <p>Watership Down ch. 25-30. Essay final draft due.</p>
-                        </div>
-                        <div class="subject-box math-box">
-                            <div class="subject-tag math-tag">Math</div>
-                            <p>Integers: adding and subtracting with negatives.</p>
-                        </div>
-                        <div class="subject-box science-box">
-                            <div class="subject-tag science-tag">Science</div>
-                            <p>Adaptations for cold weather: hibernation, migration, thick coats, antifreeze proteins in fish.</p>
-                        </div>
-                        <div class="subject-box ss-box">
-                            <div class="subject-tag ss-tag">Social Studies</div>
-                            <p>How did Rome fall? Brief intro to decline. Legacy: what do we still use from Rome (roads, language, law, architecture)?</p>
-                        </div>
-                        <div class="thursday-project">
-                            <div class="subject-tag project-tag">Thursday Project</div>
-                            Diorama: add figures, details, and labels. Write the "museum placard" (3-4 sentences describing the scene).
+                            DIORAMA PRESENTATION DAY. Full Q2 portfolio review. End of semester celebration. Review all work from September through today.
                         </div>
                     </div>
                 </div>
@@ -633,73 +987,9 @@
 
             <!-- Winter Break Banner -->
             <div class="winter-break">
-                <h3>Winter Break</h3>
-                <p><strong>December 22, 2026 - January 1, 2027</strong></p>
-                <p style="margin-top: 1rem; font-size: 0.95rem;">Encourage: read for fun, nature walks, star gazing (intro to Q4 astronomy)</p>
-            </div>
-
-            <!-- Week 7 -->
-            <div class="week-grid">
-                <div class="week-card">
-                    <div class="week-header">
-                        <div class="week-number">Week 7</div>
-                        <div class="week-dates">Jan 5-8</div>
-                    </div>
-                    <div class="week-theme">Back from Break / Rabbit Myths</div>
-                    <div class="subjects-grid">
-                        <div class="subject-box la-box">
-                            <div class="subject-tag la-tag">Language Arts</div>
-                            <p>Finish Watership Down. Prepare book quiz.</p>
-                        </div>
-                        <div class="subject-box math-box">
-                            <div class="subject-tag math-tag">Math</div>
-                            <p>Multiplying and dividing with negatives. Rules and patterns.</p>
-                        </div>
-                        <div class="subject-box science-box">
-                            <div class="subject-tag science-tag">Science</div>
-                            <p>Food web review. Introduce decomposers and nutrient cycling.</p>
-                        </div>
-                        <div class="subject-box ss-box">
-                            <div class="subject-tag ss-tag">Social Studies</div>
-                            <p>Quick survey: Ancient China and India introduction (bridge to Q3).</p>
-                        </div>
-                        <div class="thursday-project">
-                            <div class="subject-tag project-tag">Thursday Project</div>
-                            Diorama presentation prep. Book quiz on Watership Down (oral or written: your choice).
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Week 8 -->
-                <div class="week-card">
-                    <div class="week-header">
-                        <div class="week-number">Week 8</div>
-                        <div class="week-dates">Jan 12-15</div>
-                    </div>
-                    <div class="week-theme">Q2 Wrap-Up</div>
-                    <div class="subjects-grid">
-                        <div class="subject-box la-box">
-                            <div class="subject-tag la-tag">Language Arts</div>
-                            <p>Book quiz and reading journal reflection.</p>
-                        </div>
-                        <div class="subject-box math-box">
-                            <div class="subject-tag math-tag">Math</div>
-                            <p>Q2 review: percent, decimals, negative numbers.</p>
-                        </div>
-                        <div class="subject-box science-box">
-                            <div class="subject-tag science-tag">Science</div>
-                            <p>Biomes quiz (you create the quiz questions and quiz parent).</p>
-                        </div>
-                        <div class="subject-box ss-box">
-                            <div class="subject-tag ss-tag">Social Studies</div>
-                            <p>Compare two ancient civilizations studied (graphic organizer).</p>
-                        </div>
-                        <div class="thursday-project">
-                            <div class="subject-tag project-tag">Thursday Project</div>
-                            DIORAMA PRESENTATION DAY. Q2 portfolio review.
-                        </div>
-                    </div>
-                </div>
+                <h3>Winter and New Year Break</h3>
+                <p><strong>December 12 - January 18, 2027</strong></p>
+                <p style="margin-top: 1rem; font-size: 0.95rem;">Quarter 3 begins January 19, 2027</p>
             </div>
         </section>
 
@@ -707,10 +997,10 @@
         <section>
             <h2>Ancient Civilization Diorama Project</h2>
             <div class="project-instructions">
-                <p style="margin-bottom: 1.5rem; font-weight: 600; color: var(--rust);">A 5-week hands-on project to bring ancient history to life. Build a 3D scene showing daily life in one ancient civilization.</p>
+                <p style="margin-bottom: 1.5rem; font-weight: 600; color: var(--rust);">A 4-week hands-on project to bring ancient history to life. Build a 3D scene showing daily life in one ancient civilization.</p>
 
                 <div class="step">
-                    <h4>Step 1: Choose Your Scene (Week 4, Thursday)</h4>
+                    <h4>Step 1: Choose Your Scene (Week 3, Thursday)</h4>
                     <p>Select one of these options:</p>
                     <ul>
                         <li>Greek marketplace (agora) with columns and merchants</li>
@@ -722,37 +1012,37 @@
                 </div>
 
                 <div class="step">
-                    <h4>Step 2: Build the Base (Week 5, Thursday)</h4>
+                    <h4>Step 2: Build Base and Background (Week 4, Thursday)</h4>
                     <p><strong>Materials:</strong> Shoebox or flat cardboard</p>
                     <ul>
                         <li>Paint or draw the background scene on cardstock and attach it</li>
                         <li>Create the floor/ground surface (sand, stone, tile, etc.)</li>
+                        <li>Build columns from cardboard tubes and other materials</li>
                         <li>Add textures if desired</li>
                     </ul>
                 </div>
 
                 <div class="step">
-                    <h4>Step 3: Add Architecture and Figures (Week 6, Thursday)</h4>
-                    <p><strong>Materials:</strong> Cardboard tubes (columns), air-dry clay, paper cutouts, found objects</p>
+                    <h4>Step 3: Add Figures and Details (Week 6, Thursday)</h4>
+                    <p><strong>Materials:</strong> Air-dry clay, paper cutouts, found objects</p>
                     <ul>
-                        <li>Build columns, walls, or steps using cardboard tubes and other materials</li>
                         <li>Create or collect small figures for your scene</li>
                         <li>Include at least one animal that would be present in this civilization</li>
+                        <li>Add pottery, clothing, tools, and other period details</li>
                         <li>Arrange and glue everything in place</li>
                     </ul>
                 </div>
 
                 <div class="step">
-                    <h4>Step 4: Final Details and Labels (Week 7, Thursday)</h4>
+                    <h4>Step 4: Labels and Museum Placard (Week 6, Thursday)</h4>
                     <ul>
-                        <li>Add finishing details: pottery, clothing, tools, etc.</li>
                         <li>Label 3-5 key elements in the scene (use index cards or markers)</li>
-                        <li>Create a "museum placard" (3-4 sentences) describing the scene</li>
+                        <li>Create a "museum placard" (3-4 sentences) describing the scene, what's happening, and when this moment took place</li>
                     </ul>
                 </div>
 
                 <div class="step">
-                    <h4>Step 5: Present Your Diorama (Week 8, Thursday)</h4>
+                    <h4>Step 5: Present Your Diorama (Week 7, Thursday)</h4>
                     <p><strong>Presentation Day!</strong> Explain to your audience:</p>
                     <ul>
                         <li>Which civilization you chose and why</li>
@@ -826,7 +1116,7 @@
                     <ul>
                         <li>Cardboard tubes (for diorama columns)</li>
                         <li>Air-dry clay (for figures and details)</li>
-                        <li>Tempera or acrylic paint and brushes</li>
+                        <li>Acrylic paint and brushes</li>
                         <li>Shoeboxes or flat cardboard pieces</li>
                         <li>Index cards (for labels and escape room clues)</li>
                         <li>Combination lock (optional, for escape room finale)</li>
