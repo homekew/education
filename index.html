@@ -83,28 +83,15 @@
 
     /* ── PAGE HEADER ─────────────────────────── */
     .page-header {
-      background: linear-gradient(135deg, #3b2010 0%, #6b3a1a 45%, #8c4201 100%);
+      background: url('Yellow and Beige Doodle LinkedIn Background Photo.png') center center / cover no-repeat;
       border-bottom: 1px solid var(--linen-deep);
-      padding: 44px 40px 40px;
-      position: relative;
-      overflow: hidden;
+      padding: 0;
+      height: 220px;
+      display: flex;
+      align-items: flex-end;
     }
-    .page-header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-    .page-header h1,
-    .page-header .tag {
-      position: relative;
-    }
-    .page-header h1 { color: #FAF7F1; }
-    .page-header .tag {
-      background: rgba(255,255,255,0.12);
-      color: rgba(250,247,241,0.85);
-      border-color: rgba(255,255,255,0.2);
+    .page-header .header-tags {
+      padding: 0 40px 20px;
     }
     .eyebrow {
       font-size: 0.67rem;
@@ -314,7 +301,6 @@
   </nav>
 
   <div class="page-header">
-    <h1>Curriculum Hub</h1>
     <div class="header-tags">
       <span class="tag">Oregon ELA Standards</span>
       <span class="tag">CCSS-Aligned</span>
