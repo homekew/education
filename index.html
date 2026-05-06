@@ -83,15 +83,10 @@
 
     /* ── PAGE HEADER ─────────────────────────── */
     .page-header {
-      background: url('Yellow and Beige Doodle LinkedIn Background Photo.png') center center / cover no-repeat;
+      background: url('Yellow and Beige Doodle LinkedIn Background Photo.png') center center / 100% auto no-repeat;
       border-bottom: 1px solid var(--linen-deep);
       padding: 0;
-      height: 220px;
-      display: flex;
-      align-items: flex-end;
-    }
-    .page-header .header-tags {
-      padding: 0 40px 20px;
+      aspect-ratio: 4 / 1;
     }
     .eyebrow {
       font-size: 0.67rem;
@@ -107,25 +102,6 @@
       font-weight: 500;
       color: var(--ink);
       margin-bottom: 16px;
-    }
-    .header-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-    .tag {
-      font-size: 0.71rem;
-      font-weight: 500;
-      padding: 3px 11px;
-      border-radius: 4px;
-      background: var(--white);
-      color: var(--ink-soft);
-      border: 1px solid var(--linen-deep);
-    }
-    .tag.accent {
-      background: var(--terra-bg);
-      color: var(--terra);
-      border-color: var(--terra-soft);
     }
 
     /* ── MAIN ────────────────────────────────── */
@@ -300,13 +276,7 @@
     </ul>
   </nav>
 
-  <div class="page-header">
-    <div class="header-tags">
-      <span class="tag">Oregon ELA Standards</span>
-      <span class="tag">CCSS-Aligned</span>
-      <span class="tag">Hands-On Projects</span>
-    </div>
-  </div>
+  <div class="page-header"></div>
 
   <main>
 
