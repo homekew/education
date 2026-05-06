@@ -13,13 +13,16 @@
       --linen-dark: #F0EBE0;
       --linen-deep: #DDD4C4;
       --terra:      #8c4201;
+      --terra-bg:   #FDF0E8;
       --terra-soft: #E8C4AE;
       --sage:       #6B8F71;
+      --sage-bg:    #EAF2EB;
       --sage-soft:  #C6D9C8;
+      --sky:        #7FA3B5;
+      --sky-bg:     #EBF3F7;
       --ink:        #2A2118;
       --ink-soft:   #5C4F3D;
       --ink-muted:  #9A8F81;
-      --sky:        #7FA3B5;
       --white:      #FFFFFF;
     }
 
@@ -32,139 +35,136 @@
       color: var(--ink);
       line-height: 1.6;
       font-size: 15px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* ── NAV ─────────────────────────────────────── */
+    /* ── NAV ─────────────────────────────────── */
     nav {
-      width: 100%;
       background: var(--white);
       border-bottom: 1px solid var(--linen-deep);
-      padding: 0 48px;
-      height: 52px;
+      padding: 0 40px;
+      height: 54px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
     }
     .nav-brand {
       font-family: 'Fraunces', serif;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 500;
       color: var(--ink);
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
     }
-    .nav-brand::before {
-      content: '';
-      display: block;
+    .nav-dot {
       width: 8px; height: 8px;
       background: var(--terra);
       border-radius: 50%;
+      display: inline-block;
     }
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 28px;
       list-style: none;
     }
     .nav-links a {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 500;
-      color: var(--ink-soft);
+      color: var(--ink-muted);
       text-decoration: none;
       transition: color 0.15s;
     }
     .nav-links a:hover { color: var(--terra); }
 
-    /* ── PAGE HEADER ─────────────────────────────── */
+    /* ── PAGE HEADER ─────────────────────────── */
     .page-header {
-      width: 100%;
       background: var(--linen-dark);
       border-bottom: 1px solid var(--linen-deep);
-      padding: 40px 48px 36px;
-    }
-    .page-header-inner {
-      max-width: 1160px;
-      margin: 0 auto;
+      padding: 36px 40px 32px;
     }
     .eyebrow {
-      font-size: 0.68rem;
+      font-size: 0.67rem;
       font-weight: 600;
       letter-spacing: 2.5px;
       text-transform: uppercase;
       color: var(--terra);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     h1 {
       font-family: 'Fraunces', serif;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 500;
       color: var(--ink);
       margin-bottom: 16px;
-      letter-spacing: -0.3px;
     }
     .header-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 7px;
     }
     .tag {
-      font-size: 0.72rem;
+      font-size: 0.71rem;
       font-weight: 500;
-      padding: 4px 12px;
+      padding: 3px 11px;
       border-radius: 4px;
       background: var(--white);
       color: var(--ink-soft);
       border: 1px solid var(--linen-deep);
     }
     .tag.accent {
-      background: #FDF0E8;
+      background: var(--terra-bg);
       color: var(--terra);
       border-color: var(--terra-soft);
     }
 
-    /* ── MAIN CONTENT ────────────────────────────── */
+    /* ── MAIN ────────────────────────────────── */
     main {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 40px 48px 72px;
+      flex: 1;
+      padding: 36px 40px 60px;
     }
 
-    /* ── YEAR SECTION ────────────────────────────── */
-    .year-section {
-      margin-bottom: 48px;
-    }
+    /* ── YEAR SECTION ────────────────────────── */
+    .year-section { margin-bottom: 44px; }
+
     .year-heading {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--linen-deep);
     }
     .year-label {
       font-family: 'Fraunces', serif;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 500;
       color: var(--ink);
     }
     .badge {
-      font-size: 0.63rem;
+      font-size: 0.62rem;
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       padding: 3px 9px;
       border-radius: 3px;
     }
-    .badge-current  { background: var(--sage-soft); color: var(--sage); }
-    .badge-upcoming { background: #FDF0E8; color: var(--terra); }
+    .badge-current  { background: var(--sage-bg); color: var(--sage); }
+    .badge-upcoming { background: var(--terra-bg); color: var(--terra); }
 
-    /* ── CARD GRID ───────────────────────────────── */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    /* ── ROW LAYOUT ──────────────────────────── */
+    /* Each year uses a full-width row; cards sit side by side */
+    .card-row {
+      display: flex;
       gap: 16px;
     }
+    .card-row .card { flex: 1; }
+
+    /* ── CARD ────────────────────────────────── */
     .card {
       background: var(--white);
       border: 1px solid var(--linen-deep);
@@ -173,16 +173,16 @@
       transition: box-shadow 0.2s;
     }
     .card:not(.card-dim):hover {
-      box-shadow: 0 4px 18px rgba(42,33,24,0.09);
+      box-shadow: 0 4px 20px rgba(42,33,24,0.09);
     }
-    .card-dim { opacity: 0.45; }
+    .card-dim { opacity: 0.4; }
 
     .card-bar { height: 3px; }
     .bar-sage  { background: var(--sage); }
     .bar-terra { background: var(--terra); }
     .bar-sky   { background: var(--sky); }
 
-    .card-body { padding: 20px 20px 18px; }
+    .card-body { padding: 20px 22px 20px; }
 
     .card-kicker {
       font-size: 0.63rem;
@@ -205,23 +205,36 @@
       line-height: 1.6;
       margin-bottom: 16px;
     }
+
+    /* ── LINKS SECTION ───────────────────────── */
+    .card-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
+      gap: 5px;
+      padding: 7px 14px;
       background: var(--ink);
       color: var(--white);
       text-decoration: none;
       border-radius: 5px;
-      font-size: 0.78rem;
+      font-size: 0.77rem;
       font-weight: 500;
+      white-space: nowrap;
       transition: background 0.15s;
-      margin-bottom: 10px;
     }
     .btn:hover { background: var(--ink-soft); }
 
-    .pill-row {
+    .divider {
+      width: 1px; height: 20px;
+      background: var(--linen-deep);
+    }
+
+    .pill-group {
       display: flex;
       flex-wrap: wrap;
       gap: 5px;
@@ -236,6 +249,7 @@
       font-size: 0.73rem;
       font-weight: 500;
       border: 1px solid var(--linen-deep);
+      white-space: nowrap;
       transition: all 0.15s;
     }
     .pill:hover {
@@ -245,34 +259,35 @@
     }
 
     .coming-label {
-      font-size: 0.78rem;
+      font-size: 0.77rem;
       color: var(--ink-muted);
     }
 
-    /* ── FOOTER ──────────────────────────────────── */
+    /* ── FOOTER ──────────────────────────────── */
     footer {
       background: var(--white);
       border-top: 1px solid var(--linen-deep);
-      padding: 18px 48px;
-      font-size: 0.76rem;
+      padding: 16px 40px;
+      font-size: 0.75rem;
       color: var(--ink-muted);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      flex-shrink: 0;
     }
-    footer span { color: var(--terra); font-weight: 600; }
 
-    /* ── RESPONSIVE ──────────────────────────────── */
+
+    /* ── RESPONSIVE ──────────────────────────── */
     @media (max-width: 700px) {
       nav, .page-header, main, footer { padding-left: 20px; padding-right: 20px; }
-      .card-grid { grid-template-columns: 1fr; }
+      .card-row { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a class="nav-brand" href="index.html">Homeschool Curriculum</a>
+    <a class="nav-brand" href="index.html"><span class="nav-dot"></span> Homeschool Curriculum</a>
     <ul class="nav-links">
       <li><a href="#y2025">2025–2026</a></li>
       <li><a href="#y2026">2026–2027</a></li>
@@ -280,15 +295,11 @@
   </nav>
 
   <div class="page-header">
-    <div class="page-header-inner">
-      <div class="eyebrow">Four Roots Ranch · Oregon</div>
-      <h1>Curriculum Hub</h1>
-      <div class="header-tags">
-        <span class="tag">Oregon ELA Standards</span>
-        <span class="tag">CCSS-Aligned</span>
-        <span class="tag">Hands-On Projects</span>
-        <span class="tag accent">2025 – 2027</span>
-      </div>
+    <h1>Curriculum Hub</h1>
+    <div class="header-tags">
+      <span class="tag">Oregon ELA Standards</span>
+      <span class="tag">CCSS-Aligned</span>
+      <span class="tag">Hands-On Projects</span>
     </div>
   </div>
 
@@ -299,7 +310,7 @@
         <span class="year-label">2025 – 2026</span>
         <span class="badge badge-current">Current Year</span>
       </div>
-      <div class="card-grid">
+      <div class="card-row">
 
         <div class="card">
           <div class="card-bar bar-sage"></div>
@@ -307,12 +318,15 @@
             <div class="card-kicker">6th Grade · Full Year</div>
             <div class="card-title">Homeschool Overview</div>
             <p class="card-desc">Full-year plan covering all subjects, quarterly themes, reading lists, and projects.</p>
-            <a class="btn" href="6th_grade_homeschool_plan.html">View Full Plan</a>
-            <div class="pill-row">
-              <a class="pill" href="q1.html">Q1 · Creatures &amp; Kingdoms</a>
-              <a class="pill" href="q2.html">Q2 · Ancient Worlds</a>
-              <a class="pill" href="q3.html">Q3 · Spring Growing</a>
-              <a class="pill" href="q4.html">Q4 · World Explorers</a>
+            <div class="card-links">
+              <a class="btn" href="6th_grade_homeschool_plan.html">View Full Plan</a>
+              <div class="divider"></div>
+              <div class="pill-group">
+                <a class="pill" href="q1.html">Q1 · Creatures &amp; Kingdoms</a>
+                <a class="pill" href="q2.html">Q2 · Ancient Worlds</a>
+                <a class="pill" href="q3.html">Q3 · Spring Growing</a>
+                <a class="pill" href="q4.html">Q4 · World Explorers</a>
+              </div>
             </div>
           </div>
         </div>
@@ -325,7 +339,7 @@
         <span class="year-label">2026 – 2027</span>
         <span class="badge badge-upcoming">Upcoming Year</span>
       </div>
-      <div class="card-grid">
+      <div class="card-row">
 
         <div class="card">
           <div class="card-bar bar-terra"></div>
@@ -333,14 +347,17 @@
             <div class="card-kicker">6th Grade · Language Arts</div>
             <div class="card-title">Into the Wild &amp; Beyond</div>
             <p class="card-desc">36-week literature curriculum built around fantasy novels, nature writing, and creative making. Six units, six showcases.</p>
-            <a class="btn" href="6th_grade_language_arts.html">View Full Curriculum</a>
-            <div class="pill-row">
-              <a class="pill" href="la_unit1.html">Unit 1</a>
-              <a class="pill" href="la_unit2.html">Unit 2</a>
-              <a class="pill" href="la_unit3.html">Unit 3</a>
-              <a class="pill" href="la_unit4.html">Unit 4</a>
-              <a class="pill" href="la_unit5.html">Unit 5</a>
-              <a class="pill" href="la_unit6.html">Unit 6</a>
+            <div class="card-links">
+              <a class="btn" href="6th_grade_language_arts.html">View Full Curriculum</a>
+              <div class="divider"></div>
+              <div class="pill-group">
+                <a class="pill" href="la_unit1.html">Unit 1</a>
+                <a class="pill" href="la_unit2.html">Unit 2</a>
+                <a class="pill" href="la_unit3.html">Unit 3</a>
+                <a class="pill" href="la_unit4.html">Unit 4</a>
+                <a class="pill" href="la_unit5.html">Unit 5</a>
+                <a class="pill" href="la_unit6.html">Unit 6</a>
+              </div>
             </div>
           </div>
         </div>
@@ -361,7 +378,7 @@
   </main>
 
   <footer>
-    <span>Four Roots Ranch</span> · Homeschool Curriculum Hub · Oregon · 2025–2027
+    Homeschool Curriculum Hub · Oregon
   </footer>
 
 </body>
