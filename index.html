@@ -83,9 +83,28 @@
 
     /* ── PAGE HEADER ─────────────────────────── */
     .page-header {
-      background: var(--linen-dark);
+      background: linear-gradient(135deg, #3b2010 0%, #6b3a1a 45%, #8c4201 100%);
       border-bottom: 1px solid var(--linen-deep);
-      padding: 36px 40px 32px;
+      padding: 44px 40px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .page-header h1,
+    .page-header .tag {
+      position: relative;
+    }
+    .page-header h1 { color: #FAF7F1; }
+    .page-header .tag {
+      background: rgba(255,255,255,0.12);
+      color: rgba(250,247,241,0.85);
+      border-color: rgba(255,255,255,0.2);
     }
     .eyebrow {
       font-size: 0.67rem;
@@ -289,8 +308,8 @@
   <nav>
     <a class="nav-brand" href="index.html"><span class="nav-dot"></span> Homeschool Curriculum</a>
     <ul class="nav-links">
-      <li><a href="#y2025">2025–2026</a></li>
-      <li><a href="#y2026">2026–2027</a></li>
+      <li><a href="#y2025">6th Grade</a></li>
+      <li><a href="#y2026">7th Grade</a></li>
     </ul>
   </nav>
 
@@ -306,10 +325,6 @@
   <main>
 
     <div class="year-section" id="y2025">
-      <div class="year-heading">
-        <span class="year-label">2025 – 2026</span>
-        <span class="badge badge-current">Current Year</span>
-      </div>
       <div class="card-row">
 
         <div class="card">
@@ -335,10 +350,6 @@
     </div>
 
     <div class="year-section" id="y2026">
-      <div class="year-heading">
-        <span class="year-label">2026 – 2027</span>
-        <span class="badge badge-upcoming">Upcoming Year</span>
-      </div>
       <div class="card-row">
 
         <div class="card">
