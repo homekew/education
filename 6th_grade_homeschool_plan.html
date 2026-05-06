@@ -42,7 +42,7 @@
     }
 
     /* ── NAV ─────────────────────────────────────────── */
-    nav {
+    nav.site-nav {
       width: 100%;
       background: var(--white);
       border-bottom: 1px solid var(--linen-deep);
@@ -82,10 +82,11 @@
 
     /* ── HEADER ─────────────────────────────────────────── */
     .hero {
-      background: var(--linen-dark);
       border-bottom: 1px solid var(--linen-deep);
-      padding: 40px 48px 36px;
+      padding: 0;
+      line-height: 0;
     }
+    .hero img { width: 100%; height: auto; display: block; }
     .hero-inner { max-width: 1160px; margin: 0 auto; }
     .hero-eyebrow {
       font-size: 0.68rem;
@@ -361,7 +362,7 @@
     .assess-card ul { font-size: 0.83rem; }
 
     /* ── FOOTER ─────────────────────────────────────────── */
-    footer {
+    footer.site-footer {
       background: var(--white);
       border-top: 1px solid var(--linen-deep);
       padding: 18px 48px;
@@ -371,7 +372,7 @@
       align-items: center;
       gap: 8px;
     }
-    footer span { color: var(--terra); font-weight: 600; }
+    footer.site-footer span { color: var(--terra); font-weight: 600; }
 
     @media (max-width: 700px) {
       nav, .hero, .container, footer { padding-left: 20px; padding-right: 20px; }
@@ -380,17 +381,14 @@
 </head>
 <body>
 
-<nav>
+<nav class="site-nav">
   <a class="nav-brand" href="index.html">Homeschool Curriculum</a>
   <a class="nav-back" href="index.html">← Back to Hub</a>
 </nav>
 
 <!-- ════════════════ HERO ════════════════ -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">2025 – 2026 · 6th Grade</div>
-    <h1>Homeschool Plan</h1>
-    <p>An eclectic, hands-on curriculum designed around a learner who loves creatures, crafts, gardens, and the great outdoors.</p>
+<div class="hero"><img src="Headers/3.png" alt="6th Grade">
+<div class="hero-inner">
     <div class="tag-row">
       <span class="tag">Eclectic Approach</span>
       <span class="tag">Hands-On Learning</span>
@@ -1050,7 +1048,7 @@
 
 </div><!-- /container -->
 
-<footer>
+<footer class="site-footer">
   <span>Four Roots Ranch</span> · 6th Grade Homeschool Plan · 2025–2026
 </footer>
 
