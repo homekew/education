@@ -73,6 +73,112 @@
 </style>
 </head>
 <body>
+<!-- PIN GATE -->
+<style>
+  #pin-gate {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #FAF7F1;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Epilogue', sans-serif;
+  }
+  #pin-gate.hidden { display: none; }
+  .pin-box {
+    text-align: center;
+    background: #fff;
+    border: 1px solid #DDD4C4;
+    border-radius: 12px;
+    padding: 48px 40px 40px;
+    width: 320px;
+    box-shadow: 0 4px 32px rgba(42,33,24,0.08);
+  }
+  .pin-logo {
+    width: 10px; height: 10px;
+    background: #ff1e3c;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .pin-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #2A2118;
+    margin-bottom: 6px;
+  }
+  .pin-sub {
+    font-size: 0.8rem;
+    color: #9A8F81;
+    margin-bottom: 28px;
+  }
+  #pin-input {
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 1.4rem;
+    letter-spacing: 8px;
+    text-align: center;
+    border: 1px solid #DDD4C4;
+    border-radius: 6px;
+    background: #FAF7F1;
+    color: #2A2118;
+    font-family: 'Epilogue', sans-serif;
+    outline: none;
+    margin-bottom: 14px;
+    transition: border-color 0.15s;
+  }
+  #pin-input:focus { border-color: #d2c35a; }
+  #pin-input.error { border-color: #ff1e3c; animation: shake 0.3s; }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+  #pin-btn {
+    width: 100%;
+    padding: 10px;
+    background: #2A2118;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Epilogue', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  #pin-btn:hover { background: #5C4F3D; }
+</style>
+<div id="pin-gate">
+  <div class="pin-box">
+    <div class="pin-logo"></div>
+    <div class="pin-title">Carr Kids HQ</div>
+    <div class="pin-sub">Enter your PIN to continue</div>
+    <input id="pin-input" type="password" inputmode="numeric" maxlength="4" placeholder="····" autocomplete="off">
+    <button id="pin-btn">Enter</button>
+  </div>
+</div>
+<script>
+  (function() {
+    var gate = document.getElementById('pin-gate');
+    var input = document.getElementById('pin-input');
+    var btn = document.getElementById('pin-btn');
+    if (sessionStorage.getItem('ck_auth') === '1') { gate.classList.add('hidden'); return; }
+    function check() {
+      if (input.value === '1899') {
+        sessionStorage.setItem('ck_auth', '1');
+        gate.classList.add('hidden');
+      } else {
+        input.classList.add('error');
+        input.value = '';
+        setTimeout(function(){ input.classList.remove('error'); }, 400);
+      }
+    }
+    btn.addEventListener('click', check);
+    input.addEventListener('keydown', function(e){ if (e.key === 'Enter') check(); });
+    input.focus();
+  })();
+</script>
+<!-- END PIN GATE -->
+
 <nav class="site-nav">
   <a class="nav-brand" href="index.html"><span class="nav-dot"></span> Homeschool Curriculum</a>
   <ul class="site-nav-links"><li><a href="8th_grade_language_arts.html">← Language Arts</a></li></ul>
