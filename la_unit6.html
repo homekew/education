@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 6: My Story, My Voice — 7th Grade Language Arts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+    :root {
+      --green-dark:#2D6A4F; --green-mid:#52B788; --green-light:#D8F3DC;
+      --gold:#E9C46A; --gold-light:#FFF8E1;
+      --rust:#C65D2A; --rust-light:#FBE9E0;
+      --purple-dark:#5A3E8F; --purple-light:#EDE7F6;
+      --cream:#FEFAE0; --text:#1A1A2E; --text-light:#4A4A6A;
+      --border:#D0D0E0; --white:#FFFFFF;
+      --unit-color:#8B5E3C; --unit-accent:#E9C46A;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;font-size:15px;}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,#8B5E3C 0%,#5e3d22 50%,#3d2510 100%);color:#fff;padding:48px 40px 40px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(233,196,106,.15),transparent 60%);pointer-events:none;}
+    .back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.04em;margin-bottom:18px;transition:color .15s;}
+    .back-link:hover{color:var(--gold);}
+    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+    .hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:3px 12px;font-size:.75rem;font-weight:700;color:#fff;}
+    .hero h1{font-family:'Lora',serif;font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:8px;}
+    .hero h1 span{color:var(--gold);}
+    .hero .tagline{font-family:'Lora',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.82);max-width:640px;}
+
+    /* NAV */
+    .week-nav{background:#5e3d22;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18);}
+    .week-nav nav{max-width:1060px;margin:0 auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+    .week-nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.77rem;font-weight:700;padding:3px 10px;border-radius:10px;transition:background .15s,color .15s;letter-spacing:.02em;}
+    .week-nav a:hover,.week-nav a.active{background:rgba(255,255,255,.18);color:var(--gold);}
+    .week-nav .sep{color:rgba(255,255,255,.3);font-size:.75rem;}
+
+    /* LAYOUT */
+    .container{max-width:1060px;margin:0 auto;padding:0 24px;}
+    .page-section{padding:44px 0;}
+
+    /* OVERVIEW STRIP */
+    .overview-strip{background:var(--white);border:1.5px solid #e8d5c0;border-radius:12px;padding:22px 28px;margin:32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+    .ov-item .ov-label{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--unit-color);margin-bottom:3px;}
+    .ov-item .ov-val{font-size:.9rem;font-weight:600;color:var(--text);}
+
+    /* WEEK SECTIONS */
+    .week-section{margin-bottom:52px;}
+    .week-header{background:linear-gradient(135deg,#8B5E3C,#5e3d22);border-radius:12px 12px 0 0;padding:18px 26px;display:flex;align-items:center;gap:16px;}
+    .week-num-badge{font-family:'Lora',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;}
+    .week-header-text h2{font-family:'Lora',serif;font-size:1.3rem;font-weight:700;color:#fff;}
+    .week-header-text .week-focus{font-size:.82rem;color:rgba(255,255,255,.78);margin-top:2px;}
+    .week-body{background:var(--white);border:1.5px solid #e8d5c0;border-top:none;border-radius:0 0 12px 12px;padding:24px 26px;}
+
+    /* DAILY PLAN */
+    .section-label{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--unit-color);margin-bottom:10px;margin-top:22px;}
+    .section-label:first-child{margin-top:0;}
+    .daily-table{width:100%;border-collapse:collapse;font-size:.86rem;}
+    .daily-table th{background:#f3e8dc;color:#5e3d22;font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;text-align:left;}
+    .daily-table td{padding:9px 12px;border-bottom:1px solid #f5eddf;vertical-align:top;line-height:1.55;}
+    .daily-table tr:last-child td{border-bottom:none;}
+    .daily-table tr:nth-child(even) td{background:#fdf8f3;}
+    .day-label{font-weight:800;color:#8B5E3C;white-space:nowrap;}
+    .day-tag{display:inline-block;background:#f3e8dc;color:#5e3d22;border-radius:6px;padding:1px 7px;font-size:.72rem;font-weight:800;margin-bottom:3px;}
+
+    /* DISCUSSION QUESTIONS */
+    .questions-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+    .questions-list li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;line-height:1.6;}
+    .q-num{background:#8B5E3C;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;margin-top:1px;}
+
+    /* WRITING PROMPTS */
+    .prompt-card{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+    .prompt-card .prompt-type{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rust);margin-bottom:4px;}
+    .prompt-card p{font-size:.88rem;line-height:1.65;color:var(--text);}
+
+    /* RUBRICS */
+    .rubric-wrap{margin-bottom:36px;}
+    .rubric-title{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:#8B5E3C;margin-bottom:4px;}
+    .rubric-desc{font-size:.85rem;color:var(--text-light);margin-bottom:12px;}
+    .rubric-table{width:100%;border-collapse:collapse;font-size:.82rem;}
+    .rubric-table th{padding:9px 12px;text-align:left;font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
+    .rubric-table th:first-child{background:#5e3d22;color:#fff;width:22%;}
+    .rubric-table th.r-exc{background:#8B5E3C;color:#fff;width:19.5%;}
+    .rubric-table th.r-pro{background:#a67650;color:#fff;width:19.5%;}
+    .rubric-table th.r-dev{background:#c4956a;color:#fff;width:19.5%;}
+    .rubric-table th.r-beg{background:#e0c4a0;color:var(--text);width:19.5%;}
+    .rubric-table td{padding:9px 12px;border:1px solid #f0e0cc;vertical-align:top;line-height:1.5;}
+    .rubric-table tr:nth-child(even) td:first-child{background:#fdf5ec;}
+    .rubric-table td:first-child{font-weight:700;color:#8B5E3C;background:#fdf8f3;}
+
+    /* YEAR-IN-REVIEW SECTION */
+    .yir-section{background:linear-gradient(135deg,#fdf5ec,#fff8ed);border:2px solid #e8c99a;border-radius:14px;padding:28px 32px;margin-top:44px;}
+    .yir-section h2{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:#5e3d22;margin-bottom:6px;}
+    .yir-section .yir-intro{font-size:.9rem;color:var(--text-light);margin-bottom:20px;line-height:1.65;}
+    .yir-prompts{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;}
+    .yir-prompts li{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;line-height:1.65;}
+    .yir-num{background:#8B5E3C;color:#fff;border-radius:8px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0;margin-top:2px;}
+    .yir-prompts li strong{color:#5e3d22;}
+
+    /* FOOTER */
+    footer{background:#5e3d22;color:rgba(255,255,255,.7);text-align:center;padding:24px;font-size:.82rem;margin-top:48px;}
+    footer strong{color:var(--gold);}
+    footer a{color:var(--gold-light);text-decoration:none;}
+
+    @media(max-width:600px){
+      .hero h1{font-size:1.7rem;}
+      .week-body{padding:18px 16px;}
+      .daily-table{font-size:.78rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <a class="back-link" href="7th_grade_language_arts.html">← Back to Full Curriculum</a>
+  <div class="hero-meta">
+    <span class="hero-badge">Unit 6 of 6</span>
+    <span class="hero-badge">📅 Weeks 31–36</span>
+    <span class="hero-badge">📖 Independent Reading</span>
+    <span class="hero-badge">RL.7.1 · W.7.3 · W.7.5 · W.7.6 · SL.7.4</span>
+  </div>
+  <h1>My Story, <span>My Voice</span></h1>
+  <p class="tagline">"This is your year. What did you learn? What do you have to say? Now write it."</p>
+</div>
+
+<div class="week-nav">
+  <nav>
+    <a href="#overview">Overview</a><span class="sep">›</span>
+    <a href="#week31">Week 31</a><span class="sep">·</span>
+    <a href="#week32">Week 32</a><span class="sep">·</span>
+    <a href="#week33">Week 33</a><span class="sep">·</span>
+    <a href="#week34">Week 34</a><span class="sep">·</span>
+    <a href="#week35">Week 35</a><span class="sep">·</span>
+    <a href="#week36">Week 36</a><span class="sep">›</span>
+    <a href="#rubrics">Rubrics</a><span class="sep">·</span>
+    <a href="#yearinreview">Year-in-Review</a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <div id="overview" class="overview-strip">
+    <div class="ov-item"><div class="ov-label">Duration</div><div class="ov-val">6 weeks (Weeks 31–36)</div></div>
+    <div class="ov-item"><div class="ov-label">Core Standards</div><div class="ov-val">RL.7.1 · RL.7.2 · RL.7.10 · W.7.3 · W.7.5 · W.7.6 · SL.7.4 · L.7.1 · L.7.2</div></div>
+    <div class="ov-item"><div class="ov-label">Suggested Books</div><div class="ov-val">Howl's Moving Castle · Pax · Wild Magic · The Girl Who Drank the Moon · Silverwing · Guardians of Ga'Hoole · or student choice</div></div>
+    <div class="ov-item"><div class="ov-label">Signature Project</div><div class="ov-val">Year-End Portfolio + Cover Art — Showcase Presentation</div></div>
+    <div class="ov-item"><div class="ov-label">Grammar Focus</div><div class="ov-val">Comprehensive year review · verb tense · POV consistency · proofreading · spelling</div></div>
+  </div>
+
+  <!-- ─── WEEK 31 ─────────────────────────────────────────────────── -->
+  <div id="week31" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">31</div>
+      <div class="week-header-text">
+        <h2>Independent Reading Launch</h2>
+        <div class="week-focus">Choose your book · Read chapters 1–4 · Set reading goal · Portfolio setup · Grammar review</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-label">Monday</td>
+            <td><span class="day-tag">Reading + Choice</span> Browse the suggested book list — Howl's Moving Castle, Pax, Wild Magic, The Girl Who Drank the Moon, Silverwing, Guardians of Ga'Hoole — or nominate another animal fantasy you've been wanting to read. Read the first chapter of your chosen book slowly. In your reading log, record the title, author, date started, and your very first impressions: What's the mood? Who do we meet? What questions do you already have?</td>
+          </tr>
+          <tr>
+            <td class="day-label">Tuesday</td>
+            <td><span class="day-tag">Reading + Reading Log Setup</span> Read chapters 2–3. Set up your reading log for this unit: create a simple template with columns for date, chapters read, one quote you loved, one question, and one thing you noticed about the author's style. Complete your first full log entry for chapters 1–3. Then write one paragraph in your journal: Why did you choose this book? What are you hoping to find in it?</td>
+          </tr>
+          <tr>
+            <td class="day-label">Wednesday</td>
+            <td><span class="day-tag">Reading + Annotation Practice</span> Read chapter 4. Practice annotation in the margins (or on sticky notes if you have a library copy): mark one passage for beautiful language, one for character insight, one for theme hint, and one that made you feel something. After reading, review your annotations — which one surprised you most? Write 3–4 sentences explaining it.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Thursday</td>
+            <td><span class="day-tag">Grammar Review — Year Overview</span> Pull out your grammar notes and any previous unit worksheets. Review the concepts from Units 1–5: phrases and clauses, complex sentences, appositives, semicolons and colons, verb tenses, participial phrases, parallel structure, and comma rules. Make a personal "grammar cheat sheet" — one page with definitions and one example sentence from your current book for each concept.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Friday</td>
+            <td><span class="day-tag">Portfolio Setup</span> Gather all your writing from Units 1–5: reading journal entries, analysis paragraphs, narrative scenes, creative pieces, and any artwork or project write-ups. Read back through everything. Write a brief note (2–3 sentences) next to each piece saying what you like about it and what you might revise. Begin sorting into "definitely include," "maybe include," and "keep but not in portfolio." Set your reading goal for weeks 31–34 (a chapter count or page goal per day).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>Why did you choose the book you chose? What drew you to the title, cover, premise, or author?</li>
+        <li><span class="q-num">2</span>After reading the first few chapters, what kind of world are you in? How does it compare to the books you read earlier this year?</li>
+        <li><span class="q-num">3</span>What is your reading goal for this unit, and how did you decide on it? What will help you stick to it?</li>
+        <li><span class="q-num">4</span>When you looked back through your writing from Units 1–5, what surprised you? Is there a piece you forgot you wrote that turned out to be really good?</li>
+        <li><span class="q-num">5</span>What grammar concept from earlier in the year do you feel most confident about? Which one is still fuzzy for you?</li>
+        <li><span class="q-num">6</span>What does it feel like to be starting the very last unit of 7th grade Language Arts? What do you want to accomplish before the year ends?</li>
+        <li><span class="q-num">7</span>Looking at all your work from the year, which piece do you already know you want in your portfolio, and why?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Reading Log Entry — First Impressions</div>
+        <p>Write a full reading log entry covering chapters 1–4. Include: a brief plot summary (3–4 sentences), one direct quote you found striking (with page or chapter number), one annotation you made and why you made it, and a prediction for where the story is going. This will be the first entry in your Unit 6 reading log — set a strong standard for the entries you'll write each week.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Portfolio Reflection — Looking Back</div>
+        <p>Choose the single piece of writing from this year that you are most proud of — not necessarily the longest or most polished, but the one that feels most like you. Write a paragraph (6–8 sentences) explaining what makes it your best work. What risk did you take? What did you figure out while writing it? What would you change now?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 32 ─────────────────────────────────────────────────── -->
+  <div id="week32" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">32</div>
+      <div class="week-header-text">
+        <h2>Literary Analysis</h2>
+        <div class="week-focus">Chapters 5–10 · Theme tracking · Literary analysis paragraph · Comma rules · Portfolio introduction letter</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-label">Monday</td>
+            <td><span class="day-tag">Reading + Theme Tracking</span> Read chapters 5–6. As you read, keep a "theme tracker" — a running list in your journal of moments that seem to point toward the book's deeper meaning. Note the page/chapter, what happened, and what idea it might connect to (e.g., loyalty, freedom, growing up, belonging, sacrifice). Aim for at least 3 entries after today's reading.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Tuesday</td>
+            <td><span class="day-tag">Grammar — Comma Rules Review</span> Review all comma rules covered this year: commas in complex sentences (introductory clauses), commas in series, commas with appositives, commas before coordinating conjunctions, and commas with quotations. Find one example of each in your current novel. Then complete an editing workshop: take a paragraph from a previous draft of your own writing, mark every comma, and justify why each one is (or isn't) correctly placed. Fix any errors you find.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Wednesday</td>
+            <td><span class="day-tag">Reading + Analysis Draft</span> Read chapters 7–8. After reading, draft your literary analysis paragraph. Pick one theme you've been tracking and write a focused paragraph: topic sentence stating the theme as a full idea (not just one word), two pieces of textual evidence with citations, analysis explaining how each piece of evidence supports the theme, and a closing sentence connecting the theme to the book's larger meaning.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Thursday</td>
+            <td><span class="day-tag">Reading + Revise Analysis</span> Read chapters 9–10. Return to your analysis paragraph draft. Read it aloud — does it flow? Is your reasoning clear? Revise for: a stronger topic sentence, smoother evidence integration (use signal phrases like "When [character]…" or "In chapter X, the author…"), and a closing sentence that goes beyond simply restating the opening. Produce a clean revised copy.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Friday</td>
+            <td><span class="day-tag">Portfolio — Introduction Letter</span> Write the introduction letter for your year-end portfolio. This letter is addressed to the reader (a family member, teacher, future self, or anyone you choose) and introduces your portfolio. It should: introduce yourself as a reader and writer, describe your journey through the year's books and writing, highlight two or three pieces in the portfolio and explain why you chose them, and end with something you want the reader to know about who you are now as a student of language and story.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What themes are starting to emerge in your book? List two possibilities — which one feels more central so far, and why?</li>
+        <li><span class="q-num">2</span>Find a moment in chapters 5–10 where the author develops theme through action, not just dialogue. What happened, and what idea does it point to?</li>
+        <li><span class="q-num">3</span>How is your author's style — their voice, sentence rhythms, the way they pace scenes — different from other authors you've read this year? What is distinctive about how this writer tells a story?</li>
+        <li><span class="q-num">4</span>When you re-read your literary analysis paragraph out loud, what works and what doesn't? Where do you feel the argument going strong, and where does it lose momentum?</li>
+        <li><span class="q-num">5</span>Who is the "reader" you are writing your portfolio introduction letter to? How does that choice change the way you write the letter?</li>
+        <li><span class="q-num">6</span>Is there a grammar rule you always get right now that you used to struggle with? What helped it click?</li>
+        <li><span class="q-num">7</span>If the theme of this book turned out to be something that surprised you — not what you expected at all — how would that feel? Has that happened yet?</li>
+        <li><span class="q-num">8</span>Looking at your portfolio pieces so far, what do they have in common? Is there a thread — a style, a subject, a kind of voice — that runs through your best work?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Literary Analysis Paragraph (RL.7.1, RL.7.2)</div>
+        <p>Write a polished literary analysis paragraph (10–12 sentences) exploring one theme from your novel. Requirements: (1) Open with a specific, arguable topic sentence — state the theme as a full claim, not just a topic word. (2) Introduce your first piece of evidence with a signal phrase and cite it (chapter or page). (3) Analyze: explain in 2–3 sentences how this evidence develops the theme. (4) Repeat steps 2–3 with a second piece of evidence. (5) Close with a sentence that connects this theme to something larger — why does it matter beyond the story? Check all comma usage before submitting.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Portfolio Introduction Letter (W.7.6)</div>
+        <p>Write a 3–4 paragraph introduction letter to open your year-end portfolio. Paragraph 1: Introduce yourself as a reader and writer — who were you at the start of the year, and who are you now? Paragraph 2: Briefly describe the year's reading journey — what books did you read, and what did you discover through them? Paragraph 3: Introduce your portfolio — which two pieces are you most proud of, and what do they represent? Paragraph 4 (optional): End with a personal statement — something you want the reader to understand about your life as a student of language and story. Write in your own voice, as if you are speaking directly to someone you trust.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 33 ─────────────────────────────────────────────────── -->
+  <div id="week33" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">33</div>
+      <div class="week-header-text">
+        <h2>Character &amp; Voice</h2>
+        <div class="week-focus">Chapters 11–16 · Author's voice study · Novel opening draft · Verb tense + POV consistency · Begin cover art</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-label">Monday</td>
+            <td><span class="day-tag">Reading + Voice Study</span> Read chapters 11–12. Focus entirely on the author's voice — not what happens, but how the story is told. In your journal, copy out one paragraph (or 5–8 sentences) that feels most characteristic of this author's style. Then analyze it: What is the sentence length pattern? Does the narrator editorialize (comment, add humor or sadness)? What specific word choices feel unique? How does the author reveal the protagonist's personality through narration — not just through action?</td>
+          </tr>
+          <tr>
+            <td class="day-label">Tuesday</td>
+            <td><span class="day-tag">Grammar — Verb Tense &amp; POV Consistency</span> Review consistent verb tense: past tense vs. present tense in narrative writing, and how to avoid unintentional tense shifts. Review point-of-view consistency: first person (I/me), third person limited (he/she — knows only one character's thoughts), third person omniscient (all-knowing). Find examples of each in books you've read this year. Then take an old piece of your own writing — a journal entry or narrative scene — and circle any tense shifts or POV slips. Rewrite two problem sentences.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Wednesday</td>
+            <td><span class="day-tag">Reading + Novel Opening Brainstorm</span> Read chapters 13–14. Then brainstorm your original novel opening. Decide: Who is your protagonist? (They can be an animal, a human, a creature from a fantasy world — your choice.) What kind of world do they live in? What is their situation at the very start? What is the first thing the reader needs to know, feel, or wonder about? Jot down at least three possible opening lines. Read them aloud. Which one makes you want to keep reading?</td>
+          </tr>
+          <tr>
+            <td class="day-label">Thursday</td>
+            <td><span class="day-tag">Writing — Novel Opening Draft</span> Write the first draft of your original novel opening (1–2 pages). Your opening must: (1) Hook the reader immediately — start in the middle of something. (2) Introduce the protagonist — let us hear or feel who they are within the first paragraph. (3) Establish the world — give at least two specific, grounded details that tell us where and when we are. (4) Set the tone — the reader should know, by the end of the first page, whether this is funny, tense, magical, quiet, or dangerous. Don't edit as you go — just write.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Friday</td>
+            <td><span class="day-tag">Reading + Begin Cover Art</span> Read chapters 15–16. Then begin planning your cover art. This painting or illustration will appear on the front of your portfolio. It represents you as a reader, writer, and artist this year. Brainstorm: What images, colors, animals, landscapes, or symbols feel connected to who you are and what you've read? Sketch at least two rough concepts on paper. Choose your medium — watercolor, acrylic, colored pencil, ink — and gather your supplies.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>After studying your author's voice closely, how would you describe it in three words? What specific techniques create that voice?</li>
+        <li><span class="q-num">2</span>Your novel opening introduces a protagonist. How did you decide who they are? Is this character connected to anything in your own life, or are they completely invented?</li>
+        <li><span class="q-num">3</span>What point of view did you choose for your novel opening, and why? How does that choice shape what the reader knows and doesn't know?</li>
+        <li><span class="q-num">4</span>Read your opening line aloud. Does it hook you? If you heard that line from a stranger reading in a library, would you ask what book it was from?</li>
+        <li><span class="q-num">5</span>What images or symbols are you considering for your cover art? What do they mean to you personally, and how do they connect to the year's reading?</li>
+        <li><span class="q-num">6</span>Compare your writing voice to the author you've been reading. What feels similar? What is completely different? Is that a good thing?</li>
+        <li><span class="q-num">7</span>Is there a character in your current novel who feels most like you? One who feels most unlike you but somehow compelling anyway?</li>
+        <li><span class="q-num">8</span>What is the hardest part of writing a novel opening? What do you wish you could skip and get to faster?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Novel Opening Draft (W.7.3)</div>
+        <p>Write a first draft of your original novel opening (1–2 typed pages or equivalent handwritten). You are beginning a story — not writing a complete short story, but the opening pages that would make a reader want to read Chapter 2. Checklist for your draft: Does your first sentence create a question, tension, or vivid image? Does the reader know who the protagonist is within the first paragraph? Are there at least two specific world-building details (not vague descriptions, but concrete: a name, a place, an object, a smell)? Is your verb tense consistent throughout? Is the POV consistent throughout? This is a first draft — boldness matters more than perfection right now.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Voice Study Journal Entry (RL.7.10)</div>
+        <p>Copy one paragraph from chapters 11–16 that you think is the best example of your author's voice. Below it, write an analysis (8–10 sentences): What specific word choices, sentence structures, and narrative techniques make this passage sound like this author and no one else? Then write one paragraph of your own — about anything — deliberately trying to imitate this author's style. How close can you get?</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Cover Art Concept Note</div>
+        <p>Write a short planning note (1 paragraph) describing your cover art concept. What will you paint or illustrate? What images, colors, and symbols have you chosen, and what do each of them represent? What medium will you use? What feeling do you want someone to have when they look at the cover before they even open the portfolio?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 34 ─────────────────────────────────────────────────── -->
+  <div id="week34" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">34</div>
+      <div class="week-header-text">
+        <h2>World-Building</h2>
+        <div class="week-focus">Chapters 17–end · Complete novel · Revise novel opening · Sentence-level revision · Continue cover art &amp; portfolio assembly</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-label">Monday</td>
+            <td><span class="day-tag">Reading — Finish Strong</span> Read chapters 17–19 (or adjust based on your book's length and reading pace). Focus on the world-building in these later chapters: How does the author deepen the setting as the plot intensifies? In your reading log, write about one setting detail you noticed this week that made the world feel more real, dangerous, or alive than it did in the opening chapters.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Tuesday</td>
+            <td><span class="day-tag">Reading — Complete the Novel</span> Read the remaining chapters to the end. When you finish, sit quietly for a moment before writing. Then write a full reading log entry for the ending: What happened? Did the resolution feel earned? What will you remember about this book in one year? In ten years? What do you wish the author had done differently?</td>
+          </tr>
+          <tr>
+            <td class="day-label">Wednesday</td>
+            <td><span class="day-tag">Writing — Revise Novel Opening</span> Return to your Week 33 novel opening draft. Read it aloud from beginning to end. Now revise with two specific goals: (1) Deepen the setting — add at least two more concrete sensory or world-building details that ground the reader more fully in this place. (2) Sharpen the voice — find two sentences that sound generic and rewrite them to sound unmistakably like your narrator. Read the revised version aloud again. Is the world more vivid? Does the voice feel more alive?</td>
+          </tr>
+          <tr>
+            <td class="day-label">Thursday</td>
+            <td><span class="day-tag">Grammar — Sentence-Level Revision</span> Focus on concision and rhythm. Concision: Find three sentences in your novel opening that are wordy or padded. Cut every word that doesn't pull its weight. Rhythm: Read your opening aloud and notice where it feels choppy or where too many sentences have the same length and structure. Vary the rhythm — a short sharp sentence after several longer ones creates impact. Revise at least five sentences for rhythm and at least three for concision. Read the passage aloud before and after each revision.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Friday</td>
+            <td><span class="day-tag">Art + Portfolio Assembly</span> Dedicated art and portfolio day. Work on your cover art painting or illustration — add color, detail, or layers depending on your medium. Simultaneously, begin laying out your portfolio: decide the order of your pieces, choose whether to include any artwork or photographs of projects alongside the written work, and think about how you want the portfolio to look as a physical object. Does it feel like you?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>How did the author build the world of this novel in layers — what details appeared early, and what was revealed only as the story deepened?</li>
+        <li><span class="q-num">2</span>Now that you've finished the novel, what is the theme? Has your answer changed from what you wrote in Week 32? What shifted your thinking?</li>
+        <li><span class="q-num">3</span>How did the ending make you feel? Relief? Sadness? Satisfaction? Something more complicated? What specifically caused that feeling?</li>
+        <li><span class="q-num">4</span>When you revised your novel opening, which change felt most significant? What did deepening the setting add to the reader's experience?</li>
+        <li><span class="q-num">5</span>What is concision, and why does it matter in fiction? Find a sentence in your novel opening that became stronger after you cut it down.</li>
+        <li><span class="q-num">6</span>How is your cover art coming together? Does the image you're creating still feel right, or has your idea evolved as you've worked on it?</li>
+        <li><span class="q-num">7</span>Compare the novel you just finished to one of the books from earlier in the year. What is different about how each author builds a world?</li>
+        <li><span class="q-num">8</span>When you look at your portfolio layout, what is the first thing a reader's eye should go to? Why?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Novel Opening — Revised Draft (W.7.5)</div>
+        <p>Submit your revised novel opening with a brief revision note attached (4–6 sentences). The note should explain: What two or three specific changes did you make, and why? What did deepening the setting add to the reader's experience? What did sharpening the voice change? What one thing is still not quite right that you plan to fix in Week 35? Attach the revision note to the top of the revised draft.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Final Reading Log Entry — Completing the Novel</div>
+        <p>Write a full final reading log entry (10–12 sentences) for the end of your novel. Cover: a brief summary of the final chapters, your analysis of the resolution (earned or unearned?), your final statement of the theme, one quote from the ending that you found particularly powerful, and a personal reflection — what will you carry with you from this book?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 35 ─────────────────────────────────────────────────── -->
+  <div id="week35" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">35</div>
+      <div class="week-header-text">
+        <h2>Final Polish</h2>
+        <div class="week-focus">Reread favorites · Final novel opening revision · Peer feedback · Proofreading checklist · Finalize cover art &amp; portfolio</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-label">Monday</td>
+            <td><span class="day-tag">Reading — Revisit Favorites</span> Go back to any book from this year — not to read it fully again, but to find the passages that stayed with you. Spend time rereading favorite scenes, opening lines, and memorable moments from Units 1–6. In your journal, write down three passages (with book and author) and for each, explain in 2–3 sentences: Why does this passage stay with you? What does the author do here that you wish you could do in your own writing?</td>
+          </tr>
+          <tr>
+            <td class="day-label">Tuesday</td>
+            <td><span class="day-tag">Novel Opening — Final Revision + Peer Feedback</span> Read your novel opening draft aloud one more time. Make any final revisions you've been thinking about. Then share it with a parent, sibling, or writing friend — anyone who can give honest feedback. Ask them three questions: (1) What image or moment from the opening stayed with you after you finished reading? (2) Is there anything that confused you or slowed you down? (3) Does the voice feel like a real person — or does it sound like "writing"? Take notes on their responses and decide what feedback you want to act on.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Wednesday</td>
+            <td><span class="day-tag">Grammar — Proofreading Checklist + Spelling Review</span> Create a personal proofreading checklist based on your own common errors this year. Your checklist should include at least 8 items — things like: consistent verb tense, no POV shifts, correct comma use with complex sentences, proper dialogue punctuation, no run-on sentences, spelling of commonly misspelled words you personally struggle with. Then proofread every piece in your portfolio using this checklist, marking and correcting errors as you go.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Thursday</td>
+            <td><span class="day-tag">Writing — Finalize Novel Opening</span> Incorporate the feedback you found useful from Tuesday. Write the final, polished version of your novel opening. This is the version that goes in your portfolio and will be read aloud at the showcase. It should be something you are genuinely proud of — a beginning that makes you want to keep writing the story someday. Produce a clean, final copy (typed or written in your neatest hand).</td>
+          </tr>
+          <tr>
+            <td class="day-label">Friday</td>
+            <td><span class="day-tag">Art + Portfolio Layout — Finalize</span> Complete your cover art. Step back and look at it: Does it say something true about who you are? Are you satisfied? Final portfolio layout day: arrange all pieces in order, attach your introduction letter to the front (after the cover), check that every piece has your name and a title, and do one final read-through of the entire portfolio from cover to last page. Make any last-minute changes. Your portfolio should feel finished and like a real book.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>Which passage from this year's reading is your all-time favorite? Why does it stand above everything else you've read?</li>
+        <li><span class="q-num">2</span>When you shared your novel opening with someone and got feedback, what was the most useful thing they said? What feedback did you decide not to take, and why?</li>
+        <li><span class="q-num">3</span>What does "proofreading" actually mean — how is it different from revision? Why does it matter to do it as a separate, final step?</li>
+        <li><span class="q-num">4</span>What is one spelling or grammar mistake you still make sometimes, even when you know the rule? What strategy helps you catch it?</li>
+        <li><span class="q-num">5</span>Now that your cover art is almost finished, what does it say? If someone who had never met you looked at it, what might they guess about who you are?</li>
+        <li><span class="q-num">6</span>When you read through your entire portfolio from start to finish, what surprises you about the collection? Is there a version of yourself in those pages that you recognize?</li>
+        <li><span class="q-num">7</span>What is the hardest part of finalizing a piece of writing — the moment when you have to say "this is done"? How do you know when it's really done?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Peer Feedback Response</div>
+        <p>After receiving feedback on your novel opening, write a short reflection (4–6 sentences) describing the process: What feedback did you receive? What did you decide to act on, and why? What did you decide to leave as-is, and why? What does it feel like to hear someone else read and respond to your writing? This reflection will be attached to your novel opening in the portfolio to show your revision process.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Portfolio Read-Through Reflection</div>
+        <p>After reading through your entire finished portfolio from first page to last, write a 1-paragraph reflection (6–8 sentences): What is the overall impression of the collection? Does the work feel connected, or does it feel like pieces from different writers? What does the portfolio tell someone about who you are as a reader, thinker, and writer? Is there anything you wish you had included that isn't there?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 36 ─────────────────────────────────────────────────── -->
+  <div id="week36" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">36</div>
+      <div class="week-header-text">
+        <h2>Celebration &amp; Showcase</h2>
+        <div class="week-focus">Read aloud favorite passage · Year-in-Review essay · Final editing · Portfolio showcase · Celebrate the year!</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="day-label">Monday</td>
+            <td><span class="day-tag">Reading — Favorite Passage Read-Aloud Practice</span> Choose the passage from any book this year that you most want to read aloud at the showcase. It can be a paragraph, a page, or a short scene — something that matters to you and that you think is worth sharing. Practice reading it aloud at least three times: once for fluency, once focusing on expression and pacing, once as if you were performing for an audience. Record yourself if you like and listen back. In your journal, write 3–4 sentences introducing the passage for the showcase — what is the context, and why did you choose it?</td>
+          </tr>
+          <tr>
+            <td class="day-label">Tuesday</td>
+            <td><span class="day-tag">Writing — Year-in-Review Reflection Essay</span> Using the Year-in-Review prompts at the end of this unit, draft your Year-in-Review essay. This is the final piece of the entire year — the last thing in your portfolio. It should be 3–5 paragraphs. Think of it as a letter to your future self, or a thoughtful essay about who you became as a reader and writer this year. Use the prompts to guide you, but write in your own voice — honest, specific, and reflective. Draft freely today: don't worry about perfection.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Wednesday</td>
+            <td><span class="day-tag">Final Editing — All Portfolio Pieces</span> Do one final edit of every piece in your portfolio — particularly the Year-in-Review essay, introduction letter, and novel opening. Use your proofreading checklist from Week 35. Focus on: consistent verb tense throughout each piece, no POV inconsistencies, all commas and punctuation correct, no spelling errors, and sentence variety (no paragraph with three sentences that all start the same way). If anything needs to be rewritten or reprinted, do it now. This is the final version.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Thursday</td>
+            <td><span class="day-tag">Showcase Prep + Final Assembly</span> Assemble the complete, final portfolio: cover art → introduction letter → best work from Units 1–6 (one piece per unit) → novel opening → Year-in-Review essay. Attach the cover art. If your portfolio is physical, bind it, place it in a folder or binder, or otherwise present it as a finished object. Prepare for tomorrow's showcase: choose what you will say when you introduce your portfolio and your read-aloud. Write a 3–5 sentence spoken introduction for the showcase — practice saying it naturally, not reading it robotically.</td>
+          </tr>
+          <tr>
+            <td class="day-label">Friday</td>
+            <td><span class="day-tag">Showcase + Celebration!</span> Year-End Showcase! Present your portfolio to your family, a guest, or anyone who has been part of your learning this year. Read your chosen passage aloud from this year's reading. Share your cover art and explain what it means to you. Invite your audience to flip through the portfolio. Celebrate what you built this year — not just the writing, but the thinking, the reading, the noticing, the revising, and the growing. You did the work. Today is yours.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>Why did you choose the passage you're reading aloud? What do you want your audience to feel when they hear it?</li>
+        <li><span class="q-num">2</span>If you had to summarize the entire 7th grade Language Arts year in one sentence, what would you say?</li>
+        <li><span class="q-num">3</span>What was the most challenging thing you did this year — a piece of writing, a book, a concept — and what did it teach you?</li>
+        <li><span class="q-num">4</span>What kind of reader are you now compared to who you were at the start of the year? What changed?</li>
+        <li><span class="q-num">5</span>What is one thing about your portfolio that you are genuinely proud of — not "pretty good," but actually proud?</li>
+        <li><span class="q-num">6</span>If your Year-in-Review essay were one page in a book called The Year I Became a Writer, what would the next chapter of that book be about?</li>
+        <li><span class="q-num">7</span>What do you want to read next? What kind of writer do you want to become?</li>
+        <li><span class="q-num">8</span>What would you tell a 6th grader who is about to start this curriculum? What do you wish someone had told you?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Year-in-Review Essay — Final Draft (W.7.6, SL.7.4)</div>
+        <p>Write your final, polished Year-in-Review essay (3–5 paragraphs). This essay is the last piece in your portfolio — make it count. It should feel complete, honest, and written in your most authentic voice. Use the Year-in-Review Reflection Prompts at the end of this unit to shape your thinking. Requirements: (1) Begin with a specific, vivid moment or memory from the year — not a general statement like "This year I learned a lot." (2) Reflect on at least two books from the year and what they gave you. (3) Reflect on your growth as a writer — cite specific evidence from your own work. (4) End with something forward-looking: who do you want to become as a reader, writer, and thinker? Check for consistent tense, proofreading completeness, and a voice that sounds like you — not a school essay, but a real piece of writing by a real person.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Showcase Introduction (SL.7.4)</div>
+        <p>Write a 3–5 sentence spoken introduction for the showcase — the words you will say aloud before presenting your portfolio and reading your passage. Include: what you're about to share and why you chose it, one thing you want your audience to look for or listen for, and one sentence that captures something true about your year. Practice saying it until it sounds natural, like you are speaking to someone, not reading from a page.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── RUBRICS ───────────────────────────────────────────────────── -->
+  <section id="rubrics" class="page-section">
+    <h2 style="font-family:'Lora',serif;font-size:1.75rem;font-weight:700;color:#8B5E3C;border-bottom:2px solid #c4956a;padding-bottom:8px;margin-bottom:28px;">Assessment Rubrics</h2>
+
+    <!-- RUBRIC 1: Literary Analysis Paragraph -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Literary Analysis Paragraph (Week 32)</div>
+      <div class="rubric-desc">Standards: RL.7.1 · RL.7.2 — Analyzes theme with cited textual evidence and sustained reasoning</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Topic Sentence / Claim</td><td>Opens with a specific, arguable claim about theme stated as a complete, insightful idea — goes beyond the obvious</td><td>Clear claim about theme is present as a complete sentence; not just a topic word</td><td>Topic sentence is vague, too broad, or states only a topic rather than a claim</td><td>No clear topic sentence; the argument is not established</td></tr>
+          <tr><td>Textual Evidence</td><td>Two or more well-chosen, specific quotes smoothly integrated with signal phrases and citations (chapter/page)</td><td>Two pieces of evidence present with citations; integration is functional if not always seamless</td><td>One piece of evidence present, or evidence is present but not cited or integrated</td><td>No direct textual evidence; relies on summary or paraphrase only</td></tr>
+          <tr><td>Analysis &amp; Reasoning</td><td>Each piece of evidence is fully explained — the writer clearly shows how it develops the theme; analysis is original and insightful</td><td>Analysis connects evidence to the claim; explanation is present and logical</td><td>Evidence is mentioned but not explained; the "so what" is missing or unclear</td><td>No analysis; paragraph only summarizes plot</td></tr>
+          <tr><td>Closing Sentence</td><td>Closing sentence connects the theme to something larger — the reader, the real world, or the book's broader significance</td><td>Closing sentence is present and restates the theme in a slightly new way</td><td>Closing sentence simply repeats the topic sentence or trails off</td><td>No closing sentence; paragraph ends abruptly</td></tr>
+          <tr><td>Conventions &amp; Comma Use</td><td>No comma errors; sentences vary in structure and length; polished and professional</td><td>Minor comma or punctuation errors that do not interfere with meaning</td><td>Several comma errors; some sentence structures are repetitive</td><td>Frequent errors throughout; grammar issues interfere with meaning</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 2: Original Novel Opening -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Original Novel Opening (Weeks 33–35)</div>
+      <div class="rubric-desc">Standards: W.7.3 · W.7.5 — Original narrative opening demonstrating craft, voice, and revision process</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Hook / Opening Line</td><td>First sentence creates immediate tension, wonder, or vivid specificity — makes the reader need to know what comes next</td><td>Opening line is interesting and establishes tone; invites the reader in</td><td>Opening is generic or descriptive but does not create urgency or curiosity</td><td>Opening line is flat, summary-like, or does not function as a hook</td></tr>
+          <tr><td>Protagonist Introduction</td><td>Protagonist's personality, voice, or situation is established clearly within the first paragraph through action, thought, or voice — not exposition</td><td>Protagonist is introduced and the reader has a clear sense of who they are</td><td>Protagonist is mentioned but feels flat or only described, not shown</td><td>Protagonist is not clearly introduced or feels like a placeholder</td></tr>
+          <tr><td>World-Building / Setting</td><td>Two or more specific, concrete details ground the reader fully in a distinct time, place, and world; setting serves the story's mood</td><td>Setting is established with at least one clear detail; the reader knows where they are</td><td>Setting is vague or mostly generic; world-building is minimal</td><td>No discernible setting; the world is not established</td></tr>
+          <tr><td>Voice Authenticity</td><td>Voice is unmistakably distinct — sounds like a specific person, not "writing in general"; consistent POV and verb tense throughout; confident and alive</td><td>Voice is present and generally consistent; some sentences feel more authentic than others</td><td>Voice is inconsistent; POV or tense shifts occasionally; feels like a draft rather than a finished voice</td><td>No distinct voice; frequent POV or tense inconsistencies throughout</td></tr>
+          <tr><td>Conventions &amp; Revision Evidence</td><td>Final draft is clearly revised and polished; sentences vary in structure and rhythm; no significant errors; revision note reflects genuine engagement with craft</td><td>Mostly correct; minor errors remain; revision note identifies specific changes made</td><td>Some sentence-level errors remain; revision note is brief or vague</td><td>Frequent errors suggest minimal revision; no revision note or no evidence of revision process</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 3: Year-End Portfolio -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Year-End Portfolio (Weeks 31–36)</div>
+      <div class="rubric-desc">Standards: W.7.6 · SL.7.4 — Curated collection of best work with introduction letter, Year-in-Review essay, and showcase presentation</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Completeness (6 pieces)</td><td>All 6 pieces present (one per unit), each clearly titled and labeled; novel opening and Year-in-Review essay included; cover art displayed</td><td>5–6 pieces present; all required pieces (intro letter, novel opening, Year-in-Review) are included</td><td>4–5 pieces present; one required piece missing or incomplete</td><td>Fewer than 4 pieces; multiple required components missing</td></tr>
+          <tr><td>Introduction Letter Quality</td><td>Letter is specific, warm, and genuinely personal; introduces the writer and the portfolio with insight; clearly addresses a real reader; ends memorably</td><td>Letter introduces the writer and portfolio clearly; highlights specific pieces; written in a personal voice</td><td>Letter is present but generic; does not highlight specific work or feels like a school assignment rather than a personal statement</td><td>Letter is missing, very brief, or impersonal; does not function as a portfolio introduction</td></tr>
+          <tr><td>Reflection Depth (Year-in-Review)</td><td>Essay opens with a specific, vivid moment; reflects on at least two books and cites specific evidence from own writing; ends with a genuine forward-looking statement; honest and insightful throughout</td><td>Essay reflects on the year's reading and writing with some specificity; shows genuine thought; covers growth as a reader and writer</td><td>Essay is present but stays surface-level; general statements without specific examples; more summary than reflection</td><td>Essay is missing, very short, or does not reflect on the year's learning; reads as a list rather than an essay</td></tr>
+          <tr><td>Overall Presentation &amp; Care</td><td>Portfolio feels like a finished, coherent object — ordered, clean, and intentionally assembled; every page has clear identification; the whole reflects pride in the work</td><td>Portfolio is clearly assembled and organized; pieces are in order; overall impression is of care and intention</td><td>Portfolio is partially assembled; some pieces are unlabeled or disordered; presentation is inconsistent</td><td>Portfolio feels thrown together; little evidence of intentional curation or presentation</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 4: Cover Art -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Cover Art (Weeks 33–35)</div>
+      <div class="rubric-desc">Art Integration — Original painting or illustration representing the student's identity as a reader, writer, and artist</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Personal Meaning / Intention</td><td>The artwork clearly and specifically represents the student's identity as a reader and writer this year; images and symbols are intentional and explained in the concept note; the viewer senses a real person behind the image</td><td>The artwork represents the student's identity in a recognizable way; some symbolic or thematic choices are evident</td><td>The artwork is present and finished, but the connection to the student's year or identity is unclear or generic</td><td>The artwork does not appear to have a personal or thematic connection to the portfolio</td></tr>
+          <tr><td>Craft &amp; Technique</td><td>Demonstrates skilled, careful use of the chosen medium (painting, watercolor, colored pencil, ink, etc.); shows control of color, composition, and line; clearly took significant time and effort</td><td>Artwork shows care and effort; technique is appropriate to the medium; composition is intentional</td><td>Artwork is complete but rushed or uneven; technique is developing; some areas show care while others do not</td><td>Artwork is very rough, incomplete, or shows minimal effort with the chosen medium</td></tr>
+          <tr><td>Connection to Portfolio</td><td>Cover art serves as a true "cover" — it introduces the portfolio's tone, personality, and content in a way that makes the reader want to open the book</td><td>Cover art is clearly connected to the portfolio and its contents; works as a visual introduction</td><td>Cover art is present as a separate piece but feels loosely connected to the portfolio as a whole</td><td>Cover art does not function as a portfolio cover; there is no apparent connection between the image and the work inside</td></tr>
+          <tr><td>Concept Note Quality</td><td>Concept note clearly explains all major image choices, symbols, and colors; explains the feeling intended; written in a specific and reflective voice</td><td>Concept note identifies the main image choices and explains their meaning; reflective in tone</td><td>Concept note is present but brief; explanations are vague or incomplete</td><td>Concept note is missing or is a single sentence with no real explanation</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <!-- ─── YEAR-IN-REVIEW REFLECTION PROMPTS ───────────────────────── -->
+  <div id="yearinreview" class="yir-section">
+    <h2>Year-in-Review Reflection Prompts</h2>
+    <p class="yir-intro">Use these prompts to write your Year-in-Review essay — the final piece of your 7th grade Language Arts portfolio. You don't have to answer every prompt. Choose the ones that spark something real. Write as yourself: specific, honest, and in your own voice. This essay is for you, and it will matter to you someday.</p>
+
+    <ul class="yir-prompts">
+      <li>
+        <span class="yir-num">1</span>
+        <span><strong>The moment that changed how you read:</strong> Describe one specific moment this year — a passage, a scene, a sentence — that made you stop and reread it. Where were you? What did it say? What did it open up in you that wasn't there before?</span>
+      </li>
+      <li>
+        <span class="yir-num">2</span>
+        <span><strong>The book that surprised you most:</strong> Which book from this year turned out to be completely different from what you expected — either better, stranger, darker, funnier, or more moving? What did you expect, and what did you get instead?</span>
+      </li>
+      <li>
+        <span class="yir-num">3</span>
+        <span><strong>The piece of writing you are most proud of:</strong> Choose one piece of writing from your portfolio and describe what it took to write it. What was hard? What surprised you? What moment in the draft process felt like a breakthrough? If you read it today, what do you see?</span>
+      </li>
+      <li>
+        <span class="yir-num">4</span>
+        <span><strong>What animals and nature taught you about story:</strong> You spent a year reading and writing about the natural world — animal protagonists, wild landscapes, the lives of creatures. What did that focus teach you about storytelling? What can an animal protagonist show us that a human character cannot?</span>
+      </li>
+      <li>
+        <span class="yir-num">5</span>
+        <span><strong>A skill you didn't have in September:</strong> Think about grammar, analysis, revision, annotation, or any other craft skill. What is one thing you can do now that you genuinely could not do — or could not do well — at the start of the year? How did it develop? What clicked?</span>
+      </li>
+      <li>
+        <span class="yir-num">6</span>
+        <span><strong>The theme that keeps showing up:</strong> Looking back at all the books from Units 1–6, is there a theme — a big idea about life, belonging, courage, freedom, identity, or something else — that appeared again and again? Why do you think that idea keeps surfacing in the stories you were drawn to?</span>
+      </li>
+      <li>
+        <span class="yir-num">7</span>
+        <span><strong>What your cover art says about you:</strong> Describe your cover art as if you were explaining it to someone who can't see it. What did you choose to paint or draw, and why? What does the image mean? If a stranger looked at it knowing nothing about you, what might they guess — and would they be right?</span>
+      </li>
+      <li>
+        <span class="yir-num">8</span>
+        <span><strong>The hardest moment of the year:</strong> Was there a book that was hard to get through? A piece of writing you wanted to quit? A grammar concept that frustrated you? Describe the difficulty honestly — and then describe how you got through it. What does that tell you about yourself?</span>
+      </li>
+      <li>
+        <span class="yir-num">9</span>
+        <span><strong>Who you are as a reader and writer now:</strong> If someone asked you today, "What kind of reader are you?" or "What kind of writer are you?" — how would you answer? Use specific evidence from your own work and reading this year. What has this year added to how you understand yourself?</span>
+      </li>
+      <li>
+        <span class="yir-num">10</span>
+        <span><strong>The story you want to write next:</strong> You started a novel this unit — and you've been reading and thinking about stories all year. What story do you most want to write someday? Who would be in it? Where would it take place? What would it be about at its deepest level — not the plot, but the idea underneath the plot? What makes that story yours to tell?</span>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Unit 6: My Story, My Voice</strong> · Independent Reading, Original Novel Opening &amp; Portfolio · 7th Grade Language Arts · <a href="7th_grade_language_arts.html">← Back to Full Curriculum</a></p>
+</footer>
+
+</body>
+</html>

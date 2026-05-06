@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 1: Into the Wild — 7th Grade Language Arts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+    :root {
+      --green-dark:#2D6A4F; --green-mid:#52B788; --green-light:#D8F3DC;
+      --gold:#E9C46A; --gold-light:#FFF8E1;
+      --rust:#C65D2A; --rust-light:#FBE9E0;
+      --purple-dark:#5A3E8F; --purple-light:#EDE7F6;
+      --cream:#FEFAE0; --text:#1A1A2E; --text-light:#4A4A6A;
+      --border:#D0D0E0; --white:#FFFFFF;
+      --unit-color:#2D6A4F; --unit-accent:#E9C46A;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;font-size:15px;}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,#2D6A4F 0%,#1B4332 50%,#0d2b1f 100%);color:#fff;padding:48px 40px 40px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(233,196,106,.15),transparent 60%);pointer-events:none;}
+    .back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.04em;margin-bottom:18px;transition:color .15s;}
+    .back-link:hover{color:var(--gold);}
+    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+    .hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:3px 12px;font-size:.75rem;font-weight:700;color:#fff;}
+    .hero h1{font-family:'Lora',serif;font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:8px;}
+    .hero h1 span{color:var(--gold);}
+    .hero .tagline{font-family:'Lora',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.82);max-width:640px;}
+
+    /* NAV */
+    .week-nav{background:var(--green-dark);padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18);}
+    .week-nav nav{max-width:1060px;margin:0 auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+    .week-nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.77rem;font-weight:700;padding:3px 10px;border-radius:10px;transition:background .15s,color .15s;letter-spacing:.02em;}
+    .week-nav a:hover,.week-nav a.active{background:rgba(255,255,255,.18);color:var(--gold);}
+    .week-nav .sep{color:rgba(255,255,255,.3);font-size:.75rem;}
+
+    /* LAYOUT */
+    .container{max-width:1060px;margin:0 auto;padding:0 24px;}
+    .page-section{padding:44px 0;}
+
+    /* OVERVIEW STRIP */
+    .overview-strip{background:var(--white);border:1.5px solid var(--green-light);border-radius:12px;padding:22px 28px;margin:32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+    .ov-item .ov-label{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green-dark);margin-bottom:3px;}
+    .ov-item .ov-val{font-size:.9rem;font-weight:600;color:var(--text);}
+
+    /* WEEK SECTIONS */
+    .week-section{margin-bottom:52px;}
+    .week-header{background:linear-gradient(135deg,var(--green-dark),#1B4332);border-radius:12px 12px 0 0;padding:18px 26px;display:flex;align-items:center;gap:16px;}
+    .week-num-badge{font-family:'Lora',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;}
+    .week-header-text h2{font-family:'Lora',serif;font-size:1.3rem;font-weight:700;color:#fff;}
+    .week-header-text .week-focus{font-size:.82rem;color:rgba(255,255,255,.78);margin-top:2px;}
+    .week-body{background:var(--white);border:1.5px solid var(--green-light);border-top:none;border-radius:0 0 12px 12px;padding:24px 26px;}
+
+    /* DAILY PLAN */
+    .section-label{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--green-dark);margin-bottom:10px;margin-top:22px;}
+    .section-label:first-child{margin-top:0;}
+    .daily-table{width:100%;border-collapse:collapse;font-size:.86rem;}
+    .daily-table th{background:var(--green-light);color:var(--green-dark);font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;text-align:left;}
+    .daily-table td{padding:9px 12px;border-bottom:1px solid #eef7f2;vertical-align:top;line-height:1.55;}
+    .daily-table tr:last-child td{border-bottom:none;}
+    .daily-table tr:nth-child(even) td{background:#f8fdf9;}
+    .day-label{font-weight:800;color:var(--green-dark);white-space:nowrap;}
+    .day-tag{display:inline-block;background:var(--green-light);color:var(--green-dark);border-radius:6px;padding:1px 7px;font-size:.72rem;font-weight:800;margin-bottom:3px;}
+
+    /* DISCUSSION QUESTIONS */
+    .questions-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+    .questions-list li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;line-height:1.6;}
+    .q-num{background:var(--green-dark);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;margin-top:1px;}
+
+    /* WRITING PROMPTS */
+    .prompt-card{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+    .prompt-card .prompt-type{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rust);margin-bottom:4px;}
+    .prompt-card p{font-size:.88rem;line-height:1.65;color:var(--text);}
+
+    /* RUBRICS */
+    .rubric-wrap{margin-bottom:36px;}
+    .rubric-title{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:var(--green-dark);margin-bottom:4px;}
+    .rubric-desc{font-size:.85rem;color:var(--text-light);margin-bottom:12px;}
+    .rubric-table{width:100%;border-collapse:collapse;font-size:.82rem;}
+    .rubric-table th{padding:9px 12px;text-align:left;font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
+    .rubric-table th:first-child{background:var(--green-dark);color:#fff;width:22%;}
+    .rubric-table th.r-exc{background:#1a6b3a;color:#fff;width:19.5%;}
+    .rubric-table th.r-pro{background:#2D6A4F;color:#fff;width:19.5%;}
+    .rubric-table th.r-dev{background:#52B788;color:#fff;width:19.5%;}
+    .rubric-table th.r-beg{background:#95d5b2;color:var(--text);width:19.5%;}
+    .rubric-table td{padding:9px 12px;border:1px solid var(--green-light);vertical-align:top;line-height:1.5;}
+    .rubric-table tr:nth-child(even) td:first-child{background:#f0f9f4;}
+    .rubric-table td:first-child{font-weight:700;color:var(--green-dark);background:#f8fdf9;}
+
+    /* FOOTER */
+    footer{background:var(--green-dark);color:rgba(255,255,255,.7);text-align:center;padding:24px;font-size:.82rem;margin-top:48px;}
+    footer strong{color:var(--gold);}
+    footer a{color:var(--gold-light);text-decoration:none;}
+
+    @media(max-width:600px){
+      .hero h1{font-size:1.7rem;}
+      .week-body{padding:18px 16px;}
+      .daily-table{font-size:.78rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <a class="back-link" href="7th_grade_language_arts.html">← Back to Full Curriculum</a>
+  <div class="hero-meta">
+    <span class="hero-badge">Unit 1 of 6</span>
+    <span class="hero-badge">📅 Weeks 1–6</span>
+    <span class="hero-badge">🐾 Animal Fantasy</span>
+    <span class="hero-badge">Oregon RL.7 · W.7.3 · L.7.1</span>
+  </div>
+  <h1>Into the <span>Wild</span></h1>
+  <p class="tagline">"Who are we through the eyes of an animal? Dive into a world where creatures lead, choose, and dream."</p>
+</div>
+
+<div class="week-nav">
+  <nav>
+    <a href="#overview">Overview</a><span class="sep">›</span>
+    <a href="#week1">Week 1</a><span class="sep">·</span>
+    <a href="#week2">Week 2</a><span class="sep">·</span>
+    <a href="#week3">Week 3</a><span class="sep">·</span>
+    <a href="#week4">Week 4</a><span class="sep">·</span>
+    <a href="#week5">Week 5</a><span class="sep">·</span>
+    <a href="#week6">Week 6</a><span class="sep">›</span>
+    <a href="#rubrics">Rubrics</a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <div id="overview" class="overview-strip">
+    <div class="ov-item"><div class="ov-label">Duration</div><div class="ov-val">6 weeks (Weeks 1–6)</div></div>
+    <div class="ov-item"><div class="ov-label">Core Standards</div><div class="ov-val">RL.7.1 · RL.7.2 · RL.7.3 · W.7.3 · SL.7.1 · L.7.1</div></div>
+    <div class="ov-item"><div class="ov-label">Suggested Book</div><div class="ov-val">Mrs. Frisby and the Rats of NIMH, Silverwing, or Tailchaser's Song</div></div>
+    <div class="ov-item"><div class="ov-label">Signature Project</div><div class="ov-val">🏔️ Diorama + Scene Card</div></div>
+    <div class="ov-item"><div class="ov-label">Grammar Focus</div><div class="ov-val">Phrases &amp; clauses; complex sentences; subject-verb agreement</div></div>
+  </div>
+
+  <!-- ─── WEEK 1 ───────────────────────────────────────────────── -->
+  <div id="week1" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">1</div>
+      <div class="week-header-text">
+        <h2>Introduction &amp; Setup</h2>
+        <div class="week-focus">Choose your book · Meet the author · First impressions · Character sketch</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading</span> Choose your book from the suggested list (or another animal fantasy you love). Read the first chapter or opening pages slowly. Jot down your very first impressions in your reading journal: Who do we meet? Where are we? What's the mood?</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Research + Writing</span> Look up the author — read a short bio and one interview if you can find one online. In your journal, write a paragraph: What inspired this author to write about animals? Does knowing this change how you read the opening?</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Art</span> Read chapters 2–3. While you read, keep a sticky note or margin note for any animal you want to sketch. After reading, draw your protagonist in your reading journal — how do you picture them? Include 3 details pulled directly from the text.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Grammar</span> Intro to phrases vs. clauses. Work through 5 example sentences from your novel: identify each group of words as a phrase (no subject+verb) or clause (has subject+verb). Write 3 original sentences about your book's protagonist using at least one phrase and one clause each.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project + Discussion</span> Begin your Character Profile Sheet: draw or paint your protagonist, fill in their name, species, home, personality, and one quote from the text that best captures them so far. Discuss: Why do authors write from an animal's point of view? What does that let them explore that a human narrator couldn't?</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What was your very first reaction when you started reading? Did the world feel familiar or completely foreign?</li>
+        <li><span class="q-num">2</span>What kind of animal is the protagonist, and how does that immediately shape the story? What can this animal do that a human couldn't? What can't they do?</li>
+        <li><span class="q-num">3</span>How does the author make the animal feel real and believable rather than like a cartoon or a person in a fur suit?</li>
+        <li><span class="q-num">4</span>What is the first problem or tension you notice? Is it a physical danger, a relationship, a mystery — or something else?</li>
+        <li><span class="q-num">5</span>If you could ask the author one question about why they wrote this book, what would you ask?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Reading Journal — First Impressions</div>
+        <p>Write a full paragraph (5–8 sentences) describing your first impressions of the novel. Include: one thing that surprised you, one thing that reminded you of something you've experienced, and one question you already have. End with a prediction: what do you think this book will be about at its deepest level?</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Creative Warm-Up</div>
+        <p>Spend 10 minutes writing from the perspective of your protagonist on the very first morning of the story — before the plot kicks in. What does your animal notice? What do they smell, hear, feel? Use at least three sensory details.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 2 ───────────────────────────────────────────────── -->
+  <div id="week2" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">2</div>
+      <div class="week-header-text">
+        <h2>Character Analysis</h2>
+        <div class="week-focus">Motivation · Relationships · Textual evidence · Character web</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading</span> Read chapters 4–5. Focus on the protagonist and their relationships. In your journal, note: Who does the protagonist care about most so far? Who do they distrust? Find one quote that reveals something important about their personality — copy it down with the page number.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar</span> Noun phrases and verb phrases. Identify 5 noun phrases and 5 verb phrases from your novel. Practice expanding a simple sentence ("The rat ran") into a more complex one using noun and verb phrases ("The old gray rat ran silently through the darkened corridor").</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Writing</span> Read chapter 6. After reading, write a character analysis journal entry: What does your protagonist want? What is stopping them? How do you know — what specific moments or quotes from the text support your answer?</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Art + Project</span> Create an illustrated character web. Place your protagonist in the center circle, then draw connecting lines to at least 4 other characters. Label each connection with the relationship type AND one cited quote that shows how they interact.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Reading + Discussion</span> Read chapter 7. Discuss the week's reading and your character web. Focus on: How is the protagonist already changing, even this early in the story?</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What does your protagonist want more than anything? Is that want stated directly, or do you have to infer it from their actions?</li>
+        <li><span class="q-num">2</span>Choose one relationship the protagonist has — a friend, an enemy, a mentor. How does the author reveal that relationship without just telling us directly?</li>
+        <li><span class="q-num">3</span>Find a moment where the protagonist does something surprising or unexpected. What does that choice reveal about who they are?</li>
+        <li><span class="q-num">4</span>Is your protagonist a hero, an antihero, or something else entirely? What makes you say so?</li>
+        <li><span class="q-num">5</span>How does the protagonist's species (what kind of animal they are) shape their personality and choices? Would the same character work as a different animal?</li>
+        <li><span class="q-num">6</span>What is one thing you admire about the protagonist? One thing that frustrates you about them?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Character Analysis Paragraph (RL.7.1)</div>
+        <p>Write a focused paragraph analyzing what motivates your protagonist. Your paragraph must include: a clear topic sentence stating the motivation, at least two cited pieces of evidence from the text (use quotation marks and page numbers), and a concluding sentence explaining why this motivation matters to the story. Aim for 8–10 sentences.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Creative — Another Character's View</div>
+        <p>Choose a secondary character from your novel and write one journal entry from their point of view about the protagonist. How do they see the main character? What do they notice that the protagonist might not know about themselves?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 3 ───────────────────────────────────────────────── -->
+  <div id="week3" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">3</div>
+      <div class="week-header-text">
+        <h2>Setting &amp; World-Building</h2>
+        <div class="week-focus">Descriptive language · Sense of place · Diorama planning · Prepositional phrases</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading</span> Read chapters 8–9. As you read, keep a "setting log" — every time the author describes a place, jot down the specific details they use. Notice: Does the author use mostly visual details, or do they bring in sound, smell, and texture too?</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar</span> Prepositional and participial phrases. Find 3 prepositional phrases in your novel that describe setting ("through the darkened tunnel," "beneath the old oak"). Then write a paragraph describing a scene from your book using at least 4 prepositional phrases to anchor the reader in space.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Writing</span> Read chapters 10–11. Choose the setting you love most so far — the one you can picture most vividly. Write a descriptive paragraph about it from the animal protagonist's perspective: not just what it looks like, but how it feels to be a small creature in this space. What's enormous? What's threatening? What's safe?</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Project — Diorama Planning</span> Choose the scene or setting you'll build for your diorama project. Reread the relevant passage(s) in the book. Make a planning sketch: draw the scene from above (bird's-eye view) and from the front. List 5 specific details from the text you want to include. List your materials.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Discussion + Begin Building</span> Share your planning sketch and discuss: How does this setting shape the story? What would change if the story happened somewhere completely different? Then begin gathering or assembling diorama materials.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>Pick the setting in your book that feels most alive to you. Read the passage aloud. What specific words or phrases make it feel real?</li>
+        <li><span class="q-num">2</span>How does the setting create mood? Does the same location feel different at different moments in the story depending on what's happening?</li>
+        <li><span class="q-num">3</span>This is a story about animals in their own world. How does the author make a familiar place (a field, a forest, an attic) feel completely new by showing it through an animal's eyes?</li>
+        <li><span class="q-num">4</span>Is there a place in this story that feels dangerous? One that feels safe? What details make you feel that way?</li>
+        <li><span class="q-num">5</span>If you were building the world of this book in real life, what's the first thing you'd construct? Why?</li>
+        <li><span class="q-num">6</span>How does the author use scale (size relationships) to help us understand the animal's perspective? Find an example.</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Descriptive Writing — Animal's-Eye View</div>
+        <p>Write a full descriptive paragraph (8–12 sentences) describing a setting from your novel from the protagonist's point of view. Remember: your character is small — a mouse, a bat, an owl. The world they move through is enormous. Use at least 4 prepositional phrases, 3 sensory details (not just visual), and one metaphor or simile to bring the setting to life.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Diorama Planning Note</div>
+        <p>Write a short planning note (1 paragraph) explaining your diorama choice: Which scene or setting did you pick and why? What three details from the text are most important to include? What materials do you plan to use?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 4 ───────────────────────────────────────────────── -->
+  <div id="week4" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">4</div>
+      <div class="week-header-text">
+        <h2>Theme Emerges</h2>
+        <div class="week-focus">Identifying theme · Conflict &amp; turning point · Complex sentences · Build the diorama</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading</span> Read chapters 12–13. Look for the major conflict taking shape: What is your protagonist up against? Write a brief plot summary of what's happened so far (5–6 sentences), then identify the central conflict in one clear sentence.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar</span> Dependent and independent clauses; building complex sentences. Practice joining two simple sentences about your book into one complex sentence using a subordinating conjunction (because, although, while, since, when, unless). Write 5 such sentences about the story.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Writing</span> Read chapters 14–15. After reading, write a theme journal entry: What do you think this book is really about? Not the plot — but the deeper idea. Friendship? Survival? Belonging? What moments in the story made you think this?</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Project — Build Diorama</span> Dedicated art day. Work on building your diorama: construct the base, add landscape elements, begin placing or sculpting characters. Put on music and take your time. Aim to have the physical structure mostly complete by end of the day.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Reading + Discussion</span> Read chapter 16. Discuss: Has there been a turning point yet — a moment where everything changed for the protagonist? What happened and why does it matter?</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What is the central conflict in this story? Is it person vs. person, person vs. nature, person vs. society, or person vs. self — or a combination?</li>
+        <li><span class="q-num">2</span>What do you think the author wants readers to take away from this story — not the plot, but the deeper message? What makes you think so?</li>
+        <li><span class="q-num">3</span>Has there been a moment that felt like a turning point? A scene where the story shifted direction or where the protagonist made a choice that changed everything?</li>
+        <li><span class="q-num">4</span>Are there any symbols in this book — objects, places, or animals that seem to mean more than they literally are? What might they represent?</li>
+        <li><span class="q-num">5</span>How are the protagonist's choices connected to the theme? In what way does what they do reflect what the book is "about"?</li>
+        <li><span class="q-num">6</span>Does the theme of this book connect to something happening in the real world, or to your own life?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Theme Journal Entry (RL.7.2)</div>
+        <p>Write a journal entry exploring the theme of your novel. Begin with your best statement of the theme as a complete sentence (not just a word like "friendship" — write a sentence like "True friendship means staying loyal even when it costs you something"). Then explain how 2–3 specific moments in the story develop or support that theme. Use at least one direct quote from the text.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Conflict Analysis</div>
+        <p>In 4–6 sentences, describe the central conflict of your novel. Name the conflict type, explain what's at stake for the protagonist, and predict: how do you think this conflict will be resolved? What will the protagonist have to sacrifice or change in order to get through it?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 5 ───────────────────────────────────────────────── -->
+  <div id="week5" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">5</div>
+      <div class="week-header-text">
+        <h2>Climax &amp; Resolution</h2>
+        <div class="week-focus">Rising action · Climax · Write a new scene · Complete the diorama</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading</span> Read chapters 17–19. The pace is probably picking up — notice how the author builds tension. In your journal, list three specific techniques the author uses to make you feel the urgency: short sentences? Unexpected dialogue? A ticking clock? Find evidence for each.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar + Writing</span> Punctuating complex sentences: comma before coordinating conjunctions, no comma with subordinating conjunctions at the end. Edit 5 example sentences, then begin drafting your narrative scene. Write the opening paragraph of your new scene — set the stage, introduce the moment, and establish the tone.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Writing</span> Read chapters 20–21. Continue drafting your narrative scene. Aim to have a complete first draft (1–2 pages): a beginning, a middle with tension or action, and an ending. Don't edit — just write!</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Project — Finish Diorama</span> Final art day for the diorama. Add finishing details: paint, color, texture, small plants or objects. Write your scene card: identify the setting, explain its importance to the plot, and copy out one quote from the text. Mount or display the card with the diorama.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Reading + Discussion</span> Read chapters 22–end (or as far as you've gotten). Discuss: What was the climax — the highest point of tension? How did the protagonist handle it? Did the resolution feel satisfying?</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What is the climax of this story — the single most tense, highest-stakes moment? How does the author build up to it?</li>
+        <li><span class="q-num">2</span>How does the protagonist change between the beginning and the end of the book? What causes that change?</li>
+        <li><span class="q-num">3</span>Did the resolution feel earned — like things worked out in a way that made sense for the characters? Or did something feel rushed or unsatisfying?</li>
+        <li><span class="q-num">4</span>Look back at the theme you identified in Week 4. Does the ending support or complicate that theme? How?</li>
+        <li><span class="q-num">5</span>What scene from this book would you choose to put in a diorama, and why is it more important than any other scene?</li>
+        <li><span class="q-num">6</span>If the author wrote a sequel, what would you want it to be about? What was left unresolved?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Narrative Scene Draft (W.7.3)</div>
+        <p>Write an original scene (1–2 pages) set in the world of your novel. Your scene should feature the protagonist in a moment not shown in the book — maybe just before the story starts, between two chapters, or just after the ending. Use the author's style: match the tone, the animal's perspective, and the level of detail. Include at least one dialogue exchange and one moment of internal thought.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Scene Card for Diorama</div>
+        <p>Write a scene card to display with your diorama (5–7 sentences). Name the setting, explain where in the story it appears, describe why this moment or place is important to the plot, and include one direct quote from the text with the page number.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 6 ───────────────────────────────────────────────── -->
+  <div id="week6" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">6</div>
+      <div class="week-header-text">
+        <h2>Synthesis &amp; Sharing</h2>
+        <div class="week-focus">Objective summary · Revise narrative · Gallery walk · Reflect</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Writing</span> Write an objective summary of the novel (1 paragraph, 8–10 sentences). An objective summary sticks to what actually happened — no opinions, no analysis, just the key plot points. Cover: the protagonist, the central conflict, the rising action, the climax, and the resolution.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar + Revision</span> Subject-verb agreement mini-lesson: review tricky cases (compound subjects, indefinite pronouns). Then revise your narrative scene draft: read it aloud, check for grammar errors, and improve at least three sentences by adding stronger descriptive phrases.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Revise + Polish</span> Final revision of your narrative scene. Focus on: Does it sound like it belongs in this book? Does the animal's voice feel authentic? Fix any punctuation errors and rewrite any sentences that feel weak. Create a clean final copy.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Gallery Prep</span> Set up your diorama with its scene card and your narrative scene (printed or handwritten) displayed nearby. Write one final journal entry: What did you love most about this book? What will you remember about it in ten years?</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Gallery Walk + Celebrate</span> Share your diorama, scene card, and narrative scene with a family member or another student. Read your favorite excerpt from the novel aloud. Discuss: What makes a great animal fantasy? What would YOU write if you were the author?</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>Looking back at everything — what was the single most important moment in this book? Not the most exciting, but the most meaningful. Why?</li>
+        <li><span class="q-num">2</span>What did this book teach you — about animals, about the world, about yourself?</li>
+        <li><span class="q-num">3</span>If you were recommending this book to a friend, what would you say? How would you make them want to read it?</li>
+        <li><span class="q-num">4</span>How did your understanding of the theme change from Week 4 to now, having finished the book?</li>
+        <li><span class="q-num">5</span>Look at your diorama: Does the scene you chose really capture the heart of the story? If you could redo it, would you choose the same scene?</li>
+        <li><span class="q-num">6</span>What book do you want to read next, and why? What are you looking for after this one?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Objective Summary (RL.7.2)</div>
+        <p>Write an objective summary of the novel in one paragraph (8–10 sentences). Rules: No "I think" or "I liked." No spoiler-free vagueness — actually tell what happened. Cover all five story elements: protagonist, setting, conflict, rising action/climax, and resolution. Someone who hasn't read the book should understand the whole story from your summary.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Unit Reflection Journal</div>
+        <p>Write a reflection (1 page) on your reading experience this unit. Answer: What surprised you most about this book? How did your understanding of the theme develop over the 6 weeks? What is one technique you noticed the author using that you want to try in your own writing? What does this story make you want to do, make, or read next?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── RUBRICS ───────────────────────────────────────────────── -->
+  <section id="rubrics" class="page-section">
+    <h2 style="font-family:'Lora',serif;font-size:1.75rem;font-weight:700;color:var(--green-dark);border-bottom:2px solid var(--green-mid);padding-bottom:8px;margin-bottom:28px;">Assessment Rubrics</h2>
+
+    <!-- RUBRIC 1: Character Analysis Paragraph -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Character Analysis Paragraph (Week 2)</div>
+      <div class="rubric-desc">Standards: RL.7.1 · W.7.4 — Analyzes protagonist motivation with textual evidence</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Topic Sentence</td><td>Clear, specific claim about motivation that goes beyond the obvious</td><td>Clear claim about motivation is present</td><td>Topic sentence is vague or too broad</td><td>No clear topic sentence; reader must guess the main point</td></tr>
+          <tr><td>Textual Evidence</td><td>2+ well-chosen quotes, smoothly integrated with page numbers</td><td>2 quotes present with page numbers, some integration</td><td>1 quote or evidence present but not well integrated</td><td>No direct evidence from the text</td></tr>
+          <tr><td>Analysis</td><td>Explains clearly HOW the evidence supports the claim; insightful</td><td>Explains connection between evidence and claim</td><td>Evidence listed but not fully explained</td><td>No analysis; only summarizes or describes</td></tr>
+          <tr><td>Conventions</td><td>No errors; sentences vary in structure; smooth and polished</td><td>Minor errors that don't interfere with meaning</td><td>Some errors that occasionally distract</td><td>Frequent errors that make the paragraph hard to follow</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 2: Narrative Scene -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Narrative Scene — Original Writing (Week 5)</div>
+      <div class="rubric-desc">Standards: W.7.3 · W.7.4 — Original scene in the novel's world, animal protagonist</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Voice &amp; Perspective</td><td>Animal's voice feels fully authentic; clearly inhabits the character from the novel</td><td>Animal's perspective is consistent and believable</td><td>Perspective inconsistent; occasionally slips out of animal's point of view</td><td>No clear animal perspective; reads like a human narrator</td></tr>
+          <tr><td>Setting &amp; Sensory Detail</td><td>Rich, specific sensory details (smell, sound, texture); scale reflects the animal's size and perspective</td><td>Setting is clearly established with some sensory detail</td><td>Setting present but mostly visual; few sensory details</td><td>Little or no setting description</td></tr>
+          <tr><td>Plot &amp; Tension</td><td>Scene has a clear beginning, moment of tension or action, and resolution; feels complete</td><td>Scene has beginning, middle, end; some tension present</td><td>Scene starts but doesn't fully develop or resolve</td><td>Scene is a description or summary, not a narrative</td></tr>
+          <tr><td>Style Match</td><td>Clearly inspired by the author's style: matching tone, pacing, and sentence rhythm</td><td>Some stylistic echo of the novel is evident</td><td>Little connection to the original author's style</td><td>No apparent awareness of the original author's style</td></tr>
+          <tr><td>Conventions</td><td>Dialogue punctuated correctly; sentences vary; very few errors</td><td>Mostly correct; minor errors present</td><td>Some errors in dialogue punctuation or sentence structure</td><td>Frequent errors throughout</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 3: Diorama + Scene Card -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Diorama + Scene Card (Week 5–6)</div>
+      <div class="rubric-desc">Standards: RL.7.3 — 3D scene construction with written analysis card</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Textual Accuracy</td><td>5+ specific details from the text are accurately represented in the diorama</td><td>3–4 text details accurately represented</td><td>1–2 text details present; some invented elements</td><td>Diorama does not appear to reference the text</td></tr>
+          <tr><td>Craft &amp; Effort</td><td>Detailed, multi-layered construction; clearly took time and care; creative use of materials</td><td>Completed with care; shows effort and planning</td><td>Partially complete or rushed; limited materials used</td><td>Minimal effort; very simple or incomplete</td></tr>
+          <tr><td>Scene Card — Content</td><td>Clearly identifies setting, explains its plot importance, includes cited quote, and makes an insightful connection to theme</td><td>Identifies setting, importance, and includes a quote</td><td>Mentions setting and quote but explanation is vague</td><td>Missing key elements; no quote or no explanation</td></tr>
+          <tr><td>Scene Card — Writing</td><td>Clear, polished sentences; no significant errors</td><td>Mostly clear; minor errors present</td><td>Some errors that distract from meaning</td><td>Frequent errors; hard to follow</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 4: Objective Summary -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Objective Summary (Week 6)</div>
+      <div class="rubric-desc">Standards: RL.7.2 — Summarizes the full novel objectively and completely</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Completeness</td><td>All 5 story elements covered: protagonist, setting, conflict, rising action/climax, resolution</td><td>4 of 5 elements clearly present</td><td>3 of 5 elements present; gaps in coverage</td><td>Covers only 1–2 elements; very incomplete</td></tr>
+          <tr><td>Objectivity</td><td>Entirely objective — no opinions, evaluations, or "I" statements; reads like the back of a book</td><td>Mostly objective; one or two opinion slips</td><td>Several opinions mixed in; hard to tell summary from reaction</td><td>Mostly opinion or personal reaction, not summary</td></tr>
+          <tr><td>Accuracy</td><td>All details are accurate and correctly sequenced</td><td>Mostly accurate; one minor error or sequence issue</td><td>Some inaccuracies or significant gaps</td><td>Multiple inaccuracies that misrepresent the story</td></tr>
+          <tr><td>Concision &amp; Clarity</td><td>Every sentence pulls its weight; no repetition; clear and efficient</td><td>Clear and mostly concise; slight redundancy</td><td>Some sentences are vague or repetitive</td><td>Rambling or very unclear; hard to follow</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+</div>
+
+<footer>
+  <p><strong>Unit 1: Into the Wild</strong> · 7th Grade Language Arts · <a href="7th_grade_language_arts.html">← Back to Full Curriculum</a></p>
+</footer>
+
+</body>
+</html>

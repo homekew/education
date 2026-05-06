@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 3: The Hero's Journey — 7th Grade Language Arts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+    :root {
+      --green-dark:#2D6A4F; --green-mid:#52B788; --green-light:#D8F3DC;
+      --gold:#E9C46A; --gold-light:#FFF8E1;
+      --rust:#C65D2A; --rust-light:#FBE9E0;
+      --purple-dark:#5A3E8F; --purple-light:#EDE7F6;
+      --cream:#FEFAE0; --text:#1A1A2E; --text-light:#4A4A6A;
+      --border:#D0D0E0; --white:#FFFFFF;
+      --unit-color:#5A3E8F; --unit-accent:#E9C46A;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;font-size:15px;}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,#5A3E8F 0%,#3d2766 50%,#271845 100%);color:#fff;padding:48px 40px 40px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(233,196,106,.15),transparent 60%);pointer-events:none;}
+    .back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.04em;margin-bottom:18px;transition:color .15s;}
+    .back-link:hover{color:var(--gold);}
+    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+    .hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:3px 12px;font-size:.75rem;font-weight:700;color:#fff;}
+    .hero h1{font-family:'Lora',serif;font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:8px;}
+    .hero h1 span{color:var(--gold);}
+    .hero .subtitle{font-family:'Lora',serif;font-size:1.05rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:6px;}
+    .hero .tagline{font-family:'Lora',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.82);max-width:640px;}
+
+    /* NAV */
+    .week-nav{background:var(--purple-dark);padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18);}
+    .week-nav nav{max-width:1060px;margin:0 auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+    .week-nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.77rem;font-weight:700;padding:3px 10px;border-radius:10px;transition:background .15s,color .15s;letter-spacing:.02em;}
+    .week-nav a:hover,.week-nav a.active{background:rgba(255,255,255,.18);color:var(--gold);}
+    .week-nav .sep{color:rgba(255,255,255,.3);font-size:.75rem;}
+
+    /* LAYOUT */
+    .container{max-width:1060px;margin:0 auto;padding:0 24px;}
+    .page-section{padding:44px 0;}
+
+    /* OVERVIEW STRIP */
+    .overview-strip{background:var(--white);border:1.5px solid var(--purple-light);border-radius:12px;padding:22px 28px;margin:32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+    .ov-item .ov-label{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--purple-dark);margin-bottom:3px;}
+    .ov-item .ov-val{font-size:.9rem;font-weight:600;color:var(--text);}
+
+    /* WEEK SECTIONS */
+    .week-section{margin-bottom:52px;}
+    .week-header{background:linear-gradient(135deg,#5A3E8F,#3d2766);border-radius:12px 12px 0 0;padding:18px 26px;display:flex;align-items:center;gap:16px;}
+    .week-num-badge{font-family:'Lora',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;}
+    .week-header-text h2{font-family:'Lora',serif;font-size:1.3rem;font-weight:700;color:#fff;}
+    .week-header-text .week-focus{font-size:.82rem;color:rgba(255,255,255,.78);margin-top:2px;}
+    .week-body{background:var(--white);border:1.5px solid var(--purple-light);border-top:none;border-radius:0 0 12px 12px;padding:24px 26px;}
+
+    /* DAILY PLAN */
+    .section-label{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--purple-dark);margin-bottom:10px;margin-top:22px;}
+    .section-label:first-child{margin-top:0;}
+    .daily-table{width:100%;border-collapse:collapse;font-size:.86rem;}
+    .daily-table th{background:var(--purple-light);color:var(--purple-dark);font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;text-align:left;}
+    .daily-table td{padding:9px 12px;border-bottom:1px solid #f0ebfc;vertical-align:top;line-height:1.55;}
+    .daily-table tr:last-child td{border-bottom:none;}
+    .daily-table tr:nth-child(even) td{background:#faf7ff;}
+    .day-label{font-weight:800;color:var(--purple-dark);white-space:nowrap;}
+    .day-tag{display:inline-block;background:var(--purple-light);color:var(--purple-dark);border-radius:6px;padding:1px 7px;font-size:.72rem;font-weight:800;margin-bottom:3px;}
+
+    /* DISCUSSION QUESTIONS */
+    .questions-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+    .questions-list li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;line-height:1.6;}
+    .q-num{background:var(--purple-dark);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;margin-top:1px;}
+
+    /* WRITING PROMPTS */
+    .prompt-card{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+    .prompt-card .prompt-type{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rust);margin-bottom:4px;}
+    .prompt-card p{font-size:.88rem;line-height:1.65;color:var(--text);}
+
+    /* BOOK LIST */
+    .book-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px;margin:10px 0;}
+    .book-list li{font-size:.88rem;padding:8px 14px;background:var(--purple-light);border-radius:8px;border-left:3px solid var(--purple-dark);}
+    .book-list li strong{color:var(--purple-dark);}
+
+    /* GRAMMAR CALLOUT */
+    .grammar-callout{background:#f3f0fa;border:1.5px solid #c5b8e8;border-radius:10px;padding:14px 18px;margin:14px 0;}
+    .grammar-callout .gc-label{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--purple-dark);margin-bottom:6px;}
+    .grammar-callout ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:4px;}
+    .grammar-callout ul li{font-size:.86rem;padding-left:14px;position:relative;}
+    .grammar-callout ul li::before{content:'›';position:absolute;left:0;color:var(--purple-dark);font-weight:800;}
+
+    /* RUBRICS */
+    .rubric-wrap{margin-bottom:36px;}
+    .rubric-title{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:var(--purple-dark);margin-bottom:4px;}
+    .rubric-desc{font-size:.85rem;color:var(--text-light);margin-bottom:12px;}
+    .rubric-table{width:100%;border-collapse:collapse;font-size:.82rem;}
+    .rubric-table th{padding:9px 12px;text-align:left;font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
+    .rubric-table th:first-child{background:var(--purple-dark);color:#fff;width:22%;}
+    .rubric-table th.r-exc{background:#3d2766;color:#fff;width:19.5%;}
+    .rubric-table th.r-pro{background:#5A3E8F;color:#fff;width:19.5%;}
+    .rubric-table th.r-dev{background:#7B5DB8;color:#fff;width:19.5%;}
+    .rubric-table th.r-beg{background:#b3a0d9;color:var(--text);width:19.5%;}
+    .rubric-table td{padding:9px 12px;border:1px solid var(--purple-light);vertical-align:top;line-height:1.5;}
+    .rubric-table tr:nth-child(even) td:first-child{background:#f5f2fc;}
+    .rubric-table td:first-child{font-weight:700;color:var(--purple-dark);background:#faf7ff;}
+
+    /* FOOTER */
+    footer{background:var(--purple-dark);color:rgba(255,255,255,.7);text-align:center;padding:24px;font-size:.82rem;margin-top:48px;}
+    footer strong{color:var(--gold);}
+    footer a{color:var(--gold-light);text-decoration:none;}
+
+    @media(max-width:600px){
+      .hero h1{font-size:1.7rem;}
+      .week-body{padding:18px 16px;}
+      .daily-table{font-size:.78rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <a class="back-link" href="7th_grade_language_arts.html">← Back to Full Curriculum</a>
+  <div class="hero-meta">
+    <span class="hero-badge">Unit 3 of 6</span>
+    <span class="hero-badge">📅 Weeks 13–18</span>
+    <span class="hero-badge">🐉 Fantasy Novel Study</span>
+    <span class="hero-badge">RL.7.1 · RL.7.3 · RL.7.6 · W.7.1 · W.7.5 · SL.7.4 · L.7.1</span>
+  </div>
+  <h1>The Hero's <span>Journey</span></h1>
+  <p class="subtitle">Fantasy Novel Study &amp; Argumentative Writing</p>
+  <p class="tagline">"Every hero must choose. What shapes a character — and what do those choices reveal about our world?"</p>
+</div>
+
+<div class="week-nav">
+  <nav>
+    <a href="#overview">Overview</a><span class="sep">›</span>
+    <a href="#week13">Week 13</a><span class="sep">·</span>
+    <a href="#week14">Week 14</a><span class="sep">·</span>
+    <a href="#week15">Week 15</a><span class="sep">·</span>
+    <a href="#week16">Week 16</a><span class="sep">·</span>
+    <a href="#week17">Week 17</a><span class="sep">·</span>
+    <a href="#week18">Week 18</a><span class="sep">›</span>
+    <a href="#rubrics">Rubrics</a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <div id="overview" class="overview-strip">
+    <div class="ov-item"><div class="ov-label">Duration</div><div class="ov-val">6 weeks (Weeks 13–18)</div></div>
+    <div class="ov-item"><div class="ov-label">Core Standards</div><div class="ov-val">RL.7.1 · RL.7.3 · RL.7.6 · W.7.1 · W.7.5 · SL.7.4 · L.7.1</div></div>
+    <div class="ov-item"><div class="ov-label">Suggested Books</div><div class="ov-val">Wings of Fire, Call of the Wild, My Side of the Mountain, Julie of the Wolves, The Jungle Book</div></div>
+    <div class="ov-item"><div class="ov-label">Signature Project</div><div class="ov-val">🗺️ World Atlas (6–10 pages) + Argumentative Essay</div></div>
+    <div class="ov-item"><div class="ov-label">Grammar Focus</div><div class="ov-val">Adjective &amp; adverb clauses · misplaced &amp; dangling modifiers · active vs. passive voice · comma rules · complex sentence editing</div></div>
+  </div>
+
+  <!-- BOOK SELECTION NOTE -->
+  <div style="background:var(--white);border:1.5px solid var(--purple-light);border-radius:12px;padding:20px 26px;margin-bottom:40px;">
+    <div class="ov-label" style="color:var(--purple-dark);font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;">Choose Your Book</div>
+    <p style="font-size:.88rem;color:var(--text-light);margin-bottom:12px;">Select one novel for the full six weeks. All five options feature a protagonist navigating an unfamiliar or dangerous world — perfect for tracing the hero's journey and building your World Atlas.</p>
+    <ul class="book-list">
+      <li><strong>Wings of Fire: The Dragonet Prophecy</strong> — Tui T. Sutherland · Five young dragons are raised in secret to fulfill an ancient prophecy. (Epic fantasy, fast-paced, vivid world-building)</li>
+      <li><strong>The Call of the Wild</strong> — Jack London · Buck the sled dog is torn from his California home and thrust into the brutal Yukon wilderness. (Adventure, survival, transformation)</li>
+      <li><strong>My Side of the Mountain</strong> — Jean Craighead George · Sam Gribley runs away to the Catskill Mountains and builds a life alone in the wild. (Survival, nature, self-reliance)</li>
+      <li><strong>Julie of the Wolves</strong> — Jean Craighead George · A young Inuit girl survives on the Alaskan tundra with the help of a wolf pack. (Nature, identity, belonging)</li>
+      <li><strong>The Jungle Book</strong> — Rudyard Kipling · Mowgli is raised by wolves in the Indian jungle and must navigate two worlds — animal and human. (Identity, law, belonging)</li>
+    </ul>
+    <p style="font-size:.82rem;color:var(--text-light);margin-top:8px;font-style:italic;">Note: Warriors: Into the Wild, Redwall, and The One and Only Ivan have already been read — choose something new!</p>
+  </div>
+
+  <!-- GRAMMAR FOCUS OVERVIEW -->
+  <div class="grammar-callout" style="margin-bottom:40px;">
+    <div class="gc-label">Unit 3 Grammar Focus — L.7.1</div>
+    <ul>
+      <li>Adjective clauses (who, which, that) and adverb clauses (because, although, when, since, unless)</li>
+      <li>Misplaced modifiers: identifying and correcting phrases that modify the wrong word</li>
+      <li>Dangling modifiers: fixing participial phrases that have no logical subject</li>
+      <li>Active vs. passive voice: when each is appropriate, and how to convert between them</li>
+      <li>Comma rules: introductory clauses, nonrestrictive clauses, compound sentences</li>
+      <li>Complex sentence editing: combining and restructuring sentences for clarity and style</li>
+    </ul>
+  </div>
+
+  <!-- ─── WEEK 13 ───────────────────────────────────────────────── -->
+  <div id="week13" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">13</div>
+      <div class="week-header-text">
+        <h2>Story Structure</h2>
+        <div class="week-focus">Chapters 1–5 · Hero's journey intro · Map exposition &amp; inciting incident · Begin World Atlas</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + Journal</span> Read chapters 1–2 of your chosen novel. As you read, take notes on the exposition: Where does the story begin? Who is the protagonist, and what is their world like before anything goes wrong? In your reading journal, write 4–5 sentences capturing your first impressions of the protagonist and their world.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Hero's Journey</span> Introduce the Hero's Journey: review the stages (Ordinary World, Call to Adventure, Refusal, Mentor, Crossing the Threshold, Tests &amp; Allies, Ordeal, Reward, Road Back, Resurrection, Return with Elixir). Read chapters 3–4. In your journal, identify: What is the protagonist's "Ordinary World"? Where do you think the Call to Adventure will come from?</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Structure</span> Read chapter 5. The inciting incident should be clear by now — the moment that sets the plot in motion. Write a journal entry: Describe the inciting incident in 2–3 sentences. Why does it force the protagonist to act? What would happen if they simply did nothing?</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Grammar</span> Introduce adjective clauses (relative clauses). Find 3 sentences in your novel that contain an adjective clause introduced by who, which, or that. Copy them out, underline the adjective clause, and draw an arrow to the noun it modifies. Then write 4 original sentences about your book using adjective clauses.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project — World Atlas</span> Begin your World Atlas. On a large sheet of paper or sketchbook spread, sketch a rough map of your novel's world. Label key locations introduced in chapters 1–5 (your protagonist's home territory, any named places, the direction of the journey ahead). Use pencil first — you'll refine and paint later. Add a compass rose and a title for your map.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What is the protagonist's "Ordinary World" like at the start of the story? What makes it feel normal or safe to them?</li>
+        <li><span class="q-num">2</span>What is the inciting incident — the specific moment that sets the plot in motion? How does the protagonist respond to it?</li>
+        <li><span class="q-num">3</span>Every hero's journey begins with something the protagonist wants and something they need. Are those the same thing in your book, or different? Explain.</li>
+        <li><span class="q-num">4</span>Look at the world of your novel: Is it a real place, a fantasy world, or somewhere in between? What makes it feel vivid and real to you as a reader?</li>
+        <li><span class="q-num">5</span>If you were drawing a map of your story's world right now, what would you put at the center? What would be at the dangerous edges?</li>
+        <li><span class="q-num">6</span>Which of the five suggested books did you choose, and why? What drew you to it over the others?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Reading Journal — Exposition &amp; Inciting Incident</div>
+        <p>Write a journal entry (6–8 sentences) describing your novel's opening. Cover three things: (1) What the protagonist's ordinary world looks like before the story kicks in, (2) what the inciting incident is and how it disrupts that ordinary world, and (3) where you predict the hero's journey will take the protagonist. Use at least one direct quote from the text with a page number.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Creative — The Map Speaks</div>
+        <p>Imagine you are a cartographer who has just finished drawing the map of your novel's world. Write a short paragraph (5–7 sentences) in first person, describing what you drew and why you placed things where you did. What's the most dangerous territory on the map? What's the most beautiful? What location does your protagonist not know about yet?</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Grammar Practice — Adjective Clauses</div>
+        <p>Write 4 sentences about your novel's protagonist using adjective clauses. Each sentence should follow this structure: [Noun] + [adjective clause beginning with who, which, or that] + [rest of sentence]. Example: "Buck, who had lived a comfortable life in California, had no idea what the Yukon wilderness would demand of him." Underline your adjective clause in each sentence.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 14 ───────────────────────────────────────────────── -->
+  <div id="week14" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">14</div>
+      <div class="week-header-text">
+        <h2>Character Development</h2>
+        <div class="week-focus">Chapters 6–11 · Rising action · Character change journal · Misplaced modifiers · Atlas landscape details</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + Journal</span> Read chapters 6–7. Begin a Character Change Journal — a running log you'll add to each day this week. Today's entry: Describe the protagonist at this point in the story. How have they changed from chapter 1? What new challenges are they facing? Find one quote that shows who they are right now.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar — Misplaced Modifiers</span> Introduce misplaced modifiers: a modifier (word, phrase, or clause) placed too far from the word it modifies, creating confusion or unintended meaning. Work through 6 example sentences — identify the misplaced modifier and rewrite each sentence correctly. Then find 2 sentences in your novel where the author was careful to place modifiers correctly, and explain why the placement works.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Journal</span> Read chapters 8–9. Add to your Character Change Journal: Has the protagonist met anyone — a mentor, a friend, an enemy — who is shaping who they're becoming? Describe the relationship. What does this character challenge, teach, or threaten in your protagonist? Find a quote.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Reading + Journal</span> Read chapters 10–11. Final Character Change Journal entry for the week: The rising action is building — what obstacles has the protagonist faced so far? How are they handling pressure or failure? Choose the single most revealing moment of character so far (a decision, a reaction, a moment of courage or fear). Describe it in detail and explain what it shows about who the protagonist is becoming.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project — Atlas Landscape Details</span> Return to your World Atlas map. Now that you've read further, add landscape details: mountain ranges, rivers, forests, tundra, weather. Use colored pencil, watercolor, or ink to begin filling in terrain. Think like a naturalist — what would this land actually look like? Add 2–3 small landscape inset sketches around the edges of the map showing specific environments from the book.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>How has the protagonist changed between chapter 1 and chapter 11? What specific experiences have pushed that change?</li>
+        <li><span class="q-num">2</span>Find a moment in chapters 6–11 where the protagonist makes a difficult choice. What did they choose, and what does that choice reveal about their values?</li>
+        <li><span class="q-num">3</span>Does your protagonist have a mentor figure — someone who guides, challenges, or teaches them? How do they interact?</li>
+        <li><span class="q-num">4</span>The hero's journey often includes "Tests and Allies." What tests has your protagonist faced so far? Who has emerged as an ally?</li>
+        <li><span class="q-num">5</span>What is the protagonist most afraid of? Do they know what they're afraid of, or is it hidden even from themselves?</li>
+        <li><span class="q-num">6</span>Look at a sentence in your novel that has a modifier (a describing phrase). Where did the author place it? How would the sentence change — in meaning or in feel — if the modifier were moved?</li>
+        <li><span class="q-num">7</span>In your World Atlas, what landscape feels most important to your protagonist's journey? Why?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Character Change Journal — Week Summary (RL.7.3)</div>
+        <p>Using your daily Character Change Journal entries as material, write a polished paragraph (8–10 sentences) analyzing how your protagonist has developed in chapters 6–11. Your paragraph should: open with a clear claim about how the protagonist is changing, use at least two specific quoted moments from the text as evidence, and end by connecting this character development to where you predict the hero's journey is heading. This is analysis, not summary — tell us what the changes mean, not just what happened.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Grammar Practice — Fixing Misplaced Modifiers</div>
+        <p>Write a short paragraph (5–6 sentences) about the rising action in your novel. Then deliberately introduce one misplaced modifier somewhere in your paragraph. Trade with a parent, sibling, or writing partner: can they find and fix it? Discuss: How does a misplaced modifier change the meaning of a sentence? Why does precise placement matter in analytical and creative writing?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 15 ───────────────────────────────────────────────── -->
+  <div id="week15" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">15</div>
+      <div class="week-header-text">
+        <h2>Point of View</h2>
+        <div class="week-focus">Chapters 12–17 · Multiple character perspectives · POV analysis paragraph · Atlas character portraits</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + POV Study</span> Read chapters 12–13. Focus entirely on point of view: Who is telling this story? Is it first person (I), third person limited (he/she — one character's thoughts), or third person omniscient (multiple characters' inner lives)? Write a journal entry: Identify the POV, give two examples from the text that prove it, and explain how this POV shapes what we know and don't know about the story.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar — Dangling Modifiers</span> Introduce dangling modifiers: a participial phrase at the start of a sentence that has no logical grammatical subject ("Running through the forest, the trees blurred past her" — who is running?). Work through 6 examples: identify the dangling modifier and rewrite. Then find 2 passages in your novel where the author successfully uses a participial phrase opening — notice how they anchor it with a clear subject.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Perspective Shift</span> Read chapters 14–15. Choose a scene from chapters 12–15 told from your protagonist's point of view. In your journal, rewrite 1 key paragraph of that scene from the perspective of a different character present in the scene. What would they notice that the protagonist doesn't? What would they feel differently about?</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Reading + Analysis</span> Read chapters 16–17. Write your POV Analysis Paragraph: a formal analytical paragraph examining how the author's choice of point of view affects the reader's experience of the story. Use the RL.7.6 standard as your guide — how does the author's POV choice develop the narrator's or speaker's perspective? See writing prompt below for full instructions.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project — Character Portraits</span> Atlas work day: paint or ink two character portraits to add to your World Atlas. One should be your protagonist; the other should be a secondary character who significantly affects the protagonist's journey. For each portrait, write a 2–3 sentence caption that references a specific moment from the text showing why this character matters.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What point of view does your author use? How do you know? Give a specific example from the text.</li>
+        <li><span class="q-num">2</span>What does the POV allow us to know? And crucially — what does it keep from us? Is there a character whose thoughts you wish you could read?</li>
+        <li><span class="q-num">3</span>Find a scene in chapters 12–17 where two characters seem to disagree or misunderstand each other. How would the scene look different if it were told from the other character's perspective?</li>
+        <li><span class="q-num">4</span>Does the protagonist ever seem unreliable — do they misread a situation, misjudge someone, or believe something that turns out to be wrong? What does that tell us about their character?</li>
+        <li><span class="q-num">5</span>If the author had chosen a different POV (e.g., omniscient instead of first person), how would it change your experience of the story? What would be gained or lost?</li>
+        <li><span class="q-num">6</span>Look at your character portraits. What visual choices did you make — expression, posture, background — to capture each character? How do those choices reflect what the text tells us?</li>
+        <li><span class="q-num">7</span>In the Hero's Journey, your protagonist should be crossing into the "Ordeal" phase by now. What is the central ordeal shaping up to be?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">POV Analysis Paragraph (RL.7.6)</div>
+        <p>Write a formal analytical paragraph (10–12 sentences) examining how the author's choice of point of view affects the reader's understanding of the story. Your paragraph must include: (1) a clear topic sentence naming the POV and making a claim about its effect, (2) at least two quoted examples from the text showing the POV in action, (3) analysis of what each example reveals or conceals about the story world, and (4) a concluding sentence explaining how this POV choice serves the author's overall purpose. No personal opinion — this is literary analysis.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Creative — Perspective Shift Scene</div>
+        <p>Choose one scene from chapters 12–17 told from the protagonist's viewpoint. Rewrite that same scene (8–12 sentences) from the perspective of a different character present in the scene. Change only the narrator — keep the events identical. Then write 2–3 sentences reflecting on what changed: What new information came through? What did the original POV leave out or distort?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 16 ───────────────────────────────────────────────── -->
+  <div id="week16" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">16</div>
+      <div class="week-header-text">
+        <h2>Theme &amp; Argument</h2>
+        <div class="week-focus">Chapters 18–22 · Identify thematic statement · Pre-write argumentative essay · Atlas illustrated scene spreads</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + Theme</span> Read chapters 18–19. In your journal, write your best current statement of the novel's theme — not a one-word topic like "courage," but a complete sentence capturing the book's central idea (e.g., "True belonging requires sacrificing the comfort of what you've always known"). Support your statement with three specific moments from the text so far.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar — Active vs. Passive Voice</span> Introduce active voice (subject acts: "The wolf led Mowgli through the jungle") vs. passive voice (subject is acted upon: "Mowgli was led through the jungle by the wolf"). Find 3 passive voice sentences in your novel and rewrite them in active voice. Then discuss: Are there times in your novel when passive voice seems to be used deliberately? Why might an author choose it?</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Essay Pre-Writing</span> Read chapters 20–21. Choose your argumentative essay claim from the options below (or create your own with similar structure). In your journal, do a full pre-write: write your claim, then brainstorm at least 4 pieces of evidence from the novel that support it, and jot down 1–2 counterarguments you'll need to address.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Argument Planning</span> Read chapter 22. Organize your essay plan: claim, 2–3 body paragraphs (what evidence goes where?), counterargument placement, conclusion approach. Create an outline using complete sentences for your topic sentences. This outline is your road map — take it seriously.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project — Illustrated Scene Spreads</span> Atlas work day: create 1–2 illustrated scene spreads. Choose the most visually dramatic or emotionally important moment you've read so far. Paint or draw it across a full page or two-page spread in your atlas. Add a brief written caption (3–5 sentences) explaining the scene's significance in the hero's journey.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What is your best statement of this novel's theme right now? Read it aloud. Does it feel true to the whole book, or just part of it?</li>
+        <li><span class="q-num">2</span>The hero's journey is often said to be about inner transformation, not just outer adventure. What inner transformation is your protagonist undergoing?</li>
+        <li><span class="q-num">3</span>Consider this claim: "A hero's choices matter more than their circumstances." Does your novel support this, challenge it, or complicate it? Find evidence for your answer.</li>
+        <li><span class="q-num">4</span>What is the strongest piece of evidence you've found so far for your argumentative essay claim? Why is it strong?</li>
+        <li><span class="q-num">5</span>What is the most obvious counterargument to your essay claim? How will you address it without backing away from your position?</li>
+        <li><span class="q-num">6</span>Look at the scene you illustrated in your atlas. Why did you choose that moment? What makes it visually and narratively important?</li>
+        <li><span class="q-num">7</span>How does the theme of your book connect to something in the real world — something in nature, in society, or in your own experience?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Argumentative Essay — Choose Your Claim (W.7.1)</div>
+        <p>Choose one of the following claims for your argumentative essay, or craft your own with similar specificity. Your claim must be debatable (not a simple fact) and supportable with evidence from your novel.</p>
+        <p style="margin-top:8px;"><strong>Option A:</strong> "In [novel title], the protagonist's greatest obstacle is not the external world but their own fear and doubt — and overcoming it is what truly defines them as a hero."</p>
+        <p style="margin-top:6px;"><strong>Option B:</strong> "In [novel title], the natural world is not just a setting but a teacher — the protagonist learns more from nature than from any human or human-made rule."</p>
+        <p style="margin-top:6px;"><strong>Option C:</strong> "In [novel title], belonging to a community and following one's own instincts are in direct conflict — and the author suggests that [one must win / both can coexist]. Argue for a specific position."</p>
+        <p style="margin-top:8px;">This week: Write your claim in one polished sentence, then write a full pre-write (brainstorm list of evidence + possible counterarguments). Do not draft sentences yet — just collect raw material.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Thematic Statement + Evidence Log</div>
+        <p>Write a 2-paragraph journal entry. Paragraph 1: State your best reading of the novel's theme in one complete sentence, then explain it in 3–4 sentences. Paragraph 2: List three specific scenes, moments, or quotes from chapters 1–22 that you will use as evidence in your essay. For each, write the page number and 1–2 sentences explaining why this evidence matters for your argument.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 17 ───────────────────────────────────────────────── -->
+  <div id="week17" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">17</div>
+      <div class="week-header-text">
+        <h2>Drafting the Argument</h2>
+        <div class="week-focus">Reread key chapters for evidence · Draft argumentative essay · Complete World Atlas</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Targeted Rereading</span> Go back and reread 3–4 key passages you identified in your evidence log last week. This time, read like a writer: mark specific lines you'll quote, note the context around each, and look for any details you missed the first time. Add any new evidence to your outline. Then draft your introductory paragraph: open with a hook (a vivid quote from the novel or a striking question), provide 2–3 sentences of context, and end with your claim.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Draft — Body Paragraph 1</span> Write your first body paragraph. Structure: topic sentence (sub-claim supporting your main claim) → introduce evidence → quote directly from the text → explain how the quote supports your claim → connect back to your thesis. Aim for 8–10 sentences. Grammar focus: check for passive voice — convert any unnecessary passive constructions to active voice.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Draft — Body Paragraphs 2 &amp; 3</span> Write body paragraphs 2 and 3. One paragraph should address your counterargument: acknowledge a valid opposing view, then refute it with evidence. Keep momentum — write without stopping to perfect each sentence. You'll revise next week. End the day by drafting your conclusion: restate (don't repeat) your claim, synthesize your main points, and close with a final thought about why this argument matters beyond the novel.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Grammar — Comma Rules</span> Comma mini-lesson focused on three rules that most affect analytical writing: (1) comma after introductory adverb clause ("Although the wolf pack accepted him, Mowgli always felt torn"), (2) commas around nonrestrictive adjective clauses ("Buck, who had once been a pampered pet, discovered a ferocity he never knew he had"), (3) comma before coordinating conjunction in compound sentence. Find 2 examples of each rule in your novel.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project — Complete World Atlas</span> Final atlas work day. Your atlas should contain: (1) a detailed landscape map with labeled locations, (2) terrain/environment details and inset sketches, (3) two character portraits with captions, (4) one or two illustrated scene spreads with written descriptions. Today: add any finishing touches — borders, decorative elements, a title page or cover spread. Write brief descriptions (2–4 sentences each) for any atlas pages that still need them. The atlas should be 6–10 pages total.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>Read your introductory paragraph aloud. Does your hook grab attention? Does your claim feel specific and arguable — or does it sound like a vague observation anyone would agree with?</li>
+        <li><span class="q-num">2</span>What is your strongest piece of evidence? Read the quote aloud, then explain in conversation why it supports your claim. Practice saying it out loud before you write it down.</li>
+        <li><span class="q-num">3</span>What is your counterargument paragraph going to say? What is the most reasonable version of the opposing view — not a strawman, but a real and fair objection?</li>
+        <li><span class="q-num">4</span>How does your conclusion go beyond just repeating what you already said? What final thought will you leave the reader with?</li>
+        <li><span class="q-num">5</span>Look at your essay draft so far: Are there any sentences in passive voice that should be active? Read them aloud — does the passive voice make them feel weaker or more distant?</li>
+        <li><span class="q-num">6</span>As you complete your World Atlas, what page are you most proud of? What was the hardest to create?</li>
+        <li><span class="q-num">7</span>Now that you've read most or all of the novel, has your understanding of the theme changed from what you wrote in Week 16? How?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Essay Draft — Introduction + Body Paragraphs (W.7.1, W.7.5)</div>
+        <p>Write a complete first draft of your argumentative essay. Required structure: Introduction (hook + context + claim) · Body Paragraph 1 (first supporting argument + evidence + analysis) · Body Paragraph 2 (second supporting argument + evidence + analysis) · Body Paragraph 3 (counterargument + refutation with evidence) · Conclusion (synthesis + final thought). Length: approximately 400–600 words. Do not worry about perfection — write a full draft from beginning to end. You will revise in Week 18.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Atlas Written Descriptions</div>
+        <p>For each page or spread in your World Atlas, write a brief description (2–4 sentences). Each description should: name what is shown, connect it to a specific event or place in the novel, and explain why it is significant to the hero's journey. Think of these as museum labels — concise, informative, and tied to the text.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 18 ───────────────────────────────────────────────── -->
+  <div id="week18" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">18</div>
+      <div class="week-header-text">
+        <h2>Revise &amp; Present</h2>
+        <div class="week-focus">Peer review · Revise and finalize argumentative essay · Present World Atlas · Read best paragraph aloud</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Peer / Parent Review</span> Share your essay draft with a parent, sibling, or writing partner. Ask them to use the revision checklist below: Is the claim clear and arguable? Does each body paragraph have a quote and real analysis? Does the counterargument feel fair and well-handled? Are there any unclear sentences or grammar issues? Take notes on their feedback in your journal. Do not revise yet — just listen and absorb.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Revision — Content &amp; Structure</span> Revise your essay for content and structure. Focus on: Does your claim actually say something? Is your evidence the best you found — or did you settle? Does your analysis go deep enough, or do you just summarize? Is your counterargument paragraph honest and well-argued? Rewrite any weak paragraphs from scratch rather than just patching them.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Revision — Grammar &amp; Style (W.7.5)</span> Line-edit your revised draft. Check: adjective and adverb clauses for correct comma use · no misplaced or dangling modifiers · active voice used consistently (passive only where intentional) · sentence variety (not all short, not all long) · smooth integration of quotes (not just dropped in). Read every sentence aloud — your ear will catch what your eye misses.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Finalize + Atlas Polish</span> Write or type your final clean copy of the essay. Proofread one more time. Set it aside. Then do a final pass on your World Atlas: make sure all captions are written, all pages are neat, and the atlas tells the story of your novel's world coherently from beginning to end. Prepare how you'll present it: What will you say about each page? What's your opening line?</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Presentation Day (SL.7.4)</span> Present your World Atlas and read your best essay paragraph aloud. Walk your audience through the atlas page by page, explaining the locations, landscapes, and characters. Then read aloud your strongest body paragraph (or the full essay if you prefer). Discuss: What did you learn about the hero's journey? What was hardest to argue? What would you do differently?</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">✏️ Revision Checklist</div>
+      <div class="grammar-callout">
+        <div class="gc-label">Essay Revision Checklist (W.7.1, W.7.5, L.7.1)</div>
+        <ul>
+          <li>Claim is a complete, specific, arguable sentence — not a vague observation</li>
+          <li>Each body paragraph opens with a topic sentence that directly supports the claim</li>
+          <li>Every piece of evidence is introduced, quoted, and explained — no "quote drops"</li>
+          <li>Counterargument paragraph presents a fair opposing view and refutes it with evidence</li>
+          <li>Conclusion synthesizes rather than repeats; ends with a meaningful final thought</li>
+          <li>Active voice used consistently; passive voice only where deliberate</li>
+          <li>No misplaced or dangling modifiers</li>
+          <li>Commas correct after introductory clauses and around nonrestrictive clauses</li>
+          <li>Adjective and adverb clauses used correctly at least once each</li>
+          <li>Sentences vary in length and structure; no monotonous rhythm</li>
+        </ul>
+      </div>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What is the most significant revision you made to your essay? Why did you make it — what was weak, and what did you do to fix it?</li>
+        <li><span class="q-num">2</span>Read your claim sentence aloud. Is it the sharpest, most specific version of your argument? Could it be even more precise?</li>
+        <li><span class="q-num">3</span>Looking back at all six weeks: At what point in the hero's journey does your protagonist change the most? What single event is the real turning point?</li>
+        <li><span class="q-num">4</span>When you present your World Atlas, what page do you most want people to spend time on? What does that page capture about the novel?</li>
+        <li><span class="q-num">5</span>What did you find hardest about writing an argumentative essay — making a claim, finding evidence, or doing the analysis? What will you do differently next time?</li>
+        <li><span class="q-num">6</span>How did the hero's journey framework change the way you read this novel? Did it help you see patterns you might have missed?</li>
+        <li><span class="q-num">7</span>If you were going to write your own hero's journey story set in the natural world, what would it be about? What world would you map?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Final Argumentative Essay (W.7.1, W.7.5)</div>
+        <p>Produce your polished final copy of the argumentative essay. Minimum requirements: introduction with a clear, specific claim; two supporting body paragraphs with textual evidence and analysis; one counterargument paragraph with refutation; conclusion that synthesizes and closes with purpose. Length: 400–600 words. Include in-text citations for direct quotes (author's last name, page number). Grammar requirements: at least one adjective clause, one adverb clause, and no misplaced or dangling modifiers in the final draft.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Unit Reflection</div>
+        <p>Write a final journal reflection (1 page). Answer these four questions: (1) What did you discover about the hero's journey — in your novel and in storytelling generally? (2) What was the most challenging part of the argumentative essay, and what did you learn from it? (3) What page of your World Atlas are you most proud of, and why? (4) If you could follow this protagonist on another journey, where would you want the story to go next?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── RUBRICS ───────────────────────────────────────────────── -->
+  <section id="rubrics" class="page-section">
+    <h2 style="font-family:'Lora',serif;font-size:1.75rem;font-weight:700;color:var(--purple-dark);border-bottom:2px solid #7B5DB8;padding-bottom:8px;margin-bottom:28px;">Assessment Rubrics</h2>
+
+    <!-- RUBRIC 1: POV Analysis Paragraph -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Point of View Analysis Paragraph (Week 15)</div>
+      <div class="rubric-desc">Standard: RL.7.6 — Analyzes how the author's POV choice develops perspective and shapes the reader's experience</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Topic Sentence &amp; Claim</td><td>Names the POV precisely and makes a specific, insightful claim about how it shapes the reader's experience of the story</td><td>Names the POV and makes a clear claim about its effect on the story</td><td>Topic sentence is present but vague; claim is too broad or too obvious</td><td>No clear claim; reader cannot tell what the paragraph is arguing</td></tr>
+          <tr><td>Textual Evidence</td><td>2+ well-chosen quotes that specifically illustrate the POV at work; smoothly introduced with page numbers</td><td>2 quotes present with page numbers; some integration into the analysis</td><td>1 quote present, or quotes are present but dropped in without context</td><td>No direct evidence from the text; claims are unsupported</td></tr>
+          <tr><td>Analysis of Effect</td><td>Explains precisely what each piece of evidence reveals or conceals; connects POV to the author's larger purpose; goes beyond the obvious</td><td>Explains how the evidence supports the claim about POV; some depth of analysis</td><td>Evidence is described but not analyzed; paragraph summarizes rather than analyzes</td><td>No analysis; paragraph only identifies the POV without examining its effect</td></tr>
+          <tr><td>Conclusion</td><td>Closes with a nuanced statement about how POV serves the author's purpose; connects to the overall meaning of the work</td><td>Concluding sentence restates the claim meaningfully</td><td>Conclusion is weak or merely repeats the topic sentence word for word</td><td>No concluding sentence; paragraph just stops</td></tr>
+          <tr><td>Conventions &amp; Style</td><td>Formal analytical voice; varied sentence structure; no errors; adjective or adverb clause used effectively at least once</td><td>Formal voice maintained; minor errors that don't disrupt meaning</td><td>Some informal language or errors that occasionally distract</td><td>Frequent errors or very informal language that undermines analytical credibility</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 2: Argumentative Essay -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Argumentative Essay (Weeks 16–18)</div>
+      <div class="rubric-desc">Standards: W.7.1 · W.7.5 — Argues a specific claim about the novel with textual evidence, counterargument, and polished conventions</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Claim</td><td>Claim is specific, arguable, and sophisticated — it takes a clear position that a reasonable person could disagree with; placed clearly at the end of the introduction</td><td>Claim is present, arguable, and clearly stated; specific enough to guide the essay</td><td>Claim is too broad, too obvious, or not truly arguable; or it is buried and hard to find</td><td>No clear claim; the essay does not have a governing argument</td></tr>
+          <tr><td>Evidence</td><td>3+ pieces of textual evidence (direct quotes with page numbers); each is introduced in context and is the most relevant possible choice for the argument</td><td>2–3 pieces of textual evidence with page numbers; mostly well-chosen and introduced</td><td>1–2 pieces of evidence; quotes may be dropped in without context, or evidence is only paraphrase</td><td>No direct evidence from the text, or evidence does not relate to the claim</td></tr>
+          <tr><td>Analysis</td><td>Analysis is the strongest part: explains precisely how each piece of evidence proves the claim; makes connections across paragraphs; avoids simply restating the evidence</td><td>Analysis is present for each piece of evidence; explains the connection to the claim</td><td>Some analysis present, but often the essay just summarizes the plot rather than analyzing it</td><td>No analysis; essay is mostly summary or description with evidence attached</td></tr>
+          <tr><td>Counterargument</td><td>Presents the strongest, most reasonable version of the opposing view; refutes it directly with evidence; paragraph actually strengthens the overall argument</td><td>Counterargument is present and fair; refutation uses evidence</td><td>Counterargument is present but weak or one-sided; refutation is vague or lacks evidence</td><td>No counterargument; essay only presents one side</td></tr>
+          <tr><td>Conclusion</td><td>Synthesizes (does not merely repeat) the argument; closes with a meaningful final thought about why this argument matters — connects to theme, the real world, or the reader's own experience</td><td>Conclusion restates the claim and main points; offers a closing thought</td><td>Conclusion only repeats the introduction; no new synthesis or closing thought</td><td>No conclusion, or conclusion is one sentence that adds nothing</td></tr>
+          <tr><td>Conventions (L.7.1)</td><td>No significant errors; active voice used consistently; no misplaced or dangling modifiers; commas used correctly throughout; sentences vary in structure; adjective and adverb clauses used correctly at least once each</td><td>Minor errors that don't disrupt meaning; active voice mostly used; modifier placement mostly correct</td><td>Several errors in modifier placement, comma use, or voice that occasionally distract; sentence structure monotonous</td><td>Frequent errors throughout that undermine credibility; passive voice overused; modifiers frequently misplaced</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 3: World Atlas -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">World Atlas Project (Weeks 13–18)</div>
+      <div class="rubric-desc">Standards: RL.7.3 + Art Integration — Hand-drawn atlas (6–10 pages) including maps, landscapes, character portraits, illustrated scenes, and written descriptions; presented alongside argumentative essay</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Textual Accuracy (RL.7.3)</td><td>All locations, landscapes, and characters accurately reflect specific details from the text; 5+ direct textual references can be pointed to across the atlas; no invented elements contradict the novel</td><td>Most elements accurately reflect the text; 3–4 textual references are clearly present; minor inconsistencies</td><td>Some elements are accurate but significant details are invented without basis in the text; only 1–2 clear textual references</td><td>Atlas appears disconnected from the text; characters, settings, or events are unrecognizable or inaccurate</td></tr>
+          <tr><td>Completeness</td><td>Atlas contains all required elements: world map, landscape/terrain detail, character portraits (2), illustrated scene spread(s), and written descriptions (2–4 sentences each) for all pages; 6–10 pages total</td><td>Atlas contains most required elements; 5–9 pages; 1 element may be brief but present</td><td>Atlas is missing 1–2 required elements; fewer than 5 pages; some pages lack written descriptions</td><td>Atlas is significantly incomplete; fewer than 4 pages; multiple required elements missing</td></tr>
+          <tr><td>Craft &amp; Art Quality</td><td>Each page shows clear effort, skill, and care; media choices (watercolor, ink, colored pencil) are used intentionally; composition is thoughtful; the atlas feels like a real artifact from the story's world</td><td>Each page is completed with care; good effort is evident; compositions are readable and engaging</td><td>Some pages are rushed or underdeveloped; art is present but lacks detail or care; compositions are unclear</td><td>Minimal effort overall; many pages are incomplete sketches or lacking visual development</td></tr>
+          <tr><td>Written Descriptions</td><td>Descriptions are concise, specific, and deeply connected to the text; each ties the illustrated page to a specific event in the novel and to the hero's journey; writing is polished and error-free</td><td>Descriptions are clear and connected to the text; most reference specific events; mostly error-free</td><td>Descriptions are vague or generic; they describe what is shown without connecting to the text or the hero's journey</td><td>Descriptions are missing for most pages, or are so brief as to be meaningless</td></tr>
+          <tr><td>Oral Presentation (SL.7.4)</td><td>Presents atlas clearly and confidently; explains the significance of each page with specific reference to the text; speaks in complete sentences; engages the audience; reads essay paragraph fluently with expression</td><td>Presents each page clearly; explains connections to the novel; reads essay paragraph aloud</td><td>Presentation is brief or unclear; some pages are skipped over or described vaguely; essay paragraph is read with minimal expression</td><td>Presentation is very brief, unprepared, or difficult to follow; essay paragraph is not read aloud or is read inaudibly</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+</div>
+
+<footer>
+  <p><strong>Unit 3: The Hero's Journey</strong> · 7th Grade Language Arts · <a href="7th_grade_language_arts.html">← Back to Full Curriculum</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 5: Speak Up for the Wild — 7th Grade Language Arts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+    :root {
+      --green-dark:#2D6A4F; --green-mid:#52B788; --green-light:#D8F3DC;
+      --gold:#E9C46A; --gold-light:#FFF8E1;
+      --rust:#C65D2A; --rust-light:#FBE9E0;
+      --purple-dark:#5A3E8F; --purple-light:#EDE7F6;
+      --cream:#FEFAE0; --text:#1A1A2E; --text-light:#4A4A6A;
+      --border:#D0D0E0; --white:#FFFFFF;
+      --unit-color:#3D7A2A; --unit-accent:#E9C46A;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;font-size:15px;}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,#3D7A2A 0%,#264d19 50%,#162d0f 100%);color:#fff;padding:48px 40px 40px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(233,196,106,.15),transparent 60%);pointer-events:none;}
+    .back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.04em;margin-bottom:18px;transition:color .15s;}
+    .back-link:hover{color:var(--gold);}
+    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+    .hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:3px 12px;font-size:.75rem;font-weight:700;color:#fff;}
+    .hero h1{font-family:'Lora',serif;font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:8px;}
+    .hero h1 span{color:var(--gold);}
+    .hero .tagline{font-family:'Lora',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.82);max-width:640px;}
+
+    /* NAV */
+    .week-nav{background:var(--green-dark);padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18);}
+    .week-nav nav{max-width:1060px;margin:0 auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+    .week-nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.77rem;font-weight:700;padding:3px 10px;border-radius:10px;transition:background .15s,color .15s;letter-spacing:.02em;}
+    .week-nav a:hover,.week-nav a.active{background:rgba(255,255,255,.18);color:var(--gold);}
+    .week-nav .sep{color:rgba(255,255,255,.3);font-size:.75rem;}
+
+    /* LAYOUT */
+    .container{max-width:1060px;margin:0 auto;padding:0 24px;}
+    .page-section{padding:44px 0;}
+
+    /* OVERVIEW STRIP */
+    .overview-strip{background:var(--white);border:1.5px solid var(--green-light);border-radius:12px;padding:22px 28px;margin:32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+    .ov-item .ov-label{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green-dark);margin-bottom:3px;}
+    .ov-item .ov-val{font-size:.9rem;font-weight:600;color:var(--text);}
+
+    /* WEEK SECTIONS */
+    .week-section{margin-bottom:52px;}
+    .week-header{background:linear-gradient(135deg,#3D7A2A,#264d19);border-radius:12px 12px 0 0;padding:18px 26px;display:flex;align-items:center;gap:16px;}
+    .week-num-badge{font-family:'Lora',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;}
+    .week-header-text h2{font-family:'Lora',serif;font-size:1.3rem;font-weight:700;color:#fff;}
+    .week-header-text .week-focus{font-size:.82rem;color:rgba(255,255,255,.78);margin-top:2px;}
+    .week-body{background:var(--white);border:1.5px solid var(--green-light);border-top:none;border-radius:0 0 12px 12px;padding:24px 26px;}
+
+    /* DAILY PLAN */
+    .section-label{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--green-dark);margin-bottom:10px;margin-top:22px;}
+    .section-label:first-child{margin-top:0;}
+    .daily-table{width:100%;border-collapse:collapse;font-size:.86rem;}
+    .daily-table th{background:var(--green-light);color:var(--green-dark);font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;text-align:left;}
+    .daily-table td{padding:9px 12px;border-bottom:1px solid #eef7f2;vertical-align:top;line-height:1.55;}
+    .daily-table tr:last-child td{border-bottom:none;}
+    .daily-table tr:nth-child(even) td{background:#f8fdf9;}
+    .day-label{font-weight:800;color:var(--green-dark);white-space:nowrap;}
+    .day-tag{display:inline-block;background:var(--green-light);color:var(--green-dark);border-radius:6px;padding:1px 7px;font-size:.72rem;font-weight:800;margin-bottom:3px;}
+
+    /* DISCUSSION QUESTIONS */
+    .questions-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+    .questions-list li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;line-height:1.6;}
+    .q-num{background:var(--green-dark);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;margin-top:1px;}
+
+    /* WRITING PROMPTS */
+    .prompt-card{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+    .prompt-card .prompt-type{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rust);margin-bottom:4px;}
+    .prompt-card p{font-size:.88rem;line-height:1.65;color:var(--text);}
+
+    /* RUBRICS */
+    .rubric-wrap{margin-bottom:36px;}
+    .rubric-title{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:var(--green-dark);margin-bottom:4px;}
+    .rubric-desc{font-size:.85rem;color:var(--text-light);margin-bottom:12px;}
+    .rubric-table{width:100%;border-collapse:collapse;font-size:.82rem;}
+    .rubric-table th{padding:9px 12px;text-align:left;font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
+    .rubric-table th:first-child{background:var(--green-dark);color:#fff;width:22%;}
+    .rubric-table th.r-exc{background:#1a6b3a;color:#fff;width:19.5%;}
+    .rubric-table th.r-pro{background:#2D6A4F;color:#fff;width:19.5%;}
+    .rubric-table th.r-dev{background:#52B788;color:#fff;width:19.5%;}
+    .rubric-table th.r-beg{background:#95d5b2;color:var(--text);width:19.5%;}
+    .rubric-table td{padding:9px 12px;border:1px solid var(--green-light);vertical-align:top;line-height:1.5;}
+    .rubric-table tr:nth-child(even) td:first-child{background:#f0f9f4;}
+    .rubric-table td:first-child{font-weight:700;color:var(--green-dark);background:#f8fdf9;}
+
+    /* FOOTER */
+    footer{background:var(--green-dark);color:rgba(255,255,255,.7);text-align:center;padding:24px;font-size:.82rem;margin-top:48px;}
+    footer strong{color:var(--gold);}
+    footer a{color:var(--gold-light);text-decoration:none;}
+
+    @media(max-width:600px){
+      .hero h1{font-size:1.7rem;}
+      .week-body{padding:18px 16px;}
+      .daily-table{font-size:.78rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <a class="back-link" href="7th_grade_language_arts.html">← Back to Full Curriculum</a>
+  <div class="hero-meta">
+    <span class="hero-badge">Unit 5 of 6</span>
+    <span class="hero-badge">Weeks 25–30</span>
+    <span class="hero-badge">Oregon Wildlife &amp; Advocacy</span>
+    <span class="hero-badge">RI.7.1 · RI.7.8 · RI.7.9 · W.7.1 · W.7.7 · SL.7.4</span>
+  </div>
+  <h1>Speak Up for <span>the Wild</span></h1>
+  <p class="tagline">"The animals can't speak for themselves. Who will? Research is how you find your argument. Your voice is how you use it."</p>
+</div>
+
+<div class="week-nav">
+  <nav>
+    <a href="#overview">Overview</a><span class="sep">›</span>
+    <a href="#week25">Week 25</a><span class="sep">·</span>
+    <a href="#week26">Week 26</a><span class="sep">·</span>
+    <a href="#week27">Week 27</a><span class="sep">·</span>
+    <a href="#week28">Week 28</a><span class="sep">·</span>
+    <a href="#week29">Week 29</a><span class="sep">·</span>
+    <a href="#week30">Week 30</a><span class="sep">›</span>
+    <a href="#rubrics">Rubrics</a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <div id="overview" class="overview-strip">
+    <div class="ov-item"><div class="ov-label">Duration</div><div class="ov-val">6 weeks (Weeks 25–30)</div></div>
+    <div class="ov-item"><div class="ov-label">Core Standards</div><div class="ov-val">RI.7.1 · RI.7.8 · RI.7.9 · W.7.1 · W.7.7 · W.7.8 · W.7.9 · SL.7.4 · SL.7.5 · L.7.3</div></div>
+    <div class="ov-item"><div class="ov-label">Suggested Texts</div><div class="ov-val">Oregon Wild, NWF articles; Braiding Sweetgrass excerpts; species fact sheets; opinion &amp; counterargument pieces</div></div>
+    <div class="ov-item"><div class="ov-label">Signature Project</div><div class="ov-val">Advocacy Poster (original art) + 3–5 min. spoken presentation</div></div>
+    <div class="ov-item"><div class="ov-label">Grammar Focus</div><div class="ov-val">Formal vs. informal register · domain-specific vocabulary · hedging language · transitions in argument · sentence-level precision</div></div>
+    <div class="ov-item"><div class="ov-label">Oregon Connection</div><div class="ov-val">Choose a real Oregon issue: Pacific salmon, wolves, old-growth logging, spotted owls, high desert, osprey, or another cause you care about</div></div>
+  </div>
+
+  <!-- ─── WEEK 25 ───────────────────────────────────────────────── -->
+  <div id="week25" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">25</div>
+      <div class="week-header-text">
+        <h2>Choose Your Cause</h2>
+        <div class="week-focus">Browse current issues · Choice reflection · Formal vs. informal register · Begin research folder</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + Exploration</span> Browse 3–4 current articles from Oregon Wild, the National Wildlife Federation, and the Oregon Department of Fish &amp; Wildlife (ODFW). Choose topics that are genuinely active issues: Pacific salmon and dam removal, wolves returning to eastern Oregon, old-growth logging and spotted owls, high desert ecosystems, or another issue that interests you. Read each article for 10–15 minutes and take quick notes: What's the issue? Who's affected? What's at stake for wildlife?</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Writing — Choice Reflection</span> Write a choice reflection (1–2 paragraphs): Which of the issues you read about pulled at you the most, and why? What do you already know or believe about it? What questions do you have? This is informal writing — your real voice, your real reaction. No need for formal essay structure today. End with a working title for your cause: "I am going to advocate for ___________."</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Grammar — Register</span> Introduction to formal vs. informal register. Compare two short passages on the same wildlife topic: one from a casual blog post, one from a government report or scientific summary. List 5–6 differences in word choice, sentence structure, and tone. Then practice: rewrite two informal sentences in formal register and two formal sentences in informal register. Discuss: When would each be appropriate in advocacy writing?</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Research Setup</span> Set up your research folder (physical or digital). Create sections: Sources, Notes &amp; Quotes, Counterarguments, Vocabulary, Poster Sketches. Return to your chosen issue and find one strong source — a current article, a fact sheet, or an ODFW species summary. Read it carefully, take notes in your own words, and copy down 2–3 direct quotes you might use later. Label everything with the source title, author (if listed), organization, and date.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Discussion + Domain Vocabulary</span> Introduce domain-specific vocabulary for your chosen issue. Look up and define 5–6 key terms you encountered this week (for example: "threatened species," "ESA listing," "riparian habitat," "old-growth forest," "apex predator," "keystone species"). Write each term in your own words and note where you first encountered it. Then discuss: What makes a wildlife issue feel urgent? What would have to change for someone who doesn't care to start caring?</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>Of the Oregon wildlife issues you browsed, which one affected you most emotionally? What specifically about it got your attention?</li>
+        <li><span class="q-num">2</span>Why do you think some environmental issues get a lot of public attention while others are nearly invisible? What makes a cause feel newsworthy?</li>
+        <li><span class="q-num">3</span>What's the difference between caring about an animal because it's beautiful or fascinating, and advocating for it because it's ecologically important? Does it matter which reason you have?</li>
+        <li><span class="q-num">4</span>When you read a formal report versus a personal blog post about the same wildlife issue, how does your reaction change? Which one persuades you more, and why?</li>
+        <li><span class="q-num">5</span>Robin Wall Kimmerer writes in Braiding Sweetgrass that plants and animals have their own gifts and purposes — they are not just resources for humans. How does that idea change the way you think about an endangered species or a threatened habitat?</li>
+        <li><span class="q-num">6</span>What do you think is the single biggest threat to Oregon's wildlife right now? What makes you say that?</li>
+        <li><span class="q-num">7</span>If you were designing an advocacy campaign to reach people your age about a wildlife issue, what would you focus on? What would make them actually want to read it or watch it?</li>
+      </ul>
+
+      <div class="section-label">Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Choice Reflection (Informal — Personal Voice)</div>
+        <p>Write 1–2 paragraphs explaining the Oregon wildlife issue you've chosen to advocate for. This is informal — write in your own real voice, not a school essay voice. Tell why this issue matters to you personally: Is it a specific animal? A place you've been or want to go? Something that feels deeply unfair? What do you already know, and what do you most want to find out? End with a one-sentence statement of your cause: "I am going to advocate for ___________."</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Register Practice (Grammar — L.7.3)</div>
+        <p>Find one passage (3–5 sentences) from a casual online source about your chosen issue, and one passage from a formal source (government report, scientific article, or NGO fact sheet) on the same topic. Write them side by side in your journal. Then: (1) list three specific differences in word choice or sentence structure, (2) rewrite one informal sentence in formal register, and (3) write a sentence explaining which register you plan to use in your advocacy essay and why.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Domain Vocabulary Entry</div>
+        <p>Choose 5 domain-specific terms you will need for your issue (examples: "ESA listing," "riparian zone," "trophic cascade," "old-growth stand," "anadromous fish"). For each term: write the word, its definition in your own words, the source where you found it, and one sentence using it correctly in context. Keep this list — you'll need it when you write your essay in Weeks 28–29.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 26 ───────────────────────────────────────────────── -->
+  <div id="week26" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">26</div>
+      <div class="week-header-text">
+        <h2>Evaluating Sources</h2>
+        <div class="week-focus">RI.7.8 source analysis · Claim/evidence/credibility · Sketch poster concept</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + Analysis</span> Find and read your first strong source on your chosen topic — a current article from Oregon Wild, NWF, or ODFW, or a news article from a reputable outlet. As you read, annotate it: mark the central claim, circle key evidence, and note anything that seems like an opinion presented as fact. After reading, complete Source Evaluation Notes (see prompt below) for this source.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">RI.7.8 — Evaluating Claims</span> Review the RI.7.8 standard: evaluating whether the reasoning is sound and the evidence is sufficient. Return to your first source. Identify: (1) the central claim, (2) at least two pieces of evidence used to support it, (3) any loaded or emotionally charged language, and (4) any gaps — things the author doesn't address. Write your evaluation in your research folder.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Analysis — Source 2</span> Find and read a second source on your topic. This one should be different in type from the first: if Source 1 was a news article, try a species fact sheet, a primary source (scientific summary or agency report), or a longer opinion piece. Complete Source Evaluation Notes for Source 2. Then compare the two sources: Do they agree? Do they emphasize different aspects of the issue? Which feels more credible and why?</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Grammar — Hedging Language</span> Introduction to hedging language: words and phrases that show uncertainty or degree without overstating ("research suggests," "evidence indicates," "it is likely that," "one possibility is," "scientists believe"). Find 3–4 hedging phrases in one of your sources. Then practice: take 3 strong absolute statements about your issue and rewrite them using appropriate hedging language. Discuss: Why would a scientist or advocate use hedging? Does it make an argument weaker or stronger?</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Art — Poster Concept Sketch</span> Begin your advocacy poster with a concept sketch. Your poster will eventually be large-format painted or mixed-media, featuring original artwork (animal illustrations, habitat imagery) plus your key argument and a call to action. Today: make 2–3 rough thumbnail sketches — different layouts, different focal images. Which animal or scene best represents your cause? What colors feel right? Jot notes on what text elements you'll need (slogan, key fact, call to action).</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What is the difference between a fact and a claim? Find one example of each in one of your sources and read it aloud. How can you tell which is which?</li>
+        <li><span class="q-num">2</span>What makes a source credible? List the criteria you used to evaluate your two sources this week. Which criteria matter most to you?</li>
+        <li><span class="q-num">3</span>Did either of your sources use emotional language to make a point — words designed to make you feel a certain way? Is that manipulative, or is it a valid persuasion technique?</li>
+        <li><span class="q-num">4</span>What did your two sources agree on? Where did they differ? What might explain the difference?</li>
+        <li><span class="q-num">5</span>Why might a scientist or wildlife advocate use hedging language ("research suggests…") instead of just stating "this is true"? What does that tell us about how knowledge works?</li>
+        <li><span class="q-num">6</span>Think about your poster concept sketch. What image or symbol would best represent your cause to someone who knows nothing about it — something that would make them stop and look?</li>
+        <li><span class="q-num">7</span>What's one thing you learned from your sources this week that genuinely surprised you or changed what you thought you knew?</li>
+        <li><span class="q-num">8</span>If you found a source that seemed reliable but said something you strongly disagreed with, how would you handle that in your research? Would you ignore it, include it, or address it?</li>
+      </ul>
+
+      <div class="section-label">Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Source Evaluation Notes — RI.7.8</div>
+        <p>Complete a Source Evaluation Notes entry for each of your two sources. For each source, write: (1) Full citation: title, author/organization, publication date, URL or location. (2) Central claim: What is the main argument or point in one sentence? (3) Key evidence: List 2–3 specific pieces of evidence the author uses. (4) Credibility assessment: Who published this? What are their credentials or potential biases? Is the evidence current? (5) Your evaluation: Is the reasoning sound? Is the evidence sufficient? Note any gaps, unsupported claims, or loaded language. This is your working research document — keep it in your research folder.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Source Comparison Paragraph (RI.7.8)</div>
+        <p>Write a paragraph (6–8 sentences) comparing your two sources. Identify: one thing they agree on, one significant difference in emphasis or evidence, and which source you find more credible and why. Use specific details from each source to support your comparison. This paragraph is practice for synthesis writing — you'll need this skill in Week 27.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 27 ───────────────────────────────────────────────── -->
+  <div id="week27" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">27</div>
+      <div class="week-header-text">
+        <h2>Multiple Perspectives</h2>
+        <div class="week-focus">RI.7.9 synthesis · Opposing viewpoints · Hedging language · Begin painting poster</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading — Opposing Perspective</span> Find and read a source that presents a perspective opposing or complicating your position — an opinion piece, an industry statement, a letter to the editor, or an article covering the economic or social costs of wildlife protection. You don't have to agree with it, but you need to understand it. Take careful notes: What is their main claim? What evidence do they offer? What values seem to drive their argument?</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Reading — Different Angle Source</span> Find a fourth source that approaches your topic from a different angle: a first-person account from a rancher, tribal member, fisherman, or local resident affected by this issue; a piece from an Indigenous land stewardship perspective (Braiding Sweetgrass excerpts may be useful here); or a historical article about how this issue developed over time. Complete Source Evaluation Notes for this source and add it to your research folder.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Writing — RI.7.9 Synthesis Paragraph</span> Write a synthesis paragraph pulling together at least three of your four sources. Your synthesis paragraph is not a summary of each source — it is a paragraph organized around an idea, with evidence woven in from multiple sources. Choose one key idea your sources collectively illuminate (for example: "The recovery of Pacific salmon depends on both removing barriers and restoring habitat, but stakeholders disagree about who bears the cost"). Draft the paragraph today.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Grammar — Transitions in Argument</span> Study transitional phrases used in argument writing: concession transitions ("although," "while it is true that," "admittedly"), contrast transitions ("however," "on the other hand," "yet"), and reinforcement transitions ("furthermore," "in addition," "this is supported by"). Find 2–3 of each type in your sources. Then revise your synthesis paragraph to include at least three different transitional phrases that improve the flow and logic.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Art — Begin Poster Painting</span> Begin painting or constructing your advocacy poster. Use your best concept sketch as your guide. Start with the background and large shapes — don't try to finish the details today. Focus on your main animal or habitat image. Use whatever media you have: watercolor, acrylic, mixed-media collage. The goal today is to get paint or material on the page and establish the overall composition and color palette.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What was the strongest argument you found on the opposing side? What made it hard to dismiss?</li>
+        <li><span class="q-num">2</span>Is it possible for two people to look at the same set of facts about a wildlife issue and come to completely different conclusions? What would cause that to happen?</li>
+        <li><span class="q-num">3</span>Robin Wall Kimmerer describes a relationship between Indigenous peoples and the land that is fundamentally different from how most modern policy treats nature. How does that perspective change the way you think about who gets to decide what happens to a species or habitat?</li>
+        <li><span class="q-num">4</span>How do you acknowledge an opposing argument in your own advocacy without undermining your position? What does it look like to be fair to the other side while still arguing for your cause?</li>
+        <li><span class="q-num">5</span>What's the difference between summarizing what multiple sources say and synthesizing them into a new idea? Try to explain it in your own words.</li>
+        <li><span class="q-num">6</span>Think about the different stakeholders in your chosen issue — wildlife agencies, landowners, tribes, timber companies, conservation groups, scientists. Whose voice do you think is most often left out of the public debate? Why?</li>
+        <li><span class="q-num">7</span>How has reading the opposing perspective changed (or not changed) your position? Did it strengthen your argument, or did it make you genuinely reconsider anything?</li>
+      </ul>
+
+      <div class="section-label">Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Synthesis Paragraph (RI.7.9)</div>
+        <p>Write a synthesis paragraph (8–12 sentences) that integrates evidence from at least three of your four sources. Do not structure the paragraph as "Source 1 says… Source 2 says…" — instead, organize it around one central idea or tension, and bring sources in as supporting evidence. Include: a topic sentence stating the central idea, evidence from at least three different sources (with parenthetical attribution), at least two transitional phrases, and a closing sentence that points toward your own position. This paragraph may become part of your essay in Week 28.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Counterargument Reflection</div>
+        <p>Write a short reflection (4–6 sentences) on the opposing or complicating perspective you found this week. Answer: What is the strongest point on the other side? How would you acknowledge it fairly in your essay without abandoning your own argument? What is your response to it? Use at least one hedging phrase ("it is true that," "while some argue," "although this concern is valid…") to introduce the counterargument fairly.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 28 ───────────────────────────────────────────────── -->
+  <div id="week28" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">28</div>
+      <div class="week-header-text">
+        <h2>Build the Argument</h2>
+        <div class="week-focus">Reread strongest sources · Draft advocacy essay · Transitions in argument · Continue poster</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reread + Plan</span> Reread the two strongest sources from your research folder. This time, read with your essay in mind: highlight or flag every passage that could support one of your main argument points. Then write an essay outline: (1) your central claim in one sentence, (2) two body paragraph topics, each with 2–3 pieces of supporting evidence from your sources, (3) the counterargument you'll address, (4) your call to action for the conclusion. Take your time with the outline — a clear plan makes drafting much faster.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Writing — Introduction Draft</span> Draft your introduction paragraph. A strong advocacy introduction does three things: hooks the reader (a startling fact, a vivid image, a compelling question), provides brief context (what is this issue and why does it matter now), and ends with a clear thesis — your central claim about what should happen and why. Write at least two versions of your opening sentence and choose the stronger one. Aim for 6–8 sentences total.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Writing — Body Paragraph 1</span> Draft your first body paragraph. Follow the structure: topic sentence (one clear point supporting your thesis), evidence from sources (2–3 pieces, with attribution), your analysis (explain WHY this evidence matters — don't just list it), and a closing sentence that connects back to the thesis. Use at least one transitional phrase and at least one domain-specific vocabulary term. Aim for 8–10 sentences.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Writing — Body Paragraph 2</span> Draft your second body paragraph, following the same structure. This paragraph may address a different angle of your argument, or it may be where you acknowledge the counterargument and respond to it. If you address a counterargument here, use hedging language to present it fairly, then clearly pivot back to your own position with a strong transitional phrase ("Nevertheless," "However, the evidence shows," "Despite this concern…").</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Art + Written Explanation</span> Continue working on your advocacy poster — add detail to your animal or habitat illustration, refine colors, and begin thinking about where your text elements will go (slogan, key fact, call to action). Also draft a 2–3 sentence written explanation of your poster: What does the image represent? What argument does it make visually? This explanation will accompany your poster in the final presentation.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What is your central claim — your thesis — in one sentence? Read it aloud. Does it make a clear, specific, arguable point, or is it still too vague?</li>
+        <li><span class="q-num">2</span>What is the difference between evidence and analysis? Take one piece of evidence from your draft and explain, in your own words, what it proves and why it matters. That explanation is analysis.</li>
+        <li><span class="q-num">3</span>How do you decide which evidence to include and which to leave out? What makes a piece of evidence "strong enough" for an advocacy essay?</li>
+        <li><span class="q-num">4</span>What is the call to action in your essay? What do you want readers to actually do, think, or change after reading your argument?</li>
+        <li><span class="q-num">5</span>When you reread your sources with your essay in mind, did you notice anything you had missed the first time? What stands out more now that you have a clearer argument?</li>
+        <li><span class="q-num">6</span>How is writing an advocacy essay different from writing a persuasive essay? Is there a difference, or are they the same thing?</li>
+        <li><span class="q-num">7</span>Think about your poster as an argument. What is it arguing, and how does the visual image make that argument? Can a painting make a claim the same way a sentence can?</li>
+      </ul>
+
+      <div class="section-label">Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Advocacy Essay Draft — Introduction + 2 Body Paragraphs (W.7.1, W.7.8, W.7.9)</div>
+        <p>Write a draft of your advocacy essay introduction and two body paragraphs. The introduction (6–8 sentences) should include a hook, context, and a clear thesis. Each body paragraph (8–10 sentences) should follow the structure: topic sentence, evidence with attribution (cite your sources by author/organization), analysis, and a closing sentence. Requirements across the draft: use at least four domain-specific vocabulary terms, at least three transitional phrases, at least one hedging phrase, and formal register throughout. This is a draft — it doesn't need to be perfect, but it needs to be complete.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Sentence-Level Precision Practice (L.7.3)</div>
+        <p>Find three sentences in your draft that feel weak, vague, or too long. Write each original sentence, then rewrite it for precision: cut unnecessary words, replace vague terms with specific ones, and tighten the sentence structure. For each revision, write a one-sentence note explaining what you changed and why it's stronger. This is practice for the revision work you'll do in Week 29.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 29 ───────────────────────────────────────────────── -->
+  <div id="week29" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">29</div>
+      <div class="week-header-text">
+        <h2>Revise &amp; Strengthen</h2>
+        <div class="week-focus">Peer review · Sharpen claim · Formal register editing · Finalize poster · Rehearse presentation</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Peer Review</span> Exchange your draft with a parent, co-op classmate, or writing partner for peer review. The reviewer should read the draft and respond to three questions in writing: (1) What is the writer's central claim? Can you state it in your own words? (2) Which piece of evidence is most convincing? Which feels weakest? (3) Where does the writing feel informal or imprecise — and what is one sentence that could be made stronger? Read the feedback carefully and highlight the suggestions you plan to act on.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Revision — Sharpen Claim &amp; Evidence</span> Revise your draft based on peer feedback. Focus first on the claim: Is your thesis specific and arguable? Rewrite it if it's too broad. Then audit your evidence: Does every piece of evidence directly support your claim? Cut any evidence that drifts off topic, no matter how interesting it is. Add a detail, statistic, or quote if any body paragraph feels thin. Aim for a stronger, tighter draft by end of the day.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Revision — Formal Register + Draft Conclusion</span> Read your entire draft aloud. Mark every sentence that sounds informal, casual, or conversational. Revise those sentences into formal register: replace contractions, elevate word choice, and restructure run-on thoughts. Then draft your conclusion paragraph: restate your thesis (not word-for-word — rephrase it), summarize your strongest points briefly, and end with a powerful call to action. What do you want readers to feel, think, or do?</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Art — Finalize Poster</span> Dedicated art day: finish your advocacy poster. Add your text elements — your slogan, key fact or statistic, and call to action. Make sure these are readable and positioned clearly within the composition. Step back and look at the whole poster: Does the image carry your argument? Does it make someone want to stop and look? Make any final additions or touch-ups. Sign your work.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Rehearse Presentation</span> Begin preparing your 3–5 minute spoken presentation. Your presentation will pair your poster with your spoken argument. Today: write a brief outline or note card guide (not a word-for-word script). Practice presenting once out loud — even if it's just to yourself. Note where you stumble or lose your place. Identify the two strongest moments in your argument that you want listeners to remember.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What did peer feedback reveal about your essay that you hadn't noticed yourself? Was there any feedback that was hard to hear — and was it right?</li>
+        <li><span class="q-num">2</span>After revising, is your thesis stronger now? Read your original and your revised thesis aloud side by side. What specifically changed?</li>
+        <li><span class="q-num">3</span>What does it feel like to cut evidence you worked hard to find? How do you decide what's worth cutting for the sake of a tighter argument?</li>
+        <li><span class="q-num">4</span>Why does formal register matter in advocacy writing? Who is the intended audience for your essay, and how does register affect whether they take you seriously?</li>
+        <li><span class="q-num">5</span>What is the difference between a conclusion that summarizes and a conclusion that compels action? What does yours do?</li>
+        <li><span class="q-num">6</span>When you look at your finished or nearly-finished poster, does the image strengthen your written argument? Does it add something the words can't say on their own?</li>
+        <li><span class="q-num">7</span>What is the most important thing you want your audience to remember after your presentation? If they could only take away one idea, what would it be?</li>
+      </ul>
+
+      <div class="section-label">Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Peer Review Response (W.7.5)</div>
+        <p>After receiving peer feedback on your draft, write a 1-paragraph revision plan. Answer: What are the three most important changes you will make to your essay, and why? For each change, explain what the original problem was, what you plan to do differently, and how you expect it to improve the argument. This is a thinking-on-paper exercise — not formal writing, just clear planning.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Conclusion Draft (W.7.1)</div>
+        <p>Write your conclusion paragraph (6–8 sentences). Do not begin with "In conclusion." Restate your thesis in fresh language, briefly reinforce your two strongest points without repeating them word for word, and end with a call to action — something specific, actionable, and appropriate to your audience. Your final sentence should be the most powerful sentence in the essay. Read it aloud: does it land?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 30 ───────────────────────────────────────────────── -->
+  <div id="week30" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">30</div>
+      <div class="week-header-text">
+        <h2>Present &amp; Advocate</h2>
+        <div class="week-focus">Self-reflection · Final proofreading · Oral introduction · Advocacy presentation</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Self-Reflection + Final Proofread</span> Write a self-reflection on your research process (see prompt below). Then do a careful final proofread of your complete essay: read it slowly, aloud, one sentence at a time. Check for: subject-verb agreement, consistent formal register throughout, correct punctuation for citations and transitions, and any sentences that still feel unclear or imprecise. Make all final corrections and produce your clean final copy.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Write Oral Introduction</span> Write your 1-paragraph oral introduction for the presentation. This paragraph (spoken aloud, about 60–90 seconds) should: introduce your issue in a way that hooks the listener, briefly explain why you chose this cause, state your central claim, and preview your poster. Memorize or deeply familiarize yourself with this paragraph — you will say it without reading it word-for-word. Practice it three times today.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Full Presentation Rehearsal</span> Run through your complete presentation from beginning to end, including your oral introduction and poster walk-through: 3–5 minutes total. Record yourself if possible, or present to a parent or sibling and ask for one specific piece of feedback: Does my argument come through clearly? Practice at least twice. Adjust your pacing — it's common to rush when nervous. Aim for a confident, conversational delivery, not a word-for-word recitation.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Presentation Day Prep</span> Set up your presentation space: display the poster where it can be seen clearly, have your essay or notes nearby for reference, and prepare any materials you want to share (a fact sheet, a handout, printed photos of the animal or habitat). Do one last calm rehearsal. Take a few minutes to think about why this cause matters — the more genuinely you care, the more compelling your presentation will be.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Advocacy Presentation</span> Deliver your advocacy presentation to your audience — a parent, grandparent, co-op classmates, neighbors, or anyone willing to listen. Introduce your cause, walk through your poster, present your argument, and end with your call to action. After the presentation, open a brief Q&amp;A: answer at least one question from your audience. Celebrate: this is the culmination of six weeks of real research, real thinking, and real advocacy. You did the work of an activist today.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>Looking back at all six weeks: how has your understanding of this issue changed from Week 25, when you first chose your cause, to now?</li>
+        <li><span class="q-num">2</span>Which part of the research process was hardest for you — finding sources, evaluating them, synthesizing them, or writing the argument? What did that difficulty teach you?</li>
+        <li><span class="q-num">3</span>After researching and writing about this issue for six weeks, do you feel more hopeful or less hopeful about the future of Oregon's wildlife? What makes you feel that way?</li>
+        <li><span class="q-num">4</span>What does it mean to have a "voice" in a public issue? What are the different ways a person — especially a young person — can actually make an impact on an environmental problem?</li>
+        <li><span class="q-num">5</span>How did combining art and writing in one project change your experience compared to a written-only assignment? What did the poster let you express that the essay couldn't?</li>
+        <li><span class="q-num">6</span>If someone in your audience came up to you afterward and said they wanted to do something about this issue, what would you tell them to do first? What's the most realistic, concrete action an ordinary person can take?</li>
+        <li><span class="q-num">7</span>What is the one thing — one fact, image, idea, or moment from your research — that you think you'll remember for the rest of your life?</li>
+        <li><span class="q-num">8</span>You researched a real Oregon wildlife issue and made a real argument about it. Do you think your work could actually change someone's mind or move someone to act? Why or why not?</li>
+      </ul>
+
+      <div class="section-label">Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Self-Reflection on Research Process (W.7.7)</div>
+        <p>Write a self-reflection (1–1.5 pages) on your research process across this unit. Answer these questions honestly: (1) How did you find your sources, and what made some more useful than others? (2) What was the hardest part of evaluating sources — when did you feel genuinely unsure whether a source was trustworthy? (3) How did reading the opposing perspective affect your thinking? Did it strengthen your position, complicate it, or genuinely change any part of your argument? (4) What would you do differently if you were starting this research over? (5) What does it feel like to argue publicly for something you actually believe in?</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Oral Introduction Paragraph (SL.7.4)</div>
+        <p>Write out your spoken oral introduction — the paragraph you will say at the beginning of your advocacy presentation. It should run approximately 60–90 seconds when read aloud. Include: a hook (a startling fact, a vivid image, or a question that draws your listener in), a brief explanation of what the issue is and why it matters right now in Oregon, a statement of your central claim, and a preview of your poster. Write it to be heard, not read: use strong verbs, concrete images, and short punchy sentences where they help. Practice it until you no longer need to read it.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Unit Closing Reflection</div>
+        <p>Write a short closing reflection (1 paragraph) to mark the end of this unit. Answer: What did you learn about yourself as a researcher and writer? What do you want people to know about Oregon's wild places that most of them probably don't? What will you carry forward from this work — a fact, a feeling, a habit of mind?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── RUBRICS ───────────────────────────────────────────────── -->
+  <section id="rubrics" class="page-section">
+    <h2 style="font-family:'Lora',serif;font-size:1.75rem;font-weight:700;color:var(--green-dark);border-bottom:2px solid var(--green-mid);padding-bottom:8px;margin-bottom:28px;">Assessment Rubrics</h2>
+
+    <!-- RUBRIC 1: Source Evaluation Notes -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Source Evaluation Notes (Weeks 26–27)</div>
+      <div class="rubric-desc">Standards: RI.7.1 · RI.7.8 — Evaluates claims, evidence, and credibility of informational sources</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Identifying the Central Claim</td><td>Central claim is accurately and precisely identified in one strong sentence; distinguishes claim from supporting detail</td><td>Central claim is identified clearly; may be slightly broad</td><td>Claim identified but confused with a supporting detail or too vague</td><td>Claim missing, incorrect, or simply restates the source title</td></tr>
+          <tr><td>Evidence Evaluation</td><td>Lists 2–3 specific pieces of evidence; distinguishes between facts, statistics, expert opinion, and anecdote; notes any unsupported claims</td><td>Lists 2–3 pieces of evidence with brief description; some differentiation of evidence types</td><td>Evidence listed but not described or differentiated; may simply quote without analysis</td><td>Evidence section missing or lists only one vague example</td></tr>
+          <tr><td>Credibility Assessment</td><td>Evaluates author/organization credentials, publication date, potential bias, and whether evidence is current; makes a reasoned credibility judgment</td><td>Addresses author/organization and currency; notes at least one potential bias or limitation</td><td>Mentions source name but credibility evaluation is superficial ("it seems reliable")</td><td>No credibility assessment; accepts or rejects source without reasoning</td></tr>
+          <tr><td>Sound Reasoning Evaluation (RI.7.8)</td><td>Identifies specific loaded language, logical gaps, or unsupported leaps in reasoning; explains why they weaken or complicate the argument</td><td>Notes one area where reasoning or evidence is not fully sufficient; provides brief explanation</td><td>Acknowledges that reasoning could be stronger but offers no specific example</td><td>Does not evaluate the quality of reasoning; only summarizes the source</td></tr>
+          <tr><td>Written Precision (L.7.3)</td><td>Notes are clear, specific, and use domain-appropriate vocabulary; sentences are precise and complete</td><td>Notes are clear and mostly specific; minor vagueness in one or two places</td><td>Notes are incomplete or use vague language that reduces usefulness</td><td>Notes are too brief, illegible, or incoherent to be used in research</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 2: Advocacy Essay / Letter -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Advocacy Essay or Letter (Weeks 28–30)</div>
+      <div class="rubric-desc">Standards: W.7.1 · W.7.7 · W.7.9 — Argues a position with evidence from research; acknowledges counterclaims; demonstrates formal register</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Central Claim (Thesis)</td><td>Thesis is specific, arguable, and clearly stated; takes a clear position on the issue and previews the argument; placed effectively in introduction</td><td>Thesis is clear and arguable; present in the introduction; may be slightly broad</td><td>Thesis present but vague ("this is an important issue") or difficult to locate</td><td>Thesis absent, merely states a topic, or is a statement of fact rather than an argument</td></tr>
+          <tr><td>Evidence Quality (W.7.9)</td><td>Draws on multiple strong sources; evidence is specific, cited with attribution, and directly supports the claim; distinguishes between stronger and weaker evidence</td><td>Uses evidence from at least two sources with attribution; evidence supports the argument; most evidence is specific</td><td>Evidence present but thin, general, or not clearly connected to the claim; sources may not be cited</td><td>Little or no evidence from research; relies on opinion without support</td></tr>
+          <tr><td>Counterargument Acknowledgment</td><td>Fairly and accurately represents the opposing view; uses hedging language to introduce it; responds with a clear, logical rebuttal that strengthens the overall argument</td><td>Counterargument acknowledged; response is present and logical; hedging language mostly used correctly</td><td>Counterargument mentioned briefly but not accurately represented or not responded to</td><td>No counterargument acknowledgment; argument treats issue as entirely one-sided</td></tr>
+          <tr><td>Conclusion &amp; Call to Action</td><td>Conclusion restates thesis in fresh language, reinforces key points, and ends with a specific, compelling call to action appropriate to the audience</td><td>Conclusion restates thesis and includes a call to action; may be slightly generic</td><td>Conclusion present but merely summarizes without forward momentum or call to action</td><td>Conclusion missing or simply repeats the introduction; no call to action</td></tr>
+          <tr><td>Formal Register (L.7.3)</td><td>Formal register maintained consistently throughout; domain-specific vocabulary used accurately; no contractions or informal phrasing; transitions used effectively</td><td>Formal register mostly maintained; one or two informal slips; domain vocabulary present and mostly accurate</td><td>Register inconsistent; noticeable shifts between formal and casual language; limited domain vocabulary</td><td>Essay written largely in informal or conversational register; few or no domain-specific terms</td></tr>
+          <tr><td>Conventions (W.7.4)</td><td>Virtually no errors in grammar, punctuation, or usage; sentences vary in structure; essay reads as polished and complete</td><td>Minor errors that do not interfere with meaning; sentences mostly varied</td><td>Some recurring errors (comma splices, subject-verb agreement, run-ons) that occasionally distract</td><td>Frequent errors that interfere with the reader's ability to follow the argument</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 3: Oral Advocacy Presentation -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Oral Advocacy Presentation + Poster (Week 30)</div>
+      <div class="rubric-desc">Standards: SL.7.4 · SL.7.5 — Presents claims and findings clearly; uses multimedia (poster) to support the argument</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Claim &amp; Organization (SL.7.4)</td><td>Central claim is clearly stated early; presentation follows a logical structure (intro, argument, call to action); transitions between points are smooth and explicit</td><td>Claim is present; presentation is organized; a few transitions could be smoother</td><td>Claim is present but presentation jumps between points without clear structure</td><td>Claim is unclear or absent; presentation feels disorganized or incomplete</td></tr>
+          <tr><td>Evidence &amp; Reasoning</td><td>Presents specific, cited evidence from research; explains WHY each piece of evidence supports the claim; demonstrates command of the material</td><td>Presents evidence from research with attribution; reasoning is mostly clear</td><td>Evidence mentioned but not clearly connected to the argument; may rely heavily on notes</td><td>Little evidence presented; claims asserted without support; material appears unfamiliar</td></tr>
+          <tr><td>Delivery (SL.7.4)</td><td>Speaks clearly, at appropriate pace, with purposeful eye contact; voice conveys genuine engagement with the topic; uses pauses effectively</td><td>Mostly clear delivery; some eye contact; pace appropriate; engagement evident</td><td>Some portions are rushed or mumbled; limited eye contact; reads from notes extensively</td><td>Very difficult to hear or follow; reads entire presentation from paper; no eye contact</td></tr>
+          <tr><td>Poster as Argument (SL.7.5)</td><td>Poster is clearly referenced and integrated into the spoken argument; the image and text elements reinforce the claim in a way that adds meaning beyond words alone</td><td>Poster is displayed and referenced; speaker explains its connection to the argument</td><td>Poster displayed but barely referenced; connection between visual and argument is not explained</td><td>Poster not referenced during presentation; functions only as decoration</td></tr>
+          <tr><td>Poster — Craft &amp; Visual Argument</td><td>Original artwork is detailed, intentional, and clearly represents the animal, habitat, or issue; text elements (slogan, key fact, call to action) are readable and well-placed; overall composition makes a strong visual argument</td><td>Original artwork is present and relevant; text elements included; composition is clear</td><td>Artwork is present but minimally developed; text elements present but hard to read or poorly placed</td><td>Artwork is minimal or does not represent the issue; text elements missing or illegible</td></tr>
+          <tr><td>Call to Action</td><td>Presentation ends with a specific, compelling, and realistic call to action; speaker communicates genuine urgency and investment in the cause</td><td>Call to action present; specific enough to be actionable; speaker conveys investment in the topic</td><td>Call to action is vague ("people should care more") or delivered without conviction</td><td>No call to action; presentation ends without a clear ask of the audience</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+</div>
+
+<footer>
+  <p><strong>Unit 5: Speak Up for the Wild</strong> · 7th Grade Language Arts · <a href="7th_grade_language_arts.html">← Back to Full Curriculum</a></p>
+</footer>
+
+</body>
+</html>

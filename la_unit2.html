@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 2: Nature's Voice — 7th Grade Language Arts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+    :root {
+      --blue-dark:#1B6CA8; --blue-mid:#4A9FD4; --blue-light:#D6EAF8;
+      --gold:#E9C46A; --gold-light:#FFF8E1;
+      --rust:#C65D2A; --rust-light:#FBE9E0;
+      --purple-dark:#5A3E8F; --purple-light:#EDE7F6;
+      --cream:#FEFAE0; --text:#1A1A2E; --text-light:#4A4A6A;
+      --border:#D0D0E0; --white:#FFFFFF;
+      --unit-color:#1B6CA8; --unit-accent:#E9C46A;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;font-size:15px;}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,#1B6CA8 0%,#0d4a7a 50%,#082d4f 100%);color:#fff;padding:48px 40px 40px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(233,196,106,.15),transparent 60%);pointer-events:none;}
+    .back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.04em;margin-bottom:18px;transition:color .15s;}
+    .back-link:hover{color:var(--gold);}
+    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+    .hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:3px 12px;font-size:.75rem;font-weight:700;color:#fff;}
+    .hero h1{font-family:'Lora',serif;font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:8px;}
+    .hero h1 span{color:var(--gold);}
+    .hero .tagline{font-family:'Lora',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.82);max-width:640px;}
+
+    /* NAV */
+    .week-nav{background:var(--blue-dark);padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18);}
+    .week-nav nav{max-width:1060px;margin:0 auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+    .week-nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.77rem;font-weight:700;padding:3px 10px;border-radius:10px;transition:background .15s,color .15s;letter-spacing:.02em;}
+    .week-nav a:hover,.week-nav a.active{background:rgba(255,255,255,.18);color:var(--gold);}
+    .week-nav .sep{color:rgba(255,255,255,.3);font-size:.75rem;}
+
+    /* LAYOUT */
+    .container{max-width:1060px;margin:0 auto;padding:0 24px;}
+    .page-section{padding:44px 0;}
+
+    /* OVERVIEW STRIP */
+    .overview-strip{background:var(--white);border:1.5px solid var(--blue-light);border-radius:12px;padding:22px 28px;margin:32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+    .ov-item .ov-label{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:3px;}
+    .ov-item .ov-val{font-size:.9rem;font-weight:600;color:var(--text);}
+
+    /* WEEK SECTIONS */
+    .week-section{margin-bottom:52px;}
+    .week-header{background:linear-gradient(135deg,var(--blue-dark),#0d4a7a);border-radius:12px 12px 0 0;padding:18px 26px;display:flex;align-items:center;gap:16px;}
+    .week-num-badge{font-family:'Lora',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;}
+    .week-header-text h2{font-family:'Lora',serif;font-size:1.3rem;font-weight:700;color:#fff;}
+    .week-header-text .week-focus{font-size:.82rem;color:rgba(255,255,255,.78);margin-top:2px;}
+    .week-body{background:var(--white);border:1.5px solid var(--blue-light);border-top:none;border-radius:0 0 12px 12px;padding:24px 26px;}
+
+    /* DAILY PLAN */
+    .section-label{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:10px;margin-top:22px;}
+    .section-label:first-child{margin-top:0;}
+    .daily-table{width:100%;border-collapse:collapse;font-size:.86rem;}
+    .daily-table th{background:var(--blue-light);color:var(--blue-dark);font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;text-align:left;}
+    .daily-table td{padding:9px 12px;border-bottom:1px solid #e8f4fb;vertical-align:top;line-height:1.55;}
+    .daily-table tr:last-child td{border-bottom:none;}
+    .daily-table tr:nth-child(even) td{background:#f4f9fd;}
+    .day-label{font-weight:800;color:var(--blue-dark);white-space:nowrap;}
+    .day-tag{display:inline-block;background:var(--blue-light);color:var(--blue-dark);border-radius:6px;padding:1px 7px;font-size:.72rem;font-weight:800;margin-bottom:3px;}
+
+    /* DISCUSSION QUESTIONS */
+    .questions-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+    .questions-list li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;line-height:1.6;}
+    .q-num{background:var(--blue-dark);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;margin-top:1px;}
+
+    /* WRITING PROMPTS */
+    .prompt-card{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+    .prompt-card .prompt-type{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rust);margin-bottom:4px;}
+    .prompt-card p{font-size:.88rem;line-height:1.65;color:var(--text);}
+
+    /* RUBRICS */
+    .rubric-wrap{margin-bottom:36px;}
+    .rubric-title{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:var(--blue-dark);margin-bottom:4px;}
+    .rubric-desc{font-size:.85rem;color:var(--text-light);margin-bottom:12px;}
+    .rubric-table{width:100%;border-collapse:collapse;font-size:.82rem;}
+    .rubric-table th{padding:9px 12px;text-align:left;font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
+    .rubric-table th:first-child{background:var(--blue-dark);color:#fff;width:22%;}
+    .rubric-table th.r-exc{background:#0d4a7a;color:#fff;width:19.5%;}
+    .rubric-table th.r-pro{background:#1B6CA8;color:#fff;width:19.5%;}
+    .rubric-table th.r-dev{background:#4A9FD4;color:#fff;width:19.5%;}
+    .rubric-table th.r-beg{background:#a8d4ed;color:var(--text);width:19.5%;}
+    .rubric-table td{padding:9px 12px;border:1px solid var(--blue-light);vertical-align:top;line-height:1.5;}
+    .rubric-table tr:nth-child(even) td:first-child{background:#eaf4fb;}
+    .rubric-table td:first-child{font-weight:700;color:var(--blue-dark);background:#f2f9fd;}
+
+    /* FOOTER */
+    footer{background:var(--blue-dark);color:rgba(255,255,255,.7);text-align:center;padding:24px;font-size:.82rem;margin-top:48px;}
+    footer strong{color:var(--gold);}
+    footer a{color:var(--gold-light);text-decoration:none;}
+
+    @media(max-width:600px){
+      .hero h1{font-size:1.7rem;}
+      .week-body{padding:18px 16px;}
+      .daily-table{font-size:.78rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <a class="back-link" href="7th_grade_language_arts.html">← Back to Full Curriculum</a>
+  <div class="hero-meta">
+    <span class="hero-badge">Unit 2 of 6</span>
+    <span class="hero-badge">📅 Weeks 7–12</span>
+    <span class="hero-badge">🌿 Nature Writing</span>
+    <span class="hero-badge">Oregon RI.7 · W.7.2 · W.7.7 · L.7.3</span>
+  </div>
+  <h1>Nature's <span>Voice</span></h1>
+  <p class="hero-subtitle" style="font-family:'Lora',serif;font-size:1.15rem;font-weight:600;color:rgba(255,255,255,.95);margin-bottom:6px;">Informational Reading &amp; Nature Writing</p>
+  <p class="tagline">"The natural world has a story to tell. Scientists, writers, and artists all help us hear it."</p>
+</div>
+
+<div class="week-nav">
+  <nav>
+    <a href="#overview">Overview</a><span class="sep">›</span>
+    <a href="#week7">Week 7</a><span class="sep">·</span>
+    <a href="#week8">Week 8</a><span class="sep">·</span>
+    <a href="#week9">Week 9</a><span class="sep">·</span>
+    <a href="#week10">Week 10</a><span class="sep">·</span>
+    <a href="#week11">Week 11</a><span class="sep">·</span>
+    <a href="#week12">Week 12</a><span class="sep">›</span>
+    <a href="#rubrics">Rubrics</a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <div id="overview" class="overview-strip">
+    <div class="ov-item"><div class="ov-label">Duration</div><div class="ov-val">6 weeks (Weeks 7–12)</div></div>
+    <div class="ov-item"><div class="ov-label">Core Standards</div><div class="ov-val">RI.7.1 · RI.7.2 · RI.7.6 · RI.7.8 · W.7.2 · W.7.7 · L.7.3</div></div>
+    <div class="ov-item"><div class="ov-label">Oregon Connections</div><div class="ov-val">Cascade Range · Pacific salmon · wolves · old-growth forests · osprey · high desert</div></div>
+    <div class="ov-item"><div class="ov-label">Signature Project</div><div class="ov-val">Illustrated Nature Journal (4 entries + hand-drawn illustrations)</div></div>
+    <div class="ov-item"><div class="ov-label">Grammar Focus</div><div class="ov-val">Sentence variety · coordination &amp; subordination · conjunctive adverbs · transitions · denotation vs. connotation · precise word choice</div></div>
+  </div>
+
+  <!-- ─── WEEK 7 ───────────────────────────────────────────────── -->
+  <div id="week7" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">7</div>
+      <div class="week-header-text">
+        <h2>What Is Nonfiction?</h2>
+        <div class="week-focus">Intro essay · Identifying tone &amp; purpose · Nature observation writing · Begin journal cover</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + Discussion</span> Read a short excerpt from a nature essayist — Annie Dillard's "Seeing" from <em>Pilgrim at Tinker Creek</em> works beautifully, or any vivid short nature essay you have access to. Before reading, discuss: What is nonfiction? What makes it different from fiction? As you read, mark places where you feel the writer's personality coming through. After: What surprised you? Did it feel more like science or like art — or something in between?</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Skill Focus: Tone &amp; Purpose</span> Return to Monday's excerpt. What is the author's <em>purpose</em> (inform? inspire? persuade? all three)? What is the <em>tone</em> — the author's attitude toward their subject? Find 3 specific words or phrases that reveal tone and write them in your journal with a brief explanation. Practice: Write 2 sentences about the same Oregon animal in two completely different tones (awe vs. scientific neutrality). Notice how word choice changes everything.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Grammar: Simple, Compound &amp; Complex Sentences</span> Mini-lesson on the three sentence types. Find one example of each in the nonfiction excerpt. Then practice: write 3 original sentences about an Oregon animal or ecosystem — one simple, one compound (using a coordinating conjunction: for, and, nor, but, or, yet, so), one complex (using a subordinating conjunction: because, although, when, since, unless). Notice how each type creates a different rhythm and emphasis.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Nature Observation Writing</span> Go outside for 20–30 minutes with a notebook. Choose one thing to observe carefully: a single tree, a bird, a patch of ground, moving water, clouds, an insect. Record at least 10 specific observations — not impressions, but facts and precise details. Then come inside and write a paragraph using those notes that captures the experience of watching that one thing. Aim for at least one sentence of each type from yesterday's grammar lesson.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Art: Begin Journal Cover</span> Today's work is purely creative. Choose your animal or ecosystem subject for the whole Illustrated Nature Journal project — this will be your focus for Weeks 7–12. Oregon options: Pacific salmon, osprey, gray wolf, Pacific tree frog, black bear, Cascades spotted salamander, pronghorn antelope (high desert), old-growth Douglas fir forest, a tidal pool. Paint or collage a journal cover that represents your chosen subject. Include the animal or ecosystem's name and your name. Use watercolor, acrylic, cut paper — whatever you love.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What is the difference between a science textbook and a nature essay? Can something be both accurate and beautiful at the same time?</li>
+        <li><span class="q-num">2</span>In the excerpt you read, does the author seem to love their subject? How can you tell? What specific words give away their feelings?</li>
+        <li><span class="q-num">3</span>When you went outside to observe on Thursday, what was the hardest part — slowing down, noticing details, finding words for what you saw, or something else?</li>
+        <li><span class="q-num">4</span>Why do you think writers like Annie Dillard spend so much time looking at very ordinary, small things? What can you learn from a single bird or a single tree that you can't learn from a textbook?</li>
+        <li><span class="q-num">5</span>Think about your chosen Oregon animal or ecosystem. What do you already know about it? What do you most want to find out?</li>
+        <li><span class="q-num">6</span>Naturalists like John Muir and Rachel Carson changed how people thought about the natural world just by writing about it. Why do you think writing has that power? Can a photograph do the same thing?</li>
+        <li><span class="q-num">7</span>What is the difference between a "simple" and a "complex" sentence in real writing — not just in grammar class? When would a writer choose one over the other?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Nature Observation Paragraph (RI.7.1 · L.7.3)</div>
+        <p>Using your Thursday observation notes, write a polished paragraph (8–10 sentences) about the thing you observed. Your paragraph must include: at least one simple sentence, one compound sentence, and one complex sentence. Use at least three precise nouns (not "bird" — what kind of bird? not "tree" — what shape, what color bark?) and two vivid verbs. End with a sentence that moves from the specific thing you observed toward a larger idea — what did watching this one small thing make you think about?</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Tone Experiment</div>
+        <p>Choose one Oregon animal — it can be your journal subject or something else. Write the same three-sentence description of that animal twice: once in the tone of a scientist writing a field report (objective, precise, no opinions), and once in the tone of a nature writer who loves this animal (vivid, personal, emotional). After both versions, write one sentence explaining which words you changed and why those word choices changed the tone.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Journal Cover Artist's Statement</div>
+        <p>Write a short paragraph (4–6 sentences) to accompany your journal cover. Explain: What animal or ecosystem did you choose and why? What did you want your cover art to communicate about your subject? What art materials did you use?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 8 ───────────────────────────────────────────────── -->
+  <div id="week8" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">8</div>
+      <div class="week-header-text">
+        <h2>Central Idea</h2>
+        <div class="week-focus">2 short animal articles · Central idea practice · Summary paragraph · Journal Entry #1</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + Skill Focus</span> Read Article #1: a short (1–2 page) informational article about an Oregon animal — try searching for a National Geographic Kids article on Pacific salmon, an ODFW (Oregon Department of Fish &amp; Wildlife) fact sheet on osprey, or a Smithsonian article on wolves. As you read, use a sticky note or margin note to track: What is the most important idea in this article? What details keep coming back? After reading, write one sentence that states the central idea in your own words.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Reading + Comparison</span> Read Article #2: a second short article about a different Oregon animal or about the same animal from a different source (try comparing a scientific article vs. a magazine article about Pacific salmon). After reading both, discuss: How is the central idea of Article #2 similar to or different from Article #1? Does the format (magazine vs. scientific) change how the central idea is presented?</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Grammar: Coordination &amp; Subordination</span> Mini-lesson on coordinating conjunctions (FANBOYS: for, and, nor, but, or, yet, so) vs. subordinating conjunctions (because, although, while, since, when, unless, even though). Practice: combine 5 pairs of simple sentences from one of this week's articles into compound or complex sentences. Notice how the type of conjunction you choose changes the relationship between ideas — subordination shows which idea is more important.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Writing: Summary Paragraph</span> Write a summary paragraph of one of this week's articles. Rules: state the central idea in your first sentence, use 3–4 supporting details from the text, write in your own words (no copying), include only the most important information (leave out minor details), and end with the author's conclusion or the article's takeaway point. Aim for 7–9 sentences.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Art + Writing: Journal Entry #1</span> Journal Entry #1: Animal Observation + Sketch. Research your chosen animal using one or two sources. Observe it if possible (in the wild, at a nature center, in a video). In your journal: write a one-page observation entry about your animal — what it looks like, how it moves, what it eats, where it lives. Alongside the text, draw a detailed pencil or pen sketch of your animal from at least two angles (full body + a close-up of a distinctive feature). Label the sketch with at least 5 specific details.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What is the difference between a central idea and a main topic? (Example: the topic might be "wolves in Oregon" — what might the central idea be?)</li>
+        <li><span class="q-num">2</span>When you read the two articles, did both authors agree about their subjects, or did they emphasize different things? What might explain the differences?</li>
+        <li><span class="q-num">3</span>How do supporting details work? How can you tell which details are essential to the central idea and which ones are just interesting extras?</li>
+        <li><span class="q-num">4</span>When you summarized the article, what was hardest — understanding the central idea, choosing which details to include, or putting it in your own words?</li>
+        <li><span class="q-num">5</span>What did you discover while researching your journal animal that surprised you or changed how you think about it?</li>
+        <li><span class="q-num">6</span>Why do you think naturalists draw their subjects rather than just taking photographs? What does a hand-drawn sketch require that a photo doesn't?</li>
+        <li><span class="q-num">7</span>In your coordination/subordination practice, which conjunction type do you find yourself reaching for naturally? Do you tend to write more compound sentences (using "and," "but") or complex ones (using "because," "although")? What does that tell you about your writing habits?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Central Idea Paragraph (RI.7.2)</div>
+        <p>Write a paragraph (8–10 sentences) in which you identify and explain the central idea of one of this week's articles. Your paragraph must: open with a sentence stating the central idea, include at least three supporting details from the text with specific evidence (quoted or paraphrased, with the article name cited), use at least one complex sentence with a subordinating conjunction, and close with a sentence explaining why this central idea matters — to the animal, to the ecosystem, or to Oregon.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Journal Entry #1 — Animal Observation + Sketch</div>
+        <p>Write a one-page (approximately 200–250 words) observation entry in your Illustrated Nature Journal about your chosen Oregon animal. Include: physical description (size, coloring, distinctive features), behavior (how does it move? hunt? communicate?), habitat (where in Oregon does it live?), and one interesting fact that most people probably don't know. Pair this with a detailed, labeled sketch of the animal. Your sketch should include at least two views and 5 labeled features.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 9 ───────────────────────────────────────────────── -->
+  <div id="week9" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">9</div>
+      <div class="week-header-text">
+        <h2>Author's Purpose &amp; Point of View</h2>
+        <div class="week-focus">Conservation essay · Author's stance · Analysis paragraph · Journal Entry #2</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + Skill Focus: Author's Purpose</span> Read a conservation essay — try a short piece about Oregon's old-growth forest logging debate, Pacific salmon habitat restoration, or wolf reintroduction in the Cascades. (Try resources from Oregon Wild, the Nature Conservancy Oregon page, or a short op-ed from the Oregon Live archives.) As you read, ask: Why did this author write this? What do they want the reader to <em>feel</em>, <em>think</em>, or <em>do</em>? Mark at least 3 moments where you can clearly sense the author's purpose.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Skill Focus: Author's Stance &amp; Word Choice</span> Return to Monday's essay. Identify the author's point of view on the conservation issue. Is it clearly stated or implied? Find 4–5 specific words or phrases that signal the author's stance — these might be emotionally charged words (connotation), carefully chosen facts, or the order in which information is presented. Discuss: What is the difference between <em>denotation</em> (a word's dictionary meaning) and <em>connotation</em> (the feelings and associations it carries)? Find one word in the essay that has strong connotation and explore what changes if you swap it for a neutral synonym.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Grammar: Conjunctive Adverbs &amp; Transitions</span> Mini-lesson on conjunctive adverbs (however, therefore, furthermore, meanwhile, consequently, nevertheless, in contrast, as a result). These are different from coordinating conjunctions — they connect independent clauses with a semicolon before and a comma after. Practice: rewrite 4 compound sentences from this week's essay using conjunctive adverbs instead of coordinating conjunctions. Notice how the relationship between ideas becomes more precise. Also review common transitional phrases: in addition, on the other hand, for example, in fact, as a result.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Writing: Analysis Paragraph</span> Draft your analysis paragraph about the author's purpose and point of view in Monday's conservation essay. Use the outline: (1) topic sentence naming the author's purpose and stance, (2) first piece of evidence — a specific word or phrase with its connotation explained, (3) second piece of evidence — a rhetorical choice (what the author included or left out), (4) a conjunctive adverb sentence connecting both pieces of evidence, (5) concluding sentence about how the author's choices affect the reader. Revise once for sentence variety — make sure you have at least one simple, one compound, and one complex sentence.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Art + Writing: Journal Entry #2</span> Journal Entry #2: Habitat Painting. Research the specific Oregon habitat where your chosen animal lives — the coast range, the Cascade mountains, a river system, the high desert. Create a full-page watercolor or acrylic painting of that habitat in your journal. It does not need to be perfect — think field journal, not gallery painting. Alongside your painting, write a short descriptive paragraph (5–7 sentences) describing the habitat, including at least 3 specific geographic or ecological details about Oregon.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What is author's purpose, and why does it matter when reading nonfiction? Does knowing an author's purpose change how you read or evaluate the information?</li>
+        <li><span class="q-num">2</span>In the conservation essay, did the author ever state their opinion directly, or did they mostly let their word choices and selected facts do the work? Which approach do you find more convincing?</li>
+        <li><span class="q-num">3</span>Think of a word with strong connotation from the essay — something like "destruction," "sacrifice," "pristine," or "threatened." What does that word make you feel? Now replace it with a neutral word. How does the sentence change?</li>
+        <li><span class="q-num">4</span>Is it possible to write about nature — or any topic — without having a point of view? Should authors try to be completely neutral, or is having a perspective part of what makes writing powerful?</li>
+        <li><span class="q-num">5</span>Oregon has real, ongoing debates about wildlife and land use — salmon vs. dams, wolves vs. livestock, logging vs. old-growth preservation. Did the essay you read take a side in one of these debates? Did the author acknowledge the other side?</li>
+        <li><span class="q-num">6</span>When you painted your animal's habitat this week, did anything about the environment surprise you — a landscape feature, a climate characteristic, or how the habitat has changed over time?</li>
+        <li><span class="q-num">7</span>How are conjunctive adverbs (however, therefore, nevertheless) different from coordinating conjunctions (but, so, and)? Can you give an example where one works better than the other?</li>
+        <li><span class="q-num">8</span>What would a scientist writing about the same conservation issue say differently from what this essay author wrote? What would they add, remove, or change?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Author's Purpose Analysis Paragraph (RI.7.6)</div>
+        <p>Write a focused analysis paragraph (8–12 sentences) examining the author's purpose and point of view in the conservation essay you read. Your paragraph must: (1) open with a clear topic sentence naming the author's purpose, (2) include at least two specific pieces of textual evidence — one should analyze word connotation, the other should address what the author chose to include or emphasize, (3) use at least one conjunctive adverb (however, therefore, furthermore, nevertheless) with correct punctuation, and (4) end with a sentence evaluating how effectively the author's choices advance their purpose.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Journal Entry #2 — Habitat Painting + Description</div>
+        <p>In your Illustrated Nature Journal, create a full-page painting of the Oregon habitat where your animal lives. Alongside it, write a descriptive paragraph (5–7 sentences) that includes: the name and location of the habitat in Oregon, at least 3 specific ecological or geographic details (elevation, climate, key plant species, watershed name, etc.), and one sentence about how this habitat has changed or is threatened. Your painting and writing should work together — the painting shows, the words tell.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 10 ───────────────────────────────────────────────── -->
+  <div id="week10" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">10</div>
+      <div class="week-header-text">
+        <h2>Evaluating Arguments</h2>
+        <div class="week-focus">Two texts · Different views on a wildlife issue · Compare arguments paragraph · Journal Entry #3</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading Text A</span> Read the first of two texts presenting different perspectives on a real Oregon wildlife issue. Good pairs to find: (A) a rancher's letter or article opposing wolf reintroduction in Oregon vs. a wildlife biologist's argument for it; (B) a logging industry perspective vs. an old-growth conservation perspective; (C) a dam removal argument vs. a hydropower argument about Pacific salmon. As you read Text A, track: What is the author's claim? What evidence do they use? What emotional appeals do they make?</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Reading Text B + Argument Analysis</span> Read Text B — the opposing or alternative perspective on the same issue. Use a T-chart in your journal: on one side, Text A's claim and key evidence; on the other side, Text B's claim and key evidence. After completing the chart, answer: Which argument uses more factual evidence? Which relies more on emotion or values? Does either author acknowledge the other side's valid points?</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Skill Focus: Evaluating Arguments (RI.7.8)</span> Mini-lesson on evaluating arguments: What makes evidence strong? (specific data, expert sources, direct observation vs. vague claims, anecdotes, or emotional language). Practice evaluating each piece of evidence in both texts: label each as "strong factual support," "reasonable inference," "opinion," or "emotional appeal." Discuss: Can emotional appeals be valid? When do they strengthen an argument — and when do they weaken it?</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Grammar: Precise Word Choice &amp; Denotation vs. Connotation</span> Revisit this week's two texts and find 6 words that carry strong connotation — 3 from each text. For each, identify: (1) the denotative (dictionary) meaning, (2) the connotative meaning and emotional effect, (3) what neutral word could replace it. Then examine how each author's word choices tip the reader toward a certain feeling or conclusion. Write 3 sentences about the Oregon wildlife issue using precise, neutral language — no loaded words.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Writing + Journal Entry #3</span> Draft your compare-arguments paragraph (see Writing Prompts below). Then: Journal Entry #3: Research Notes on Your Chosen Animal. Spend 30–45 minutes finding 3 facts about your chosen animal that connect it to current conservation or ecological issues in Oregon. Write these as research notes in your journal — not a polished paragraph, but careful, organized notes with source names. Alongside the notes, create a small map or diagram showing where in Oregon your animal lives.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>After reading both texts, where do you personally stand on the Oregon wildlife issue? What evidence from either text was most convincing to you — and why?</li>
+        <li><span class="q-num">2</span>Can two people both be right about the same issue if they have different values (for example, one person values economic stability for farmers, another values ecological balance)? How do you handle that in an argument?</li>
+        <li><span class="q-num">3</span>What is the difference between evidence and opinion? Did either author blur that line? Find a specific example.</li>
+        <li><span class="q-num">4</span>Did either author acknowledge the other side's valid points? If yes, how — and did it make them more or less persuasive? If no, how did that affect the argument?</li>
+        <li><span class="q-num">5</span>What makes an emotional appeal valid in an argument about wildlife or conservation? When does it cross a line into manipulation?</li>
+        <li><span class="q-num">6</span>Wolves, salmon, and old-growth forests are all part of Oregon's ecological identity. Do you think future generations of Oregonians will still have these things? What would need to change?</li>
+        <li><span class="q-num">7</span>In your research notes on your animal, did you find anything that surprised you — a threat you didn't know about, a recovery story, an unexpected connection to another species?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Compare Arguments Paragraph (RI.7.8 · W.7.2)</div>
+        <p>Write a focused paragraph (10–14 sentences) comparing the arguments in both texts about the Oregon wildlife issue. Your paragraph must: (1) open with a sentence naming both texts and the issue they address, (2) summarize Text A's claim and strongest evidence in 2–3 sentences, (3) summarize Text B's claim and strongest evidence in 2–3 sentences, (4) use at least one conjunctive adverb (however, in contrast, nevertheless) to transition between the two arguments, (5) evaluate one piece of evidence from each text — is it strong or weak, and why?, and (6) close with your assessment: which argument is better supported overall, and what would make either argument stronger?</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Journal Entry #3 — Research Notes + Map</div>
+        <p>In your Illustrated Nature Journal, create a research notes spread. On one side: carefully written notes (in your own words) from at least 2 sources about your animal's current conservation status in Oregon, a threat it faces, or its ecological role. Include the source names. On the other side: a hand-drawn map of Oregon with your animal's range marked, plus a small diagram showing one ecological relationship (predator/prey chain, keystone species role, or migration route). This entry is research-focused — clear, organized, and precise.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Denotation vs. Connotation Analysis</div>
+        <p>Choose 4 words from this week's texts that carry strong connotation. For each word: (1) write the sentence it appears in, (2) define the word's denotative meaning, (3) explain its connotative effect — what feeling or image does it create? (4) replace it with a more neutral synonym and rewrite the sentence. After all four, write one sentence reflecting: how does an author's word choice shape a reader's response without the reader always noticing?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 11 ───────────────────────────────────────────────── -->
+  <div id="week11" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">11</div>
+      <div class="week-header-text">
+        <h2>Research &amp; Synthesis</h2>
+        <div class="week-focus">3 sources · Draft informational report · Journal Entry #4</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Research: Finding &amp; Evaluating Sources</span> Gather 3 sources about your chosen Oregon animal or ecosystem. Aim for variety: try one from a scientific or educational organization (ODFW, USGS, Oregon State University Extension, National Geographic), one from a nature or conservation organization (Oregon Wild, Audubon Society of Portland, Pacific Rivers), and one from a newspaper or magazine (Oregon Live, Smithsonian). For each source, write in your journal: the source name, type (website, article, fact sheet), and one sentence about why it's reliable. Then read all three sources and take organized notes.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Skill Focus: Synthesizing Multiple Sources (W.7.7)</span> Synthesis means combining information from more than one source into a unified, coherent piece of writing. Practice: find one fact or idea that appears in at least 2 of your 3 sources. Write a sentence that synthesizes those sources — combining information without just quoting both. Then find a detail that appears in only one source — how do you handle that? Discuss: Why do researchers use multiple sources rather than just one? What can you do when sources contradict each other?</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Writing: Outline &amp; Introduction</span> Create a detailed outline for your 3–4 paragraph informational report about your Oregon animal or ecosystem. Suggested structure: Paragraph 1 — Introduction (hook + central idea + preview); Paragraph 2 — Physical description and life cycle; Paragraph 3 — Habitat, range, and ecological role in Oregon; Paragraph 4 — Threats, conservation status, and why this animal or ecosystem matters. After outlining, draft Paragraph 1. Your hook can be a vivid observation, a surprising fact, or a compelling question. End your introduction with a clear central idea sentence.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Writing: Draft Paragraphs 2–4</span> Using your outline and research notes, draft the body of your informational report. As you write: synthesize information from at least 2 sources per paragraph (don't just use one source per paragraph), use precise vocabulary — the correct scientific or geographic terms for your subject, vary your sentence structure (check for at least one compound and one complex sentence per paragraph), and include at least one conjunctive adverb or transitional phrase between paragraphs. Don't worry about perfection — get your ideas down.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Art + Writing: Journal Entry #4</span> Journal Entry #4: Illustrated Report Spread. This is your most ambitious journal entry. Create a two-page spread in your journal that combines your research visually and in writing. On the left page: an illustrated scene — paint or draw your animal in its Oregon habitat, with as much ecological detail as you can include (other plants, other animals, seasonal elements). On the right page: write your top 5–8 most important findings from your research, presented as carefully written paragraphs or annotated points. This entry should feel like a page from a real naturalist's field journal.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What makes a source reliable? How did you decide whether each of your three sources was trustworthy? What are the warning signs of an unreliable source?</li>
+        <li><span class="q-num">2</span>When your three sources gave you different or even conflicting information, how did you decide what to include in your report? What did you do with the information you weren't sure about?</li>
+        <li><span class="q-num">3</span>What is the difference between summarizing a source and synthesizing multiple sources? Which is harder, and why?</li>
+        <li><span class="q-num">4</span>As you researched your animal, did you discover any connection between it and other species, or between its health and human activity in Oregon? What surprised you most?</li>
+        <li><span class="q-num">5</span>What is a "keystone species"? Does your animal function as one? What would happen to its Oregon ecosystem if your animal disappeared?</li>
+        <li><span class="q-num">6</span>When writing an informational report, why is precise vocabulary important? Find one term from your research that has no good simple substitute — a word that the concept actually needs.</li>
+        <li><span class="q-num">7</span>Look at your Journal Entry #4 illustrated spread. Does the visual tell a story that your written notes don't? Does the written side explain things your painting can't show? How do the two modes work together?</li>
+        <li><span class="q-num">8</span>Real naturalists like John James Audubon, Mary Anning, and Rachel Carson kept illustrated field journals that became historically important. What makes a naturalist's journal more valuable than just a list of facts?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Informational Report Draft (W.7.2 · W.7.7)</div>
+        <p>Write a 3–4 paragraph informational report (approximately 350–500 words) about your chosen Oregon animal or ecosystem. Requirements: (1) an engaging introduction with a hook and a clear central idea sentence; (2) at least 2 body paragraphs using synthesized information from at least 2 of your 3 sources; (3) precise vocabulary — use the correct scientific and geographic terms; (4) varied sentence structure — each paragraph should include at least one compound and one complex sentence; (5) at least 2 conjunctive adverbs or transitional phrases connecting ideas within or between paragraphs; (6) a conclusion that returns to the central idea and explains why this animal or ecosystem matters. Save your source list to use in Week 12.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Journal Entry #4 — Illustrated Report Spread</div>
+        <p>Create a two-page illustrated spread in your Nature Journal. Left page: a full-page painting or detailed drawing of your animal in its Oregon ecosystem — aim for ecological accuracy (include the right plants, terrain, season, and other species that share the habitat). Right page: 5–8 research findings written in clear, complete sentences, organized by theme (physical traits, habitat, ecological role, threats). This spread is the centerpiece of your journal — make it beautiful and informative.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 12 ───────────────────────────────────────────────── -->
+  <div id="week12" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">12</div>
+      <div class="week-header-text">
+        <h2>Polish &amp; Present</h2>
+        <div class="week-focus">Peer review · Revise informational report · Editing for sentence variety · Present Nature Journal</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Peer Review</span> Exchange your informational report draft with a family member, writing partner, or co-op classmate. Use the peer review checklist: (1) Is the central idea clear in the first paragraph? (2) Does each body paragraph have a clear topic sentence? (3) Are there at least 2 sources synthesized? (4) Does the report use precise vocabulary? (5) Is there sentence variety — simple, compound, and complex sentences? (6) Are conjunctive adverbs and transitions used correctly? The reviewer should write 2 "glows" (strengths) and 2 "grows" (specific suggestions for improvement) on a sticky note or separate sheet.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Revision</span> Read your peer reviewer's feedback carefully. Revise your report with these priorities: (1) Clarify the central idea if it's not immediately clear; (2) Strengthen any paragraph that lacks sufficient evidence or analysis; (3) Improve sentence variety — if you have three compound sentences in a row, vary them; (4) Replace vague words with precise ones (not "big" — how big? not "lives in Oregon" — where exactly in Oregon?); (5) Check that all conjunctive adverbs are punctuated correctly (semicolon before, comma after). Aim to make at least 5 targeted improvements.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Editing: Punctuation, Capitalization &amp; Sentence Variety</span> Final editing pass with a specific focus on mechanics. Check: (1) All proper nouns capitalized (Oregon, Cascade Range, Pacific Ocean, species names); (2) Commas used correctly in compound and complex sentences; (3) Semicolons and commas with conjunctive adverbs; (4) No run-on sentences or comma splices; (5) Every sentence is complete (no fragments). Read your report aloud — your ear will catch what your eye misses. Count your sentence types in one paragraph: do you have a mix? If not, revise.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Final Copies + Journal Assembly</span> Create a polished final copy of your informational report — typed or handwritten in your best hand. Check that your source list is complete (title and author or organization for each source). Assemble your Nature Journal: make sure all four entries are complete (Entry #1: Animal Observation + Sketch; Entry #2: Habitat Painting; Entry #3: Research Notes + Map; Entry #4: Illustrated Report Spread). Add your cover and any finishing touches — border illustrations, a table of contents, a dedication, or a title page.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Present to Family</span> Share your work. Read your informational report aloud (all 3–4 paragraphs). Then walk your audience through the Nature Journal entry by entry, explaining what each spread shows and how it connects to your report. Take questions. After presenting, reflect in writing: What are you most proud of? What would you do differently? What do you want to learn next about your Oregon animal or ecosystem?</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>When you received peer review feedback, was it hard or easy to hear suggestions for improvement? What made the difference between helpful feedback and feedback that's hard to use?</li>
+        <li><span class="q-num">2</span>What was the hardest revision to make — and why? What did you resist changing, and what ended up being the most important improvement?</li>
+        <li><span class="q-num">3</span>Read your final report aloud. Does every sentence sound like you — like your voice? Or do some sentences sound like you're trying to sound like a textbook? Which do you prefer, and why?</li>
+        <li><span class="q-num">4</span>Looking back at all six weeks: How did your understanding of your Oregon animal or ecosystem grow from Week 7 to Week 12? What do you know now that you didn't know when you started?</li>
+        <li><span class="q-num">5</span>How is an illustrated nature journal different from a written report alone? What does the artwork add that words can't fully capture?</li>
+        <li><span class="q-num">6</span>If you were going to keep a real field journal about Oregon nature for the next year, what would you observe and document? Where in Oregon would you most want to go?</li>
+        <li><span class="q-num">7</span>What is one thing you learned about nonfiction writing — as a craft — that surprised you or changed how you read nonfiction? What will you look for differently the next time you read an article or essay?</li>
+        <li><span class="q-num">8</span>Is your Oregon animal or ecosystem okay right now, or is it threatened? What — if anything — can a 7th grader in Oregon actually do about it?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Revision Reflection</div>
+        <p>After completing your revisions, write a short reflection (4–6 sentences) that answers: What specific changes did you make based on peer review? Which revision improved your report the most, and why? What do you know about your writing habits now that you didn't know before this unit?</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Presentation Script (Optional)</div>
+        <p>Write a brief presentation script (one paragraph per journal entry, approximately 3–4 sentences each) to guide your family presentation. For each entry, explain: what the entry shows, one specific thing you learned while creating it, and one connection between the entry and your informational report. Reading from a script is fine — but try to look up and make eye contact at least once per entry.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Unit Reflection Journal</div>
+        <p>Write a reflection (1 page, approximately 250 words) on your experience in Unit 2. Answer: What surprised you most — about your Oregon animal, about nonfiction writing, or about yourself as a writer and artist? How did keeping an illustrated journal change the way you paid attention to nature? What is one skill from this unit — in reading, writing, or art — that you want to keep practicing? What do you want to read, study, or create next?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── RUBRICS ───────────────────────────────────────────────── -->
+  <section id="rubrics" class="page-section">
+    <h2 style="font-family:'Lora',serif;font-size:1.75rem;font-weight:700;color:var(--blue-dark);border-bottom:2px solid var(--blue-mid);padding-bottom:8px;margin-bottom:28px;">Assessment Rubrics</h2>
+
+    <!-- RUBRIC 1: Central Idea Paragraph -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Central Idea Paragraph (Week 8)</div>
+      <div class="rubric-desc">Standards: RI.7.2 — Identifies and explains the central idea of an informational text with supporting evidence</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Central Idea</td><td>Central idea is clearly and precisely stated in the opening sentence; goes beyond topic to capture the article's key message</td><td>Central idea is clearly stated in the opening sentence</td><td>Central idea is present but vague or partially stated; reader has to infer the main point</td><td>No clear statement of central idea; paragraph reads as a loose summary</td></tr>
+          <tr><td>Supporting Evidence</td><td>3+ specific, well-chosen details from the text; evidence is smoothly paraphrased or quoted with source cited; each detail directly supports the central idea</td><td>2–3 details from the text with source cited; mostly supports the central idea</td><td>1–2 details present but may be loosely connected to the central idea or missing citation</td><td>No specific evidence from the text; paragraph relies on general statements</td></tr>
+          <tr><td>Sentence Variety</td><td>Clear evidence of all three sentence types (simple, compound, complex); variety feels natural and purposeful, not forced</td><td>At least 2 sentence types used; some variety evident</td><td>Mostly one sentence type; little variety in structure or rhythm</td><td>All sentences follow the same pattern; no sentence variety attempted</td></tr>
+          <tr><td>Closing &amp; Significance</td><td>Closing sentence explains why the central idea matters — to the animal, ecosystem, or Oregon; leaves the reader thinking</td><td>Closing sentence ties back to the central idea</td><td>Paragraph ends without a clear closing sentence; just stops</td><td>No closing sentence; paragraph feels incomplete</td></tr>
+          <tr><td>Conventions</td><td>No significant errors; conjunctions used correctly; punctuation polished</td><td>Minor errors that don't interfere with meaning</td><td>Several errors in punctuation or sentence structure that occasionally distract</td><td>Frequent errors that make the paragraph difficult to follow</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 2: Informational Research Report -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Informational Research Report (Weeks 11–12)</div>
+      <div class="rubric-desc">Standards: W.7.2 · W.7.7 — Multi-paragraph informational report synthesizing multiple sources on an Oregon animal or ecosystem</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Introduction &amp; Central Idea</td><td>Engaging hook (vivid detail, surprising fact, or compelling question); central idea clearly stated; introduction previews the report's organization</td><td>Hook present; central idea clearly stated; introduction is functional</td><td>Introduction present but hook is weak or central idea is vague</td><td>No clear introduction or central idea; report begins abruptly</td></tr>
+          <tr><td>Source Synthesis</td><td>Information from 3 sources is woven together throughout the report; no single paragraph relies on only one source; synthesis feels natural</td><td>At least 2 sources used in body paragraphs; some synthesis evident</td><td>Sources used but mostly one per paragraph; feels more like summary than synthesis</td><td>Report draws from only one source or sources are not acknowledged</td></tr>
+          <tr><td>Precise Vocabulary</td><td>Correct scientific, geographic, and ecological terms used throughout; vocabulary choices are specific and accurate (e.g., names of species, Oregon watersheds, habitat types)</td><td>Mostly precise vocabulary; some specific terms used correctly</td><td>Some precise vocabulary but also vague or overly general terms</td><td>Very vague vocabulary; avoids technical terms or uses them incorrectly</td></tr>
+          <tr><td>Sentence Variety &amp; Transitions</td><td>Consistent variety of sentence types in each paragraph; conjunctive adverbs and transitional phrases used accurately between and within paragraphs</td><td>Sentence variety present; transitions used but may be repetitive (all "however" or all "also")</td><td>Limited sentence variety; few or awkward transitions between paragraphs</td><td>No apparent sentence variety or transitions; paragraphs feel disconnected</td></tr>
+          <tr><td>Conclusion</td><td>Conclusion restates the central idea in fresh language; explains why this animal or ecosystem matters in a specific, memorable way; leaves the reader with something to think about</td><td>Conclusion returns to the central idea and offers a closing thought</td><td>Conclusion present but simply repeats the introduction or just stops</td><td>No conclusion; report ends mid-thought or with a body paragraph</td></tr>
+          <tr><td>Conventions &amp; Sources</td><td>Very few errors; capitalization and punctuation correct throughout; complete source list included with all 3 sources identified</td><td>Minor errors; source list present with most sources identified</td><td>Some errors in punctuation or capitalization; incomplete source list</td><td>Frequent errors; no source list</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 3: Illustrated Nature Journal -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Illustrated Nature Journal (4 Entries)</div>
+      <div class="rubric-desc">Standards: W.7.2 · RI.7.1 · L.7.3 — Four journal entries documenting an Oregon animal or ecosystem, modeled on naturalist field journals</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Completeness (all 4 entries)</td><td>All 4 entries fully complete: Entry #1 (Animal Observation + labeled sketch), Entry #2 (Habitat Painting + description), Entry #3 (Research Notes + map/diagram), Entry #4 (Illustrated Report Spread); cover included</td><td>All 4 entries present with cover; one entry may be less developed than the others</td><td>3 of 4 entries present; one entry is missing or very incomplete</td><td>2 or fewer entries completed</td></tr>
+          <tr><td>Written Content Quality</td><td>Each written portion is precise, specific, and informative; uses correct ecological and geographic vocabulary; sentences are varied and polished; each entry teaches the reader something specific about the animal or ecosystem</td><td>Written content is informative and mostly specific; some precise vocabulary; minor errors</td><td>Written content is present but vague in places; relies on general statements; limited vocabulary precision</td><td>Written content is minimal, very vague, or contains significant inaccuracies</td></tr>
+          <tr><td>Illustration Quality &amp; Accuracy</td><td>Illustrations are detailed, carefully observed, and ecologically accurate; sketches include labeled features; painting(s) reflect actual habitat conditions; artwork and text work together to inform the reader</td><td>Illustrations are present and mostly accurate; include some labels or specific details; connect meaningfully to the written content</td><td>Illustrations present but may be rushed, generic, or disconnected from the written content; limited detail or labeling</td><td>Illustrations minimal or absent; no apparent connection between visuals and written content</td></tr>
+          <tr><td>Oregon Connection</td><td>Strong, specific Oregon connections throughout: named Oregon locations, species, ecosystems, watersheds, or conservation issues; content could only be about Oregon, not a generic animal or ecosystem</td><td>Oregon connections present in most entries; at least one specific Oregon location or issue named in each entry</td><td>Oregon mentioned but connections are vague; could apply to any similar habitat in North America</td><td>Little or no Oregon-specific content; animal or ecosystem treated generically</td></tr>
+          <tr><td>Effort &amp; Craft</td><td>Journal demonstrates sustained effort across all 6 weeks; care is evident in both artwork and writing; the journal feels like a genuine naturalist's document — something worth keeping</td><td>Journal shows consistent effort; both writing and artwork are completed with care</td><td>Some entries show effort while others appear rushed; uneven quality across the journal</td><td>Minimal effort evident throughout; journal appears to be completed quickly without care</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+</div>
+
+<footer>
+  <p><strong>Unit 2: Nature's Voice</strong> · 7th Grade Language Arts · <a href="7th_grade_language_arts.html">← Back to Full Curriculum</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 4: Art Meets Words — 7th Grade Language Arts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+    :root {
+      --green-dark:#2D6A4F; --green-mid:#52B788; --green-light:#D8F3DC;
+      --gold:#E9C46A; --gold-light:#FFF8E1;
+      --rust:#C65D2A; --rust-light:#FBE9E0;
+      --purple-dark:#5A3E8F; --purple-light:#EDE7F6;
+      --cream:#FEFAE0; --text:#1A1A2E; --text-light:#4A4A6A;
+      --border:#D0D0E0; --white:#FFFFFF;
+      --unit-color:#C65D2A; --unit-accent:#E9C46A;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;font-size:15px;}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,#C65D2A 0%,#9e3f18 50%,#6b2a0f 100%);color:#fff;padding:48px 40px 40px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(233,196,106,.15),transparent 60%);pointer-events:none;}
+    .back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.04em;margin-bottom:18px;transition:color .15s;}
+    .back-link:hover{color:var(--gold);}
+    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+    .hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:3px 12px;font-size:.75rem;font-weight:700;color:#fff;}
+    .hero h1{font-family:'Lora',serif;font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:8px;}
+    .hero h1 span{color:var(--gold);}
+    .hero .tagline{font-family:'Lora',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.82);max-width:640px;}
+
+    /* NAV */
+    .week-nav{background:#9e3f18;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18);}
+    .week-nav nav{max-width:1060px;margin:0 auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+    .week-nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.77rem;font-weight:700;padding:3px 10px;border-radius:10px;transition:background .15s,color .15s;letter-spacing:.02em;}
+    .week-nav a:hover,.week-nav a.active{background:rgba(255,255,255,.18);color:var(--gold);}
+    .week-nav .sep{color:rgba(255,255,255,.3);font-size:.75rem;}
+
+    /* LAYOUT */
+    .container{max-width:1060px;margin:0 auto;padding:0 24px;}
+    .page-section{padding:44px 0;}
+
+    /* OVERVIEW STRIP */
+    .overview-strip{background:var(--white);border:1.5px solid #f5d5c5;border-radius:12px;padding:22px 28px;margin:32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
+    .ov-item .ov-label{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rust);margin-bottom:3px;}
+    .ov-item .ov-val{font-size:.9rem;font-weight:600;color:var(--text);}
+
+    /* WEEK SECTIONS */
+    .week-section{margin-bottom:52px;}
+    .week-header{background:linear-gradient(135deg,#C65D2A,#6b2a0f);border-radius:12px 12px 0 0;padding:18px 26px;display:flex;align-items:center;gap:16px;}
+    .week-num-badge{font-family:'Lora',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;}
+    .week-header-text h2{font-family:'Lora',serif;font-size:1.3rem;font-weight:700;color:#fff;}
+    .week-header-text .week-focus{font-size:.82rem;color:rgba(255,255,255,.78);margin-top:2px;}
+    .week-body{background:var(--white);border:1.5px solid #f5d5c5;border-top:none;border-radius:0 0 12px 12px;padding:24px 26px;}
+
+    /* DAILY PLAN */
+    .section-label{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);margin-bottom:10px;margin-top:22px;}
+    .section-label:first-child{margin-top:0;}
+    .daily-table{width:100%;border-collapse:collapse;font-size:.86rem;}
+    .daily-table th{background:var(--rust-light);color:var(--rust);font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;text-align:left;}
+    .daily-table td{padding:9px 12px;border-bottom:1px solid #fce8dc;vertical-align:top;line-height:1.55;}
+    .daily-table tr:last-child td{border-bottom:none;}
+    .daily-table tr:nth-child(even) td{background:#fff9f6;}
+    .day-label{font-weight:800;color:var(--rust);white-space:nowrap;}
+    .day-tag{display:inline-block;background:var(--rust-light);color:var(--rust);border-radius:6px;padding:1px 7px;font-size:.72rem;font-weight:800;margin-bottom:3px;}
+
+    /* DISCUSSION QUESTIONS */
+    .questions-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+    .questions-list li{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;line-height:1.6;}
+    .q-num{background:var(--rust);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;margin-top:1px;}
+
+    /* WRITING PROMPTS */
+    .prompt-card{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
+    .prompt-card .prompt-type{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rust);margin-bottom:4px;}
+    .prompt-card p{font-size:.88rem;line-height:1.65;color:var(--text);}
+
+    /* RUBRICS */
+    .rubric-wrap{margin-bottom:36px;}
+    .rubric-title{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:var(--rust);margin-bottom:4px;}
+    .rubric-desc{font-size:.85rem;color:var(--text-light);margin-bottom:12px;}
+    .rubric-table{width:100%;border-collapse:collapse;font-size:.82rem;}
+    .rubric-table th{padding:9px 12px;text-align:left;font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
+    .rubric-table th:first-child{background:#6b2a0f;color:#fff;width:22%;}
+    .rubric-table th.r-exc{background:#9e3f18;color:#fff;width:19.5%;}
+    .rubric-table th.r-pro{background:#C65D2A;color:#fff;width:19.5%;}
+    .rubric-table th.r-dev{background:#d98660;color:#fff;width:19.5%;}
+    .rubric-table th.r-beg{background:#edb898;color:var(--text);width:19.5%;}
+    .rubric-table td{padding:9px 12px;border:1px solid #f5d5c5;vertical-align:top;line-height:1.5;}
+    .rubric-table tr:nth-child(even) td:first-child{background:#fff4ee;}
+    .rubric-table td:first-child{font-weight:700;color:var(--rust);background:#fff9f6;}
+
+    /* FOOTER */
+    footer{background:#6b2a0f;color:rgba(255,255,255,.7);text-align:center;padding:24px;font-size:.82rem;margin-top:48px;}
+    footer strong{color:var(--gold);}
+    footer a{color:var(--gold-light);text-decoration:none;}
+
+    @media(max-width:600px){
+      .hero h1{font-size:1.7rem;}
+      .week-body{padding:18px 16px;}
+      .daily-table{font-size:.78rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <a class="back-link" href="7th_grade_language_arts.html">← Back to Full Curriculum</a>
+  <div class="hero-meta">
+    <span class="hero-badge">Unit 4 of 6</span>
+    <span class="hero-badge">📅 Weeks 19–24</span>
+    <span class="hero-badge">🎨 Multimodal Storytelling</span>
+    <span class="hero-badge">RL.7.4 · RL.7.7 · W.7.3 · W.7.4 · W.7.5 · L.7.4 · L.7.5</span>
+  </div>
+  <h1>Art Meets <span>Words</span></h1>
+  <p class="tagline">"A story can live in words, images, clay, and color. What story lives inside you?"</p>
+</div>
+
+<div class="week-nav">
+  <nav>
+    <a href="#overview">Overview</a><span class="sep">›</span>
+    <a href="#week19">Week 19</a><span class="sep">·</span>
+    <a href="#week20">Week 20</a><span class="sep">·</span>
+    <a href="#week21">Week 21</a><span class="sep">·</span>
+    <a href="#week22">Week 22</a><span class="sep">·</span>
+    <a href="#week23">Week 23</a><span class="sep">·</span>
+    <a href="#week24">Week 24</a><span class="sep">›</span>
+    <a href="#rubrics">Rubrics</a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <div id="overview" class="overview-strip">
+    <div class="ov-item"><div class="ov-label">Duration</div><div class="ov-val">6 weeks (Weeks 19–24)</div></div>
+    <div class="ov-item"><div class="ov-label">Core Standards</div><div class="ov-val">RL.7.4 · RL.7.7 · W.7.3 · W.7.4 · W.7.5 · L.7.4 · L.7.5</div></div>
+    <div class="ov-item"><div class="ov-label">Suggested Texts</div><div class="ov-val">The Arrival · Nimona · Wolf Hollow · Mary Oliver · Ted Hughes</div></div>
+    <div class="ov-item"><div class="ov-label">Signature Project</div><div class="ov-val">Illustrated Short Story + Clay Character (Mini Author Event)</div></div>
+    <div class="ov-item"><div class="ov-label">Grammar Focus</div><div class="ov-val">Figurative language · Connotation/denotation · Punctuating dialogue · Vivid verbs</div></div>
+  </div>
+
+  <!-- ─── WEEK 19 ───────────────────────────────────────────────── -->
+  <div id="week19" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">19</div>
+      <div class="week-header-text">
+        <h2>Visuals Tell Stories</h2>
+        <div class="week-focus">The Arrival · How images carry meaning · Visual analysis · Figurative language intro · Sketch your animal protagonist</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + Analysis</span> Spend 45–60 minutes slowly reading (looking through) Shaun Tan's <em>The Arrival</em> or a comparable wordless illustrated book. Do not rush — treat each page like a painting. In your reading journal, describe 3 specific images that made you feel an emotion. What is happening? How do the lines, shadows, and composition make you feel it, without any words at all?</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Writing — Visual Analysis</span> Choose one double-page spread from <em>The Arrival</em> that tells a complete mini-story on its own. Write a 1-page visual analysis response: What do you see in the foreground, middle ground, and background? What mood does the image create, and how — through light, scale, angle, or detail? What story does it tell? What would you have to add in words to explain what the images already show?</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Grammar — Figurative Language Intro</span> Introduction to the four figurative language devices for this unit: <strong>simile</strong> (comparison using like/as), <strong>metaphor</strong> (direct comparison), <strong>personification</strong> (giving human qualities to non-human things), and <strong>symbolism</strong> (an object/image representing a bigger idea). Find one example of each in a poem or prose excerpt provided, label it, and explain what effect it creates. Then write one original sentence using each device.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Art + Project Kickoff</span> Today you begin your Signature Project. In your sketchbook, do 3–5 rough sketches of possible animal protagonists for your original short story. Your character must be an animal living in a fantastical world. Try different species, different expressions, different postures. Below each sketch, jot down 3 words that describe that character's personality. Which one feels most alive to you?</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Discussion + Unit Preview</span> Share your protagonist sketches and your visual analysis response. Discuss: How is "reading" a wordless book different from reading prose? What can images do that words can't — and vice versa? Review the unit's full project arc: illustrated short story, clay sculpture, mini author event in Week 24.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>When you looked through <em>The Arrival</em>, were there moments when you felt genuinely confused, moved, or surprised — even though there were no words? What caused that reaction?</li>
+        <li><span class="q-num">2</span>Shaun Tan uses an animal-like creature as the protagonist's companion in <em>The Arrival</em>. What does this creature seem to represent? How does having an animal figure change the emotional tone of the story?</li>
+        <li><span class="q-num">3</span>Look at the image you chose for your visual analysis. How does the artist use scale — the relative sizes of things — to tell us something about how the character feels?</li>
+        <li><span class="q-num">4</span>A simile says "the sky was like a bruise." A metaphor says "the sky was a bruise." Read both aloud. Which feels more powerful to you, and why? Does the effect change depending on the context?</li>
+        <li><span class="q-num">5</span>Think about a book with an animal protagonist that you love. What animal is it, and what does the author do to make that animal feel real — not like a person wearing a costume, but like a genuinely different kind of mind?</li>
+        <li><span class="q-num">6</span>For your own story protagonist: Why did you choose that animal? What can that animal perceive, move through, or fear that a human character could not?</li>
+        <li><span class="q-num">7</span>What is the difference between a story that happens to have an animal in it and a story that could only work with an animal as its center? What makes an animal protagonist essential rather than decorative?</li>
+        <li><span class="q-num">8</span>Wordless books like <em>The Arrival</em> are sometimes called "visual narratives." Are they literature? What does your answer say about what literature is?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Visual Analysis Response (RL.7.7)</div>
+        <p>Write a full-page visual analysis of one image or spread from <em>The Arrival</em>. Your response must address: (1) what you literally see (describe the composition in detail), (2) what mood or emotion the image creates and how the artist achieves it through specific visual choices, and (3) what story this single image tells — who is in it, what just happened, what is about to happen. End with one sentence explaining what a written version of this moment would need to add that the image leaves out.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Figurative Language Practice</div>
+        <p>Write a short paragraph (5–7 sentences) describing your animal protagonist as if introducing them to a reader for the very first time. You must include: one simile, one metaphor, and one example of personification applied to the natural world around them. Underline each device and label it in the margin. Focus on making the reader see and feel your character, not just know facts about them.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 20 ───────────────────────────────────────────────── -->
+  <div id="week20" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">20</div>
+      <div class="week-header-text">
+        <h2>Word Choice &amp; Imagery</h2>
+        <div class="week-focus">Mary Oliver + prose excerpts · Sensory language · Connotation vs. denotation · Story outline</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + Poetry</span> Read 3–4 Mary Oliver poems focused on the natural world (suggestions: "The Summer Day," "Wild Geese," "The Black Snake," "When Death Comes"). Read each one twice — once aloud, once silently. In your journal, for each poem record: one image that you can picture exactly, one line that surprised you, and one emotion the poem made you feel. Notice how Oliver uses animals, plants, and landscapes as a way of talking about big human ideas.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar — Connotation vs. Denotation</span> A word's denotation is its dictionary definition. Its connotation is the feeling or association it carries. Compare: <em>thin / slender / gaunt / scrawny</em> — same denotation, very different connotations. Work through a list of 10 word pairs. For each, label whether the connotation is positive, negative, or neutral, and explain the difference in feeling. Then revise 5 sentences from a bland paragraph by swapping neutral words for ones with stronger connotations.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Prose Excerpt</span> Read the excerpt from <em>Wolf Hollow</em> by Lauren Wolk (first chapter or a nature-description passage your teacher selects). Notice how Wolk layers sensory details — not just what things look like, but how they smell, sound, and feel underfoot. In your journal, create a "Sensory Map" of the passage: list details under the five senses. Which sense does Wolk use most? Which does she use least? What effect does that create?</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Writing — Sensory Description Paragraph</span> Using your protagonist sketch and your notes from this week, write a sensory description paragraph (8–10 sentences) of the fantastical world your animal character inhabits. Include at least one detail for each of the five senses. Use at least two strong connotation word choices — words that carry a specific feeling, not just a neutral description. Aim to make the reader feel like they're standing inside your world.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project — Story Outline</span> Develop your story outline using a story map template: (1) Who is your protagonist — species, name, personality, goal? (2) What is the fantastical world like? (3) What problem or journey begins the story? (4) What is the hardest moment — the climax? (5) How does it end, and what has changed? You don't have to have everything figured out, but you need a shape. Discuss your outline with a family member or writing partner.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>Mary Oliver writes about grasshoppers, foxes, wild geese — and somehow ends up talking about how to live a good life. How does she do that? How does she move from the specific (one grasshopper, one afternoon) to something universal?</li>
+        <li><span class="q-num">2</span>Find a line from one of Oliver's poems where a single word choice makes all the difference. What would happen if you replaced that word with a synonym? Read both versions aloud — what changes?</li>
+        <li><span class="q-num">3</span>Think about the word "wild." What is its denotation? What are its connotations? Does the word mean something different when you say "wild horse" versus "wild party" versus "wild with grief"? How can one word carry so many different feelings?</li>
+        <li><span class="q-num">4</span>In <em>Wolf Hollow</em>, Wolk sets her story in a very specific place and time of year. How does the sensory detail of the setting affect the mood — does it make you feel safe, uneasy, nostalgic, or something else? Find a specific passage to support your answer.</li>
+        <li><span class="q-num">5</span>Your story takes place in a fantastical world. What does "fantastical" mean to you — is it magic? Impossible geography? Animal societies? How do you balance making the world feel real (through sensory detail) while also making it feel wonderfully strange?</li>
+        <li><span class="q-num">6</span>If your animal protagonist has a heightened sense — sharper smell, hearing, or night vision — how might that change the sensory landscape of your story? What would your character notice that a human narrator would miss?</li>
+        <li><span class="q-num">7</span>What is the difference between "the tree was tall" and "the oak clawed the sky"? What work does each sentence ask the reader to do?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Sensory World-Building Paragraph (W.7.3, L.7.4)</div>
+        <p>Write a descriptive paragraph (8–10 sentences) introducing the fantastical world your animal protagonist lives in. Requirements: at least one detail for each of the five senses, at least two words chosen specifically for their connotation (circle them and note the connotation in the margin), at least one simile or metaphor. The goal is not to explain the world — it is to place the reader inside it, disoriented and curious and alive to it.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Oliver-Inspired Nature Poem (L.7.5)</div>
+        <p>Write a poem of 12–16 lines inspired by Mary Oliver's style, focused on one specific animal in a specific natural moment. Start with what you can observe exactly — the physical creature, the exact setting, the particular light. Then, in the second half of your poem, let the observation open into something larger: a question, a feeling, an idea about what it means to be alive. Use at least one strong figurative language device.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Story Outline Narrative</div>
+        <p>Write your story outline as a brief narrative summary (1 paragraph, 8–10 sentences) rather than a bulleted list. Tell the story from beginning to end as if you're telling it to a friend: "My story is about a fox named __ who lives in a world where __ and one day __ and because of that __ until finally __ and after that __ and the story ends when __." This is your story's spine. Keep it — you'll need it every week as a guide.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 21 ───────────────────────────────────────────────── -->
+  <div id="week21" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">21</div>
+      <div class="week-header-text">
+        <h2>Story Structure</h2>
+        <div class="week-focus">Graphic novel vs. prose comparison · Draft story opening · Symbolism + extended metaphor · Begin clay rough form</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + Comparison</span> Read the opening chapter of <em>Nimona</em> by Noelle Stevenson (graphic novel format) alongside the opening of a prose fantasy novel featuring animals (student-selected illustrated fantasy picture book or <em>Wolf Hollow</em> excerpt). In your journal, create a two-column comparison: How does each format establish the protagonist? How does each establish the world? Which format pulls you in faster, and why?</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar — Symbolism + Extended Metaphor</span> Symbolism: when an object, animal, or place stands for a larger idea (a broken cage = lost freedom; a returning bird = hope). Extended metaphor: when a single metaphor is developed and sustained across several sentences or even an entire work. Study two examples from your readings. Then brainstorm: What objects or images in your story world could work as symbols? Sketch 3 candidates and explain what each could represent.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Writing — Draft Story Opening</span> Write the opening of your original short story — the first scene, approximately 1–1.5 pages. Your opening must accomplish two things: (1) establish the setting so the reader can feel and sense the world, and (2) introduce the protagonist in action (doing something, perceiving something, wanting something) — not with a list of their characteristics. Do not begin with "My character is a fox named Rue who lives in..." — drop the reader directly into the world. Just write — do not edit.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Art — Begin Clay Rough Form</span> First clay session. Using air-dry clay, polymer clay, or ceramic clay, create the rough three-dimensional form of your animal protagonist. This week is about shape and proportion only — not detail or finish. Block out the basic body, head, and limbs. Think about posture and gesture: What is your character doing with their body? How does their posture show their personality? Let the clay be rough — you'll refine it in Week 22.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Discussion + Review</span> Share your story opening (read it aloud) and your clay rough form. Discuss: Does the opening make you want to keep reading? Does the clay figure feel like the same character? Talk about symbolism in published stories you've loved — what objects or details carried deeper meaning?</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>Compare the opening pages of <em>Nimona</em> with the opening of your prose text. Which one established character faster? Which one established world more fully? What does that tell you about the structural advantages of each format?</li>
+        <li><span class="q-num">2</span>In <em>Nimona</em>, the protagonist is a shape-shifter who becomes animals. What does the ability to change form seem to symbolize? Is it about identity? Power? Something else?</li>
+        <li><span class="q-num">3</span>Look at the opening of your own story draft. What is the very first thing the reader learns? Is that the right first thing — the most important, most intriguing, most grounding piece of information you could offer?</li>
+        <li><span class="q-num">4</span>What is an object, color, or recurring image in your story world that could work as a symbol? What does it represent? How could you weave it through the story so it gains meaning as the story develops?</li>
+        <li><span class="q-num">5</span>Think about the physical form of your clay character. How does posture and gesture tell us about personality? What does a character who stands very still suggest? One who is always mid-leap?</li>
+        <li><span class="q-num">6</span>Ted Hughes' <em>The Iron Man</em> is a story about something huge and iron-cold that is also, somehow, tender and loyal. How do authors make us care about characters who are very different from us — metal, scaled, six-legged? What is the technique?</li>
+        <li><span class="q-num">7</span>Extended metaphors sustain one comparison across a long passage. If your protagonist's journey were an extended metaphor — a river, a migration, a season — what would it be? How would that metaphor develop and change as the story progresses?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Story Opening Draft (W.7.3)</div>
+        <p>Write the opening scene of your original short story (1–1.5 pages, handwritten or typed). Rules for this draft: Start in the middle of a moment — your protagonist is already doing something. Include at least three sensory details within the first paragraph. Do not name your protagonist in the first sentence — let the reader meet them in motion first. End your opening scene with a sentence that makes the reader want to know what happens next. This is a first draft: be bold, be messy, keep writing.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Graphic Novel vs. Prose Comparison (RL.7.7)</div>
+        <p>Write a focused comparison paragraph (8–10 sentences) analyzing how the opening of <em>Nimona</em> and the opening of your prose text each establish character and world. Use specific examples from both texts. Your paragraph should end with a sentence answering: For your own story, which technique — visual storytelling or prose description — do you think you'll use most, and why?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 22 ───────────────────────────────────────────────── -->
+  <div id="week22" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">22</div>
+      <div class="week-header-text">
+        <h2>Dialogue &amp; Voice</h2>
+        <div class="week-focus">Strong dialogue excerpts · Draft dialogue + character voice · Punctuating dialogue · Refine clay + begin illustrations</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading — Dialogue Study</span> Read selected excerpts from <em>Nimona</em> and <em>Wolf Hollow</em> chosen specifically for strong dialogue. For each excerpt, answer in your journal: (1) Can you tell who is speaking without the dialogue tag? (2) What does each character's word choice reveal about their personality, age, power, or mood? (3) How does the dialogue move the plot forward — does it reveal new information, create conflict, or change a relationship? Collect 2–3 examples of dialogue you admire and explain why they work.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar — Punctuating Dialogue</span> Master the rules for punctuating dialogue: quotation marks around spoken words; comma inside the closing quotation when a dialogue tag follows; new paragraph for each new speaker; question marks and exclamation points inside quotation marks; no comma when the sentence ends with a period inside the quote and no tag follows. Work through 8 incorrectly punctuated dialogue examples and fix them. Then write 4 original dialogue exchanges that each use a different punctuation pattern.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Writing — Draft Dialogue Scene</span> Write a scene from your story (1–1.5 pages) that is primarily driven by dialogue between your protagonist and at least one other character. Each character must have a distinct voice — the reader should be able to tell them apart. Include: at least 8 lines of dialogue, at least 2 different dialogue tag constructions (said / asked / whispered / growled, etc.), and at least one moment where a character's inner thought is woven between lines of dialogue. Correctly punctuate all dialogue.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Art — Refine Clay Figure + Begin Illustrations</span> Return to your clay rough form: add details, refine proportions, shape the face and paws, texture the fur or scales. You want this figure to feel like your specific character, not just any animal. After 30–40 minutes of clay work, begin your first story illustration. Sketch the scene you most want to illustrate — probably your opening or a key emotional moment. Pencil sketch first, then decide on your color medium (watercolor, colored pencil, paint, ink).</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Discussion + Peer Share</span> Read your dialogue scene aloud. Discuss: Does each character sound different? Where does the dialogue feel flat or stiff, and where does it feel alive? Share your illustration sketch — does the image you're making match the story you're writing, or has drawing it changed what you want to write?</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>Read a passage of dialogue from <em>Nimona</em> aloud, covering the character's name. Can you tell who is speaking? What clues does the author give — word choice, sentence length, what the character talks about — that make each voice unique?</li>
+        <li><span class="q-num">2</span>What is the difference between direct and indirect speech? ("She said, 'I won't go back'" vs. "She said she wouldn't go back.") When does an author choose each? What is gained and lost in the translation?</li>
+        <li><span class="q-num">3</span>Your protagonist is an animal in a fantastical world. If they can speak, how do they speak? Does their species affect their voice — a fox might be quick and clever; a bear might be slow and certain; a crow might be abrupt and strange. How will readers hear your character's nature in their speech?</li>
+        <li><span class="q-num">4</span>Look at a dialogue exchange in your draft. What does the dialogue do — does it just convey information, or does it also create conflict, reveal character, or change something between the characters? If it only conveys information, how could you rewrite it to do more?</li>
+        <li><span class="q-num">5</span>What is a "vivid verb"? Find three dialogue tags in your reading this week that are more interesting than "said." How does a tag like "whispered," "snarled," or "admitted" change the way you hear the line?</li>
+        <li><span class="q-num">6</span>When you sculpt your character in clay, do you find yourself discovering things about them that you didn't know when you were only writing? How do the two processes — writing and making — inform each other?</li>
+        <li><span class="q-num">7</span>Think about the illustrations you're beginning. Are you choosing to illustrate the most plot-important moments, or the most emotionally important ones? Are those the same moment, or different?</li>
+        <li><span class="q-num">8</span>In <em>Nimona</em>, the visual storytelling sometimes shows us something the words don't say — a character's expression contradicts what they're saying aloud. How can you create that kind of tension in a written story, where you only have words?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Dialogue Scene Draft (W.7.3, L.7.5)</div>
+        <p>Write a scene from your original story (1–1.5 pages) in which dialogue carries the primary weight of the narrative. Requirements: at least two characters with clearly distinct voices; at least 8 lines of dialogue, all correctly punctuated; at least one vivid verb used as a dialogue tag (not "said"); and at least one moment where the narration interrupts with an action beat or an internal thought, rather than a dialogue tag. After you write it, underline every dialogue tag and ask: could I cut this tag and still know who is speaking? If yes, cut it.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Dialogue Punctuation Correction Practice (L.7.5)</div>
+        <p>Here are five lines of dialogue with punctuation errors — rewrite each one correctly, then explain in one sentence what rule you applied: (1) "I don't know where the river goes" she said quietly. (2) She whispered "the forest knows your name." (3) "Run!" He shouted, "They're right behind us"! (4) He asked if she had ever seen the northern lights before. (5) "I am not afraid," the fox said. "But I am careful". Compare your corrections with the grammar rules from Tuesday's lesson.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 23 ───────────────────────────────────────────────── -->
+  <div id="week23" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">23</div>
+      <div class="week-header-text">
+        <h2>Rising Action &amp; Craft</h2>
+        <div class="week-focus">Peer drafts + mentor texts · Revise with purpose · Finalize clay + complete illustrations</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Revision — Mentor Text Study</span> Choose a 1–2 page passage from one of your favorite fantasy animal books — one that does something you want your own story to do (build tension, paint a vivid world, make you love a character). Study it closely: How many sentences on a page are long vs. short? Where does the author slow down the action with description, and where do they speed up with short sharp sentences? Take notes. Then read your own draft opening and ask: Where can I apply these techniques?</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Writing — Targeted Revision: Sensory Detail + Figurative Language</span> Reread your entire story draft so far. With a colored pencil, circle every sensory detail. With a different color, underline every figurative language device. Count them. If you have fewer than 5 sensory details per page, this revision session is for adding them. If your figurative language feels forced or generic ("as fast as lightning" — we've all heard it), replace it with something surprising and specific to your world. Revise at least 10 sentences.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Writing — Draft Rising Action</span> Write the middle section of your story — the rising action — bringing your draft to approximately 3–4 pages total. This is the part where things get harder, stranger, and more urgent for your protagonist. Your character must face at least one obstacle or moment of choice. The world should feel more present and pressured. Keep your symbol or extended metaphor active — let it reappear. Write without stopping to edit.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Art — Finalize Clay + Complete Illustrations</span> Final clay session: add any last details, smooth or texture surfaces as fits your character, and allow to fully dry (or begin baking if polymer clay). Begin painting or inking your illustrations. You need at least 3–4 illustrations for a 4–6 page story. Each illustration should correspond to a key moment in the narrative and be composed deliberately — think about what angle, what moment, and what detail the reader most needs to see.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Peer or Family Feedback + Plan Final Draft</span> Share your full draft so far with a reader. Ask them to answer three specific questions: (1) Where did you most feel inside the world? (2) Where did you lose track of what was happening or why? (3) What do you most want to know happens next? Use their feedback to make a revision plan for Week 24's final draft. Write down 3 specific things you will revise.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>What did you discover about a mentor author's craft when you studied their passage sentence by sentence? What did they do that you hadn't consciously noticed before you were looking for it?</li>
+        <li><span class="q-num">2</span>When you circled all the sensory details in your draft, what did you find? Were they distributed evenly, or clustered in the opening and then forgotten? How does a story feel different when sensory detail runs all the way through it?</li>
+        <li><span class="q-num">3</span>What is the difference between revision and editing? Revision means re-seeing — changing the big things (structure, plot, character, pacing). Editing means fixing the small things (punctuation, word choice). You should always revise before you edit. Have you been revising or editing this week?</li>
+        <li><span class="q-num">4</span>In rising action, tension builds — things keep getting harder or stranger for the protagonist. How do you create tension? Give three techniques from your readings this unit: one from the graphic novel, one from prose, and one you invented or discovered yourself.</li>
+        <li><span class="q-num">5</span>Is your animal protagonist changing as the story progresses? How do you show a character changing — do you tell the reader directly ("she was braver now"), or do you show it through action, choice, or the way they perceive the world around them?</li>
+        <li><span class="q-num">6</span>When feedback from a reader surprises you — when they were confused where you thought you were clear, or bored where you thought you were exciting — how do you decide whether to take that feedback or push back on it?</li>
+        <li><span class="q-num">7</span>Look at your illustrations alongside your prose. Do they feel like they belong to the same story? Or do the images tell a slightly different story than the words? Is that a problem — or could it be interesting?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Rising Action Draft (W.7.3, W.7.5)</div>
+        <p>Write the rising action of your story (targeting 3–4 pages total draft length after this session). Your protagonist must face at least one obstacle that tests something essential about their character — not just a physical obstacle, but something that challenges who they are or what they believe. Build tension using at least two of the following techniques: (1) a short-sentence burst to speed up a frightening moment, (2) a symbolic object reappearing, (3) unexpected dialogue that changes everything, (4) a description that creates dread through sensory detail rather than stating the emotion directly.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Revision Reflection</div>
+        <p>After your targeted revision session, write a one-paragraph revision note to yourself (5–7 sentences): What three specific changes did you make, and why? Where in the story do you feel the revision made the biggest difference? What is still not working — and what is your plan for fixing it in Week 24? This note is for you, not for anyone else, so be honest.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WEEK 24 ───────────────────────────────────────────────── -->
+  <div id="week24" class="week-section">
+    <div class="week-header">
+      <div class="week-num-badge">24</div>
+      <div class="week-header-text">
+        <h2>Celebrate &amp; Share</h2>
+        <div class="week-focus">Author's craft reflection · Author's note · Final proofreading · Mini author event + clay display</div>
+      </div>
+    </div>
+    <div class="week-body">
+
+      <div class="section-label">📅 Daily Plan</div>
+      <table class="daily-table">
+        <thead><tr><th>Day</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td class="day-label">Monday</td><td><span class="day-tag">Writing — Final Draft</span> Using last week's revision plan, write your final complete story draft (4–6 pages). This draft should include your opening scene, rising action, climax, and resolution. Work section by section. Keep your story outline nearby. Your goal today is a complete, coherent draft — messy in places is fine, but the shape must be whole. Read it aloud to yourself when you finish; mark anything that sounds wrong or flat.</td></tr>
+          <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Writing — Proofreading + Author's Note</span> Final proofreading pass: read your story aloud one sentence at a time — backwards through the page if necessary — catching spelling, punctuation, and dialogue errors. Fix at least 10 things. Then write your Author's Note (1 paragraph, 6–8 sentences): Where did this story come from? What animal did you choose and why? What was the hardest part to write? What do you most want your reader to feel when they close the last page? The Author's Note goes at the front or back of your finished book.</td></tr>
+          <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Book Assembly + Display Prep</span> Assemble your illustrated story into final book form: order the pages, position the illustrations, create a title page with title and author name, and attach or bind the pages. Set up your display area: your finished clay figure should be positioned as if it has stepped out of the story. Arrange the clay figure, the story, and any process sketches (protagonist sketches, story outline, illustration drafts) for the author event. Write a short display card for your clay figure (3–4 sentences describing the character).</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Author's Craft Reflection</span> Write a full-page author's craft reflection in your journal. Answer: What did you learn about storytelling during this unit that you didn't know before? Which figurative language device came most naturally to you, and which was hardest? What would you do differently if you wrote this story again? What does your story want to say — what is the deeper meaning underneath the plot? Attach this reflection to your project portfolio.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Mini Author Event</span> Today you are an author. Set up your display: illustrated story book, clay figure, display card. Invite family members, neighbors, or homeschool community members. Read your story aloud — all of it, or a meaningful excerpt. Take questions. Walk visitors through your clay figure and explain your character. After the event, write one final journal entry: How did it feel to share your story? What did you notice when you read it aloud in front of others?</td></tr>
+        </tbody>
+      </table>
+
+      <div class="section-label">💬 Discussion Questions</div>
+      <ul class="questions-list">
+        <li><span class="q-num">1</span>When you read your completed story aloud, which part of it do you love most — where did the writing feel most alive? What makes that section work?</li>
+        <li><span class="q-num">2</span>Look at your finished clay figure. Does it match the animal in your story, or did it become its own creature as you worked? What does that tell you about the relationship between imagining something and making it?</li>
+        <li><span class="q-num">3</span>At the beginning of Week 19 you had an idea (or a sketch) of your protagonist. Now you have a finished illustrated story and a clay sculpture. How has your understanding of this character deepened or changed over six weeks?</li>
+        <li><span class="q-num">4</span>Which was harder — getting the story right on the page, or getting the character right in clay and illustration? What did each medium ask of you that the other didn't?</li>
+        <li><span class="q-num">5</span>A symbol is an image that carries meaning beyond itself. Look at your finished story: Is there a symbol in it — something that appears more than once and carries the story's deeper meaning? Did you plan it, or did it appear on its own?</li>
+        <li><span class="q-num">6</span>What is the theme of your story — not the plot summary, but the idea underneath it? Write it as a complete sentence. Now ask: Does the ending of your story support that theme? Does your protagonist's final choice reflect what you believe the story is about?</li>
+        <li><span class="q-num">7</span>What kind of reader would love this story? How would you describe it to them in three sentences — not the plot, but the feeling and the world?</li>
+        <li><span class="q-num">8</span>Looking back across this whole unit: What is one thing you know about writing now that you did not know in Week 19? What is one thing you want to keep practicing?</li>
+      </ul>
+
+      <div class="section-label">✏️ Writing Prompts</div>
+      <div class="prompt-card">
+        <div class="prompt-type">Author's Note (W.7.4, W.7.5)</div>
+        <p>Write your Author's Note (6–8 sentences) to be published with your finished story. An Author's Note is not a summary of the plot — it is you speaking directly to your reader about the story behind the story. Address at least three of the following: Why this animal? Why this world? What question or feeling was this story trying to explore? What was the hardest moment in the writing? What do you hope the reader carries away? Write it as if you are handing the book to someone you want to love it.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Author's Craft Reflection (W.7.5)</div>
+        <p>Write a full author's craft reflection (1 page) covering the following: (1) What figurative language device did you use most deliberately in your final story — find a specific example and explain the choice you made; (2) Identify one moment in your story where you think your dialogue is strongest — what makes it work; (3) What is the theme of your story stated as a complete sentence; (4) What one sentence in the whole story are you most proud of, and why. This reflection goes in your portfolio and is a demonstration of RL.7.4, W.7.3, W.7.5, and L.7.5.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-type">Post-Event Journal Entry</div>
+        <p>After your mini author event, write a journal entry (half page) reflecting on the experience of sharing your story aloud. What was it like to hear your words read in a room with other people in it? Did anything surprise you — a reaction you didn't expect, a part of the story that landed differently when spoken? What would you change now that you have heard it? What did you feel proudest of?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── RUBRICS ───────────────────────────────────────────────── -->
+  <section id="rubrics" class="page-section">
+    <h2 style="font-family:'Lora',serif;font-size:1.75rem;font-weight:700;color:var(--rust);border-bottom:2px solid #d98660;padding-bottom:8px;margin-bottom:28px;">Assessment Rubrics</h2>
+
+    <!-- RUBRIC 1: Figurative Language Analysis -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Figurative Language Analysis (Weeks 19–21)</div>
+      <div class="rubric-desc">Standards: RL.7.4 · L.7.5 — Identifies and analyzes figurative language for meaning and effect</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Identification Accuracy</td><td>Correctly identifies simile, metaphor, personification, and symbolism every time; never confuses device types</td><td>Correctly identifies all four devices with only minor errors</td><td>Identifies 2–3 device types accurately; occasional confusion between types</td><td>Identifies 1 device type or frequently mislabels devices</td></tr>
+          <tr><td>Effect Analysis</td><td>Explains precisely how each device creates a specific mood, image, or emotional effect — goes beyond "it makes it more interesting"</td><td>Explains the effect of each device clearly and specifically</td><td>Names the device and describes what it means, but effect analysis is vague</td><td>Identifies the device but cannot explain what effect it creates</td></tr>
+          <tr><td>Connotation vs. Denotation</td><td>Distinguishes connotation from denotation with precision; chooses words with intentional connotative effect in own writing</td><td>Accurately distinguishes connotation from denotation; explains difference clearly</td><td>Understands the concept but application in own writing is inconsistent</td><td>Confuses connotation and denotation; little awareness of word feeling vs. word meaning</td></tr>
+          <tr><td>Textual Evidence</td><td>All analysis is anchored to specific quoted text; quotations are smoothly integrated with context</td><td>Most analysis uses specific quoted evidence; integration is adequate</td><td>Some quoted evidence present but analysis often floats without textual grounding</td><td>Little or no quoted evidence; claims are general and unsupported</td></tr>
+          <tr><td>Written Expression</td><td>Clear, precise analytical sentences; vocabulary is strong; no significant errors</td><td>Clear sentences; vocabulary is appropriate; minor errors only</td><td>Some clarity issues or errors that occasionally distract from analysis</td><td>Frequent errors or vague language that makes analysis hard to follow</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 2: Original Illustrated Short Story -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Original Illustrated Short Story (Weeks 19–24)</div>
+      <div class="rubric-desc">Standards: W.7.3 · W.7.4 · W.7.5 — 4–6 page original story with animal protagonist, fantastical world, illustrations</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Animal Voice &amp; Perspective</td><td>The protagonist's animal nature is fully inhabited — their perception, instincts, and movement feel genuinely non-human; the voice is distinctive and consistent throughout</td><td>Animal perspective is consistent and believable; voice is distinct from a human narrator</td><td>Animal perspective is present but occasionally slips into a human viewpoint; voice is inconsistent</td><td>The animal protagonist reads as a human character in an animal costume; little sense of non-human perspective</td></tr>
+          <tr><td>Plot Structure</td><td>Clear narrative arc (opening / rising action / climax / resolution); each section is purposeful; the ending feels earned and resonant</td><td>All four structural elements are present; the arc is coherent and complete</td><td>Structure is present but underdeveloped — the climax or resolution feels rushed or unclear</td><td>Plot lacks clear structure; the story does not have a discernible arc or does not reach a resolution</td></tr>
+          <tr><td>Figurative Language</td><td>Simile, metaphor, personification, and/or symbolism are woven throughout the story in ways that deepen meaning; at least one extended metaphor or recurring symbol adds thematic resonance</td><td>At least three figurative language devices are used deliberately and effectively; they enhance the writing rather than decorate it</td><td>Figurative language is present but sparse or generic ("fast as lightning"); devices feel added rather than organic</td><td>Little or no figurative language; or attempts that do not work ("the tree was like a tree")</td></tr>
+          <tr><td>Dialogue &amp; Character Voice</td><td>Dialogue is correctly punctuated; multiple characters have distinct, recognizable voices; dialogue advances plot or reveals character — it does more than convey information</td><td>Dialogue is mostly correctly punctuated; characters can be distinguished by voice; dialogue generally serves the story</td><td>Dialogue is present but characters sound similar; punctuation errors are frequent; dialogue sometimes stops the story rather than moving it</td><td>Minimal dialogue; punctuation errors throughout; or dialogue that has no narrative function</td></tr>
+          <tr><td>Sensory Detail &amp; Word Choice</td><td>Rich, specific sensory language runs throughout — all five senses are represented; word choice is deliberate and connotatively strong; vivid verbs replace generic ones</td><td>Strong sensory detail in most sections; word choice is generally precise and evocative</td><td>Sensory detail is present but uneven — concentrated in the opening, absent elsewhere; some generic word choices</td><td>Little sensory detail; mostly visual; word choices are generic and flat</td></tr>
+          <tr><td>Conventions</td><td>Spelling, punctuation, and grammar are correct throughout; dialogue is perfectly punctuated; the text is polished and ready to be read by an audience</td><td>Mostly correct with only minor errors that do not distract from reading</td><td>Errors are noticeable in multiple places; some dialogue punctuation errors; some sentences are unclear</td><td>Frequent errors throughout that interfere with reading; story is difficult to follow due to mechanical issues</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- RUBRIC 3: Clay Character + Illustrated Story Display -->
+    <div class="rubric-wrap">
+      <div class="rubric-title">Clay Character + Illustrated Story Display (Week 24)</div>
+      <div class="rubric-desc">Standards: RL.7.7 · W.7.4 — Art integration: clay sculpture, story illustrations, and display coherence</div>
+      <table class="rubric-table">
+        <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr><td>Clay Figure — Character Embodiment</td><td>The figure unmistakably represents the story's protagonist; posture, gesture, and detail communicate character personality without words; clearly the same character as in the written story</td><td>The figure represents the protagonist clearly; personality is suggested through posture or expression</td><td>The figure represents an animal but lacks specific personality or connection to the written character</td><td>The figure is a generic animal shape with no evident connection to the story character</td></tr>
+          <tr><td>Clay Figure — Craft &amp; Effort</td><td>Detailed, fully realized sculpture; surface detail (fur texture, facial features, paws, scales) is carefully crafted; clearly took sustained effort over multiple sessions</td><td>Completed with care; three-dimensional form is solid; shows planning and genuine effort</td><td>Partially complete or basic; form is present but lacks detail or finish</td><td>Minimal or rushed; very rough form with little evidence of careful work</td></tr>
+          <tr><td>Illustrations — Story Connection</td><td>Each illustration corresponds to a key moment in the story; composition choices (angle, framing, what to show) are deliberate and deepen the reader's experience of those moments</td><td>Illustrations correspond to story moments; compositions are clear and purposeful</td><td>Illustrations are present but loosely connected to story moments; compositions are generic</td><td>Illustrations do not clearly connect to the written story; appear decorative rather than narrative</td></tr>
+          <tr><td>Illustrations — Visual Quality &amp; Effort</td><td>Consistent art style across all illustrations; color, line, and composition used with intention; clearly the student's own artistic voice</td><td>Illustrations are completed with care; consistent enough to read as a unified book</td><td>Illustrations vary in completeness or style; some appear unfinished</td><td>Illustrations are very simple, incomplete, or inconsistent</td></tr>
+          <tr><td>Display Coherence + Author's Note</td><td>Display tells a complete story: story, clay figure, display card, and Author's Note work together as a unified author event presentation; Author's Note is personal, specific, and genuinely reflective</td><td>Display includes all required components; Author's Note addresses the required elements thoughtfully</td><td>Display is mostly complete; Author's Note is present but brief or vague</td><td>Display is missing key components; Author's Note is absent or only one sentence</td></tr>
+          <tr><td>Text-Image Integration (RL.7.7)</td><td>Can clearly articulate how the visual and written elements of the project complement each other and where each medium does something the other cannot; reflection demonstrates genuine insight into multimodal storytelling</td><td>Demonstrates understanding of how text and image work together; can give specific examples from own project</td><td>Understands that text and image are both part of the story but cannot clearly explain how they interact</td><td>Treats text and image as separate, unrelated components; no evident understanding of multimodal integration</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+</div>
+
+<footer>
+  <p><strong>Unit 4: Art Meets Words</strong> · 7th Grade Language Arts · <a href="7th_grade_language_arts.html">← Back to Full Curriculum</a></p>
+</footer>
+
+</body>
+</html>
