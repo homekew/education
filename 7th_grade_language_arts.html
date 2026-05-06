@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>7th Grade Language Arts — Oregon ELA Curriculum</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+
+    :root {
+      --green-dark:   #2D6A4F;
+      --green-mid:    #52B788;
+      --green-light:  #D8F3DC;
+      --purple-dark:  #5A3E8F;
+      --purple-mid:   #9B72CF;
+      --purple-light: #EDE7F6;
+      --gold:         #E9C46A;
+      --gold-light:   #FFF8E1;
+      --rust:         #C65D2A;
+      --rust-light:   #FBE9E0;
+      --blue-dark:    #1B6CA8;
+      --blue-light:   #E3F2FD;
+      --cream:        #FEFAE0;
+      --text:         #1A1A2E;
+      --text-light:   #4A4A6A;
+      --border:       #D0D0E0;
+      --white:        #FFFFFF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #1B4332 40%, var(--purple-dark) 100%);
+      color: var(--white);
+      padding: 60px 40px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(155,114,207,0.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero .subtitle {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.88);
+      max-width: 640px;
+      margin: 0 auto 22px;
+    }
+    .hero-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 18px;
+    }
+    .hero-tag {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: #fff;
+    }
+
+    /* ── LAYOUT ─────────────────────────────────────────────── */
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ─────────────────────────────────────────────────── */
+    .toc-bar {
+      background: var(--green-dark);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .toc-bar nav {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .toc-bar a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      transition: background 0.15s, color 0.15s;
+      letter-spacing: 0.02em;
+    }
+    .toc-bar a:hover { background: rgba(255,255,255,0.18); color: var(--gold); }
+    .toc-bar .sep { color: rgba(255,255,255,0.3); font-size: 0.75rem; }
+
+    /* ── OVERVIEW GRID ───────────────────────────────────────── */
+    .overview-section { padding: 48px 0 36px; }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .overview-card {
+      background: var(--white);
+      border: 1.5px solid var(--green-light);
+      border-radius: 12px;
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .overview-card .oc-icon { font-size: 1.6rem; }
+    .overview-card .oc-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; color: var(--green-dark); text-transform: uppercase; }
+    .overview-card .oc-value { font-size: 0.95rem; font-weight: 600; color: var(--text); line-height: 1.4; }
+
+    /* ── SECTION HEADINGS ───────────────────────────────────── */
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--green-mid);
+    }
+    .section-lead {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+    .page-section { padding: 48px 0; }
+
+    /* ── STANDARDS TABLE ────────────────────────────────────── */
+    .standards-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 12px;
+    }
+    .standards-table th {
+      background: var(--green-dark);
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+    .standards-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--green-light);
+      vertical-align: top;
+    }
+    .standards-table tr:nth-child(even) td { background: #f6fbf8; }
+    .standards-table tr:last-child td { border-bottom: none; }
+    .std-code {
+      font-family: monospace;
+      font-size: 0.8rem;
+      background: var(--green-light);
+      color: var(--green-dark);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* ── YEAR AT A GLANCE ───────────────────────────────────── */
+    .year-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.87rem;
+      margin-top: 12px;
+    }
+    .year-table th {
+      background: var(--green-dark);
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+    .year-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--green-light);
+      vertical-align: top;
+    }
+    .year-table tr:nth-child(even) td { background: #f6fbf8; }
+
+    /* ── UNIT CARDS ─────────────────────────────────────────── */
+    .units-grid { display: flex; flex-direction: column; gap: 56px; margin-top: 8px; }
+    .unit-card {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1.5px solid var(--green-light);
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(45,106,79,0.07);
+    }
+    .unit-header {
+      padding: 28px 32px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .unit-num {
+      font-family: 'Lora', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 56px;
+      text-align: center;
+    }
+    .unit-titles { flex: 1; }
+    .unit-titles h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .unit-titles .unit-sub {
+      font-size: 0.9rem;
+      font-weight: 600;
+      opacity: 0.88;
+      margin-top: 3px;
+    }
+    .unit-titles .unit-weeks {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 2px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-top: 8px;
+      letter-spacing: 0.04em;
+    }
+    .unit-body { padding: 28px 32px 32px; }
+    .unit-tagline {
+      font-family: 'Lora', serif;
+      font-size: 1.0rem;
+      font-style: italic;
+      color: var(--text-light);
+      margin-bottom: 16px;
+      padding-left: 14px;
+      border-left: 3px solid var(--green-mid);
+    }
+    .unit-overview { font-size: 0.93rem; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
+
+    .unit-section-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-dark);
+      margin-bottom: 10px;
+      margin-top: 24px;
+    }
+
+    /* weekly table */
+    .weekly-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 6px;
+    }
+    .weekly-table th {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 8px 10px;
+      text-align: left;
+      border-bottom: 2px solid var(--green-mid);
+    }
+    .weekly-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--green-light);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .weekly-table tr:nth-child(even) td { background: #f6fbf8; }
+    .weekly-table tr:last-child td { border-bottom: none; }
+    .week-num {
+      font-weight: 800;
+      color: var(--green-dark);
+      font-size: 0.85rem;
+    }
+
+    /* texts list */
+    .texts-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .texts-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+    .texts-list li::before {
+      content: '📖';
+      font-size: 0.8rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* standards mini list */
+    .std-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .std-chip {
+      background: var(--green-light);
+      color: var(--green-dark);
+      border-radius: 8px;
+      padding: 3px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-family: monospace;
+      cursor: default;
+    }
+    .std-chip:hover { background: var(--green-dark); color: #fff; transition: 0.15s; }
+
+    /* project box */
+    .project-box {
+      background: linear-gradient(135deg, var(--gold-light) 0%, #fffce8 100%);
+      border: 1.5px solid var(--gold);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-top: 8px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .project-icon { font-size: 2rem; flex-shrink: 0; }
+    .project-box p { font-size: 0.88rem; line-height: 1.65; color: var(--text); }
+    .project-title { font-weight: 800; color: var(--rust); font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+
+    /* assessments */
+    .assess-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 6px;
+    }
+    .assess-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.87rem;
+      color: var(--text);
+    }
+    .assess-list li::before {
+      content: '✓';
+      color: var(--green-mid);
+      font-weight: 800;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── UNIT COLOR THEMES ───────────────────────────────────── */
+    .u1 .unit-header { background: linear-gradient(135deg, #2D6A4F, #1B4332); }
+    .u1 .unit-num { color: var(--gold); }
+    .u2 .unit-header { background: linear-gradient(135deg, #1B6CA8, #0d4a7a); }
+    .u2 .unit-num { color: #a8d4f5; }
+    .u3 .unit-header { background: linear-gradient(135deg, #5A3E8F, #3d2766); }
+    .u3 .unit-num { color: #c9b0f0; }
+    .u4 .unit-header { background: linear-gradient(135deg, #C65D2A, #9e3f18); }
+    .u4 .unit-num { color: #f5c6a8; }
+    .u5 .unit-header { background: linear-gradient(135deg, #3D7A2A, #264d19); }
+    .u5 .unit-num { color: #b0e8a0; }
+    .u6 .unit-header { background: linear-gradient(135deg, #8B5E3C, #5e3d22); }
+    .u6 .unit-num { color: #f0d4b8; }
+
+    /* ── GRAMMAR TABLE ──────────────────────────────────────── */
+    .grammar-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 12px;
+    }
+    .grammar-table th {
+      background: var(--purple-dark);
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+    .grammar-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--purple-light);
+      vertical-align: top;
+    }
+    .grammar-table tr:nth-child(even) td { background: var(--purple-light); }
+
+    /* ── BOOK LIST ──────────────────────────────────────────── */
+    .book-category { margin-bottom: 28px; }
+    .book-category h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid var(--green-light);
+    }
+    .book-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .book-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+    }
+    .book-list li .b-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .book-list li em { font-style: italic; }
+
+    /* ── TIPS CARDS ─────────────────────────────────────────── */
+    .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 16px; }
+    .tip-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px 22px;
+      border: 1.5px solid var(--border);
+    }
+    .tip-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.0rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tip-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--green-dark);
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.82rem;
+      margin-top: 60px;
+    }
+    footer strong { color: var(--gold); }
+
+    /* ── PRINT ──────────────────────────────────────────────── */
+    @media print {
+      .toc-bar { display: none; }
+      .unit-card { break-inside: avoid; }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.9rem; }
+      .unit-header { flex-direction: column; gap: 8px; }
+      .unit-body { padding: 20px 18px 24px; }
+      .weekly-table { font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>7th Grade <span>Language Arts</span></h1>
+  <p class="subtitle">A full-year curriculum built around animals, nature, fantasy, and hands-on art — aligned to Oregon ELA Standards</p>
+  <div class="hero-tags">
+    <span class="hero-tag">🌿 Oregon ELA Standards</span>
+    <span class="hero-tag">📚 36 Weeks · 6 Units</span>
+    <span class="hero-tag">🎨 Project-Based</span>
+    <span class="hero-tag">🐾 Animal & Nature Focus</span>
+    <span class="hero-tag">🖼️ Art Integration</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="toc-bar">
+  <nav>
+    <a href="#overview">Overview</a><span class="sep">›</span>
+    <a href="#standards">Standards</a><span class="sep">›</span>
+    <a href="#year">Year at a Glance</a><span class="sep">›</span>
+    <a href="#unit1">Unit 1</a><span class="sep">·</span>
+    <a href="#unit2">Unit 2</a><span class="sep">·</span>
+    <a href="#unit3">Unit 3</a><span class="sep">·</span>
+    <a href="#unit4">Unit 4</a><span class="sep">·</span>
+    <a href="#unit5">Unit 5</a><span class="sep">·</span>
+    <a href="#unit6">Unit 6</a><span class="sep">›</span>
+    <a href="#grammar">Grammar</a><span class="sep">›</span>
+    <a href="#books">Books</a><span class="sep">›</span>
+    <a href="#tips">Tips</a>
+  </nav>
+</div>
+
+<div class="container">
+
+  <!-- OVERVIEW -->
+  <section id="overview" class="overview-section">
+    <h2 class="section-title">At a Glance</h2>
+    <p class="section-lead">This curriculum is designed for a 7th grade student who loves fantasy novels with animal characters, hands-on art projects, nature study, and creative making. Every unit weaves her passions into rigorous, standards-aligned work.</p>
+    <div class="overview-grid">
+      <div class="overview-card"><span class="oc-icon">📅</span><span class="oc-label">Duration</span><span class="oc-value">36 weeks · 6 units of 6 weeks</span></div>
+      <div class="overview-card"><span class="oc-icon">🌲</span><span class="oc-label">Standards</span><span class="oc-value">Oregon ELA (CCSS-aligned)</span></div>
+      <div class="overview-card"><span class="oc-icon">🎨</span><span class="oc-label">Approach</span><span class="oc-value">Project-based & flexible</span></div>
+      <div class="overview-card"><span class="oc-icon">📖</span><span class="oc-label">Text Types</span><span class="oc-value">Fantasy novels, nature essays, informational articles, graphic novels</span></div>
+      <div class="overview-card"><span class="oc-icon">🖼️</span><span class="oc-label">Art Projects</span><span class="oc-value">Dioramas, nature journals, world atlases, clay figures, posters, portfolio</span></div>
+      <div class="overview-card"><span class="oc-icon">⭐</span><span class="oc-label">Final Product</span><span class="oc-value">Year-end portfolio with original writing, art & reflection</span></div>
+    </div>
+  </section>
+
+  <!-- STANDARDS -->
+  <section id="standards" class="page-section">
+    <h2 class="section-title">Oregon ELA Standards Covered</h2>
+    <p class="section-lead">Oregon follows the Common Core State Standards for ELA. All five strands are addressed across the six units.</p>
+    <table class="standards-table">
+      <thead><tr><th>Strand</th><th>Standards Addressed This Year</th></tr></thead>
+      <tbody>
+        <tr><td><span class="std-code">RL.7</span></td><td>RL.7.1 (textual evidence) · RL.7.2 (theme/summary) · RL.7.3 (character/plot/setting) · RL.7.4 (figurative language) · RL.7.6 (point of view) · RL.7.7 (text & multimedia) · RL.7.10 (independent reading)</td></tr>
+        <tr><td><span class="std-code">RI.7</span></td><td>RI.7.1 (evidence) · RI.7.2 (central idea) · RI.7.6 (author's purpose) · RI.7.8 (argument/claims) · RI.7.9 (comparing texts)</td></tr>
+        <tr><td><span class="std-code">W.7</span></td><td>W.7.1 (argument) · W.7.2 (informational) · W.7.3 (narrative) · W.7.4 (clear writing) · W.7.5 (revise/edit) · W.7.6 (publish) · W.7.7 (research) · W.7.8 (gather sources) · W.7.9 (text evidence)</td></tr>
+        <tr><td><span class="std-code">SL.7</span></td><td>SL.7.1 (discussions) · SL.7.4 (presentations) · SL.7.5 (multimedia in presentations)</td></tr>
+        <tr><td><span class="std-code">L.7</span></td><td>L.7.1 (grammar/usage) · L.7.2 (mechanics) · L.7.3 (language conventions) · L.7.4 (word meaning) · L.7.5 (figurative language/nuance)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- YEAR AT A GLANCE -->
+  <section id="year" class="page-section">
+    <h2 class="section-title">Year at a Glance — 36 Weeks</h2>
+    <table class="year-table">
+      <thead><tr><th>#</th><th>Weeks</th><th>Unit Title</th><th>Main Text Type</th><th>Signature Project</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1</strong></td><td>1–6</td><td><strong>Into the Wild</strong> — Animal Fantasy Novel Study</td><td>Animal fantasy novel</td><td>🏔️ Diorama + Scene Card</td></tr>
+        <tr><td><strong>2</strong></td><td>7–12</td><td><strong>Nature's Voice</strong> — Informational &amp; Nature Writing</td><td>Nature essays &amp; articles</td><td>🌿 Illustrated Nature Journal</td></tr>
+        <tr><td><strong>3</strong></td><td>13–18</td><td><strong>The Hero's Journey</strong> — Fantasy Novel &amp; Argument</td><td>Fantasy novel (longer)</td><td>🗺️ World Atlas + Argument Essay</td></tr>
+        <tr><td><strong>4</strong></td><td>19–24</td><td><strong>Art Meets Words</strong> — Multimodal Storytelling</td><td>Graphic novels &amp; illustrated fiction</td><td>📖 Illustrated Short Story + Clay Figure</td></tr>
+        <tr><td><strong>5</strong></td><td>25–30</td><td><strong>Speak Up for the Wild</strong> — Research &amp; Advocacy</td><td>Informational / argument texts</td><td>🎨 Advocacy Poster + Presentation</td></tr>
+        <tr><td><strong>6</strong></td><td>31–36</td><td><strong>My Story, My Voice</strong> — Independent Reading &amp; Portfolio</td><td>Student-choice novel</td><td>⭐ Year-End Portfolio + Cover Art</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- UNITS -->
+  <section class="page-section">
+    <h2 class="section-title">The Six Units</h2>
+    <p class="section-lead">Each unit is 6 weeks long and includes a novel or text study, daily writing practice, grammar mini-lessons, and a hands-on signature project that integrates art with literacy standards.</p>
+    <div class="units-grid">
+
+      <!-- UNIT 1 -->
+      <div id="unit1" class="unit-card u1">
+        <div class="unit-header">
+          <div class="unit-num">1</div>
+          <div class="unit-titles">
+            <h2>Into the Wild</h2>
+            <div class="unit-sub">Animal Fantasy Novel Study</div>
+            <div class="unit-weeks">Weeks 1–6</div>
+          </div>
+        </div>
+        <div class="unit-body">
+          <p class="unit-tagline">"Who are we through the eyes of an animal? Dive into a world where creatures lead, choose, and dream."</p>
+          <p class="unit-overview">Students launch the year with a deep dive into an animal fantasy novel of their choosing. Through close reading and imaginative projects, they practice citing evidence, analyzing character and theme, and writing their own narrative — all grounded in the natural world.</p>
+
+          <div class="unit-section-title">📚 Suggested Texts</div>
+          <ul class="texts-list">
+            <li>Mrs. Frisby and the Rats of NIMH — Robert C. O'Brien</li>
+            <li>Watership Down — Richard Adams (adapted chapters welcome)</li>
+            <li>Redwall — Brian Jacques</li>
+            <li>Warriors: Into the Wild — Erin Hunter</li>
+            <li>The One and Only Ivan — Katherine Applegate</li>
+          </ul>
+
+          <div class="unit-section-title">📋 Standards</div>
+          <div class="std-list">
+            <span class="std-chip" title="Cite textual evidence">RL.7.1</span>
+            <span class="std-chip" title="Theme & summary">RL.7.2</span>
+            <span class="std-chip" title="Character/setting/plot">RL.7.3</span>
+            <span class="std-chip" title="Narrative writing">W.7.3</span>
+            <span class="std-chip" title="Collaborative discussion">SL.7.1</span>
+            <span class="std-chip" title="Phrases and clauses">L.7.1</span>
+          </div>
+
+          <div class="unit-section-title">📅 Weekly Plan</div>
+          <table class="weekly-table">
+            <thead><tr><th>Wk</th><th>Focus</th><th>Reading/Lit</th><th>Writing</th><th>Grammar</th><th>Project</th></tr></thead>
+            <tbody>
+              <tr><td class="week-num">1</td><td>Intro &amp; Setup</td><td>Chapters 1–3; author background</td><td>Reading journal; first impressions</td><td>Phrases vs. clauses</td><td>Character profile sheet with sketches</td></tr>
+              <tr><td class="week-num">2</td><td>Character Analysis</td><td>Chs. 4–7; motivation</td><td>Character analysis journal (evidence)</td><td>Noun &amp; verb phrases</td><td>Illustrated character web</td></tr>
+              <tr><td class="week-num">3</td><td>Setting &amp; World</td><td>Chs. 8–11; descriptive passages</td><td>Descriptive paragraph: animal's-eye view</td><td>Prepositional &amp; participial phrases</td><td>Sketch and plan diorama setting</td></tr>
+              <tr><td class="week-num">4</td><td>Theme Emerges</td><td>Chs. 12–16; conflict &amp; turning point</td><td>Theme journal entry</td><td>Dependent &amp; independent clauses</td><td>Build diorama (clay, paint, mixed media)</td></tr>
+              <tr><td class="week-num">5</td><td>Climax &amp; Resolution</td><td>Chs. 17–end</td><td>Draft narrative: write a new scene</td><td>Complex sentences; punctuating clauses</td><td>Complete &amp; add written scene card</td></tr>
+              <tr><td class="week-num">6</td><td>Synthesis &amp; Sharing</td><td>Reread key passages; peer sharing</td><td>Revise narrative; write objective summary</td><td>Editing; subject-verb agreement</td><td>Gallery walk — share dioramas</td></tr>
+            </tbody>
+          </table>
+
+          <div class="unit-section-title">🏔️ Signature Project</div>
+          <div class="project-box">
+            <div class="project-icon">🏔️</div>
+            <div>
+              <span class="project-title">Diorama + Scene Card</span>
+              <p>Students build a 3D diorama of a significant setting from their novel using clay, paint, natural materials, and recycled items. They write a 1-page scene card identifying the setting, its importance to the plot, and a cited quote from the text. Displayed for a gallery walk in Week 6.</p>
+            </div>
+          </div>
+
+          <div class="unit-section-title">✅ Assessments</div>
+          <ul class="assess-list">
+            <li>Weekly reading journal entries (informal, with textual evidence)</li>
+            <li>Character analysis paragraph (RL.7.1)</li>
+            <li>Narrative scene draft + revision (W.7.3)</li>
+            <li>Objective novel summary (RL.7.2)</li>
+            <li>Diorama + scene card (RL.7.3 + art integration)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- UNIT 2 -->
+      <div id="unit2" class="unit-card u2">
+        <div class="unit-header">
+          <div class="unit-num">2</div>
+          <div class="unit-titles">
+            <h2>Nature's Voice</h2>
+            <div class="unit-sub">Informational Reading &amp; Nature Writing</div>
+            <div class="unit-weeks">Weeks 7–12</div>
+          </div>
+        </div>
+        <div class="unit-body">
+          <p class="unit-tagline">"The natural world has a story to tell. Scientists, writers, and artists all help us hear it."</p>
+          <p class="unit-overview">Students shift to nonfiction, reading compelling essays and articles about animals and ecosystems. They practice identifying central ideas, evaluating arguments, and gathering research — then channel their findings into a beautiful illustrated nature journal.</p>
+
+          <div class="unit-section-title">📚 Suggested Texts</div>
+          <ul class="texts-list">
+            <li>Essays by Annie Dillard, Aldo Leopold, or Robin Wall Kimmerer (excerpts)</li>
+            <li>Articles from National Geographic, Smithsonian, or Oregon Dept. of Fish &amp; Wildlife</li>
+            <li>An Oregon wildlife fact sheet or species profile (local connection!)</li>
+            <li>Short informational texts on ecosystems, animal behavior, or conservation</li>
+          </ul>
+
+          <div class="unit-section-title">📋 Standards</div>
+          <div class="std-list">
+            <span class="std-chip" title="Cite evidence in informational text">RI.7.1</span>
+            <span class="std-chip" title="Central idea & summary">RI.7.2</span>
+            <span class="std-chip" title="Author's purpose/point of view">RI.7.6</span>
+            <span class="std-chip" title="Trace and evaluate argument">RI.7.8</span>
+            <span class="std-chip" title="Informational writing">W.7.2</span>
+            <span class="std-chip" title="Short research projects">W.7.7</span>
+            <span class="std-chip" title="Language conventions">L.7.3</span>
+          </div>
+
+          <div class="unit-section-title">📅 Weekly Plan</div>
+          <table class="weekly-table">
+            <thead><tr><th>Wk</th><th>Focus</th><th>Reading</th><th>Writing</th><th>Grammar</th><th>Project</th></tr></thead>
+            <tbody>
+              <tr><td class="week-num">7</td><td>What Is Nonfiction?</td><td>Intro essay; identify tone &amp; purpose</td><td>Nature observation entry: go outside, write</td><td>Sentence variety: simple/compound/complex</td><td>Design nature journal cover (paint/collage)</td></tr>
+              <tr><td class="week-num">8</td><td>Central Idea</td><td>2 short animal articles; central idea practice</td><td>Summary paragraph with evidence</td><td>Coordination; conjunctive adverbs</td><td>Journal entry #1: animal observation + sketch</td></tr>
+              <tr><td class="week-num">9</td><td>Author's Purpose</td><td>Conservation essay; identify author's stance</td><td>Analysis paragraph: what does this author want?</td><td>Subordination; dependent clause variations</td><td>Journal entry #2: habitat drawing (painting)</td></tr>
+              <tr><td class="week-num">10</td><td>Evaluating Arguments</td><td>Two texts with different views on wildlife issue</td><td>Compare author arguments</td><td>Precise word choice; denotation vs. connotation</td><td>Journal entry #3: research notes on chosen animal</td></tr>
+              <tr><td class="week-num">11</td><td>Research &amp; Synthesis</td><td>3 sources on chosen animal/ecosystem</td><td>Draft informational report (3–4 paragraphs)</td><td>Transitional words; paragraph cohesion</td><td>Journal entry #4: illustrated report spread</td></tr>
+              <tr><td class="week-num">12</td><td>Polish &amp; Present</td><td>Peer review of drafts</td><td>Revise and finalize informational report</td><td>Editing: punctuation, capitalization</td><td>Present nature journal to family or small group</td></tr>
+            </tbody>
+          </table>
+
+          <div class="unit-section-title">🌿 Signature Project</div>
+          <div class="project-box">
+            <div class="project-icon">🌿</div>
+            <div>
+              <span class="project-title">Illustrated Nature Journal</span>
+              <p>A handmade journal (or blank sketchbook) combining original written entries with hand-drawn or painted illustrations. Students document a chosen animal or ecosystem across 4 entries — observation notes, habitat illustration, research facts, and personal reflection. Modeled on the tradition of naturalist field journals (think John Muir or Beatrix Potter).</p>
+            </div>
+          </div>
+
+          <div class="unit-section-title">✅ Assessments</div>
+          <ul class="assess-list">
+            <li>Central idea paragraph with cited evidence (RI.7.2)</li>
+            <li>Author's purpose analysis paragraph (RI.7.6)</li>
+            <li>Argument comparison paragraph (RI.7.8)</li>
+            <li>Informational research report — draft + revision (W.7.2, W.7.7)</li>
+            <li>Nature journal with 4 entries (art + writing integration)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- UNIT 3 -->
+      <div id="unit3" class="unit-card u3">
+        <div class="unit-header">
+          <div class="unit-num">3</div>
+          <div class="unit-titles">
+            <h2>The Hero's Journey</h2>
+            <div class="unit-sub">Fantasy Novel Study &amp; Argumentative Writing</div>
+            <div class="unit-weeks">Weeks 13–18</div>
+          </div>
+        </div>
+        <div class="unit-body">
+          <p class="unit-tagline">"Every hero must choose. What shapes a character — and what do those choices reveal about our world?"</p>
+          <p class="unit-overview">Students read a longer fantasy novel, mapping the classic hero's journey while analyzing character development, point of view, and author's craft. They write a substantive argumentative essay and create a hand-illustrated world atlas as their signature project.</p>
+
+          <div class="unit-section-title">📚 Suggested Texts</div>
+          <ul class="texts-list">
+            <li>Wings of Fire: The Dragonet Prophecy — Tui T. Sutherland</li>
+            <li>The Call of the Wild — Jack London</li>
+            <li>My Side of the Mountain — Jean Craighead George</li>
+            <li>Julie of the Wolves — Jean Craighead George</li>
+            <li>The Jungle Book — Rudyard Kipling (selected stories)</li>
+          </ul>
+
+          <div class="unit-section-title">📋 Standards</div>
+          <div class="std-list">
+            <span class="std-chip" title="Textual evidence">RL.7.1</span>
+            <span class="std-chip" title="Character/plot/setting interaction">RL.7.3</span>
+            <span class="std-chip" title="Point of view">RL.7.6</span>
+            <span class="std-chip" title="Argument writing">W.7.1</span>
+            <span class="std-chip" title="Revise and edit">W.7.5</span>
+            <span class="std-chip" title="Present claims orally">SL.7.4</span>
+            <span class="std-chip" title="Modifiers and grammar">L.7.1</span>
+          </div>
+
+          <div class="unit-section-title">📅 Weekly Plan</div>
+          <table class="weekly-table">
+            <thead><tr><th>Wk</th><th>Focus</th><th>Reading</th><th>Writing</th><th>Grammar</th><th>Project</th></tr></thead>
+            <tbody>
+              <tr><td class="week-num">13</td><td>Story Structure</td><td>Chs. 1–5; map exposition &amp; inciting incident</td><td>Journal: protagonist first impressions</td><td>Intro to modifiers; adjective &amp; adverb clauses</td><td>Sketch map of the story's world</td></tr>
+              <tr><td class="week-num">14</td><td>Character Development</td><td>Chs. 6–11; rising action</td><td>Character change journal</td><td>Misplaced modifiers; fix-it practice</td><td>Atlas: add landscape details &amp; locations</td></tr>
+              <tr><td class="week-num">15</td><td>Point of View</td><td>Chs. 12–17; multiple perspectives</td><td>POV paragraph: retell a moment from another character</td><td>Dangling modifiers; active vs. passive voice</td><td>Atlas: add character portraits (paint/ink)</td></tr>
+              <tr><td class="week-num">16</td><td>Theme &amp; Argument</td><td>Chs. 18–22; identify thematic statement</td><td>Pre-write argumentative essay: choose claim, gather evidence</td><td>Sentence variety; subordinating conjunctions</td><td>Atlas: illustrated scene spreads</td></tr>
+              <tr><td class="week-num">17</td><td>Drafting Argument</td><td>Reread key chapters for evidence</td><td>Draft argumentative essay (intro + 2–3 body paragraphs + conclusion)</td><td>Comma rules; complex sentence editing</td><td>Complete Atlas — title page, legend, descriptions</td></tr>
+              <tr><td class="week-num">18</td><td>Revise &amp; Present</td><td>Peer review sessions</td><td>Revise and finalize argumentative essay</td><td>Final editing pass; proofreading checklist</td><td>Present World Atlas; read best essay paragraph aloud</td></tr>
+            </tbody>
+          </table>
+
+          <div class="unit-section-title">🗺️ Signature Project</div>
+          <div class="project-box">
+            <div class="project-icon">🗺️</div>
+            <div>
+              <span class="project-title">World Atlas</span>
+              <p>Students create an illustrated atlas of the novel's world — hand-drawn maps, landscape paintings, character portraits, and illustrated key scenes. Each page includes brief written descriptions (setting details, character notes, thematic connections). Final atlas is 6–10 pages and presented alongside their argumentative essay.</p>
+            </div>
+          </div>
+
+          <div class="unit-section-title">✅ Assessments</div>
+          <ul class="assess-list">
+            <li>Point of view analysis paragraph (RL.7.6)</li>
+            <li>Argumentative essay with textual evidence — draft + revision (W.7.1, W.7.5)</li>
+            <li>Oral presentation of strongest essay argument (SL.7.4)</li>
+            <li>World Atlas project (RL.7.3 + art integration)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- UNIT 4 -->
+      <div id="unit4" class="unit-card u4">
+        <div class="unit-header">
+          <div class="unit-num">4</div>
+          <div class="unit-titles">
+            <h2>Art Meets Words</h2>
+            <div class="unit-sub">Multimodal Storytelling &amp; Original Creative Writing</div>
+            <div class="unit-weeks">Weeks 19–24</div>
+          </div>
+        </div>
+        <div class="unit-body">
+          <p class="unit-tagline">"A story can live in words, images, clay, and color. What story lives inside you?"</p>
+          <p class="unit-overview">Students explore how visual art and words work together in storytelling — from picture books to graphic novels to illustrated classics. They pour their creativity into an original illustrated short story featuring an animal protagonist, and bring a character to life through clay or ceramics.</p>
+
+          <div class="unit-section-title">📚 Suggested Texts</div>
+          <ul class="texts-list">
+            <li>The Arrival — Shaun Tan (wordless graphic novel; extraordinary for visual analysis)</li>
+            <li>Nimona — Noelle Stevenson (graphic novel fantasy)</li>
+            <li>Wolf Hollow — Lauren Wolk (lyrical fiction excerpt)</li>
+            <li>Selected illustrated poetry — Mary Oliver, Ted Hughes (The Iron Man)</li>
+            <li>Student-selected illustrated fantasy picture books</li>
+          </ul>
+
+          <div class="unit-section-title">📋 Standards</div>
+          <div class="std-list">
+            <span class="std-chip" title="Figurative & connotative language">RL.7.4</span>
+            <span class="std-chip" title="Text vs. visual/multimedia">RL.7.7</span>
+            <span class="std-chip" title="Narrative writing">W.7.3</span>
+            <span class="std-chip" title="Clear, coherent writing">W.7.4</span>
+            <span class="std-chip" title="Revise and strengthen writing">W.7.5</span>
+            <span class="std-chip" title="Word meaning & context clues">L.7.4</span>
+            <span class="std-chip" title="Figurative language & nuance">L.7.5</span>
+          </div>
+
+          <div class="unit-section-title">📅 Weekly Plan</div>
+          <table class="weekly-table">
+            <thead><tr><th>Wk</th><th>Focus</th><th>Reading</th><th>Writing</th><th>Grammar</th><th>Project</th></tr></thead>
+            <tbody>
+              <tr><td class="week-num">19</td><td>Visuals Tell Stories</td><td>The Arrival or similar; how images carry meaning</td><td>Written response: what story does this image tell?</td><td>Figurative language intro: simile, metaphor, personification</td><td>Sketch animal protagonist character design</td></tr>
+              <tr><td class="week-num">20</td><td>Word Choice &amp; Imagery</td><td>Selected poems + prose; identify sensory language</td><td>Sensory description paragraph: animal in their world</td><td>Connotation vs. denotation; word nuance</td><td>Develop story outline: beginning, middle, end</td></tr>
+              <tr><td class="week-num">21</td><td>Story Structure</td><td>Graphic novel excerpt; compare to prose</td><td>Draft story opening (setting + protagonist intro)</td><td>Symbolism and extended metaphor</td><td>Begin clay/ceramic character figure — rough form</td></tr>
+              <tr><td class="week-num">22</td><td>Dialogue &amp; Voice</td><td>Excerpts with strong dialogue; how characters speak</td><td>Add dialogue and character voice to story draft</td><td>Punctuating dialogue; direct vs. indirect speech</td><td>Refine clay figure; begin story illustrations</td></tr>
+              <tr><td class="week-num">23</td><td>Rising Action &amp; Craft</td><td>Peer story drafts + mentor texts for revision</td><td>Revise: strengthen plot, sensory detail, figurative language</td><td>Sentence-level editing: concision, vivid verbs</td><td>Finalize clay figure; complete story illustrations</td></tr>
+              <tr><td class="week-num">24</td><td>Celebrate &amp; Share</td><td>Author's craft reflection: what did you borrow?</td><td>Write author's note: inspiration + craft choices</td><td>Final proofreading pass</td><td>Story reading/sharing event; display clay figures</td></tr>
+            </tbody>
+          </table>
+
+          <div class="unit-section-title">📖 Signature Project</div>
+          <div class="project-box">
+            <div class="project-icon">🐾</div>
+            <div>
+              <span class="project-title">Illustrated Short Story + Clay Character</span>
+              <p>Students write and illustrate an original short story (4–6 pages) featuring an animal protagonist in a fantastical world. The story is accompanied by hand-painted or drawn illustrations and a clay or ceramic sculpture of the main character. Students share their work at a mini author event in Week 24.</p>
+            </div>
+          </div>
+
+          <div class="unit-section-title">✅ Assessments</div>
+          <ul class="assess-list">
+            <li>Visual analysis response (RL.7.7)</li>
+            <li>Figurative language identification + analysis (RL.7.4, L.7.5)</li>
+            <li>Original illustrated short story — draft + revision (W.7.3, W.7.4, W.7.5)</li>
+            <li>Author's note reflection (W.7.4)</li>
+            <li>Clay figure + illustrated story display (art integration)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- UNIT 5 -->
+      <div id="unit5" class="unit-card u5">
+        <div class="unit-header">
+          <div class="unit-num">5</div>
+          <div class="unit-titles">
+            <h2>Speak Up for the Wild</h2>
+            <div class="unit-sub">Research, Argument &amp; Environmental Advocacy</div>
+            <div class="unit-weeks">Weeks 25–30</div>
+          </div>
+        </div>
+        <div class="unit-body">
+          <p class="unit-tagline">"The animals can't speak for themselves. Who will? Research is how you find your argument. Your voice is how you use it."</p>
+          <p class="unit-overview">Students choose a real wildlife or environmental issue they care about — endangered species, habitat loss, ocean health, Oregon's old-growth forests — and research it deeply. They read multiple sources, evaluate arguments, and write a compelling advocacy letter or essay, culminating in a visual presentation.</p>
+
+          <div class="unit-section-title">📚 Suggested Texts</div>
+          <ul class="texts-list">
+            <li>Current articles from Oregon Wild, National Wildlife Federation, Oregon Dept. of Fish &amp; Wildlife</li>
+            <li>Excerpts from Braiding Sweetgrass — Robin Wall Kimmerer (accessible chapters)</li>
+            <li>Opinion pieces and counterarguments on chosen environmental topic</li>
+            <li>Primary sources: species fact sheets, environmental impact summaries</li>
+          </ul>
+
+          <div class="unit-section-title">📋 Standards</div>
+          <div class="std-list">
+            <span class="std-chip" title="Cite informational evidence">RI.7.1</span>
+            <span class="std-chip" title="Evaluate arguments/claims">RI.7.8</span>
+            <span class="std-chip" title="Compare conflicting texts">RI.7.9</span>
+            <span class="std-chip" title="Argument writing">W.7.1</span>
+            <span class="std-chip" title="Research projects">W.7.7</span>
+            <span class="std-chip" title="Gather from multiple sources">W.7.8</span>
+            <span class="std-chip" title="Text evidence in writing">W.7.9</span>
+            <span class="std-chip" title="Oral presentation">SL.7.4</span>
+            <span class="std-chip" title="Multimedia in presentations">SL.7.5</span>
+            <span class="std-chip" title="Formal vs. informal register">L.7.3</span>
+          </div>
+
+          <div class="unit-section-title">📅 Weekly Plan</div>
+          <table class="weekly-table">
+            <thead><tr><th>Wk</th><th>Focus</th><th>Reading</th><th>Writing</th><th>Grammar</th><th>Project</th></tr></thead>
+            <tbody>
+              <tr><td class="week-num">25</td><td>Choose Your Cause</td><td>Browse 3–4 current articles on wildlife issues</td><td>Choice reflection: why does this issue matter to me?</td><td>Intro to formal vs. informal register</td><td>Choose issue; begin research folder</td></tr>
+              <tr><td class="week-num">26</td><td>Evaluating Sources</td><td>2 sources on chosen topic; RI.7.8 analysis</td><td>Source evaluation notes: claim, evidence, credibility</td><td>Domain-specific vocabulary; precise word choice</td><td>Sketch advocacy poster concept</td></tr>
+              <tr><td class="week-num">27</td><td>Multiple Perspectives</td><td>2 opposing-angle sources (RI.7.9)</td><td>Synthesis paragraph: how do sources agree and disagree?</td><td>Hedging language; acknowledging counterarguments</td><td>Begin advocacy poster (painting/mixed media)</td></tr>
+              <tr><td class="week-num">28</td><td>Build the Argument</td><td>Reread strongest sources; identify best evidence</td><td>Draft advocacy letter or essay (intro + 2 body paragraphs)</td><td>Transitions and logical connectors in argument</td><td>Continue poster; draft written explanation</td></tr>
+              <tr><td class="week-num">29</td><td>Revise &amp; Strengthen</td><td>Peer review of argument drafts</td><td>Revise: sharpen claim, add/cut evidence, conclude powerfully</td><td>Formal register editing; sentence variety</td><td>Finalize poster; rehearse oral presentation</td></tr>
+              <tr><td class="week-num">30</td><td>Present &amp; Advocate</td><td>Self-reflection on research process</td><td>Final proofreading; write 1-paragraph oral intro</td><td>Final editing pass</td><td>Advocacy presentation: poster + spoken argument</td></tr>
+            </tbody>
+          </table>
+
+          <div class="unit-section-title">🎨 Signature Project</div>
+          <div class="project-box">
+            <div class="project-icon">🎨</div>
+            <div>
+              <span class="project-title">Advocacy Poster + Presentation</span>
+              <p>Students create a large-format painted or mixed-media advocacy poster featuring original art (animal illustrations, habitat imagery, data visualization) alongside their key argument and call to action. Paired with a 3–5 minute spoken presentation. Audience can be a parent, sibling, or recorded video.</p>
+            </div>
+          </div>
+
+          <div class="unit-section-title">✅ Assessments</div>
+          <ul class="assess-list">
+            <li>Source evaluation notes (RI.7.8)</li>
+            <li>Synthesis paragraph comparing sources (RI.7.9)</li>
+            <li>Advocacy letter or argumentative essay — draft + revision (W.7.1, W.7.7, W.7.9)</li>
+            <li>Oral advocacy presentation (SL.7.4, SL.7.5)</li>
+            <li>Advocacy poster with written explanation (art + argument integration)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- UNIT 6 -->
+      <div id="unit6" class="unit-card u6">
+        <div class="unit-header">
+          <div class="unit-num">6</div>
+          <div class="unit-titles">
+            <h2>My Story, My Voice</h2>
+            <div class="unit-sub">Independent Reading, Original Novel Opening &amp; Portfolio</div>
+            <div class="unit-weeks">Weeks 31–36</div>
+          </div>
+        </div>
+        <div class="unit-body">
+          <p class="unit-tagline">"This is your year. What did you learn? What do you have to say? Now write it."</p>
+          <p class="unit-overview">The final unit is student-driven. Each student selects a fantasy novel of their choice, conducts an independent literary analysis, and writes the opening of their own original novel. The unit culminates in a portfolio collecting the year's best work and a cover art piece representing the author they've become.</p>
+
+          <div class="unit-section-title">📚 Suggested Texts (Student Choice)</div>
+          <ul class="texts-list">
+            <li>Any fantasy novel featuring animals or nature — student's free choice!</li>
+            <li>Howl's Moving Castle — Diana Wynne Jones</li>
+            <li>Pax — Sara Pennypacker (fox; beautiful and emotional)</li>
+            <li>Wild Magic — Tamora Pierce (animal communication; female protagonist)</li>
+            <li>The Girl Who Drank the Moon — Kelly Barnhill</li>
+          </ul>
+
+          <div class="unit-section-title">📋 Standards</div>
+          <div class="std-list">
+            <span class="std-chip" title="Cite textual evidence">RL.7.1</span>
+            <span class="std-chip" title="Theme & objective summary">RL.7.2</span>
+            <span class="std-chip" title="Independent reading">RL.7.10</span>
+            <span class="std-chip" title="Narrative writing">W.7.3</span>
+            <span class="std-chip" title="Develop through revision">W.7.5</span>
+            <span class="std-chip" title="Publish writing">W.7.6</span>
+            <span class="std-chip" title="Present findings">SL.7.4</span>
+            <span class="std-chip" title="Grammar command">L.7.1</span>
+            <span class="std-chip" title="Capitalization, punctuation, spelling">L.7.2</span>
+          </div>
+
+          <div class="unit-section-title">📅 Weekly Plan</div>
+          <table class="weekly-table">
+            <thead><tr><th>Wk</th><th>Focus</th><th>Reading</th><th>Writing</th><th>Grammar</th><th>Project</th></tr></thead>
+            <tbody>
+              <tr><td class="week-num">31</td><td>Independent Launch</td><td>Choose novel; read chapters 1–4; set reading goal</td><td>Reading log; first annotation practice</td><td>Grammar review: phrases, clauses, modifiers</td><td>Portfolio setup: organize year's work, choose favorites</td></tr>
+              <tr><td class="week-num">32</td><td>Literary Analysis</td><td>Chs. 5–10; theme tracking</td><td>Literary analysis paragraph: theme + textual evidence</td><td>Comma rules review; editing workshop</td><td>Portfolio reflection: write introduction letter</td></tr>
+              <tr><td class="week-num">33</td><td>Character &amp; Voice</td><td>Chs. 11–16; author's voice</td><td>Novel opening draft: introduce protagonist + world</td><td>Consistent verb tense; point of view consistency</td><td>Begin cover art painting for portfolio</td></tr>
+              <tr><td class="week-num">34</td><td>World-Building</td><td>Chs. 17–end; complete novel</td><td>Revise novel opening: deepen setting, sharpen voice</td><td>Sentence-level revision: concision and rhythm</td><td>Continue cover art; begin final portfolio assembly</td></tr>
+              <tr><td class="week-num">35</td><td>Final Polish</td><td>Reread favorite passages from any book this year</td><td>Final revision of novel opening; peer feedback</td><td>Proofreading checklist; spelling review</td><td>Finalize cover art and portfolio layout</td></tr>
+              <tr><td class="week-num">36</td><td>🎉 Celebration!</td><td>Read aloud favorite passage from year's reading</td><td>Write Year-in-Review reflection</td><td>Final editing of all portfolio pieces</td><td>Portfolio showcase — share with family; celebrate the year!</td></tr>
+            </tbody>
+          </table>
+
+          <div class="unit-section-title">⭐ Signature Project</div>
+          <div class="project-box">
+            <div class="project-icon">⭐</div>
+            <div>
+              <span class="project-title">Year-End Portfolio + Cover Art</span>
+              <p>Students compile a curated portfolio of their best work from the year — one piece per unit, plus a written introduction letter, reflection on growth, and a Year-in-Review essay. The portfolio cover features an original painting or illustration representing their identity as a reader, writer, and artist. Presented at a year-end showcase celebration.</p>
+            </div>
+          </div>
+
+          <div class="unit-section-title">✅ Assessments</div>
+          <ul class="assess-list">
+            <li>Literary analysis paragraph (RL.7.1, RL.7.2)</li>
+            <li>Original novel opening — draft + revision (W.7.3, W.7.5)</li>
+            <li>Year-end portfolio with 6 curated pieces + reflection (W.7.6)</li>
+            <li>Portfolio introduction letter and reflection (W.7.4, SL.7.4)</li>
+            <li>Cover art painting (art integration + year synthesis)</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- end units-grid -->
+  </section>
+
+  <!-- GRAMMAR SCOPE -->
+  <section id="grammar" class="page-section">
+    <h2 class="section-title">Grammar &amp; Language Scope and Sequence</h2>
+    <p class="section-lead">Grammar is taught in short daily or weekly mini-lessons woven into the writing process. Each grammar concept connects directly to the unit's writing focus.</p>
+    <table class="grammar-table">
+      <thead><tr><th>Unit</th><th>Grammar &amp; Language Focus</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Unit 1</strong> (Wks 1–6)</td><td>Phrases vs. clauses · Noun &amp; verb phrases · Prepositional &amp; participial phrases · Complex sentences · Subject-verb agreement</td></tr>
+        <tr><td><strong>Unit 2</strong> (Wks 7–12)</td><td>Sentence variety (simple/compound/complex) · Coordination &amp; subordination · Conjunctive adverbs · Transitions · Denotation vs. connotation · Precise word choice</td></tr>
+        <tr><td><strong>Unit 3</strong> (Wks 13–18)</td><td>Adjective &amp; adverb clauses · Misplaced &amp; dangling modifiers · Active vs. passive voice · Comma rules · Complex sentence editing</td></tr>
+        <tr><td><strong>Unit 4</strong> (Wks 19–24)</td><td>Figurative language (simile, metaphor, personification, symbolism) · Connotation vs. denotation · Punctuating dialogue · Direct vs. indirect speech · Vivid verbs</td></tr>
+        <tr><td><strong>Unit 5</strong> (Wks 25–30)</td><td>Formal vs. informal register · Domain-specific vocabulary · Hedging language · Transitions in argument · Sentence-level precision</td></tr>
+        <tr><td><strong>Unit 6</strong> (Wks 31–36)</td><td>Comprehensive review of all prior concepts · Consistent verb tense · Point of view consistency · Proofreading strategies · Spelling review</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- BOOK LIST -->
+  <section id="books" class="page-section">
+    <h2 class="section-title">Recommended Reading List</h2>
+    <p class="section-lead">Suggested books across units. Your daughter can substitute any fantasy novel with animal or nature themes that excites her — student choice and engagement are the engine of this curriculum!</p>
+
+    <div class="book-category">
+      <h3>🐾 Fantasy — Animal Protagonists</h3>
+      <ul class="book-list">
+        <li><span class="b-icon">🐱</span><span><em>Warriors: Into the Wild</em> — Erin Hunter (cats; long beloved series with many books)</span></li>
+        <li><span class="b-icon">🐭</span><span><em>Mrs. Frisby and the Rats of NIMH</em> — Robert C. O'Brien (mice; Newbery Award winner)</span></li>
+        <li><span class="b-icon">🐭</span><span><em>Redwall</em> — Brian Jacques (mice, badgers, rabbits; epic medieval fantasy world)</span></li>
+        <li><span class="b-icon">🐉</span><span><em>Wings of Fire: The Dragonet Prophecy</em> — Tui T. Sutherland (dragons; great series)</span></li>
+        <li><span class="b-icon">🐇</span><span><em>Watership Down</em> — Richard Adams (rabbits; classic adventure epic)</span></li>
+        <li><span class="b-icon">🦍</span><span><em>The One and Only Ivan</em> — Katherine Applegate (gorilla; based on a true story)</span></li>
+        <li><span class="b-icon">🦊</span><span><em>Pax</em> — Sara Pennypacker (fox; beautiful and emotional)</span></li>
+        <li><span class="b-icon">🐎</span><span><em>Wild Magic</em> — Tamora Pierce (animal communication; strong female protagonist)</span></li>
+        <li><span class="b-icon">✨</span><span><em>The Girl Who Drank the Moon</em> — Kelly Barnhill (magical fantasy)</span></li>
+      </ul>
+    </div>
+
+    <div class="book-category">
+      <h3>🌲 Nature &amp; Wilderness</h3>
+      <ul class="book-list">
+        <li><span class="b-icon">🏔️</span><span><em>My Side of the Mountain</em> — Jean Craighead George (boy surviving in the Catskills)</span></li>
+        <li><span class="b-icon">🐺</span><span><em>Julie of the Wolves</em> — Jean Craighead George (girl and wolves in Alaska)</span></li>
+        <li><span class="b-icon">🐕</span><span><em>The Call of the Wild</em> — Jack London (classic; dog in wild Alaska)</span></li>
+        <li><span class="b-icon">🪓</span><span><em>Hatchet</em> — Gary Paulsen (wilderness survival)</span></li>
+        <li><span class="b-icon">🌿</span><span><em>Braiding Sweetgrass</em> — Robin Wall Kimmerer (selected accessible chapters; Indigenous plant knowledge)</span></li>
+      </ul>
+    </div>
+
+    <div class="book-category">
+      <h3>📖 Graphic Novels &amp; Visual Storytelling</h3>
+      <ul class="book-list">
+        <li><span class="b-icon">🎨</span><span><em>The Arrival</em> — Shaun Tan (wordless; extraordinary for visual analysis)</span></li>
+        <li><span class="b-icon">⚔️</span><span><em>Nimona</em> — Noelle Stevenson (shapeshifting fantasy protagonist)</span></li>
+        <li><span class="b-icon">🤖</span><span><em>Hilo series</em> — Judd Winick (fun sci-fi/fantasy graphic novels)</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section id="tips" class="page-section">
+    <h2 class="section-title">Notes for the Home Educator</h2>
+    <p class="section-lead">Practical guidance for making this curriculum sing.</p>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h3>🌊 Flexibility First</h3>
+        <p>This curriculum is designed to flex around your daughter's energy and pace. If a unit sparks deep enthusiasm (and it will — she'll probably spend three weeks on the diorama), let it breathe. Compress a later unit if needed. Standards will be met across the arc of the year, not week by week.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🎨 Art Is Core Learning</h3>
+        <p>The hands-on projects are not "extras" — they are central. Building a diorama deepens setting analysis. Painting a world map builds understanding of place. Sculpting a character from clay is character analysis in three dimensions. Celebrate the making.</p>
+      </div>
+      <div class="tip-card">
+        <h3>💬 Discussion Over Testing</h3>
+        <p>For a project-based learner, a rich 20-minute conversation about the book often tells you more than a written test. Oral discussion is itself a standard (SL.7.1). Use the discussion prompts and follow her curiosity — that's assessment too.</p>
+      </div>
+      <div class="tip-card">
+        <h3>✏️ Writing as a Process</h3>
+        <p>The W.7.5 standard emphasizes process over product — planning, drafting, revising, editing. Don't rush to a polished final draft. Let messy first drafts be messy. The revision conversations are where the real learning happens.</p>
+      </div>
+      <div class="tip-card">
+        <h3>🌲 Oregon Connection</h3>
+        <p>Wherever possible, connect informational units to Oregon's specific ecosystems — the Cascade Range, old-growth forests, the high desert, Pacific salmon, wolves, osprey. This makes the research personal and the advocacy real. Oregon Wild is a great local resource.</p>
+      </div>
+      <div class="tip-card">
+        <h3>📚 Student Choice Matters</h3>
+        <p>The suggested books are starting points. If she's deep into the Warriors series and wants to use book 4 instead of book 1, let her. If she wants to build her diorama out of polymer clay instead of air-dry clay, that's great too. Ownership of her learning is the goal.</p>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end container -->
+
+<footer>
+  <p><strong>7th Grade Language Arts</strong> · Oregon ELA Standards (CCSS-Aligned) · 36-Week Full-Year Curriculum</p>
+  <p style="margin-top:6px">Designed for a student who loves fantasy, animals, nature, and making things with her hands. 🐾🌿🎨</p>
+</footer>
+
+</body>
+</html>
