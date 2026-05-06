@@ -5,34 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>6th Grade Language Arts — Oregon ELA Curriculum</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+    
 
-    :root {
-      --green-dark:   #2D6A4F;
-      --green-mid:    #52B788;
-      --green-light:  #D8F3DC;
-      --purple-dark:  #5A3E8F;
-      --purple-mid:   #9B72CF;
-      --purple-light: #EDE7F6;
-      --gold:         #E9C46A;
-      --gold-light:   #FFF8E1;
-      --rust:         #C65D2A;
-      --rust-light:   #FBE9E0;
-      --blue-dark:    #1B6CA8;
-      --blue-light:   #E3F2FD;
-      --cream:        #FEFAE0;
-      --text:         #1A1A2E;
-      --text-light:   #4A4A6A;
-      --border:       #D0D0E0;
-      --white:        #FFFFFF;
+        :root {
+      --linen:      #FAF7F1;
+      --linen-dark: #F0EBE0;
+      --linen-deep: #DDD4C4;
+      --terra:      #ff1e3c;
+      --terra-bg:   #fff0f2;
+      --terra-soft: #ffb3bc;
+      --sage:       #d2c35a;
+      --sage-bg:    #faf8e8;
+      --sage-soft:  #ece8b0;
+      --sky:        #7FA3B5;
+      --sky-bg:     #EBF3F7;
+      --ink:        #2A2118;
+      --ink-soft:   #5C4F3D;
+      --ink-muted:  #9A8F81;
+      --white:      #FFFFFF;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Nunito', sans-serif;
-      background: var(--cream);
-      color: var(--text);
+      font-family: 'Epilogue', sans-serif;
+      background: var(--linen);
+      color: var(--ink);
       line-height: 1.7;
       font-size: 15px;
     }
@@ -575,42 +573,98 @@
       .unit-body { padding: 20px 18px 24px; }
       .weekly-table { font-size: 0.75rem; }
     }
+  
+    /* ── NAV ─────────────────────────────────── */
+    nav.site-nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--linen-deep);
+      padding: 0 40px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .nav-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .nav-dot {
+      width: 8px; height: 8px;
+      background: var(--terra);
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .site-nav-links { display: flex; gap: 28px; list-style: none; }
+    .site-nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .site-nav-links a:hover { color: var(--terra); }
+
+    /* ── PAGE HEADER ─────────────────────────── */
+    .page-header {
+      background: var(--linen-dark);
+      border-bottom: 1px solid var(--linen-deep);
+      padding: 36px 40px 32px;
+    }
+    .eyebrow {
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 8px;
+    }
+    .page-header h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0;
+    }
+    /* ── FOOTER ──────────────────────────────── */
+    footer.site-footer {
+      background: var(--white);
+      border-top: 1px solid var(--linen-deep);
+      padding: 16px 40px;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+    }
+    footer.site-footer a { color: var(--ink-muted); }
+
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <!-- HERO -->
-<div class="hero">
-  <h1>6th Grade <span>Language Arts</span></h1>
-  <p class="subtitle">A full-year curriculum built around animals, nature, fantasy, and hands-on art — aligned to Oregon ELA Standards</p>
-  <div class="hero-tags">
-    <span class="hero-tag">🌿 Oregon ELA Standards</span>
-    <span class="hero-tag">📚 36 Weeks · 6 Units</span>
-    <span class="hero-tag">🎨 Project-Based</span>
-    <span class="hero-tag">🐾 Animal & Nature Focus</span>
-    <span class="hero-tag">🖼️ Art Integration</span>
-  </div>
+<nav class="site-nav">
+  <a class="nav-brand" href="index.html"><span class="nav-dot"></span> Homeschool Curriculum</a>
+  <ul class="site-nav-links">
+    <li><a href="index.html">← Hub</a></li>
+  </ul>
+</nav>
+<div class="page-header">
+  <div class="eyebrow">2026–2027 · 6th Grade</div>
+  <h1>Language Arts</h1>
+</div>
 </div>
 
 <!-- NAV -->
 <div class="toc-bar">
-  <nav>
-    <a href="#overview">Overview</a><span class="sep">›</span>
-    <a href="#standards">Standards</a><span class="sep">›</span>
-    <a href="#year">Year at a Glance</a><span class="sep">›</span>
-    <a href="#unit1">Unit 1</a><span class="sep">·</span>
-    <a href="#unit2">Unit 2</a><span class="sep">·</span>
-    <a href="#unit3">Unit 3</a><span class="sep">·</span>
-    <a href="#unit4">Unit 4</a><span class="sep">·</span>
-    <a href="#unit5">Unit 5</a><span class="sep">·</span>
-    <a href="#unit6">Unit 6</a><span class="sep">›</span>
-    <a href="#grammar">Grammar</a><span class="sep">›</span>
-    <a href="#writing-forms">Writing Forms</a><span class="sep">›</span>
-    <a href="#field-trips">Field Trips</a><span class="sep">›</span>
-    <a href="#books">Books</a><span class="sep">›</span>
-    <a href="#tips">Tips</a>
-  </nav>
-</div>
+  </div>
 
 <div class="container">
 
@@ -1260,10 +1314,7 @@
 
 </div><!-- end container -->
 
-<footer>
-  <p><strong>6th Grade Language Arts</strong> · Oregon ELA Standards (CCSS-Aligned) · 36-Week Full-Year Curriculum</p>
-  <p style="margin-top:6px">Designed for a student who loves fantasy, animals, nature, and making things with her hands. 🐾🌿🎨</p>
-</footer>
+<footer class="site-footer">Homeschool Curriculum Hub · Oregon</footer>
 
 </body>
 </html>

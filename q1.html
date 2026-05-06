@@ -5,27 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Q1 Homeschool Plan: Creatures and Kingdoms</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+        
 
-        :root {
-            --green-dark: #2D6A4F;
-            --green-mid: #52B788;
-            --green-light: #D8F3DC;
-            --purple-dark: #5A3E8F;
-            --purple-mid: #9B72CF;
-            --purple-light: #EDE7F6;
-            --gold: #E9C46A;
-            --gold-light: #FFF8E1;
-            --rust: #C65D2A;
-            --rust-light: #FBE9E0;
-            --blue-dark: #1B6CA8;
-            --blue-light: #E3F2FD;
-            --cream: #FEFAE0;
-            --text: #1A1A2E;
-            --text-light: #4A4A6A;
-            --border: #D0D0E0;
-            --white: #FFFFFF;
-        }
+            :root {
+      --linen:      #FAF7F1;
+      --linen-dark: #F0EBE0;
+      --linen-deep: #DDD4C4;
+      --terra:      #ff1e3c;
+      --terra-bg:   #fff0f2;
+      --terra-soft: #ffb3bc;
+      --sage:       #d2c35a;
+      --sage-bg:    #faf8e8;
+      --sage-soft:  #ece8b0;
+      --sky:        #7FA3B5;
+      --sky-bg:     #EBF3F7;
+      --ink:        #2A2118;
+      --ink-soft:   #5C4F3D;
+      --ink-muted:  #9A8F81;
+      --white:      #FFFFFF;
+    }
 
         * {
             margin: 0;
@@ -34,8 +32,8 @@
         }
 
         body {
-            font-family: 'Nunito', sans-serif;
-            color: var(--text);
+            font-family: 'Epilogue', sans-serif;
+            color: var(--ink);
             background-color: #f5f5f5;
             line-height: 1.6;
         }
@@ -399,24 +397,92 @@
                 grid-template-columns: 1fr;
             }
         }
+    
+    /* ── NAV ─────────────────────────────────── */
+    nav.site-nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--linen-deep);
+      padding: 0 40px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .nav-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .nav-dot {
+      width: 8px; height: 8px;
+      background: var(--terra);
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .site-nav-links { display: flex; gap: 28px; list-style: none; }
+    .site-nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .site-nav-links a:hover { color: var(--terra); }
+
+    /* ── PAGE HEADER ─────────────────────────── */
+    .page-header {
+      background: var(--linen-dark);
+      border-bottom: 1px solid var(--linen-deep);
+      padding: 36px 40px 32px;
+    }
+    .eyebrow {
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 8px;
+    }
+    .page-header h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0;
+    }
+    /* ── FOOTER ──────────────────────────────── */
+    footer.site-footer {
+      background: var(--white);
+      border-top: 1px solid var(--linen-deep);
+      padding: 16px 40px;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+    }
+    footer.site-footer a { color: var(--ink-muted); }
+
     </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Q1 Homeschool Plan: Creatures and Kingdoms</h1>
-        <p class="subtitle">Exploring Animal Biology, Classification, and Adaptation</p>
-        <div class="quarter-info">September 9 - October 22, 2026 (7 weeks) | Theme: Animal Biology and Classification</div>
-    </header>
-
-    <nav>
-        <a href="index.html">Back to Plan</a>
-        <a href="q1.html" class="active">Q1: Fall</a>
-        <a href="q2.html">Q2</a>
-        <a href="q3.html">Q3</a>
-        <a href="q4.html">Q4</a>
-    </nav>
-
-    <div class="container">
+    <nav class="site-nav">
+  <a class="nav-brand" href="index.html"><span class="nav-dot"></span> Homeschool Curriculum</a>
+  <ul class="site-nav-links">
+    <li><a href="6th_grade_homeschool_plan.html">← Homeschool Plan</a></li>
+  </ul>
+</nav>
+<div class="page-header">
+  <div class="eyebrow">Q1 · 2025–2026</div>
+  <h1>Q1 Homeschool Plan: Creatures and Kingdoms</h1>
+</div>
+<div class="container">
         <!-- Quarter Overview -->
         <div class="quarter-overview">
             <h2>Quarter Overview</h2>
@@ -913,8 +979,6 @@
         </div>
     </div>
 
-    <footer>
-        <p>6th Grade Homeschool Curriculum - Quarter 1 (Fall 2026)</p>
-    </footer>
+    <footer class="site-footer">Homeschool Curriculum Hub · Oregon</footer>
 </body>
 </html>
