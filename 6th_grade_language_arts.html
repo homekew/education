@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>6th Grade Language Arts — Oregon ELA Curriculum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     
 
@@ -23,6 +26,22 @@
       --ink-soft:   #5C4F3D;
       --ink-muted:  #9A8F81;
       --white:      #FFFFFF;
+      /* Legacy aliases mapped to design system */
+      --green-dark:   #2A2118;
+      --green-light:  #DDD4C4;
+      --green-mid:    #DDD4C4;
+      --text:         #2A2118;
+      --text-light:   #5C4F3D;
+      --gold:         #d2c35a;
+      --gold-light:   #faf8e8;
+      --purple-dark:  #5c4f8a;
+      --purple-light: #ede8f5;
+      --blue-dark:    #7FA3B5;
+      --blue-light:   #EBF3F7;
+      --rust:         #ff1e3c;
+      --rust-light:   #fff0f2;
+      --border:       #DDD4C4;
+      --cream:        #FAF7F1;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,52 +54,26 @@
       font-size: 15px;
     }
 
-    /* ── HERO ───────────────────────────────────────────────── */
-    .hero {
-      background: linear-gradient(135deg, var(--green-dark) 0%, #1B4332 40%, var(--purple-dark) 100%);
-      color: var(--white);
-      padding: 60px 40px 52px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    /* ── PAGE HEADER ───────────────────────────────────────── */
+    .page-header {
+      background: var(--linen-dark);
+      border-bottom: 1px solid var(--linen-deep);
+      padding: 36px 40px 32px;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 70% 30%, rgba(155,114,207,0.18) 0%, transparent 60%);
-      pointer-events: none;
+    .eyebrow {
+      font-size: 0.67rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 8px;
     }
-    .hero h1 {
-      font-family: 'Lora', serif;
-      font-size: 2.8rem;
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 10px;
-    }
-    .hero h1 span { color: var(--gold); }
-    .hero .subtitle {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.88);
-      max-width: 640px;
-      margin: 0 auto 22px;
-    }
-    .hero-tags {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 18px;
-    }
-    .hero-tag {
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 20px;
-      padding: 4px 14px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      color: #fff;
+    .page-header h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0;
     }
 
     /* ── LAYOUT ─────────────────────────────────────────────── */
@@ -139,7 +132,7 @@
 
     /* ── SECTION HEADINGS ───────────────────────────────────── */
     .section-title {
-      font-family: 'Lora', serif;
+      font-family: 'Fraunces', serif;
       font-size: 1.75rem;
       font-weight: 700;
       color: var(--green-dark);
@@ -228,7 +221,7 @@
       gap: 20px;
     }
     .unit-num {
-      font-family: 'Lora', serif;
+      font-family: 'Fraunces', serif;
       font-size: 3rem;
       font-weight: 700;
       line-height: 1;
@@ -238,7 +231,7 @@
     }
     .unit-titles { flex: 1; }
     .unit-titles h2 {
-      font-family: 'Lora', serif;
+      font-family: 'Fraunces', serif;
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--white);
@@ -262,7 +255,7 @@
     }
     .unit-body { padding: 28px 32px 32px; }
     .unit-tagline {
-      font-family: 'Lora', serif;
+      font-family: 'Fraunces', serif;
       font-size: 1.0rem;
       font-style: italic;
       color: var(--text-light);
@@ -462,7 +455,7 @@
     /* ── BOOK LIST ──────────────────────────────────────────── */
     .book-category { margin-bottom: 28px; }
     .book-category h3 {
-      font-family: 'Lora', serif;
+      font-family: 'Fraunces', serif;
       font-size: 1.1rem;
       font-weight: 700;
       color: var(--green-dark);
@@ -499,7 +492,7 @@
       border: 1.5px solid var(--border);
     }
     .tip-card h3 {
-      font-family: 'Lora', serif;
+      font-family: 'Fraunces', serif;
       font-size: 1.0rem;
       font-weight: 700;
       color: var(--green-dark);
@@ -643,23 +636,17 @@
     footer.site-footer a { color: var(--ink-muted); }
 
   </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- HERO -->
+<!-- NAV -->
 <nav class="site-nav">
   <a class="nav-brand" href="index.html"><span class="nav-dot"></span> Homeschool Curriculum</a>
   <ul class="site-nav-links">
     <li><a href="index.html">← Hub</a></li>
   </ul>
 </nav>
-<div class="page-header">
-  <div class="eyebrow">2026–2027 · 6th Grade</div>
-  <h1>Language Arts</h1>
-</div>
+<div class="page-header"><img src="Headers/3.png" alt="6th Grade"></div>
 </div>
 
 <!-- NAV -->
