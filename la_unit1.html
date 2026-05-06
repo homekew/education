@@ -94,6 +94,36 @@
     footer strong{color:var(--gold);}
     footer a{color:var(--gold-light);text-decoration:none;}
 
+
+    /* PRINT */
+    @media print {
+      @page { margin: 0.85in 0.75in; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: #fff; color: #000; font-size: 11pt; }
+      .week-nav { display: none; }
+      .hero { background: #fff !important; color: #000 !important; padding: 16px 0; border-bottom: 2.5px solid var(--unit-color); }
+      .hero h1, .hero h1 span { color: #000; }
+      .hero .tagline { color: #333; }
+      .hero-badge { background: #eee !important; color: #333 !important; border-color: #bbb !important; }
+      .back-link { display: none; }
+      .week-section { page-break-inside: avoid; break-inside: avoid; margin-bottom: 20px; }
+      .week-header { background: var(--unit-color) !important; }
+      .week-num-badge { background: rgba(255,255,255,.25) !important; }
+      .daily-table th, .rubric-table th { background: var(--unit-color) !important; color: #fff !important; font-size: 8pt; }
+      .daily-table td, .rubric-table td { font-size: 8.5pt; }
+      .day-label { color: var(--unit-color); }
+      .day-tag { background: #eee !important; color: #333 !important; }
+      .questions-list .q-num { background: var(--unit-color) !important; }
+      .prompt-card { border: 1.5px solid #ccc; background: #f9f9f9 !important; break-inside: avoid; }
+      .prompt-type { color: var(--unit-color) !important; }
+      .overview-strip { background: #f9f9f9 !important; }
+      .ov-label { color: var(--unit-color) !important; }
+      a { color: #000; text-decoration: none; }
+      footer { background: #fff !important; color: #555 !important; border-top: 1px solid #ccc; }
+      .section-label { color: var(--unit-color) !important; border-bottom-color: var(--unit-color) !important; }
+      .grammar-callout { background: #f5f5f5 !important; border-color: #ccc !important; }
+    }
+
     @media(max-width:600px){
       .hero h1{font-size:1.7rem;}
       .week-body{padding:18px 16px;}
@@ -200,7 +230,7 @@
           <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading</span> Read chapters 4–5. Focus on the protagonist and their relationships. In your journal, note: Who does the protagonist care about most so far? Who do they distrust? Find one quote that reveals something important about their personality — copy it down with the page number.</td></tr>
           <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar</span> Noun phrases and verb phrases. Identify 5 noun phrases and 5 verb phrases from your novel. Practice expanding a simple sentence ("The rat ran") into a more complex one using noun and verb phrases ("The old gray rat ran silently through the darkened corridor").</td></tr>
           <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Writing</span> Read chapter 6. After reading, write a character analysis journal entry: What does your protagonist want? What is stopping them? How do you know — what specific moments or quotes from the text support your answer?</td></tr>
-          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Art + Project</span> Create an illustrated character web. Place your protagonist in the center circle, then draw connecting lines to at least 4 other characters. Label each connection with the relationship type AND one cited quote that shows how they interact.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Art + Project — Clay Sculpt</span> Begin sculpting a mini-figurine of your protagonist out of air-dry clay or sculpting clay. Focus on getting the basic body proportions and identifying features right (ears, tail, size, posture). Don't worry about perfection — this is a working model. While you work, think about how the author describes this character physically: does your sculpture match those details?</td></tr>
           <tr><td class="day-label">Friday</td><td><span class="day-tag">Reading + Discussion</span> Read chapter 7. Discuss the week's reading and your character web. Focus on: How is the protagonist already changing, even this early in the story?</td></tr>
         </tbody>
       </table>
@@ -367,8 +397,8 @@
     <div class="week-header">
       <div class="week-num-badge">6</div>
       <div class="week-header-text">
-        <h2>Synthesis &amp; Sharing</h2>
-        <div class="week-focus">Objective summary · Revise narrative · Gallery walk · Reflect</div>
+        <h2>🎉 Unit 1 Showcase — Gallery Walk</h2>
+        <div class="week-focus">Objective summary · Revise narrative · Gallery walk · Book poster display · Reflect</div>
       </div>
     </div>
     <div class="week-body">
@@ -380,7 +410,7 @@
           <tr><td class="day-label">Monday</td><td><span class="day-tag">Writing</span> Write an objective summary of the novel (1 paragraph, 8–10 sentences). An objective summary sticks to what actually happened — no opinions, no analysis, just the key plot points. Cover: the protagonist, the central conflict, the rising action, the climax, and the resolution.</td></tr>
           <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar + Revision</span> Subject-verb agreement mini-lesson: review tricky cases (compound subjects, indefinite pronouns). Then revise your narrative scene draft: read it aloud, check for grammar errors, and improve at least three sentences by adding stronger descriptive phrases.</td></tr>
           <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Revise + Polish</span> Final revision of your narrative scene. Focus on: Does it sound like it belongs in this book? Does the animal's voice feel authentic? Fix any punctuation errors and rewrite any sentences that feel weak. Create a clean final copy.</td></tr>
-          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Gallery Prep</span> Set up your diorama with its scene card and your narrative scene (printed or handwritten) displayed nearby. Write one final journal entry: What did you love most about this book? What will you remember about it in ten years?</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Gallery Prep — Book Poster</span> Set up your diorama with its scene card. Then create a display poster for your gallery: include your book's title, a favorite quote, a hand-drawn or painted image of a key moment, and a 2–3 sentence "hook" paragraph that would make someone want to read this book. Display the poster, diorama, and narrative scene together. Write one final journal entry: What did you love most about this book? What will you remember about it in ten years?</td></tr>
           <tr><td class="day-label">Friday</td><td><span class="day-tag">Gallery Walk + Celebrate</span> Share your diorama, scene card, and narrative scene with a family member or another student. Read your favorite excerpt from the novel aloud. Discuss: What makes a great animal fantasy? What would YOU write if you were the author?</td></tr>
         </tbody>
       </table>

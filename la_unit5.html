@@ -94,6 +94,36 @@
     footer strong{color:var(--gold);}
     footer a{color:var(--gold-light);text-decoration:none;}
 
+
+    /* PRINT */
+    @media print {
+      @page { margin: 0.85in 0.75in; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: #fff; color: #000; font-size: 11pt; }
+      .week-nav { display: none; }
+      .hero { background: #fff !important; color: #000 !important; padding: 16px 0; border-bottom: 2.5px solid var(--unit-color); }
+      .hero h1, .hero h1 span { color: #000; }
+      .hero .tagline { color: #333; }
+      .hero-badge { background: #eee !important; color: #333 !important; border-color: #bbb !important; }
+      .back-link { display: none; }
+      .week-section { page-break-inside: avoid; break-inside: avoid; margin-bottom: 20px; }
+      .week-header { background: var(--unit-color) !important; }
+      .week-num-badge { background: rgba(255,255,255,.25) !important; }
+      .daily-table th, .rubric-table th { background: var(--unit-color) !important; color: #fff !important; font-size: 8pt; }
+      .daily-table td, .rubric-table td { font-size: 8.5pt; }
+      .day-label { color: var(--unit-color); }
+      .day-tag { background: #eee !important; color: #333 !important; }
+      .questions-list .q-num { background: var(--unit-color) !important; }
+      .prompt-card { border: 1.5px solid #ccc; background: #f9f9f9 !important; break-inside: avoid; }
+      .prompt-type { color: var(--unit-color) !important; }
+      .overview-strip { background: #f9f9f9 !important; }
+      .ov-label { color: var(--unit-color) !important; }
+      a { color: #000; text-decoration: none; }
+      footer { background: #fff !important; color: #555 !important; border-top: 1px solid #ccc; }
+      .section-label { color: var(--unit-color) !important; border-bottom-color: var(--unit-color) !important; }
+      .grammar-callout { background: #f5f5f5 !important; border-color: #ccc !important; }
+    }
+
     @media(max-width:600px){
       .hero h1{font-size:1.7rem;}
       .week-body{padding:18px 16px;}
@@ -255,7 +285,7 @@
           <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Reading — Different Angle Source</span> Find a fourth source that approaches your topic from a different angle: a first-person account from a rancher, tribal member, fisherman, or local resident affected by this issue; a piece from an Indigenous land stewardship perspective (Braiding Sweetgrass excerpts may be useful here); or a historical article about how this issue developed over time. Complete Source Evaluation Notes for this source and add it to your research folder.</td></tr>
           <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Writing — RI.7.9 Synthesis Paragraph</span> Write a synthesis paragraph pulling together at least three of your four sources. Your synthesis paragraph is not a summary of each source — it is a paragraph organized around an idea, with evidence woven in from multiple sources. Choose one key idea your sources collectively illuminate (for example: "The recovery of Pacific salmon depends on both removing barriers and restoring habitat, but stakeholders disagree about who bears the cost"). Draft the paragraph today.</td></tr>
           <tr><td class="day-label">Thursday</td><td><span class="day-tag">Grammar — Transitions in Argument</span> Study transitional phrases used in argument writing: concession transitions ("although," "while it is true that," "admittedly"), contrast transitions ("however," "on the other hand," "yet"), and reinforcement transitions ("furthermore," "in addition," "this is supported by"). Find 2–3 of each type in your sources. Then revise your synthesis paragraph to include at least three different transitional phrases that improve the flow and logic.</td></tr>
-          <tr><td class="day-label">Friday</td><td><span class="day-tag">Art — Begin Poster Painting</span> Begin painting or constructing your advocacy poster. Use your best concept sketch as your guide. Start with the background and large shapes — don't try to finish the details today. Focus on your main animal or habitat image. Use whatever media you have: watercolor, acrylic, mixed-media collage. The goal today is to get paint or material on the page and establish the overall composition and color palette.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Art — Begin Poster Painting</span> Begin painting or constructing your advocacy poster. Use your best concept sketch as your guide. Start with the background and large shapes — don't try to finish the details today. Focus on your main animal or habitat image. Use whatever media you have: acrylic, tempera, mixed-media collage. The goal today is to get paint or material on the page and establish the overall composition and color palette.</td></tr>
         </tbody>
       </table>
 
@@ -347,7 +377,7 @@
           <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Revision — Sharpen Claim &amp; Evidence</span> Revise your draft based on peer feedback. Focus first on the claim: Is your thesis specific and arguable? Rewrite it if it's too broad. Then audit your evidence: Does every piece of evidence directly support your claim? Cut any evidence that drifts off topic, no matter how interesting it is. Add a detail, statistic, or quote if any body paragraph feels thin. Aim for a stronger, tighter draft by end of the day.</td></tr>
           <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Revision — Formal Register + Draft Conclusion</span> Read your entire draft aloud. Mark every sentence that sounds informal, casual, or conversational. Revise those sentences into formal register: replace contractions, elevate word choice, and restructure run-on thoughts. Then draft your conclusion paragraph: restate your thesis (not word-for-word — rephrase it), summarize your strongest points briefly, and end with a powerful call to action. What do you want readers to feel, think, or do?</td></tr>
           <tr><td class="day-label">Thursday</td><td><span class="day-tag">Art — Finalize Poster</span> Dedicated art day: finish your advocacy poster. Add your text elements — your slogan, key fact or statistic, and call to action. Make sure these are readable and positioned clearly within the composition. Step back and look at the whole poster: Does the image carry your argument? Does it make someone want to stop and look? Make any final additions or touch-ups. Sign your work.</td></tr>
-          <tr><td class="day-label">Friday</td><td><span class="day-tag">Rehearse Presentation</span> Begin preparing your 3–5 minute spoken presentation. Your presentation will pair your poster with your spoken argument. Today: write a brief outline or note card guide (not a word-for-word script). Practice presenting once out loud — even if it's just to yourself. Note where you stumble or lose your place. Identify the two strongest moments in your argument that you want listeners to remember.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Presentation Prep — Stop Motion OR Slideshow</span> Prepare your 3–5 minute presentation and create a visual companion for it. <strong>Option A — Stop Motion:</strong> Make a 20–30 second stop motion clip showing a key fact or moment from your cause (e.g., habitat loss, a species' journey, a data comparison). Film with your phone or tablet using small figures, paper cutouts, or clay. <strong>Option B — Photo Slideshow:</strong> Assemble 5–7 images (found photos, your own art, or drawn panels) with short captions into a simple slideshow to display during your presentation. Either way, also write your presentation outline on note cards — not a script, just key points and transitions.</td></tr>
         </tbody>
       </table>
 
@@ -379,8 +409,8 @@
     <div class="week-header">
       <div class="week-num-badge">30</div>
       <div class="week-header-text">
-        <h2>Present &amp; Advocate</h2>
-        <div class="week-focus">Self-reflection · Final proofreading · Oral introduction · Advocacy presentation</div>
+        <h2>🎉 Unit 5 Showcase — Advocacy Presentation</h2>
+        <div class="week-focus">Final proofread · Oral introduction · Poster display · Advocacy presentation + stop motion or slideshow</div>
       </div>
     </div>
     <div class="week-body">
@@ -393,7 +423,7 @@
           <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Write Oral Introduction</span> Write your 1-paragraph oral introduction for the presentation. This paragraph (spoken aloud, about 60–90 seconds) should: introduce your issue in a way that hooks the listener, briefly explain why you chose this cause, state your central claim, and preview your poster. Memorize or deeply familiarize yourself with this paragraph — you will say it without reading it word-for-word. Practice it three times today.</td></tr>
           <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Full Presentation Rehearsal</span> Run through your complete presentation from beginning to end, including your oral introduction and poster walk-through: 3–5 minutes total. Record yourself if possible, or present to a parent or sibling and ask for one specific piece of feedback: Does my argument come through clearly? Practice at least twice. Adjust your pacing — it's common to rush when nervous. Aim for a confident, conversational delivery, not a word-for-word recitation.</td></tr>
           <tr><td class="day-label">Thursday</td><td><span class="day-tag">Presentation Day Prep</span> Set up your presentation space: display the poster where it can be seen clearly, have your essay or notes nearby for reference, and prepare any materials you want to share (a fact sheet, a handout, printed photos of the animal or habitat). Do one last calm rehearsal. Take a few minutes to think about why this cause matters — the more genuinely you care, the more compelling your presentation will be.</td></tr>
-          <tr><td class="day-label">Friday</td><td><span class="day-tag">Advocacy Presentation</span> Deliver your advocacy presentation to your audience — a parent, grandparent, co-op classmates, neighbors, or anyone willing to listen. Introduce your cause, walk through your poster, present your argument, and end with your call to action. After the presentation, open a brief Q&amp;A: answer at least one question from your audience. Celebrate: this is the culmination of six weeks of real research, real thinking, and real advocacy. You did the work of an activist today.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">🎉 Showcase — Advocacy Presentation</span> Set up your showcase space: display your poster prominently, have your essay and note cards ready, and queue up your stop motion clip or photo slideshow. Invite your audience — family, neighbors, anyone willing to listen. Run the presentation: (1) Open with your 60–90 second oral introduction. (2) Screen your stop motion or slideshow. (3) Walk through your poster and present your full argument (3–5 minutes). (4) Read your strongest essay paragraph. (5) End with your call to action. Open a brief Q&amp;A. Celebrate — six weeks of research, real thinking, real advocacy. You spoke up for something that can't speak for itself.</td></tr>
         </tbody>
       </table>
 

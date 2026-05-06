@@ -94,6 +94,36 @@
     footer strong{color:var(--gold);}
     footer a{color:var(--gold-light);text-decoration:none;}
 
+
+    /* PRINT */
+    @media print {
+      @page { margin: 0.85in 0.75in; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: #fff; color: #000; font-size: 11pt; }
+      .week-nav { display: none; }
+      .hero { background: #fff !important; color: #000 !important; padding: 16px 0; border-bottom: 2.5px solid var(--unit-color); }
+      .hero h1, .hero h1 span { color: #000; }
+      .hero .tagline { color: #333; }
+      .hero-badge { background: #eee !important; color: #333 !important; border-color: #bbb !important; }
+      .back-link { display: none; }
+      .week-section { page-break-inside: avoid; break-inside: avoid; margin-bottom: 20px; }
+      .week-header { background: var(--unit-color) !important; }
+      .week-num-badge { background: rgba(255,255,255,.25) !important; }
+      .daily-table th, .rubric-table th { background: var(--unit-color) !important; color: #fff !important; font-size: 8pt; }
+      .daily-table td, .rubric-table td { font-size: 8.5pt; }
+      .day-label { color: var(--unit-color); }
+      .day-tag { background: #eee !important; color: #333 !important; }
+      .questions-list .q-num { background: var(--unit-color) !important; }
+      .prompt-card { border: 1.5px solid #ccc; background: #f9f9f9 !important; break-inside: avoid; }
+      .prompt-type { color: var(--unit-color) !important; }
+      .overview-strip { background: #f9f9f9 !important; }
+      .ov-label { color: var(--unit-color) !important; }
+      a { color: #000; text-decoration: none; }
+      footer { background: #fff !important; color: #555 !important; border-top: 1px solid #ccc; }
+      .section-label { color: var(--unit-color) !important; border-bottom-color: var(--unit-color) !important; }
+      .grammar-callout { background: #f5f5f5 !important; border-color: #ccc !important; }
+    }
+
     @media(max-width:600px){
       .hero h1{font-size:1.7rem;}
       .week-body{padding:18px 16px;}
@@ -203,8 +233,8 @@
           <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading + Poetry</span> Read 3–4 Mary Oliver poems focused on the natural world (suggestions: "The Summer Day," "Wild Geese," "The Black Snake," "When Death Comes"). Read each one twice — once aloud, once silently. In your journal, for each poem record: one image that you can picture exactly, one line that surprised you, and one emotion the poem made you feel. Notice how Oliver uses animals, plants, and landscapes as a way of talking about big human ideas.</td></tr>
           <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar — Connotation vs. Denotation</span> A word's denotation is its dictionary definition. Its connotation is the feeling or association it carries. Compare: <em>thin / slender / gaunt / scrawny</em> — same denotation, very different connotations. Work through a list of 10 word pairs. For each, label whether the connotation is positive, negative, or neutral, and explain the difference in feeling. Then revise 5 sentences from a bland paragraph by swapping neutral words for ones with stronger connotations.</td></tr>
           <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Prose Excerpt</span> Read the excerpt from <em>Wolf Hollow</em> by Lauren Wolk (first chapter or a nature-description passage your teacher selects). Notice how Wolk layers sensory details — not just what things look like, but how they smell, sound, and feel underfoot. In your journal, create a "Sensory Map" of the passage: list details under the five senses. Which sense does Wolk use most? Which does she use least? What effect does that create?</td></tr>
-          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Writing — Sensory Description Paragraph</span> Using your protagonist sketch and your notes from this week, write a sensory description paragraph (8–10 sentences) of the fantastical world your animal character inhabits. Include at least one detail for each of the five senses. Use at least two strong connotation word choices — words that carry a specific feeling, not just a neutral description. Aim to make the reader feel like they're standing inside your world.</td></tr>
-          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project — Story Outline</span> Develop your story outline using a story map template: (1) Who is your protagonist — species, name, personality, goal? (2) What is the fantastical world like? (3) What problem or journey begins the story? (4) What is the hardest moment — the climax? (5) How does it end, and what has changed? You don't have to have everything figured out, but you need a shape. Discuss your outline with a family member or writing partner.</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Writing — Sensory Poem OR Description Paragraph</span> Using your protagonist sketch and your notes from this week, choose your form: <strong>Option A — Sensory Poem:</strong> Write a free verse poem (12–20 lines) from your animal protagonist's point of view, using at least 4 of the 5 senses. Each line should contain one vivid sensory detail. Look at how Mary Oliver builds a poem and try the same technique. <strong>Option B — Description Paragraph:</strong> Write an 8–10 sentence paragraph describing the fantastical world your character inhabits. Either way, use at least two strong connotation word choices — words that carry a specific feeling beyond mere description.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project — Story Outline + Illustrated Scene Map</span> Develop your story outline using a story map template: (1) protagonist — species, name, personality, goal; (2) the world; (3) the inciting problem or journey; (4) the climax; (5) the ending. Write the outline in words, then draw an illustrated scene map — a visual flow of your story's key moments with small thumbnail sketches for each scene. (Think of it like a storyboard, but looser.) This visual plan will guide both your writing AND your illustrations over the next few weeks.</td></tr>
         </tbody>
       </table>
 
@@ -299,7 +329,7 @@
           <tr><td class="day-label">Monday</td><td><span class="day-tag">Reading — Dialogue Study</span> Read selected excerpts from <em>Nimona</em> and <em>Wolf Hollow</em> chosen specifically for strong dialogue. For each excerpt, answer in your journal: (1) Can you tell who is speaking without the dialogue tag? (2) What does each character's word choice reveal about their personality, age, power, or mood? (3) How does the dialogue move the plot forward — does it reveal new information, create conflict, or change a relationship? Collect 2–3 examples of dialogue you admire and explain why they work.</td></tr>
           <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar — Punctuating Dialogue</span> Master the rules for punctuating dialogue: quotation marks around spoken words; comma inside the closing quotation when a dialogue tag follows; new paragraph for each new speaker; question marks and exclamation points inside quotation marks; no comma when the sentence ends with a period inside the quote and no tag follows. Work through 8 incorrectly punctuated dialogue examples and fix them. Then write 4 original dialogue exchanges that each use a different punctuation pattern.</td></tr>
           <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Writing — Draft Dialogue Scene</span> Write a scene from your story (1–1.5 pages) that is primarily driven by dialogue between your protagonist and at least one other character. Each character must have a distinct voice — the reader should be able to tell them apart. Include: at least 8 lines of dialogue, at least 2 different dialogue tag constructions (said / asked / whispered / growled, etc.), and at least one moment where a character's inner thought is woven between lines of dialogue. Correctly punctuate all dialogue.</td></tr>
-          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Art — Refine Clay Figure + Begin Illustrations</span> Return to your clay rough form: add details, refine proportions, shape the face and paws, texture the fur or scales. You want this figure to feel like your specific character, not just any animal. After 30–40 minutes of clay work, begin your first story illustration. Sketch the scene you most want to illustrate — probably your opening or a key emotional moment. Pencil sketch first, then decide on your color medium (watercolor, colored pencil, paint, ink).</td></tr>
+          <tr><td class="day-label">Thursday</td><td><span class="day-tag">Art — Stop Motion OR Refine Clay + Begin Illustrations</span> <strong>Option A — Stop Motion:</strong> Use your clay figure (or make a simple one today) to create a 20–30 second stop motion scene from your story. Film frame by frame using a phone, tablet, or camera — even 60–80 photos makes a fun short clip. Choose one key moment from your story to bring to life. Watch it back and share it. <strong>Option B — Clay + Illustrations:</strong> Return to your clay rough form and add fur texture, facial details, and refined proportions. Then begin your first story illustration — pencil sketch the scene, then start adding color in acrylic, colored pencil, oil pastel, or ink.</td></tr>
           <tr><td class="day-label">Friday</td><td><span class="day-tag">Discussion + Peer Share</span> Read your dialogue scene aloud. Discuss: Does each character sound different? Where does the dialogue feel flat or stiff, and where does it feel alive? Share your illustration sketch — does the image you're making match the story you're writing, or has drawing it changed what you want to write?</td></tr>
         </tbody>
       </table>
@@ -379,8 +409,8 @@
     <div class="week-header">
       <div class="week-num-badge">24</div>
       <div class="week-header-text">
-        <h2>Celebrate &amp; Share</h2>
-        <div class="week-focus">Author's craft reflection · Author's note · Final proofreading · Mini author event + clay display</div>
+        <h2>🎉 Unit 4 Showcase — Author Event</h2>
+        <div class="week-focus">Author's note · Final proofreading · Mini author event · Clay display + stop motion screening</div>
       </div>
     </div>
     <div class="week-body">
@@ -393,7 +423,7 @@
           <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Writing — Proofreading + Author's Note</span> Final proofreading pass: read your story aloud one sentence at a time — backwards through the page if necessary — catching spelling, punctuation, and dialogue errors. Fix at least 10 things. Then write your Author's Note (1 paragraph, 6–8 sentences): Where did this story come from? What animal did you choose and why? What was the hardest part to write? What do you most want your reader to feel when they close the last page? The Author's Note goes at the front or back of your finished book.</td></tr>
           <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Book Assembly + Display Prep</span> Assemble your illustrated story into final book form: order the pages, position the illustrations, create a title page with title and author name, and attach or bind the pages. Set up your display area: your finished clay figure should be positioned as if it has stepped out of the story. Arrange the clay figure, the story, and any process sketches (protagonist sketches, story outline, illustration drafts) for the author event. Write a short display card for your clay figure (3–4 sentences describing the character).</td></tr>
           <tr><td class="day-label">Thursday</td><td><span class="day-tag">Author's Craft Reflection</span> Write a full-page author's craft reflection in your journal. Answer: What did you learn about storytelling during this unit that you didn't know before? Which figurative language device came most naturally to you, and which was hardest? What would you do differently if you wrote this story again? What does your story want to say — what is the deeper meaning underneath the plot? Attach this reflection to your project portfolio.</td></tr>
-          <tr><td class="day-label">Friday</td><td><span class="day-tag">Mini Author Event</span> Today you are an author. Set up your display: illustrated story book, clay figure, display card. Invite family members, neighbors, or homeschool community members. Read your story aloud — all of it, or a meaningful excerpt. Take questions. Walk visitors through your clay figure and explain your character. After the event, write one final journal entry: How did it feel to share your story? What did you notice when you read it aloud in front of others?</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">🎉 Unit 4 Showcase — Author Event</span> Today you are an author. Set up your display table: illustrated story book (open to a favorite spread), clay figure with its display card, any stop motion video queued up to show. Invite family members or homeschool community members. Run the event: (1) Screen your stop motion clip (if you made one). (2) Walk visitors through the clay figure and illustrations. (3) Read your story aloud — the whole thing or a meaningful excerpt. (4) Read your Author's Note. Take questions. After the event, write one final journal entry: How did it feel to share your story? What surprised you when you heard it aloud?</td></tr>
         </tbody>
       </table>
 

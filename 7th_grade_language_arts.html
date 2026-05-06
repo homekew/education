@@ -525,8 +525,48 @@
 
     /* ── PRINT ──────────────────────────────────────────────── */
     @media print {
-      .toc-bar { display: none; }
-      .unit-card { break-inside: avoid; }
+      @page { margin: 0.85in 0.75in; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: #fff; color: #000; font-size: 11pt; }
+      .toc-bar, .hero::before { display: none; }
+      .hero {
+        background: #fff !important;
+        color: #000 !important;
+        padding: 20px 0 16px;
+        text-align: left;
+        border-bottom: 2.5px solid #2D6A4F;
+        page-break-after: avoid;
+      }
+      .hero h1 { font-size: 20pt; color: #000; }
+      .hero h1 span { color: #2D6A4F; }
+      .hero .subtitle { color: #333; }
+      .hero-tag { background: #eee; color: #333; border-color: #bbb; }
+      .container { max-width: 100%; padding: 0; }
+      .page-section { padding: 20px 0; }
+      .section-title { font-size: 14pt; color: #2D6A4F; border-bottom-color: #2D6A4F; }
+      .unit-card {
+        border: 1.5px solid #ccc;
+        box-shadow: none;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 24px;
+      }
+      .unit-header { background: #2D6A4F !important; }
+      .unit-num { color: #fff; }
+      .unit-titles h2 { color: #fff; }
+      .unit-titles .unit-sub { color: rgba(255,255,255,0.9); }
+      .unit-titles .unit-weeks { background: rgba(255,255,255,0.25); color: #fff; }
+      .weekly-table th { background: #2D6A4F; color: #fff; font-size: 8pt; }
+      .weekly-table td { font-size: 8.5pt; border-bottom-color: #ddd; }
+      .weekly-table tr:nth-child(even) td { background: #f5f5f5; }
+      .standards-table th, .grammar-table th { background: #2D6A4F; color: #fff; }
+      .year-table th { background: #2D6A4F; color: #fff; }
+      .unit-detail-link { display: none; }
+      .project-box { border: 1.5px solid #ccc; background: #f9f9f9; }
+      a { color: #000; text-decoration: none; }
+      .grammar-table th { font-size: 9pt; }
+      .grammar-table td { font-size: 9pt; }
+      footer { background: #fff; color: #555; border-top: 1px solid #ccc; margin-top: 24px; }
     }
 
     @media (max-width: 600px) {
@@ -565,6 +605,8 @@
     <a href="#unit5">Unit 5</a><span class="sep">·</span>
     <a href="#unit6">Unit 6</a><span class="sep">›</span>
     <a href="#grammar">Grammar</a><span class="sep">›</span>
+    <a href="#writing-forms">Writing Forms</a><span class="sep">›</span>
+    <a href="#field-trips">Field Trips</a><span class="sep">›</span>
     <a href="#books">Books</a><span class="sep">›</span>
     <a href="#tips">Tips</a>
   </nav>
@@ -662,11 +704,11 @@
             <thead><tr><th>Wk</th><th>Focus</th><th>Reading/Lit</th><th>Writing</th><th>Grammar</th><th>Project</th></tr></thead>
             <tbody>
               <tr><td class="week-num">1</td><td>Intro &amp; Setup</td><td>Chapters 1–3; author background</td><td>Reading journal; first impressions</td><td>Phrases vs. clauses</td><td>Character profile sheet with sketches</td></tr>
-              <tr><td class="week-num">2</td><td>Character Analysis</td><td>Chs. 4–7; motivation</td><td>Character analysis journal (evidence)</td><td>Noun &amp; verb phrases</td><td>Illustrated character web</td></tr>
+              <tr><td class="week-num">2</td><td>Character Analysis</td><td>Chs. 4–7; motivation</td><td>Character analysis journal (evidence)</td><td>Noun &amp; verb phrases</td><td>Clay mini-figurine: sculpt your protagonist</td></tr>
               <tr><td class="week-num">3</td><td>Setting &amp; World</td><td>Chs. 8–11; descriptive passages</td><td>Descriptive paragraph: animal's-eye view</td><td>Prepositional &amp; participial phrases</td><td>Sketch and plan diorama setting</td></tr>
               <tr><td class="week-num">4</td><td>Theme Emerges</td><td>Chs. 12–16; conflict &amp; turning point</td><td>Theme journal entry</td><td>Dependent &amp; independent clauses</td><td>Build diorama (clay, paint, mixed media)</td></tr>
               <tr><td class="week-num">5</td><td>Climax &amp; Resolution</td><td>Chs. 17–end</td><td>Draft narrative: write a new scene</td><td>Complex sentences; punctuating clauses</td><td>Complete &amp; add written scene card</td></tr>
-              <tr><td class="week-num">6</td><td>Synthesis &amp; Sharing</td><td>Reread key passages; peer sharing</td><td>Revise narrative; write objective summary</td><td>Editing; subject-verb agreement</td><td>Gallery walk — share dioramas</td></tr>
+              <tr><td class="week-num">6</td><td>🎉 Unit 1 Showcase</td><td>Reread key passages; peer sharing</td><td>Revise narrative; write objective summary</td><td>Editing; subject-verb agreement</td><td>Gallery walk — diorama, book poster, narrative scene on display</td></tr>
             </tbody>
           </table>
 
@@ -731,9 +773,9 @@
               <tr><td class="week-num">7</td><td>What Is Nonfiction?</td><td>Intro essay; identify tone &amp; purpose</td><td>Nature observation entry: go outside, write</td><td>Sentence variety: simple/compound/complex</td><td>Design nature journal cover (paint/collage)</td></tr>
               <tr><td class="week-num">8</td><td>Central Idea</td><td>2 short animal articles; central idea practice</td><td>Summary paragraph with evidence</td><td>Coordination; conjunctive adverbs</td><td>Journal entry #1: animal observation + sketch</td></tr>
               <tr><td class="week-num">9</td><td>Author's Purpose</td><td>Conservation essay; identify author's stance</td><td>Analysis paragraph: what does this author want?</td><td>Subordination; dependent clause variations</td><td>Journal entry #2: habitat drawing (painting)</td></tr>
-              <tr><td class="week-num">10</td><td>Evaluating Arguments</td><td>Two texts with different views on wildlife issue</td><td>Compare author arguments</td><td>Precise word choice; denotation vs. connotation</td><td>Journal entry #3: research notes on chosen animal</td></tr>
+              <tr><td class="week-num">10</td><td>Evaluating Arguments</td><td>Two texts with different views on wildlife issue</td><td>Technical fact sheet: labeled sections &amp; structured data on chosen animal</td><td>Precise word choice; denotation vs. connotation</td><td>Journal entry #3: research notes + data sketch</td></tr>
               <tr><td class="week-num">11</td><td>Research &amp; Synthesis</td><td>3 sources on chosen animal/ecosystem</td><td>Draft informational report (3–4 paragraphs)</td><td>Transitional words; paragraph cohesion</td><td>Journal entry #4: illustrated report spread</td></tr>
-              <tr><td class="week-num">12</td><td>Polish &amp; Present</td><td>Peer review of drafts</td><td>Revise and finalize informational report</td><td>Editing: punctuation, capitalization</td><td>Present nature journal to family or small group</td></tr>
+              <tr><td class="week-num">12</td><td>🎉 Unit 2 Showcase</td><td>Peer review of drafts</td><td>Revise and finalize informational report</td><td>Editing: punctuation, capitalization</td><td>Nature Journal Showcase — present journal + informational report to family</td></tr>
             </tbody>
           </table>
 
@@ -796,12 +838,12 @@
           <table class="weekly-table">
             <thead><tr><th>Wk</th><th>Focus</th><th>Reading</th><th>Writing</th><th>Grammar</th><th>Project</th></tr></thead>
             <tbody>
-              <tr><td class="week-num">13</td><td>Story Structure</td><td>Chs. 1–5; map exposition &amp; inciting incident</td><td>Journal: protagonist first impressions</td><td>Intro to modifiers; adjective &amp; adverb clauses</td><td>Sketch map of the story's world</td></tr>
-              <tr><td class="week-num">14</td><td>Character Development</td><td>Chs. 6–11; rising action</td><td>Character change journal</td><td>Misplaced modifiers; fix-it practice</td><td>Atlas: add landscape details &amp; locations</td></tr>
+              <tr><td class="week-num">13</td><td>Story Structure</td><td>Chs. 1–5; map exposition &amp; inciting incident</td><td>Journal: protagonist first impressions</td><td>Intro to modifiers; adjective &amp; adverb clauses</td><td>World map — sketch on paper OR build in Minecraft</td></tr>
+              <tr><td class="week-num">14</td><td>Character Development</td><td>Chs. 6–11; rising action</td><td>Character change journal</td><td>Misplaced modifiers; fix-it practice</td><td>Atlas: clay terrain model of a key region</td></tr>
               <tr><td class="week-num">15</td><td>Point of View</td><td>Chs. 12–17; multiple perspectives</td><td>POV paragraph: retell a moment from another character</td><td>Dangling modifiers; active vs. passive voice</td><td>Atlas: add character portraits (paint/ink)</td></tr>
               <tr><td class="week-num">16</td><td>Theme &amp; Argument</td><td>Chs. 18–22; identify thematic statement</td><td>Pre-write argumentative essay: choose claim, gather evidence</td><td>Sentence variety; subordinating conjunctions</td><td>Atlas: illustrated scene spreads</td></tr>
               <tr><td class="week-num">17</td><td>Drafting Argument</td><td>Reread key chapters for evidence</td><td>Draft argumentative essay (intro + 2–3 body paragraphs + conclusion)</td><td>Comma rules; complex sentence editing</td><td>Complete Atlas — title page, legend, descriptions</td></tr>
-              <tr><td class="week-num">18</td><td>Revise &amp; Present</td><td>Peer review sessions</td><td>Revise and finalize argumentative essay</td><td>Final editing pass; proofreading checklist</td><td>Present World Atlas; read best essay paragraph aloud</td></tr>
+              <tr><td class="week-num">18</td><td>🎉 Unit 3 Showcase</td><td>Peer review sessions</td><td>Revise and finalize argumentative essay</td><td>Final editing pass; proofreading checklist</td><td>Atlas &amp; Essay Showcase — display World Atlas; read best essay paragraph aloud</td></tr>
             </tbody>
           </table>
 
@@ -864,11 +906,11 @@
             <thead><tr><th>Wk</th><th>Focus</th><th>Reading</th><th>Writing</th><th>Grammar</th><th>Project</th></tr></thead>
             <tbody>
               <tr><td class="week-num">19</td><td>Visuals Tell Stories</td><td>The Arrival or similar; how images carry meaning</td><td>Written response: what story does this image tell?</td><td>Figurative language intro: simile, metaphor, personification</td><td>Sketch animal protagonist character design</td></tr>
-              <tr><td class="week-num">20</td><td>Word Choice &amp; Imagery</td><td>Selected poems + prose; identify sensory language</td><td>Sensory description paragraph: animal in their world</td><td>Connotation vs. denotation; word nuance</td><td>Develop story outline: beginning, middle, end</td></tr>
+              <tr><td class="week-num">20</td><td>Word Choice &amp; Imagery</td><td>Selected poems + prose; identify sensory language</td><td>Sensory poem OR descriptive paragraph: your animal in their world</td><td>Connotation vs. denotation; word nuance</td><td>Story outline + illustrated scene map</td></tr>
               <tr><td class="week-num">21</td><td>Story Structure</td><td>Graphic novel excerpt; compare to prose</td><td>Draft story opening (setting + protagonist intro)</td><td>Symbolism and extended metaphor</td><td>Begin clay/ceramic character figure — rough form</td></tr>
-              <tr><td class="week-num">22</td><td>Dialogue &amp; Voice</td><td>Excerpts with strong dialogue; how characters speak</td><td>Add dialogue and character voice to story draft</td><td>Punctuating dialogue; direct vs. indirect speech</td><td>Refine clay figure; begin story illustrations</td></tr>
+              <tr><td class="week-num">22</td><td>Dialogue &amp; Voice</td><td>Excerpts with strong dialogue; how characters speak</td><td>Add dialogue and character voice to story draft</td><td>Punctuating dialogue; direct vs. indirect speech</td><td>Stop motion scene with clay figures OR continue clay + begin illustrations</td></tr>
               <tr><td class="week-num">23</td><td>Rising Action &amp; Craft</td><td>Peer story drafts + mentor texts for revision</td><td>Revise: strengthen plot, sensory detail, figurative language</td><td>Sentence-level editing: concision, vivid verbs</td><td>Finalize clay figure; complete story illustrations</td></tr>
-              <tr><td class="week-num">24</td><td>Celebrate &amp; Share</td><td>Author's craft reflection: what did you borrow?</td><td>Write author's note: inspiration + craft choices</td><td>Final proofreading pass</td><td>Story reading/sharing event; display clay figures</td></tr>
+              <tr><td class="week-num">24</td><td>🎉 Unit 4 Showcase</td><td>Author's craft reflection: what did you borrow?</td><td>Write author's note: inspiration + craft choices</td><td>Final proofreading pass</td><td>Author Event — read story aloud; display illustrations, clay figure, and stop motion</td></tr>
             </tbody>
           </table>
 
@@ -937,8 +979,8 @@
               <tr><td class="week-num">26</td><td>Evaluating Sources</td><td>2 sources on chosen topic; RI.7.8 analysis</td><td>Source evaluation notes: claim, evidence, credibility</td><td>Domain-specific vocabulary; precise word choice</td><td>Sketch advocacy poster concept</td></tr>
               <tr><td class="week-num">27</td><td>Multiple Perspectives</td><td>2 opposing-angle sources (RI.7.9)</td><td>Synthesis paragraph: how do sources agree and disagree?</td><td>Hedging language; acknowledging counterarguments</td><td>Begin advocacy poster (painting/mixed media)</td></tr>
               <tr><td class="week-num">28</td><td>Build the Argument</td><td>Reread strongest sources; identify best evidence</td><td>Draft advocacy letter or essay (intro + 2 body paragraphs)</td><td>Transitions and logical connectors in argument</td><td>Continue poster; draft written explanation</td></tr>
-              <tr><td class="week-num">29</td><td>Revise &amp; Strengthen</td><td>Peer review of argument drafts</td><td>Revise: sharpen claim, add/cut evidence, conclude powerfully</td><td>Formal register editing; sentence variety</td><td>Finalize poster; rehearse oral presentation</td></tr>
-              <tr><td class="week-num">30</td><td>Present &amp; Advocate</td><td>Self-reflection on research process</td><td>Final proofreading; write 1-paragraph oral intro</td><td>Final editing pass</td><td>Advocacy presentation: poster + spoken argument</td></tr>
+              <tr><td class="week-num">29</td><td>Revise &amp; Strengthen</td><td>Peer review of argument drafts</td><td>Revise: sharpen claim, add/cut evidence, conclude powerfully</td><td>Formal register editing; sentence variety</td><td>Finalize poster; create stop motion or photo slideshow for presentation</td></tr>
+              <tr><td class="week-num">30</td><td>🎉 Unit 5 Showcase</td><td>Self-reflection on research process</td><td>Final proofreading; write 1-paragraph oral intro</td><td>Final editing pass</td><td>Advocacy Showcase — poster display + 3–5 min spoken argument + stop motion or slideshow</td></tr>
             </tbody>
           </table>
 
@@ -1004,10 +1046,10 @@
             <thead><tr><th>Wk</th><th>Focus</th><th>Reading</th><th>Writing</th><th>Grammar</th><th>Project</th></tr></thead>
             <tbody>
               <tr><td class="week-num">31</td><td>Independent Launch</td><td>Choose novel; read chapters 1–4; set reading goal</td><td>Reading log; first annotation practice</td><td>Grammar review: phrases, clauses, modifiers</td><td>Portfolio setup: organize year's work, choose favorites</td></tr>
-              <tr><td class="week-num">32</td><td>Literary Analysis</td><td>Chs. 5–10; theme tracking</td><td>Literary analysis paragraph: theme + textual evidence</td><td>Comma rules review; editing workshop</td><td>Portfolio reflection: write introduction letter</td></tr>
-              <tr><td class="week-num">33</td><td>Character &amp; Voice</td><td>Chs. 11–16; author's voice</td><td>Novel opening draft: introduce protagonist + world</td><td>Consistent verb tense; point of view consistency</td><td>Begin cover art painting for portfolio</td></tr>
-              <tr><td class="week-num">34</td><td>World-Building</td><td>Chs. 17–end; complete novel</td><td>Revise novel opening: deepen setting, sharpen voice</td><td>Sentence-level revision: concision and rhythm</td><td>Continue cover art; begin final portfolio assembly</td></tr>
-              <tr><td class="week-num">35</td><td>Final Polish</td><td>Reread favorite passages from any book this year</td><td>Final revision of novel opening; peer feedback</td><td>Proofreading checklist; spelling review</td><td>Finalize cover art and portfolio layout</td></tr>
+              <tr><td class="week-num">32</td><td>Literary Analysis</td><td>Chs. 5–10; theme tracking</td><td>Literary analysis paragraph: theme + textual evidence</td><td>Comma rules review; editing workshop</td><td>Author self-portrait (acrylic/ink); draft portfolio introduction letter</td></tr>
+              <tr><td class="week-num">33</td><td>Character &amp; Voice</td><td>Chs. 11–16; author's voice</td><td>Novel opening draft: introduce protagonist + world</td><td>Consistent verb tense; point of view consistency</td><td>Illustrated map of your novel's world; begin cover art sketch</td></tr>
+              <tr><td class="week-num">34</td><td>World-Building</td><td>Chs. 17–end; complete novel</td><td>Revise novel opening: deepen setting, sharpen voice</td><td>Sentence-level revision: concision and rhythm</td><td>Cover art painting; assemble portfolio sections</td></tr>
+              <tr><td class="week-num">35</td><td>Final Polish</td><td>Reread favorite passages from any book this year</td><td>Final revision of novel opening; peer feedback</td><td>Proofreading checklist; spelling review</td><td>Finalize cover art; complete portfolio + "year in books" display poster</td></tr>
               <tr><td class="week-num">36</td><td>🎉 Celebration!</td><td>Read aloud favorite passage from year's reading</td><td>Write Year-in-Review reflection</td><td>Final editing of all portfolio pieces</td><td>Portfolio showcase — share with family; celebrate the year!</td></tr>
             </tbody>
           </table>
@@ -1049,6 +1091,89 @@
         <tr><td><strong>Unit 4</strong> (Wks 19–24)</td><td>Figurative language (simile, metaphor, personification, symbolism) · Connotation vs. denotation · Punctuating dialogue · Direct vs. indirect speech · Vivid verbs</td></tr>
         <tr><td><strong>Unit 5</strong> (Wks 25–30)</td><td>Formal vs. informal register · Domain-specific vocabulary · Hedging language · Transitions in argument · Sentence-level precision</td></tr>
         <tr><td><strong>Unit 6</strong> (Wks 31–36)</td><td>Comprehensive review of all prior concepts · Consistent verb tense · Point of view consistency · Proofreading strategies · Spelling review</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FIELD TRIPS -->
+  <section id="field-trips" class="page-section">
+    <h2 class="section-title">Monthly Field Trips</h2>
+    <p class="section-lead">One field trip per month, timed to connect with the current unit's theme. Each trip has an in-person Oregon option and a virtual/at-home alternative — use whichever fits your schedule and location. After every field trip, students write a short reflection connecting the experience to their current reading or project.</p>
+    <table class="grammar-table">
+      <thead><tr><th>Month</th><th>Connects To</th><th>In-Person Oregon Option</th><th>Virtual / At-Home Alternative</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>September</strong></td>
+          <td>Unit 1 — Animal Fantasy</td>
+          <td>Visit a local wildlife rehabilitation center or raptor center (such as Cascade Raptor Center in Eugene, or Chintimini Wildlife Center in Corvallis). Observe resident animals up close. Sketch one animal in your reading journal.</td>
+          <td>Oregon Zoo virtual tours at oregonzoo.org; watch a live nest cam (bald eagles, ospreys, or peregrine falcons — Cornell Lab of Ornithology eBird has many Oregon feeds).</td>
+        </tr>
+        <tr>
+          <td><strong>October</strong></td>
+          <td>Unit 1 — Diorama &amp; Setting</td>
+          <td>Hike a local old-growth or second-growth forest (Silver Falls State Park, Opal Creek Wilderness, or a local state forest trail). Collect natural materials for the diorama (leaves, bark, moss — take only what's allowed). Observe the sensory details of the setting.</td>
+          <td>Watch USFS or BLM virtual trail tours; Oregon State Parks virtual hike videos; or do a backyard/neighborhood nature walk focusing on five senses. Write an observation journal entry.</td>
+        </tr>
+        <tr>
+          <td><strong>November</strong></td>
+          <td>Unit 2 — Nature Writing &amp; Observation</td>
+          <td>Visit a wildlife refuge or wetland area during fall migration — Sauvie Island Wildlife Area, Ankeny National Wildlife Refuge, or Fern Ridge Reservoir. Watch for migratory birds and bring binoculars and a field guide. Complete a field journal entry on-site.</td>
+          <td>Audubon Society of Portland's online nature cams; Explore.org live wildlife cameras (including osprey and eagle nests in Oregon); iNaturalist app — do a 30-minute backyard species survey and submit your observations.</td>
+        </tr>
+        <tr>
+          <td><strong>December</strong></td>
+          <td>Unit 2 — Research &amp; Informational Writing</td>
+          <td>Oregon Department of Fish &amp; Wildlife (ODFW) offers free public education programs and sometimes open-house events at their hatcheries (Bonneville Fish Hatchery, Roaring River Hatchery). Check odfw.com for current programs.</td>
+          <td>Virtual tour of ODFW's online species resources; watch NOVA science documentaries about Pacific Northwest ecosystems (available on PBS LearningMedia); Oregon Field Guide video archive at opb.org (hundreds of short wildlife docs filmed in Oregon).</td>
+        </tr>
+        <tr>
+          <td><strong>January</strong></td>
+          <td>Unit 3 — Hero's Journey &amp; World-Building</td>
+          <td>Visit a natural history museum (Oregon Museum of Science and Industry — OMSI — in Portland; Oregon State University's Natural History Collections; or the High Desert Museum in Bend). Study how animals and ecosystems are displayed and interpreted.</td>
+          <td>Smithsonian National Museum of Natural History virtual tour (naturalhistory.si.edu); Khan Academy Art History; OMSI online resources; or explore Google Arts &amp; Culture "Animal Art Through History" collection.</td>
+        </tr>
+        <tr>
+          <td><strong>February</strong></td>
+          <td>Unit 3 — Atlas &amp; Map-Making</td>
+          <td>Visit a map library or archives if accessible (Oregon State Library, University of Oregon Map Library, or any public library with a historical map collection). Examine historical Oregon maps and compare them to modern ones. How has the land changed?</td>
+          <td>Explore the David Rumsey Historical Map Collection online (davidrumsey.com) — browse historical Oregon and Pacific Northwest maps; USGS National Map viewer; or explore Oregon's geography on Google Earth's 3D terrain view.</td>
+        </tr>
+        <tr>
+          <td><strong>March</strong></td>
+          <td>Unit 4 — Art &amp; Storytelling</td>
+          <td>Visit a local art museum or gallery — Portland Art Museum, Hallie Ford Museum of Art in Salem, Jordan Schnitzer Museum of Art in Eugene. Look for animal imagery in art history. Sketch your favorite piece in your journal and write about why the artist made the choices they did.</td>
+          <td>Virtual tour of Portland Art Museum (portlandartmuseum.org); Google Arts &amp; Culture museum tours; Khan Academy's "Smarthistory" animal art history videos; or explore illustrators of beloved animal books (Brian Jacques, Robert O'Brien, Colin Dann) via author biography resources.</td>
+        </tr>
+        <tr>
+          <td><strong>April</strong></td>
+          <td>Unit 5 — Environmental Advocacy</td>
+          <td>Attend a conservation event, creek cleanup, or native plant restoration day. Oregon Wild, Willamette Riverkeeper, Oregon Trout, and local Audubon chapters regularly host volunteer events. Participate and talk to the organizers about why they do this work.</td>
+          <td>Attend a virtual webinar from Oregon Wild, Audubon Society of Portland, or the Oregon Environmental Council — all offer free public events. Or watch a TED Talk by a conservation biologist working in the Pacific Northwest.</td>
+        </tr>
+        <tr>
+          <td><strong>May</strong></td>
+          <td>Unit 6 — Portfolio &amp; Year Reflection</td>
+          <td>Celebrate the year with a nature sit spot — return to a favorite outdoor location from earlier in the year (the forest, the wetland, the creek). Spend 30 minutes in quiet observation. Write the final reading journal entry of the year: What do you notice now that you didn't in September? What has changed — in the landscape, and in you?</td>
+          <td>Oregon Nature Almanac: observe what's happening in nature right now — what birds are nesting, what plants are blooming, what's returning after winter. Use iNaturalist or All About Birds to identify what you find. Write the same reflective journal entry: What do you notice now that you couldn't have noticed in September?</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- WRITING FORMS -->
+  <section id="writing-forms" class="page-section">
+    <h2 class="section-title">Writing Forms Across the Year</h2>
+    <p class="section-lead">All seven major writing modes are woven through the curriculum — students encounter each form multiple times, building toward fluency across genres.</p>
+    <table class="grammar-table">
+      <thead><tr><th>Writing Form</th><th>Where It Appears</th><th>Key Assignments</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Narrative</strong></td><td>Units 1, 4, 6</td><td>Original scene from animal's POV (Wk 5); illustrated short story with animal protagonist (Wks 19–24); original novel opening (Wks 33–35)</td></tr>
+        <tr><td><strong>Descriptive</strong></td><td>Units 1, 2, 4</td><td>Animal's-eye-view setting description (Wk 3); nature observation journal entry (Wk 7); sensory poem or descriptive paragraph (Wk 20)</td></tr>
+        <tr><td><strong>Expository</strong></td><td>Units 2, 3, 6</td><td>Objective summary (Wk 6); central idea paragraph with evidence (Wk 8); author's purpose analysis (Wk 9); literary analysis paragraph (Wk 32)</td></tr>
+        <tr><td><strong>Technical</strong></td><td>Unit 2</td><td>Structured species fact sheet with labeled sections, organized data, and formatted reference headings (Wk 10); research notes with citation format (Wk 11)</td></tr>
+        <tr><td><strong>Research</strong></td><td>Units 2, 5</td><td>Informational report synthesizing 3+ sources (Wks 11–12); multi-source advocacy research paper or letter (Wks 27–29); source evaluation notes (Wk 26)</td></tr>
+        <tr><td><strong>Persuasive / Argumentative</strong></td><td>Units 3, 5</td><td>Argumentative essay with textual evidence (Wks 16–18); advocacy letter or essay for a real wildlife issue (Wks 28–30); oral advocacy presentation (Wk 30)</td></tr>
+        <tr><td><strong>Creative</strong></td><td>Units 1, 4, 6</td><td>Sensory nature poem (Wk 20); author's note reflecting on craft choices (Wk 24); Year-in-Review essay celebrating growth as a reader and writer (Wk 36); portfolio introduction letter (Wk 32)</td></tr>
       </tbody>
     </table>
   </section>

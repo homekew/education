@@ -103,6 +103,36 @@
     footer strong{color:var(--gold);}
     footer a{color:var(--gold-light);text-decoration:none;}
 
+
+    /* PRINT */
+    @media print {
+      @page { margin: 0.85in 0.75in; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: #fff; color: #000; font-size: 11pt; }
+      .week-nav { display: none; }
+      .hero { background: #fff !important; color: #000 !important; padding: 16px 0; border-bottom: 2.5px solid var(--unit-color); }
+      .hero h1, .hero h1 span { color: #000; }
+      .hero .tagline { color: #333; }
+      .hero-badge { background: #eee !important; color: #333 !important; border-color: #bbb !important; }
+      .back-link { display: none; }
+      .week-section { page-break-inside: avoid; break-inside: avoid; margin-bottom: 20px; }
+      .week-header { background: var(--unit-color) !important; }
+      .week-num-badge { background: rgba(255,255,255,.25) !important; }
+      .daily-table th, .rubric-table th { background: var(--unit-color) !important; color: #fff !important; font-size: 8pt; }
+      .daily-table td, .rubric-table td { font-size: 8.5pt; }
+      .day-label { color: var(--unit-color); }
+      .day-tag { background: #eee !important; color: #333 !important; }
+      .questions-list .q-num { background: var(--unit-color) !important; }
+      .prompt-card { border: 1.5px solid #ccc; background: #f9f9f9 !important; break-inside: avoid; }
+      .prompt-type { color: var(--unit-color) !important; }
+      .overview-strip { background: #f9f9f9 !important; }
+      .ov-label { color: var(--unit-color) !important; }
+      a { color: #000; text-decoration: none; }
+      footer { background: #fff !important; color: #555 !important; border-top: 1px solid #ccc; }
+      .section-label { color: var(--unit-color) !important; border-bottom-color: var(--unit-color) !important; }
+      .grammar-callout { background: #f5f5f5 !important; border-color: #ccc !important; }
+    }
+
     @media(max-width:600px){
       .hero h1{font-size:1.7rem;}
       .week-body{padding:18px 16px;}
@@ -242,7 +272,7 @@
           </tr>
           <tr>
             <td class="day-label">Friday</td>
-            <td><span class="day-tag">Portfolio — Introduction Letter</span> Write the introduction letter for your year-end portfolio. This letter is addressed to the reader (a family member, teacher, future self, or anyone you choose) and introduces your portfolio. It should: introduce yourself as a reader and writer, describe your journey through the year's books and writing, highlight two or three pieces in the portfolio and explain why you chose them, and end with something you want the reader to know about who you are now as a student of language and story.</td>
+            <td><span class="day-tag">Portfolio — Self-Portrait + Introduction Letter</span> Two tasks today: (1) <strong>Author Self-Portrait:</strong> Create an illustrated self-portrait in acrylic or ink — not a photo-realistic face, but an artistic representation of yourself as a reader and creator. Include at least one visual reference to a book you loved this year (a symbol, a creature, a setting detail woven in). (2) <strong>Introduction Letter:</strong> Write the portfolio introduction letter (addressed to a family member, future self, or reader of your choice). Introduce yourself as a reader and writer, highlight 2–3 portfolio pieces and why you chose them, and end with what you want the reader to know about who you are now.</td>
           </tr>
         </tbody>
       </table>
@@ -304,7 +334,7 @@
           </tr>
           <tr>
             <td class="day-label">Friday</td>
-            <td><span class="day-tag">Reading + Begin Cover Art</span> Read chapters 15–16. Then begin planning your cover art. This painting or illustration will appear on the front of your portfolio. It represents you as a reader, writer, and artist this year. Brainstorm: What images, colors, animals, landscapes, or symbols feel connected to who you are and what you've read? Sketch at least two rough concepts on paper. Choose your medium — watercolor, acrylic, colored pencil, ink — and gather your supplies.</td>
+            <td><span class="day-tag">Reading + World Map for Your Novel</span> Read chapters 15–16. Then draw an illustrated map of the world your original novel is set in. Even if it's very simple — one territory, one landscape — map it. Name the places. Add a compass rose. Include 2–3 small illustrated details (a landmark, a creature, a weather pattern) that tell us something about this world. This map is for your portfolio AND it will help you write the world more consistently when you draft. After mapping, also jot 3 bullet points about your cover art concept — you'll start painting it next week.</td>
           </tr>
         </tbody>
       </table>
@@ -370,7 +400,7 @@
           </tr>
           <tr>
             <td class="day-label">Friday</td>
-            <td><span class="day-tag">Art + Portfolio Assembly</span> Dedicated art and portfolio day. Work on your cover art painting or illustration — add color, detail, or layers depending on your medium. Simultaneously, begin laying out your portfolio: decide the order of your pieces, choose whether to include any artwork or photographs of projects alongside the written work, and think about how you want the portfolio to look as a physical object. Does it feel like you?</td>
+            <td><span class="day-tag">Art — Begin Cover Art Painting</span> Dedicated art day: begin your cover art painting or illustration. Using your concept sketch from Week 33, transfer your design to your final surface and start applying color. Work in layers — background first, then midground, then focal elements. If using acrylic, remember you can paint light over dark. Let this feel like a celebration, not a chore. Also begin laying out your portfolio physically: decide the order of your pieces, and decide which artwork or photographs of projects (diorama, clay figure, atlas, posters) to include alongside your written work.</td>
           </tr>
         </tbody>
       </table>
@@ -432,7 +462,7 @@
           </tr>
           <tr>
             <td class="day-label">Friday</td>
-            <td><span class="day-tag">Art + Portfolio Layout — Finalize</span> Complete your cover art. Step back and look at it: Does it say something true about who you are? Are you satisfied? Final portfolio layout day: arrange all pieces in order, attach your introduction letter to the front (after the cover), check that every piece has your name and a title, and do one final read-through of the entire portfolio from cover to last page. Make any last-minute changes. Your portfolio should feel finished and like a real book.</td>
+            <td><span class="day-tag">Art — Finalize Cover Art + Year-in-Books Poster</span> Two final art tasks: (1) <strong>Cover Art:</strong> Complete your cover art painting. Step back, look at the whole piece, and sign it. (2) <strong>Year-in-Books Poster:</strong> Create a display poster celebrating every book you read this year. Include each title and author, a small hand-drawn image for each, and a 1-sentence "mini review" or memorable quote. This poster hangs at your showcase celebration. It's a record of your whole year as a reader. Final portfolio layout: arrange all pieces, attach your introduction letter to the front, and do one complete read-through from cover to last page.</td>
           </tr>
         </tbody>
       </table>
@@ -493,7 +523,7 @@
           </tr>
           <tr>
             <td class="day-label">Friday</td>
-            <td><span class="day-tag">Showcase + Celebration!</span> Year-End Showcase! Present your portfolio to your family, a guest, or anyone who has been part of your learning this year. Read your chosen passage aloud from this year's reading. Share your cover art and explain what it means to you. Invite your audience to flip through the portfolio. Celebrate what you built this year — not just the writing, but the thinking, the reading, the noticing, the revising, and the growing. You did the work. Today is yours.</td>
+            <td><span class="day-tag">🎉 Year-End Showcase — Portfolio Celebration!</span> Set up your year-end showcase: display the portfolio open to the cover art, lay out any physical work you want to highlight (diorama, clay figure, nature journal, atlas, advocacy poster, Year-in-Books poster, stop motion device). Invite family and anyone who's been part of your learning year. Run the showcase: (1) Display walk — walk guests through each project piece and what unit it came from. (2) Read-aloud — read your chosen passage from this year's reading. (3) Portfolio highlights — share your introduction letter and Year-in-Review essay. (4) Celebrate. This portfolio represents an entire year of reading, writing, thinking, making, and growing. Take a moment to be proud of it.</td>
           </tr>
         </tbody>
       </table>
@@ -581,7 +611,7 @@
         <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
         <tbody>
           <tr><td>Personal Meaning / Intention</td><td>The artwork clearly and specifically represents the student's identity as a reader and writer this year; images and symbols are intentional and explained in the concept note; the viewer senses a real person behind the image</td><td>The artwork represents the student's identity in a recognizable way; some symbolic or thematic choices are evident</td><td>The artwork is present and finished, but the connection to the student's year or identity is unclear or generic</td><td>The artwork does not appear to have a personal or thematic connection to the portfolio</td></tr>
-          <tr><td>Craft &amp; Technique</td><td>Demonstrates skilled, careful use of the chosen medium (painting, watercolor, colored pencil, ink, etc.); shows control of color, composition, and line; clearly took significant time and effort</td><td>Artwork shows care and effort; technique is appropriate to the medium; composition is intentional</td><td>Artwork is complete but rushed or uneven; technique is developing; some areas show care while others do not</td><td>Artwork is very rough, incomplete, or shows minimal effort with the chosen medium</td></tr>
+          <tr><td>Craft &amp; Technique</td><td>Demonstrates skilled, careful use of the chosen medium (acrylic painting, colored pencil, ink, etc.); shows control of color, composition, and line; clearly took significant time and effort</td><td>Artwork shows care and effort; technique is appropriate to the medium; composition is intentional</td><td>Artwork is complete but rushed or uneven; technique is developing; some areas show care while others do not</td><td>Artwork is very rough, incomplete, or shows minimal effort with the chosen medium</td></tr>
           <tr><td>Connection to Portfolio</td><td>Cover art serves as a true "cover" — it introduces the portfolio's tone, personality, and content in a way that makes the reader want to open the book</td><td>Cover art is clearly connected to the portfolio and its contents; works as a visual introduction</td><td>Cover art is present as a separate piece but feels loosely connected to the portfolio as a whole</td><td>Cover art does not function as a portfolio cover; there is no apparent connection between the image and the work inside</td></tr>
           <tr><td>Concept Note Quality</td><td>Concept note clearly explains all major image choices, symbols, and colors; explains the feeling intended; written in a specific and reflective voice</td><td>Concept note identifies the main image choices and explains their meaning; reflective in tone</td><td>Concept note is present but brief; explanations are vague or incomplete</td><td>Concept note is missing or is a single sentence with no real explanation</td></tr>
         </tbody>

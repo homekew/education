@@ -107,6 +107,36 @@
     footer strong{color:var(--gold);}
     footer a{color:var(--gold-light);text-decoration:none;}
 
+
+    /* PRINT */
+    @media print {
+      @page { margin: 0.85in 0.75in; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: #fff; color: #000; font-size: 11pt; }
+      .week-nav { display: none; }
+      .hero { background: #fff !important; color: #000 !important; padding: 16px 0; border-bottom: 2.5px solid var(--unit-color); }
+      .hero h1, .hero h1 span { color: #000; }
+      .hero .tagline { color: #333; }
+      .hero-badge { background: #eee !important; color: #333 !important; border-color: #bbb !important; }
+      .back-link { display: none; }
+      .week-section { page-break-inside: avoid; break-inside: avoid; margin-bottom: 20px; }
+      .week-header { background: var(--unit-color) !important; }
+      .week-num-badge { background: rgba(255,255,255,.25) !important; }
+      .daily-table th, .rubric-table th { background: var(--unit-color) !important; color: #fff !important; font-size: 8pt; }
+      .daily-table td, .rubric-table td { font-size: 8.5pt; }
+      .day-label { color: var(--unit-color); }
+      .day-tag { background: #eee !important; color: #333 !important; }
+      .questions-list .q-num { background: var(--unit-color) !important; }
+      .prompt-card { border: 1.5px solid #ccc; background: #f9f9f9 !important; break-inside: avoid; }
+      .prompt-type { color: var(--unit-color) !important; }
+      .overview-strip { background: #f9f9f9 !important; }
+      .ov-label { color: var(--unit-color) !important; }
+      a { color: #000; text-decoration: none; }
+      footer { background: #fff !important; color: #555 !important; border-top: 1px solid #ccc; }
+      .section-label { color: var(--unit-color) !important; border-bottom-color: var(--unit-color) !important; }
+      .grammar-callout { background: #f5f5f5 !important; border-color: #ccc !important; }
+    }
+
     @media(max-width:600px){
       .hero h1{font-size:1.7rem;}
       .week-body{padding:18px 16px;}
@@ -198,7 +228,7 @@
           <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Hero's Journey</span> Introduce the Hero's Journey: review the stages (Ordinary World, Call to Adventure, Refusal, Mentor, Crossing the Threshold, Tests &amp; Allies, Ordeal, Reward, Road Back, Resurrection, Return with Elixir). Read chapters 3–4. In your journal, identify: What is the protagonist's "Ordinary World"? Where do you think the Call to Adventure will come from?</td></tr>
           <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Structure</span> Read chapter 5. The inciting incident should be clear by now — the moment that sets the plot in motion. Write a journal entry: Describe the inciting incident in 2–3 sentences. Why does it force the protagonist to act? What would happen if they simply did nothing?</td></tr>
           <tr><td class="day-label">Thursday</td><td><span class="day-tag">Grammar</span> Introduce adjective clauses (relative clauses). Find 3 sentences in your novel that contain an adjective clause introduced by who, which, or that. Copy them out, underline the adjective clause, and draw an arrow to the noun it modifies. Then write 4 original sentences about your book using adjective clauses.</td></tr>
-          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project — World Atlas</span> Begin your World Atlas. On a large sheet of paper or sketchbook spread, sketch a rough map of your novel's world. Label key locations introduced in chapters 1–5 (your protagonist's home territory, any named places, the direction of the journey ahead). Use pencil first — you'll refine and paint later. Add a compass rose and a title for your map.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project — World Map</span> Begin your World Atlas with the foundation map. <strong>Option A — Paper Map:</strong> Sketch a rough map of your novel's world in pencil on a large sheet or sketchbook spread. Label key locations from chapters 1–5 (home territory, named places, the direction of the journey ahead). Add a compass rose and working title. You'll refine and paint it in later weeks. <strong>Option B — Minecraft:</strong> Build the protagonist's world in Minecraft — create the home territory, surrounding landscape, and any key locations from the opening chapters. Take screenshots for your atlas. Either way, keep your book open and cross-check every detail you include.</td></tr>
         </tbody>
       </table>
 
@@ -247,7 +277,7 @@
           <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Grammar — Misplaced Modifiers</span> Introduce misplaced modifiers: a modifier (word, phrase, or clause) placed too far from the word it modifies, creating confusion or unintended meaning. Work through 6 example sentences — identify the misplaced modifier and rewrite each sentence correctly. Then find 2 sentences in your novel where the author was careful to place modifiers correctly, and explain why the placement works.</td></tr>
           <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Reading + Journal</span> Read chapters 8–9. Add to your Character Change Journal: Has the protagonist met anyone — a mentor, a friend, an enemy — who is shaping who they're becoming? Describe the relationship. What does this character challenge, teach, or threaten in your protagonist? Find a quote.</td></tr>
           <tr><td class="day-label">Thursday</td><td><span class="day-tag">Reading + Journal</span> Read chapters 10–11. Final Character Change Journal entry for the week: The rising action is building — what obstacles has the protagonist faced so far? How are they handling pressure or failure? Choose the single most revealing moment of character so far (a decision, a reaction, a moment of courage or fear). Describe it in detail and explain what it shows about who the protagonist is becoming.</td></tr>
-          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project — Atlas Landscape Details</span> Return to your World Atlas map. Now that you've read further, add landscape details: mountain ranges, rivers, forests, tundra, weather. Use colored pencil, watercolor, or ink to begin filling in terrain. Think like a naturalist — what would this land actually look like? Add 2–3 small landscape inset sketches around the edges of the map showing specific environments from the book.</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">Project — Atlas: Terrain + 3D Model</span> Two options today — choose one or combine both: <strong>Option A — Atlas Landscape:</strong> Fill in terrain on your map using colored pencil, acrylic, or ink. Add mountain ranges, rivers, forests, and weather patterns. Add 2–3 inset sketches showing specific environments from chapters 6–11. <strong>Option B — Clay Terrain Model:</strong> Build a 3D topographic model of one key region from the book using air-dry clay. Sculpt mountains, valleys, rivers, and the protagonist's home territory. Let it dry and paint it. (If you built in Minecraft last week, base this on your build.) Either way: label everything you make with names from the book.</td></tr>
         </tbody>
       </table>
 
@@ -421,8 +451,8 @@
     <div class="week-header">
       <div class="week-num-badge">18</div>
       <div class="week-header-text">
-        <h2>Revise &amp; Present</h2>
-        <div class="week-focus">Peer review · Revise and finalize argumentative essay · Present World Atlas · Read best paragraph aloud</div>
+        <h2>🎉 Unit 3 Showcase — Atlas &amp; Argument</h2>
+        <div class="week-focus">Peer review · Finalize argumentative essay · Present World Atlas · Read best paragraph aloud</div>
       </div>
     </div>
     <div class="week-body">
@@ -435,7 +465,7 @@
           <tr><td class="day-label">Tuesday</td><td><span class="day-tag">Revision — Content &amp; Structure</span> Revise your essay for content and structure. Focus on: Does your claim actually say something? Is your evidence the best you found — or did you settle? Does your analysis go deep enough, or do you just summarize? Is your counterargument paragraph honest and well-argued? Rewrite any weak paragraphs from scratch rather than just patching them.</td></tr>
           <tr><td class="day-label">Wednesday</td><td><span class="day-tag">Revision — Grammar &amp; Style (W.7.5)</span> Line-edit your revised draft. Check: adjective and adverb clauses for correct comma use · no misplaced or dangling modifiers · active voice used consistently (passive only where intentional) · sentence variety (not all short, not all long) · smooth integration of quotes (not just dropped in). Read every sentence aloud — your ear will catch what your eye misses.</td></tr>
           <tr><td class="day-label">Thursday</td><td><span class="day-tag">Finalize + Atlas Polish</span> Write or type your final clean copy of the essay. Proofread one more time. Set it aside. Then do a final pass on your World Atlas: make sure all captions are written, all pages are neat, and the atlas tells the story of your novel's world coherently from beginning to end. Prepare how you'll present it: What will you say about each page? What's your opening line?</td></tr>
-          <tr><td class="day-label">Friday</td><td><span class="day-tag">Presentation Day (SL.7.4)</span> Present your World Atlas and read your best essay paragraph aloud. Walk your audience through the atlas page by page, explaining the locations, landscapes, and characters. Then read aloud your strongest body paragraph (or the full essay if you prefer). Discuss: What did you learn about the hero's journey? What was hardest to argue? What would you do differently?</td></tr>
+          <tr><td class="day-label">Friday</td><td><span class="day-tag">🎉 Showcase — World Atlas + Essay (SL.7.4)</span> Set up your showcase: display the World Atlas open to its most impressive spread, and have your essay ready. Invite a family member to be your audience. Present: (1) Walk through the World Atlas page by page — describe each map, portrait, scene, and caption. Let your audience ask questions about the world and the characters. (2) Read your best essay paragraph aloud — the one you're proudest of. (3) Reflect together: How did mapping the world help you understand the story better? What was the hardest part of writing an argument?</td></tr>
         </tbody>
       </table>
 
@@ -525,7 +555,7 @@
         <tbody>
           <tr><td>Textual Accuracy (RL.7.3)</td><td>All locations, landscapes, and characters accurately reflect specific details from the text; 5+ direct textual references can be pointed to across the atlas; no invented elements contradict the novel</td><td>Most elements accurately reflect the text; 3–4 textual references are clearly present; minor inconsistencies</td><td>Some elements are accurate but significant details are invented without basis in the text; only 1–2 clear textual references</td><td>Atlas appears disconnected from the text; characters, settings, or events are unrecognizable or inaccurate</td></tr>
           <tr><td>Completeness</td><td>Atlas contains all required elements: world map, landscape/terrain detail, character portraits (2), illustrated scene spread(s), and written descriptions (2–4 sentences each) for all pages; 6–10 pages total</td><td>Atlas contains most required elements; 5–9 pages; 1 element may be brief but present</td><td>Atlas is missing 1–2 required elements; fewer than 5 pages; some pages lack written descriptions</td><td>Atlas is significantly incomplete; fewer than 4 pages; multiple required elements missing</td></tr>
-          <tr><td>Craft &amp; Art Quality</td><td>Each page shows clear effort, skill, and care; media choices (watercolor, ink, colored pencil) are used intentionally; composition is thoughtful; the atlas feels like a real artifact from the story's world</td><td>Each page is completed with care; good effort is evident; compositions are readable and engaging</td><td>Some pages are rushed or underdeveloped; art is present but lacks detail or care; compositions are unclear</td><td>Minimal effort overall; many pages are incomplete sketches or lacking visual development</td></tr>
+          <tr><td>Craft &amp; Art Quality</td><td>Each page shows clear effort, skill, and care; media choices (acrylic, ink, colored pencil) are used intentionally; composition is thoughtful; the atlas feels like a real artifact from the story's world</td><td>Each page is completed with care; good effort is evident; compositions are readable and engaging</td><td>Some pages are rushed or underdeveloped; art is present but lacks detail or care; compositions are unclear</td><td>Minimal effort overall; many pages are incomplete sketches or lacking visual development</td></tr>
           <tr><td>Written Descriptions</td><td>Descriptions are concise, specific, and deeply connected to the text; each ties the illustrated page to a specific event in the novel and to the hero's journey; writing is polished and error-free</td><td>Descriptions are clear and connected to the text; most reference specific events; mostly error-free</td><td>Descriptions are vague or generic; they describe what is shown without connecting to the text or the hero's journey</td><td>Descriptions are missing for most pages, or are so brief as to be meaningless</td></tr>
           <tr><td>Oral Presentation (SL.7.4)</td><td>Presents atlas clearly and confidently; explains the significance of each page with specific reference to the text; speaks in complete sentences; engages the audience; reads essay paragraph fluently with expression</td><td>Presents each page clearly; explains connections to the novel; reads essay paragraph aloud</td><td>Presentation is brief or unclear; some pages are skipped over or described vaguely; essay paragraph is read with minimal expression</td><td>Presentation is very brief, unprepared, or difficult to follow; essay paragraph is not read aloud or is read inaudibly</td></tr>
         </tbody>
