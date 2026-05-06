@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>8th Grade Language Arts · 2026–2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --linen:      #FAF7F1;
+      --linen-dark: #F0EBE0;
+      --linen-deep: #DDD4C4;
+      --terra:      #ff1e3c;
+      --terra-bg:   #fff0f2;
+      --terra-soft: #ffb3bc;
+      --sage:       #d2c35a;
+      --sage-bg:    #faf8e8;
+      --sage-soft:  #ece8b0;
+      --sky:        #7FA3B5;
+      --sky-bg:     #EBF3F7;
+      --ink:        #2A2118;
+      --ink-soft:   #5C4F3D;
+      --ink-muted:  #9A8F81;
+      --white:      #FFFFFF;
+    }
+    
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Epilogue', sans-serif; background: var(--linen); color: var(--ink); line-height: 1.7; font-size: 15px; }
+
+    nav.site-nav { background: var(--white); border-bottom: 1px solid var(--linen-deep); padding: 0 40px; height: 54px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+    .nav-brand { font-family: 'Fraunces', serif; font-size: 0.95rem; font-weight: 500; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 9px; }
+    .nav-dot { width: 8px; height: 8px; background: var(--terra); border-radius: 50%; display: inline-block; }
+    .site-nav-links { display: flex; gap: 28px; list-style: none; }
+    .site-nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; transition: color 0.15s; }
+    .site-nav-links a:hover { color: var(--terra); }
+
+    .page-header { background: var(--linen-dark); border-bottom: 1px solid var(--linen-deep); padding: 36px 40px 32px; }
+    .eyebrow { font-size: 0.67rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--terra); margin-bottom: 8px; }
+    .page-header h1 { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 500; color: var(--ink); margin-bottom: 0; }
+    .page-header .subtitle { font-size: 0.95rem; color: var(--ink-soft); margin-top: 8px; max-width: 640px; }
+
+    footer.site-footer { background: var(--white); border-top: 1px solid var(--linen-deep); padding: 16px 40px; font-size: 0.75rem; color: var(--ink-muted); }
+    footer.site-footer a { color: var(--ink-muted); }
+
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 40px; }
+    .section { padding: 40px 0 24px; }
+    .section-title { font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 500; color: var(--ink); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--linen-deep); }
+
+    .unit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-top: 4px; }
+    .unit-card { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s; }
+    .unit-card:hover { box-shadow: 0 4px 20px rgba(42,33,24,0.09); }
+    .unit-card-bar { height: 3px; }
+    .bar-terra { background: var(--terra); }
+    .bar-sage { background: var(--sage); }
+    .bar-sky { background: var(--sky); }
+    .unit-card-body { padding: 20px 22px; }
+    .unit-num { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
+    .unit-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .unit-desc { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 14px; }
+    .unit-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+    .utag { font-size: 0.7rem; font-weight: 500; padding: 2px 9px; border-radius: 4px; background: var(--linen); color: var(--ink-soft); border: 1px solid var(--linen-deep); }
+    .unit-link { display: inline-flex; align-items: center; gap: 5px; padding: 6px 14px; background: var(--ink); color: var(--white); text-decoration: none; border-radius: 5px; font-size: 0.77rem; font-weight: 500; transition: background 0.15s; }
+    .unit-link:hover { background: var(--ink-soft); }
+
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-top: 4px; }
+    .info-card { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 16px 18px; }
+    .info-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 5px; }
+    .info-value { font-size: 0.9rem; color: var(--ink); line-height: 1.5; }
+
+    .forms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+    .form-card { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 16px 18px; }
+    .form-name { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .form-units { font-size: 0.8rem; color: var(--ink-soft); }
+
+    .trips-list { display: flex; flex-direction: column; gap: 10px; }
+    .trip-row { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 14px 18px; display: flex; gap: 16px; align-items: flex-start; }
+    .trip-month { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--terra); min-width: 60px; padding-top: 2px; }
+    .trip-desc { font-size: 0.88rem; color: var(--ink); line-height: 1.5; }
+    .trip-type { font-size: 0.75rem; color: var(--ink-muted); margin-top: 3px; }
+
+    @media (max-width: 700px) { nav.site-nav, .page-header, .container, footer.site-footer { padding-left: 20px; padding-right: 20px; } }
+
+  </style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="nav-brand" href="index.html"><span class="nav-dot"></span> Homeschool Curriculum</a>
+  <ul class="site-nav-links"><li><a href="index.html">← Hub</a></li></ul>
+</nav>
+<div class="page-header">
+  <div class="eyebrow">2026–2027 · 8th Grade</div>
+  <h1>Language Arts</h1>
+  <p class="subtitle">36-week writing curriculum built around tech, making, music, and argument. Six units, six showcases.</p>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-title">Six Units</div>
+    <div class="unit-grid">
+
+      <div class="unit-card">
+        <div class="unit-card-bar bar-terra"></div>
+        <div class="unit-card-body">
+          <div class="unit-num">Unit 1 · Weeks 1–6</div>
+          <div class="unit-title">Panels &amp; Pages</div>
+          <p class="unit-desc">Graphic novels as literature. Read, analyze, then create your own digital chapter using visual storytelling and dialogue.</p>
+          <div class="unit-tags"><span class="utag">Narrative</span><span class="utag">Descriptive</span><span class="utag">Creative</span><span class="utag">Digital Comics</span></div>
+          <a class="unit-link" href="la8_unit1.html">View Unit 1</a>
+        </div>
+      </div>
+
+      <div class="unit-card">
+        <div class="unit-card-bar bar-sage"></div>
+        <div class="unit-card-body">
+          <div class="unit-num">Unit 2 · Weeks 7–12</div>
+          <div class="unit-title">The Build Log</div>
+          <p class="unit-desc">Engineering and making as writing. Document a LEGO or physical build from sketch to finished product — technical writing in action.</p>
+          <div class="unit-tags"><span class="utag">Technical</span><span class="utag">Expository</span><span class="utag">Process Writing</span></div>
+          <a class="unit-link" href="la8_unit2.html">View Unit 2</a>
+        </div>
+      </div>
+
+      <div class="unit-card">
+        <div class="unit-card-bar bar-sky"></div>
+        <div class="unit-card-body">
+          <div class="unit-num">Unit 3 · Weeks 13–18</div>
+          <div class="unit-title">Debug &amp; Deploy</div>
+          <p class="unit-desc">Code, AI, and the future. Write documentation for a Scratch project, then write a persuasive essay arguing your position on AI.</p>
+          <div class="unit-tags"><span class="utag">Technical</span><span class="utag">Persuasive</span><span class="utag">Scratch</span><span class="utag">Claude</span></div>
+          <a class="unit-link" href="la8_unit3.html">View Unit 3</a>
+        </div>
+      </div>
+
+      <div class="unit-card">
+        <div class="unit-card-bar bar-terra"></div>
+        <div class="unit-card-body">
+          <div class="unit-num">Unit 4 · Weeks 19–24</div>
+          <div class="unit-title">On the Record</div>
+          <p class="unit-desc">Music as language. Write lyrics, liner notes, and music journalism. Connect piano and electronic production to creative and expository writing.</p>
+          <div class="unit-tags"><span class="utag">Creative</span><span class="utag">Expository</span><span class="utag">Lyric Writing</span></div>
+          <a class="unit-link" href="la8_unit4.html">View Unit 4</a>
+        </div>
+      </div>
+
+      <div class="unit-card">
+        <div class="unit-card-bar bar-sage"></div>
+        <div class="unit-card-body">
+          <div class="unit-num">Unit 5 · Weeks 25–30</div>
+          <div class="unit-title">Field Notes</div>
+          <p class="unit-desc">Investigate, gather evidence, write. Choose a research question connected to your interests and produce a polished research paper.</p>
+          <div class="unit-tags"><span class="utag">Research</span><span class="utag">Expository</span><span class="utag">Citations</span></div>
+          <a class="unit-link" href="la8_unit5.html">View Unit 5</a>
+        </div>
+      </div>
+
+      <div class="unit-card">
+        <div class="unit-card-bar bar-sky"></div>
+        <div class="unit-card-body">
+          <div class="unit-num">Unit 6 · Weeks 31–36</div>
+          <div class="unit-title">Make Your Case</div>
+          <p class="unit-desc">Argument, evidence, and presence. Build a full persuasive essay and deliver a TED-style talk on a topic you genuinely care about.</p>
+          <div class="unit-tags"><span class="utag">Persuasive</span><span class="utag">Argument</span><span class="utag">Presentation</span></div>
+          <a class="unit-link" href="la8_unit6.html">View Unit 6</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Writing Forms Coverage</div>
+    <div class="forms-grid">
+      <div class="form-card"><div class="form-name">Narrative</div><div class="form-units">Unit 1 (graphic novel), Unit 4 (lyric story)</div></div>
+      <div class="form-card"><div class="form-name">Descriptive</div><div class="form-units">Unit 1 (visual description), Unit 4 (sound writing)</div></div>
+      <div class="form-card"><div class="form-name">Technical</div><div class="form-units">Unit 2 (build log), Unit 3 (code docs)</div></div>
+      <div class="form-card"><div class="form-name">Expository</div><div class="form-units">Unit 2 (engineering writing), Unit 5 (research)</div></div>
+      <div class="form-card"><div class="form-name">Research</div><div class="form-units">Unit 5 (full research paper)</div></div>
+      <div class="form-card"><div class="form-name">Persuasive</div><div class="form-units">Unit 3 (AI essay), Unit 6 (TED talk + essay)</div></div>
+      <div class="form-card"><div class="form-name">Creative</div><div class="form-units">Unit 1 (graphic novel), Unit 4 (lyrics + liner notes)</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">At a Glance</div>
+    <div class="info-grid">
+      <div class="info-card"><div class="info-label">School Year</div><div class="info-value">2026–2027</div></div>
+      <div class="info-card"><div class="info-label">Grade</div><div class="info-value">8th Grade</div></div>
+      <div class="info-card"><div class="info-label">Units</div><div class="info-value">6 units × 6 weeks</div></div>
+      <div class="info-card"><div class="info-label">Showcases</div><div class="info-value">6 — one per unit</div></div>
+      <div class="info-card"><div class="info-label">Standards</div><div class="info-value">Oregon ELA · CCSS Grade 8</div></div>
+      <div class="info-card"><div class="info-label">Writing Tools</div><div class="info-value">Google Docs, Canva, Scratch, Claude</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Monthly Field Trips</div>
+    <div class="trips-list">
+      <div class="trip-row"><div class="trip-month">Sep</div><div><div class="trip-desc">Portland Art Museum — Graphic Novel &amp; Sequential Art exhibit or comics collection</div><div class="trip-type">In-person · Portland</div></div></div>
+      <div class="trip-row"><div class="trip-month">Oct</div><div><div class="trip-desc">OMSI Engineering &amp; Robotics galleries — kinesthetic maker exploration</div><div class="trip-type">In-person · Portland</div></div></div>
+      <div class="trip-row"><div class="trip-month">Nov</div><div><div class="trip-desc">Virtual: LEGO Foundation Design for Change webinar or Minecraft Education session</div><div class="trip-type">Virtual</div></div></div>
+      <div class="trip-row"><div class="trip-month">Dec</div><div><div class="trip-desc">Virtual: MIT Scratch team behind-the-scenes tour or Code.org Hour of Code live event</div><div class="trip-type">Virtual</div></div></div>
+      <div class="trip-row"><div class="trip-month">Jan</div><div><div class="trip-desc">Oregon Symphony family concert or local electronic music performance</div><div class="trip-type">In-person · Portland</div></div></div>
+      <div class="trip-row"><div class="trip-month">Feb</div><div><div class="trip-desc">Virtual: Interview a local engineer, musician, or developer (video call research)</div><div class="trip-type">Virtual · Research Unit</div></div></div>
+      <div class="trip-row"><div class="trip-month">Mar</div><div><div class="trip-desc">Oregon Historical Society or local library special collections — primary source research</div><div class="trip-type">In-person · Oregon</div></div></div>
+      <div class="trip-row"><div class="trip-month">Apr</div><div><div class="trip-desc">TED Talk screening + discussion — analyze argument and delivery techniques</div><div class="trip-type">Virtual / Home screening</div></div></div>
+      <div class="trip-row"><div class="trip-month">May</div><div><div class="trip-desc">Year-end showcase — family and guests attend all unit presentations</div><div class="trip-type">Home · Celebration</div></div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">Homeschool Curriculum Hub · Oregon</footer>
+</body>
+</html>

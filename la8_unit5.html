@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit 5: Field Notes — 8th Grade Language Arts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --linen:#FAF7F1; --linen-dark:#F0EBE0; --linen-deep:#DDD4C4; --terra:#ff1e3c; --terra-bg:#fff0f2; --terra-soft:#ffb3bc; --sage:#d2c35a; --sage-bg:#faf8e8; --sage-soft:#ece8b0; --sky:#7FA3B5; --sky-bg:#EBF3F7; --ink:#2A2118; --ink-soft:#5C4F3D; --ink-muted:#9A8F81; --white:#FFFFFF; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Epilogue', sans-serif; background: var(--linen); color: var(--ink); line-height: 1.7; font-size: 15px; }
+
+    nav.site-nav { background: var(--white); border-bottom: 1px solid var(--linen-deep); padding: 0 40px; height: 54px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+    .nav-brand { font-family: 'Fraunces', serif; font-size: 0.95rem; font-weight: 500; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 9px; }
+    .nav-dot { width: 8px; height: 8px; background: var(--terra); border-radius: 50%; display: inline-block; }
+    .site-nav-links { display: flex; gap: 28px; list-style: none; }
+    .site-nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; transition: color 0.15s; }
+    .site-nav-links a:hover { color: var(--terra); }
+
+    .page-header { background: var(--linen-dark); border-bottom: 1px solid var(--linen-deep); padding: 36px 40px 32px; }
+    .eyebrow { font-size: 0.67rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--terra); margin-bottom: 8px; }
+    .page-header h1 { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 500; color: var(--ink); margin-bottom: 0; }
+    .page-header .tagline { font-size: 0.95rem; color: var(--ink-soft); margin-top: 8px; }
+
+    .week-nav { background: var(--white); border-bottom: 2px solid var(--linen-deep); padding: 0 40px; position: sticky; top: 0; z-index: 100; display: flex; gap: 4px; flex-wrap: wrap; align-items: center; min-height: 44px; }
+    .week-nav a { color: var(--ink-muted); text-decoration: none; font-size: 0.77rem; font-weight: 600; padding: 10px 10px; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color 0.15s, border-color 0.15s; white-space: nowrap; }
+    .week-nav a:hover { color: var(--terra); border-color: var(--terra); }
+    .week-nav .sep { color: var(--linen-deep); font-size: 0.75rem; }
+
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 40px; }
+    .section { padding: 36px 0 20px; }
+    .section-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: var(--ink); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--linen-deep); }
+
+    .overview-strip { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 20px 24px; margin: 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+    .ov-item .ov-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
+    .ov-item .ov-val { font-size: 0.9rem; color: var(--ink); line-height: 1.5; }
+
+    .week-card { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+    .week-header { background: var(--linen-dark); border-bottom: 1px solid var(--linen-deep); padding: 16px 24px; display: flex; align-items: baseline; gap: 14px; }
+    .week-num { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 500; color: var(--terra); line-height: 1; }
+    .week-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); }
+    .week-body { padding: 20px 24px; }
+
+    table.daily { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin-bottom: 16px; }
+    table.daily th { background: var(--linen-dark); color: var(--ink-soft); font-weight: 600; font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 12px; text-align: left; }
+    table.daily td { padding: 9px 12px; border-bottom: 1px solid var(--linen-dark); vertical-align: top; line-height: 1.5; }
+    table.daily tr:last-child td { border-bottom: none; }
+    table.daily tr:nth-child(even) td { background: #faf9f6; }
+    .day { font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
+    .comp { font-size: 0.72rem; display: inline-block; padding: 1px 7px; border-radius: 3px; margin-top: 3px; white-space: nowrap; }
+    .comp-write { background: var(--terra-bg); color: var(--terra); }
+    .comp-read  { background: var(--sage-bg); color: #7a6e1a; }
+    .comp-make  { background: var(--sky-bg); color: #3a6a7a; }
+    .comp-share { background: var(--linen-deep); color: var(--ink-soft); }
+
+    .prompt-box { background: var(--sage-bg); border: 1px solid var(--sage-soft); border-radius: 6px; padding: 14px 18px; margin-top: 12px; }
+    .prompt-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-bottom: 6px; }
+    .prompt-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+
+    .showcase-box { background: var(--terra-bg); border: 1px solid var(--terra-soft); border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
+    .showcase-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--terra); margin-bottom: 8px; }
+    .showcase-box h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .showcase-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+
+    footer.site-footer { background: var(--white); border-top: 1px solid var(--linen-deep); padding: 16px 40px; font-size: 0.75rem; color: var(--ink-muted); margin-top: 40px; }
+    @media (max-width: 700px) { nav.site-nav, .page-header, .container, footer.site-footer, .week-nav { padding-left: 20px; padding-right: 20px; } }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a class="nav-brand" href="index.html"><span class="nav-dot"></span> Homeschool Curriculum</a>
+  <ul class="site-nav-links"><li><a href="8th_grade_language_arts.html">← Language Arts</a></li></ul>
+</nav>
+<div class="page-header">
+  <div class="eyebrow">Unit 5 of 6 · 8th Grade Language Arts</div>
+  <h1>Field Notes</h1>
+  <p class="tagline">Investigate, gather evidence, and write a polished research paper on a question you actually care about.</p>
+</div>
+<nav class="week-nav"><a href="#overview">Overview</a><span class="sep">›</span><a href="#w1">Week 1</a> <a href="#w2">Week 2</a> <a href="#w3">Week 3</a> <a href="#w4">Week 4</a> <a href="#w5">Week 5</a> <a href="#w6">Week 6</a><span class="sep">›</span><a href="#showcase">Showcase</a></nav>
+<div class="container">
+  <div class="overview-strip" id="overview"><div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">25–30 (February–March)</div></div><div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">Research articles + primary sources (topic-dependent)</div></div><div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Research · Expository · Academic</div></div><div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">Google Docs · Google Scholar / library databases</div></div><div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">5-page research paper + oral presentation</div></div><div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR W.8.7 · W.8.8 · W.8.9 · RI.8.6</div></div></div>
+  <div class="week-card" id="w1">
+  <div class="week-header"><span class="week-num">W1</span><span class="week-title">Finding Your Question</span></div>
+  <div class="week-body">
+    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>What makes a good research question? Too broad vs. too narrow — examples<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Generate 10 questions about topics you genuinely care about (music, tech, engineering, etc.)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Narrow to 1 question; write a 150-word "why this matters to me" statement<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Initial keyword search in Google Scholar; evaluate first 5 sources found<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Share questions; peer feedback on researchability and scope<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
+    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write your research question and a "motivation statement": Why does this question matter? What do you already think the answer might be? What would you need to learn to answer it properly? Aim for a question that is specific enough to answer in 5 pages but important enough to matter.</p></div>
+  </div>
+</div><div class="week-card" id="w2">
+  <div class="week-header"><span class="week-num">W2</span><span class="week-title">Source Evaluation</span></div>
+  <div class="week-body">
+    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>CRAAP test and lateral reading: how to evaluate source credibility<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Find and annotate 5 sources; rate each on reliability and relevance<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write 5 annotated bibliography entries (1 paragraph each)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Organize sources in Google Docs; create a source tracking sheet with notes<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer audit: evaluate each other's sources using the criteria learned<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
+    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write annotated bibliography entries for your five best sources. Each entry: full citation (MLA format) + a 3-sentence annotation covering (1) what the source says, (2) how reliable it is and why, (3) how you plan to use it in your paper.</p></div>
+  </div>
+</div><div class="week-card" id="w3">
+  <div class="week-header"><span class="week-num">W3</span><span class="week-title">Research Notes & Outline</span></div>
+  <div class="week-body">
+    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>How to take research notes without plagiarizing — paraphrase vs. quote<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Take organized notes from your 5 sources; use a column system (source / fact / connection)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a detailed paper outline: thesis + 3 main sections + evidence map<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type full outline in Google Docs; build a working bibliography<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Outline workshop: test the logic — does each section support the thesis?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
+    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write your thesis statement — one sentence that answers your research question and makes an arguable claim. Then write topic sentences for your three body sections — each should advance the thesis, not just describe a subtopic. Show the logical thread from intro to conclusion.</p></div>
+  </div>
+</div><div class="week-card" id="w4">
+  <div class="week-header"><span class="week-num">W4</span><span class="week-title">Drafting the Paper</span></div>
+  <div class="week-body">
+    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Write section 1 (introduction + background); aim for 300 words<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Tue</td><td>Write section 2 (first main point + evidence); integrate quotes properly<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write section 3 (second main point) and section 4 (third point + counterpoint)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type full draft in Google Docs; format with MLA heading, header, and citations<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Rough draft peer review: focus on thesis clarity and evidence use<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
+    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Practice integrating a quotation: find one quote from your research that you want to use. Write three versions of the same sentence: (1) block quote with no introduction, (2) integrated quote with context, (3) paraphrase. Which version is most powerful in context, and why?</p></div>
+  </div>
+</div><div class="week-card" id="w5">
+  <div class="week-header"><span class="week-num">W5</span><span class="week-title">Revision & Citation</span></div>
+  <div class="week-body">
+    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read your draft aloud — mark every sentence that sounds unclear or choppy<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Tue</td><td>Revision workshop: transitions, paragraph unity, sentence variety<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Final revision: check thesis is answered, all evidence cited, conclusion is strong<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Format Works Cited page in MLA; final proofread in Google Docs<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer final check: does the paper answer the research question clearly?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
+    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write your conclusion: restate your thesis in new language, summarize the three main points in 2–3 sentences, and end with a "so what" — why does this matter beyond this paper? What would you research next if you had more time? The conclusion should feel like an arrival, not a summary list.</p></div>
+  </div>
+</div><div class="week-card" id="w6">
+  <div class="week-header"><span class="week-num">W6</span><span class="week-title">Oral Presentation & Showcase</span></div>
+  <div class="week-body">
+    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Build a 5-slide visual to accompany oral presentation (not to replace it)<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Tue</td><td>Write speaker notes and practice talking from notes — not reading<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Practice full 6-minute presentation; time it; cut or expand as needed<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Thu</td><td>Final paper submitted; do one more presentation rehearsal<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>SHOWCASE: Oral presentation of research paper<br><span class="comp comp-share">Showcase</span></td></tr></tbody></table>
+    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a 100-word abstract for your research paper: one sentence on your question, one on your method, two on your main findings, one on your conclusion. An abstract should make someone want to read the full paper. This is also good practice for summarizing complex work in a few sentences.</p></div>
+  </div>
+</div>
+  <div class="showcase-box" id="showcase">
+  <div class="showcase-label">Unit Showcase</div>
+  <h3>Research Paper + Oral Presentation</h3>
+  <p>A 5-page MLA-formatted research paper answering a self-chosen question, with annotated bibliography. Presented orally in 6 minutes with a 5-slide visual. Audience: family and invited guest (e.g., a librarian or local expert in the field).</p>
+</div>
+</div>
+<footer class="site-footer">Homeschool Curriculum Hub · Oregon · <a href="8th_grade_language_arts.html">← Language Arts</a></footer>
+</body>
+</html>
