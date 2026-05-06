@@ -4,6 +4,9 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Unit 3: The Hero's Journey — 6th Grade Language Arts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     
         :root {
@@ -22,21 +25,32 @@
       --ink-soft:   #5C4F3D;
       --ink-muted:  #9A8F81;
       --white:      #FFFFFF;
+      /* Legacy aliases mapped to design system */
+      --green-dark:   #2A2118;
+      --green-light:  #DDD4C4;
+      --green-mid:    #DDD4C4;
+      --text:         #2A2118;
+      --text-light:   #5C4F3D;
+      --gold:         #d2c35a;
+      --gold-light:   #faf8e8;
+      --purple-dark:  #5c4f8a;
+      --purple-light: #ede8f5;
+      --purple-mid:   #8b7ab8;
+      --blue-dark:    #7FA3B5;
+      --blue-light:   #EBF3F7;
+      --blue-mid:     #a8c4d0;
+      --rust:         #ff1e3c;
+      --rust-light:   #fff0f2;
+      --border:       #DDD4C4;
+      --cream:        #FAF7F1;
     }
     *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family: 'Epilogue', sans-serif;background: var(--linen);color: var(--ink);line-height:1.7;font-size:15px;}
+    body{font-family: 'Epilogue', sans-serif;background: var(--linen);
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='400'><g fill='none' stroke='%23d2c35a' stroke-width='1.5' opacity='0.22'><path d='M 62.0,24.0 L 58.9,33.7 L 48.7,33.7 L 56.9,39.6 L 53.8,49.3 L 62.0,43.3 L 70.2,49.3 L 67.1,39.6 L 75.3,33.7 L 65.1,33.7 Z'/> <path d='M 140.0,71.0 L 138.0,77.2 L 131.4,77.2 L 136.7,81.1 L 134.7,87.3 L 140.0,83.4 L 145.3,87.3 L 143.3,81.1 L 148.6,77.2 L 142.0,77.2 Z'/> <path d='M 220.0,14.0 L 217.5,21.6 L 209.5,21.6 L 216.0,26.3 L 213.5,33.9 L 220.0,29.2 L 226.5,33.9 L 224.0,26.3 L 230.5,21.6 L 222.5,21.6 Z'/> <path d='M 310.0,53.0 L 308.4,57.8 L 303.3,57.8 L 307.5,60.8 L 305.9,65.7 L 310.0,62.7 L 314.1,65.7 L 312.5,60.8 L 316.7,57.8 L 311.6,57.8 Z'/> <path d='M 390.0,22.0 L 387.1,31.0 L 377.6,31.0 L 385.3,36.5 L 382.4,45.5 L 390.0,39.9 L 397.6,45.5 L 394.7,36.5 L 402.4,31.0 L 392.9,31.0 Z'/> <path d='M 460.0,82.0 L 458.2,87.5 L 452.4,87.5 L 457.1,90.9 L 455.3,96.5 L 460.0,93.0 L 464.7,96.5 L 462.9,90.9 L 467.6,87.5 L 461.8,87.5 Z'/> <path d='M 30.0,133.0 L 28.4,137.8 L 23.3,137.8 L 27.5,140.8 L 25.9,145.7 L 30.0,142.7 L 34.1,145.7 L 32.5,140.8 L 36.7,137.8 L 31.6,137.8 Z'/> <path d='M 100.0,158.0 L 97.3,166.3 L 88.6,166.3 L 95.7,171.4 L 92.9,179.7 L 100.0,174.6 L 107.1,179.7 L 104.3,171.4 L 111.4,166.3 L 102.7,166.3 Z'/> <path d='M 185.0,122.0 L 183.2,127.5 L 177.4,127.5 L 182.1,130.9 L 180.3,136.5 L 185.0,133.0 L 189.7,136.5 L 187.9,130.9 L 192.6,127.5 L 186.8,127.5 Z'/> <path d='M 265.0,155.0 L 262.8,161.9 L 255.5,161.9 L 261.4,166.2 L 259.1,173.1 L 265.0,168.8 L 270.9,173.1 L 268.6,166.2 L 274.5,161.9 L 267.2,161.9 Z'/> <path d='M 350.0,138.0 L 348.4,142.8 L 343.3,142.8 L 347.5,145.8 L 345.9,150.7 L 350.0,147.7 L 354.1,150.7 L 352.5,145.8 L 356.7,142.8 L 351.6,142.8 Z'/> <path d='M 430.0,149.0 L 427.5,156.6 L 419.5,156.6 L 426.0,161.3 L 423.5,168.9 L 430.0,164.2 L 436.5,168.9 L 434.0,161.3 L 440.5,156.6 L 432.5,156.6 Z'/> <path d='M 75.0,241.0 L 73.0,247.2 L 66.4,247.2 L 71.7,251.1 L 69.7,257.3 L 75.0,253.4 L 80.3,257.3 L 78.3,251.1 L 83.6,247.2 L 77.0,247.2 Z'/> <path d='M 160.0,267.0 L 157.1,276.0 L 147.6,276.0 L 155.3,281.5 L 152.4,290.5 L 160.0,284.9 L 167.6,290.5 L 164.7,281.5 L 172.4,276.0 L 162.9,276.0 Z'/> <path d='M 240.0,233.0 L 238.4,237.8 L 233.3,237.8 L 237.5,240.8 L 235.9,245.7 L 240.0,242.7 L 244.1,245.7 L 242.5,240.8 L 246.7,237.8 L 241.6,237.8 Z'/> <path d='M 320.0,260.0 L 317.8,266.9 L 310.5,266.9 L 316.4,271.2 L 314.1,278.1 L 320.0,273.8 L 325.9,278.1 L 323.6,271.2 L 329.5,266.9 L 322.2,266.9 Z'/> <path d='M 410.0,247.0 L 408.2,252.5 L 402.4,252.5 L 407.1,255.9 L 405.3,261.5 L 410.0,258.0 L 414.7,261.5 L 412.9,255.9 L 417.6,252.5 L 411.8,252.5 Z'/> <path d='M 480.0,268.0 L 477.3,276.3 L 468.6,276.3 L 475.7,281.4 L 472.9,289.7 L 480.0,284.6 L 487.1,289.7 L 484.3,281.4 L 491.4,276.3 L 482.7,276.3 Z'/> <path d='M 45.0,329.0 L 42.5,336.6 L 34.5,336.6 L 41.0,341.3 L 38.5,348.9 L 45.0,344.2 L 51.5,348.9 L 49.0,341.3 L 55.5,336.6 L 47.5,336.6 Z'/> <path d='M 130.0,363.0 L 128.4,367.8 L 123.3,367.8 L 127.5,370.8 L 125.9,375.7 L 130.0,372.7 L 134.1,375.7 L 132.5,370.8 L 136.7,367.8 L 131.6,367.8 Z'/> <path d='M 210.0,336.0 L 208.0,342.2 L 201.4,342.2 L 206.7,346.1 L 204.7,352.3 L 210.0,348.4 L 215.3,352.3 L 213.3,346.1 L 218.6,342.2 L 212.0,342.2 Z'/> <path d='M 295.0,367.0 L 292.1,376.0 L 282.6,376.0 L 290.3,381.5 L 287.4,390.5 L 295.0,384.9 L 302.6,390.5 L 299.7,381.5 L 307.4,376.0 L 297.9,376.0 Z'/> <path d='M 375.0,343.0 L 373.4,347.8 L 368.3,347.8 L 372.5,350.8 L 370.9,355.7 L 375.0,352.7 L 379.1,355.7 L 377.5,350.8 L 381.7,347.8 L 376.6,347.8 Z'/> <path d='M 455.0,355.0 L 452.8,361.9 L 445.5,361.9 L 451.4,366.2 L 449.1,373.1 L 455.0,368.8 L 460.9,373.1 L 458.6,366.2 L 464.5,361.9 L 457.2,361.9 Z'/></g></svg>");
+      background-size: 500px 400px;
+      background-repeat: repeat;color: var(--ink);line-height:1.7;font-size:15px;}
 
-    /* HERO */
-    .hero{background:linear-gradient(135deg,#5A3E8F 0%,#3d2766 50%,#271845 100%);color:#fff;padding:48px 40px 40px;position:relative;overflow:hidden;}
-    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(233,196,106,.15),transparent 60%);pointer-events:none;}
-    .back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.7);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.04em;margin-bottom:18px;transition:color .15s;}
-    .back-link:hover{color:var(--gold);}
-    .hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
-    .hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:3px 12px;font-size:.75rem;font-weight:700;color:#fff;}
-    .hero h1{font-family:'Lora',serif;font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:8px;}
-    .hero h1 span{color:var(--gold);}
-    .hero .subtitle{font-family:'Lora',serif;font-size:1.05rem;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:6px;}
-    .hero .tagline{font-family:'Lora',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.82);max-width:640px;}
+    /* (Legacy .hero CSS removed — page uses .page-header instead) */
 
     /* NAV */
     .week-nav{background:var(--purple-dark);padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18);}
@@ -57,8 +71,8 @@
     /* WEEK SECTIONS */
     .week-section{margin-bottom:52px;}
     .week-header{background:linear-gradient(135deg,#5A3E8F,#3d2766);border-radius:12px 12px 0 0;padding:18px 26px;display:flex;align-items:center;gap:16px;}
-    .week-num-badge{font-family:'Lora',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;}
-    .week-header-text h2{font-family:'Lora',serif;font-size:1.3rem;font-weight:700;color:#fff;}
+    .week-num-badge{font-family:'Fraunces',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;}
+    .week-header-text h2{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;color:#fff;}
     .week-header-text .week-focus{font-size:.82rem;color:rgba(255,255,255,.78);margin-top:2px;}
     .week-body{background:var(--white);border:1.5px solid var(--purple-light);border-top:none;border-radius:0 0 12px 12px;padding:24px 26px;}
 
@@ -97,7 +111,7 @@
 
     /* RUBRICS */
     .rubric-wrap{margin-bottom:36px;}
-    .rubric-title{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;color:var(--purple-dark);margin-bottom:4px;}
+    .rubric-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--purple-dark);margin-bottom:4px;}
     .rubric-desc{font-size:.85rem;color:var(--text-light);margin-bottom:12px;}
     .rubric-table{width:100%;border-collapse:collapse;font-size:.82rem;}
     .rubric-table th{padding:9px 12px;text-align:left;font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
@@ -220,9 +234,6 @@
     footer.site-footer a { color: var(--ink-muted); }
 
   </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -588,7 +599,7 @@
 
   <!-- ─── RUBRICS ───────────────────────────────────────────────── -->
   <section id="rubrics" class="page-section">
-    <h2 style="font-family:'Lora',serif;font-size:1.75rem;font-weight:700;color:var(--purple-dark);border-bottom:2px solid #7B5DB8;padding-bottom:8px;margin-bottom:28px;">Assessment Rubrics</h2>
+    <h2 style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:700;color:var(--purple-dark);border-bottom:2px solid #7B5DB8;padding-bottom:8px;margin-bottom:28px;">Assessment Rubrics</h2>
 
     <!-- RUBRIC 1: POV Analysis Paragraph -->
     <div class="rubric-wrap">
