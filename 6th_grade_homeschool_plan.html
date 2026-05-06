@@ -3,101 +3,150 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>6th Grade Homeschool Plan</title>
+  <title>6th Grade Homeschool Plan · 2025–2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
-
     :root {
-      --green-dark:   #2D6A4F;
-      --green-mid:    #52B788;
-      --green-light:  #D8F3DC;
-      --purple-dark:  #5A3E8F;
-      --purple-mid:   #9B72CF;
-      --purple-light: #EDE7F6;
-      --gold:         #E9C46A;
-      --gold-light:   #FFF8E1;
-      --rust:         #C65D2A;
-      --rust-light:   #FBE9E0;
-      --blue-dark:    #1B6CA8;
-      --blue-light:   #E3F2FD;
-      --cream:        #FEFAE0;
-      --text:         #1A1A2E;
-      --text-light:   #4A4A6A;
-      --border:       #D0D0E0;
+      --linen:        #FAF7F1;
+      --linen-dark:   #F0EBE0;
+      --linen-deep:   #DDD4C4;
+      --terra:        #8c4201;
+      --terra-light:  #FDF0E8;
+      --terra-soft:   #E8C4AE;
+      --sage:         #6B8F71;
+      --sage-light:   #EAF2EB;
+      --sage-soft:    #C6D9C8;
+      --sky:          #7FA3B5;
+      --sky-light:    #EBF3F7;
+      --amber:        #B07D2E;
+      --amber-light:  #FBF3E0;
+      --ink:          #2A2118;
+      --ink-soft:     #5C4F3D;
+      --ink-muted:    #9A8F81;
+      --border:       #DDD4C4;
       --white:        #FFFFFF;
+      --text:         #2A2118;
+      --text-light:   #5C4F3D;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Nunito', sans-serif;
-      background: var(--cream);
-      color: var(--text);
+      font-family: 'Epilogue', sans-serif;
+      background: var(--linen);
+      color: var(--ink);
       line-height: 1.7;
       font-size: 15px;
     }
 
-    /* ── HEADER ─────────────────────────────────────────── */
-    .hero {
-      background: linear-gradient(135deg, var(--green-dark) 0%, #1B4332 40%, var(--purple-dark) 100%);
-      color: var(--white);
-      padding: 56px 40px 48px;
-      text-align: center;
-    }
-    .hero h1 {
-      font-family: 'Lora', serif;
-      font-size: 2.6rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 12px;
-      color: #FFFFFF;
-    }
-    .hero h1 span { color: var(--gold); }
-    .hero p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.9);
-      max-width: 620px;
-      margin: 0 auto;
-    }
-    .hero .tag-row {
-      margin-top: 24px;
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      width: 100%;
+      background: var(--white);
+      border-bottom: 1px solid var(--linen-deep);
+      padding: 0 48px;
+      height: 52px;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
       gap: 10px;
     }
-    .hero .tag {
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 20px;
-      padding: 5px 16px;
-      font-size: 0.85rem;
+    .nav-brand::before {
+      content: '';
+      display: block;
+      width: 8px; height: 8px;
+      background: var(--terra);
+      border-radius: 50%;
+    }
+    .nav-back {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.15s;
+    }
+    .nav-back:hover { color: var(--terra); }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    .hero {
+      background: var(--linen-dark);
+      border-bottom: 1px solid var(--linen-deep);
+      padding: 40px 48px 36px;
+    }
+    .hero-inner { max-width: 1160px; margin: 0 auto; }
+    .hero-eyebrow {
+      font-size: 0.68rem;
       font-weight: 600;
-      letter-spacing: 0.5px;
-      color: #FFFFFF;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 10px;
+    }
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      max-width: 600px;
+      margin: 0 0 18px 0;
+    }
+    .hero .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hero .tag {
+      background: var(--white);
+      border: 1px solid var(--linen-deep);
+      border-radius: 4px;
+      padding: 4px 12px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--ink-soft);
     }
 
     /* ── LAYOUT ─────────────────────────────────────────── */
-    .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 40px 48px 64px; }
 
-    section { margin-bottom: 52px; }
+    section { margin-bottom: 48px; }
 
     h2 {
-      font-family: 'Lora', serif;
-      font-size: 1.65rem;
-      font-weight: 700;
-      color: var(--green-dark);
-      border-left: 5px solid var(--green-mid);
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--ink);
+      border-left: 3px solid var(--terra);
       padding-left: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       line-height: 1.3;
     }
 
     h3 {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     p { margin-bottom: 10px; color: var(--text-light); }
@@ -109,233 +158,249 @@
 
     /* ── PHILOSOPHY BOX ─────────────────────────────────── */
     .philosophy {
-      background: var(--green-light);
-      border-left: 6px solid var(--green-mid);
-      border-radius: 0 12px 12px 0;
-      padding: 22px 26px;
-      margin-bottom: 20px;
+      background: var(--sage-light);
+      border-left: 3px solid var(--sage);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin-bottom: 18px;
     }
-    .philosophy p { color: var(--text); font-size: 0.97rem; }
+    .philosophy p { color: var(--ink); font-size: 0.93rem; }
 
     /* ── SUBJECT CARDS ──────────────────────────────────── */
     .subject-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 22px;
+      gap: 18px;
     }
     @media (max-width: 680px) { .subject-grid { grid-template-columns: 1fr; } }
 
     .subject-card {
-      border-radius: 14px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-      border: 1px solid var(--border);
+      border: 1px solid var(--linen-deep);
+      background: var(--white);
     }
     .subject-card .card-header {
-      padding: 16px 20px 14px;
-      color: var(--white);
+      padding: 14px 18px 12px;
+      border-bottom: 1px solid var(--linen-deep);
     }
     .subject-card .card-header h3 {
-      color: #FFFFFF;
-      font-size: 1.05rem;
-      margin: 0 0 3px 0;
+      font-size: 0.85rem;
+      margin: 0 0 2px 0;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     .subject-card .card-header p {
-      color: rgba(255,255,255,0.85);
-      font-size: 0.8rem;
+      color: var(--ink-muted);
+      font-size: 0.78rem;
       margin: 0;
     }
-    .subject-card .card-body { padding: 18px 20px; background: var(--white); }
+    .subject-card .card-body { padding: 16px 18px; background: var(--white); }
 
-    .la   .card-header { background: linear-gradient(135deg, #5A3E8F, #7B5EA7); }
-    .math .card-header { background: linear-gradient(135deg, #1B6CA8, #2196F3); }
-    .sci  .card-header { background: linear-gradient(135deg, #2D6A4F, #52B788); }
-    .ss   .card-header { background: linear-gradient(135deg, #C65D2A, #E07B45); }
+    .la   .card-header { background: #F0EBF8; border-left: 3px solid #7B5EA7; }
+    .math .card-header { background: var(--sky-light); border-left: 3px solid var(--sky); }
+    .sci  .card-header { background: var(--sage-light); border-left: 3px solid var(--sage); }
+    .ss   .card-header { background: var(--terra-light); border-left: 3px solid var(--terra); }
 
     /* ── SCHEDULE TABLE ─────────────────────────────────── */
     .schedule-table {
       width: 100%;
       border-collapse: collapse;
-      border-radius: 12px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      border: 1px solid var(--linen-deep);
     }
     .schedule-table thead tr {
-      background: var(--green-dark);
-      color: var(--white);
+      background: var(--linen-dark);
     }
     .schedule-table th {
-      padding: 13px 16px;
-      font-weight: 800;
-      font-size: 0.9rem;
+      padding: 11px 16px;
+      font-weight: 600;
+      font-size: 0.78rem;
       text-align: left;
-      letter-spacing: 0.5px;
-      color: #FFFFFF;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--ink);
     }
     .schedule-table td {
       padding: 12px 16px;
       vertical-align: top;
-      font-size: 0.88rem;
-      border-bottom: 1px solid #E8E8F0;
+      font-size: 0.87rem;
+      border-bottom: 1px solid var(--linen-deep);
       line-height: 1.5;
     }
     .schedule-table tr:last-child td { border-bottom: none; }
-    .schedule-table tr:nth-child(even) td { background: #F8F8FF; }
-    .schedule-table .time-col { color: var(--text-light); font-size: 0.82rem; white-space: nowrap; }
+    .schedule-table tr:nth-child(even) td { background: var(--linen); }
+    .schedule-table .time-col { color: var(--ink-muted); font-size: 0.82rem; white-space: nowrap; }
 
-    .block { display: inline-block; border-radius: 8px; padding: 3px 10px; font-size: 0.8rem; font-weight: 700; margin: 2px 0; }
-    .b-la   { background: var(--purple-light); color: var(--purple-dark); }
-    .b-math { background: var(--blue-light);   color: var(--blue-dark); }
-    .b-sci  { background: var(--green-light);  color: var(--green-dark); }
-    .b-ss   { background: var(--rust-light);   color: var(--rust); }
-    .b-proj { background: var(--gold-light);   color: #7A5A00; }
+    .block { display: inline-block; border-radius: 4px; padding: 2px 9px; font-size: 0.77rem; font-weight: 600; margin: 2px 0; }
+    .b-la   { background: #F0EBF8; color: #5A3E8F; }
+    .b-math { background: var(--sky-light); color: #3A6B80; }
+    .b-sci  { background: var(--sage-light); color: var(--sage); }
+    .b-ss   { background: var(--terra-light); color: var(--terra); }
+    .b-proj { background: var(--amber-light); color: var(--amber); }
 
     /* ── QUARTER TIMELINE ───────────────────────────────── */
-    .quarters { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .quarters { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media (max-width: 680px) { .quarters { grid-template-columns: 1fr; } }
 
     .quarter-card {
-      border-radius: 12px;
-      border: 1px solid var(--border);
+      border-radius: 8px;
+      border: 1px solid var(--linen-deep);
       overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      background: var(--white);
     }
     .quarter-card .q-header {
-      padding: 12px 18px;
-      font-weight: 800;
-      font-size: 0.95rem;
-      color: #FFFFFF;
+      padding: 11px 16px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--ink);
+      border-bottom: 1px solid var(--linen-deep);
     }
-    .q1 .q-header { background: var(--rust); }
-    .q2 .q-header { background: var(--purple-dark); }
-    .q3 .q-header { background: var(--blue-dark); }
-    .q4 .q-header { background: var(--green-dark); }
-    .quarter-card .q-body { padding: 14px 18px; background: var(--white); }
-    .quarter-card .q-body ul { font-size: 0.87rem; }
+    .q1 .q-header { background: var(--terra-light); border-left: 3px solid var(--terra); }
+    .q2 .q-header { background: #F0EBF8; border-left: 3px solid #7B5EA7; }
+    .q3 .q-header { background: var(--sky-light); border-left: 3px solid var(--sky); }
+    .q4 .q-header { background: var(--sage-light); border-left: 3px solid var(--sage); }
+    .quarter-card .q-body { padding: 14px 16px; }
+    .quarter-card .q-body ul { font-size: 0.86rem; }
 
     /* ── BOOK LIST ──────────────────────────────────────── */
     .book-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      gap: 12px;
     }
     @media (max-width: 680px) { .book-grid { grid-template-columns: 1fr 1fr; } }
 
     .book-card {
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      border: 1px solid var(--linen-deep);
+      border-radius: 8px;
       padding: 14px 15px;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
     }
-    .book-card .book-title { font-weight: 800; font-size: 0.88rem; color: var(--text); margin-bottom: 3px; }
-    .book-card .book-author { font-size: 0.78rem; color: var(--text-light); }
-    .book-card .book-note { font-size: 0.78rem; color: var(--purple-dark); font-style: italic; margin-top: 4px; }
+    .book-card .book-title { font-weight: 600; font-size: 0.88rem; color: var(--ink); margin-bottom: 3px; }
+    .book-card .book-author { font-size: 0.77rem; color: var(--ink-muted); }
+    .book-card .book-note { font-size: 0.77rem; color: var(--sage); margin-top: 5px; }
 
     /* ── PROJECT IDEAS ──────────────────────────────────── */
     .project-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      gap: 12px;
     }
     @media (max-width: 680px) { .project-list { grid-template-columns: 1fr; } }
 
     .project-item {
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 15px 17px;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      border: 1px solid var(--linen-deep);
+      border-radius: 8px;
+      padding: 15px 16px;
     }
-    .project-item .p-title { font-weight: 800; font-size: 0.9rem; color: var(--text); margin-bottom: 5px; }
-    .project-item .p-desc { font-size: 0.82rem; color: var(--text-light); }
-    .project-item .p-subject { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 1px 8px; border-radius: 8px; margin-top: 5px; }
+    .project-item .p-title { font-weight: 600; font-size: 0.88rem; color: var(--ink); margin-bottom: 5px; }
+    .project-item .p-desc { font-size: 0.81rem; color: var(--ink-soft); }
+    .project-item .p-subject { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 2px 9px; border-radius: 4px; margin-top: 6px; }
 
     /* ── FIELD TRIPS ────────────────────────────────────── */
-    .trips { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .trips { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
     @media (max-width: 680px) { .trips { grid-template-columns: 1fr; } }
 
     .trip-card {
       background: var(--white);
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: 14px 16px;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      border-radius: 8px;
+      border: 1px solid var(--linen-deep);
+      padding: 14px 15px;
     }
-    .trip-card .t-title { font-weight: 800; font-size: 0.88rem; color: var(--text); margin-bottom: 4px; }
-    .trip-card .t-desc { font-size: 0.79rem; color: var(--text-light); }
+    .trip-card .t-title { font-weight: 600; font-size: 0.86rem; color: var(--ink); margin-bottom: 4px; }
+    .trip-card .t-desc { font-size: 0.79rem; color: var(--ink-soft); }
 
     /* ── SUPPLIES ───────────────────────────────────────── */
-    .supply-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+    .supply-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
     @media (max-width: 680px) { .supply-cols { grid-template-columns: 1fr; } }
 
     .supply-box {
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      border: 1px solid var(--linen-deep);
+      border-radius: 8px;
       padding: 16px 18px;
     }
-    .supply-box h3 { font-size: 0.9rem; margin-bottom: 10px; color: var(--green-dark); }
+    .supply-box h3 { color: var(--ink); margin-bottom: 10px; }
     .supply-box ul { font-size: 0.83rem; }
 
     /* ── TIPS BOX ───────────────────────────────────────── */
     .tips-box {
-      background: var(--gold-light);
-      border: 1px solid var(--gold);
-      border-radius: 12px;
+      background: var(--amber-light);
+      border: 1px solid #D4B46A;
+      border-radius: 8px;
       padding: 22px 26px;
     }
-    .tips-box h3 { color: #7A5A00; margin-bottom: 12px; font-size: 1rem; }
-    .tips-box ul { color: #5A4200; font-size: 0.9rem; }
+    .tips-box h3 { color: var(--amber); margin-bottom: 12px; }
+    .tips-box ul { color: var(--ink-soft); font-size: 0.9rem; }
 
     /* ── ASSESSMENT BOX ─────────────────────────────────── */
-    .assess-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .assess-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     @media (max-width: 680px) { .assess-grid { grid-template-columns: 1fr; } }
     .escape-box {
-      background: var(--purple-light);
-      border: 1px solid var(--purple-mid);
-      border-radius: 12px;
-      padding: 22px 26px;
-      margin-bottom: 20px;
+      background: var(--sage-light);
+      border: 1px solid var(--sage-soft);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 18px;
     }
-    .escape-box h3 { color: var(--purple-dark); margin-bottom: 10px; }
-    .escape-box p, .escape-box ul { color: #3A2460; font-size: 0.92rem; }
+    .escape-box h3 { color: var(--sage); margin-bottom: 10px; }
+    .escape-box p, .escape-box ul { color: var(--ink-soft); font-size: 0.92rem; }
     .escape-box ul { padding-left: 20px; }
 
     .assess-card {
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      border: 1px solid var(--linen-deep);
+      border-radius: 8px;
       padding: 16px 18px;
     }
-    .assess-card h3 { font-size: 0.9rem; color: var(--purple-dark); margin-bottom: 8px; }
+    .assess-card h3 { color: var(--ink); margin-bottom: 8px; }
     .assess-card ul { font-size: 0.83rem; }
 
     /* ── FOOTER ─────────────────────────────────────────── */
     footer {
-      text-align: center;
-      padding: 30px 20px 40px;
-      color: var(--text-light);
-      font-size: 0.83rem;
-      border-top: 1px solid var(--border);
+      background: var(--white);
+      border-top: 1px solid var(--linen-deep);
+      padding: 18px 48px;
+      font-size: 0.76rem;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    footer span { color: var(--terra); font-weight: 600; }
+
+    @media (max-width: 700px) {
+      nav, .hero, .container, footer { padding-left: 20px; padding-right: 20px; }
     }
   </style>
 </head>
 <body>
 
+<nav>
+  <a class="nav-brand" href="index.html">Homeschool Curriculum</a>
+  <a class="nav-back" href="index.html">← Back to Hub</a>
+</nav>
+
 <!-- ════════════════ HERO ════════════════ -->
 <div class="hero">
-  <h1>6th Grade <span>Homeschool Plan</span></h1>
-  <p>An eclectic, hands-on curriculum designed around a learner who loves creatures, crafts, gardens, and the great outdoors.</p>
-  <div class="tag-row">
-    <span class="tag">Eclectic Approach</span>
-    <span class="tag">Hands-On Learning</span>
-    <span class="tag">Afternoon Schedule</span>
-    <span class="tag">4 Days / 3-4 Hours</span>
-    <span class="tag">Creature-Centered Reading</span>
-    <span class="tag">Escape Room Projects</span>
-    <span class="tag">Animal Quizzes</span>
-    <span class="tag">Project-Based Learning</span>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">2025 – 2026 · 6th Grade</div>
+    <h1>Homeschool Plan</h1>
+    <p>An eclectic, hands-on curriculum designed around a learner who loves creatures, crafts, gardens, and the great outdoors.</p>
+    <div class="tag-row">
+      <span class="tag">Eclectic Approach</span>
+      <span class="tag">Hands-On Learning</span>
+      <span class="tag">Afternoon Schedule</span>
+      <span class="tag">4 Days / 3-4 Hours</span>
+      <span class="tag">Creature-Centered Reading</span>
+      <span class="tag">Escape Room Projects</span>
+      <span class="tag">Animal Quizzes</span>
+      <span class="tag">Project-Based Learning</span>
+    </div>
   </div>
 </div>
 
@@ -986,7 +1051,7 @@
 </div><!-- /container -->
 
 <footer>
-  6th Grade Homeschool Plan &nbsp;&middot;&nbsp; Eclectic Approach &nbsp;&middot;&nbsp; Four Roots Ranch
+  <span>Four Roots Ranch</span> · 6th Grade Homeschool Plan · 2025–2026
 </footer>
 
 </body>
