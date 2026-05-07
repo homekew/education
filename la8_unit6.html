@@ -70,6 +70,11 @@
 
     footer.site-footer { background: var(--white); border-top: 1px solid var(--linen-deep); padding: 16px 40px; font-size: 0.75rem; color: var(--ink-muted); margin-top: 40px; }
     @media (max-width: 700px) { nav.site-nav, .page-header, .container, footer.site-footer, .week-nav { padding-left: 20px; padding-right: 20px; } }
+    .checklist { background: var(--linen); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 14px 18px; margin-top: 4px; }
+    .check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 0.86rem; color: var(--ink-soft); cursor: pointer; line-height: 1.5; }
+    .check-item:last-child { margin-bottom: 0; }
+    .check-item input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--terra); width: 15px; height: 15px; }
+    .checklist-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-top: 16px; margin-bottom: 6px; }
 </style>
 </head>
 <body>
@@ -196,36 +201,86 @@
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read MLK "Letter from Birmingham Jail" (excerpt); identify ethos, pathos, logos<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Watch 2 TED Talks; analyze: how does the speaker hook you? Build credibility? Move you?<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Wed</td><td>Brainstorm: 10 things you genuinely believe strongly about — pick the one you can argue best<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Research your topic for 1 hour; find 3 statistics or facts that support your position<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Pitch your argument in 60 seconds; class gives feedback: is it specific? Arguable?<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Analyze one of the speeches or talks you studied: identify three specific rhetorical techniques the speaker uses (repetition, personal story, statistics, rhetorical question, etc.). For each technique, quote the exact line and explain why it works. What makes this argument persuasive to you specifically?</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> MLK "Letter from Birmingham Jail" excerpt read; ethos, pathos, and logos identified and annotated</label>
+      <label class="check-item"><input type="checkbox"> 2 TED Talks watched; hook, credibility-building, and emotional techniques analyzed in notes</label>
+      <label class="check-item"><input type="checkbox"> 10 strongly-held beliefs brainstormed; one chosen as the unit argument topic</label>
+      <label class="check-item"><input type="checkbox"> 1-hour topic research done; 3 supporting statistics or facts found and recorded</label>
+      <label class="check-item"><input type="checkbox"> 60-second argument pitch delivered; feedback on specificity and arguability received and noted</label>
+    </div>
   </div>
 </div><div class="week-card" id="w2">
   <div class="week-header"><span class="week-num">W2</span><span class="week-title">Building the Argument</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Argument structure deep-dive: Toulmin model (claim, grounds, warrant, backing, rebuttal)<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Write your full argument map: central claim + 3 supporting points + strongest counter-argument<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Find one piece of strong evidence for each supporting point; evaluate source quality<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type argument map in Google Docs; use headers and bullet evidence under each point<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Argument debate: defend your position against a partner's attacks<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write your argument map in full sentences: (1) your main claim, (2) three reasons with one sentence of evidence each, (3) the strongest counter-argument someone could make against you, (4) your rebuttal. This map becomes the skeleton of both your essay and your talk.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Toulmin argument model studied — claim, grounds, warrant, backing, and rebuttal understood</label>
+      <label class="check-item"><input type="checkbox"> Full argument map written: central claim, 3 supporting points, and strongest counter-argument</label>
+      <label class="check-item"><input type="checkbox"> One piece of strong evidence found and source quality evaluated for each supporting point</label>
+      <label class="check-item"><input type="checkbox"> Argument map typed in Google Docs with headers and bulleted evidence under each point</label>
+      <label class="check-item"><input type="checkbox"> Argument debate completed — position defended against a partner's direct attacks</label>
+    </div>
   </div>
 </div><div class="week-card" id="w3">
   <div class="week-header"><span class="week-num">W3</span><span class="week-title">The Persuasive Essay</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Essay structure: hook → background → thesis → 3 body paragraphs → counter → conclusion<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Tue</td><td>Draft your introduction: the hook must earn the reader's attention in 2 sentences<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Draft body paragraphs 1–3; each paragraph: topic sentence + evidence + analysis<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Draft counter-argument and rebuttal paragraph; type full essay draft<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer review: are the claims clear? Is the evidence convincing? Does the logic hold?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Draft your conclusion paragraph. It must do three things: (1) restate the thesis in fresh language, (2) synthesize (not just summarize) your three main points, (3) end with a call to action or a question that stays with the reader. The last sentence of an essay is the most remembered — make it count.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Essay structure reviewed — hook through conclusion; opening hook drafted to earn reader attention in 2 sentences</label>
+      <label class="check-item"><input type="checkbox"> Three body paragraphs drafted — each with topic sentence, evidence, and analysis</label>
+      <label class="check-item"><input type="checkbox"> Counter-argument and rebuttal paragraph drafted; full essay typed in Google Docs</label>
+      <label class="check-item"><input type="checkbox"> Conclusion paragraph drafted — thesis restated in fresh language, three points synthesized, memorable closing sentence written</label>
+      <label class="check-item"><input type="checkbox"> Peer review done — claim clarity, evidence strength, and logical flow evaluated</label>
+    </div>
   </div>
 </div><div class="week-card" id="w4">
   <div class="week-header"><span class="week-num">W4</span><span class="week-title">Designing the Talk</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>How TED Talks differ from essays: conversational tone, story-first, no slides full of text<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Adapt your essay into a talk script: shorter sentences, direct address, transitions<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Identify 2–3 personal stories or examples that make the argument human and memorable<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Build a 5-slide visual: one visual per main section — no bullet lists<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>First run-through of full talk — standing up, from notes, not reading<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Adapt the opening 2 minutes of your essay into a talk opening. A talk opens differently than an essay — you might start with a story, a surprising fact, or a question to the audience. Write two different openings for your talk and choose the stronger one. What makes a spoken opening different from a written one?</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> TED Talk vs. essay differences studied — conversational tone, story-first approach, and minimal slide text discussed</label>
+      <label class="check-item"><input type="checkbox"> Essay adapted into a talk script with shorter sentences, direct address, and spoken transitions</label>
+      <label class="check-item"><input type="checkbox"> Two different talk openings written; stronger one chosen with written justification</label>
+      <label class="check-item"><input type="checkbox"> 2–3 personal stories or concrete examples identified to make the argument memorable</label>
+      <label class="check-item"><input type="checkbox"> 5-slide visual built — one image-driven visual per main section, no bullet-point lists</label>
+      <label class="check-item"><input type="checkbox"> First full run-through of talk completed standing up from notes (not reading)</label>
+    </div>
   </div>
 </div><div class="week-card" id="w5">
   <div class="week-header"><span class="week-num">W5</span><span class="week-title">Rehearsal & Refinement</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Full talk run-through; record on phone; watch playback and note improvement areas<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Tue</td><td>Revise talk script based on recording; refine transitions and pacing<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Final essay revision: proofread, check citations, strengthen any weak paragraphs<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Thu</td><td>Dress rehearsal: full talk in front of a small audience — parents, sibling, or neighbor<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>Final prep: essay printed/exported; slides finalized; notes ready<br><span class="comp comp-make">Computer</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Watch your recorded rehearsal and write a 150-word self-critique: What are your three strongest moments in the talk? What are the two things you most want to improve? Specific feedback only — not "I need to be more confident" but "I lose eye contact at minute 2:30 and I rush through the counter-argument."</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Full talk recorded on phone; playback watched and notes made on improvement areas</label>
+      <label class="check-item"><input type="checkbox"> Talk script revised based on recording — transitions and pacing refined</label>
+      <label class="check-item"><input type="checkbox"> 150-word self-critique written with 3 strongest moments and 2 specific improvement targets identified</label>
+      <label class="check-item"><input type="checkbox"> Final essay revised, proofread, and citations checked</label>
+      <label class="check-item"><input type="checkbox"> Dress rehearsal completed with a small audience; essay printed/exported; slides finalized</label>
+    </div>
   </div>
 </div><div class="week-card" id="w6">
   <div class="week-header"><span class="week-num">W6</span><span class="week-title">Showcase</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Final essay submitted; last review of talk notes and slides<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Tue</td><td>Final rehearsal with full setup — projector, standing position, water bottle<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Wed</td><td>Write thank-you note / invitation for showcase guests<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Set up showcase space; prepare both essay and talk materials<br><span class="comp comp-make">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>SHOWCASE: TED-style talk + persuasive essay presentation — Year-End Celebration<br><span class="comp comp-share">Showcase</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>After the showcase, write a final reflection for your year-end portfolio: What is the most important thing you learned about writing this year? Which unit challenged you most? Which piece of writing are you most proud of and why? What kind of writer do you want to be?</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Final essay submitted; talk notes and slides reviewed one last time</label>
+      <label class="check-item"><input type="checkbox"> Final rehearsal completed with full setup — projector, standing position, and pacing confirmed</label>
+      <label class="check-item"><input type="checkbox"> Thank-you note or invitation written for showcase guests</label>
+      <label class="check-item"><input type="checkbox"> Showcase space set up; essay and talk materials both prepared and on hand</label>
+      <label class="check-item"><input type="checkbox"> TED-style talk delivered live at year-end showcase</label>
+      <label class="check-item"><input type="checkbox"> Year-end portfolio reflection written — most important writing lesson, hardest unit, proudest piece, and future writing goals</label>
+    </div>
   </div>
 </div>
   <div class="showcase-box" id="showcase">

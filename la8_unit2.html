@@ -70,6 +70,11 @@
 
     footer.site-footer { background: var(--white); border-top: 1px solid var(--linen-deep); padding: 16px 40px; font-size: 0.75rem; color: var(--ink-muted); margin-top: 40px; }
     @media (max-width: 700px) { nav.site-nav, .page-header, .container, footer.site-footer, .week-nav { padding-left: 20px; padding-right: 20px; } }
+    .checklist { background: var(--linen); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 14px 18px; margin-top: 4px; }
+    .check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 0.86rem; color: var(--ink-soft); cursor: pointer; line-height: 1.5; }
+    .check-item:last-child { margin-bottom: 0; }
+    .check-item input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--terra); width: 15px; height: 15px; }
+    .checklist-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-top: 16px; margin-bottom: 6px; }
 </style>
 </head>
 <body>
@@ -196,36 +201,85 @@
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Intro to The Boy Who Harnessed the Wind ch. 1–3; what makes engineering writing compelling?<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Read a real engineering field notebook page; analyze structure and purpose<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Wed</td><td>Write a "day one" entry: describe how something you own works, step by step<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type and format your entry with headings, numbered steps, and a diagram description<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Choose your build project (LEGO set, original model, or electronic circuit)<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Choose an everyday object (a pencil, a door hinge, a zipper). Write a technical explanation of how it works — as if explaining it to someone who has never seen one. Use precise vocabulary, numbered steps, and at least one labeled diagram description.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> The Boy Who Harnessed the Wind chapters 1–3 read; journal entry written about what makes engineering writing compelling</label>
+      <label class="check-item"><input type="checkbox"> Real engineering field notebook page read and analyzed for structure and purpose</label>
+      <label class="check-item"><input type="checkbox"> "Day one" entry written describing how a familiar object works, step by step</label>
+      <label class="check-item"><input type="checkbox"> Entry typed and formatted in Google Docs with headings, numbered steps, and a diagram description</label>
+      <label class="check-item"><input type="checkbox"> Build project chosen (LEGO set, original model, or electronic circuit)</label>
+      <label class="check-item"><input type="checkbox"> Everyday object writing prompt completed — precise vocabulary, numbered steps, and labeled diagram description included</label>
+    </div>
   </div>
 </div><div class="week-card" id="w2">
   <div class="week-header"><span class="week-num">W2</span><span class="week-title">Process & Documentation Basics</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Kamkwamba ch. 4–7; how does he describe failure and iteration?<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>What is iteration? Design thinking: problem → sketch → build → test → revise<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Wed</td><td>Write a design brief for your build: goal, materials, constraints, success criteria<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Create a digital design brief in Google Docs with proper headings and formatting<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Begin the physical build; photograph stage 1; kinesthetic hands-on session<br><span class="comp comp-make">Kinesthetic</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a design brief for your project. Include: (1) the problem or goal, (2) materials list with quantities, (3) constraints (time, cost, size), (4) how you will know when it's done. Use clear, precise language — someone else should be able to start the project from your brief.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Kamkwamba chapters 4–7 read; journal entry written about how he describes failure and iteration</label>
+      <label class="check-item"><input type="checkbox"> Design thinking cycle (problem → sketch → build → test → revise) studied and understood</label>
+      <label class="check-item"><input type="checkbox"> Design brief written covering goal, materials list, constraints, and success criteria</label>
+      <label class="check-item"><input type="checkbox"> Design brief formatted in Google Docs with proper headings and layout</label>
+      <label class="check-item"><input type="checkbox"> Physical build begun; stage 1 photographed</label>
+    </div>
   </div>
 </div><div class="week-card" id="w3">
   <div class="week-header"><span class="week-num">W3</span><span class="week-title">Step-by-Step Technical Writing</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Finish Kamkwamba; discuss how he uses storytelling inside technical explanation<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Writing workshop: clear step-by-step instructions — active verbs, no ambiguity<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write steps 1–10 of your build process with technical precision<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Continue building; photograph each major stage; upload photos to doc<br><span class="comp comp-make">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>Peer review: follow each other's written instructions — do they actually work?<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write the first half of your build log: steps 1–10. Each step should be a clear action in the imperative voice ("Attach the cross-brace to the base using two 2×4 plates."). After every 3–4 steps, add a "checkpoint" note: what should the build look like at this point?</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Kamkwamba finished; discussion or journal entry on how he weaves storytelling into technical explanation</label>
+      <label class="check-item"><input type="checkbox"> Writing workshop completed — active verb imperative instructions practiced with no ambiguity</label>
+      <label class="check-item"><input type="checkbox"> Build log steps 1–10 written in imperative voice with checkpoint notes after every 3–4 steps</label>
+      <label class="check-item"><input type="checkbox"> Build continued; major stages photographed and uploaded to Google Doc</label>
+      <label class="check-item"><input type="checkbox"> Peer review done — partner attempted to follow written instructions; clarity revised based on feedback</label>
+    </div>
   </div>
 </div><div class="week-card" id="w4">
   <div class="week-header"><span class="week-num">W4</span><span class="week-title">Explaining Your Choices</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read: How Pixar writes technical story documents; engineer's design rationale<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Writing workshop: expository explanation of WHY — rationale, cause and effect<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a "why I chose this" section: explain 3 key design decisions<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Continue build; document setbacks and how you fixed them<br><span class="comp comp-make">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>Mid-project share: show your build and read your design rationale aloud<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a "Design Rationale" section for your build log. Choose three major decisions you made (a material, a structure, a method) and explain why you made each choice. What alternatives did you consider? Why did you reject them? Use clear cause-and-effect reasoning.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Reading on design rationale and engineer's documentation reviewed; cause-and-effect reasoning discussed</label>
+      <label class="check-item"><input type="checkbox"> Writing workshop on expository WHY writing completed — rationale structure practiced</label>
+      <label class="check-item"><input type="checkbox"> "Why I Chose This" section written — 3 key design decisions explained with alternatives considered and rejected</label>
+      <label class="check-item"><input type="checkbox"> Build continued; setbacks documented with descriptions of how each was fixed</label>
+      <label class="check-item"><input type="checkbox"> Mid-project share completed — build shown and design rationale read aloud</label>
+    </div>
   </div>
 </div><div class="week-card" id="w5">
   <div class="week-header"><span class="week-num">W5</span><span class="week-title">Troubleshooting & Failure Writing</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read: excerpts from engineering post-mortems and failure analysis reports<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Writing about failure honestly — what went wrong, what did you learn?<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write your "Problems & Solutions" section: at least 2 failures and how you fixed them<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Finalize the build; take final photos; compile full photo set<br><span class="comp comp-make">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>Full build log draft review — check clarity, completeness, and formatting<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a "Failure Log": document at least two things that went wrong during your build. For each, describe (1) what you expected to happen, (2) what actually happened, (3) why you think it failed, and (4) what you changed. Good engineers write about failure honestly — it's how knowledge advances.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Engineering post-mortem and failure analysis report excerpts read and analyzed</label>
+      <label class="check-item"><input type="checkbox"> Writing workshop on honest failure writing completed — expected vs. actual outcome structure practiced</label>
+      <label class="check-item"><input type="checkbox"> "Problems & Solutions" section written — at least 2 failures documented with expected outcome, actual outcome, cause, and fix</label>
+      <label class="check-item"><input type="checkbox"> Build finalized; final photos taken and full photo set compiled in document</label>
+      <label class="check-item"><input type="checkbox"> Full build log draft reviewed for clarity, completeness, and formatting consistency</label>
+    </div>
   </div>
 </div><div class="week-card" id="w6">
   <div class="week-header"><span class="week-num">W6</span><span class="week-title">Final Document & Showcase</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Final revision of full build log: intro, steps, rationale, failures, conclusion<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Tue</td><td>Format the complete document professionally: headings, photos, page numbers<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Wed</td><td>Write a conclusion: what did you build, what did you learn, what would you do differently?<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Prepare 4-minute presentation: walk audience through the build log<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>SHOWCASE: Present your build and build log documentation<br><span class="comp comp-share">Showcase</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write the conclusion of your build log: (1) What did you set out to build? (2) Did it meet your success criteria? (3) What was the most important thing you learned? (4) If you had two more weeks, what would you improve? Write it in a way that a future engineer reading this log could learn from your experience.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Full build log revised — intro, steps, design rationale, failure log, and conclusion all reviewed and refined</label>
+      <label class="check-item"><input type="checkbox"> Document professionally formatted in Google Docs with consistent headings, embedded photos, and page numbers</label>
+      <label class="check-item"><input type="checkbox"> Conclusion written — original goal, success criteria evaluation, key learning, and two-week improvement plan included</label>
+      <label class="check-item"><input type="checkbox"> 4-minute presentation prepared — walk-through of build log sections planned with physical build on hand</label>
+      <label class="check-item"><input type="checkbox"> Showcase presentation delivered — build and illustrated build log document presented for family audience</label>
+    </div>
   </div>
 </div>
   <div class="showcase-box" id="showcase">

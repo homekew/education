@@ -70,6 +70,11 @@
 
     footer.site-footer { background: var(--white); border-top: 1px solid var(--linen-deep); padding: 16px 40px; font-size: 0.75rem; color: var(--ink-muted); margin-top: 40px; }
     @media (max-width: 700px) { nav.site-nav, .page-header, .container, footer.site-footer, .week-nav { padding-left: 20px; padding-right: 20px; } }
+    .checklist { background: var(--linen); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 14px 18px; margin-top: 4px; }
+    .check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 0.86rem; color: var(--ink-soft); cursor: pointer; line-height: 1.5; }
+    .check-item:last-child { margin-bottom: 0; }
+    .check-item input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--terra); width: 15px; height: 15px; }
+    .checklist-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-top: 16px; margin-bottom: 6px; }
 </style>
 </head>
 <body>
@@ -196,36 +201,85 @@
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Intro: what is code? Read accessible history of computing; discuss Turing<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Read article: "What is AI and how does it work?" — annotate for key claims<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Wed</td><td>Write: explain how a Scratch program works to someone who has never seen code<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Open Scratch and explore: build a simple animation or interactive story<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Demo your Scratch animation; explain what each block does<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Explain how a computer program works to someone who has never seen one. Use an analogy from real life (a recipe, a traffic light, a vending machine) to explain the concept of input, process, and output. Write 2 paragraphs in clear, jargon-free language.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Computing history read and Turing's contributions discussed in journal</label>
+      <label class="check-item"><input type="checkbox"> "What is AI and how does it work?" article read and annotated for key claims</label>
+      <label class="check-item"><input type="checkbox"> Writing prompt completed — 2-paragraph explanation of how a program works using a real-life analogy</label>
+      <label class="check-item"><input type="checkbox"> Scratch explored; simple animation or interactive story built</label>
+      <label class="check-item"><input type="checkbox"> Scratch animation demoed; each block's function explained aloud</label>
+    </div>
   </div>
 </div><div class="week-card" id="w2">
   <div class="week-header"><span class="week-num">W2</span><span class="week-title">Code Documentation</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>What is a README? Read examples from real open-source projects<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Writing workshop: clear user documentation — who is the audience? What do they need?<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Plan your Scratch project: write a design spec (goal, audience, features)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Begin building your Scratch project; add comments inside your code blocks<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Pair up: explain your project to a partner using only your written spec<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a design spec for your Scratch project. Include: project title, goal (one sentence), target audience, three main features, and how a user will interact with it. This document should be clear enough that someone else could build it.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> README examples from real open-source projects read and analyzed</label>
+      <label class="check-item"><input type="checkbox"> Writing workshop on user documentation completed — audience identification and need-based writing practiced</label>
+      <label class="check-item"><input type="checkbox"> Scratch project design spec written: title, goal, target audience, three main features, user interaction</label>
+      <label class="check-item"><input type="checkbox"> Scratch project building begun; inline comments added inside code blocks</label>
+      <label class="check-item"><input type="checkbox"> Design spec explained to a partner using only the written document; clarity gaps identified and revised</label>
+    </div>
   </div>
 </div><div class="week-card" id="w3">
   <div class="week-header"><span class="week-num">W3</span><span class="week-title">Claude as a Writing Tool</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Discuss: how does AI like Claude assist (and not replace) writing?<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Use Claude Cowork to help draft and revise a piece of writing — reflect on the process<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Wed</td><td>Write: a reflection on using AI as a writing assistant — what helped, what didn't<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Continue building Scratch project; use Claude to debug or explain error messages<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Share: one thing Claude helped you do better, one thing you had to do yourself<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a reflection on using AI as a writing tool. What did you ask Claude to do? What did it do well? What was wrong or unhelpful? What did you have to change or decide yourself? Be specific — quote at least one thing Claude wrote and explain why you kept, changed, or rejected it.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Discussion completed on how AI assists (and does not replace) writing; key distinctions noted</label>
+      <label class="check-item"><input type="checkbox"> Claude Cowork used to draft and revise a piece of writing; process observed and noted</label>
+      <label class="check-item"><input type="checkbox"> Reflection written on using AI as a writing assistant — what helped, what didn't, with specific quote from Claude included</label>
+      <label class="check-item"><input type="checkbox"> Scratch project continued; Claude used to debug or explain an error message</label>
+      <label class="check-item"><input type="checkbox"> Sharing discussion completed — one thing Claude improved, one thing that required independent judgment</label>
+    </div>
   </div>
 </div><div class="week-card" id="w4">
   <div class="week-header"><span class="week-num">W4</span><span class="week-title">AI Ethics — Entering the Argument</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read: two short op-eds on AI — one pro, one skeptical; identify claims and evidence<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Argument structure: claim, reason, evidence, rebuttal; map both op-eds<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Choose your position on a specific AI question; write a claim + 3 reasons outline<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Research your position: find 2 reliable sources; take notes in Google Docs<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer debate: defend your position against a partner's counter-arguments<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Choose one of these prompts: (A) Should AI be allowed to grade student writing? (B) Should there be an age limit on using AI tools? (C) Does AI make creative work better or worse? Write a clear claim and three reasons with at least one piece of evidence each.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Two AI op-eds read (one pro, one skeptical); claims and evidence identified and annotated</label>
+      <label class="check-item"><input type="checkbox"> Argument structure practiced — claim, reason, evidence, rebuttal mapped for both op-eds</label>
+      <label class="check-item"><input type="checkbox"> Position chosen on a specific AI question; claim + 3 reasons outline written</label>
+      <label class="check-item"><input type="checkbox"> 2 reliable sources found and research notes taken in Google Docs</label>
+      <label class="check-item"><input type="checkbox"> Peer debate completed — position defended against partner's counter-arguments</label>
+    </div>
   </div>
 </div><div class="week-card" id="w5">
   <div class="week-header"><span class="week-num">W5</span><span class="week-title">Writing the Persuasive Essay</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Review essay structure: hook, background, thesis, body paragraphs, counter, conclusion<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Tue</td><td>Draft introduction and thesis for your AI essay<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Draft body paragraphs (3) — each with a clear reason and evidence<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Draft counter-argument paragraph and rebuttal; type full draft in Google Docs<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer review: does the argument flow? Is the evidence convincing?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write the counter-argument paragraph for your essay: fairly state the strongest version of the opposing view, then write your rebuttal explaining why your position is still correct. The best persuasive writers don't avoid the other side — they address it head-on.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Essay structure reviewed — hook, background, thesis, body paragraphs, counter-argument, conclusion</label>
+      <label class="check-item"><input type="checkbox"> Introduction and thesis drafted for AI essay</label>
+      <label class="check-item"><input type="checkbox"> Three body paragraphs drafted — each with a clear reason and supporting evidence</label>
+      <label class="check-item"><input type="checkbox"> Counter-argument paragraph written with strongest opposing view stated, then rebutted; full draft typed in Google Docs</label>
+      <label class="check-item"><input type="checkbox"> Peer review completed — argument flow and evidence strength evaluated; revisions noted</label>
+    </div>
   </div>
 </div><div class="week-card" id="w6">
   <div class="week-header"><span class="week-num">W6</span><span class="week-title">Final Project & Showcase</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Finalize Scratch project; complete code documentation and README<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Tue</td><td>Final revision of AI essay; proofread and check citations<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Wed</td><td>Prepare 5-minute showcase: demo the Scratch project + read key essay passages<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Practice presenting; rehearse live demo of Scratch project<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>SHOWCASE: Live Scratch demo + persuasive essay reading<br><span class="comp comp-share">Showcase</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a conclusion for your AI essay: restate your thesis in new words, summarize your three main reasons, and end with a call to action or a question that leaves the reader thinking. Your last sentence should be the most memorable in the essay.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Scratch project finalized; code documentation and README completed</label>
+      <label class="check-item"><input type="checkbox"> AI essay final revision completed; proofread and citations checked</label>
+      <label class="check-item"><input type="checkbox"> Essay conclusion written — thesis restated in new words, three reasons summarized, memorable closing sentence crafted</label>
+      <label class="check-item"><input type="checkbox"> 5-minute showcase prepared — Scratch demo planned with key essay passages selected to read aloud</label>
+      <label class="check-item"><input type="checkbox"> Presentation rehearsed including live Scratch demo</label>
+      <label class="check-item"><input type="checkbox"> Showcase delivered — live Scratch project demo and persuasive essay reading presented</label>
+    </div>
   </div>
 </div>
   <div class="showcase-box" id="showcase">

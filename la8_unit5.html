@@ -70,6 +70,11 @@
 
     footer.site-footer { background: var(--white); border-top: 1px solid var(--linen-deep); padding: 16px 40px; font-size: 0.75rem; color: var(--ink-muted); margin-top: 40px; }
     @media (max-width: 700px) { nav.site-nav, .page-header, .container, footer.site-footer, .week-nav { padding-left: 20px; padding-right: 20px; } }
+    .checklist { background: var(--linen); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 14px 18px; margin-top: 4px; }
+    .check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 0.86rem; color: var(--ink-soft); cursor: pointer; line-height: 1.5; }
+    .check-item:last-child { margin-bottom: 0; }
+    .check-item input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--terra); width: 15px; height: 15px; }
+    .checklist-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-top: 16px; margin-bottom: 6px; }
 </style>
 </head>
 <body>
@@ -196,36 +201,85 @@
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>What makes a good research question? Too broad vs. too narrow — examples<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Generate 10 questions about topics you genuinely care about (music, tech, engineering, etc.)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Narrow to 1 question; write a 150-word "why this matters to me" statement<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Initial keyword search in Google Scholar; evaluate first 5 sources found<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Share questions; peer feedback on researchability and scope<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write your research question and a "motivation statement": Why does this question matter? What do you already think the answer might be? What would you need to learn to answer it properly? Aim for a question that is specific enough to answer in 5 pages but important enough to matter.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Good research question criteria studied — too-broad and too-narrow examples analyzed</label>
+      <label class="check-item"><input type="checkbox"> 10 genuine research questions generated across topics of interest</label>
+      <label class="check-item"><input type="checkbox"> One question selected; 150-word "why this matters to me" motivation statement written</label>
+      <label class="check-item"><input type="checkbox"> Initial keyword search done in Google Scholar; first 5 sources found and evaluated</label>
+      <label class="check-item"><input type="checkbox"> Research question shared with peer; feedback on researchability and scope received and considered</label>
+    </div>
   </div>
 </div><div class="week-card" id="w2">
   <div class="week-header"><span class="week-num">W2</span><span class="week-title">Source Evaluation</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>CRAAP test and lateral reading: how to evaluate source credibility<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Find and annotate 5 sources; rate each on reliability and relevance<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write 5 annotated bibliography entries (1 paragraph each)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Organize sources in Google Docs; create a source tracking sheet with notes<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer audit: evaluate each other's sources using the criteria learned<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write annotated bibliography entries for your five best sources. Each entry: full citation (MLA format) + a 3-sentence annotation covering (1) what the source says, (2) how reliable it is and why, (3) how you plan to use it in your paper.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> CRAAP test and lateral reading techniques learned for evaluating source credibility</label>
+      <label class="check-item"><input type="checkbox"> 5 sources found, annotated, and rated on reliability and relevance</label>
+      <label class="check-item"><input type="checkbox"> 5 annotated bibliography entries written — MLA citation + 3-sentence annotation for each</label>
+      <label class="check-item"><input type="checkbox"> Sources organized in Google Docs with a source tracking sheet and notes</label>
+      <label class="check-item"><input type="checkbox"> Peer audit of sources completed — credibility of each source evaluated using learned criteria</label>
+    </div>
   </div>
 </div><div class="week-card" id="w3">
   <div class="week-header"><span class="week-num">W3</span><span class="week-title">Research Notes & Outline</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>How to take research notes without plagiarizing — paraphrase vs. quote<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Take organized notes from your 5 sources; use a column system (source / fact / connection)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a detailed paper outline: thesis + 3 main sections + evidence map<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type full outline in Google Docs; build a working bibliography<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Outline workshop: test the logic — does each section support the thesis?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write your thesis statement — one sentence that answers your research question and makes an arguable claim. Then write topic sentences for your three body sections — each should advance the thesis, not just describe a subtopic. Show the logical thread from intro to conclusion.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Note-taking skills practiced — paraphrase vs. direct quote distinguished; plagiarism avoidance reviewed</label>
+      <label class="check-item"><input type="checkbox"> Organized notes taken from all 5 sources using a source/fact/connection column system</label>
+      <label class="check-item"><input type="checkbox"> Thesis statement written — one arguable claim answering the research question</label>
+      <label class="check-item"><input type="checkbox"> Full paper outline written with thesis, 3 main sections, evidence map, and topic sentences; typed in Google Docs with working bibliography</label>
+      <label class="check-item"><input type="checkbox"> Outline logic tested in workshop — each section checked against the thesis</label>
+    </div>
   </div>
 </div><div class="week-card" id="w4">
   <div class="week-header"><span class="week-num">W4</span><span class="week-title">Drafting the Paper</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Write section 1 (introduction + background); aim for 300 words<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Tue</td><td>Write section 2 (first main point + evidence); integrate quotes properly<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write section 3 (second main point) and section 4 (third point + counterpoint)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type full draft in Google Docs; format with MLA heading, header, and citations<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Rough draft peer review: focus on thesis clarity and evidence use<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Practice integrating a quotation: find one quote from your research that you want to use. Write three versions of the same sentence: (1) block quote with no introduction, (2) integrated quote with context, (3) paraphrase. Which version is most powerful in context, and why?</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Introduction and background section drafted (~300 words)</label>
+      <label class="check-item"><input type="checkbox"> First body section drafted with main point and evidence; quote integrated with proper context</label>
+      <label class="check-item"><input type="checkbox"> Second and third body sections drafted, including counterpoint paragraph</label>
+      <label class="check-item"><input type="checkbox"> Full rough draft typed in Google Docs with MLA heading, header, and in-text citations</label>
+      <label class="check-item"><input type="checkbox"> Peer review done — thesis clarity and evidence use evaluated; revision notes recorded</label>
+    </div>
   </div>
 </div><div class="week-card" id="w5">
   <div class="week-header"><span class="week-num">W5</span><span class="week-title">Revision & Citation</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read your draft aloud — mark every sentence that sounds unclear or choppy<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Tue</td><td>Revision workshop: transitions, paragraph unity, sentence variety<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Final revision: check thesis is answered, all evidence cited, conclusion is strong<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Format Works Cited page in MLA; final proofread in Google Docs<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer final check: does the paper answer the research question clearly?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write your conclusion: restate your thesis in new language, summarize the three main points in 2–3 sentences, and end with a "so what" — why does this matter beyond this paper? What would you research next if you had more time? The conclusion should feel like an arrival, not a summary list.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Draft read aloud; unclear or choppy sentences marked and revised</label>
+      <label class="check-item"><input type="checkbox"> Revision workshop completed — transitions, paragraph unity, and sentence variety improved</label>
+      <label class="check-item"><input type="checkbox"> Final revision done — thesis answered, all evidence cited, conclusion strong; conclusion written with "so what" and next-research question</label>
+      <label class="check-item"><input type="checkbox"> Works Cited page formatted in MLA; paper fully proofread in Google Docs</label>
+      <label class="check-item"><input type="checkbox"> Final peer check completed — paper confirmed to answer the research question clearly</label>
+    </div>
   </div>
 </div><div class="week-card" id="w6">
   <div class="week-header"><span class="week-num">W6</span><span class="week-title">Oral Presentation & Showcase</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Build a 5-slide visual to accompany oral presentation (not to replace it)<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Tue</td><td>Write speaker notes and practice talking from notes — not reading<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Practice full 6-minute presentation; time it; cut or expand as needed<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Thu</td><td>Final paper submitted; do one more presentation rehearsal<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>SHOWCASE: Oral presentation of research paper<br><span class="comp comp-share">Showcase</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a 100-word abstract for your research paper: one sentence on your question, one on your method, two on your main findings, one on your conclusion. An abstract should make someone want to read the full paper. This is also good practice for summarizing complex work in a few sentences.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> 5-slide visual built in Google Slides to accompany oral presentation (visual supports, not replaces, speech)</label>
+      <label class="check-item"><input type="checkbox"> Speaker notes written for each slide; presentation practiced talking from notes rather than reading</label>
+      <label class="check-item"><input type="checkbox"> 100-word paper abstract written — question, method, main findings, and conclusion each addressed</label>
+      <label class="check-item"><input type="checkbox"> Full 6-minute presentation practiced and timed; cut or expanded as needed</label>
+      <label class="check-item"><input type="checkbox"> Final paper submitted; one final presentation rehearsal completed</label>
+      <label class="check-item"><input type="checkbox"> Showcase delivered — oral research presentation given for family and invited guest</label>
+    </div>
   </div>
 </div>
   <div class="showcase-box" id="showcase">

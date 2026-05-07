@@ -70,6 +70,11 @@
 
     footer.site-footer { background: var(--white); border-top: 1px solid var(--linen-deep); padding: 16px 40px; font-size: 0.75rem; color: var(--ink-muted); margin-top: 40px; }
     @media (max-width: 700px) { nav.site-nav, .page-header, .container, footer.site-footer, .week-nav { padding-left: 20px; padding-right: 20px; } }
+    .checklist { background: var(--linen); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 14px 18px; margin-top: 4px; }
+    .check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 0.86rem; color: var(--ink-soft); cursor: pointer; line-height: 1.5; }
+    .check-item:last-child { margin-bottom: 0; }
+    .check-item input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--terra); width: 15px; height: 15px; }
+    .checklist-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-top: 16px; margin-bottom: 6px; }
 </style>
 </head>
 <body>
@@ -196,36 +201,85 @@
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Intro: music journalism — read 2 album reviews; what makes music writing vivid?<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Active listening exercise: describe a piece of music in writing without using music words<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a 200-word description of a piece you know well — piano or electronic<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type and format your description; experiment with font and layout to match the music's mood<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Read descriptions aloud; can others identify the piece? Discuss word choices<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Choose a piece of music you know well — a piano piece you play or an electronic track you've made or love. Describe it in 200 words using only non-musical language. No words like "melody," "beat," or "chord." Use color, texture, temperature, movement, and emotion instead.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Two music journalism album reviews read; journal entry written on what makes music writing vivid</label>
+      <label class="check-item"><input type="checkbox"> Active listening exercise completed — piece described without using any music terminology</label>
+      <label class="check-item"><input type="checkbox"> 200-word non-musical description written for a familiar piano or electronic piece</label>
+      <label class="check-item"><input type="checkbox"> Description typed and formatted in Google Docs; font and layout chosen to match the music's mood</label>
+      <label class="check-item"><input type="checkbox"> Description read aloud; word choice discussed and at least one revision made based on peer response</label>
+    </div>
   </div>
 </div><div class="week-card" id="w2">
   <div class="week-header"><span class="week-num">W2</span><span class="week-title">Lyric Writing</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Analyze lyrics as poetry: read Bob Dylan and Kendrick Lamar side by side<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Poetic devices: rhyme, meter, repetition, imagery in song lyrics<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a draft of original lyrics: 2 verses and a chorus on any theme<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type lyrics in Google Docs; record yourself saying them over a beat in Chrome Music Lab<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Share lyrics; workshop — which lines land? Which feel forced?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a complete set of lyrics: two verses (8 lines each) and a chorus (4–6 lines). Choose a specific emotion or moment — not a general theme. The best lyrics are specific: they name the street, the color of the light, the exact sound. Revise until every line earns its place.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Bob Dylan and Kendrick Lamar lyrics analyzed side by side; differences in style and imagery noted</label>
+      <label class="check-item"><input type="checkbox"> Poetic devices studied in song lyrics — rhyme, meter, repetition, and imagery practiced in workshop</label>
+      <label class="check-item"><input type="checkbox"> Full lyric draft written: 2 verses (8 lines each) and a chorus (4–6 lines) built around a specific moment or emotion</label>
+      <label class="check-item"><input type="checkbox"> Lyrics typed in Google Docs and recorded over a Chrome Music Lab beat</label>
+      <label class="check-item"><input type="checkbox"> Peer lyric workshop done — strongest lines identified and forced or vague lines revised</label>
+    </div>
   </div>
 </div><div class="week-card" id="w3">
   <div class="week-header"><span class="week-num">W3</span><span class="week-title">Music Criticism</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read three professional album reviews; identify structure: context, description, judgment<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Writing workshop: how to express an opinion about art without saying "I liked it"<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a 300-word review of an album or piece — position + evidence from the music itself<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Revise and format review in Google Docs; add a star rating with written justification<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer workshop: does the review convince you to listen (or not)?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a 300-word review of a piece of music. Your first sentence should be your overall judgment. Then use the rest of the review to back it up with specific evidence from the music — moments, instruments, words. End with a recommendation (to whom, and why).</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Three professional album reviews read; context, description, and judgment structure mapped</label>
+      <label class="check-item"><input type="checkbox"> Writing workshop completed — opinion expressed about art without using "I liked it"</label>
+      <label class="check-item"><input type="checkbox"> 300-word review written for an album or piece — overall judgment as opening sentence, evidence from the music throughout</label>
+      <label class="check-item"><input type="checkbox"> Review revised and formatted in Google Docs with star rating and written justification added</label>
+      <label class="check-item"><input type="checkbox"> Peer workshop completed — reviewer's argument evaluated for convincingness</label>
+    </div>
   </div>
 </div><div class="week-card" id="w4">
   <div class="week-header"><span class="week-num">W4</span><span class="week-title">Liner Notes & Program Writing</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>What are liner notes? Read examples from physical albums and digital releases<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Writing workshop: program notes for a concert — how to explain music to a listener<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Begin original composition in GarageBand or Chrome Music Lab<br><span class="comp comp-make">Kinesthetic</span></td></tr><tr><td class="day">Thu</td><td>Continue composition; write a first draft of program notes for your piece<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Fri</td><td>Play composition for a partner; do the liner notes match what they heard?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write liner notes for your original composition (or a piano piece you play). Liner notes should tell the listener: (1) what inspired the piece, (2) what emotions or images you were reaching for, (3) any technical choices you made (tempo, key, sounds) and why. Write for an audience who loves music but doesn't read sheet music.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Liner note examples from physical albums and digital releases read and analyzed</label>
+      <label class="check-item"><input type="checkbox"> Program notes writing workshop completed — explaining music to a listener who isn't a musician practiced</label>
+      <label class="check-item"><input type="checkbox"> Original composition begun in GarageBand or Chrome Music Lab</label>
+      <label class="check-item"><input type="checkbox"> First draft of program notes written for own composition — inspiration, emotional intent, and technical choices covered</label>
+      <label class="check-item"><input type="checkbox"> Composition played for partner; liner notes checked against what partner actually heard; revisions made</label>
+    </div>
   </div>
 </div><div class="week-card" id="w5">
   <div class="week-header"><span class="week-num">W5</span><span class="week-title">The Profile: Writing About a Musician</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read: two musician profiles from music journalism (Rolling Stone / NPR Music style)<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Profile structure: scene-setting, quotes, narrative, argument<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a profile of a musician you admire — real or fictional<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type and format the profile; include a "listening list" sidebar<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer review: does the profile make you want to listen to this artist?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a 400-word profile of a musician — a composer, a producer, a band, anyone whose music matters to you. Open with a scene that puts the reader in a moment. Weave in background and musical description. End with what makes this artist unique or important. Avoid biography-report style — write with a point of view.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> Two musician profiles from music journalism read; scene-setting, quotes, narrative, and argument structure mapped</label>
+      <label class="check-item"><input type="checkbox"> Profile structure workshop completed — distinctions between biography-report style and point-of-view profile practiced</label>
+      <label class="check-item"><input type="checkbox"> 400-word musician profile written — opens with a scene, weaves in background and description, ends with what makes the artist unique</label>
+      <label class="check-item"><input type="checkbox"> Profile typed and formatted in Google Docs with a "listening list" sidebar included</label>
+      <label class="check-item"><input type="checkbox"> Peer review completed — profile evaluated for whether it makes the reader want to listen to the artist</label>
+    </div>
   </div>
 </div><div class="week-card" id="w6">
   <div class="week-header"><span class="week-num">W6</span><span class="week-title">Portfolio & Showcase</span></div>
   <div class="week-body">
     <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Compile music writing portfolio: description, lyrics, review, liner notes, profile<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Tue</td><td>Final revision of all five pieces; format as a cohesive PDF zine<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Wed</td><td>Finalize original composition; prepare 3-minute showcase performance/playback<br><span class="comp comp-make">Kinesthetic</span></td></tr><tr><td class="day">Thu</td><td>Rehearse showcase: play or play back composition + read one portfolio piece<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>SHOWCASE: Music performance + writing portfolio presentation<br><span class="comp comp-share">Showcase</span></td></tr></tbody></table>
     <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write an introduction for your writing portfolio — 150 words that explain what writing about music means to you, what you discovered about your own listening or playing by putting it into words. This is your voice, your curation, your argument for why music writing matters.</p></div>
+    <div class="checklist-label">✅ Weekly Checklist</div>
+    <div class="checklist">
+      <label class="check-item"><input type="checkbox"> All five portfolio pieces compiled: sound description, lyrics, album review, liner notes, and musician profile</label>
+      <label class="check-item"><input type="checkbox"> Final revision of all five pieces completed; formatted as a cohesive PDF zine</label>
+      <label class="check-item"><input type="checkbox"> 150-word portfolio introduction written — personal reflection on what writing about music revealed</label>
+      <label class="check-item"><input type="checkbox"> Original composition finalized; 3-minute showcase performance or playback prepared</label>
+      <label class="check-item"><input type="checkbox"> Showcase rehearsed — composition performance and one portfolio piece selected for reading</label>
+      <label class="check-item"><input type="checkbox"> Showcase delivered — music performance and writing portfolio presented for audience</label>
+    </div>
   </div>
 </div>
   <div class="showcase-box" id="showcase">
