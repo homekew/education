@@ -34,9 +34,6 @@
     .week-nav .sep { color: var(--linen-deep); font-size: 0.75rem; }
 
     .container { max-width: 1060px; margin: 0 auto; padding: 0 40px; }
-    .section { padding: 36px 0 20px; }
-    .section-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: var(--ink); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--linen-deep); }
-
     .overview-strip { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 20px 24px; margin: 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
     .ov-item .ov-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
     .ov-item .ov-val { font-size: 0.9rem; color: var(--ink); line-height: 1.5; }
@@ -47,21 +44,33 @@
     .week-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); }
     .week-body { padding: 20px 24px; }
 
-    table.daily { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin-bottom: 16px; }
-    table.daily th { background: var(--linen-dark); color: var(--ink-soft); font-weight: 600; font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 12px; text-align: left; }
-    table.daily td { padding: 9px 12px; border-bottom: 1px solid var(--linen-dark); vertical-align: top; line-height: 1.5; }
-    table.daily tr:last-child td { border-bottom: none; }
-    table.daily tr:nth-child(even) td { background: #faf9f6; }
-    .day { font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
-    .comp { font-size: 0.72rem; display: inline-block; padding: 1px 7px; border-radius: 3px; margin-top: 3px; white-space: nowrap; }
+    .days-list { margin-bottom: 16px; }
+    .day-accordion { border: 1px solid var(--linen-deep); border-radius: 8px; overflow: hidden; margin-bottom: 7px; }
+    .day-row { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; background: var(--white); transition: background 0.15s; user-select: none; }
+    .day-row:hover { background: var(--linen); }
+    .day-row.open { background: var(--sky-bg); }
+    .day-name { font-weight: 700; color: var(--ink-soft); min-width: 40px; font-size: 0.82rem; flex-shrink: 0; }
+    .day-summary { flex: 1; font-size: 0.83rem; color: var(--ink); line-height: 1.4; }
+    .comp { font-size: 0.71rem; display: inline-block; padding: 2px 7px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
     .comp-write { background: var(--terra-bg); color: var(--terra); }
     .comp-read  { background: var(--sage-bg); color: #7a6e1a; }
     .comp-make  { background: var(--sky-bg); color: #3a6a7a; }
     .comp-share { background: var(--linen-deep); color: var(--ink-soft); }
+    .day-arrow { color: var(--ink-muted); font-size: 0.75rem; transition: transform 0.2s; flex-shrink: 0; }
+    .day-row.open .day-arrow { transform: rotate(180deg); }
+    .day-detail { display: none; padding: 14px 18px 16px 18px; background: var(--sky-bg); border-top: 1px solid var(--linen-deep); }
+    .step-list { list-style: none; padding: 0; margin: 0 0 10px 0; counter-reset: step-counter; }
+    .step-list li { counter-increment: step-counter; padding-left: 28px; position: relative; margin-bottom: 8px; font-size: 0.83rem; color: var(--ink); line-height: 1.5; }
+    .step-list li::before { content: counter(step-counter) "."; position: absolute; left: 0; font-weight: 700; color: var(--sky); font-size: 0.8rem; top: 1px; }
+    .talk-tip { background: var(--sage-bg); border-left: 3px solid var(--sage); border-radius: 0 5px 5px 0; padding: 7px 12px; margin: 8px 0; font-size: 0.8rem; color: #5c5210; line-height: 1.5; }
+    .done-when { font-size: 0.78rem; font-weight: 600; color: var(--terra); border-top: 1px solid var(--linen-deep); padding-top: 9px; margin-top: 10px; }
 
     .prompt-box { background: var(--sage-bg); border: 1px solid var(--sage-soft); border-radius: 6px; padding: 14px 18px; margin-top: 12px; }
-    .prompt-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-bottom: 6px; }
-    .prompt-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+    .prompt-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-bottom: 8px; }
+    .prompt-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 6px; }
+    .prompt-box p:last-child { margin-bottom: 0; }
+    .prompt-starter { font-style: italic; }
+    .prompt-length { font-size: 0.78rem; font-weight: 600; color: #7a6e1a; }
 
     .showcase-box { background: var(--terra-bg); border: 1px solid var(--terra-soft); border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
     .showcase-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--terra); margin-bottom: 8px; }
@@ -75,81 +84,22 @@
     .check-item:last-child { margin-bottom: 0; }
     .check-item input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--terra); width: 15px; height: 15px; }
     .checklist-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-top: 16px; margin-bottom: 6px; }
-</style>
+  </style>
 </head>
 <body>
 <!-- PIN GATE -->
 <style>
-  #pin-gate {
-    position: fixed; inset: 0; z-index: 9999;
-    background: #FAF7F1;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Epilogue', sans-serif;
-  }
+  #pin-gate { position: fixed; inset: 0; z-index: 9999; background: #FAF7F1; display: flex; align-items: center; justify-content: center; font-family: 'Epilogue', sans-serif; }
   #pin-gate.hidden { display: none; }
-  .pin-box {
-    text-align: center;
-    background: #fff;
-    border: 1px solid #DDD4C4;
-    border-radius: 12px;
-    padding: 48px 40px 40px;
-    width: 320px;
-    box-shadow: 0 4px 32px rgba(42,33,24,0.08);
-  }
-  .pin-logo {
-    width: 10px; height: 10px;
-    background: #ff1e3c;
-    border-radius: 50%;
-    display: inline-block;
-    margin-bottom: 16px;
-  }
-  .pin-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #2A2118;
-    margin-bottom: 6px;
-  }
-  .pin-sub {
-    font-size: 0.8rem;
-    color: #9A8F81;
-    margin-bottom: 28px;
-  }
-  #pin-input {
-    width: 100%;
-    padding: 11px 14px;
-    font-size: 1.4rem;
-    letter-spacing: 8px;
-    text-align: center;
-    border: 1px solid #DDD4C4;
-    border-radius: 6px;
-    background: #FAF7F1;
-    color: #2A2118;
-    font-family: 'Epilogue', sans-serif;
-    outline: none;
-    margin-bottom: 14px;
-    transition: border-color 0.15s;
-  }
+  .pin-box { text-align: center; background: #fff; border: 1px solid #DDD4C4; border-radius: 12px; padding: 48px 40px 40px; width: 320px; box-shadow: 0 4px 32px rgba(42,33,24,0.08); }
+  .pin-logo { width: 10px; height: 10px; background: #ff1e3c; border-radius: 50%; display: inline-block; margin-bottom: 16px; }
+  .pin-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: #2A2118; margin-bottom: 6px; }
+  .pin-sub { font-size: 0.8rem; color: #9A8F81; margin-bottom: 28px; }
+  #pin-input { width: 100%; padding: 11px 14px; font-size: 1.4rem; letter-spacing: 8px; text-align: center; border: 1px solid #DDD4C4; border-radius: 6px; background: #FAF7F1; color: #2A2118; font-family: 'Epilogue', sans-serif; outline: none; margin-bottom: 14px; transition: border-color 0.15s; }
   #pin-input:focus { border-color: #d2c35a; }
   #pin-input.error { border-color: #ff1e3c; animation: shake 0.3s; }
-  @keyframes shake {
-    0%,100% { transform: translateX(0); }
-    25% { transform: translateX(-6px); }
-    75% { transform: translateX(6px); }
-  }
-  #pin-btn {
-    width: 100%;
-    padding: 10px;
-    background: #2A2118;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-family: 'Epilogue', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
+  @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  #pin-btn { width: 100%; padding: 10px; background: #2A2118; color: #fff; border: none; border-radius: 6px; font-family: 'Epilogue', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: background 0.15s; }
   #pin-btn:hover { background: #5C4F3D; }
 </style>
 <div id="pin-gate">
@@ -168,14 +118,8 @@
     var btn = document.getElementById('pin-btn');
     if (sessionStorage.getItem('ck_auth') === '1') { gate.classList.add('hidden'); return; }
     function check() {
-      if (input.value === '1899') {
-        sessionStorage.setItem('ck_auth', '1');
-        gate.classList.add('hidden');
-      } else {
-        input.classList.add('error');
-        input.value = '';
-        setTimeout(function(){ input.classList.remove('error'); }, 400);
-      }
+      if (input.value === '1899') { sessionStorage.setItem('ck_auth', '1'); gate.classList.add('hidden'); }
+      else { input.classList.add('error'); input.value = ''; setTimeout(function(){ input.classList.remove('error'); }, 400); }
     }
     btn.addEventListener('click', check);
     input.addEventListener('keydown', function(e){ if (e.key === 'Enter') check(); });
@@ -195,99 +139,746 @@
 </div>
 <nav class="week-nav"><a href="#overview">Overview</a><span class="sep">›</span><a href="#w1">Week 1</a> <a href="#w2">Week 2</a> <a href="#w3">Week 3</a> <a href="#w4">Week 4</a> <a href="#w5">Week 5</a> <a href="#w6">Week 6</a><span class="sep">›</span><a href="#showcase">Showcase</a></nav>
 <div class="container">
-  <div class="overview-strip" id="overview"><div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">25–30 (February–March)</div></div><div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">Research articles + primary sources (topic-dependent)</div></div><div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Research · Expository · Academic</div></div><div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">Google Docs · Google Scholar / library databases</div></div><div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">5-page research paper + oral presentation</div></div><div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR W.8.7 · W.8.8 · W.8.9 · RI.8.6</div></div></div>
+  <div class="overview-strip" id="overview">
+    <div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">25–30 (February–March)</div></div>
+    <div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">Research articles + primary sources (topic-dependent)</div></div>
+    <div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Research · Expository · Academic</div></div>
+    <div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">Google Docs · Google Scholar / library databases</div></div>
+    <div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">Research paper + oral presentation</div></div>
+    <div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR W.8.7 · W.8.8 · W.8.9 · RI.8.6</div></div>
+  </div>
+
+  <!-- WEEK 1 -->
   <div class="week-card" id="w1">
-  <div class="week-header"><span class="week-num">W1</span><span class="week-title">Finding Your Question</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>What makes a good research question? Too broad vs. too narrow — examples<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Generate 10 questions about topics you genuinely care about (music, tech, engineering, etc.)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Narrow to 1 question; write a 150-word "why this matters to me" statement<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Initial keyword search in Google Scholar; evaluate first 5 sources found<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Share questions; peer feedback on researchability and scope<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write your research question and a "motivation statement": Why does this question matter? What do you already think the answer might be? What would you need to learn to answer it properly? Aim for a question that is specific enough to answer in 5 pages but important enough to matter.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Good research question criteria studied — too-broad and too-narrow examples analyzed</label>
-      <label class="check-item"><input type="checkbox"> 10 genuine research questions generated across topics of interest</label>
-      <label class="check-item"><input type="checkbox"> One question selected; 150-word "why this matters to me" motivation statement written</label>
-      <label class="check-item"><input type="checkbox"> Initial keyword search done in Google Scholar; first 5 sources found and evaluated</label>
-      <label class="check-item"><input type="checkbox"> Research question shared with peer; feedback on researchability and scope received and considered</label>
+    <div class="week-header"><span class="week-num">W1</span><span class="week-title">Finding Your Question</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">What makes a good research question? Too broad vs. too narrow</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Mom will show you three example research questions: one too broad, one too narrow, one just right.</li>
+              <li>Read all three and try to explain why one of them is the "just right" version.</li>
+              <li>Try narrowing the broad one — make it more specific.</li>
+              <li>Try broadening the narrow one — make it answerable in more than one sentence.</li>
+            </ol>
+            <div class="talk-tip">💬 "This question is too broad because… This one is too narrow because… A good research question is specific enough to answer in 5 pages but important enough to matter."</div>
+            <div class="done-when">✓ Done when: you've explained the differences and practiced narrowing or broadening two example questions.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Generate 10 questions about things you genuinely care about</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs and set a timer for 10 minutes.</li>
+              <li>Write 10 questions about things you actually wonder about — music, gaming, coding, engineering, sports, history, science, anything.</li>
+              <li>Don't filter yourself — write whatever comes to mind, even if it seems too weird or too simple.</li>
+              <li>Mark your three favorites with a star.</li>
+            </ol>
+            <div class="talk-tip">💬 Good research starts with real curiosity — "I've always wondered why…" or "I never understood how…" or "Why does [thing] work that way?"</div>
+            <div class="done-when">✓ Done when: 10 questions are in Google Docs, with three starred as favorites.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Narrow to one question; write a "why this matters to me" statement</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Look at your three starred questions from yesterday.</li>
+              <li>Talk with mom about which one has the most to research — which one can you find real sources about?</li>
+              <li>Pick one question as your research question for the unit.</li>
+              <li>Write 2–3 sentences: why does this question matter to you personally? What do you already think the answer might be?</li>
+            </ol>
+            <div class="talk-tip">💬 "I chose this question because I've always wondered… My gut says the answer is probably… but I want to actually find out if…"</div>
+            <div class="done-when">✓ Done when: one question chosen and a 2–3 sentence motivation statement written.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Initial search in Google Scholar — evaluate the first 5 sources you find</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Scholar (scholar.google.com).</li>
+              <li>Type in 2–3 keywords from your research question.</li>
+              <li>Look at the first 5 results — just the titles and abstracts (the summary at the top).</li>
+              <li>For each one, write: is this relevant to your question? Yes, kind of, or no?</li>
+              <li>Note any that look promising to read more later.</li>
+            </ol>
+            <div class="talk-tip">💬 You don't need to read the full articles yet — just decide if each one is in the right ballpark for your question.</div>
+            <div class="done-when">✓ Done when: 5 search results evaluated and notes on relevance written in Google Docs.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Share your question — feedback on whether it's researchable</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Tell mom your research question and your motivation statement.</li>
+              <li>Ask her: is this question specific enough to answer, or too vague?</li>
+              <li>Ask: does it seem like there would be real sources about this?</li>
+              <li>Based on her feedback, write a revised version of your question if it needs adjusting.</li>
+            </ol>
+            <div class="talk-tip">💬 "My question is… I chose it because… Do you think this is specific enough to research? Is there anything you'd change about it?"</div>
+            <div class="done-when">✓ Done when: question shared, feedback received, and final version of question written down.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Write your research question and motivation statement: Why does this question matter to you? What do you already think the answer might be? What would you need to learn to answer it properly?</p>
+        <p class="prompt-starter">"My research question is: [question]. I chose this because I've always wondered… My hypothesis is that… To really answer this, I'd need to find out…"</p>
+        <p class="prompt-length">Length: 3–5 sentences. Be honest about why you actually care about this — that's what makes research worth doing.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Good vs. bad research question examples analyzed; one narrowed and one broadened</label>
+        <label class="check-item"><input type="checkbox"> 10 research questions generated; three starred as favorites</label>
+        <label class="check-item"><input type="checkbox"> One question chosen; 2–3 sentence motivation statement written</label>
+        <label class="check-item"><input type="checkbox"> Google Scholar search done; 5 results evaluated for relevance</label>
+        <label class="check-item"><input type="checkbox"> Question shared with mom; final version written after feedback</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w2">
-  <div class="week-header"><span class="week-num">W2</span><span class="week-title">Source Evaluation</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>CRAAP test and lateral reading: how to evaluate source credibility<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Find and annotate 5 sources; rate each on reliability and relevance<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write 5 annotated bibliography entries (1 paragraph each)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Organize sources in Google Docs; create a source tracking sheet with notes<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer audit: evaluate each other's sources using the criteria learned<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write annotated bibliography entries for your five best sources. Each entry: full citation (MLA format) + a 3-sentence annotation covering (1) what the source says, (2) how reliable it is and why, (3) how you plan to use it in your paper.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> CRAAP test and lateral reading techniques learned for evaluating source credibility</label>
-      <label class="check-item"><input type="checkbox"> 5 sources found, annotated, and rated on reliability and relevance</label>
-      <label class="check-item"><input type="checkbox"> 5 annotated bibliography entries written — MLA citation + 3-sentence annotation for each</label>
-      <label class="check-item"><input type="checkbox"> Sources organized in Google Docs with a source tracking sheet and notes</label>
-      <label class="check-item"><input type="checkbox"> Peer audit of sources completed — credibility of each source evaluated using learned criteria</label>
+
+  <!-- WEEK 2 -->
+  <div class="week-card" id="w2">
+    <div class="week-header"><span class="week-num">W2</span><span class="week-title">Source Evaluation</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">How to evaluate sources — CRAAP test and lateral reading</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Mom will explain the CRAAP test: Currency, Relevance, Authority, Accuracy, Purpose.</li>
+              <li>Apply each letter to one example source she shows you — is it current? Who wrote it? What's their goal?</li>
+              <li>Learn "lateral reading": instead of reading the source deeply, search the author or publication to see what others say about it.</li>
+              <li>Practice on one new source: do a quick lateral read and report back.</li>
+            </ol>
+            <div class="talk-tip">💬 "This source is [good/questionable] because… The author's credentials are… When I searched the publication, I found…"</div>
+            <div class="done-when">✓ Done when: CRAAP test and lateral reading both practiced on one real example.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Find and rate 5 sources on your research question</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Go back to Google Scholar or a library database and search for your topic.</li>
+              <li>Find 5 sources that look relevant to your research question.</li>
+              <li>For each one, write the title, author, and year.</li>
+              <li>Rate each one: High reliability / Medium reliability / Uncertain — and write one sentence explaining why.</li>
+            </ol>
+            <div class="talk-tip">💬 You don't have to read the whole thing — just enough to judge the author, publisher, and what it claims.</div>
+            <div class="done-when">✓ Done when: 5 sources listed with reliability ratings and one-sentence explanations in Google Docs.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write 5 annotated bibliography entries — citation + 3-sentence annotation each</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs and start your annotated bibliography.</li>
+              <li>For each of your 5 sources, write the MLA citation at the top (mom can help with the format).</li>
+              <li>Under the citation, write 3 sentences: (1) what the source says, (2) how reliable it is and why, (3) how you plan to use it in your paper.</li>
+              <li>That's it — 3 sentences per source, no more needed.</li>
+            </ol>
+            <div class="talk-tip">💬 "This source argues that… I consider it [reliable/questionable] because… In my paper, I'll use it to support my point about…"</div>
+            <div class="done-when">✓ Done when: all 5 annotated bibliography entries are written — citation + 3 sentences each.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Organize sources in Google Docs; create a source tracking sheet</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Create a simple table in Google Docs: three columns — Source / Key Fact / How I'll Use It.</li>
+              <li>Fill in one row for each of your 5 sources.</li>
+              <li>This tracking sheet will save you time when you write the actual paper.</li>
+              <li>Save the document — you'll need it in Weeks 3–4.</li>
+            </ol>
+            <div class="talk-tip">💬 A tracking sheet means you never have to re-read a source just to remember what it said — the key fact is right there.</div>
+            <div class="done-when">✓ Done when: source tracking table is complete with all 5 sources filled in.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Peer audit — evaluate each other's sources using the criteria</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Share your annotated bibliography with mom.</li>
+              <li>She'll pick one of your sources and apply the CRAAP test herself.</li>
+              <li>Compare your rating to hers — do you agree?</li>
+              <li>If she flags any concerns about a source, decide whether to keep it, replace it, or use it more carefully.</li>
+            </ol>
+            <div class="talk-tip">💬 Getting a second opinion on sources is what real researchers do — it catches problems you missed because you were focused on the content.</div>
+            <div class="done-when">✓ Done when: peer audit done on at least one source and any flags discussed and resolved.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Write annotated bibliography entries for your five best sources. Each entry: MLA citation + 3-sentence annotation covering (1) what it says, (2) how reliable it is, (3) how you'll use it.</p>
+        <p class="prompt-starter">"[Full MLA citation]. This source argues that… I consider it reliable because… In my paper, I plan to use it to…"</p>
+        <p class="prompt-length">Length: 3 sentences per source × 5 sources = 15 sentences total.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> CRAAP test and lateral reading learned and practiced on one example</label>
+        <label class="check-item"><input type="checkbox"> 5 sources found and rated with one-sentence reliability explanations</label>
+        <label class="check-item"><input type="checkbox"> 5 annotated bibliography entries written: MLA citation + 3-sentence annotation each</label>
+        <label class="check-item"><input type="checkbox"> Source tracking table created: source / key fact / how I'll use it</label>
+        <label class="check-item"><input type="checkbox"> Peer audit done; any flagged sources discussed and resolved</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w3">
-  <div class="week-header"><span class="week-num">W3</span><span class="week-title">Research Notes & Outline</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>How to take research notes without plagiarizing — paraphrase vs. quote<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Take organized notes from your 5 sources; use a column system (source / fact / connection)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a detailed paper outline: thesis + 3 main sections + evidence map<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type full outline in Google Docs; build a working bibliography<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Outline workshop: test the logic — does each section support the thesis?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write your thesis statement — one sentence that answers your research question and makes an arguable claim. Then write topic sentences for your three body sections — each should advance the thesis, not just describe a subtopic. Show the logical thread from intro to conclusion.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Note-taking skills practiced — paraphrase vs. direct quote distinguished; plagiarism avoidance reviewed</label>
-      <label class="check-item"><input type="checkbox"> Organized notes taken from all 5 sources using a source/fact/connection column system</label>
-      <label class="check-item"><input type="checkbox"> Thesis statement written — one arguable claim answering the research question</label>
-      <label class="check-item"><input type="checkbox"> Full paper outline written with thesis, 3 main sections, evidence map, and topic sentences; typed in Google Docs with working bibliography</label>
-      <label class="check-item"><input type="checkbox"> Outline logic tested in workshop — each section checked against the thesis</label>
+
+  <!-- WEEK 3 -->
+  <div class="week-card" id="w3">
+    <div class="week-header"><span class="week-num">W3</span><span class="week-title">Research Notes &amp; Outline</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">How to take research notes without plagiarizing — paraphrase vs. quote</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Mom will show you a passage from a source and two versions of notes: one that's too close (plagiarism), one that's properly paraphrased.</li>
+              <li>Identify which is which and explain why.</li>
+              <li>Practice paraphrasing one sentence from one of your own sources — put it entirely in your own words.</li>
+              <li>Learn the rule: if you use the exact words, use quotation marks and a citation.</li>
+            </ol>
+            <div class="talk-tip">💬 "In my own words, what this source is saying is… I'd directly quote it only if the exact wording really matters."</div>
+            <div class="done-when">✓ Done when: paraphrase vs. quote distinction understood and one practice paraphrase written.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Take organized notes from your 5 sources using a column system</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open a new Google Doc: create three columns — Source / Key Fact or Quote / How It Connects to My Question.</li>
+              <li>Read through each of your 5 sources and pull out the most useful information.</li>
+              <li>For each fact or quote, fill in all three columns.</li>
+              <li>Aim for at least 2–3 rows per source — so 10–15 rows total.</li>
+            </ol>
+            <div class="talk-tip">💬 You're looking for facts, statistics, or expert opinions that help answer your research question — not interesting stuff that isn't relevant.</div>
+            <div class="done-when">✓ Done when: research notes table has at least 10 rows covering all 5 sources.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write a paper outline — thesis + 3 main sections + evidence map</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Write your thesis: one sentence that answers your research question and makes a claim.</li>
+              <li>Write three section topics — the three main areas your paper will cover.</li>
+              <li>For each section, write the topic sentence (what that section will argue).</li>
+              <li>Under each section, list 1–2 pieces of evidence from your notes that will go there.</li>
+            </ol>
+            <div class="talk-tip">💬 "My thesis is: [answer to question]. My three sections will cover: [topic 1], [topic 2], [topic 3]. Each section argues… and I'll prove it with…"</div>
+            <div class="done-when">✓ Done when: thesis written + three section topic sentences + evidence listed under each section.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Type full outline in Google Docs; build a working bibliography</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Type your outline into Google Docs in a clean format — thesis at the top, then each section with its topic sentence and evidence bullets.</li>
+              <li>At the bottom, start your Works Cited page — add all 5 source citations in MLA format.</li>
+              <li>Save the document — this is your working draft structure.</li>
+            </ol>
+            <div class="talk-tip">💬 A good outline is basically a skeleton of your paper — every paragraph you'll write is already mapped here.</div>
+            <div class="done-when">✓ Done when: full outline is in Google Docs with thesis, three section outlines, and a working bibliography at the bottom.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Outline logic check — does each section support the thesis?</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read your outline out loud to mom.</li>
+              <li>For each of the three sections, ask: does this section actually support my thesis, or is it just related information?</li>
+              <li>If any section seems like it's off-topic or not clearly connected to the thesis, revise it or cut it.</li>
+              <li>The test: could someone read the outline and predict the whole paper? If yes, it's working.</li>
+            </ol>
+            <div class="talk-tip">💬 "My thesis is… Section 1 supports it because… Section 2 supports it because… Section 3 supports it because…"</div>
+            <div class="done-when">✓ Done when: outline logic tested out loud and any weak sections flagged or revised.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Write your thesis statement — one sentence answering your research question with an arguable claim. Then write topic sentences for your three body sections — each should advance the thesis.</p>
+        <p class="prompt-starter">"My thesis: [one-sentence answer to your question]. Section 1 argues… because… Section 2 argues… Section 3 argues…"</p>
+        <p class="prompt-length">Length: 1 thesis + 3 topic sentences = 4 sentences total. These four sentences are the backbone of your paper.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Paraphrase vs. quote practiced; one paraphrase from your sources written</label>
+        <label class="check-item"><input type="checkbox"> Research notes table: at least 10 rows covering all 5 sources</label>
+        <label class="check-item"><input type="checkbox"> Thesis written; three section topic sentences written with evidence listed under each</label>
+        <label class="check-item"><input type="checkbox"> Full outline in Google Docs with working bibliography</label>
+        <label class="check-item"><input type="checkbox"> Outline logic tested aloud; weak sections flagged or revised</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w4">
-  <div class="week-header"><span class="week-num">W4</span><span class="week-title">Drafting the Paper</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Write section 1 (introduction + background); aim for 300 words<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Tue</td><td>Write section 2 (first main point + evidence); integrate quotes properly<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write section 3 (second main point) and section 4 (third point + counterpoint)<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type full draft in Google Docs; format with MLA heading, header, and citations<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Rough draft peer review: focus on thesis clarity and evidence use<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Practice integrating a quotation: find one quote from your research that you want to use. Write three versions of the same sentence: (1) block quote with no introduction, (2) integrated quote with context, (3) paraphrase. Which version is most powerful in context, and why?</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Introduction and background section drafted (~300 words)</label>
-      <label class="check-item"><input type="checkbox"> First body section drafted with main point and evidence; quote integrated with proper context</label>
-      <label class="check-item"><input type="checkbox"> Second and third body sections drafted, including counterpoint paragraph</label>
-      <label class="check-item"><input type="checkbox"> Full rough draft typed in Google Docs with MLA heading, header, and in-text citations</label>
-      <label class="check-item"><input type="checkbox"> Peer review done — thesis clarity and evidence use evaluated; revision notes recorded</label>
+
+  <!-- WEEK 4 -->
+  <div class="week-card" id="w4">
+    <div class="week-header"><span class="week-num">W4</span><span class="week-title">Drafting the Paper</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Write your introduction and background section</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open a new Google Doc titled "[Your Research Question] — Draft."</li>
+              <li>Write a hook: one interesting sentence that makes a reader want to know more.</li>
+              <li>Write 2–3 sentences of background: what is this topic and why does it matter?</li>
+              <li>Write your thesis sentence at the end of the intro.</li>
+              <li>Aim for 4–6 sentences total for the intro paragraph.</li>
+            </ol>
+            <div class="talk-tip">💬 Say the intro out loud first: "What I want to tell someone before they read my paper is… and the point I'm going to prove is…" — then write it.</div>
+            <div class="done-when">✓ Done when: intro paragraph written with hook + background + thesis.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Write Section 1 — first main point with integrated evidence</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Start with your Section 1 topic sentence from the outline.</li>
+              <li>Write 2–3 sentences explaining the point in your own words.</li>
+              <li>Add one piece of evidence — either a paraphrase or a short quote in quotation marks.</li>
+              <li>Write one sentence explaining how this evidence proves your point.</li>
+              <li>End with a transition sentence to the next section.</li>
+            </ol>
+            <div class="talk-tip">💬 "This section is about [point]. I know this because [evidence]. This matters because [explanation]." — then transition.</div>
+            <div class="done-when">✓ Done when: Section 1 paragraph is written with a topic sentence, explanation, evidence, and transition.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write Sections 2 and 3 — continue building the argument</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Use the same structure as Section 1: topic sentence → explanation → evidence → how it supports thesis → transition.</li>
+              <li>Write Section 2 following the same pattern.</li>
+              <li>Then write Section 3 — this one often includes a counterpoint (someone who disagrees) and your response to it.</li>
+              <li>Don't worry about perfection — getting the ideas down is the goal today.</li>
+            </ol>
+            <div class="talk-tip">💬 If you're stuck, say the section out loud: "Section 2 is about [point]. The evidence I have is… and that matters because…" — then type what you said.</div>
+            <div class="done-when">✓ Done when: Sections 2 and 3 are drafted with topic sentences and evidence.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Type full draft in Google Docs with MLA format and citations</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Make sure all sections are in one Google Doc in order: intro → Section 1 → Section 2 → Section 3 → (conclusion to come).</li>
+              <li>Add an MLA heading at the top: your name, mom's name, course name, and date.</li>
+              <li>Check that every quote or paraphrase has a citation (author's last name + page number in parentheses, if available).</li>
+              <li>Make sure your Works Cited is still at the bottom and matches what you actually used.</li>
+            </ol>
+            <div class="talk-tip">💬 MLA format is just a set of rules that makes it easy for readers to find your sources — follow it even if it feels tedious.</div>
+            <div class="done-when">✓ Done when: full draft (minus conclusion) is in Google Docs with MLA heading and citations.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Rough draft peer review — thesis clarity and evidence use</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Have mom read your draft (or read it aloud to her).</li>
+              <li>Ask her: after reading, can she state your thesis in her own words?</li>
+              <li>Ask: which section felt most supported by evidence? Which felt weakest?</li>
+              <li>Write down two specific things you want to improve before the final version.</li>
+            </ol>
+            <div class="talk-tip">💬 "Can you tell me what my paper is arguing? Which section felt least convincing to you?"</div>
+            <div class="done-when">✓ Done when: peer review done and two specific revision goals written down.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Practice integrating a quotation: take one quote from your research. Write it three ways: (1) dropped in with no context, (2) introduced with context, (3) paraphrased. Which version is strongest and why?</p>
+        <p class="prompt-starter">"Version 1 (dropped): '[quote]' (Author). — Version 2 (introduced): According to [Author], '[quote].' This means… — Version 3 (paraphrase): [Author] argues that… The strongest version is [#] because…"</p>
+        <p class="prompt-length">Length: three short examples + one sentence of analysis.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Introduction drafted: hook + background + thesis</label>
+        <label class="check-item"><input type="checkbox"> Section 1 drafted: topic sentence + explanation + evidence + transition</label>
+        <label class="check-item"><input type="checkbox"> Sections 2 and 3 drafted with topic sentences and evidence</label>
+        <label class="check-item"><input type="checkbox"> Full draft in Google Docs with MLA heading and in-text citations</label>
+        <label class="check-item"><input type="checkbox"> Peer review done; two revision goals written down</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w5">
-  <div class="week-header"><span class="week-num">W5</span><span class="week-title">Revision & Citation</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read your draft aloud — mark every sentence that sounds unclear or choppy<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Tue</td><td>Revision workshop: transitions, paragraph unity, sentence variety<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Final revision: check thesis is answered, all evidence cited, conclusion is strong<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Format Works Cited page in MLA; final proofread in Google Docs<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer final check: does the paper answer the research question clearly?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write your conclusion: restate your thesis in new language, summarize the three main points in 2–3 sentences, and end with a "so what" — why does this matter beyond this paper? What would you research next if you had more time? The conclusion should feel like an arrival, not a summary list.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Draft read aloud; unclear or choppy sentences marked and revised</label>
-      <label class="check-item"><input type="checkbox"> Revision workshop completed — transitions, paragraph unity, and sentence variety improved</label>
-      <label class="check-item"><input type="checkbox"> Final revision done — thesis answered, all evidence cited, conclusion strong; conclusion written with "so what" and next-research question</label>
-      <label class="check-item"><input type="checkbox"> Works Cited page formatted in MLA; paper fully proofread in Google Docs</label>
-      <label class="check-item"><input type="checkbox"> Final peer check completed — paper confirmed to answer the research question clearly</label>
+
+  <!-- WEEK 5 -->
+  <div class="week-card" id="w5">
+    <div class="week-header"><span class="week-num">W5</span><span class="week-title">Revision &amp; Citation</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Read your draft aloud — mark every sentence that sounds unclear or choppy</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your draft and read the whole thing out loud.</li>
+              <li>Every time you trip over a sentence or it sounds awkward, highlight it or put a star next to it.</li>
+              <li>Count how many you marked — that's your revision list.</li>
+              <li>Fix the two worst ones today. Save the rest for Tuesday.</li>
+            </ol>
+            <div class="talk-tip">💬 Reading out loud catches problems your eyes miss — if you stumble when reading it, a reader will too.</div>
+            <div class="done-when">✓ Done when: draft read aloud, unclear sentences marked, and two revised.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Revision workshop — transitions, paragraph unity, sentence variety</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Fix the remaining marked sentences from Monday.</li>
+              <li>Check transitions: does each paragraph flow smoothly into the next? Add a transition word or phrase if needed.</li>
+              <li>Check paragraph unity: does every sentence in each paragraph relate to that paragraph's topic sentence? Remove or move anything that doesn't.</li>
+              <li>Check sentence variety: do you have a mix of short and longer sentences? If three in a row are the same length, vary them.</li>
+            </ol>
+            <div class="talk-tip">💬 Transitions like "Additionally," "However," "This shows that," and "As a result," make your argument easier to follow.</div>
+            <div class="done-when">✓ Done when: transitions improved, each paragraph checked for unity, and sentence length varied.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write your conclusion; final check that thesis is answered throughout</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Write your conclusion paragraph: restate your thesis in new words (don't copy it exactly).</li>
+              <li>Write 1–2 sentences summarizing your three main points — briefly, not in detail.</li>
+              <li>Write a "so what" sentence: why does this research matter beyond this paper?</li>
+              <li>End with a question or idea you'd explore if you had more time.</li>
+            </ol>
+            <div class="talk-tip">💬 "In the end, what I found was [thesis restated]. This matters because… If I had more time, I'd also look at…"</div>
+            <div class="done-when">✓ Done when: conclusion paragraph written with thesis restatement, brief summary, "so what," and future question.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Format Works Cited page; final proofread in Google Docs</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Check your Works Cited page: every source you cited in the paper should be there.</li>
+              <li>Check that each citation is in MLA format (mom can help verify).</li>
+              <li>Use Google Docs's spell check to catch any typos.</li>
+              <li>Do one final read-through of the whole paper — make any last small fixes.</li>
+              <li>Save the final version.</li>
+            </ol>
+            <div class="talk-tip">💬 Proofreading is the last thing before you call it done — take it seriously. Even one typo per page is too many in a final paper.</div>
+            <div class="done-when">✓ Done when: Works Cited formatted, spell check done, and final read-through completed.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Final peer check — does the paper clearly answer the research question?</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Have mom read or listen to the final paper.</li>
+              <li>Ask her one question: does this paper answer the research question?</li>
+              <li>Ask: is the thesis clear in the introduction and restated in the conclusion?</li>
+              <li>If she says yes to both — you're done. If not, make one final fix.</li>
+            </ol>
+            <div class="talk-tip">💬 "Does my paper answer [your research question]? Is my argument clear from start to finish?"</div>
+            <div class="done-when">✓ Done when: mom confirms the paper answers the question and the argument is clear.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Write your conclusion: restate your thesis in new language, summarize your three main points in 2–3 sentences, and end with a "so what" — why does this matter beyond this paper?</p>
+        <p class="prompt-starter">"After researching this question, I found that [thesis restated]. The three most important things I learned were… This matters beyond my paper because… If I had more time, I'd want to investigate…"</p>
+        <p class="prompt-length">Length: 4–6 sentences. The conclusion should feel like an arrival, not just a summary.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Draft read aloud; unclear sentences marked and at least two revised</label>
+        <label class="check-item"><input type="checkbox"> Transitions added; paragraph unity and sentence variety improved</label>
+        <label class="check-item"><input type="checkbox"> Conclusion written: thesis restated + brief summary + "so what" + future question</label>
+        <label class="check-item"><input type="checkbox"> Works Cited formatted in MLA; spell check and final proofread done</label>
+        <label class="check-item"><input type="checkbox"> Final peer check: paper confirmed to answer the research question clearly</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w6">
-  <div class="week-header"><span class="week-num">W6</span><span class="week-title">Oral Presentation & Showcase</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Build a 5-slide visual to accompany oral presentation (not to replace it)<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Tue</td><td>Write speaker notes and practice talking from notes — not reading<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Practice full 6-minute presentation; time it; cut or expand as needed<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Thu</td><td>Final paper submitted; do one more presentation rehearsal<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>SHOWCASE: Oral presentation of research paper<br><span class="comp comp-share">Showcase</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a 100-word abstract for your research paper: one sentence on your question, one on your method, two on your main findings, one on your conclusion. An abstract should make someone want to read the full paper. This is also good practice for summarizing complex work in a few sentences.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> 5-slide visual built in Google Slides to accompany oral presentation (visual supports, not replaces, speech)</label>
-      <label class="check-item"><input type="checkbox"> Speaker notes written for each slide; presentation practiced talking from notes rather than reading</label>
-      <label class="check-item"><input type="checkbox"> 100-word paper abstract written — question, method, main findings, and conclusion each addressed</label>
-      <label class="check-item"><input type="checkbox"> Full 6-minute presentation practiced and timed; cut or expanded as needed</label>
-      <label class="check-item"><input type="checkbox"> Final paper submitted; one final presentation rehearsal completed</label>
-      <label class="check-item"><input type="checkbox"> Showcase delivered — oral research presentation given for family and invited guest</label>
+
+  <!-- WEEK 6 -->
+  <div class="week-card" id="w6">
+    <div class="week-header"><span class="week-num">W6</span><span class="week-title">Oral Presentation &amp; Showcase</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Build a 5-slide visual to support your oral presentation</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Slides and create 5 slides.</li>
+              <li>Slide 1: your research question and thesis (the headline of your paper).</li>
+              <li>Slides 2–4: one main point per slide — just a title and 1–2 bullet points or an image.</li>
+              <li>Slide 5: your conclusion and "so what."</li>
+              <li>The slides support what you say — they're not a script. Keep text minimal.</li>
+            </ol>
+            <div class="talk-tip">💬 The best presentation slides make the speaker look smarter — they have one key idea per slide, not walls of text.</div>
+            <div class="done-when">✓ Done when: 5 slides built with minimal text and one main idea per slide.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Write speaker notes; practice talking from notes — not reading</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your slides and add speaker notes to each one.</li>
+              <li>Write notes in bullet form — these are reminders of what to say, not a script.</li>
+              <li>Practice going through each slide using only the notes, talking out loud.</li>
+              <li>If you find yourself reading word-for-word, rewrite the notes as shorter bullets.</li>
+            </ol>
+            <div class="talk-tip">💬 Speaker notes should be like: "• Mention the surprising stat here • Explain what this means for my argument • Make eye contact for the conclusion" — not full sentences to read.</div>
+            <div class="done-when">✓ Done when: speaker notes written and one run-through completed talking from notes (not reading).</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Practice full 6-minute presentation; write 100-word abstract</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Run through the whole presentation out loud and time it — aim for 5–7 minutes.</li>
+              <li>If it's too short, add more detail on one slide. If too long, cut one point.</li>
+              <li>Write a 100-word abstract for your paper: one sentence each on (1) your question, (2) your method, (3) your main findings, (4) your conclusion.</li>
+            </ol>
+            <div class="talk-tip">💬 An abstract is a summary of your whole paper in 100 words — it should make someone want to read the full thing.</div>
+            <div class="done-when">✓ Done when: presentation timed and adjusted + 100-word abstract written.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Final paper submitted; last full presentation rehearsal</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Make any last small edits to the paper and save the final version.</li>
+              <li>Run through the presentation one final time — full speed, as if it's the real thing.</li>
+              <li>Ask mom: is there anything confusing or anything she'd want to hear more about?</li>
+              <li>Make one final adjustment based on her feedback.</li>
+            </ol>
+            <div class="talk-tip">💬 By this point, you've researched, written, and rehearsed. The showcase is just showing what you already know.</div>
+            <div class="done-when">✓ Done when: paper finalized, last rehearsal done, and one final adjustment made.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">SHOWCASE: Oral presentation of research paper</span>
+            <span class="comp comp-share">Showcase</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Set up your presentation space with laptop and slides ready.</li>
+              <li>Deliver your 5–7 minute presentation to your audience.</li>
+              <li>After the presentation, take one or two questions from the audience.</li>
+              <li>Answer from memory — you know this material.</li>
+            </ol>
+            <div class="talk-tip">💬 You're the expert on your own research question. Speak like one.</div>
+            <div class="done-when">✓ Done when: presentation delivered and at least one audience question answered.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Write a 100-word abstract for your research paper: one sentence on your question, one on your method, two on your main findings, one on your conclusion.</p>
+        <p class="prompt-starter">"This paper investigates [question]. To answer it, I [method — searched for sources, read articles, etc.]. I found that [finding 1] and [finding 2]. In conclusion, [thesis restated in one sentence]."</p>
+        <p class="prompt-length">Length: exactly 5 sentences, approximately 100 words. Every word counts.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> 5-slide visual built: research question, three main points, conclusion</label>
+        <label class="check-item"><input type="checkbox"> Speaker notes written; presentation practiced talking from notes (not reading)</label>
+        <label class="check-item"><input type="checkbox"> Full presentation timed and adjusted; 100-word abstract written</label>
+        <label class="check-item"><input type="checkbox"> Final paper submitted; last rehearsal done with one final adjustment</label>
+        <label class="check-item"><input type="checkbox"> SHOWCASE delivered — oral presentation given and audience question answered</label>
+      </div>
     </div>
   </div>
-</div>
+
   <div class="showcase-box" id="showcase">
-  <div class="showcase-label">Unit Showcase</div>
-  <h3>Research Paper + Oral Presentation</h3>
-  <p>A 5-page MLA-formatted research paper answering a self-chosen question, with annotated bibliography. Presented orally in 6 minutes with a 5-slide visual. Audience: family and invited guest (e.g., a librarian or local expert in the field).</p>
-</div>
+    <div class="showcase-label">Unit Showcase</div>
+    <h3>Research Paper + Oral Presentation</h3>
+    <p>A fully researched paper answering a self-chosen question, with annotated bibliography and Works Cited in MLA format. Presented orally in 5–7 minutes with a 5-slide visual. The paper and presentation are the culmination of 6 weeks of real research.</p>
+  </div>
 </div>
 <footer class="site-footer">Homeschool Curriculum Hub · Oregon · <a href="8th_grade_language_arts.html">← Language Arts</a></footer>
+<script>
+function toggleDay(row) {
+  var detail = row.nextElementSibling;
+  var isOpen = row.classList.contains('open');
+  row.classList.toggle('open', !isOpen);
+  detail.style.display = isOpen ? 'none' : 'block';
+}
+</script>
 </body>
 </html>

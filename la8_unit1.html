@@ -47,21 +47,35 @@
     .week-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); }
     .week-body { padding: 20px 24px; }
 
-    table.daily { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin-bottom: 16px; }
-    table.daily th { background: var(--linen-dark); color: var(--ink-soft); font-weight: 600; font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 12px; text-align: left; }
-    table.daily td { padding: 9px 12px; border-bottom: 1px solid var(--linen-dark); vertical-align: top; line-height: 1.5; }
-    table.daily tr:last-child td { border-bottom: none; }
-    table.daily tr:nth-child(even) td { background: #faf9f6; }
-    .day { font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
-    .comp { font-size: 0.72rem; display: inline-block; padding: 1px 7px; border-radius: 3px; margin-top: 3px; white-space: nowrap; }
+    /* Day accordion */
+    .days-list { margin-bottom: 16px; }
+    .day-accordion { border: 1px solid var(--linen-deep); border-radius: 8px; overflow: hidden; margin-bottom: 7px; }
+    .day-row { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; background: var(--white); transition: background 0.15s; user-select: none; }
+    .day-row:hover { background: var(--linen); }
+    .day-row.open { background: var(--sky-bg); }
+    .day-name { font-weight: 700; color: var(--ink-soft); min-width: 40px; font-size: 0.82rem; flex-shrink: 0; }
+    .day-summary { flex: 1; font-size: 0.83rem; color: var(--ink); line-height: 1.4; }
+    .comp { font-size: 0.71rem; display: inline-block; padding: 2px 7px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
     .comp-write { background: var(--terra-bg); color: var(--terra); }
     .comp-read  { background: var(--sage-bg); color: #7a6e1a; }
     .comp-make  { background: var(--sky-bg); color: #3a6a7a; }
     .comp-share { background: var(--linen-deep); color: var(--ink-soft); }
+    .day-arrow { color: var(--ink-muted); font-size: 0.75rem; transition: transform 0.2s; flex-shrink: 0; }
+    .day-row.open .day-arrow { transform: rotate(180deg); }
+
+    .day-detail { display: none; padding: 14px 18px 16px 18px; background: var(--sky-bg); border-top: 1px solid var(--linen-deep); }
+    .step-list { list-style: none; padding: 0; margin: 0 0 10px 0; counter-reset: step-counter; }
+    .step-list li { counter-increment: step-counter; padding-left: 28px; position: relative; margin-bottom: 8px; font-size: 0.83rem; color: var(--ink); line-height: 1.5; }
+    .step-list li::before { content: counter(step-counter) "."; position: absolute; left: 0; font-weight: 700; color: var(--sky); font-size: 0.8rem; top: 1px; }
+    .talk-tip { background: var(--sage-bg); border-left: 3px solid var(--sage); border-radius: 0 5px 5px 0; padding: 7px 12px; margin: 8px 0; font-size: 0.8rem; color: #5c5210; line-height: 1.5; }
+    .done-when { font-size: 0.78rem; font-weight: 600; color: var(--terra); border-top: 1px solid var(--linen-deep); padding-top: 9px; margin-top: 10px; }
 
     .prompt-box { background: var(--sage-bg); border: 1px solid var(--sage-soft); border-radius: 6px; padding: 14px 18px; margin-top: 12px; }
-    .prompt-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-bottom: 6px; }
-    .prompt-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+    .prompt-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-bottom: 8px; }
+    .prompt-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 6px; }
+    .prompt-box p:last-child { margin-bottom: 0; }
+    .prompt-starter { font-style: italic; }
+    .prompt-length { font-size: 0.78rem; font-weight: 600; color: #7a6e1a; }
 
     .showcase-box { background: var(--terra-bg); border: 1px solid var(--terra-soft); border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
     .showcase-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--terra); margin-bottom: 8px; }
@@ -70,86 +84,28 @@
 
     footer.site-footer { background: var(--white); border-top: 1px solid var(--linen-deep); padding: 16px 40px; font-size: 0.75rem; color: var(--ink-muted); margin-top: 40px; }
     @media (max-width: 700px) { nav.site-nav, .page-header, .container, footer.site-footer, .week-nav { padding-left: 20px; padding-right: 20px; } }
+
     .checklist { background: var(--linen); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 14px 18px; margin-top: 4px; }
     .check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 0.86rem; color: var(--ink-soft); cursor: pointer; line-height: 1.5; }
     .check-item:last-child { margin-bottom: 0; }
     .check-item input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--terra); width: 15px; height: 15px; }
     .checklist-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-top: 16px; margin-bottom: 6px; }
-</style>
+  </style>
 </head>
 <body>
 <!-- PIN GATE -->
 <style>
-  #pin-gate {
-    position: fixed; inset: 0; z-index: 9999;
-    background: #FAF7F1;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Epilogue', sans-serif;
-  }
+  #pin-gate { position: fixed; inset: 0; z-index: 9999; background: #FAF7F1; display: flex; align-items: center; justify-content: center; font-family: 'Epilogue', sans-serif; }
   #pin-gate.hidden { display: none; }
-  .pin-box {
-    text-align: center;
-    background: #fff;
-    border: 1px solid #DDD4C4;
-    border-radius: 12px;
-    padding: 48px 40px 40px;
-    width: 320px;
-    box-shadow: 0 4px 32px rgba(42,33,24,0.08);
-  }
-  .pin-logo {
-    width: 10px; height: 10px;
-    background: #ff1e3c;
-    border-radius: 50%;
-    display: inline-block;
-    margin-bottom: 16px;
-  }
-  .pin-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #2A2118;
-    margin-bottom: 6px;
-  }
-  .pin-sub {
-    font-size: 0.8rem;
-    color: #9A8F81;
-    margin-bottom: 28px;
-  }
-  #pin-input {
-    width: 100%;
-    padding: 11px 14px;
-    font-size: 1.4rem;
-    letter-spacing: 8px;
-    text-align: center;
-    border: 1px solid #DDD4C4;
-    border-radius: 6px;
-    background: #FAF7F1;
-    color: #2A2118;
-    font-family: 'Epilogue', sans-serif;
-    outline: none;
-    margin-bottom: 14px;
-    transition: border-color 0.15s;
-  }
+  .pin-box { text-align: center; background: #fff; border: 1px solid #DDD4C4; border-radius: 12px; padding: 48px 40px 40px; width: 320px; box-shadow: 0 4px 32px rgba(42,33,24,0.08); }
+  .pin-logo { width: 10px; height: 10px; background: #ff1e3c; border-radius: 50%; display: inline-block; margin-bottom: 16px; }
+  .pin-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: #2A2118; margin-bottom: 6px; }
+  .pin-sub { font-size: 0.8rem; color: #9A8F81; margin-bottom: 28px; }
+  #pin-input { width: 100%; padding: 11px 14px; font-size: 1.4rem; letter-spacing: 8px; text-align: center; border: 1px solid #DDD4C4; border-radius: 6px; background: #FAF7F1; color: #2A2118; font-family: 'Epilogue', sans-serif; outline: none; margin-bottom: 14px; transition: border-color 0.15s; }
   #pin-input:focus { border-color: #d2c35a; }
   #pin-input.error { border-color: #ff1e3c; animation: shake 0.3s; }
-  @keyframes shake {
-    0%,100% { transform: translateX(0); }
-    25% { transform: translateX(-6px); }
-    75% { transform: translateX(6px); }
-  }
-  #pin-btn {
-    width: 100%;
-    padding: 10px;
-    background: #2A2118;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-family: 'Epilogue', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
+  @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  #pin-btn { width: 100%; padding: 10px; background: #2A2118; color: #fff; border: none; border-radius: 6px; font-family: 'Epilogue', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: background 0.15s; }
   #pin-btn:hover { background: #5C4F3D; }
 </style>
 <div id="pin-gate">
@@ -168,14 +124,8 @@
     var btn = document.getElementById('pin-btn');
     if (sessionStorage.getItem('ck_auth') === '1') { gate.classList.add('hidden'); return; }
     function check() {
-      if (input.value === '1899') {
-        sessionStorage.setItem('ck_auth', '1');
-        gate.classList.add('hidden');
-      } else {
-        input.classList.add('error');
-        input.value = '';
-        setTimeout(function(){ input.classList.remove('error'); }, 400);
-      }
+      if (input.value === '1899') { sessionStorage.setItem('ck_auth', '1'); gate.classList.add('hidden'); }
+      else { input.classList.add('error'); input.value = ''; setTimeout(function(){ input.classList.remove('error'); }, 400); }
     }
     btn.addEventListener('click', check);
     input.addEventListener('keydown', function(e){ if (e.key === 'Enter') check(); });
@@ -194,100 +144,743 @@
   <p class="tagline">Graphic novels as literature: read, analyze, and create your own digital chapter.</p>
 </div>
 <nav class="week-nav"><a href="#overview">Overview</a><span class="sep">›</span><a href="#w1">Week 1</a> <a href="#w2">Week 2</a> <a href="#w3">Week 3</a> <a href="#w4">Week 4</a> <a href="#w5">Week 5</a> <a href="#w6">Week 6</a><span class="sep">›</span><a href="#showcase">Showcase</a></nav>
+
 <div class="container">
-  <div class="overview-strip" id="overview"><div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">1–6 (September)</div></div><div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">Persepolis (Satrapi) + excerpts from March (Lewis)</div></div><div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Narrative · Descriptive · Creative</div></div><div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">Canva / Google Slides for panel layout</div></div><div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">Original 8-panel graphic novel chapter</div></div><div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR RL.8.7 · W.8.3 · W.8.4</div></div></div>
+  <div class="overview-strip" id="overview">
+    <div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">1–6 (September)</div></div>
+    <div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">Persepolis (Satrapi) + excerpts from March (Lewis)</div></div>
+    <div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Narrative · Descriptive · Creative</div></div>
+    <div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">Canva / Google Slides for panel layout</div></div>
+    <div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">Original 8-panel graphic novel chapter</div></div>
+    <div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR RL.8.7 · W.8.3 · W.8.4</div></div>
+  </div>
+
+  <!-- WEEK 1 -->
   <div class="week-card" id="w1">
-  <div class="week-header"><span class="week-num">W1</span><span class="week-title">Comics as Literature</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Intro to graphic novel genre; read Persepolis ch. 1–3 and discuss what makes it literature<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Analyze panel layout, speech bubbles, gutters — how does art carry meaning?<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Wed</td><td>Freewrite: a childhood memory told in 4 panels — plan on paper<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type up your memory narrative; explore Canva's comic templates on computer<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Share memory comics; discuss what was easier to say in images vs. words<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Describe a moment when you felt like an outsider or a misfit. Tell it in both prose (a paragraph) and in panels (a rough panel layout). What can each form do that the other can't?</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Persepolis chapters 1–3 read; journal discussion entry written about what makes it literature</label>
-      <label class="check-item"><input type="checkbox"> Panel layout analysis done — speech bubbles, gutters, and visual meaning explained in journal</label>
-      <label class="check-item"><input type="checkbox"> 4-panel childhood memory comic planned on paper and typed up in narrative prose</label>
-      <label class="check-item"><input type="checkbox"> Canva comic templates explored; memory comic created digitally</label>
-      <label class="check-item"><input type="checkbox"> Outsider/misfit writing prompt completed — both prose paragraph and rough panel layout</label>
+    <div class="week-header"><span class="week-num">W1</span><span class="week-title">Comics as Literature</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Intro to graphic novel genre; read Persepolis ch. 1–3</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Get your copy of Persepolis and open to page 1.</li>
+              <li>Read chapters 1, 2, and 3. You can read silently or out loud — your choice.</li>
+              <li>When you finish, close the book and say out loud: "The most surprising thing was…"</li>
+              <li>Open your journal and write one sentence: "Persepolis is different from a regular comic because…"</li>
+            </ol>
+            <div class="talk-tip">💬 Talk option: Skip the journal — tell someone your one observation out loud instead.</div>
+            <div class="done-when">✓ Done when: chapters 1–3 read + one observation shared (written or out loud)</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Analyze panel layout, speech bubbles, and gutters</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Persepolis to any page you liked from yesterday.</li>
+              <li>Point to a gutter (the white space between panels) and say: "The reader has to imagine what happened here."</li>
+              <li>Find one panel that uses NO words — only pictures. What does the image tell you?</li>
+              <li>Look at one speech bubble. Does the shape of the bubble change anything?</li>
+              <li>Write 1–2 sentences in your journal: "I noticed the art shows _____ without using any words."</li>
+            </ol>
+            <div class="done-when">✓ Done when: one written observation about how art carries meaning</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Freewrite: a childhood memory told in 4 panels</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Think of one memory from when you were younger — it can be funny, strange, or ordinary.</li>
+              <li>Say the whole memory out loud like you're telling a friend. (This IS your freewrite.)</li>
+              <li>Draw 4 boxes in your journal. Rough rectangles are perfect.</li>
+              <li>Label what goes in each box: Box 1 = beginning, Box 2 = middle, Box 3 = big moment, Box 4 = end.</li>
+              <li>Add 2–3 words inside each box as a quick label — no full sentences needed.</li>
+            </ol>
+            <div class="done-when">✓ Done when: 4 labeled boxes sketched in journal</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Type up memory narrative; explore Canva comic templates</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs and start a new document.</li>
+              <li>Type a title at the top (like: "The Time I…").</li>
+              <li>Write 3–5 sentences about your memory. Use your 4-panel sketch as a guide.</li>
+              <li>Open canva.com in another tab and search "comic strip template."</li>
+              <li>Open one template you think looks cool and click around to explore it.</li>
+              <li>Replace one text box in the template with a sentence from your memory.</li>
+            </ol>
+            <div class="talk-tip">💬 Sentence starter: "I remember when…" or "One time, something happened that…"</div>
+            <div class="done-when">✓ Done when: 3–5 sentences typed in Docs + one Canva template explored</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Share memory comics; discuss images vs. words</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Show your 4-panel sketch (and Canva draft if you made one) to someone.</li>
+              <li>Describe your memory to them in 1–2 sentences.</li>
+              <li>Discuss together: "What was easier — drawing it out or writing it?"</li>
+              <li>Answer out loud: "What could pictures do that words couldn't?"</li>
+            </ol>
+            <div class="done-when">✓ Done when: shared with someone + discussed the question out loud</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">✍️ Writing Prompt</div>
+        <p>Think of a moment when you felt out of place or different from everyone else.</p>
+        <p class="prompt-starter">Sentence starter: "There was this one time I felt like I didn't belong because…"</p>
+        <p>Write 3–5 sentences OR draw 2 rough panels that show the moment.</p>
+        <p class="prompt-length">Talk it out first — say the whole thing out loud before you write anything.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Persepolis chapters 1–3 read; one observation about what makes it literature shared</label>
+        <label class="check-item"><input type="checkbox"> Panel layout analysis done — gutters, speech bubbles, and visual meaning discussed</label>
+        <label class="check-item"><input type="checkbox"> 4-panel childhood memory sketched and labeled in journal</label>
+        <label class="check-item"><input type="checkbox"> Memory typed in Google Docs (3–5 sentences) + Canva comic template explored</label>
+        <label class="check-item"><input type="checkbox"> Writing prompt completed — outsider moment described in sentences or panels</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w2">
-  <div class="week-header"><span class="week-num">W2</span><span class="week-title">Character & Dialogue</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Persepolis ch. 4–8; how does Satrapi build character through both image and word?<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Dialogue workshop: how characters' voices differ; read excerpts from March<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Wed</td><td>Write a 2-character dialogue scene — no action, only speech<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type and format dialogue scene in Google Docs; practice punctuation rules<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Act out each other's dialogue scenes — what sounds natural? Revise.<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a scene where two characters who disagree have to figure something out together. Each character should have a distinct voice — the reader should know who is speaking without seeing the name.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Persepolis chapters 4–8 read; journal entry analyzing how Satrapi builds character through image and word</label>
-      <label class="check-item"><input type="checkbox"> Dialogue workshop completed — March excerpts read, character voice differences noted</label>
-      <label class="check-item"><input type="checkbox"> 2-character dialogue scene written (no action, only speech) and typed in Google Docs with correct punctuation</label>
-      <label class="check-item"><input type="checkbox"> Dialogue scene acted out or read aloud; revision made for natural-sounding exchanges</label>
-      <label class="check-item"><input type="checkbox"> Disagreement scene prompt completed — two distinct voices, reader can tell who is speaking without name tags</label>
+
+  <!-- WEEK 2 -->
+  <div class="week-card" id="w2">
+    <div class="week-header"><span class="week-num">W2</span><span class="week-title">Character & Dialogue</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Persepolis ch. 4–8; how character is built through image and word</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read Persepolis chapters 4–8.</li>
+              <li>Pick one character besides Marji who stands out to you.</li>
+              <li>Find a panel where that character's face shows an emotion without any words.</li>
+              <li>Say out loud: "This character feels _____ because the art shows _____."</li>
+              <li>Write that sentence in your journal.</li>
+            </ol>
+            <div class="done-when">✓ Done when: chapters 4–8 read + one character observation written</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Dialogue workshop: how characters' voices differ; read March excerpts</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Get the March excerpts and read 2–3 pages.</li>
+              <li>As you read, give each character a different voice (say it out loud if you can).</li>
+              <li>Notice: do the characters sound different from each other? How?</li>
+              <li>Say: "Character A sounds _____ because they use _____ kinds of words."</li>
+              <li>Write one sentence in your journal about each character's voice.</li>
+            </ol>
+            <div class="done-when">✓ Done when: March pages read + two brief character-voice descriptions written</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write a 2-character dialogue scene — speech only, no action</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Think of two characters who disagree about something. (It can be silly — a debate over games, music, food, anything.)</li>
+              <li>Give them names. Say the names out loud.</li>
+              <li>Write 6–10 lines of back-and-forth dialogue — only what they say, no action descriptions.</li>
+              <li>Read it out loud when done. Does it sound like a real argument?</li>
+            </ol>
+            <div class="talk-tip">💬 Sentence starters: Character A: "No way, you're wrong because…" / Character B: "That's not true, I think…"</div>
+            <div class="done-when">✓ Done when: at least 6 lines of dialogue written and read aloud</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Type and format dialogue in Google Docs; practice punctuation rules</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs and type your dialogue scene from yesterday.</li>
+              <li>Rule to remember: each new speaker starts on a new line.</li>
+              <li>Check every line — does it have quotation marks around what the character says?</li>
+              <li>Fix any lines that look wrong.</li>
+            </ol>
+            <div class="talk-tip">💬 Quick rule: "New speaker = new paragraph."</div>
+            <div class="done-when">✓ Done when: dialogue typed and formatted correctly in Google Docs</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Act out dialogue scenes; revise what sounds unnatural</span>
+            <span class="comp comp-share">Kinesthetic</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read your dialogue out loud — you read one character, someone else reads the other (or do both yourself with different voices).</li>
+              <li>Stop if any line sounds stiff or fake.</li>
+              <li>Change at least one line so it sounds more natural.</li>
+              <li>Read the whole thing through one more time.</li>
+            </ol>
+            <div class="done-when">✓ Done when: read aloud + at least one line revised</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">✍️ Writing Prompt</div>
+        <p>Write a scene where two characters disagree about something. Each one should sound different from the other.</p>
+        <p class="prompt-starter">Starters: "Character A said, '___.' Character B shot back, '___.' Neither one would back down."</p>
+        <p>Write 6–8 lines of dialogue. Talk it out first before you write.</p>
+        <p class="prompt-length">Goal: reader can tell who's talking without seeing the names.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Persepolis chapters 4–8 read; one observation about character building written</label>
+        <label class="check-item"><input type="checkbox"> Dialogue workshop done — March excerpts read, character voice differences noted</label>
+        <label class="check-item"><input type="checkbox"> 2-character dialogue scene written (at least 6 lines, speech only)</label>
+        <label class="check-item"><input type="checkbox"> Dialogue typed in Google Docs with correct formatting (new speaker = new line)</label>
+        <label class="check-item"><input type="checkbox"> Dialogue read aloud and at least one line revised for natural sound</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w3">
-  <div class="week-header"><span class="week-num">W3</span><span class="week-title">Visual Description & Setting</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Finish Persepolis; analyze how setting creates mood in graphic novels<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Descriptive writing workshop: sensory language, "show don't tell"<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a vivid setting description for your graphic novel world — one full page<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Create a "world map" or environment sketch; add captions using computer<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Share settings — can classmates draw the environment from your words alone?<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Describe the world your graphic novel takes place in. Use all five senses — what does this world smell like, sound like, feel like underfoot? Write it as prose first, then imagine how two panels could show the same thing.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Persepolis finished; analysis of how setting creates mood written in journal</label>
-      <label class="check-item"><input type="checkbox"> Descriptive writing workshop completed — sensory language and show-don't-tell practiced</label>
-      <label class="check-item"><input type="checkbox"> Full-page setting description written for graphic novel world using all five senses</label>
-      <label class="check-item"><input type="checkbox"> World map or environment sketch created in Canva with prose captions added</label>
-      <label class="check-item"><input type="checkbox"> World description prompt completed — prose version and two-panel visualization concept noted</label>
+
+  <!-- WEEK 3 -->
+  <div class="week-card" id="w3">
+    <div class="week-header"><span class="week-num">W3</span><span class="week-title">Visual Description & Setting</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Finish Persepolis; analyze how setting creates mood</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Finish reading Persepolis.</li>
+              <li>Pick one setting scene (focus on a place, not a character).</li>
+              <li>Look at the panels for that location — what shapes, lines, or patterns are used?</li>
+              <li>Say out loud: "This setting feels _____ because the art uses _____."</li>
+              <li>Write that sentence in your journal.</li>
+            </ol>
+            <div class="done-when">✓ Done when: Persepolis finished + one setting observation written</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Descriptive writing workshop: sensory language, show don't tell</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Pick an object nearby — headphones, a Lego set, a mug, anything.</li>
+              <li>Look at it for 30 seconds. Don't write yet — just observe.</li>
+              <li>Write 3 sentences that SHOW the object without naming it. Use senses: what it looks like, feels like, sounds like.</li>
+              <li>Read your sentences back. Can someone guess what the object is?</li>
+            </ol>
+            <div class="talk-tip">💬 Challenge: describe it to someone out loud first, then write it down.</div>
+            <div class="done-when">✓ Done when: 3 "show don't tell" sentences written about one object</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write a vivid setting description for your graphic novel world</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Think about the world your graphic novel takes place in. You're inventing this — it can be real or imaginary.</li>
+              <li>Say out loud: "My world looks like _____, smells like _____, and sounds like _____."</li>
+              <li>Write that sentence down. That's your opening line.</li>
+              <li>Add 4–6 more sentences — describe what you'd see, hear, smell, and feel if you stepped into this world.</li>
+            </ol>
+            <div class="talk-tip">💬 Sentence starter: "If you stepped into my world, the first thing you'd notice is…"</div>
+            <div class="done-when">✓ Done when: 5–7 sentences written about your world</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Create a world map or environment sketch; add captions in Canva</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Draw a rough map or sketch of your world on paper. Label 3–4 important locations.</li>
+              <li>Open Canva and start a new blank document.</li>
+              <li>Add your setting description from yesterday as a text block.</li>
+              <li>Add labels or captions for the most important places in your world.</li>
+            </ol>
+            <div class="done-when">✓ Done when: paper sketch drawn + setting description placed in Canva with labels</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Share settings — can someone draw your world from your words alone?</span>
+            <span class="comp comp-share">Kinesthetic</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read your setting description out loud to someone — don't show them your sketch yet.</li>
+              <li>Ask them to draw what they picture as you read.</li>
+              <li>When they're done, compare their drawing to yours.</li>
+              <li>Discuss: "What matched? What did my description not explain clearly?"</li>
+            </ol>
+            <div class="done-when">✓ Done when: setting read aloud + drawings compared and discussed</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">✍️ Writing Prompt</div>
+        <p>Describe the world your graphic novel takes place in. Use at least 3 different senses.</p>
+        <p class="prompt-starter">Starter: "If you stepped into my world, the first thing you'd notice is… It smells like… and sounds like…"</p>
+        <p>Write 4–6 sentences. Say it out loud first, then write it down.</p>
+        <p class="prompt-length">Bonus: sketch two panels that show the same place without any words.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Persepolis finished; one setting analysis observation written in journal</label>
+        <label class="check-item"><input type="checkbox"> Descriptive writing workshop done — 3 "show don't tell" sentences written about one object</label>
+        <label class="check-item"><input type="checkbox"> Setting description for graphic novel world written (5–7 sentences, at least 3 senses used)</label>
+        <label class="check-item"><input type="checkbox"> World map sketched on paper + description placed in Canva with location labels</label>
+        <label class="check-item"><input type="checkbox"> Setting read aloud to someone; drawings compared and gap in description identified</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w4">
-  <div class="week-header"><span class="week-num">W4</span><span class="week-title">Plot & Storyboarding</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Three-act structure in graphic novels; read excerpts from Amulet<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Storyboarding techniques; plan your own 8-panel chapter beat by beat<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write the plot outline and major beats for your graphic novel chapter<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Build rough panel layout in Canva; add placeholder text for dialogue<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer review storyboards — does the story flow without words?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a one-paragraph summary of your graphic novel chapter — the elevator pitch. Then write a scene-by-scene breakdown (8 scenes for 8 panels). What is the emotional arc? What changes by the end?</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Three-act structure in graphic novels studied using Amulet excerpts</label>
-      <label class="check-item"><input type="checkbox"> 8-panel chapter storyboard planned beat by beat on paper</label>
-      <label class="check-item"><input type="checkbox"> Plot outline and major story beats written for graphic novel chapter</label>
-      <label class="check-item"><input type="checkbox"> Rough panel layout built in Canva with placeholder dialogue text added</label>
-      <label class="check-item"><input type="checkbox"> Elevator pitch paragraph written and scene-by-scene breakdown completed (8 scenes for 8 panels)</label>
+
+  <!-- WEEK 4 -->
+  <div class="week-card" id="w4">
+    <div class="week-header"><span class="week-num">W4</span><span class="week-title">Plot & Storyboarding</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Three-act structure in graphic novels; read Amulet excerpts</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Get the Amulet excerpts and read 5–7 pages.</li>
+              <li>As you read, mentally note: when does the story start, build up, hit a big moment, and end?</li>
+              <li>After reading, say out loud: "Act 1 is the setup. Act 2 is _____, and Act 3 is _____."</li>
+              <li>Write those three acts down in your journal as one sentence each.</li>
+            </ol>
+            <div class="done-when">✓ Done when: Amulet pages read + three-act breakdown written (3 sentences)</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Storyboarding techniques; plan your 8-panel chapter beat by beat</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Draw 8 boxes on a piece of paper — 2 rows of 4 works great.</li>
+              <li>In Box 1, write "beginning" and a quick note about what happens first.</li>
+              <li>Fill in boxes 2–7 — one action or moment per box. Labels and stick figures are perfect.</li>
+              <li>In Box 8, write "end" and what changes by the final panel.</li>
+            </ol>
+            <div class="talk-tip">💬 Say your story out loud from start to finish before you draw anything — it's easier that way.</div>
+            <div class="done-when">✓ Done when: 8 boxes filled in with basic labels or sketches</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write the plot outline and major beats for your chapter</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Look at your 8-panel storyboard from yesterday.</li>
+              <li>Write a title for your chapter at the top of a page.</li>
+              <li>Write 1–2 sentences for each act: what happens in the beginning, middle, and end.</li>
+              <li>Write one final sentence: "By the end, the main character _____ because _____."</li>
+            </ol>
+            <div class="talk-tip">💬 Starter: "My story starts when… Then things get complicated when… By the end…"</div>
+            <div class="done-when">✓ Done when: 3-act outline written (4–5 sentences total)</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Build rough panel layout in Canva; add placeholder dialogue</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Canva and search "comic book template."</li>
+              <li>Pick a layout that has about 6–8 panels.</li>
+              <li>In each panel, type a few words describing what happens there (use your storyboard as a guide).</li>
+              <li>Add placeholder dialogue in at least 2 panels — just a rough idea of what the character might say.</li>
+            </ol>
+            <div class="done-when">✓ Done when: all 8 panels labeled + at least 2 dialogue placeholders added</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Share storyboards — does the story flow without words?</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Show your Canva storyboard to someone without explaining it first.</li>
+              <li>Ask them: "Without me telling you — what do you think happens in this story?"</li>
+              <li>Listen carefully. Note what they understood and what was confusing.</li>
+              <li>Say out loud: "I need to make panel _____ clearer because _____."</li>
+            </ol>
+            <div class="done-when">✓ Done when: storyboard shared + one clarity improvement identified</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">✍️ Writing Prompt</div>
+        <p>Write a quick pitch for your graphic novel chapter — like you're telling a friend what it's about in 30 seconds.</p>
+        <p class="prompt-starter">Starters: "My story is about… The big moment is when… By the end…"</p>
+        <p>Write 3–4 sentences. Talk it out first, then write it.</p>
+        <p class="prompt-length">Bonus: write one sentence about what changes between panel 1 and panel 8.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Amulet excerpts read; three-act structure identified and written down</label>
+        <label class="check-item"><input type="checkbox"> 8-panel storyboard sketched with one label or moment per box</label>
+        <label class="check-item"><input type="checkbox"> Plot outline written — beginning, middle, and end in 4–5 sentences</label>
+        <label class="check-item"><input type="checkbox"> Canva panel layout built with all 8 panels labeled + dialogue placeholders in 2 panels</label>
+        <label class="check-item"><input type="checkbox"> Storyboard shared with someone; one panel identified to make clearer</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w5">
-  <div class="week-header"><span class="week-num">W5</span><span class="week-title">Drafting the Chapter</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Begin full digital draft: build panels in Canva, place dialogue and captions<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Tue</td><td>Continue drafting; focus on narration boxes and inner monologue<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Wed</td><td>Write the written component: a 300-word artist's statement about your choices<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Peer workshop: trade drafts, give feedback using a structured rubric<br><span class="comp comp-share">Discussion</span></td></tr><tr><td class="day">Fri</td><td>Revise panels based on peer feedback; refine digital layout<br><span class="comp comp-make">Computer</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write your artist's statement: Why did you choose this story? What visual and narrative choices did you make, and why? What were you trying to make the reader feel? Be specific — reference at least two design decisions (font, panel size, angle, color).</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Full digital draft built in Canva — all 8 panels with dialogue, captions, and narration boxes placed</label>
-      <label class="check-item"><input type="checkbox"> Inner monologue and narration boxes refined in second drafting session</label>
-      <label class="check-item"><input type="checkbox"> 300-word artist's statement written — story choice explained, 2 specific design decisions (font, panel size, angle, or color) referenced</label>
-      <label class="check-item"><input type="checkbox"> Peer workshop feedback received using structured rubric; panels revised based on feedback</label>
-      <label class="check-item"><input type="checkbox"> Digital layout polished after revision</label>
+
+  <!-- WEEK 5 -->
+  <div class="week-card" id="w5">
+    <div class="week-header"><span class="week-num">W5</span><span class="week-title">Drafting the Chapter</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Begin full digital draft: panels 1–4 in Canva</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your Canva storyboard from last week.</li>
+              <li>Work on panels 1–4: replace the placeholder labels with real dialogue or narration text.</li>
+              <li>Make sure each panel has at least one line of text (dialogue or a narration box).</li>
+              <li>Don't worry about perfection — getting words in the panels is the goal today.</li>
+            </ol>
+            <div class="done-when">✓ Done when: panels 1–4 have real dialogue or narration text placed</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Continue drafting panels 5–8; add narration and inner monologue</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Continue in Canva, working on panels 5–8.</li>
+              <li>Add at least one narration box somewhere in your chapter — text that shows what the character is thinking, not saying.</li>
+              <li>Make sure all 8 panels now have something in them.</li>
+            </ol>
+            <div class="talk-tip">💬 Narration starters: "Meanwhile…" / "She didn't know that…" / "All I could think was…"</div>
+            <div class="done-when">✓ Done when: all 8 panels have text placed + at least one narration box added</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write artist's statement — why you made the choices you did</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs and make a new document called "Artist's Statement."</li>
+              <li>Answer this question in 1–2 sentences: "Why did I pick this story?"</li>
+              <li>Answer this question: "What did I want the reader to feel?"</li>
+              <li>Answer this question: "What is one choice I made on purpose?" (like a font, color, panel size, or image angle)</li>
+              <li>Put it all together — aim for 5–8 sentences total.</li>
+            </ol>
+            <div class="talk-tip">💬 Starters: "I chose this story because…" / "I wanted the reader to feel…" / "One choice I made was… because…"</div>
+            <div class="done-when">✓ Done when: artist's statement written (at least 5 sentences, 3 questions answered)</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Peer workshop: get feedback using a structured rubric</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Share your Canva chapter with someone (show it on screen or print it out).</li>
+              <li>Ask them two specific questions: "Does the story make sense?" and "Is there anything confusing?"</li>
+              <li>Listen to their feedback without arguing — just take notes.</li>
+              <li>Write down one specific change you want to make based on what you heard.</li>
+            </ol>
+            <div class="done-when">✓ Done when: feedback received + one change written down</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Revise panels based on feedback; refine digital layout</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Look at the change you wrote down yesterday.</li>
+              <li>Open Canva and make that change.</li>
+              <li>Flip through all 8 panels in order — does anything feel out of place or hard to follow?</li>
+              <li>Fix one more thing that bothers you.</li>
+            </ol>
+            <div class="done-when">✓ Done when: at least two revisions made in Canva</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">✍️ Writing Prompt</div>
+        <p>Write your artist's statement. Answer 3 questions: Why this story? What did you want the reader to feel? What one visual choice did you make on purpose?</p>
+        <p class="prompt-starter">Starters: "I chose this story because…" / "I wanted the reader to feel…" / "One choice I made was…"</p>
+        <p>5–8 sentences total. Say all 3 answers out loud before you write anything.</p>
+        <p class="prompt-length">You do NOT need to write 300 words — 5 strong sentences is excellent.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Panels 1–4 drafted in Canva with real dialogue or narration (not just placeholder labels)</label>
+        <label class="check-item"><input type="checkbox"> Panels 5–8 drafted; at least one narration/inner monologue box added across the chapter</label>
+        <label class="check-item"><input type="checkbox"> Artist's statement written (5–8 sentences answering: why this story, reader feeling, one visual choice)</label>
+        <label class="check-item"><input type="checkbox"> Peer feedback received; one specific change written down</label>
+        <label class="check-item"><input type="checkbox"> At least two revisions made in Canva based on feedback</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w6">
-  <div class="week-header"><span class="week-num">W6</span><span class="week-title">Polish & Showcase Prep</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Final revision of all 8 panels; ensure dialogue, captions, and art align<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Tue</td><td>Print or export digital chapter; do a final proofread of all text<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Wed</td><td>Prepare short (3-min) presentation: what is your chapter about and what did you learn?<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Practice presenting; rehearse pointing to specific panels when discussing<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>SHOWCASE: Present your graphic novel chapter and artist's statement<br><span class="comp comp-share">Showcase</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a reflection on the unit: What was hardest about graphic novel writing? What surprised you? If you were going to create the next chapter, what would happen?</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Final revision of all 8 panels completed — dialogue, captions, and art fully aligned</label>
-      <label class="check-item"><input type="checkbox"> Digital chapter printed or exported as PDF; all text proofread for spelling and punctuation</label>
-      <label class="check-item"><input type="checkbox"> 3-minute presentation prepared — chapter summary and key learning points outlined</label>
-      <label class="check-item"><input type="checkbox"> Presentation rehearsed, including practice pointing to specific panels when discussing design choices</label>
-      <label class="check-item"><input type="checkbox"> Unit reflection written — what was hardest, what was surprising, and what would happen in the next chapter</label>
-      <label class="check-item"><input type="checkbox"> Showcase presentation delivered with graphic novel chapter and artist's statement</label>
+
+  <!-- WEEK 6 -->
+  <div class="week-card" id="w6">
+    <div class="week-header"><span class="week-num">W6</span><span class="week-title">Polish & Showcase Prep</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Final revision of all 8 panels — clean up and align</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your Canva chapter.</li>
+              <li>Go through each panel one at a time — check: Is the text readable? Does it look clean?</li>
+              <li>Fix any overlapping text boxes or anything that looks messy.</li>
+              <li>Make sure all 8 panels are in the right order.</li>
+            </ol>
+            <div class="done-when">✓ Done when: all 8 panels reviewed and cleaned up</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Export chapter as PDF; do a final proofread of all text</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>In Canva, click "Share" then "Download" and choose PDF.</li>
+              <li>Open the PDF and read every word carefully.</li>
+              <li>Circle or note any spelling mistakes or weird sentences.</li>
+              <li>Go back into Canva and fix those mistakes.</li>
+              <li>Export the PDF one more time with the fixes saved.</li>
+            </ol>
+            <div class="done-when">✓ Done when: chapter exported as PDF + spelling errors fixed</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Prepare your 3-minute showcase presentation</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs and write answers to these 3 questions:</li>
+              <li>"What is my graphic novel chapter about?" (2 sentences)</li>
+              <li>"What was the hardest part to create?" (1–2 sentences)</li>
+              <li>"What am I most proud of?" (1 sentence)</li>
+              <li>Practice saying all 3 answers out loud once through.</li>
+            </ol>
+            <div class="talk-tip">💬 You only need these notes — you don't need to memorize anything. You can look at the page when you present.</div>
+            <div class="done-when">✓ Done when: 3 questions answered + practiced out loud once</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Practice presenting; point to specific panels while speaking</span>
+            <span class="comp comp-share">Kinesthetic</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your chapter on screen or hold the printed version.</li>
+              <li>Give your full presentation to someone (use the notes from yesterday).</li>
+              <li>Point to at least 2 specific panels while you talk.</li>
+              <li>Ask your listener: "Was there anything confusing or hard to follow?"</li>
+            </ol>
+            <div class="done-when">✓ Done when: full practice run completed with someone listening</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">SHOWCASE: Present your graphic novel chapter</span>
+            <span class="comp comp-share">Showcase</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Take a few slow breaths. You've done all the work — you're ready.</li>
+              <li>Open your chapter on screen (or bring the printed version).</li>
+              <li>Give your presentation using the notes you practiced.</li>
+              <li>Point to at least 2 specific panels while you speak.</li>
+              <li>Answer any questions from your audience. You know this story better than anyone.</li>
+            </ol>
+            <div class="done-when">✓ Done when: presentation complete — you did it! 🎉</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">✍️ Writing Prompt</div>
+        <p>Write a short reflection on the whole unit. Three questions to answer:</p>
+        <p class="prompt-starter">Starters: "The hardest part was…" / "I surprised myself when…" / "If I made a second chapter, it would be about…"</p>
+        <p>3–5 sentences is perfect. Say it out loud first, then write it down.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> All 8 panels reviewed in Canva — text readable, layout clean, correct order</label>
+        <label class="check-item"><input type="checkbox"> Chapter exported as PDF; spelling and text errors fixed</label>
+        <label class="check-item"><input type="checkbox"> Presentation notes written (3 questions answered) + practiced out loud once</label>
+        <label class="check-item"><input type="checkbox"> Full practice run completed — presentation given to someone with chapter visible</label>
+        <label class="check-item"><input type="checkbox"> Showcase presentation delivered! Unit reflection written (3–5 sentences)</label>
+      </div>
     </div>
   </div>
-</div>
+
   <div class="showcase-box" id="showcase">
-  <div class="showcase-label">Unit Showcase</div>
-  <h3>Original Graphic Novel Chapter</h3>
-  <p>An 8-panel digital graphic novel chapter created in Canva or Google Slides, complete with dialogue, narration, and visual storytelling. Presented alongside a 300-word artist's statement. Audience: family, invited guests.</p>
+    <div class="showcase-label">Unit Showcase</div>
+    <h3>Original Graphic Novel Chapter</h3>
+    <p>An 8-panel digital graphic novel chapter created in Canva or Google Slides, complete with dialogue, narration, and visual storytelling. Presented alongside a short artist's statement. Audience: family, invited guests.</p>
+  </div>
 </div>
-</div>
+
 <footer class="site-footer">Homeschool Curriculum Hub · Oregon · <a href="8th_grade_language_arts.html">← Language Arts</a></footer>
+
+<script>
+  function toggleDay(row) {
+    var detail = row.nextElementSibling;
+    var isOpen = row.classList.contains('open');
+    row.classList.toggle('open', !isOpen);
+    detail.style.display = isOpen ? 'none' : 'block';
+  }
+</script>
 </body>
 </html>

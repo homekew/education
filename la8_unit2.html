@@ -34,9 +34,6 @@
     .week-nav .sep { color: var(--linen-deep); font-size: 0.75rem; }
 
     .container { max-width: 1060px; margin: 0 auto; padding: 0 40px; }
-    .section { padding: 36px 0 20px; }
-    .section-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: var(--ink); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--linen-deep); }
-
     .overview-strip { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 20px 24px; margin: 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
     .ov-item .ov-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
     .ov-item .ov-val { font-size: 0.9rem; color: var(--ink); line-height: 1.5; }
@@ -47,21 +44,33 @@
     .week-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); }
     .week-body { padding: 20px 24px; }
 
-    table.daily { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin-bottom: 16px; }
-    table.daily th { background: var(--linen-dark); color: var(--ink-soft); font-weight: 600; font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 12px; text-align: left; }
-    table.daily td { padding: 9px 12px; border-bottom: 1px solid var(--linen-dark); vertical-align: top; line-height: 1.5; }
-    table.daily tr:last-child td { border-bottom: none; }
-    table.daily tr:nth-child(even) td { background: #faf9f6; }
-    .day { font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
-    .comp { font-size: 0.72rem; display: inline-block; padding: 1px 7px; border-radius: 3px; margin-top: 3px; white-space: nowrap; }
+    .days-list { margin-bottom: 16px; }
+    .day-accordion { border: 1px solid var(--linen-deep); border-radius: 8px; overflow: hidden; margin-bottom: 7px; }
+    .day-row { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; background: var(--white); transition: background 0.15s; user-select: none; }
+    .day-row:hover { background: var(--linen); }
+    .day-row.open { background: var(--sky-bg); }
+    .day-name { font-weight: 700; color: var(--ink-soft); min-width: 40px; font-size: 0.82rem; flex-shrink: 0; }
+    .day-summary { flex: 1; font-size: 0.83rem; color: var(--ink); line-height: 1.4; }
+    .comp { font-size: 0.71rem; display: inline-block; padding: 2px 7px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
     .comp-write { background: var(--terra-bg); color: var(--terra); }
     .comp-read  { background: var(--sage-bg); color: #7a6e1a; }
     .comp-make  { background: var(--sky-bg); color: #3a6a7a; }
     .comp-share { background: var(--linen-deep); color: var(--ink-soft); }
+    .day-arrow { color: var(--ink-muted); font-size: 0.75rem; transition: transform 0.2s; flex-shrink: 0; }
+    .day-row.open .day-arrow { transform: rotate(180deg); }
+    .day-detail { display: none; padding: 14px 18px 16px 18px; background: var(--sky-bg); border-top: 1px solid var(--linen-deep); }
+    .step-list { list-style: none; padding: 0; margin: 0 0 10px 0; counter-reset: step-counter; }
+    .step-list li { counter-increment: step-counter; padding-left: 28px; position: relative; margin-bottom: 8px; font-size: 0.83rem; color: var(--ink); line-height: 1.5; }
+    .step-list li::before { content: counter(step-counter) "."; position: absolute; left: 0; font-weight: 700; color: var(--sky); font-size: 0.8rem; top: 1px; }
+    .talk-tip { background: var(--sage-bg); border-left: 3px solid var(--sage); border-radius: 0 5px 5px 0; padding: 7px 12px; margin: 8px 0; font-size: 0.8rem; color: #5c5210; line-height: 1.5; }
+    .done-when { font-size: 0.78rem; font-weight: 600; color: var(--terra); border-top: 1px solid var(--linen-deep); padding-top: 9px; margin-top: 10px; }
 
     .prompt-box { background: var(--sage-bg); border: 1px solid var(--sage-soft); border-radius: 6px; padding: 14px 18px; margin-top: 12px; }
-    .prompt-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-bottom: 6px; }
-    .prompt-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+    .prompt-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-bottom: 8px; }
+    .prompt-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 6px; }
+    .prompt-box p:last-child { margin-bottom: 0; }
+    .prompt-starter { font-style: italic; }
+    .prompt-length { font-size: 0.78rem; font-weight: 600; color: #7a6e1a; }
 
     .showcase-box { background: var(--terra-bg); border: 1px solid var(--terra-soft); border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
     .showcase-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--terra); margin-bottom: 8px; }
@@ -75,81 +84,22 @@
     .check-item:last-child { margin-bottom: 0; }
     .check-item input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--terra); width: 15px; height: 15px; }
     .checklist-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-top: 16px; margin-bottom: 6px; }
-</style>
+  </style>
 </head>
 <body>
 <!-- PIN GATE -->
 <style>
-  #pin-gate {
-    position: fixed; inset: 0; z-index: 9999;
-    background: #FAF7F1;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Epilogue', sans-serif;
-  }
+  #pin-gate { position: fixed; inset: 0; z-index: 9999; background: #FAF7F1; display: flex; align-items: center; justify-content: center; font-family: 'Epilogue', sans-serif; }
   #pin-gate.hidden { display: none; }
-  .pin-box {
-    text-align: center;
-    background: #fff;
-    border: 1px solid #DDD4C4;
-    border-radius: 12px;
-    padding: 48px 40px 40px;
-    width: 320px;
-    box-shadow: 0 4px 32px rgba(42,33,24,0.08);
-  }
-  .pin-logo {
-    width: 10px; height: 10px;
-    background: #ff1e3c;
-    border-radius: 50%;
-    display: inline-block;
-    margin-bottom: 16px;
-  }
-  .pin-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #2A2118;
-    margin-bottom: 6px;
-  }
-  .pin-sub {
-    font-size: 0.8rem;
-    color: #9A8F81;
-    margin-bottom: 28px;
-  }
-  #pin-input {
-    width: 100%;
-    padding: 11px 14px;
-    font-size: 1.4rem;
-    letter-spacing: 8px;
-    text-align: center;
-    border: 1px solid #DDD4C4;
-    border-radius: 6px;
-    background: #FAF7F1;
-    color: #2A2118;
-    font-family: 'Epilogue', sans-serif;
-    outline: none;
-    margin-bottom: 14px;
-    transition: border-color 0.15s;
-  }
+  .pin-box { text-align: center; background: #fff; border: 1px solid #DDD4C4; border-radius: 12px; padding: 48px 40px 40px; width: 320px; box-shadow: 0 4px 32px rgba(42,33,24,0.08); }
+  .pin-logo { width: 10px; height: 10px; background: #ff1e3c; border-radius: 50%; display: inline-block; margin-bottom: 16px; }
+  .pin-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: #2A2118; margin-bottom: 6px; }
+  .pin-sub { font-size: 0.8rem; color: #9A8F81; margin-bottom: 28px; }
+  #pin-input { width: 100%; padding: 11px 14px; font-size: 1.4rem; letter-spacing: 8px; text-align: center; border: 1px solid #DDD4C4; border-radius: 6px; background: #FAF7F1; color: #2A2118; font-family: 'Epilogue', sans-serif; outline: none; margin-bottom: 14px; transition: border-color 0.15s; }
   #pin-input:focus { border-color: #d2c35a; }
   #pin-input.error { border-color: #ff1e3c; animation: shake 0.3s; }
-  @keyframes shake {
-    0%,100% { transform: translateX(0); }
-    25% { transform: translateX(-6px); }
-    75% { transform: translateX(6px); }
-  }
-  #pin-btn {
-    width: 100%;
-    padding: 10px;
-    background: #2A2118;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-family: 'Epilogue', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
+  @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  #pin-btn { width: 100%; padding: 10px; background: #2A2118; color: #fff; border: none; border-radius: 6px; font-family: 'Epilogue', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: background 0.15s; }
   #pin-btn:hover { background: #5C4F3D; }
 </style>
 <div id="pin-gate">
@@ -168,14 +118,8 @@
     var btn = document.getElementById('pin-btn');
     if (sessionStorage.getItem('ck_auth') === '1') { gate.classList.add('hidden'); return; }
     function check() {
-      if (input.value === '1899') {
-        sessionStorage.setItem('ck_auth', '1');
-        gate.classList.add('hidden');
-      } else {
-        input.classList.add('error');
-        input.value = '';
-        setTimeout(function(){ input.classList.remove('error'); }, 400);
-      }
+      if (input.value === '1899') { sessionStorage.setItem('ck_auth', '1'); gate.classList.add('hidden'); }
+      else { input.classList.add('error'); input.value = ''; setTimeout(function(){ input.classList.remove('error'); }, 400); }
     }
     btn.addEventListener('click', check);
     input.addEventListener('keydown', function(e){ if (e.key === 'Enter') check(); });
@@ -194,100 +138,707 @@
   <p class="tagline">Engineering and making as writing — document a build from first sketch to finished product.</p>
 </div>
 <nav class="week-nav"><a href="#overview">Overview</a><span class="sep">›</span><a href="#w1">Week 1</a> <a href="#w2">Week 2</a> <a href="#w3">Week 3</a> <a href="#w4">Week 4</a> <a href="#w5">Week 5</a> <a href="#w6">Week 6</a><span class="sep">›</span><a href="#showcase">Showcase</a></nav>
+
 <div class="container">
-  <div class="overview-strip" id="overview"><div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">7–12 (October–November)</div></div><div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">The Boy Who Harnessed the Wind (Kamkwamba) + engineering articles</div></div><div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Technical · Expository · Process Writing</div></div><div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">Google Docs (formatted technical doc) + camera/photos</div></div><div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">Illustrated Build Log with technical documentation</div></div><div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR W.8.2 · W.8.4 · RI.8.3</div></div></div>
+  <div class="overview-strip" id="overview">
+    <div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">7–12 (October–November)</div></div>
+    <div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">The Boy Who Harnessed the Wind (Kamkwamba) + engineering articles</div></div>
+    <div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Technical · Expository · Process Writing</div></div>
+    <div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">Google Docs (formatted technical doc) + camera/photos</div></div>
+    <div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">Illustrated Build Log with technical documentation</div></div>
+    <div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR W.8.2 · W.8.4 · RI.8.3</div></div>
+  </div>
+
+  <!-- WEEK 1 -->
   <div class="week-card" id="w1">
-  <div class="week-header"><span class="week-num">W1</span><span class="week-title">Reading Technical Writing</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Intro to The Boy Who Harnessed the Wind ch. 1–3; what makes engineering writing compelling?<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Read a real engineering field notebook page; analyze structure and purpose<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Wed</td><td>Write a "day one" entry: describe how something you own works, step by step<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type and format your entry with headings, numbered steps, and a diagram description<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Choose your build project (LEGO set, original model, or electronic circuit)<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Choose an everyday object (a pencil, a door hinge, a zipper). Write a technical explanation of how it works — as if explaining it to someone who has never seen one. Use precise vocabulary, numbered steps, and at least one labeled diagram description.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> The Boy Who Harnessed the Wind chapters 1–3 read; journal entry written about what makes engineering writing compelling</label>
-      <label class="check-item"><input type="checkbox"> Real engineering field notebook page read and analyzed for structure and purpose</label>
-      <label class="check-item"><input type="checkbox"> "Day one" entry written describing how a familiar object works, step by step</label>
-      <label class="check-item"><input type="checkbox"> Entry typed and formatted in Google Docs with headings, numbered steps, and a diagram description</label>
-      <label class="check-item"><input type="checkbox"> Build project chosen (LEGO set, original model, or electronic circuit)</label>
-      <label class="check-item"><input type="checkbox"> Everyday object writing prompt completed — precise vocabulary, numbered steps, and labeled diagram description included</label>
+    <div class="week-header"><span class="week-num">W1</span><span class="week-title">Reading Technical Writing</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Intro to The Boy Who Harnessed the Wind ch. 1–3; what makes engineering writing compelling?</span>
+            <span class="comp comp-read">Reading</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Get "The Boy Who Harnessed the Wind" and read chapters 1–3.</li>
+              <li>As you read, notice: does the author explain HOW things work, or just that they work?</li>
+              <li>Find one passage where he describes building or fixing something. Put your finger on it.</li>
+              <li>Say out loud: "The most interesting part about how he describes building is…"</li>
+              <li>Write one sentence in your journal about what makes this kind of writing interesting.</li>
+            </ol>
+            <div class="done-when">✓ Done when: chapters 1–3 read + one observation written in journal</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Read a real engineering field notebook page; analyze structure and purpose</span>
+            <span class="comp comp-read">Reading</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read through the engineering field notebook page without stopping to analyze — just take it in.</li>
+              <li>Now look again: how is it organized? Lists? Sketches? Numbered steps? Dates?</li>
+              <li>Say out loud: "The field notebook is organized by _____ because _____."</li>
+              <li>Write 2 things you notice about its structure in your journal.</li>
+            </ol>
+            <div class="done-when">✓ Done when: notebook page read + two structural observations written</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write a "day one" entry: describe how something you own works, step by step</span>
+            <span class="comp comp-write">Writing</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Pick something you use every day — a controller, headphones, keyboard, or tool.</li>
+              <li>Pick it up and examine it. Press the buttons or move the parts.</li>
+              <li>Say out loud: "This works by…" Explain the whole thing out loud first.</li>
+              <li>Write 5 numbered steps explaining how to use it or how it works.</li>
+            </ol>
+            <div class="talk-tip">💬 Sentence starter: "Step 1: First, you…" Each step = one action.</div>
+            <div class="done-when">✓ Done when: 5 numbered steps written about one familiar object</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Type and format your entry with headings, numbered steps, and a diagram description</span>
+            <span class="comp comp-make">Computer</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs and start a new document.</li>
+              <li>Add a heading at the top: "Day One Log — [name of object]"</li>
+              <li>Add a bold subheading: "How It Works"</li>
+              <li>Type your 5 numbered steps from yesterday.</li>
+              <li>Add one more section called "Diagram Description" and describe what a labeled drawing of this object would show.</li>
+            </ol>
+            <div class="done-when">✓ Done when: Google Doc created with heading, numbered steps, and diagram description section</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Choose your build project — LEGO, original model, or circuit</span>
+            <span class="comp comp-share">Kinesthetic</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Think about three options: (1) a LEGO original build, (2) a model made from other materials, (3) a simple electronic circuit.</li>
+              <li>Say out loud: "I want to build _____ because _____."</li>
+              <li>Write your choice and your reason in one sentence.</li>
+              <li>Write one more sentence: "The hardest part will probably be _____."</li>
+            </ol>
+            <div class="talk-tip">💬 The LEGO build is a great choice — it's hands-on and easy to photograph each stage.</div>
+            <div class="done-when">✓ Done when: build project chosen + written down with reason</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">✍️ Writing Prompt</div>
+        <p>Pick an everyday object (a zipper, a pencil, a door hinge). Describe how it works as if explaining to someone who's never seen one.</p>
+        <p class="prompt-starter">Starter: "This object has _____ parts. The way it works is…"</p>
+        <p>Write 4–6 sentences. Talk it out loud first, then write it. Use numbered steps if that helps.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Chapters 1–3 of Kamkwamba read; one observation about what makes engineering writing interesting written</label>
+        <label class="check-item"><input type="checkbox"> Real engineering field notebook analyzed — 2 structural observations written</label>
+        <label class="check-item"><input type="checkbox"> "Day one" entry written — 5 numbered steps describing how a familiar object works</label>
+        <label class="check-item"><input type="checkbox"> Entry typed in Google Docs with heading, numbered steps, and diagram description section</label>
+        <label class="check-item"><input type="checkbox"> Build project chosen (LEGO, model, or circuit) with reason written</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w2">
-  <div class="week-header"><span class="week-num">W2</span><span class="week-title">Process & Documentation Basics</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Kamkwamba ch. 4–7; how does he describe failure and iteration?<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>What is iteration? Design thinking: problem → sketch → build → test → revise<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Wed</td><td>Write a design brief for your build: goal, materials, constraints, success criteria<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Create a digital design brief in Google Docs with proper headings and formatting<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Begin the physical build; photograph stage 1; kinesthetic hands-on session<br><span class="comp comp-make">Kinesthetic</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a design brief for your project. Include: (1) the problem or goal, (2) materials list with quantities, (3) constraints (time, cost, size), (4) how you will know when it's done. Use clear, precise language — someone else should be able to start the project from your brief.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Kamkwamba chapters 4–7 read; journal entry written about how he describes failure and iteration</label>
-      <label class="check-item"><input type="checkbox"> Design thinking cycle (problem → sketch → build → test → revise) studied and understood</label>
-      <label class="check-item"><input type="checkbox"> Design brief written covering goal, materials list, constraints, and success criteria</label>
-      <label class="check-item"><input type="checkbox"> Design brief formatted in Google Docs with proper headings and layout</label>
-      <label class="check-item"><input type="checkbox"> Physical build begun; stage 1 photographed</label>
+
+  <!-- WEEK 2 -->
+  <div class="week-card" id="w2">
+    <div class="week-header"><span class="week-num">W2</span><span class="week-title">Process & Documentation Basics</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Kamkwamba ch. 4–7; how does he describe failure and iteration?</span>
+            <span class="comp comp-read">Reading</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read chapters 4–7 of The Boy Who Harnessed the Wind.</li>
+              <li>Find one place in the book where something breaks or doesn't work.</li>
+              <li>Say out loud: "He failed because _____, then he fixed it by _____."</li>
+              <li>Write that sentence in your journal.</li>
+            </ol>
+            <div class="done-when">✓ Done when: chapters 4–7 read + one failure-and-fix observation written</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">What is iteration? Design thinking: problem → sketch → build → test → revise</span>
+            <span class="comp comp-read">Reading</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Write these 5 words down with space between each: Problem → Sketch → Build → Test → Revise</li>
+              <li>Write one sentence for each word saying what happens at that step.</li>
+              <li>Then say out loud: "Design thinking is like a loop because…"</li>
+              <li>Connect it to your build project: "My loop will work like…"</li>
+            </ol>
+            <div class="talk-tip">💬 Starter: "Problem means you figure out what you're trying to solve. Sketch means…"</div>
+            <div class="done-when">✓ Done when: 5-step cycle written with one sentence each</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write a design brief for your build: goal, materials, constraints, success criteria</span>
+            <span class="comp comp-write">Writing</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>At the top of a page write: "DESIGN BRIEF — [your project name]"</li>
+              <li>Write 4 sections with space between each: Goal, Materials, Constraints, Done When.</li>
+              <li>Fill in Goal: what you're building and why (1–2 sentences).</li>
+              <li>Fill in Materials: list everything you'll need.</li>
+              <li>Fill in Constraints: any limits (time, space, parts available).</li>
+              <li>Fill in Done When: what your finished build will do or look like.</li>
+            </ol>
+            <div class="talk-tip">💬 Starter: "My goal is to build _____ so that _____."</div>
+            <div class="done-when">✓ Done when: all 4 sections of design brief filled in</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Create your design brief in Google Docs with headings and formatting</span>
+            <span class="comp comp-make">Computer</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs and start a new document.</li>
+              <li>Title: "Design Brief — [your project]"</li>
+              <li>Add each section from your handwritten brief as a bold heading: Goal, Materials, Constraints, Done When.</li>
+              <li>Type the content under each heading.</li>
+              <li>Make the 4 headings bold so they stand out visually.</li>
+            </ol>
+            <div class="done-when">✓ Done when: design brief fully typed and formatted in Google Docs with 4 bold headings</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Begin the physical build; photograph stage 1</span>
+            <span class="comp comp-make">Kinesthetic</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Gather all your materials and lay them out.</li>
+              <li>Take a "before" photo — everything laid out before building starts.</li>
+              <li>Begin building — just the first stage (base, foundation, or frame).</li>
+              <li>When you finish stage 1, take another photo.</li>
+              <li>Write one sentence: "Stage 1 is done — it looks like _____."</li>
+            </ol>
+            <div class="done-when">✓ Done when: building started + at least 2 photos taken + stage 1 described in one sentence</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">✍️ Writing Prompt</div>
+        <p>Write a design brief for your build. Include your goal, materials list, any limits (time, size, cost), and how you'll know when it's done.</p>
+        <p class="prompt-starter">Starter: "My goal is to build _____ so that _____. Materials I need: … I'll know I'm done when…"</p>
+        <p>Aim for complete sentences, but a bulleted materials list is fine. Talk it out first.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Chapters 4–7 read; one failure-and-fix observation written</label>
+        <label class="check-item"><input type="checkbox"> Design thinking cycle (problem → sketch → build → test → revise) written with one sentence per step</label>
+        <label class="check-item"><input type="checkbox"> Design brief written on paper with all 4 sections (Goal, Materials, Constraints, Done When)</label>
+        <label class="check-item"><input type="checkbox"> Design brief typed and formatted in Google Docs with bold headings</label>
+        <label class="check-item"><input type="checkbox"> Build started; before photo and stage 1 photo taken</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w3">
-  <div class="week-header"><span class="week-num">W3</span><span class="week-title">Step-by-Step Technical Writing</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Finish Kamkwamba; discuss how he uses storytelling inside technical explanation<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Writing workshop: clear step-by-step instructions — active verbs, no ambiguity<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write steps 1–10 of your build process with technical precision<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Continue building; photograph each major stage; upload photos to doc<br><span class="comp comp-make">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>Peer review: follow each other's written instructions — do they actually work?<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write the first half of your build log: steps 1–10. Each step should be a clear action in the imperative voice ("Attach the cross-brace to the base using two 2×4 plates."). After every 3–4 steps, add a "checkpoint" note: what should the build look like at this point?</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Kamkwamba finished; discussion or journal entry on how he weaves storytelling into technical explanation</label>
-      <label class="check-item"><input type="checkbox"> Writing workshop completed — active verb imperative instructions practiced with no ambiguity</label>
-      <label class="check-item"><input type="checkbox"> Build log steps 1–10 written in imperative voice with checkpoint notes after every 3–4 steps</label>
-      <label class="check-item"><input type="checkbox"> Build continued; major stages photographed and uploaded to Google Doc</label>
-      <label class="check-item"><input type="checkbox"> Peer review done — partner attempted to follow written instructions; clarity revised based on feedback</label>
+
+  <!-- WEEK 3 -->
+  <div class="week-card" id="w3">
+    <div class="week-header"><span class="week-num">W3</span><span class="week-title">Step-by-Step Technical Writing</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Finish Kamkwamba; how does he mix storytelling with technical explanation?</span>
+            <span class="comp comp-read">Reading</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Finish reading The Boy Who Harnessed the Wind.</li>
+              <li>Find one place where he's being technical but it also feels like a story — not just a list of facts.</li>
+              <li>Say out loud: "He made the technical part interesting by _____."</li>
+              <li>Write one sentence in your journal about that technique.</li>
+            </ol>
+            <div class="done-when">✓ Done when: book finished + one observation about mixing storytelling and technical writing</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Writing workshop: clear step-by-step instructions using active verbs</span>
+            <span class="comp comp-write">Writing</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Think of something simple you know how to do (make a snack, set up a game, connect a cable).</li>
+              <li>Write 5 steps in imperative (command) form: "Open the bag." "Take out two pieces." Each step = one action.</li>
+              <li>Read your steps to someone — can they follow them exactly without asking questions?</li>
+              <li>If they got confused, fix that one step.</li>
+            </ol>
+            <div class="talk-tip">💬 Imperative means a command. Start each step with a strong action verb: "Connect," "Place," "Attach," "Insert."</div>
+            <div class="done-when">✓ Done when: 5 imperative steps written + at least one person confirmed they could follow them</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write steps 1–10 of your build process with technical precision</span>
+            <span class="comp comp-write">Writing</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Look at what you've built so far.</li>
+              <li>Write Step 1 as a clear command: "Get out _____ and lay it flat."</li>
+              <li>Write steps 2–10 — each one is one specific action.</li>
+              <li>After step 4, add a checkpoint note: "Your build should look like _____ at this point."</li>
+              <li>After step 8, add another checkpoint note.</li>
+            </ol>
+            <div class="done-when">✓ Done when: steps 1–10 written with 2 checkpoint notes</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Continue building; photograph each major stage; upload photos to doc</span>
+            <span class="comp comp-make">Kinesthetic</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Continue your build, following your written steps.</li>
+              <li>Every time you complete 3–4 steps, stop and take a photo.</li>
+              <li>Label each photo briefly — "Stage 2," "Stage 3," etc.</li>
+              <li>At the end of the session, upload the photos to your Google Doc next to the relevant steps.</li>
+            </ol>
+            <div class="done-when">✓ Done when: build progressed + photos taken and placed in Google Doc</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Peer review: follow each other's written instructions — do they actually work?</span>
+            <span class="comp comp-share">Kinesthetic</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Give your written instructions (steps 1–10) to someone else.</li>
+              <li>Watch them try to follow the steps — don't explain anything, just observe.</li>
+              <li>Note where they get stuck or confused.</li>
+              <li>Go back and revise at least one step that was unclear.</li>
+            </ol>
+            <div class="done-when">✓ Done when: instructions tested by someone else + at least one step revised for clarity</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">✍️ Writing Prompt</div>
+        <p>Write the first 10 steps of your build process. Each step is one specific action. After step 4 and step 8, add a checkpoint describing what the build should look like.</p>
+        <p class="prompt-starter">Starter: "Step 1: [Start with a strong verb — Attach, Place, Connect…]"</p>
+        <p>Say each step out loud before you write it — if you can say it clearly, you can write it clearly.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Kamkwamba finished; observation about storytelling inside technical writing noted</label>
+        <label class="check-item"><input type="checkbox"> Writing workshop done — 5 imperative instruction steps written and tested with someone</label>
+        <label class="check-item"><input type="checkbox"> Build log steps 1–10 written with 2 checkpoint notes</label>
+        <label class="check-item"><input type="checkbox"> Build continued; stage photos taken and placed in Google Doc</label>
+        <label class="check-item"><input type="checkbox"> Instructions tested by someone; at least one step revised for clarity</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w4">
-  <div class="week-header"><span class="week-num">W4</span><span class="week-title">Explaining Your Choices</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read: How Pixar writes technical story documents; engineer's design rationale<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Writing workshop: expository explanation of WHY — rationale, cause and effect<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a "why I chose this" section: explain 3 key design decisions<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Continue build; document setbacks and how you fixed them<br><span class="comp comp-make">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>Mid-project share: show your build and read your design rationale aloud<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a "Design Rationale" section for your build log. Choose three major decisions you made (a material, a structure, a method) and explain why you made each choice. What alternatives did you consider? Why did you reject them? Use clear cause-and-effect reasoning.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Reading on design rationale and engineer's documentation reviewed; cause-and-effect reasoning discussed</label>
-      <label class="check-item"><input type="checkbox"> Writing workshop on expository WHY writing completed — rationale structure practiced</label>
-      <label class="check-item"><input type="checkbox"> "Why I Chose This" section written — 3 key design decisions explained with alternatives considered and rejected</label>
-      <label class="check-item"><input type="checkbox"> Build continued; setbacks documented with descriptions of how each was fixed</label>
-      <label class="check-item"><input type="checkbox"> Mid-project share completed — build shown and design rationale read aloud</label>
+
+  <!-- WEEK 4 -->
+  <div class="week-card" id="w4">
+    <div class="week-header"><span class="week-num">W4</span><span class="week-title">Explaining Your Choices</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Read: design rationale examples — how engineers explain WHY, not just WHAT</span>
+            <span class="comp comp-read">Reading</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read the design rationale example (the Pixar article or engineering excerpt).</li>
+              <li>Notice: does the writer explain WHY they made choices, not just WHAT they did?</li>
+              <li>Find one sentence that explains a "why" decision.</li>
+              <li>Write in your journal: "A good design rationale explains _____ because _____."</li>
+            </ol>
+            <div class="done-when">✓ Done when: reading done + one observation about explaining WHY written</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Writing workshop: expository rationale — cause and effect, explaining decisions</span>
+            <span class="comp comp-write">Writing</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Think of one choice you've made in your build (a material, a shape, a connection method).</li>
+              <li>Write a "Because Statement": "I chose _____ because _____, not _____ because _____."</li>
+              <li>Practice the same format for 2 more choices in your build.</li>
+            </ol>
+            <div class="talk-tip">💬 Say it out loud first: "I used this piece instead of that piece because it's stronger / fits better / looks the way I wanted."</div>
+            <div class="done-when">✓ Done when: 3 "Because Statements" written — one for each design choice</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write your "Why I Made These Choices" section — 3 key design decisions</span>
+            <span class="comp comp-write">Writing</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your Google Doc and add a new section: "Why I Made These Choices"</li>
+              <li>Write a rationale for 3 key decisions in your build.</li>
+              <li>For each: (1) what you chose, (2) why you chose it, (3) what you could have done instead.</li>
+              <li>Aim for 2–4 sentences per decision.</li>
+            </ol>
+            <div class="talk-tip">💬 Starter: "For the _____, I chose _____ instead of _____ because _____."</div>
+            <div class="done-when">✓ Done when: 3 design decisions documented with reasoning (2–4 sentences each)</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Continue build; document any setbacks and how you fixed them</span>
+            <span class="comp comp-make">Kinesthetic</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Continue building.</li>
+              <li>When something goes wrong — and it will — stop and write: "Problem: _____. Fix: _____."</li>
+              <li>Document at least one setback today in writing.</li>
+              <li>Take a photo of what the build looks like now.</li>
+            </ol>
+            <div class="done-when">✓ Done when: build continued + at least one problem/fix documented + photo taken</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Mid-project share: show your build and read your design rationale aloud</span>
+            <span class="comp comp-share">Discussion</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Show your build (in person or via photos) to someone.</li>
+              <li>Explain what you're building in 2 sentences.</li>
+              <li>Read your "Why I Made These Choices" section out loud.</li>
+              <li>Ask: "Does my reasoning make sense? Is anything confusing?"</li>
+            </ol>
+            <div class="done-when">✓ Done when: build shown + design rationale read aloud to someone</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">✍️ Writing Prompt</div>
+        <p>Pick 3 choices you made in your build. For each one, explain what you chose, why, and what the alternative was.</p>
+        <p class="prompt-starter">Starter: "For the _____, I chose _____ instead of _____ because _____."</p>
+        <p>2–4 sentences per choice. Say each one out loud first — you already know the reasons.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Design rationale reading done; observation about explaining WHY written</label>
+        <label class="check-item"><input type="checkbox"> Writing workshop done — 3 "Because Statements" written (one per design choice)</label>
+        <label class="check-item"><input type="checkbox"> "Why I Made These Choices" section written in Google Doc (3 decisions, 2–4 sentences each)</label>
+        <label class="check-item"><input type="checkbox"> Build continued; at least one setback documented as "Problem: ___. Fix: ___."</label>
+        <label class="check-item"><input type="checkbox"> Mid-project share done — build shown and design rationale read aloud</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w5">
-  <div class="week-header"><span class="week-num">W5</span><span class="week-title">Troubleshooting & Failure Writing</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read: excerpts from engineering post-mortems and failure analysis reports<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Writing about failure honestly — what went wrong, what did you learn?<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write your "Problems & Solutions" section: at least 2 failures and how you fixed them<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Finalize the build; take final photos; compile full photo set<br><span class="comp comp-make">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>Full build log draft review — check clarity, completeness, and formatting<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a "Failure Log": document at least two things that went wrong during your build. For each, describe (1) what you expected to happen, (2) what actually happened, (3) why you think it failed, and (4) what you changed. Good engineers write about failure honestly — it's how knowledge advances.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Engineering post-mortem and failure analysis report excerpts read and analyzed</label>
-      <label class="check-item"><input type="checkbox"> Writing workshop on honest failure writing completed — expected vs. actual outcome structure practiced</label>
-      <label class="check-item"><input type="checkbox"> "Problems & Solutions" section written — at least 2 failures documented with expected outcome, actual outcome, cause, and fix</label>
-      <label class="check-item"><input type="checkbox"> Build finalized; final photos taken and full photo set compiled in document</label>
-      <label class="check-item"><input type="checkbox"> Full build log draft reviewed for clarity, completeness, and formatting consistency</label>
+
+  <!-- WEEK 5 -->
+  <div class="week-card" id="w5">
+    <div class="week-header"><span class="week-num">W5</span><span class="week-title">Troubleshooting & Failure Writing</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Read engineering post-mortems and failure analysis examples</span>
+            <span class="comp comp-read">Reading</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read the engineering post-mortem or failure analysis examples provided.</li>
+              <li>Notice: does the writer blame people, or analyze what happened?</li>
+              <li>Find one sentence that describes a failure honestly.</li>
+              <li>Write in your journal: "Good failure writing is different from just complaining because _____."</li>
+            </ol>
+            <div class="done-when">✓ Done when: reading done + one observation about failure-writing style noted</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Writing about failure honestly — what went wrong, what did you learn?</span>
+            <span class="comp comp-write">Writing</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Think about one thing that didn't work the way you planned in your build.</li>
+              <li>Write these 4 things (one sentence each):</li>
+              <li>What I expected to happen: ___</li>
+              <li>What actually happened: ___</li>
+              <li>Why I think it failed: ___</li>
+              <li>What I changed: ___</li>
+            </ol>
+            <div class="talk-tip">💬 Say it out loud like you're explaining it to a friend: "So what happened was…"</div>
+            <div class="done-when">✓ Done when: 4-part failure analysis written for one problem</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write "Problems & Solutions" section — at least 2 failures and fixes</span>
+            <span class="comp comp-write">Writing</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your Google Doc and add a new heading: "Problems & Solutions"</li>
+              <li>Use the 4-part format from yesterday for at least 2 problems.</li>
+              <li>Add one final sentence: "The most important thing I learned from these problems was _____."</li>
+            </ol>
+            <div class="done-when">✓ Done when: "Problems & Solutions" section written with at least 2 failures + a learning note</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Finalize the build; take final photos; compile full photo set</span>
+            <span class="comp comp-make">Kinesthetic</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Complete the build — add any finishing touches.</li>
+              <li>Take 3–5 final photos from different angles.</li>
+              <li>Place your hand or a ruler next to the build in one photo to show scale.</li>
+              <li>Take one "hero shot" — the best angle that shows your build at its best.</li>
+            </ol>
+            <div class="done-when">✓ Done when: build finished + final photos taken (including a hero shot)</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Full build log draft review — check clarity, completeness, and formatting</span>
+            <span class="comp comp-share">Discussion</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your Google Doc build log and read it from beginning to end.</li>
+              <li>Check: Is there a photo for each major stage?</li>
+              <li>Check: Do the steps make sense in order?</li>
+              <li>Check: Is there a "Why I Made These Choices" and a "Problems & Solutions" section?</li>
+              <li>Write a list of 3 things that still need work before the final version.</li>
+            </ol>
+            <div class="done-when">✓ Done when: full draft read through + 3 improvement notes written</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">✍️ Writing Prompt</div>
+        <p>Document at least 2 things that went wrong during your build. Use this format for each:</p>
+        <p class="prompt-starter">"What I expected: ___ / What happened: ___ / Why it failed: ___ / What I changed: ___"</p>
+        <p>Then write one final sentence: "The most important thing I learned was…"</p>
+        <p class="prompt-length">Good engineers write about failure — that's how knowledge actually gets shared.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Engineering failure analysis examples read; observation about failure-writing style noted</label>
+        <label class="check-item"><input type="checkbox"> 4-part failure analysis written for one problem (expected, actual, cause, fix)</label>
+        <label class="check-item"><input type="checkbox"> "Problems & Solutions" section added to Google Doc — at least 2 failures with learning note</label>
+        <label class="check-item"><input type="checkbox"> Build finalized; final photos taken including hero shot</label>
+        <label class="check-item"><input type="checkbox"> Full build log draft read through; 3 improvement notes written</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w6">
-  <div class="week-header"><span class="week-num">W6</span><span class="week-title">Final Document & Showcase</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Final revision of full build log: intro, steps, rationale, failures, conclusion<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Tue</td><td>Format the complete document professionally: headings, photos, page numbers<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Wed</td><td>Write a conclusion: what did you build, what did you learn, what would you do differently?<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Prepare 4-minute presentation: walk audience through the build log<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>SHOWCASE: Present your build and build log documentation<br><span class="comp comp-share">Showcase</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write the conclusion of your build log: (1) What did you set out to build? (2) Did it meet your success criteria? (3) What was the most important thing you learned? (4) If you had two more weeks, what would you improve? Write it in a way that a future engineer reading this log could learn from your experience.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Full build log revised — intro, steps, design rationale, failure log, and conclusion all reviewed and refined</label>
-      <label class="check-item"><input type="checkbox"> Document professionally formatted in Google Docs with consistent headings, embedded photos, and page numbers</label>
-      <label class="check-item"><input type="checkbox"> Conclusion written — original goal, success criteria evaluation, key learning, and two-week improvement plan included</label>
-      <label class="check-item"><input type="checkbox"> 4-minute presentation prepared — walk-through of build log sections planned with physical build on hand</label>
-      <label class="check-item"><input type="checkbox"> Showcase presentation delivered — build and illustrated build log document presented for family audience</label>
+
+  <!-- WEEK 6 -->
+  <div class="week-card" id="w6">
+    <div class="week-header"><span class="week-num">W6</span><span class="week-title">Final Document & Showcase</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Final revision of full build log — intro, steps, rationale, failures, conclusion</span>
+            <span class="comp comp-make">Computer</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your Google Doc.</li>
+              <li>Work through the 3 improvement notes you wrote on Friday — fix each one.</li>
+              <li>After fixing each one, re-read that section. Does it read clearly now?</li>
+              <li>Make sure all major sections are present: Design Brief, Steps, Why I Made These Choices, Problems & Solutions.</li>
+            </ol>
+            <div class="done-when">✓ Done when: 3 improvements made and all major sections present</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Format the document professionally — headings, photos, page numbers</span>
+            <span class="comp comp-make">Computer</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Check that every section has a bold heading.</li>
+              <li>Make sure photos are placed next to the steps they go with.</li>
+              <li>Add page numbers (Insert → Page Numbers in Google Docs).</li>
+              <li>Read through one more time for any typos.</li>
+            </ol>
+            <div class="done-when">✓ Done when: document formatted with consistent headings, photos placed, and page numbers added</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write the conclusion — what did you build, learn, and what would you improve?</span>
+            <span class="comp comp-write">Writing</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your Google Doc and add a final section: "What I Learned"</li>
+              <li>Answer these 4 questions in 1–2 sentences each:</li>
+              <li>What did I build?</li>
+              <li>Did it do what I planned?</li>
+              <li>What was the most important thing I learned?</li>
+              <li>If I had more time, what would I improve?</li>
+            </ol>
+            <div class="talk-tip">💬 Starters: "My goal was to build _____ and in the end _____." / "If I had more time, I would _____."</div>
+            <div class="done-when">✓ Done when: conclusion written (at least 4 sentences answering all 4 questions)</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Prepare 4-minute presentation — walk the audience through your build log</span>
+            <span class="comp comp-share">Kinesthetic</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Decide which sections of your build log you'll walk through — you don't have to read all of it.</li>
+              <li>Write a 3-sentence opening: "I built _____. The hardest part was _____. The coolest thing I figured out was _____."</li>
+              <li>Practice saying your opening out loud once.</li>
+              <li>Decide which 2 photos you'll point to during your talk.</li>
+            </ol>
+            <div class="done-when">✓ Done when: opening written + practiced out loud once + 2 photos picked for the talk</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">SHOWCASE: Present your build and build log documentation</span>
+            <span class="comp comp-share">Showcase</span><span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Bring your physical build.</li>
+              <li>Open your Google Doc build log on screen.</li>
+              <li>Give your presentation: opening, walk through the log, point to photos, share one problem you solved.</li>
+              <li>Answer any questions about your choices.</li>
+            </ol>
+            <div class="done-when">✓ Done when: showcase presentation complete — you built something and documented it! 🎉</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">✍️ Writing Prompt</div>
+        <p>Write the conclusion for your build log. Answer 4 questions: What did you build? Did it do what you planned? What was the most important thing you learned? What would you improve?</p>
+        <p class="prompt-starter">Starters: "My goal was to build _____ and in the end…" / "The most important thing I learned was…"</p>
+        <p>4–6 sentences total. Say it out loud first, then write it.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> All 3 improvement notes from Friday addressed; all major sections present in document</label>
+        <label class="check-item"><input type="checkbox"> Document professionally formatted — bold headings, photos placed next to steps, page numbers added</label>
+        <label class="check-item"><input type="checkbox"> Conclusion written ("What I Learned" — 4+ sentences answering all 4 questions)</label>
+        <label class="check-item"><input type="checkbox"> 4-minute presentation prepared — opening written and practiced once, 2 photos selected</label>
+        <label class="check-item"><input type="checkbox"> Showcase delivered — build and illustrated build log document presented!</label>
+      </div>
     </div>
   </div>
-</div>
+
   <div class="showcase-box" id="showcase">
-  <div class="showcase-label">Unit Showcase</div>
-  <h3>Illustrated Build Log</h3>
-  <p>A complete technical document in Google Docs: design brief, step-by-step instructions with photos, design rationale, failure log, and conclusion. The physical build is presented alongside. Presented in a 4-minute walk-through for family audience.</p>
+    <div class="showcase-label">Unit Showcase</div>
+    <h3>Illustrated Build Log</h3>
+    <p>A complete technical document in Google Docs: design brief, step-by-step instructions with photos, design rationale, failure log, and conclusion. The physical build is presented alongside in a 4-minute walk-through for family audience.</p>
+  </div>
 </div>
-</div>
+
 <footer class="site-footer">Homeschool Curriculum Hub · Oregon · <a href="8th_grade_language_arts.html">← Language Arts</a></footer>
+
+<script>
+  function toggleDay(row) {
+    var detail = row.nextElementSibling;
+    var isOpen = row.classList.contains('open');
+    row.classList.toggle('open', !isOpen);
+    detail.style.display = isOpen ? 'none' : 'block';
+  }
+</script>
 </body>
 </html>

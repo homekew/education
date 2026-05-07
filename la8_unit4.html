@@ -34,9 +34,6 @@
     .week-nav .sep { color: var(--linen-deep); font-size: 0.75rem; }
 
     .container { max-width: 1060px; margin: 0 auto; padding: 0 40px; }
-    .section { padding: 36px 0 20px; }
-    .section-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: var(--ink); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--linen-deep); }
-
     .overview-strip { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 20px 24px; margin: 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
     .ov-item .ov-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
     .ov-item .ov-val { font-size: 0.9rem; color: var(--ink); line-height: 1.5; }
@@ -47,21 +44,33 @@
     .week-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); }
     .week-body { padding: 20px 24px; }
 
-    table.daily { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin-bottom: 16px; }
-    table.daily th { background: var(--linen-dark); color: var(--ink-soft); font-weight: 600; font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 12px; text-align: left; }
-    table.daily td { padding: 9px 12px; border-bottom: 1px solid var(--linen-dark); vertical-align: top; line-height: 1.5; }
-    table.daily tr:last-child td { border-bottom: none; }
-    table.daily tr:nth-child(even) td { background: #faf9f6; }
-    .day { font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
-    .comp { font-size: 0.72rem; display: inline-block; padding: 1px 7px; border-radius: 3px; margin-top: 3px; white-space: nowrap; }
+    .days-list { margin-bottom: 16px; }
+    .day-accordion { border: 1px solid var(--linen-deep); border-radius: 8px; overflow: hidden; margin-bottom: 7px; }
+    .day-row { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; background: var(--white); transition: background 0.15s; user-select: none; }
+    .day-row:hover { background: var(--linen); }
+    .day-row.open { background: var(--sky-bg); }
+    .day-name { font-weight: 700; color: var(--ink-soft); min-width: 40px; font-size: 0.82rem; flex-shrink: 0; }
+    .day-summary { flex: 1; font-size: 0.83rem; color: var(--ink); line-height: 1.4; }
+    .comp { font-size: 0.71rem; display: inline-block; padding: 2px 7px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
     .comp-write { background: var(--terra-bg); color: var(--terra); }
     .comp-read  { background: var(--sage-bg); color: #7a6e1a; }
     .comp-make  { background: var(--sky-bg); color: #3a6a7a; }
     .comp-share { background: var(--linen-deep); color: var(--ink-soft); }
+    .day-arrow { color: var(--ink-muted); font-size: 0.75rem; transition: transform 0.2s; flex-shrink: 0; }
+    .day-row.open .day-arrow { transform: rotate(180deg); }
+    .day-detail { display: none; padding: 14px 18px 16px 18px; background: var(--sky-bg); border-top: 1px solid var(--linen-deep); }
+    .step-list { list-style: none; padding: 0; margin: 0 0 10px 0; counter-reset: step-counter; }
+    .step-list li { counter-increment: step-counter; padding-left: 28px; position: relative; margin-bottom: 8px; font-size: 0.83rem; color: var(--ink); line-height: 1.5; }
+    .step-list li::before { content: counter(step-counter) "."; position: absolute; left: 0; font-weight: 700; color: var(--sky); font-size: 0.8rem; top: 1px; }
+    .talk-tip { background: var(--sage-bg); border-left: 3px solid var(--sage); border-radius: 0 5px 5px 0; padding: 7px 12px; margin: 8px 0; font-size: 0.8rem; color: #5c5210; line-height: 1.5; }
+    .done-when { font-size: 0.78rem; font-weight: 600; color: var(--terra); border-top: 1px solid var(--linen-deep); padding-top: 9px; margin-top: 10px; }
 
     .prompt-box { background: var(--sage-bg); border: 1px solid var(--sage-soft); border-radius: 6px; padding: 14px 18px; margin-top: 12px; }
-    .prompt-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-bottom: 6px; }
-    .prompt-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+    .prompt-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-bottom: 8px; }
+    .prompt-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 6px; }
+    .prompt-box p:last-child { margin-bottom: 0; }
+    .prompt-starter { font-style: italic; }
+    .prompt-length { font-size: 0.78rem; font-weight: 600; color: #7a6e1a; }
 
     .showcase-box { background: var(--terra-bg); border: 1px solid var(--terra-soft); border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
     .showcase-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--terra); margin-bottom: 8px; }
@@ -75,81 +84,22 @@
     .check-item:last-child { margin-bottom: 0; }
     .check-item input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--terra); width: 15px; height: 15px; }
     .checklist-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-top: 16px; margin-bottom: 6px; }
-</style>
+  </style>
 </head>
 <body>
 <!-- PIN GATE -->
 <style>
-  #pin-gate {
-    position: fixed; inset: 0; z-index: 9999;
-    background: #FAF7F1;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Epilogue', sans-serif;
-  }
+  #pin-gate { position: fixed; inset: 0; z-index: 9999; background: #FAF7F1; display: flex; align-items: center; justify-content: center; font-family: 'Epilogue', sans-serif; }
   #pin-gate.hidden { display: none; }
-  .pin-box {
-    text-align: center;
-    background: #fff;
-    border: 1px solid #DDD4C4;
-    border-radius: 12px;
-    padding: 48px 40px 40px;
-    width: 320px;
-    box-shadow: 0 4px 32px rgba(42,33,24,0.08);
-  }
-  .pin-logo {
-    width: 10px; height: 10px;
-    background: #ff1e3c;
-    border-radius: 50%;
-    display: inline-block;
-    margin-bottom: 16px;
-  }
-  .pin-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #2A2118;
-    margin-bottom: 6px;
-  }
-  .pin-sub {
-    font-size: 0.8rem;
-    color: #9A8F81;
-    margin-bottom: 28px;
-  }
-  #pin-input {
-    width: 100%;
-    padding: 11px 14px;
-    font-size: 1.4rem;
-    letter-spacing: 8px;
-    text-align: center;
-    border: 1px solid #DDD4C4;
-    border-radius: 6px;
-    background: #FAF7F1;
-    color: #2A2118;
-    font-family: 'Epilogue', sans-serif;
-    outline: none;
-    margin-bottom: 14px;
-    transition: border-color 0.15s;
-  }
+  .pin-box { text-align: center; background: #fff; border: 1px solid #DDD4C4; border-radius: 12px; padding: 48px 40px 40px; width: 320px; box-shadow: 0 4px 32px rgba(42,33,24,0.08); }
+  .pin-logo { width: 10px; height: 10px; background: #ff1e3c; border-radius: 50%; display: inline-block; margin-bottom: 16px; }
+  .pin-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: #2A2118; margin-bottom: 6px; }
+  .pin-sub { font-size: 0.8rem; color: #9A8F81; margin-bottom: 28px; }
+  #pin-input { width: 100%; padding: 11px 14px; font-size: 1.4rem; letter-spacing: 8px; text-align: center; border: 1px solid #DDD4C4; border-radius: 6px; background: #FAF7F1; color: #2A2118; font-family: 'Epilogue', sans-serif; outline: none; margin-bottom: 14px; transition: border-color 0.15s; }
   #pin-input:focus { border-color: #d2c35a; }
   #pin-input.error { border-color: #ff1e3c; animation: shake 0.3s; }
-  @keyframes shake {
-    0%,100% { transform: translateX(0); }
-    25% { transform: translateX(-6px); }
-    75% { transform: translateX(6px); }
-  }
-  #pin-btn {
-    width: 100%;
-    padding: 10px;
-    background: #2A2118;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-family: 'Epilogue', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
+  @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  #pin-btn { width: 100%; padding: 10px; background: #2A2118; color: #fff; border: none; border-radius: 6px; font-family: 'Epilogue', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: background 0.15s; }
   #pin-btn:hover { background: #5C4F3D; }
 </style>
 <div id="pin-gate">
@@ -168,14 +118,8 @@
     var btn = document.getElementById('pin-btn');
     if (sessionStorage.getItem('ck_auth') === '1') { gate.classList.add('hidden'); return; }
     function check() {
-      if (input.value === '1899') {
-        sessionStorage.setItem('ck_auth', '1');
-        gate.classList.add('hidden');
-      } else {
-        input.classList.add('error');
-        input.value = '';
-        setTimeout(function(){ input.classList.remove('error'); }, 400);
-      }
+      if (input.value === '1899') { sessionStorage.setItem('ck_auth', '1'); gate.classList.add('hidden'); }
+      else { input.classList.add('error'); input.value = ''; setTimeout(function(){ input.classList.remove('error'); }, 400); }
     }
     btn.addEventListener('click', check);
     input.addEventListener('keydown', function(e){ if (e.key === 'Enter') check(); });
@@ -195,99 +139,766 @@
 </div>
 <nav class="week-nav"><a href="#overview">Overview</a><span class="sep">›</span><a href="#w1">Week 1</a> <a href="#w2">Week 2</a> <a href="#w3">Week 3</a> <a href="#w4">Week 4</a> <a href="#w5">Week 5</a> <a href="#w6">Week 6</a><span class="sep">›</span><a href="#showcase">Showcase</a></nav>
 <div class="container">
-  <div class="overview-strip" id="overview"><div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">19–24 (January–February)</div></div><div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">Just Kids (Smith, excerpts) + music journalism from Pitchfork/NMR</div></div><div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Creative · Expository · Descriptive</div></div><div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">GarageBand / Chrome Music Lab + Google Docs</div></div><div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">Music journalism portfolio + original composition with liner notes</div></div><div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR W.8.3 · W.8.4 · RL.8.4</div></div></div>
+  <div class="overview-strip" id="overview">
+    <div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">19–24 (January–February)</div></div>
+    <div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">Music journalism from Pitchfork / NPR Music + lyrics as poetry</div></div>
+    <div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Creative · Expository · Descriptive</div></div>
+    <div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">GarageBand / Chrome Music Lab + Google Docs</div></div>
+    <div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">Music writing portfolio + original composition with liner notes</div></div>
+    <div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR W.8.3 · W.8.4 · RL.8.4</div></div>
+  </div>
+
+  <!-- WEEK 1 -->
   <div class="week-card" id="w1">
-  <div class="week-header"><span class="week-num">W1</span><span class="week-title">Listening as a Writer</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Intro: music journalism — read 2 album reviews; what makes music writing vivid?<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Active listening exercise: describe a piece of music in writing without using music words<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a 200-word description of a piece you know well — piano or electronic<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type and format your description; experiment with font and layout to match the music's mood<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Read descriptions aloud; can others identify the piece? Discuss word choices<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Choose a piece of music you know well — a piano piece you play or an electronic track you've made or love. Describe it in 200 words using only non-musical language. No words like "melody," "beat," or "chord." Use color, texture, temperature, movement, and emotion instead.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Two music journalism album reviews read; journal entry written on what makes music writing vivid</label>
-      <label class="check-item"><input type="checkbox"> Active listening exercise completed — piece described without using any music terminology</label>
-      <label class="check-item"><input type="checkbox"> 200-word non-musical description written for a familiar piano or electronic piece</label>
-      <label class="check-item"><input type="checkbox"> Description typed and formatted in Google Docs; font and layout chosen to match the music's mood</label>
-      <label class="check-item"><input type="checkbox"> Description read aloud; word choice discussed and at least one revision made based on peer response</label>
+    <div class="week-header"><span class="week-num">W1</span><span class="week-title">Listening as a Writer</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Read 2 album reviews — what makes music writing vivid?</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Mom will have two album reviews ready (from Pitchfork or NPR Music).</li>
+              <li>Read both all the way through.</li>
+              <li>Find one sentence in each review that made you actually picture or feel the music.</li>
+              <li>Notice: did the reviewer use music words (melody, beat) or other kinds of words (color, texture, emotion)?</li>
+              <li>Tell mom which review you liked better and why.</li>
+            </ol>
+            <div class="talk-tip">💬 "The sentence I liked most was… because it made me think of… The reviewer used words like…"</div>
+            <div class="done-when">✓ Done when: you've read both reviews and pointed out one vivid sentence from each.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Active listening: describe a piece of music without using music words</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Put on a piece of music — one you know well or one mom picks.</li>
+              <li>Close your eyes and listen for 1–2 minutes.</li>
+              <li>Open a Google Doc. Set a timer for 3 minutes.</li>
+              <li>Write what you heard — but you cannot use: melody, beat, chord, note, tempo, rhythm, tune, song, or any instrument name.</li>
+              <li>Use color, texture, temperature, movement, and emotion instead.</li>
+            </ol>
+            <div class="talk-tip">💬 "It felt like… The color I'd give it is… It moved like… It made me feel…" — say it out loud first, then write it.</div>
+            <div class="done-when">✓ Done when: you have 4–6 sentences describing music without any music words.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write a description of a piece you know well — piano or electronic</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Choose a piece you actually know well — something you play, composed, or listen to constantly.</li>
+              <li>Listen to it (or play it) once before writing.</li>
+              <li>In Google Docs, write a description of it in your own words.</li>
+              <li>Include: what it feels like, what it reminds you of, what kind of person or moment it fits.</li>
+              <li>Aim for 4–6 sentences. No music words.</li>
+            </ol>
+            <div class="talk-tip">💬 "This piece sounds like… it reminds me of… the feeling it gives me is… I'd play it when…"</div>
+            <div class="done-when">✓ Done when: 4–6 sentences describing a specific piece of music you know well.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Format your description in Google Docs — font and layout to match the music's mood</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your music description from Wednesday in Google Docs.</li>
+              <li>Choose a font that matches the mood of the piece — a calm classical piece might use a serif font; an electronic track might use something sharp.</li>
+              <li>Add a title at the top: the piece's name and the style of music.</li>
+              <li>Add a one-sentence intro before the description explaining what the piece is.</li>
+              <li>Save and export it as a PDF.</li>
+            </ol>
+            <div class="talk-tip">💬 Think of the design as part of the writing — the font and layout tell the reader something before they read a word.</div>
+            <div class="done-when">✓ Done when: description is formatted with title, font choice, and saved as a PDF.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Read descriptions aloud — can others identify the piece?</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read your description out loud to mom — don't say what the piece is yet.</li>
+              <li>Ask her: from just the words, what does she picture or feel?</li>
+              <li>Then reveal the piece and play a bit of it for her.</li>
+              <li>Discuss: did the words match the music? What one word or phrase worked best?</li>
+              <li>Revise one sentence in your description based on the conversation.</li>
+            </ol>
+            <div class="talk-tip">💬 "Does this description match the music? Which part surprised you? What would you change?"</div>
+            <div class="done-when">✓ Done when: description read aloud, discussed, and at least one sentence revised.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Describe a piece of music you know well using only non-musical language. No words like melody, beat, or chord. Use color, texture, temperature, movement, and emotion.</p>
+        <p class="prompt-starter">"This piece feels like… The color I'd give it is… It moves like… I'd listen to it when…"</p>
+        <p class="prompt-length">Length: 4–6 sentences. One strong image is worth more than five vague ones.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Two album reviews read; one vivid sentence identified in each</label>
+        <label class="check-item"><input type="checkbox"> Active listening exercise: 4–6 sentences describing music with no music words</label>
+        <label class="check-item"><input type="checkbox"> Description of a known piece written: 4–6 sentences, no music vocabulary</label>
+        <label class="check-item"><input type="checkbox"> Description formatted in Google Docs with title and font matching mood; saved as PDF</label>
+        <label class="check-item"><input type="checkbox"> Description read aloud; one sentence revised based on discussion</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w2">
-  <div class="week-header"><span class="week-num">W2</span><span class="week-title">Lyric Writing</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Analyze lyrics as poetry: read Bob Dylan and Kendrick Lamar side by side<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Poetic devices: rhyme, meter, repetition, imagery in song lyrics<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a draft of original lyrics: 2 verses and a chorus on any theme<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type lyrics in Google Docs; record yourself saying them over a beat in Chrome Music Lab<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Share lyrics; workshop — which lines land? Which feel forced?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a complete set of lyrics: two verses (8 lines each) and a chorus (4–6 lines). Choose a specific emotion or moment — not a general theme. The best lyrics are specific: they name the street, the color of the light, the exact sound. Revise until every line earns its place.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Bob Dylan and Kendrick Lamar lyrics analyzed side by side; differences in style and imagery noted</label>
-      <label class="check-item"><input type="checkbox"> Poetic devices studied in song lyrics — rhyme, meter, repetition, and imagery practiced in workshop</label>
-      <label class="check-item"><input type="checkbox"> Full lyric draft written: 2 verses (8 lines each) and a chorus (4–6 lines) built around a specific moment or emotion</label>
-      <label class="check-item"><input type="checkbox"> Lyrics typed in Google Docs and recorded over a Chrome Music Lab beat</label>
-      <label class="check-item"><input type="checkbox"> Peer lyric workshop done — strongest lines identified and forced or vague lines revised</label>
+
+  <!-- WEEK 2 -->
+  <div class="week-card" id="w2">
+    <div class="week-header"><span class="week-num">W2</span><span class="week-title">Lyric Writing</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Analyze lyrics as poetry — compare two very different songwriters</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Mom will have lyrics from two artists printed out — one with very direct, storytelling lyrics and one with more abstract or poetic ones.</li>
+              <li>Read both sets of lyrics out loud.</li>
+              <li>For each, find one line that is very specific (names a place, color, object, or moment).</li>
+              <li>For each, find one line that uses imagery (makes you picture something).</li>
+              <li>Tell mom: which style of lyrics do you write more like? Which do you prefer to listen to?</li>
+            </ol>
+            <div class="talk-tip">💬 "The most specific line I found was… The image I liked most was… I think I write more like [artist] because…"</div>
+            <div class="done-when">✓ Done when: you've found specific lines and imagery examples and shared your preference.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Poetic devices in lyrics — rhyme, repetition, imagery workshop</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Look at the lyrics from yesterday.</li>
+              <li>Find one example of rhyme (end rhyme or internal rhyme).</li>
+              <li>Find one example of repetition (a line or word that comes back).</li>
+              <li>Find one example of imagery (a line that paints a picture).</li>
+              <li>Try writing one line using each device — three practice lines total, just to get the feel.</li>
+            </ol>
+            <div class="talk-tip">💬 "A line with rhyme: [your line]. A line with repetition: [your line]. A line with imagery: [your line]." Keep each one short — 5–10 words.</div>
+            <div class="done-when">✓ Done when: three example devices found in the lyrics + three of your own practice lines written.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write a draft of original lyrics: 2 verses and a chorus</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Choose a specific feeling or moment — not a general theme like "friendship" but something like "the feeling when a game ends and you don't want it to."</li>
+              <li>Write Verse 1: 4–8 lines. Set the scene. Be specific — name something real.</li>
+              <li>Write a Chorus: 4–6 lines. This is the heart of the song — the part that repeats.</li>
+              <li>Write Verse 2: 4–8 lines. Develop the idea — go deeper or shift the angle.</li>
+              <li>Don't worry about rhyme yet — just get the lines down.</li>
+            </ol>
+            <div class="talk-tip">💬 Start with what you actually feel: "What's a specific moment I remember well?" — then write about that exact moment, not a general version of it.</div>
+            <div class="done-when">✓ Done when: Verse 1, Chorus, and Verse 2 are written in Google Docs — even rough draft is fine.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Type lyrics in Google Docs and experiment with a beat in Chrome Music Lab</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Format your lyrics nicely in Google Docs — label Verse 1, Chorus, Verse 2.</li>
+              <li>Open Chrome Music Lab (musiclab.chromeexperiments.com) — try the Song Maker.</li>
+              <li>Build a simple beat or pattern that matches the mood of your lyrics.</li>
+              <li>Optional: record yourself reading or rapping the lyrics over the beat (phone voice memo works).</li>
+            </ol>
+            <div class="talk-tip">💬 The beat doesn't have to be complex — even a simple loop that matches the mood is enough to test whether the lyrics feel right.</div>
+            <div class="done-when">✓ Done when: lyrics are formatted in Google Docs and you've played with at least one beat in Music Lab.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Lyric workshop: which lines land? Which feel forced?</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read your lyrics out loud to mom.</li>
+              <li>Ask her: which lines made her feel something?</li>
+              <li>Ask: which lines felt generic or forced?</li>
+              <li>Pick two lines to revise — make them more specific or more surprising.</li>
+              <li>Rewrite those two lines and read them again — are they better?</li>
+            </ol>
+            <div class="talk-tip">💬 "Which line felt the most real to you? Which felt like filler? Let me try rewriting this one line…"</div>
+            <div class="done-when">✓ Done when: workshop done and at least two lines revised.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Write a complete set of lyrics: two verses and a chorus. Pick one specific emotion or moment — not a general theme. The best lyrics name the street, the color, the exact sound.</p>
+        <p class="prompt-starter">"I'm writing about [specific moment] — Verse 1 sets up the scene… Chorus is the feeling at the center… Verse 2 goes deeper by…"</p>
+        <p class="prompt-length">Length: Verse 1 (4–8 lines) + Chorus (4–6 lines) + Verse 2 (4–8 lines).</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Two artists' lyrics analyzed; specific lines and imagery found; preference shared</label>
+        <label class="check-item"><input type="checkbox"> Three poetic devices identified in lyrics; three practice lines written using each</label>
+        <label class="check-item"><input type="checkbox"> Original lyrics drafted: Verse 1 + Chorus + Verse 2 in Google Docs</label>
+        <label class="check-item"><input type="checkbox"> Lyrics formatted; Chrome Music Lab beat created to match mood</label>
+        <label class="check-item"><input type="checkbox"> Workshop done; two lines revised to be more specific or surprising</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w3">
-  <div class="week-header"><span class="week-num">W3</span><span class="week-title">Music Criticism</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read three professional album reviews; identify structure: context, description, judgment<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Writing workshop: how to express an opinion about art without saying "I liked it"<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a 300-word review of an album or piece — position + evidence from the music itself<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Revise and format review in Google Docs; add a star rating with written justification<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer workshop: does the review convince you to listen (or not)?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a 300-word review of a piece of music. Your first sentence should be your overall judgment. Then use the rest of the review to back it up with specific evidence from the music — moments, instruments, words. End with a recommendation (to whom, and why).</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Three professional album reviews read; context, description, and judgment structure mapped</label>
-      <label class="check-item"><input type="checkbox"> Writing workshop completed — opinion expressed about art without using "I liked it"</label>
-      <label class="check-item"><input type="checkbox"> 300-word review written for an album or piece — overall judgment as opening sentence, evidence from the music throughout</label>
-      <label class="check-item"><input type="checkbox"> Review revised and formatted in Google Docs with star rating and written justification added</label>
-      <label class="check-item"><input type="checkbox"> Peer workshop completed — reviewer's argument evaluated for convincingness</label>
+
+  <!-- WEEK 3 -->
+  <div class="week-card" id="w3">
+    <div class="week-header"><span class="week-num">W3</span><span class="week-title">Music Criticism</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Read three album reviews — map the structure: context, description, judgment</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Mom will have three short album or track reviews ready.</li>
+              <li>Read each one and look for three parts: context (background on the artist), description (what the music sounds like), judgment (what the critic thinks).</li>
+              <li>For each review, find one sentence that is a judgment — the critic's opinion about whether the music is good.</li>
+              <li>Notice: how does the critic back up their judgment?</li>
+            </ol>
+            <div class="talk-tip">💬 "In this review, the context is… the description part is… and the judgment is… They back it up by…"</div>
+            <div class="done-when">✓ Done when: all three reviews read and one judgment sentence identified in each.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Workshop: how to express an opinion about art without saying "I liked it"</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Think of a piece of music you have a strong opinion about — love it or hate it.</li>
+              <li>Try writing your opinion in three ways: (1) "I liked it because…" — the lazy version, (2) "The track [does something specific]…" — the critic version, (3) "Anyone who [does X] should listen because…" — the recommendation version.</li>
+              <li>Notice which version is the most interesting to read.</li>
+              <li>Practice writing two more music opinions using versions 2 or 3.</li>
+            </ol>
+            <div class="talk-tip">💬 Good critics don't say "it's good" — they say what exactly it does, and why that matters.</div>
+            <div class="done-when">✓ Done when: three versions of one music opinion written + two more practice opinions using the stronger approaches.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write a review of an album or track — judgment + evidence from the music</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Choose a piece of music you want to review — something you have a real opinion about.</li>
+              <li>Write your overall judgment as your first sentence: this is your verdict.</li>
+              <li>Write 2–3 sentences describing specific things in the music that back up that verdict.</li>
+              <li>Write one sentence about who this music is for — a recommendation.</li>
+              <li>Aim for 5–7 sentences total.</li>
+            </ol>
+            <div class="talk-tip">💬 Start with your verdict: "This track is [judgment] because…" — then prove it with specifics from the music itself.</div>
+            <div class="done-when">✓ Done when: a 5–7 sentence review is written with a judgment sentence first and at least two specific evidence sentences.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Revise review in Google Docs; add a star rating with a written justification</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your review from Wednesday in Google Docs.</li>
+              <li>Read it out loud and fix any sentence that sounds awkward.</li>
+              <li>Add a star rating at the top: ★★★★☆ or similar (copy the stars from anywhere).</li>
+              <li>Under the rating, write one sentence explaining the number: "Four stars because…"</li>
+              <li>Format the whole thing to look like a real review: title of the piece, artist name, your rating, your review text.</li>
+            </ol>
+            <div class="talk-tip">💬 A star rating forces you to commit to a clear judgment — justify the number honestly.</div>
+            <div class="done-when">✓ Done when: review is revised, formatted with a star rating, and justified in one sentence.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Peer workshop — does the review make you want to listen (or not)?</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read your review to mom — she hasn't heard the piece.</li>
+              <li>Ask her: after hearing the review, does she want to listen to the music?</li>
+              <li>Ask: which part of the review was most convincing?</li>
+              <li>Ask: did she agree with the star rating based on what you wrote?</li>
+              <li>Revise one thing in the review based on her feedback.</li>
+            </ol>
+            <div class="talk-tip">💬 "Did this make you want to listen? What part convinced you the most? Did the rating match what you expected?"</div>
+            <div class="done-when">✓ Done when: workshop done and one revision made.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Write a music review. Start with your overall judgment (not "I liked it"). Back it up with 2–3 specific things from the music. End with a recommendation.</p>
+        <p class="prompt-starter">"[Piece name] is [judgment] because it… The [specific element] especially… Anyone who [likes X] should listen because…"</p>
+        <p class="prompt-length">Length: 5–7 sentences plus a star rating with a one-sentence justification.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Three album reviews read; one judgment sentence identified in each</label>
+        <label class="check-item"><input type="checkbox"> Three versions of one opinion written; two more strong-version opinions practiced</label>
+        <label class="check-item"><input type="checkbox"> Music review drafted: judgment first, 2–3 evidence sentences, recommendation</label>
+        <label class="check-item"><input type="checkbox"> Review revised and formatted in Google Docs with star rating and justification</label>
+        <label class="check-item"><input type="checkbox"> Workshop done; one revision made based on feedback</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w4">
-  <div class="week-header"><span class="week-num">W4</span><span class="week-title">Liner Notes & Program Writing</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>What are liner notes? Read examples from physical albums and digital releases<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Writing workshop: program notes for a concert — how to explain music to a listener<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Begin original composition in GarageBand or Chrome Music Lab<br><span class="comp comp-make">Kinesthetic</span></td></tr><tr><td class="day">Thu</td><td>Continue composition; write a first draft of program notes for your piece<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Fri</td><td>Play composition for a partner; do the liner notes match what they heard?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write liner notes for your original composition (or a piano piece you play). Liner notes should tell the listener: (1) what inspired the piece, (2) what emotions or images you were reaching for, (3) any technical choices you made (tempo, key, sounds) and why. Write for an audience who loves music but doesn't read sheet music.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Liner note examples from physical albums and digital releases read and analyzed</label>
-      <label class="check-item"><input type="checkbox"> Program notes writing workshop completed — explaining music to a listener who isn't a musician practiced</label>
-      <label class="check-item"><input type="checkbox"> Original composition begun in GarageBand or Chrome Music Lab</label>
-      <label class="check-item"><input type="checkbox"> First draft of program notes written for own composition — inspiration, emotional intent, and technical choices covered</label>
-      <label class="check-item"><input type="checkbox"> Composition played for partner; liner notes checked against what partner actually heard; revisions made</label>
+
+  <!-- WEEK 4 -->
+  <div class="week-card" id="w4">
+    <div class="week-header"><span class="week-num">W4</span><span class="week-title">Liner Notes &amp; Program Writing</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">What are liner notes? Read examples from physical and digital releases</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Mom will have 2–3 examples of liner notes — some from old CDs or vinyl if she has them, some from digital releases.</li>
+              <li>Read them and notice: what does each one tell you that you couldn't get just from listening?</li>
+              <li>Find one piece of liner note text that surprised you or changed how you'd listen to the music.</li>
+              <li>Tell mom: what do you think liner notes are really for? Who reads them and why?</li>
+            </ol>
+            <div class="talk-tip">💬 "This liner note surprised me because… I think people read liner notes when… They're different from reviews because…"</div>
+            <div class="done-when">✓ Done when: liner notes read and one surprising piece of information discussed.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Writing workshop: program notes — how to explain music to a listener</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Think of a piece you play on piano (or know really well as a listener).</li>
+              <li>Imagine writing a note to someone who is about to hear it for the first time.</li>
+              <li>Write three things they should listen for — not music theory, but experience: "Listen for the moment when it suddenly gets quiet…"</li>
+              <li>Write one sentence about why you chose this piece or why it matters to you.</li>
+            </ol>
+            <div class="talk-tip">💬 "When you listen to this, notice… The part I want you to pay attention to is… I chose this piece because…"</div>
+            <div class="done-when">✓ Done when: three "things to listen for" written plus one sentence about why the piece matters.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Begin original composition in GarageBand or Chrome Music Lab</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open GarageBand or Chrome Music Lab Song Maker.</li>
+              <li>Decide on a mood or feeling you want the piece to have.</li>
+              <li>Start with just 8–16 bars — you don't need a full song, just a beginning.</li>
+              <li>Experiment with different sounds or instruments until something feels right.</li>
+              <li>Save what you have — even rough is fine.</li>
+            </ol>
+            <div class="talk-tip">💬 Don't overthink it — the goal is to start. Make something that captures one specific feeling, even if it's only 30 seconds long.</div>
+            <div class="done-when">✓ Done when: you have at least 8–16 bars of original composition saved.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Continue composition; write a first draft of liner notes for your piece</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Add to your composition from yesterday — develop it a bit more.</li>
+              <li>Open Google Docs and write liner notes for your piece.</li>
+              <li>Include: (1) what inspired it, (2) the feeling or image you were going for, (3) one specific choice you made (a sound, a tempo, a structure) and why.</li>
+              <li>Write for someone who loves music but doesn't read music theory.</li>
+            </ol>
+            <div class="talk-tip">💬 "I was inspired by… I wanted it to feel like… I chose [specific thing] because…" — write naturally, like you're explaining it to a friend.</div>
+            <div class="done-when">✓ Done when: liner notes cover all three things (inspiration, feeling, one technical choice) in Google Docs.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Play composition for mom — do the liner notes match what she heard?</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Play your composition for mom without showing her the liner notes first.</li>
+              <li>Ask her: what feeling or image did it give her?</li>
+              <li>Now read your liner notes to her.</li>
+              <li>Ask: did the notes match what she heard, or was there a gap?</li>
+              <li>Update the liner notes to address one gap or clarify one thing.</li>
+            </ol>
+            <div class="talk-tip">💬 "What did it feel like to you before I read the notes? Now that you read them, did anything change?"</div>
+            <div class="done-when">✓ Done when: composition played, liner notes compared to listener's experience, one update made.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Write liner notes for your original composition. Cover: (1) what inspired it, (2) the emotions or images you were aiming for, (3) one specific choice you made and why. Write for a music lover, not a music theorist.</p>
+        <p class="prompt-starter">"I started this piece after… I wanted it to feel like… One choice I made was [specific thing] — I did this because…"</p>
+        <p class="prompt-length">Length: 4–6 sentences covering all three elements.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Liner note examples read; one surprising piece of information discussed</label>
+        <label class="check-item"><input type="checkbox"> Three "things to listen for" written + one sentence about why the piece matters</label>
+        <label class="check-item"><input type="checkbox"> Original composition started — at least 8–16 bars saved in GarageBand or Music Lab</label>
+        <label class="check-item"><input type="checkbox"> Liner notes drafted: inspiration, feeling, and one specific technical choice</label>
+        <label class="check-item"><input type="checkbox"> Composition played for mom; notes compared to her experience; one update made</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w5">
-  <div class="week-header"><span class="week-num">W5</span><span class="week-title">The Profile: Writing About a Musician</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read: two musician profiles from music journalism (Rolling Stone / NPR Music style)<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Profile structure: scene-setting, quotes, narrative, argument<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Write a profile of a musician you admire — real or fictional<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type and format the profile; include a "listening list" sidebar<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer review: does the profile make you want to listen to this artist?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write a 400-word profile of a musician — a composer, a producer, a band, anyone whose music matters to you. Open with a scene that puts the reader in a moment. Weave in background and musical description. End with what makes this artist unique or important. Avoid biography-report style — write with a point of view.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Two musician profiles from music journalism read; scene-setting, quotes, narrative, and argument structure mapped</label>
-      <label class="check-item"><input type="checkbox"> Profile structure workshop completed — distinctions between biography-report style and point-of-view profile practiced</label>
-      <label class="check-item"><input type="checkbox"> 400-word musician profile written — opens with a scene, weaves in background and description, ends with what makes the artist unique</label>
-      <label class="check-item"><input type="checkbox"> Profile typed and formatted in Google Docs with a "listening list" sidebar included</label>
-      <label class="check-item"><input type="checkbox"> Peer review completed — profile evaluated for whether it makes the reader want to listen to the artist</label>
+
+  <!-- WEEK 5 -->
+  <div class="week-card" id="w5">
+    <div class="week-header"><span class="week-num">W5</span><span class="week-title">The Profile: Writing About a Musician</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Read two musician profiles from music journalism</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Mom will have two short musician profiles from places like Rolling Stone or NPR Music.</li>
+              <li>Read both and notice how each one opens — does it start with a scene, a quote, or a fact?</li>
+              <li>Find one sentence in each that gives you a strong sense of who the musician is.</li>
+              <li>Notice: does the writer tell you what to think, or do they let details do the work?</li>
+              <li>Tell mom which profile made you more curious about the musician.</li>
+            </ol>
+            <div class="talk-tip">💬 "This profile opened with… The sentence that made the musician feel real was… I'd want to listen to this artist because…"</div>
+            <div class="done-when">✓ Done when: two profiles read and one key sentence identified in each.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Profile structure — scene-setting, quotes, narrative, argument</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Look back at the profiles from yesterday.</li>
+              <li>Identify where each one uses a scene (describing a specific moment or place).</li>
+              <li>Identify where each one makes an argument (a claim about why this artist matters).</li>
+              <li>Decide which musician you want to write about — it can be real or fictional.</li>
+              <li>Write three bullet points: one scene you'll open with, one argument about why they matter, one specific detail you'll use.</li>
+            </ol>
+            <div class="talk-tip">💬 "I'm writing about [musician]. My opening scene is… My argument is that they matter because… One specific detail I'll use is…"</div>
+            <div class="done-when">✓ Done when: three planning bullets written — opening scene, argument, and one detail.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write a musician profile — someone whose music matters to you</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs and write your profile.</li>
+              <li>Start with your opening scene — put the reader somewhere specific.</li>
+              <li>Weave in who the musician is and what they've made.</li>
+              <li>Include the description of their music (no music words — use your Week 1 skills).</li>
+              <li>End with what makes this artist unique or important.</li>
+              <li>Aim for 6–10 sentences total.</li>
+            </ol>
+            <div class="talk-tip">💬 Start mid-scene: "In [place or moment], [musician] [did something]…" — don't start with "This musician was born in…"</div>
+            <div class="done-when">✓ Done when: a 6–10 sentence profile is written that opens with a scene and ends with an argument about why the artist matters.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Format the profile in Google Docs with a "listening list" sidebar</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your profile in Google Docs.</li>
+              <li>Format it with a headline (the musician's name or a punchy title).</li>
+              <li>Add a "Listening List" section at the end — 3–5 specific tracks or pieces you'd recommend.</li>
+              <li>For each item in the listening list, write one sentence saying why someone should listen to it.</li>
+              <li>Make the formatting look clean — consistent fonts, a bit of spacing.</li>
+            </ol>
+            <div class="talk-tip">💬 The listening list is your gift to the reader — it turns the profile into something useful, not just informational.</div>
+            <div class="done-when">✓ Done when: profile has a headline, a formatted body, and a 3–5 item listening list with one sentence per item.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Peer review — does the profile make you want to listen to this artist?</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read your profile to mom — or have her read it herself.</li>
+              <li>Ask: did it make her want to listen to this musician?</li>
+              <li>Ask: which sentence gave the clearest sense of who this artist is?</li>
+              <li>Ask: what did she want to know that wasn't in the profile?</li>
+              <li>Revise one thing based on her answers.</li>
+            </ol>
+            <div class="talk-tip">💬 "After reading this, do you want to listen to them? What's missing? What was the best line?"</div>
+            <div class="done-when">✓ Done when: peer review done and one revision made.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Write a musician profile that opens with a scene, weaves in background and music description, and ends with what makes the artist unique. No biography-report style — write with a point of view.</p>
+        <p class="prompt-starter">"In [specific place or moment], [musician] [did something] — it was the kind of [music/moment] that… What makes them different is…"</p>
+        <p class="prompt-length">Length: 6–10 sentences, plus a 3–5 item listening list.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Two musician profiles read; opening strategy and one key sentence identified in each</label>
+        <label class="check-item"><input type="checkbox"> Profile planning done: opening scene, argument, one specific detail</label>
+        <label class="check-item"><input type="checkbox"> Profile written: 6–10 sentences opening with a scene, ending with why the artist matters</label>
+        <label class="check-item"><input type="checkbox"> Profile formatted with headline and 3–5 item listening list</label>
+        <label class="check-item"><input type="checkbox"> Peer review done; one revision made</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w6">
-  <div class="week-header"><span class="week-num">W6</span><span class="week-title">Portfolio & Showcase</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Compile music writing portfolio: description, lyrics, review, liner notes, profile<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Tue</td><td>Final revision of all five pieces; format as a cohesive PDF zine<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Wed</td><td>Finalize original composition; prepare 3-minute showcase performance/playback<br><span class="comp comp-make">Kinesthetic</span></td></tr><tr><td class="day">Thu</td><td>Rehearse showcase: play or play back composition + read one portfolio piece<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>SHOWCASE: Music performance + writing portfolio presentation<br><span class="comp comp-share">Showcase</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write an introduction for your writing portfolio — 150 words that explain what writing about music means to you, what you discovered about your own listening or playing by putting it into words. This is your voice, your curation, your argument for why music writing matters.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> All five portfolio pieces compiled: sound description, lyrics, album review, liner notes, and musician profile</label>
-      <label class="check-item"><input type="checkbox"> Final revision of all five pieces completed; formatted as a cohesive PDF zine</label>
-      <label class="check-item"><input type="checkbox"> 150-word portfolio introduction written — personal reflection on what writing about music revealed</label>
-      <label class="check-item"><input type="checkbox"> Original composition finalized; 3-minute showcase performance or playback prepared</label>
-      <label class="check-item"><input type="checkbox"> Showcase rehearsed — composition performance and one portfolio piece selected for reading</label>
-      <label class="check-item"><input type="checkbox"> Showcase delivered — music performance and writing portfolio presented for audience</label>
+
+  <!-- WEEK 6 -->
+  <div class="week-card" id="w6">
+    <div class="week-header"><span class="week-num">W6</span><span class="week-title">Portfolio &amp; Showcase</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Compile music writing portfolio — all five pieces together</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs and create a new document called "On the Record — Portfolio."</li>
+              <li>Copy in all five pieces: (1) sound description, (2) lyrics, (3) album review, (4) liner notes, (5) musician profile.</li>
+              <li>Put a clear heading between each piece.</li>
+              <li>Read through all five — notice how your voice is consistent across different types of writing.</li>
+            </ol>
+            <div class="talk-tip">💬 Reading all your work together is the best way to see how much you've done and how it connects.</div>
+            <div class="done-when">✓ Done when: all five pieces are in one document with clear headings between them.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Final revision of all five pieces; format as a cohesive portfolio</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read through each piece one more time.</li>
+              <li>Fix any sentence that sounds unclear or awkward.</li>
+              <li>Make sure the formatting is consistent — same font family, consistent spacing.</li>
+              <li>Add page breaks between each piece so they're clearly separated.</li>
+              <li>Save and export to PDF.</li>
+            </ol>
+            <div class="talk-tip">💬 A portfolio should look intentional — like you made a real publication, not a homework folder.</div>
+            <div class="done-when">✓ Done when: all five pieces revised, consistently formatted, and saved as a PDF.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write a portfolio introduction — 150 words about what music writing means to you</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your portfolio document and add a page at the very beginning.</li>
+              <li>Write an introduction to the whole portfolio — this is your voice, your curation, your argument.</li>
+              <li>Include: what you learned about your own listening or playing by writing about it.</li>
+              <li>Include: which piece you're most proud of and why.</li>
+              <li>Aim for 4–6 sentences — enough to frame the whole portfolio for a reader.</li>
+            </ol>
+            <div class="talk-tip">💬 "Writing about music taught me… The piece I'm most proud of is… because… What I want readers to know about this portfolio is…"</div>
+            <div class="done-when">✓ Done when: portfolio introduction is written and placed at the beginning of the document.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Finalize composition; rehearse showcase — play or playback + reading</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Do a final listen to your composition — does it feel finished?</li>
+              <li>Make one last small change if something stands out as incomplete.</li>
+              <li>Plan your showcase: (1) play or play back composition, (2) read one piece from the portfolio out loud.</li>
+              <li>Run through the showcase once from start to finish — just for practice.</li>
+            </ol>
+            <div class="talk-tip">💬 Pick the portfolio piece you most want to share — the one that best shows who you are as a writer about music.</div>
+            <div class="done-when">✓ Done when: composition finalized and full showcase run-through completed.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">SHOWCASE: Music performance + writing portfolio presentation</span>
+            <span class="comp comp-share">Showcase</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Set up your showcase — composition ready to play, portfolio piece ready to read.</li>
+              <li>Play or play back your original composition for your audience.</li>
+              <li>Read your liner notes for the composition out loud.</li>
+              <li>Then read one other piece from the portfolio — whichever one you're most proud of.</li>
+              <li>Close with one sentence about what you discovered by writing about music.</li>
+            </ol>
+            <div class="talk-tip">💬 You built five pieces of music writing this unit. That's a real portfolio. Show it like one.</div>
+            <div class="done-when">✓ Done when: composition performed/played back and at least one portfolio piece read for an audience.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Write a 4–6 sentence introduction to your writing portfolio: what you learned about your own listening or playing by writing about music, and which piece you're most proud of.</p>
+        <p class="prompt-starter">"Writing about music taught me… I was surprised to discover… The piece I'm most proud of is [piece] because… What I want you to know before you read this portfolio is…"</p>
+        <p class="prompt-length">Length: 4–6 sentences. This is your voice as a curator — be direct and honest.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> All five pieces compiled in one portfolio document with clear headings</label>
+        <label class="check-item"><input type="checkbox"> Final revision done; portfolio consistently formatted and exported as PDF</label>
+        <label class="check-item"><input type="checkbox"> Portfolio introduction written (4–6 sentences) and placed at the beginning</label>
+        <label class="check-item"><input type="checkbox"> Composition finalized; full showcase rehearsed</label>
+        <label class="check-item"><input type="checkbox"> SHOWCASE delivered — composition played + one portfolio piece read for an audience</label>
+      </div>
     </div>
   </div>
-</div>
+
   <div class="showcase-box" id="showcase">
-  <div class="showcase-label">Unit Showcase</div>
-  <h3>Music Writing Portfolio + Original Composition</h3>
-  <p>A five-piece writing portfolio (sound description, lyrics, album review, liner notes, musician profile) formatted as a digital zine, plus a live or recorded original composition. Presented with a 3-minute performance or playback and one portfolio reading.</p>
-</div>
+    <div class="showcase-label">Unit Showcase</div>
+    <h3>Music Writing Portfolio + Original Composition</h3>
+    <p>A five-piece writing portfolio (sound description, lyrics, album review, liner notes, musician profile) with a portfolio introduction, plus an original composition with liner notes. Presented with a performance or playback and one portfolio reading.</p>
+  </div>
 </div>
 <footer class="site-footer">Homeschool Curriculum Hub · Oregon · <a href="8th_grade_language_arts.html">← Language Arts</a></footer>
+<script>
+function toggleDay(row) {
+  var detail = row.nextElementSibling;
+  var isOpen = row.classList.contains('open');
+  row.classList.toggle('open', !isOpen);
+  detail.style.display = isOpen ? 'none' : 'block';
+}
+</script>
 </body>
 </html>

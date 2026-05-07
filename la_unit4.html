@@ -54,10 +54,10 @@
 
     /* NAV */
     .week-nav{background:#9e3f18;padding:12px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.18);}
-    .week-nav nav{max-width:1060px;margin:0 auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
-    .week-nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.77rem;font-weight:700;padding:3px 10px;border-radius:10px;transition:background .15s,color .15s;letter-spacing:.02em;}
-    .week-nav a:hover,.week-nav a.active{background:rgba(255,255,255,.18);color:var(--gold);}
-    .week-nav .sep{color:rgba(255,255,255,.3);font-size:.75rem;}
+    .week-nav nav{max-width:none;margin:0;display:flex;gap:4px;flex-wrap:wrap;align-items:center;width:100%;}
+    .week-nav a{color:var(--ink-muted);text-decoration:none;font-size:.77rem;font-weight:600;padding:10px 10px;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s;white-space:nowrap;}
+    .week-nav a:hover{color:var(--terra);border-color:var(--terra);}
+    .week-nav .sep{color:var(--linen-deep);font-size:.75rem;}
 
     /* LAYOUT */
     .container{max-width:1060px;margin:0 auto;padding:0 24px;}
@@ -66,14 +66,14 @@
     /* OVERVIEW STRIP */
     .overview-strip{background:var(--white);border:1.5px solid #f5d5c5;border-radius:12px;padding:22px 28px;margin:32px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;}
     .ov-item .ov-label{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rust);margin-bottom:3px;}
-    .ov-item .ov-val{font-size:.9rem;font-weight:600;color:var(--text);}
+    .ov-item .ov-val{font-size:.9rem;color:var(--ink);line-height:1.5;}
 
     /* WEEK SECTIONS */
-    .week-section{margin-bottom:52px;}
+    .week-section{background:var(--white);border:1px solid var(--linen-deep);border-radius:8px;overflow:hidden;margin-bottom:20px;}
     .week-header{background:linear-gradient(135deg,#C65D2A,#6b2a0f);border-radius:12px 12px 0 0;padding:18px 26px;display:flex;align-items:center;gap:16px;}
-    .week-num-badge{font-family:'Fraunces',serif;font-size:2rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;}
-    .week-header-text h2{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;color:#fff;}
-    .week-header-text .week-focus{font-size:.82rem;color:rgba(255,255,255,.78);margin-top:2px;}
+    .week-num-badge{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:500;color:var(--terra);line-height:1;}
+    .week-header-text h2{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:500;color:var(--ink);}
+    .week-header-text .week-focus{font-size:.82rem;color:var(--ink-soft);margin-top:2px;}
     .week-body{background:var(--white);border:1.5px solid #f5d5c5;border-top:none;border-radius:0 0 12px 12px;padding:24px 26px;}
 
     /* DAILY PLAN */
@@ -93,8 +93,8 @@
     .q-num{background:var(--rust);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;margin-top:1px;}
 
     /* WRITING PROMPTS */
-    .prompt-card{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:10px;padding:14px 18px;margin-bottom:10px;}
-    .prompt-card .prompt-type{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rust);margin-bottom:4px;}
+    .prompt-card{background:var(--sage-bg);border:1px solid var(--sage-soft);border-radius:6px;padding:14px 18px;margin-top:8px;margin-bottom:8px;}
+    .prompt-card .prompt-type{font-size:.63rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#7a6e1a;margin-bottom:6px;}
     .prompt-card p{font-size:.88rem;line-height:1.65;color:var(--text);}
 
     /* RUBRICS */
@@ -114,8 +114,8 @@
 
     /* FOOTER */
     footer{background:#6b2a0f;color:rgba(255,255,255,.7);text-align:center;padding:24px;font-size:.82rem;margin-top:48px;}
-    footer strong{color:var(--gold);}
-    footer a{color:var(--gold-light);text-decoration:none;}
+    footer strong{color:var(--terra);}
+    footer a{color:var(--ink-muted);text-decoration:none;}
 
 
     /* PRINT */

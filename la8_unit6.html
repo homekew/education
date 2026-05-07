@@ -34,9 +34,6 @@
     .week-nav .sep { color: var(--linen-deep); font-size: 0.75rem; }
 
     .container { max-width: 1060px; margin: 0 auto; padding: 0 40px; }
-    .section { padding: 36px 0 20px; }
-    .section-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: var(--ink); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--linen-deep); }
-
     .overview-strip { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 20px 24px; margin: 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
     .ov-item .ov-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
     .ov-item .ov-val { font-size: 0.9rem; color: var(--ink); line-height: 1.5; }
@@ -47,21 +44,33 @@
     .week-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); }
     .week-body { padding: 20px 24px; }
 
-    table.daily { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin-bottom: 16px; }
-    table.daily th { background: var(--linen-dark); color: var(--ink-soft); font-weight: 600; font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 12px; text-align: left; }
-    table.daily td { padding: 9px 12px; border-bottom: 1px solid var(--linen-dark); vertical-align: top; line-height: 1.5; }
-    table.daily tr:last-child td { border-bottom: none; }
-    table.daily tr:nth-child(even) td { background: #faf9f6; }
-    .day { font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
-    .comp { font-size: 0.72rem; display: inline-block; padding: 1px 7px; border-radius: 3px; margin-top: 3px; white-space: nowrap; }
+    .days-list { margin-bottom: 16px; }
+    .day-accordion { border: 1px solid var(--linen-deep); border-radius: 8px; overflow: hidden; margin-bottom: 7px; }
+    .day-row { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; background: var(--white); transition: background 0.15s; user-select: none; }
+    .day-row:hover { background: var(--linen); }
+    .day-row.open { background: var(--sky-bg); }
+    .day-name { font-weight: 700; color: var(--ink-soft); min-width: 40px; font-size: 0.82rem; flex-shrink: 0; }
+    .day-summary { flex: 1; font-size: 0.83rem; color: var(--ink); line-height: 1.4; }
+    .comp { font-size: 0.71rem; display: inline-block; padding: 2px 7px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
     .comp-write { background: var(--terra-bg); color: var(--terra); }
     .comp-read  { background: var(--sage-bg); color: #7a6e1a; }
     .comp-make  { background: var(--sky-bg); color: #3a6a7a; }
     .comp-share { background: var(--linen-deep); color: var(--ink-soft); }
+    .day-arrow { color: var(--ink-muted); font-size: 0.75rem; transition: transform 0.2s; flex-shrink: 0; }
+    .day-row.open .day-arrow { transform: rotate(180deg); }
+    .day-detail { display: none; padding: 14px 18px 16px 18px; background: var(--sky-bg); border-top: 1px solid var(--linen-deep); }
+    .step-list { list-style: none; padding: 0; margin: 0 0 10px 0; counter-reset: step-counter; }
+    .step-list li { counter-increment: step-counter; padding-left: 28px; position: relative; margin-bottom: 8px; font-size: 0.83rem; color: var(--ink); line-height: 1.5; }
+    .step-list li::before { content: counter(step-counter) "."; position: absolute; left: 0; font-weight: 700; color: var(--sky); font-size: 0.8rem; top: 1px; }
+    .talk-tip { background: var(--sage-bg); border-left: 3px solid var(--sage); border-radius: 0 5px 5px 0; padding: 7px 12px; margin: 8px 0; font-size: 0.8rem; color: #5c5210; line-height: 1.5; }
+    .done-when { font-size: 0.78rem; font-weight: 600; color: var(--terra); border-top: 1px solid var(--linen-deep); padding-top: 9px; margin-top: 10px; }
 
     .prompt-box { background: var(--sage-bg); border: 1px solid var(--sage-soft); border-radius: 6px; padding: 14px 18px; margin-top: 12px; }
-    .prompt-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-bottom: 6px; }
-    .prompt-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+    .prompt-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-bottom: 8px; }
+    .prompt-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 6px; }
+    .prompt-box p:last-child { margin-bottom: 0; }
+    .prompt-starter { font-style: italic; }
+    .prompt-length { font-size: 0.78rem; font-weight: 600; color: #7a6e1a; }
 
     .showcase-box { background: var(--terra-bg); border: 1px solid var(--terra-soft); border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
     .showcase-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--terra); margin-bottom: 8px; }
@@ -75,81 +84,22 @@
     .check-item:last-child { margin-bottom: 0; }
     .check-item input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--terra); width: 15px; height: 15px; }
     .checklist-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-top: 16px; margin-bottom: 6px; }
-</style>
+  </style>
 </head>
 <body>
 <!-- PIN GATE -->
 <style>
-  #pin-gate {
-    position: fixed; inset: 0; z-index: 9999;
-    background: #FAF7F1;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Epilogue', sans-serif;
-  }
+  #pin-gate { position: fixed; inset: 0; z-index: 9999; background: #FAF7F1; display: flex; align-items: center; justify-content: center; font-family: 'Epilogue', sans-serif; }
   #pin-gate.hidden { display: none; }
-  .pin-box {
-    text-align: center;
-    background: #fff;
-    border: 1px solid #DDD4C4;
-    border-radius: 12px;
-    padding: 48px 40px 40px;
-    width: 320px;
-    box-shadow: 0 4px 32px rgba(42,33,24,0.08);
-  }
-  .pin-logo {
-    width: 10px; height: 10px;
-    background: #ff1e3c;
-    border-radius: 50%;
-    display: inline-block;
-    margin-bottom: 16px;
-  }
-  .pin-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #2A2118;
-    margin-bottom: 6px;
-  }
-  .pin-sub {
-    font-size: 0.8rem;
-    color: #9A8F81;
-    margin-bottom: 28px;
-  }
-  #pin-input {
-    width: 100%;
-    padding: 11px 14px;
-    font-size: 1.4rem;
-    letter-spacing: 8px;
-    text-align: center;
-    border: 1px solid #DDD4C4;
-    border-radius: 6px;
-    background: #FAF7F1;
-    color: #2A2118;
-    font-family: 'Epilogue', sans-serif;
-    outline: none;
-    margin-bottom: 14px;
-    transition: border-color 0.15s;
-  }
+  .pin-box { text-align: center; background: #fff; border: 1px solid #DDD4C4; border-radius: 12px; padding: 48px 40px 40px; width: 320px; box-shadow: 0 4px 32px rgba(42,33,24,0.08); }
+  .pin-logo { width: 10px; height: 10px; background: #ff1e3c; border-radius: 50%; display: inline-block; margin-bottom: 16px; }
+  .pin-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: #2A2118; margin-bottom: 6px; }
+  .pin-sub { font-size: 0.8rem; color: #9A8F81; margin-bottom: 28px; }
+  #pin-input { width: 100%; padding: 11px 14px; font-size: 1.4rem; letter-spacing: 8px; text-align: center; border: 1px solid #DDD4C4; border-radius: 6px; background: #FAF7F1; color: #2A2118; font-family: 'Epilogue', sans-serif; outline: none; margin-bottom: 14px; transition: border-color 0.15s; }
   #pin-input:focus { border-color: #d2c35a; }
   #pin-input.error { border-color: #ff1e3c; animation: shake 0.3s; }
-  @keyframes shake {
-    0%,100% { transform: translateX(0); }
-    25% { transform: translateX(-6px); }
-    75% { transform: translateX(6px); }
-  }
-  #pin-btn {
-    width: 100%;
-    padding: 10px;
-    background: #2A2118;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-family: 'Epilogue', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
+  @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  #pin-btn { width: 100%; padding: 10px; background: #2A2118; color: #fff; border: none; border-radius: 6px; font-family: 'Epilogue', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: background 0.15s; }
   #pin-btn:hover { background: #5C4F3D; }
 </style>
 <div id="pin-gate">
@@ -168,14 +118,8 @@
     var btn = document.getElementById('pin-btn');
     if (sessionStorage.getItem('ck_auth') === '1') { gate.classList.add('hidden'); return; }
     function check() {
-      if (input.value === '1899') {
-        sessionStorage.setItem('ck_auth', '1');
-        gate.classList.add('hidden');
-      } else {
-        input.classList.add('error');
-        input.value = '';
-        setTimeout(function(){ input.classList.remove('error'); }, 400);
-      }
+      if (input.value === '1899') { sessionStorage.setItem('ck_auth', '1'); gate.classList.add('hidden'); }
+      else { input.classList.add('error'); input.value = ''; setTimeout(function(){ input.classList.remove('error'); }, 400); }
     }
     btn.addEventListener('click', check);
     input.addEventListener('keydown', function(e){ if (e.key === 'Enter') check(); });
@@ -195,100 +139,763 @@
 </div>
 <nav class="week-nav"><a href="#overview">Overview</a><span class="sep">›</span><a href="#w1">Week 1</a> <a href="#w2">Week 2</a> <a href="#w3">Week 3</a> <a href="#w4">Week 4</a> <a href="#w5">Week 5</a> <a href="#w6">Week 6</a><span class="sep">›</span><a href="#showcase">Showcase</a></nav>
 <div class="container">
-  <div class="overview-strip" id="overview"><div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">31–36 (April–May)</div></div><div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">Great speeches: MLK, Malala, Obama + selected TED Talks</div></div><div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Persuasive · Argument · Rhetoric</div></div><div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">Google Docs + slideshow for talk</div></div><div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">5-paragraph persuasive essay + 6-minute TED-style talk</div></div><div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR W.8.1 · SL.8.4 · SL.8.5 · RI.8.6</div></div></div>
+  <div class="overview-strip" id="overview">
+    <div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">31–36 (April–May)</div></div>
+    <div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">Great speeches: MLK, Malala, Obama + selected TED Talks</div></div>
+    <div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Persuasive · Argument · Rhetoric</div></div>
+    <div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">Google Docs + Google Slides</div></div>
+    <div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">Persuasive essay + 6-minute TED-style talk</div></div>
+    <div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR W.8.1 · SL.8.4 · SL.8.5 · RI.8.6</div></div>
+  </div>
+
+  <!-- WEEK 1 -->
   <div class="week-card" id="w1">
-  <div class="week-header"><span class="week-num">W1</span><span class="week-title">Reading Great Arguments</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Read MLK "Letter from Birmingham Jail" (excerpt); identify ethos, pathos, logos<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Watch 2 TED Talks; analyze: how does the speaker hook you? Build credibility? Move you?<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Wed</td><td>Brainstorm: 10 things you genuinely believe strongly about — pick the one you can argue best<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Research your topic for 1 hour; find 3 statistics or facts that support your position<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Pitch your argument in 60 seconds; class gives feedback: is it specific? Arguable?<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Analyze one of the speeches or talks you studied: identify three specific rhetorical techniques the speaker uses (repetition, personal story, statistics, rhetorical question, etc.). For each technique, quote the exact line and explain why it works. What makes this argument persuasive to you specifically?</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> MLK "Letter from Birmingham Jail" excerpt read; ethos, pathos, and logos identified and annotated</label>
-      <label class="check-item"><input type="checkbox"> 2 TED Talks watched; hook, credibility-building, and emotional techniques analyzed in notes</label>
-      <label class="check-item"><input type="checkbox"> 10 strongly-held beliefs brainstormed; one chosen as the unit argument topic</label>
-      <label class="check-item"><input type="checkbox"> 1-hour topic research done; 3 supporting statistics or facts found and recorded</label>
-      <label class="check-item"><input type="checkbox"> 60-second argument pitch delivered; feedback on specificity and arguability received and noted</label>
+    <div class="week-header"><span class="week-num">W1</span><span class="week-title">Reading Great Arguments</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Read MLK "Letter from Birmingham Jail" excerpt — find ethos, pathos, logos</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Mom will have a 1–2 page excerpt from MLK's "Letter from Birmingham Jail" ready.</li>
+              <li>Read it once all the way through.</li>
+              <li>Ethos = credibility (why should we trust this writer?). Find one moment where MLK establishes credibility.</li>
+              <li>Pathos = emotion. Find one sentence that made you feel something — sad, angry, inspired.</li>
+              <li>Logos = logic/evidence. Find one place where MLK makes a logical argument or cites a fact.</li>
+            </ol>
+            <div class="talk-tip">💬 "The ethos moment is when he… — he's credible because… The pathos moment that hit me was… The logical argument he makes is…"</div>
+            <div class="done-when">✓ Done when: one example of ethos, pathos, and logos identified and explained aloud.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Watch 2 TED Talks — analyze the hook, credibility, and emotional moves</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Mom will find two short TED Talks (under 10 minutes each) on topics you might care about.</li>
+              <li>Watch both.</li>
+              <li>For each one: what was the hook (the first 30 seconds)? Did it grab you?</li>
+              <li>For each one: did the speaker seem credible? How?</li>
+              <li>For each one: was there a moment that made you feel something — moved, surprised, convinced?</li>
+              <li>Tell mom which talk was more effective and why.</li>
+            </ol>
+            <div class="talk-tip">💬 "Talk 1 hooked me by… Talk 2's most convincing moment was… The better talk was [title] because…"</div>
+            <div class="done-when">✓ Done when: both talks watched and hook, credibility, and emotional moment identified in each.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Brainstorm 10 things you believe strongly — pick one to argue</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs and write 10 things you genuinely believe strongly.</li>
+              <li>These should be things you actually care about — not just "I believe in being nice."</li>
+              <li>They can be about anything: gaming, music, school, technology, the future, fairness, anything.</li>
+              <li>Pick one that you think you can argue — one where you have reasons, not just feelings.</li>
+              <li>Write a one-sentence claim: "I believe that [position] because [reason]."</li>
+            </ol>
+            <div class="talk-tip">💬 The best argument topics are things you'd defend in a real conversation — not just things that sound good on paper.</div>
+            <div class="done-when">✓ Done when: 10 beliefs listed, one chosen, and a one-sentence claim written.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Research your topic for 1 hour — find 3 supporting facts or statistics</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Set a timer for 60 minutes.</li>
+              <li>Search Google or Google Scholar for facts, statistics, or expert opinions that support your position.</li>
+              <li>Find at least 3 specific pieces of evidence — a number, a study result, a quote from an expert.</li>
+              <li>Copy each one into your Google Doc with the source link.</li>
+              <li>When the timer goes off, stop — even if you want to keep going.</li>
+            </ol>
+            <div class="talk-tip">💬 One strong specific fact is worth ten vague claims. A statistic with a source is more convincing than "many people think."</div>
+            <div class="done-when">✓ Done when: 3 supporting facts or statistics found and noted with source links.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Pitch your argument in 60 seconds — is it specific? Arguable?</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Set a timer for 60 seconds.</li>
+              <li>Stand up and state your argument to mom: your claim, your main reason, and one piece of evidence.</li>
+              <li>When the timer stops, stop talking.</li>
+              <li>Ask mom: is the argument specific? Can she argue against it, or is it too vague to disagree with?</li>
+              <li>Revise your claim if needed to make it more specific and arguable.</li>
+            </ol>
+            <div class="talk-tip">💬 "My argument is [claim]. The main reason is [reason]. Here's one fact that backs me up: [evidence]." — 60 seconds, no more.</div>
+            <div class="done-when">✓ Done when: 60-second pitch delivered and feedback on specificity received.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Analyze one speech or talk you studied: identify three specific rhetorical techniques (repetition, personal story, statistics, rhetorical question). Quote the exact line for each and explain why it works.</p>
+        <p class="prompt-starter">"Technique 1: [name]. The line is: '[quote].' This works because… Technique 2: … Technique 3: …"</p>
+        <p class="prompt-length">Length: 3 short examples, one per technique. Quote + one explanation sentence each.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> MLK excerpt read; one example each of ethos, pathos, and logos identified</label>
+        <label class="check-item"><input type="checkbox"> Two TED Talks watched; hook, credibility, and emotional move analyzed in each</label>
+        <label class="check-item"><input type="checkbox"> 10 beliefs listed; one chosen; one-sentence claim written</label>
+        <label class="check-item"><input type="checkbox"> 1-hour research done; 3 supporting facts found with source links</label>
+        <label class="check-item"><input type="checkbox"> 60-second pitch delivered; feedback on specificity received; claim revised if needed</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w2">
-  <div class="week-header"><span class="week-num">W2</span><span class="week-title">Building the Argument</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Argument structure deep-dive: Toulmin model (claim, grounds, warrant, backing, rebuttal)<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Write your full argument map: central claim + 3 supporting points + strongest counter-argument<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Find one piece of strong evidence for each supporting point; evaluate source quality<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Type argument map in Google Docs; use headers and bullet evidence under each point<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Argument debate: defend your position against a partner's attacks<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Write your argument map in full sentences: (1) your main claim, (2) three reasons with one sentence of evidence each, (3) the strongest counter-argument someone could make against you, (4) your rebuttal. This map becomes the skeleton of both your essay and your talk.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Toulmin argument model studied — claim, grounds, warrant, backing, and rebuttal understood</label>
-      <label class="check-item"><input type="checkbox"> Full argument map written: central claim, 3 supporting points, and strongest counter-argument</label>
-      <label class="check-item"><input type="checkbox"> One piece of strong evidence found and source quality evaluated for each supporting point</label>
-      <label class="check-item"><input type="checkbox"> Argument map typed in Google Docs with headers and bulleted evidence under each point</label>
-      <label class="check-item"><input type="checkbox"> Argument debate completed — position defended against a partner's direct attacks</label>
+
+  <!-- WEEK 2 -->
+  <div class="week-card" id="w2">
+    <div class="week-header"><span class="week-num">W2</span><span class="week-title">Building the Argument</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Argument structure deep-dive — the Toulmin model explained</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Mom will explain the Toulmin model: Claim → Grounds (evidence) → Warrant (why the evidence proves the claim) → Rebuttal.</li>
+              <li>Apply each part to your own argument from last week.</li>
+              <li>Write your Claim, Grounds, and Warrant in your Google Doc — one sentence each.</li>
+              <li>Identify the strongest rebuttal someone could make against you.</li>
+            </ol>
+            <div class="talk-tip">💬 "My claim is [X]. My grounds are [evidence]. The reason the evidence proves the claim is [warrant]. The best counter-argument is [rebuttal]."</div>
+            <div class="done-when">✓ Done when: Claim, Grounds, Warrant, and one Rebuttal written in Google Docs.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Write your full argument map — claim + 3 supporting points + counter</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs and write your argument map.</li>
+              <li>Write your main claim at the top (1 sentence).</li>
+              <li>Write three supporting points below it — one sentence each.</li>
+              <li>Write the strongest counter-argument against your position (1 sentence).</li>
+              <li>Write your rebuttal: why your position still holds despite that counter (1 sentence).</li>
+            </ol>
+            <div class="talk-tip">💬 "Claim: [claim]. Reason 1: … Reason 2: … Reason 3: … Counter: some people say [X]. Rebuttal: but [response]."</div>
+            <div class="done-when">✓ Done when: full argument map written — 1 claim + 3 reasons + counter + rebuttal = 6 sentences.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Find evidence for each of your three supporting points</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Look at your three supporting points from Tuesday.</li>
+              <li>For each one, find one piece of evidence from your research (or do a quick new search).</li>
+              <li>Write the evidence under the relevant supporting point in your argument map.</li>
+              <li>For each piece of evidence, evaluate: how strong is it? Would a skeptic be convinced?</li>
+            </ol>
+            <div class="talk-tip">💬 "For Reason 1, my evidence is [fact/stat/quote]. I think this is [strong/OK/weak] evidence because…"</div>
+            <div class="done-when">✓ Done when: one piece of evidence found and noted under each of your three supporting points.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Type argument map in Google Docs with headers and bulleted evidence</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your argument map in Google Docs.</li>
+              <li>Format it with headers: CLAIM, REASON 1, REASON 2, REASON 3, COUNTER-ARGUMENT, REBUTTAL.</li>
+              <li>Under each REASON header, add the evidence as a bullet point.</li>
+              <li>This map becomes the skeleton of both your essay and your talk.</li>
+              <li>Save it — you'll reference it every day for the next three weeks.</li>
+            </ol>
+            <div class="talk-tip">💬 This formatted map is the single most important document in this unit — everything else grows from it.</div>
+            <div class="done-when">✓ Done when: argument map formatted with headers and evidence bullets in Google Docs.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Argument debate — defend your position against mom's direct attacks</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Tell mom your argument map.</li>
+              <li>She will try to knock down each of your three reasons one by one — her job is to argue against you.</li>
+              <li>Your job is to defend each point using your evidence.</li>
+              <li>After the debate, write down: which point was hardest to defend?</li>
+              <li>Decide whether to strengthen that point or drop it and replace it with a stronger one.</li>
+            </ol>
+            <div class="talk-tip">💬 "My first reason is [X]. Even if you say [counter], I'd point out that [evidence]…"</div>
+            <div class="done-when">✓ Done when: debate done; weakest point identified and decision made (strengthen or replace).</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Write your argument map in full sentences: (1) your main claim, (2) three reasons with one evidence sentence each, (3) the strongest counter-argument, (4) your rebuttal.</p>
+        <p class="prompt-starter">"I argue that [claim]. First, … because [evidence]. Second, … Third, … The strongest counter-argument is that… However, [rebuttal]."</p>
+        <p class="prompt-length">Length: 1 claim + 3 reason-with-evidence pairs + counter + rebuttal = 6–8 sentences total.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Toulmin model applied: Claim, Grounds, Warrant, and Rebuttal written in Google Docs</label>
+        <label class="check-item"><input type="checkbox"> Full argument map written: 1 claim + 3 reasons + counter + rebuttal</label>
+        <label class="check-item"><input type="checkbox"> One piece of evidence found and evaluated for each of the three supporting points</label>
+        <label class="check-item"><input type="checkbox"> Argument map formatted in Google Docs with headers and evidence bullets</label>
+        <label class="check-item"><input type="checkbox"> Debate done; weakest point identified; decision made to strengthen or replace it</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w3">
-  <div class="week-header"><span class="week-num">W3</span><span class="week-title">The Persuasive Essay</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Essay structure: hook → background → thesis → 3 body paragraphs → counter → conclusion<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Tue</td><td>Draft your introduction: the hook must earn the reader's attention in 2 sentences<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Draft body paragraphs 1–3; each paragraph: topic sentence + evidence + analysis<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Draft counter-argument and rebuttal paragraph; type full essay draft<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>Peer review: are the claims clear? Is the evidence convincing? Does the logic hold?<br><span class="comp comp-share">Discussion</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Draft your conclusion paragraph. It must do three things: (1) restate the thesis in fresh language, (2) synthesize (not just summarize) your three main points, (3) end with a call to action or a question that stays with the reader. The last sentence of an essay is the most remembered — make it count.</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Essay structure reviewed — hook through conclusion; opening hook drafted to earn reader attention in 2 sentences</label>
-      <label class="check-item"><input type="checkbox"> Three body paragraphs drafted — each with topic sentence, evidence, and analysis</label>
-      <label class="check-item"><input type="checkbox"> Counter-argument and rebuttal paragraph drafted; full essay typed in Google Docs</label>
-      <label class="check-item"><input type="checkbox"> Conclusion paragraph drafted — thesis restated in fresh language, three points synthesized, memorable closing sentence written</label>
-      <label class="check-item"><input type="checkbox"> Peer review done — claim clarity, evidence strength, and logical flow evaluated</label>
+
+  <!-- WEEK 3 -->
+  <div class="week-card" id="w3">
+    <div class="week-header"><span class="week-num">W3</span><span class="week-title">The Persuasive Essay</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Essay structure overview — hook → background → thesis → body → counter → conclusion</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Mom will walk through the essay structure with you using your argument map as the starting point.</li>
+              <li>Match each part: Hook = how you'll open; Thesis = your main claim; Body = your 3 reasons with evidence; Counter = the rebuttal section; Conclusion = landing the argument.</li>
+              <li>Write a one-bullet mini-outline for each section — just the main idea per section.</li>
+              <li>You already have all the content from Week 2 — today is just mapping it to essay structure.</li>
+            </ol>
+            <div class="talk-tip">💬 "My hook idea is… My thesis is [your claim]. The three body paragraphs are [3 reasons]. Counter is [your rebuttal]. Conclusion wraps up with…"</div>
+            <div class="done-when">✓ Done when: mini-outline written with one bullet per section mapped to your argument.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Draft your introduction — hook must earn the reader in 2 sentences</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Docs: "Make Your Case — Essay Draft."</li>
+              <li>Write a hook — your first two sentences need to make someone stop scrolling and read.</li>
+              <li>Options: start with a surprising fact, a bold claim, a question, or a short story.</li>
+              <li>Write 1–2 background sentences: what is this issue and why does it matter now?</li>
+              <li>Write your thesis sentence — this is your main claim from Week 2.</li>
+            </ol>
+            <div class="talk-tip">💬 Say your hook out loud: "What if I told you that…" or "Every day, [surprising fact]…" or "[Question that challenges what people assume]?" — then write it.</div>
+            <div class="done-when">✓ Done when: introduction written with a 2-sentence hook, 1–2 background sentences, and thesis.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Draft body paragraphs 1–3 — topic sentence + evidence + analysis each</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>For each body paragraph: start with your topic sentence (= the reason from your argument map).</li>
+              <li>Add your evidence (= the fact/stat/quote you found in Week 2).</li>
+              <li>Write 1–2 sentences of analysis: how does this evidence prove your reason?</li>
+              <li>End with a transition to the next paragraph.</li>
+              <li>Repeat for all three paragraphs — topic sentence + evidence + analysis + transition.</li>
+            </ol>
+            <div class="talk-tip">💬 "My [first/second/third] reason is [topic sentence]. Evidence: [fact]. This proves my point because [analysis]."</div>
+            <div class="done-when">✓ Done when: three body paragraphs drafted, each with topic sentence, evidence, and analysis.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Draft counter-argument paragraph; type full draft in Google Docs</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Write your counter-argument paragraph: "Some people argue that [opposing view]."</li>
+              <li>Add one sentence of why that view makes sense — be fair to the other side.</li>
+              <li>Write your rebuttal: "However, [your response]."</li>
+              <li>Assemble your full draft: intro + 3 body paragraphs + counter+rebuttal.</li>
+              <li>You still need a conclusion — save that for tomorrow or the revision week.</li>
+            </ol>
+            <div class="talk-tip">💬 The counter-argument shows you've thought about the other side — it actually makes your argument stronger, not weaker.</div>
+            <div class="done-when">✓ Done when: counter+rebuttal paragraph drafted and full draft assembled in one Google Doc.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Peer review — are the claims clear? Is the evidence convincing?</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Read the draft out loud to mom (or have her read it).</li>
+              <li>Ask: can she state your main argument in one sentence from memory?</li>
+              <li>Ask: which piece of evidence did she find most convincing? Which felt weak?</li>
+              <li>Ask: did the counter-argument feel fair to the other side?</li>
+              <li>Write two specific revision goals based on her answers.</li>
+            </ol>
+            <div class="talk-tip">💬 "After reading this, what do you think my argument is? Which reason convinced you? Which didn't?"</div>
+            <div class="done-when">✓ Done when: peer review done and two specific revision goals written.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Draft your conclusion paragraph: restate thesis in new language, synthesize (not just summarize) your three main points, end with a call to action or a question that stays with the reader.</p>
+        <p class="prompt-starter">"When we look at [topic] honestly, [thesis restated in new words]. What I've shown is not just [point 1] and [point 2] but also [point 3] — which means that [what this requires of the reader]. The question is not whether [X], but [memorable closing question or call to action]."</p>
+        <p class="prompt-length">Length: 4–5 sentences. Your last sentence should be the most memorable in the essay.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Mini-outline written: one bullet per section mapped to argument map</label>
+        <label class="check-item"><input type="checkbox"> Introduction drafted: 2-sentence hook + background + thesis</label>
+        <label class="check-item"><input type="checkbox"> Three body paragraphs drafted: topic sentence + evidence + analysis + transition each</label>
+        <label class="check-item"><input type="checkbox"> Counter-argument + rebuttal drafted; full draft assembled in Google Docs</label>
+        <label class="check-item"><input type="checkbox"> Peer review done; two specific revision goals written</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w4">
-  <div class="week-header"><span class="week-num">W4</span><span class="week-title">Designing the Talk</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>How TED Talks differ from essays: conversational tone, story-first, no slides full of text<br><span class="comp comp-read">Reading</span></td></tr><tr><td class="day">Tue</td><td>Adapt your essay into a talk script: shorter sentences, direct address, transitions<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Identify 2–3 personal stories or examples that make the argument human and memorable<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Build a 5-slide visual: one visual per main section — no bullet lists<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Fri</td><td>First run-through of full talk — standing up, from notes, not reading<br><span class="comp comp-share">Kinesthetic</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Adapt the opening 2 minutes of your essay into a talk opening. A talk opens differently than an essay — you might start with a story, a surprising fact, or a question to the audience. Write two different openings for your talk and choose the stronger one. What makes a spoken opening different from a written one?</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> TED Talk vs. essay differences studied — conversational tone, story-first approach, and minimal slide text discussed</label>
-      <label class="check-item"><input type="checkbox"> Essay adapted into a talk script with shorter sentences, direct address, and spoken transitions</label>
-      <label class="check-item"><input type="checkbox"> Two different talk openings written; stronger one chosen with written justification</label>
-      <label class="check-item"><input type="checkbox"> 2–3 personal stories or concrete examples identified to make the argument memorable</label>
-      <label class="check-item"><input type="checkbox"> 5-slide visual built — one image-driven visual per main section, no bullet-point lists</label>
-      <label class="check-item"><input type="checkbox"> First full run-through of talk completed standing up from notes (not reading)</label>
+
+  <!-- WEEK 4 -->
+  <div class="week-card" id="w4">
+    <div class="week-header"><span class="week-num">W4</span><span class="week-title">Designing the Talk</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">How TED Talks differ from essays — conversational, story-first, no walls of text</span>
+            <span class="comp comp-read">Reading</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Watch the first 2 minutes of one of the TED Talks from Week 1 again.</li>
+              <li>Notice: does the speaker use formal language or conversational language?</li>
+              <li>Notice: does the speaker start with a claim, a story, or a question?</li>
+              <li>Read the first paragraph of your essay — it sounds different, right? That's the difference between a written and spoken argument.</li>
+              <li>Tell mom: what are the three biggest differences between giving a talk and writing an essay?</li>
+            </ol>
+            <div class="talk-tip">💬 Talks use shorter sentences, direct address ("you"), stories instead of analysis, and pauses. Essays are formal; talks are conversations.</div>
+            <div class="done-when">✓ Done when: three differences between a talk and an essay explained aloud.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Adapt your essay into a talk script — shorter sentences, direct address, spoken transitions</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your essay draft and a new Google Doc titled "Talk Script."</li>
+              <li>Take your essay introduction and rewrite it as a talk opening — use "you," shorter sentences, and natural spoken language.</li>
+              <li>Take your three body paragraphs and shorten them — cut each one down to just the key point and the best evidence.</li>
+              <li>Add spoken transitions: "Here's the first thing I want you to know…" or "Now, someone might say…"</li>
+            </ol>
+            <div class="talk-tip">💬 Read each sentence out loud — if it sounds like you'd never actually say it, rewrite it until it does.</div>
+            <div class="done-when">✓ Done when: a shortened talk version of your introduction and three main points is in the Talk Script document.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Add personal stories or examples that make the argument human and memorable</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Look at your talk script and find one place where you could add a real personal story or example.</li>
+              <li>Write a 2–3 sentence story or example that connects to your argument — something real from your life or something specific you've observed.</li>
+              <li>Insert it into the talk script where it fits best.</li>
+              <li>Does it make the argument feel more real and human? If yes, keep it. If it feels forced, try a different spot or a different story.</li>
+            </ol>
+            <div class="talk-tip">💬 The best TED Talk moments are usually the most personal ones — they make the argument feel lived, not just thought.</div>
+            <div class="done-when">✓ Done when: at least one personal story or concrete example added to the talk script.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Build a 5-slide visual — one image-based visual per main section</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open Google Slides and create 5 slides.</li>
+              <li>Slide 1: your topic and hook — minimal text, maybe one striking image.</li>
+              <li>Slides 2–4: one slide per main reason — just a title and one supporting visual (image, quote, or stat).</li>
+              <li>Slide 5: your conclusion — one memorable sentence or image.</li>
+              <li>Rule: no bullet lists. If you can't fit an idea on one slide without a list, split it into two slides.</li>
+            </ol>
+            <div class="talk-tip">💬 Your slides should look like something behind a TED speaker — mostly visual, a few words, no walls of text. The slides support you; they're not the talk.</div>
+            <div class="done-when">✓ Done when: 5 slides built with no bullet lists and one key visual per slide.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">First full run-through of the talk — standing up, from notes, not reading</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Stand up.</li>
+              <li>Open your slides on the laptop.</li>
+              <li>Run through the whole talk from start to finish, talking from memory or short notes — not reading the script word for word.</li>
+              <li>It will be rough — that's normal for a first run-through.</li>
+              <li>Note two things that felt especially awkward or unclear to work on in rehearsal.</li>
+            </ol>
+            <div class="talk-tip">💬 The first run-through is always weird — you're building the muscle memory for the talk. It gets smoother every time.</div>
+            <div class="done-when">✓ Done when: first full run-through completed and two things to improve noted.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Write two different opening 2 minutes for your talk. A talk opens differently than an essay — start with a story, a surprising fact, or a question. Choose the stronger one and explain why it works better.</p>
+        <p class="prompt-starter">"Opening A: [story-based or question-based opening]. Opening B: [fact-based or different angle]. I'd choose Opening [A/B] because it [does something specific]."</p>
+        <p class="prompt-length">Length: two short openings (3–5 sentences each) + one sentence of comparison.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Three differences between a talk and an essay identified and explained</label>
+        <label class="check-item"><input type="checkbox"> Essay adapted into talk script — shorter sentences, direct address, spoken transitions</label>
+        <label class="check-item"><input type="checkbox"> At least one personal story or concrete example added to the talk script</label>
+        <label class="check-item"><input type="checkbox"> 5-slide visual built: no bullet lists, one key visual per slide</label>
+        <label class="check-item"><input type="checkbox"> First full run-through completed standing up; two improvement areas noted</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w5">
-  <div class="week-header"><span class="week-num">W5</span><span class="week-title">Rehearsal & Refinement</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Full talk run-through; record on phone; watch playback and note improvement areas<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Tue</td><td>Revise talk script based on recording; refine transitions and pacing<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Wed</td><td>Final essay revision: proofread, check citations, strengthen any weak paragraphs<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Thu</td><td>Dress rehearsal: full talk in front of a small audience — parents, sibling, or neighbor<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>Final prep: essay printed/exported; slides finalized; notes ready<br><span class="comp comp-make">Computer</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>Watch your recorded rehearsal and write a 150-word self-critique: What are your three strongest moments in the talk? What are the two things you most want to improve? Specific feedback only — not "I need to be more confident" but "I lose eye contact at minute 2:30 and I rush through the counter-argument."</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Full talk recorded on phone; playback watched and notes made on improvement areas</label>
-      <label class="check-item"><input type="checkbox"> Talk script revised based on recording — transitions and pacing refined</label>
-      <label class="check-item"><input type="checkbox"> 150-word self-critique written with 3 strongest moments and 2 specific improvement targets identified</label>
-      <label class="check-item"><input type="checkbox"> Final essay revised, proofread, and citations checked</label>
-      <label class="check-item"><input type="checkbox"> Dress rehearsal completed with a small audience; essay printed/exported; slides finalized</label>
+
+  <!-- WEEK 5 -->
+  <div class="week-card" id="w5">
+    <div class="week-header"><span class="week-num">W5</span><span class="week-title">Rehearsal &amp; Refinement</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Record the full talk on your phone — watch playback and take notes</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Set up your phone to record video.</li>
+              <li>Give the full talk as if it's the real showcase — standing, slides, notes only.</li>
+              <li>Watch the recording once all the way through.</li>
+              <li>Write down: three moments that worked well, two things you want to improve.</li>
+              <li>Be specific: not "I need to be more confident" but "I look down at minute 2:10" or "I rush through the counter-argument."</li>
+            </ol>
+            <div class="talk-tip">💬 Recording yourself is uncomfortable but it's the fastest way to see what an audience sees. Watch it once, take notes, then put it away.</div>
+            <div class="done-when">✓ Done when: talk recorded, watched, and three strengths + two specific improvements written down.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Revise talk script based on recording — fix transitions and pacing</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your talk script and look at the two improvement areas from yesterday.</li>
+              <li>Fix those two things — if you rushed through a section, expand it. If a transition was abrupt, rewrite it.</li>
+              <li>If a section ran too long, cut one sentence or example from it.</li>
+              <li>Practice just the revised sections out loud a few times until they feel natural.</li>
+            </ol>
+            <div class="talk-tip">💬 Don't rewrite the whole talk — just fix the two things you identified. Small focused improvements are more effective than starting over.</div>
+            <div class="done-when">✓ Done when: the two identified improvements addressed and revised sections practiced.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Final essay revision — write conclusion, proofread, check any citations</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Open your essay draft and apply the two revision goals from Week 3's peer review.</li>
+              <li>Write your conclusion paragraph (if not already done): thesis restated in new words + synthesized main points + memorable closing sentence.</li>
+              <li>Run spell check.</li>
+              <li>Check any statistics or quotes to make sure they're cited (author name in parentheses).</li>
+              <li>Save the final essay version.</li>
+            </ol>
+            <div class="talk-tip">💬 "My conclusion: In the end, what I've argued is [thesis restated]. This matters because [synthesis]. And the question I leave you with is…"</div>
+            <div class="done-when">✓ Done when: essay conclusion written, two revisions applied, spell check done, citations checked.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Dress rehearsal — full talk in front of mom with full setup</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Set up exactly as you would for the real showcase — laptop open, slides ready, standing position.</li>
+              <li>Give the full talk to mom as if it's the real thing.</li>
+              <li>After, ask her: what was the most convincing moment? What was hardest to follow?</li>
+              <li>Make one final adjustment based on her feedback.</li>
+              <li>Rest — you've done the work. Tomorrow is just one more run-through and final prep.</li>
+            </ol>
+            <div class="talk-tip">💬 A dress rehearsal means doing it for real — not stopping, not fixing things mid-talk. Get through it start to finish.</div>
+            <div class="done-when">✓ Done when: dress rehearsal completed with full setup; one final adjustment made.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Final prep — essay ready, slides finalized, notes reviewed</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Export or print the final essay.</li>
+              <li>Do one final check of your slides — is everything in order? Any typos in the slide text?</li>
+              <li>Review your speaker notes one more time — not to memorize, just to remind yourself of the flow.</li>
+              <li>You're ready. Tomorrow is the showcase.</li>
+            </ol>
+            <div class="talk-tip">💬 Don't add anything new the night before. The prep is done. Trust it.</div>
+            <div class="done-when">✓ Done when: essay exported/printed, slides finalized, and notes reviewed one final time.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Weekly Writing Prompt</div>
+        <p>Watch your recorded rehearsal and write a 150-word self-critique: three strongest moments in the talk, two specific things you want to improve. No vague feedback — be precise about what and where.</p>
+        <p class="prompt-starter">"My three strongest moments are: 1)… 2)… 3)… The two things I most want to improve are: 1) [specific, e.g., 'I lose eye contact at minute 2:30'] 2)…"</p>
+        <p class="prompt-length">Length: 5–7 sentences. Be harder on yourself than you think is necessary — that's how the talk gets better.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Talk recorded; watched; three strengths and two specific improvements written down</label>
+        <label class="check-item"><input type="checkbox"> Talk script revised based on recording; two improvements addressed</label>
+        <label class="check-item"><input type="checkbox"> Essay conclusion written; two revisions applied; spell check and citations done</label>
+        <label class="check-item"><input type="checkbox"> Dress rehearsal completed with full setup; one final adjustment made</label>
+        <label class="check-item"><input type="checkbox"> Essay exported; slides finalized; notes reviewed — ready for showcase</label>
+      </div>
     </div>
   </div>
-</div><div class="week-card" id="w6">
-  <div class="week-header"><span class="week-num">W6</span><span class="week-title">Showcase</span></div>
-  <div class="week-body">
-    <table class="daily"><thead><tr><th>Day</th><th>Activity</th></tr></thead><tbody><tr><td class="day">Mon</td><td>Final essay submitted; last review of talk notes and slides<br><span class="comp comp-make">Computer</span></td></tr><tr><td class="day">Tue</td><td>Final rehearsal with full setup — projector, standing position, water bottle<br><span class="comp comp-share">Kinesthetic</span></td></tr><tr><td class="day">Wed</td><td>Write thank-you note / invitation for showcase guests<br><span class="comp comp-write">Writing</span></td></tr><tr><td class="day">Thu</td><td>Set up showcase space; prepare both essay and talk materials<br><span class="comp comp-make">Kinesthetic</span></td></tr><tr><td class="day">Fri</td><td>SHOWCASE: TED-style talk + persuasive essay presentation — Year-End Celebration<br><span class="comp comp-share">Showcase</span></td></tr></tbody></table>
-    <div class="prompt-box"><div class="prompt-label">Writing Prompt</div><p>After the showcase, write a final reflection for your year-end portfolio: What is the most important thing you learned about writing this year? Which unit challenged you most? Which piece of writing are you most proud of and why? What kind of writer do you want to be?</p></div>
-    <div class="checklist-label">✅ Weekly Checklist</div>
-    <div class="checklist">
-      <label class="check-item"><input type="checkbox"> Final essay submitted; talk notes and slides reviewed one last time</label>
-      <label class="check-item"><input type="checkbox"> Final rehearsal completed with full setup — projector, standing position, and pacing confirmed</label>
-      <label class="check-item"><input type="checkbox"> Thank-you note or invitation written for showcase guests</label>
-      <label class="check-item"><input type="checkbox"> Showcase space set up; essay and talk materials both prepared and on hand</label>
-      <label class="check-item"><input type="checkbox"> TED-style talk delivered live at year-end showcase</label>
-      <label class="check-item"><input type="checkbox"> Year-end portfolio reflection written — most important writing lesson, hardest unit, proudest piece, and future writing goals</label>
+
+  <!-- WEEK 6 -->
+  <div class="week-card" id="w6">
+    <div class="week-header"><span class="week-num">W6</span><span class="week-title">Showcase — Year-End Celebration</span></div>
+    <div class="week-body">
+      <div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Final essay submitted; last review of talk notes and slides</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Submit or share your final essay with mom — this is officially done.</li>
+              <li>Open your slides one more time — just make sure nothing is out of order.</li>
+              <li>Read through your speaker notes once more as a final refresh.</li>
+              <li>Nothing new to add. Everything is prepared.</li>
+            </ol>
+            <div class="talk-tip">💬 The essay is finished. The talk is ready. This week is about delivering what you've built.</div>
+            <div class="done-when">✓ Done when: essay submitted and final review of slides and notes done.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">Final rehearsal — full setup, projector/screen, standing position</span>
+            <span class="comp comp-share">Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Set up the showcase space: laptop, projector or large screen if you have one, water bottle.</li>
+              <li>Give the talk one final time — full speed, no stopping.</li>
+              <li>Time it. Are you between 5 and 7 minutes?</li>
+              <li>If over 7 minutes, cut one example somewhere. If under 5, expand one section briefly.</li>
+            </ol>
+            <div class="talk-tip">💬 This is the last full rehearsal. After this, the only thing left is the real thing.</div>
+            <div class="done-when">✓ Done when: final rehearsal done and timing is between 5–7 minutes.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">Write a thank-you note or invitation for showcase guests</span>
+            <span class="comp comp-write">Writing</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Decide who you want to invite to the showcase — family, a friend, anyone who matters to you.</li>
+              <li>Write a short invitation or thank-you note: 3–4 sentences telling them what you'll be presenting and inviting them to come.</li>
+              <li>This is real-world writing — clear, friendly, and purposeful.</li>
+            </ol>
+            <div class="talk-tip">💬 "I'm presenting my year-end TED-style talk on [topic] on [day]. I'd love for you to come. Here's what you can expect…"</div>
+            <div class="done-when">✓ Done when: invitation or thank-you note written and sent (or prepared to give).</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Set up showcase space; prepare both essay and talk materials</span>
+            <span class="comp comp-make">Computer</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Set up the physical space where you'll give the talk.</li>
+              <li>Make sure the laptop is charged and the slides are on the right slide.</li>
+              <li>Have your essay printed or on screen for anyone who wants to read it after.</li>
+              <li>Have a glass of water nearby.</li>
+              <li>You're set. Rest tonight.</li>
+            </ol>
+            <div class="talk-tip">💬 Everything is prepared. The setup is just making sure the physical stuff doesn't distract from the talk.</div>
+            <div class="done-when">✓ Done when: showcase space set up and both essay and talk materials are ready to go.</div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">SHOWCASE: TED-style talk + year-end celebration</span>
+            <span class="comp comp-share">Showcase</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <ol class="step-list">
+              <li>Welcome your audience.</li>
+              <li>Deliver your TED-style talk — start to finish, full commitment.</li>
+              <li>Take questions if anyone has them — answer from what you know.</li>
+              <li>After the talk, write one final paragraph: what is the most important thing you learned about writing this year?</li>
+            </ol>
+            <div class="talk-tip">💬 You built six units of writing this year. You researched, argued, described, documented, analyzed, and made your case. Today is just showing what you already know.</div>
+            <div class="done-when">✓ Done when: TED-style talk delivered and year-end reflection written.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-label">Year-End Writing Prompt</div>
+        <p>After the showcase, write a final year-end reflection: What is the most important thing you learned about writing this year? Which unit challenged you most? Which piece of writing are you most proud of and why? What kind of writer do you want to be?</p>
+        <p class="prompt-starter">"The most important thing I learned about writing this year is… The unit that challenged me most was [unit] because… I'm most proud of [piece] because… As a writer, I want to…"</p>
+        <p class="prompt-length">Length: 4–6 sentences. This goes in your year-end portfolio — be honest and thoughtful.</p>
+      </div>
+      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"> Essay submitted; final review of slides and notes done</label>
+        <label class="check-item"><input type="checkbox"> Final rehearsal completed; timing confirmed at 5–7 minutes</label>
+        <label class="check-item"><input type="checkbox"> Invitation or thank-you note written and shared with guests</label>
+        <label class="check-item"><input type="checkbox"> Showcase space set up; essay and talk materials both ready</label>
+        <label class="check-item"><input type="checkbox"> SHOWCASE delivered — TED-style talk presented at year-end celebration</label>
+        <label class="check-item"><input type="checkbox"> Year-end reflection written for portfolio</label>
+      </div>
     </div>
   </div>
-</div>
+
   <div class="showcase-box" id="showcase">
-  <div class="showcase-label">Unit Showcase</div>
-  <h3>TED-Style Talk + Persuasive Essay</h3>
-  <p>A polished 5-paragraph persuasive essay plus a 6-minute TED-style talk with 5-slide visual. Delivered live at the year-end showcase for family, friends, and invited guests. This is the capstone of the 8th grade year.</p>
-</div>
+    <div class="showcase-label">Unit Showcase</div>
+    <h3>TED-Style Talk + Persuasive Essay</h3>
+    <p>A polished persuasive essay plus a 5–7 minute TED-style talk with a 5-slide visual. Delivered live at the year-end showcase for family, friends, and invited guests. This is the capstone of the 8th grade year — everything built toward this moment.</p>
+  </div>
 </div>
 <footer class="site-footer">Homeschool Curriculum Hub · Oregon · <a href="8th_grade_language_arts.html">← Language Arts</a></footer>
+<script>
+function toggleDay(row) {
+  var detail = row.nextElementSibling;
+  var isOpen = row.classList.contains('open');
+  row.classList.toggle('open', !isOpen);
+  detail.style.display = isOpen ? 'none' : 'block';
+}
+</script>
 </body>
 </html>
