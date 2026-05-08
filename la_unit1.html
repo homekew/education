@@ -226,6 +226,12 @@
     }
     footer.site-footer a { color: var(--ink-muted); }
 
+    .vocab-strip { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 18px 24px; margin: 0 0 24px 0; }
+    .vocab-strip-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 12px; }
+    .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+    .vocab-item { font-size: 0.84rem; line-height: 1.5; color: var(--ink-soft); }
+    .vocab-word { font-weight: 700; color: var(--ink); }
+
   </style>
 </head>
 <body>
@@ -363,10 +369,21 @@
 
   <div id="overview" class="overview-strip">
     <div class="ov-item"><div class="ov-label">Duration</div><div class="ov-val">6 weeks (Weeks 1–6)</div></div>
-    <div class="ov-item"><div class="ov-label">Core Standards</div><div class="ov-val">RL.7.1 · RL.7.2 · RL.7.3 · W.7.3 · SL.7.1 · L.7.1</div></div>
+    <div class="ov-item"><div class="ov-label">Core Standards</div><div class="ov-val">RL.6.1 · RL.6.2 · RL.6.3 · W.6.3 · SL.6.1 · L.6.1</div></div>
     <div class="ov-item"><div class="ov-label">Suggested Book</div><div class="ov-val">Mrs. Frisby and the Rats of NIMH, Silverwing, or Tailchaser's Song</div></div>
     <div class="ov-item"><div class="ov-label">Signature Project</div><div class="ov-val">🏔️ Diorama + Scene Card</div></div>
     <div class="ov-item"><div class="ov-label">Grammar Focus</div><div class="ov-val">Phrases &amp; clauses; complex sentences; subject-verb agreement</div></div>
+  </div>
+
+  <div class="vocab-strip">
+    <div class="vocab-strip-label">Key Vocabulary — 5 Words This Unit</div>
+    <div class="vocab-grid">
+      <div class="vocab-item"><span class="vocab-word">protagonist</span> — the main character whose journey drives the story forward</div>
+      <div class="vocab-item"><span class="vocab-word">anthropomorphism</span> — giving human traits, feelings, or behaviors to animals or objects</div>
+      <div class="vocab-item"><span class="vocab-word">motivation</span> — the reason a character wants something or acts the way they do</div>
+      <div class="vocab-item"><span class="vocab-word">inference</span> — a conclusion drawn from evidence and reasoning, not stated directly in the text</div>
+      <div class="vocab-item"><span class="vocab-word">theme</span> — the deeper message or central idea an author explores throughout a story</div>
+    </div>
   </div>
 
   <!-- ─── WEEK 1 ───────────────────────────────────────────────── -->
@@ -418,6 +435,7 @@
         <label class="check-item"><input type="checkbox"> Grammar: 5 sentences from the novel identified as phrases vs. clauses + 3 original sentences written</label>
         <label class="check-item"><input type="checkbox"> Character Profile Sheet started: name, species, home, personality, one quote from the text</label>
         <label class="check-item"><input type="checkbox"> Creative warm-up paragraph written from protagonist's perspective with 3 sensory details</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What is one thing you noticed about how this author writes that you want to remember?</label>
       </div>
     </div>
   </div>
@@ -457,7 +475,7 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Character Analysis Paragraph (RL.7.1)</div>
+        <div class="prompt-type">Character Analysis Paragraph (RL.6.1)</div>
         <p>Write a focused paragraph analyzing what motivates your protagonist. Your paragraph must include: a clear topic sentence stating the motivation, at least two cited pieces of evidence from the text (use quotation marks and page numbers), and a concluding sentence explaining why this motivation matters to the story. Aim for 8–10 sentences.</p>
       </div>
       <div class="prompt-card">
@@ -471,6 +489,7 @@
         <label class="check-item"><input type="checkbox"> Character analysis journal entry written: protagonist's want, obstacle, and 2 text-based examples</label>
         <label class="check-item"><input type="checkbox"> Character Analysis Paragraph completed — 8–10 sentences with topic sentence, 2 cited quotes, and analysis</label>
         <label class="check-item"><input type="checkbox"> Clay sculpture of protagonist begun — basic body proportions and identifying features blocked out</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What do you think your protagonist wants most — and what is standing in their way?</label>
       </div>
     </div>
   </div>
@@ -524,6 +543,7 @@
         <label class="check-item"><input type="checkbox"> Descriptive paragraph written from protagonist's animal perspective — 8–12 sentences, 4 prep phrases, 3 sensory details, one simile or metaphor</label>
         <label class="check-item"><input type="checkbox"> Diorama scene chosen; planning sketch completed (bird's-eye and front views) with 5 text details listed</label>
         <label class="check-item"><input type="checkbox"> Diorama planning note paragraph written (scene choice, 3 text details, materials list)</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> Which setting detail from the book could you picture most vividly, and why?</label>
       </div>
     </div>
   </div>
@@ -563,7 +583,7 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Theme Journal Entry (RL.7.2)</div>
+        <div class="prompt-type">Theme Journal Entry (RL.6.2)</div>
         <p>Write a journal entry exploring the theme of your novel. Begin with your best statement of the theme as a complete sentence (not just a word like "friendship" — write a sentence like "True friendship means staying loyal even when it costs you something"). Then explain how 2–3 specific moments in the story develop or support that theme. Use at least one direct quote from the text.</p>
       </div>
       <div class="prompt-card">
@@ -577,6 +597,7 @@
         <label class="check-item"><input type="checkbox"> Theme journal entry written — theme stated as a complete sentence with 2–3 supporting moments from the text and one direct quote</label>
         <label class="check-item"><input type="checkbox"> Diorama physical structure mostly complete — base and landscape elements assembled</label>
         <label class="check-item"><input type="checkbox"> Conflict Analysis paragraph written (4–6 sentences): conflict type, stakes, and resolution prediction</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What do you think the theme of this book is so far? State it as a complete sentence.</label>
       </div>
     </div>
   </div>
@@ -616,7 +637,7 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Narrative Scene Draft (W.7.3)</div>
+        <div class="prompt-type">Narrative Scene Draft (W.6.3)</div>
         <p>Write an original scene (1–2 pages) set in the world of your novel. Your scene should feature the protagonist in a moment not shown in the book — maybe just before the story starts, between two chapters, or just after the ending. Use the author's style: match the tone, the animal's perspective, and the level of detail. Include at least one dialogue exchange and one moment of internal thought.</p>
       </div>
       <div class="prompt-card">
@@ -630,6 +651,7 @@
         <label class="check-item"><input type="checkbox"> Diorama finished and scene card written (5–7 sentences) with one direct text quote and page number</label>
         <label class="check-item"><input type="checkbox"> Grammar: 5 complex sentences edited for correct comma placement; opening paragraph of narrative scene revised</label>
         <label class="check-item"><input type="checkbox"> Climax identified in reading journal — how did protagonist handle it?</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> How did the protagonist change between the beginning and the climax?</label>
       </div>
     </div>
   </div>
@@ -669,7 +691,7 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Objective Summary (RL.7.2)</div>
+        <div class="prompt-type">Objective Summary (RL.6.2)</div>
         <p>Write an objective summary of the novel in one paragraph (8–10 sentences). Rules: No "I think" or "I liked." No spoiler-free vagueness — actually tell what happened. Cover all five story elements: protagonist, setting, conflict, rising action/climax, and resolution. Someone who hasn't read the book should understand the whole story from your summary.</p>
       </div>
       <div class="prompt-card">
@@ -683,6 +705,7 @@
         <label class="check-item"><input type="checkbox"> Narrative scene final clean copy completed — authentic animal voice, correct dialogue punctuation</label>
         <label class="check-item"><input type="checkbox"> Gallery display set up: diorama with scene card, book poster with title, quote, and hook paragraph, and narrative scene</label>
         <label class="check-item"><input type="checkbox"> Unit reflection journal entry written (1 page): theme development, author technique noticed, what you want to read next</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What is one technique from this author that you want to try in your own writing?</label>
       </div>
     </div>
   </div>
@@ -694,7 +717,7 @@
     <!-- RUBRIC 1: Character Analysis Paragraph -->
     <div class="rubric-wrap">
       <div class="rubric-title">Character Analysis Paragraph (Week 2)</div>
-      <div class="rubric-desc">Standards: RL.7.1 · W.7.4 — Analyzes protagonist motivation with textual evidence</div>
+      <div class="rubric-desc">Standards: RL.6.1 · W.6.4 — Analyzes protagonist motivation with textual evidence</div>
       <table class="rubric-table">
         <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
         <tbody>
@@ -709,7 +732,7 @@
     <!-- RUBRIC 2: Narrative Scene -->
     <div class="rubric-wrap">
       <div class="rubric-title">Narrative Scene — Original Writing (Week 5)</div>
-      <div class="rubric-desc">Standards: W.7.3 · W.7.4 — Original scene in the novel's world, animal protagonist</div>
+      <div class="rubric-desc">Standards: W.6.3 · W.6.4 — Original scene in the novel's world, animal protagonist</div>
       <table class="rubric-table">
         <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
         <tbody>
@@ -725,7 +748,7 @@
     <!-- RUBRIC 3: Diorama + Scene Card -->
     <div class="rubric-wrap">
       <div class="rubric-title">Diorama + Scene Card (Week 5–6)</div>
-      <div class="rubric-desc">Standards: RL.7.3 — 3D scene construction with written analysis card</div>
+      <div class="rubric-desc">Standards: RL.6.3 — 3D scene construction with written analysis card</div>
       <table class="rubric-table">
         <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
         <tbody>
@@ -740,7 +763,7 @@
     <!-- RUBRIC 4: Objective Summary -->
     <div class="rubric-wrap">
       <div class="rubric-title">Objective Summary (Week 6)</div>
-      <div class="rubric-desc">Standards: RL.7.2 — Summarizes the full novel objectively and completely</div>
+      <div class="rubric-desc">Standards: RL.6.2 — Summarizes the full novel objectively and completely</div>
       <table class="rubric-table">
         <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
         <tbody>

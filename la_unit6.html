@@ -235,6 +235,12 @@
     }
     footer.site-footer a { color: var(--ink-muted); }
 
+    .vocab-strip { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 18px 24px; margin: 0 0 24px 0; }
+    .vocab-strip-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 12px; }
+    .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+    .vocab-item { font-size: 0.84rem; line-height: 1.5; color: var(--ink-soft); }
+    .vocab-word { font-weight: 700; color: var(--ink); }
+
   </style>
 </head>
 <body>
@@ -373,10 +379,21 @@
 
   <div id="overview" class="overview-strip">
     <div class="ov-item"><div class="ov-label">Duration</div><div class="ov-val">6 weeks (Weeks 31–36)</div></div>
-    <div class="ov-item"><div class="ov-label">Core Standards</div><div class="ov-val">RL.7.1 · RL.7.2 · RL.7.10 · W.7.3 · W.7.5 · W.7.6 · SL.7.4 · L.7.1 · L.7.2</div></div>
+    <div class="ov-item"><div class="ov-label">Core Standards</div><div class="ov-val">RL.6.1 · RL.6.2 · RL.6.10 · W.6.3 · W.6.5 · W.6.6 · SL.6.4 · L.6.1 · L.6.2</div></div>
     <div class="ov-item"><div class="ov-label">Suggested Books</div><div class="ov-val">Howl's Moving Castle · The Sight · Wild Magic · The Girl Who Drank the Moon · Silverwing · Fire Bringer · or student choice</div></div>
     <div class="ov-item"><div class="ov-label">Signature Project</div><div class="ov-val">Year-End Portfolio + Cover Art — Showcase Presentation</div></div>
     <div class="ov-item"><div class="ov-label">Grammar Focus</div><div class="ov-val">Comprehensive year review · verb tense · POV consistency · proofreading · spelling</div></div>
+  </div>
+
+  <div class="vocab-strip">
+    <div class="vocab-strip-label">Key Vocabulary — 5 Words This Unit</div>
+    <div class="vocab-grid">
+      <div class="vocab-item"><span class="vocab-word">portfolio</span> — a curated collection of a writer's work, selected and organized to show growth, range, and skill</div>
+      <div class="vocab-item"><span class="vocab-word">literary analysis</span> — a form of writing that examines how an author uses literary elements (character, plot, theme, style) to create meaning</div>
+      <div class="vocab-item"><span class="vocab-word">voice</span> — the distinctive personality, tone, and style of a writer that makes their work sound like them and no one else</div>
+      <div class="vocab-item"><span class="vocab-word">revision</span> — the process of rethinking, reorganizing, and rewriting a draft to improve its ideas, structure, and clarity — deeper than proofreading</div>
+      <div class="vocab-item"><span class="vocab-word">reflection</span> — thoughtful examination of one's own work, choices, and growth as a reader, writer, and thinker</div>
+    </div>
   </div>
 
   <!-- ─── WEEK 31 ─────────────────────────────────────────────────── -->
@@ -444,6 +461,7 @@
         <label class="check-item"><input type="checkbox"> All Units 1–5 writing gathered; brief note written next to each piece about strengths and possible revisions</label>
         <label class="check-item"><input type="checkbox"> Portfolio pieces sorted into "definitely include," "maybe include," and "keep but not in portfolio" categories</label>
         <label class="check-item"><input type="checkbox"> Portfolio Reflection — Looking Back paragraph written (6–8 sentences) about the year's most meaningful piece</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What is your first impression of the book you chose — does it feel like a worthy ending to the year?</label>
       </div>
     </div>
   </div>
@@ -500,11 +518,11 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Literary Analysis Paragraph (RL.7.1, RL.7.2)</div>
+        <div class="prompt-type">Literary Analysis Paragraph (RL.6.1, RL.6.2)</div>
         <p>Write a polished literary analysis paragraph (10–12 sentences) exploring one theme from your novel. Requirements: (1) Open with a specific, arguable topic sentence — state the theme as a full claim, not just a topic word. (2) Introduce your first piece of evidence with a signal phrase and cite it (chapter or page). (3) Analyze: explain in 2–3 sentences how this evidence develops the theme. (4) Repeat steps 2–3 with a second piece of evidence. (5) Close with a sentence that connects this theme to something larger — why does it matter beyond the story? Check all comma usage before submitting.</p>
       </div>
       <div class="prompt-card">
-        <div class="prompt-type">Portfolio Introduction Letter (W.7.6)</div>
+        <div class="prompt-type">Portfolio Introduction Letter (W.6.6)</div>
         <p>Write a 3–4 paragraph introduction letter to open your year-end portfolio. Paragraph 1: Introduce yourself as a reader and writer — who were you at the start of the year, and who are you now? Paragraph 2: Briefly describe the year's reading journey — what books did you read, and what did you discover through them? Paragraph 3: Introduce your portfolio — which two pieces are you most proud of, and what do they represent? Paragraph 4 (optional): End with a personal statement — something you want the reader to understand about your life as a student of language and story. Write in your own voice, as if you are speaking directly to someone you trust.</p>
       </div>
       <div class="section-label">✅ Weekly Checklist</div>
@@ -514,6 +532,7 @@
         <label class="check-item"><input type="checkbox"> Literary Analysis Paragraph drafted and revised (10–12 sentences): theme as full claim, 2 cited evidence pieces with analysis, significance closing sentence</label>
         <label class="check-item"><input type="checkbox"> Author Self-Portrait created in acrylic or ink with at least one reference to a book read this year woven into the image</label>
         <label class="check-item"><input type="checkbox"> Portfolio Introduction Letter written (3–4 paragraphs): reader/writer self-introduction, year's reading journey, 2 portfolio highlights named</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> How has your writing changed since Unit 1? What can you do now that you couldn't do then?</label>
       </div>
     </div>
   </div>
@@ -570,11 +589,11 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Novel Opening Draft (W.7.3)</div>
+        <div class="prompt-type">Novel Opening Draft (W.6.3)</div>
         <p>Write a first draft of your original novel opening (1–2 typed pages or equivalent handwritten). You are beginning a story — not writing a complete short story, but the opening pages that would make a reader want to read Chapter 2. Checklist for your draft: Does your first sentence create a question, tension, or vivid image? Does the reader know who the protagonist is within the first paragraph? Are there at least two specific world-building details (not vague descriptions, but concrete: a name, a place, an object, a smell)? Is your verb tense consistent throughout? Is the POV consistent throughout? This is a first draft — boldness matters more than perfection right now.</p>
       </div>
       <div class="prompt-card">
-        <div class="prompt-type">Voice Study Journal Entry (RL.7.10)</div>
+        <div class="prompt-type">Voice Study Journal Entry (RL.6.10)</div>
         <p>Copy one paragraph from chapters 11–16 that you think is the best example of your author's voice. Below it, write an analysis (8–10 sentences): What specific word choices, sentence structures, and narrative techniques make this passage sound like this author and no one else? Then write one paragraph of your own — about anything — deliberately trying to imitate this author's style. How close can you get?</p>
       </div>
       <div class="prompt-card">
@@ -588,6 +607,7 @@
         <label class="check-item"><input type="checkbox"> Novel opening brainstormed (3 possible opening lines); first draft written (1–2 pages): hook, protagonist in action, 2 world-building details, consistent tense and POV</label>
         <label class="check-item"><input type="checkbox"> Illustrated world map drawn for original novel — key places named, compass rose added, 2–3 illustrated details included</label>
         <label class="check-item"><input type="checkbox"> Voice Study Journal Entry written (8–10 sentences): author's style analyzed, imitation paragraph attempted</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What is the theme of your chosen book, and what evidence leads you to that conclusion?</label>
       </div>
     </div>
   </div>
@@ -644,7 +664,7 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Novel Opening — Revised Draft (W.7.5)</div>
+        <div class="prompt-type">Novel Opening — Revised Draft (W.6.5)</div>
         <p>Submit your revised novel opening with a brief revision note attached (4–6 sentences). The note should explain: What two or three specific changes did you make, and why? What did deepening the setting add to the reader's experience? What did sharpening the voice change? What one thing is still not quite right that you plan to fix in Week 35? Attach the revision note to the top of the revised draft.</p>
       </div>
       <div class="prompt-card">
@@ -658,6 +678,7 @@
         <label class="check-item"><input type="checkbox"> Grammar: 3 wordy sentences cut for concision; passage read aloud and rhythm varied — at least one short sharp sentence added after longer ones</label>
         <label class="check-item"><input type="checkbox"> Cover art painting begun — background and main focal elements started; portfolio page order decided</label>
         <label class="check-item"><input type="checkbox"> Novel Opening — Revised Draft submitted with 4–6 sentence revision note explaining specific changes made</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What piece from your portfolio best shows who you are as a writer?</label>
       </div>
     </div>
   </div>
@@ -727,6 +748,7 @@
         <label class="check-item"><input type="checkbox"> Personal proofreading checklist created (8+ items); every portfolio piece proofread and errors corrected</label>
         <label class="check-item"><input type="checkbox"> Cover art painting completed and signed; Year-in-Books poster created with all year's titles, hand-drawn images, and mini-reviews</label>
         <label class="check-item"><input type="checkbox"> Portfolio finalized: all pieces assembled in order, introduction letter at front, complete read-through done</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What does your portfolio cover art say about your year — what story does it tell?</label>
       </div>
     </div>
   </div>
@@ -783,11 +805,11 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Year-in-Review Essay — Final Draft (W.7.6, SL.7.4)</div>
+        <div class="prompt-type">Year-in-Review Essay — Final Draft (W.6.6, SL.6.4)</div>
         <p>Write your final, polished Year-in-Review essay (3–5 paragraphs). This essay is the last piece in your portfolio — make it count. It should feel complete, honest, and written in your most authentic voice. Use the Year-in-Review Reflection Prompts at the end of this unit to shape your thinking. Requirements: (1) Begin with a specific, vivid moment or memory from the year — not a general statement like "This year I learned a lot." (2) Reflect on at least two books from the year and what they gave you. (3) Reflect on your growth as a writer — cite specific evidence from your own work. (4) End with something forward-looking: who do you want to become as a reader, writer, and thinker? Check for consistent tense, proofreading completeness, and a voice that sounds like you — not a school essay, but a real piece of writing by a real person.</p>
       </div>
       <div class="prompt-card">
-        <div class="prompt-type">Showcase Introduction (SL.7.4)</div>
+        <div class="prompt-type">Showcase Introduction (SL.6.4)</div>
         <p>Write a 3–5 sentence spoken introduction for the showcase — the words you will say aloud before presenting your portfolio and reading your passage. Include: what you're about to share and why you chose it, one thing you want your audience to look for or listen for, and one sentence that captures something true about your year. Practice saying it until it sounds natural, like you are speaking to someone, not reading from a page.</p>
       </div>
       <div class="section-label">✅ Weekly Checklist</div>
@@ -797,6 +819,7 @@
         <label class="check-item"><input type="checkbox"> Final edit of all portfolio pieces: consistent verb tense, POV, correct commas, no spelling errors, sentence variety throughout</label>
         <label class="check-item"><input type="checkbox"> Complete portfolio assembled: cover art → introduction letter → one piece per unit → novel opening → Year-in-Review essay; bound or organized</label>
         <label class="check-item"><input type="checkbox"> Year-End Showcase held: display walk, read-aloud, portfolio highlights shared — this is the culmination of the full year</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> Looking back on the full year, what are you most proud of as a reader and writer?</label>
       </div>
     </div>
   </div>
@@ -808,7 +831,7 @@
     <!-- RUBRIC 1: Literary Analysis Paragraph -->
     <div class="rubric-wrap">
       <div class="rubric-title">Literary Analysis Paragraph (Week 32)</div>
-      <div class="rubric-desc">Standards: RL.7.1 · RL.7.2 — Analyzes theme with cited textual evidence and sustained reasoning</div>
+      <div class="rubric-desc">Standards: RL.6.1 · RL.6.2 — Analyzes theme with cited textual evidence and sustained reasoning</div>
       <table class="rubric-table">
         <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
         <tbody>
@@ -824,7 +847,7 @@
     <!-- RUBRIC 2: Original Novel Opening -->
     <div class="rubric-wrap">
       <div class="rubric-title">Original Novel Opening (Weeks 33–35)</div>
-      <div class="rubric-desc">Standards: W.7.3 · W.7.5 — Original narrative opening demonstrating craft, voice, and revision process</div>
+      <div class="rubric-desc">Standards: W.6.3 · W.6.5 — Original narrative opening demonstrating craft, voice, and revision process</div>
       <table class="rubric-table">
         <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
         <tbody>
@@ -840,7 +863,7 @@
     <!-- RUBRIC 3: Year-End Portfolio -->
     <div class="rubric-wrap">
       <div class="rubric-title">Year-End Portfolio (Weeks 31–36)</div>
-      <div class="rubric-desc">Standards: W.7.6 · SL.7.4 — Curated collection of best work with introduction letter, Year-in-Review essay, and showcase presentation</div>
+      <div class="rubric-desc">Standards: W.6.6 · SL.6.4 — Curated collection of best work with introduction letter, Year-in-Review essay, and showcase presentation</div>
       <table class="rubric-table">
         <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
         <tbody>

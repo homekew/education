@@ -226,6 +226,12 @@
     }
     footer.site-footer a { color: var(--ink-muted); }
 
+    .vocab-strip { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 18px 24px; margin: 0 0 24px 0; }
+    .vocab-strip-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 12px; }
+    .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+    .vocab-item { font-size: 0.84rem; line-height: 1.5; color: var(--ink-soft); }
+    .vocab-word { font-weight: 700; color: var(--ink); }
+
   </style>
 </head>
 <body>
@@ -363,10 +369,21 @@
 
   <div id="overview" class="overview-strip">
     <div class="ov-item"><div class="ov-label">Duration</div><div class="ov-val">6 weeks (Weeks 19–24)</div></div>
-    <div class="ov-item"><div class="ov-label">Core Standards</div><div class="ov-val">RL.7.4 · RL.7.7 · W.7.3 · W.7.4 · W.7.5 · L.7.4 · L.7.5</div></div>
+    <div class="ov-item"><div class="ov-label">Core Standards</div><div class="ov-val">RL.6.4 · RL.6.7 · W.6.3 · W.6.4 · W.6.5 · L.6.4 · L.6.5</div></div>
     <div class="ov-item"><div class="ov-label">Suggested Texts</div><div class="ov-val">The Arrival · Nimona · Wolf Hollow · Mary Oliver · Ted Hughes</div></div>
     <div class="ov-item"><div class="ov-label">Signature Project</div><div class="ov-val">Illustrated Short Story + Clay Character (Mini Author Event)</div></div>
     <div class="ov-item"><div class="ov-label">Grammar Focus</div><div class="ov-val">Figurative language · Connotation/denotation · Punctuating dialogue · Vivid verbs</div></div>
+  </div>
+
+  <div class="vocab-strip">
+    <div class="vocab-strip-label">Key Vocabulary — 5 Words This Unit</div>
+    <div class="vocab-grid">
+      <div class="vocab-item"><span class="vocab-word">figurative language</span> — language that uses figures of speech (metaphor, simile, personification, etc.) to create meaning beyond the literal words</div>
+      <div class="vocab-item"><span class="vocab-word">connotation</span> — the emotional associations or implied meanings a word carries beyond its dictionary definition</div>
+      <div class="vocab-item"><span class="vocab-word">mood</span> — the emotional atmosphere a piece of writing creates in the reader, shaped by setting, word choice, and imagery</div>
+      <div class="vocab-item"><span class="vocab-word">visual literacy</span> — the ability to read, analyze, and interpret meaning from images, illustrations, and visual design choices</div>
+      <div class="vocab-item"><span class="vocab-word">dialogue</span> — the spoken words of characters in a story; in writing, a tool for revealing personality, conflict, and relationship</div>
+    </div>
   </div>
 
   <!-- ─── WEEK 19 ───────────────────────────────────────────────── -->
@@ -406,7 +423,7 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Visual Analysis Response (RL.7.7)</div>
+        <div class="prompt-type">Visual Analysis Response (RL.6.7)</div>
         <p>Write a full-page visual analysis of one image or spread from <em>The Arrival</em>. Your response must address: (1) what you literally see (describe the composition in detail), (2) what mood or emotion the image creates and how the artist achieves it through specific visual choices, and (3) what story this single image tells — who is in it, what just happened, what is about to happen. End with one sentence explaining what a written version of this moment would need to add that the image leaves out.</p>
       </div>
       <div class="prompt-card">
@@ -420,6 +437,7 @@
         <label class="check-item"><input type="checkbox"> Grammar: simile, metaphor, personification, and symbolism each identified in a text, labeled, and effect explained</label>
         <label class="check-item"><input type="checkbox"> 3–5 protagonist sketches drawn in sketchbook with 3 personality words noted below each; one chosen as the character to develop</label>
         <label class="check-item"><input type="checkbox"> Figurative language paragraph written (5–7 sentences) with simile, metaphor, and personification labeled in margin</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What is one figurative language example you found in the text this week — and what effect does it create?</label>
       </div>
     </div>
   </div>
@@ -460,11 +478,11 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Sensory World-Building Paragraph (W.7.3, L.7.4)</div>
+        <div class="prompt-type">Sensory World-Building Paragraph (W.6.3, L.6.4)</div>
         <p>Write a descriptive paragraph (8–10 sentences) introducing the fantastical world your animal protagonist lives in. Requirements: at least one detail for each of the five senses, at least two words chosen specifically for their connotation (circle them and note the connotation in the margin), at least one simile or metaphor. The goal is not to explain the world — it is to place the reader inside it, disoriented and curious and alive to it.</p>
       </div>
       <div class="prompt-card">
-        <div class="prompt-type">Oliver-Inspired Nature Poem (L.7.5)</div>
+        <div class="prompt-type">Oliver-Inspired Nature Poem (L.6.5)</div>
         <p>Write a poem of 12–16 lines inspired by Mary Oliver's style, focused on one specific animal in a specific natural moment. Start with what you can observe exactly — the physical creature, the exact setting, the particular light. Then, in the second half of your poem, let the observation open into something larger: a question, a feeling, an idea about what it means to be alive. Use at least one strong figurative language device.</p>
       </div>
       <div class="prompt-card">
@@ -478,6 +496,7 @@
         <label class="check-item"><input type="checkbox"> Sensory world-building paragraph written (8–10 sentences): all 5 senses represented, 2 connotation-chosen words circled, one simile or metaphor included</label>
         <label class="check-item"><input type="checkbox"> Story outline written as narrative paragraph (8–10 sentences) telling the complete arc of the original short story</label>
         <label class="check-item"><input type="checkbox"> Illustrated scene map drawn: visual storyboard of key story moments as thumbnails</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> How does the illustrator of The Arrival tell a story without words? What specific technique stood out most?</label>
       </div>
     </div>
   </div>
@@ -518,11 +537,11 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Story Opening Draft (W.7.3)</div>
+        <div class="prompt-type">Story Opening Draft (W.6.3)</div>
         <p>Write the opening scene of your original short story (1–1.5 pages, handwritten or typed). Rules for this draft: Start in the middle of a moment — your protagonist is already doing something. Include at least three sensory details within the first paragraph. Do not name your protagonist in the first sentence — let the reader meet them in motion first. End your opening scene with a sentence that makes the reader want to know what happens next. This is a first draft: be bold, be messy, keep writing.</p>
       </div>
       <div class="prompt-card">
-        <div class="prompt-type">Graphic Novel vs. Prose Comparison (RL.7.7)</div>
+        <div class="prompt-type">Graphic Novel vs. Prose Comparison (RL.6.7)</div>
         <p>Write a focused comparison paragraph (8–10 sentences) analyzing how the opening of <em>Nimona</em> and the opening of your prose text each establish character and world. Use specific examples from both texts. Your paragraph should end with a sentence answering: For your own story, which technique — visual storytelling or prose description — do you think you'll use most, and why?</p>
       </div>
       <div class="section-label">✅ Weekly Checklist</div>
@@ -532,6 +551,7 @@
         <label class="check-item"><input type="checkbox"> Story opening draft written (1–1.5 pages): starts mid-action, 3 sensory details in first paragraph, protagonist introduced in motion, final hook sentence</label>
         <label class="check-item"><input type="checkbox"> Clay rough form of animal protagonist begun — basic body, head, and limbs blocked out with posture reflecting personality</label>
         <label class="check-item"><input type="checkbox"> Graphic novel vs. prose comparison paragraph written (8–10 sentences) with specific examples from both texts</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What is your short story about at its deepest level — what theme or emotion are you exploring?</label>
       </div>
     </div>
   </div>
@@ -573,11 +593,11 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Dialogue Scene Draft (W.7.3, L.7.5)</div>
+        <div class="prompt-type">Dialogue Scene Draft (W.6.3, L.6.5)</div>
         <p>Write a scene from your original story (1–1.5 pages) in which dialogue carries the primary weight of the narrative. Requirements: at least two characters with clearly distinct voices; at least 8 lines of dialogue, all correctly punctuated; at least one vivid verb used as a dialogue tag (not "said"); and at least one moment where the narration interrupts with an action beat or an internal thought, rather than a dialogue tag. After you write it, underline every dialogue tag and ask: could I cut this tag and still know who is speaking? If yes, cut it.</p>
       </div>
       <div class="prompt-card">
-        <div class="prompt-type">Dialogue Punctuation Correction Practice (L.7.5)</div>
+        <div class="prompt-type">Dialogue Punctuation Correction Practice (L.6.5)</div>
         <p>Here are five lines of dialogue with punctuation errors — rewrite each one correctly, then explain in one sentence what rule you applied: (1) "I don't know where the river goes" she said quietly. (2) She whispered "the forest knows your name." (3) "Run!" He shouted, "They're right behind us"! (4) He asked if she had ever seen the northern lights before. (5) "I am not afraid," the fox said. "But I am careful". Compare your corrections with the grammar rules from Tuesday's lesson.</p>
       </div>
       <div class="section-label">✅ Weekly Checklist</div>
@@ -587,6 +607,7 @@
         <label class="check-item"><input type="checkbox"> Dialogue scene written (1–1.5 pages): 8+ correctly punctuated lines, 2+ distinct character voices, at least one vivid verb dialogue tag, one inner thought woven in</label>
         <label class="check-item"><input type="checkbox"> Clay figure refined with fur texture and facial details; OR first story illustration begun (pencil sketch with color started)</label>
         <label class="check-item"><input type="checkbox"> Dialogue Punctuation Correction Practice completed — 5 sentences corrected with rule explanation</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What is the strongest line of dialogue you've written so far, and why does it work?</label>
       </div>
     </div>
   </div>
@@ -627,7 +648,7 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Rising Action Draft (W.7.3, W.7.5)</div>
+        <div class="prompt-type">Rising Action Draft (W.6.3, W.6.5)</div>
         <p>Write the rising action of your story (targeting 3–4 pages total draft length after this session). Your protagonist must face at least one obstacle that tests something essential about their character — not just a physical obstacle, but something that challenges who they are or what they believe. Build tension using at least two of the following techniques: (1) a short-sentence burst to speed up a frightening moment, (2) a symbolic object reappearing, (3) unexpected dialogue that changes everything, (4) a description that creates dread through sensory detail rather than stating the emotion directly.</p>
       </div>
       <div class="prompt-card">
@@ -641,6 +662,7 @@
         <label class="check-item"><input type="checkbox"> Rising action drafted — protagonist faces at least one obstacle that tests character; story reaches approximately 3–4 pages total</label>
         <label class="check-item"><input type="checkbox"> Clay figure finalized (dried/baked); at least 3–4 story illustrations in progress with key narrative moments depicted</label>
         <label class="check-item"><input type="checkbox"> Family or peer feedback received on full draft; revision plan written with 3 specific things to fix in Week 24</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> How has your story changed between your first draft and your revised draft?</label>
       </div>
     </div>
   </div>
@@ -682,12 +704,12 @@
 
       <div class="section-label">✏️ Writing Prompts</div>
       <div class="prompt-card">
-        <div class="prompt-type">Author's Note (W.7.4, W.7.5)</div>
+        <div class="prompt-type">Author's Note (W.6.4, W.6.5)</div>
         <p>Write your Author's Note (6–8 sentences) to be published with your finished story. An Author's Note is not a summary of the plot — it is you speaking directly to your reader about the story behind the story. Address at least three of the following: Why this animal? Why this world? What question or feeling was this story trying to explore? What was the hardest moment in the writing? What do you hope the reader carries away? Write it as if you are handing the book to someone you want to love it.</p>
       </div>
       <div class="prompt-card">
-        <div class="prompt-type">Author's Craft Reflection (W.7.5)</div>
-        <p>Write a full author's craft reflection (1 page) covering the following: (1) What figurative language device did you use most deliberately in your final story — find a specific example and explain the choice you made; (2) Identify one moment in your story where you think your dialogue is strongest — what makes it work; (3) What is the theme of your story stated as a complete sentence; (4) What one sentence in the whole story are you most proud of, and why. This reflection goes in your portfolio and is a demonstration of RL.7.4, W.7.3, W.7.5, and L.7.5.</p>
+        <div class="prompt-type">Author's Craft Reflection (W.6.5)</div>
+        <p>Write a full author's craft reflection (1 page) covering the following: (1) What figurative language device did you use most deliberately in your final story — find a specific example and explain the choice you made; (2) Identify one moment in your story where you think your dialogue is strongest — what makes it work; (3) What is the theme of your story stated as a complete sentence; (4) What one sentence in the whole story are you most proud of, and why. This reflection goes in your portfolio and is a demonstration of RL.6.4, W.6.3, W.6.5, and L.6.5.</p>
       </div>
       <div class="prompt-card">
         <div class="prompt-type">Post-Event Journal Entry</div>
@@ -700,6 +722,7 @@
         <label class="check-item"><input type="checkbox"> Author's Note written (6–8 sentences): why this animal, what the story explores, what the reader should feel</label>
         <label class="check-item"><input type="checkbox"> Story assembled into book form with title page, ordered pages, illustrations placed, and clay figure display card written (3–4 sentences)</label>
         <label class="check-item"><input type="checkbox"> Mini author event held: story read aloud (full or excerpt), clay figure and illustrations presented, Author's Note read</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What are you most proud of in your finished short story?</label>
       </div>
     </div>
   </div>
@@ -711,7 +734,7 @@
     <!-- RUBRIC 1: Figurative Language Analysis -->
     <div class="rubric-wrap">
       <div class="rubric-title">Figurative Language Analysis (Weeks 19–21)</div>
-      <div class="rubric-desc">Standards: RL.7.4 · L.7.5 — Identifies and analyzes figurative language for meaning and effect</div>
+      <div class="rubric-desc">Standards: RL.6.4 · L.6.5 — Identifies and analyzes figurative language for meaning and effect</div>
       <table class="rubric-table">
         <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
         <tbody>
@@ -727,7 +750,7 @@
     <!-- RUBRIC 2: Original Illustrated Short Story -->
     <div class="rubric-wrap">
       <div class="rubric-title">Original Illustrated Short Story (Weeks 19–24)</div>
-      <div class="rubric-desc">Standards: W.7.3 · W.7.4 · W.7.5 — 4–6 page original story with animal protagonist, fantastical world, illustrations</div>
+      <div class="rubric-desc">Standards: W.6.3 · W.6.4 · W.6.5 — 4–6 page original story with animal protagonist, fantastical world, illustrations</div>
       <table class="rubric-table">
         <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
         <tbody>
@@ -744,7 +767,7 @@
     <!-- RUBRIC 3: Clay Character + Illustrated Story Display -->
     <div class="rubric-wrap">
       <div class="rubric-title">Clay Character + Illustrated Story Display (Week 24)</div>
-      <div class="rubric-desc">Standards: RL.7.7 · W.7.4 — Art integration: clay sculpture, story illustrations, and display coherence</div>
+      <div class="rubric-desc">Standards: RL.6.7 · W.6.4 — Art integration: clay sculpture, story illustrations, and display coherence</div>
       <table class="rubric-table">
         <thead><tr><th>Criteria</th><th class="r-exc">Excellent (4)</th><th class="r-pro">Proficient (3)</th><th class="r-dev">Developing (2)</th><th class="r-beg">Beginning (1)</th></tr></thead>
         <tbody>
@@ -753,7 +776,7 @@
           <tr><td>Illustrations — Story Connection</td><td>Each illustration corresponds to a key moment in the story; composition choices (angle, framing, what to show) are deliberate and deepen the reader's experience of those moments</td><td>Illustrations correspond to story moments; compositions are clear and purposeful</td><td>Illustrations are present but loosely connected to story moments; compositions are generic</td><td>Illustrations do not clearly connect to the written story; appear decorative rather than narrative</td></tr>
           <tr><td>Illustrations — Visual Quality &amp; Effort</td><td>Consistent art style across all illustrations; color, line, and composition used with intention; clearly the student's own artistic voice</td><td>Illustrations are completed with care; consistent enough to read as a unified book</td><td>Illustrations vary in completeness or style; some appear unfinished</td><td>Illustrations are very simple, incomplete, or inconsistent</td></tr>
           <tr><td>Display Coherence + Author's Note</td><td>Display tells a complete story: story, clay figure, display card, and Author's Note work together as a unified author event presentation; Author's Note is personal, specific, and genuinely reflective</td><td>Display includes all required components; Author's Note addresses the required elements thoughtfully</td><td>Display is mostly complete; Author's Note is present but brief or vague</td><td>Display is missing key components; Author's Note is absent or only one sentence</td></tr>
-          <tr><td>Text-Image Integration (RL.7.7)</td><td>Can clearly articulate how the visual and written elements of the project complement each other and where each medium does something the other cannot; reflection demonstrates genuine insight into multimodal storytelling</td><td>Demonstrates understanding of how text and image work together; can give specific examples from own project</td><td>Understands that text and image are both part of the story but cannot clearly explain how they interact</td><td>Treats text and image as separate, unrelated components; no evident understanding of multimodal integration</td></tr>
+          <tr><td>Text-Image Integration (RL.6.7)</td><td>Can clearly articulate how the visual and written elements of the project complement each other and where each medium does something the other cannot; reflection demonstrates genuine insight into multimodal storytelling</td><td>Demonstrates understanding of how text and image work together; can give specific examples from own project</td><td>Understands that text and image are both part of the story but cannot clearly explain how they interact</td><td>Treats text and image as separate, unrelated components; no evident understanding of multimodal integration</td></tr>
         </tbody>
       </table>
     </div>
