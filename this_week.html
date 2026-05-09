@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>This Week — Carr Kids HQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- PIN GATE STYLES -->
+  <style>
+    #pin-gate { position:fixed;inset:0;z-index:9999;background:#FAF7F1;display:flex;align-items:center;justify-content:center;font-family:'Epilogue',sans-serif; }
+    #pin-gate.hidden { display:none; }
+    .pin-box { text-align:center;background:#fff;border:1px solid #DDD4C4;border-radius:12px;padding:48px 40px 40px;width:320px;box-shadow:0 4px 32px rgba(42,33,24,0.08); }
+    .pin-logo { width:10px;height:10px;background:#ff1e3c;border-radius:50%;display:inline-block;margin-bottom:16px; }
+    .pin-title { font-family:'Fraunces',serif;font-size:1.3rem;font-weight:500;color:#2A2118;margin-bottom:6px; }
+    .pin-sub { font-size:0.8rem;color:#9A8F81;margin-bottom:28px; }
+    #pin-input { width:100%;padding:11px 14px;font-size:1.4rem;letter-spacing:8px;text-align:center;border:1px solid #DDD4C4;border-radius:6px;background:#FAF7F1;color:#2A2118;font-family:'Epilogue',sans-serif;outline:none;margin-bottom:14px;transition:border-color 0.15s; }
+    #pin-input:focus { border-color:#d2c35a; }
+    #pin-input.error { border-color:#ff1e3c;animation:shake 0.3s; }
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    #pin-btn { width:100%;padding:10px;background:#2A2118;color:#fff;border:none;border-radius:6px;font-family:'Epilogue',sans-serif;font-size:0.85rem;font-weight:500;cursor:pointer;transition:background 0.15s; }
+    #pin-btn:hover { background:#5C4F3D; }
+  </style>
+
+  <style>
+    :root {
+      --linen:      #FAF7F1;
+      --linen-dark: #F0EBE0;
+      --linen-deep: #DDD4C4;
+      --terra:      #ff1e3c;
+      --terra-bg:   #fff0f2;
+      --terra-soft: #ffb3bc;
+      --sage:       #d2c35a;
+      --sage-bg:    #faf8e8;
+      --sage-soft:  #ece8b0;
+      --sky:        #7FA3B5;
+      --sky-bg:     #EBF3F7;
+      --ink:        #2A2118;
+      --ink-soft:   #5C4F3D;
+      --ink-muted:  #9A8F81;
+      --white:      #FFFFFF;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Epilogue', sans-serif;
+      background: var(--linen);
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='400'><g fill='none' stroke='%23d2c35a' stroke-width='1.5' opacity='0.22'><path d='M 62.0,24.0 L 58.9,33.7 L 48.7,33.7 L 56.9,39.6 L 53.8,49.3 L 62.0,43.3 L 70.2,49.3 L 67.1,39.6 L 75.3,33.7 L 65.1,33.7 Z'/> <path d='M 140.0,71.0 L 138.0,77.2 L 131.4,77.2 L 136.7,81.1 L 134.7,87.3 L 140.0,83.4 L 145.3,87.3 L 143.3,81.1 L 148.6,77.2 L 142.0,77.2 Z'/> <path d='M 220.0,14.0 L 217.5,21.6 L 209.5,21.6 L 216.0,26.3 L 213.5,33.9 L 220.0,29.2 L 226.5,33.9 L 224.0,26.3 L 230.5,21.6 L 222.5,21.6 Z'/> <path d='M 310.0,53.0 L 308.4,57.8 L 303.3,57.8 L 307.5,60.8 L 305.9,65.7 L 310.0,62.7 L 314.1,65.7 L 312.5,60.8 L 316.7,57.8 L 311.6,57.8 Z'/> <path d='M 390.0,22.0 L 387.1,31.0 L 377.6,31.0 L 385.3,36.5 L 382.4,45.5 L 390.0,39.9 L 397.6,45.5 L 394.7,36.5 L 402.4,31.0 L 392.9,31.0 Z'/> <path d='M 460.0,82.0 L 458.2,87.5 L 452.4,87.5 L 457.1,90.9 L 455.3,96.5 L 460.0,93.0 L 464.7,96.5 L 462.9,90.9 L 467.6,87.5 L 461.8,87.5 Z'/></g></svg>");
+      background-size: 500px 400px;
+      background-repeat: repeat;
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 15px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    .site-nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--linen-deep);
+      padding: 0 40px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    .nav-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .nav-dot {
+      width: 8px; height: 8px;
+      background: var(--terra);
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .site-nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .site-nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .site-nav-links a:hover { color: var(--terra); }
+    .nav-active { color: var(--terra) !important; }
+
+    /* TEACHER PANEL */
+    #teacher-panel {
+      background: #fffbe6;
+      border-bottom: 2px solid var(--sage);
+      padding: 12px 40px;
+      display: none;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.82rem;
+    }
+    #teacher-panel.visible { display: flex; }
+    #teacher-panel strong { color: var(--ink); font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; }
+    #teacher-panel label { color: var(--ink-soft); font-size: 0.8rem; }
+    #teacher-panel input[type="date"] {
+      padding: 5px 10px;
+      border: 1px solid var(--linen-deep);
+      border-radius: 5px;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.82rem;
+      background: var(--white);
+      color: var(--ink);
+    }
+    .teacher-btn {
+      padding: 5px 14px;
+      border-radius: 5px;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid var(--linen-deep);
+      background: var(--white);
+      color: var(--ink-soft);
+      transition: all 0.15s;
+    }
+    .teacher-btn:hover { background: var(--linen-dark); }
+    .teacher-btn.exit {
+      border-color: var(--ink);
+      color: var(--ink);
+      margin-left: auto;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--linen-deep);
+      padding: 28px 40px 20px;
+    }
+    .page-header-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 6px;
+    }
+    .page-header h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .page-header-sub {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      margin-bottom: 16px;
+    }
+
+    /* WEEK NAVIGATION BAR */
+    .week-nav-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .week-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--linen-deep);
+      background: var(--white);
+      color: var(--ink-soft);
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-decoration: none;
+    }
+    .week-nav-btn:hover { background: var(--linen-dark); border-color: var(--ink-muted); color: var(--ink); }
+    .week-nav-btn:disabled { opacity: 0.35; cursor: default; pointer-events: none; }
+    .week-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink);
+      padding: 0 4px;
+    }
+    .week-range-text {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+    }
+    .today-btn {
+      font-size: 0.75rem;
+      color: var(--terra);
+      background: var(--terra-bg);
+      border-color: var(--terra-soft);
+    }
+    .today-btn:hover { background: #ffe4e8; }
+
+    /* YEAR PROGRESS BAR */
+    .year-progress-wrap {
+      background: var(--white);
+      border-bottom: 1px solid var(--linen-deep);
+      padding: 10px 40px;
+    }
+    .year-progress-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .year-progress-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      white-space: nowrap;
+    }
+    .year-progress-track {
+      flex: 1;
+      height: 6px;
+      background: var(--linen-deep);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .year-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--sage) 0%, var(--terra) 100%);
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+    .year-progress-pct {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+
+    /* STATUS MESSAGE */
+    .status-msg {
+      text-align: center;
+      padding: 60px 40px;
+    }
+    .status-msg .emoji { font-size: 2.5rem; margin-bottom: 16px; }
+    .status-msg h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .status-msg p { font-size: 0.9rem; color: var(--ink-muted); }
+
+    /* SETUP BANNER */
+    .setup-banner {
+      background: var(--sage-bg);
+      border: 1px solid var(--sage-soft);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin: 32px 40px;
+    }
+    .setup-banner p { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 10px; }
+    .setup-banner label { font-size: 0.8rem; font-weight: 600; color: var(--ink); display: block; margin-bottom: 6px; }
+    .setup-banner input[type="date"] {
+      padding: 8px 12px;
+      border: 1px solid var(--linen-deep);
+      border-radius: 6px;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.9rem;
+      background: var(--white);
+      color: var(--ink);
+      margin-right: 10px;
+    }
+    .btn-primary {
+      padding: 9px 22px;
+      background: var(--ink);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--ink-soft); }
+
+    /* MAIN */
+    main { flex: 1; padding: 28px 40px 60px; }
+
+    /* GRADE SECTIONS */
+    .grades-wrap {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    @media (max-width: 860px) {
+      .grades-wrap { flex-direction: column; }
+      main { padding: 20px 16px 40px; }
+      .site-nav { padding: 0 16px; }
+      .page-header { padding: 20px 16px 16px; }
+      .year-progress-wrap { padding: 10px 16px; }
+      .week-nav-bar { gap: 8px; }
+    }
+
+    /* WEEK TABLE CARD */
+    .week-card {
+      flex: 1;
+      background: var(--white);
+      border: 1px solid var(--linen-deep);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(42,33,24,0.06);
+    }
+    .week-card-header {
+      padding: 14px 20px 12px;
+    }
+    .week-card-header.terra { background: var(--terra); }
+    .week-card-header.sky   { background: var(--sky); }
+    .week-card-grade {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2px;
+    }
+    .week-card-meta {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.85);
+      font-weight: 400;
+    }
+    .week-card-unit-title {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.75);
+      margin-top: 2px;
+    }
+
+    /* PROGRESS BAR */
+    .card-progress-bar {
+      height: 4px;
+      background: rgba(0,0,0,0.12);
+    }
+    .card-progress-bar-fill {
+      height: 100%;
+      background: rgba(255,255,255,0.55);
+      transition: width 0.4s ease;
+    }
+
+    /* DAY TABLE */
+    .day-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .day-table tr {
+      border-bottom: 1px solid var(--linen-dark);
+    }
+    .day-table tr:last-child { border-bottom: none; }
+    .day-table tr:nth-child(odd) { background: var(--white); }
+    .day-table tr:nth-child(even) { background: var(--linen); }
+
+    /* TODAY ROW */
+    .day-table tr.is-today {
+      background: var(--sage-bg) !important;
+    }
+    .day-table tr.is-today td:first-child {
+      border-left: 3px solid var(--sage);
+    }
+    .week-card-header.terra ~ * .day-table tr.is-today td:first-child {
+      border-left-color: var(--terra);
+    }
+
+    /* DONE ROW */
+    .day-table tr.is-done .day-task-text {
+      opacity: 0.5;
+      text-decoration: line-through;
+      text-decoration-thickness: 1px;
+    }
+    .day-table tr.is-done .day-name { opacity: 0.6; }
+
+    /* TABLE CELLS */
+    .day-table td {
+      padding: 12px 14px;
+      vertical-align: top;
+    }
+    .day-name-cell {
+      width: 72px;
+      min-width: 72px;
+    }
+    .day-name {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+    .done-check {
+      display: block;
+      font-size: 0.72rem;
+      color: #4a7c4a;
+      margin-top: 2px;
+      font-weight: 600;
+    }
+    .tag-cell { width: 80px; min-width: 80px; padding-top: 14px; }
+    .task-cell { padding-right: 8px; }
+    .day-task-text {
+      font-size: 0.83rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .link-cell { width: 36px; min-width: 36px; text-align: center; padding-top: 13px; }
+    .open-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      background: var(--linen-dark);
+      border-radius: 6px;
+      color: var(--ink-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: all 0.15s;
+      font-weight: 600;
+    }
+    .open-link:hover { background: var(--linen-deep); color: var(--ink); }
+    .week-card-header.terra + * .open-link:hover,
+    .terra-card .open-link:hover { background: var(--terra-bg); color: var(--terra); }
+    .sky-card .open-link:hover { background: var(--sky-bg); color: var(--sky); }
+
+    /* TAG PILLS */
+    .tag-pill {
+      display: inline-block;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      text-transform: capitalize;
+      white-space: nowrap;
+    }
+    .tag-reading  { background: var(--sage-bg); color: #7a6e1a; }
+    .tag-writing  { background: var(--terra-bg); color: var(--terra); }
+    .tag-grammar  { background: var(--sky-bg); color: var(--sky); }
+    .tag-research { background: var(--linen-dark); color: var(--ink-soft); }
+    .tag-project  { background: #f0ece8; color: var(--ink-soft); }
+    .tag-making   { background: #f0ece8; color: var(--ink-soft); }
+    .tag-revision { background: var(--sky-bg); color: var(--sky); }
+    .tag-sharing  { background: var(--linen-deep); color: var(--ink-soft); }
+    .tag-art      { background: var(--sage-bg); color: #7a6e1a; }
+
+    /* FOOTER */
+    .site-footer {
+      border-top: 1px solid var(--linen-deep);
+      background: var(--white);
+      padding: 18px 40px;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .site-footer a {
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .site-footer a:hover { color: var(--terra); }
+
+    /* PREVIEW BANNER */
+    .preview-banner {
+      background: var(--terra-bg);
+      border-bottom: 2px solid var(--terra-soft);
+      padding: 8px 40px;
+      font-size: 0.8rem;
+      color: var(--terra);
+      font-weight: 500;
+      text-align: center;
+    }
+    .preview-banner.future {
+      background: var(--sky-bg);
+      border-bottom-color: var(--sky);
+      color: var(--sky);
+    }
+  </style>
+</head>
+<body>
+
+<!-- PIN GATE -->
+<div id="pin-gate">
+  <div class="pin-box">
+    <div class="pin-logo"></div>
+    <div class="pin-title">Carr Kids HQ</div>
+    <div class="pin-sub">Enter your PIN to continue</div>
+    <input id="pin-input" type="password" inputmode="numeric" maxlength="4" placeholder="····" autocomplete="off">
+    <button id="pin-btn">Enter</button>
+  </div>
+</div>
+
+<!-- TEACHER PANEL -->
+<div id="teacher-panel">
+  <strong>&#128105;&#8205;&#127979; Teacher Mode</strong>
+  <span style="color:var(--linen-deep)">|</span>
+  <label for="t-year-start">School year start:</label>
+  <input type="date" id="t-year-start">
+  <button class="teacher-btn" id="t-save-date">Save Date</button>
+  <button class="teacher-btn exit" id="t-exit">Exit Teacher Mode</button>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <a class="nav-brand" href="index.html"><span class="nav-dot"></span> Homeschool Curriculum</a>
+  <ul class="site-nav-links">
+    <li><a href="today.html">Today</a></li>
+    <li><a href="this_week.html" class="nav-active">This Week</a></li>
+    <li><a href="6th_grade_language_arts.html">6th Grade</a></li>
+    <li><a href="8th_grade_language_arts.html">8th Grade</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-eyebrow">Weekly Overview</div>
+  <h1>This Week</h1>
+  <div class="page-header-sub" id="week-sub-text">Loading...</div>
+  <div class="week-nav-bar">
+    <button class="week-nav-btn" id="btn-prev-week">&#8592; Prev Week</button>
+    <span class="week-label" id="week-label">Week —</span>
+    <button class="week-nav-btn" id="btn-next-week">Next Week &#8594;</button>
+    <button class="week-nav-btn today-btn" id="btn-this-week" style="display:none">&#9679; Jump to Current</button>
+  </div>
+</div>
+
+<!-- YEAR PROGRESS BAR -->
+<div class="year-progress-wrap" id="year-progress-wrap" style="display:none">
+  <div class="year-progress-row">
+    <span class="year-progress-label">Year Progress</span>
+    <div class="year-progress-track">
+      <div class="year-progress-fill" id="year-progress-fill" style="width:0%"></div>
+    </div>
+    <span class="year-progress-pct" id="year-progress-pct">0%</span>
+  </div>
+</div>
+
+<!-- OFFSET BANNER -->
+<div id="offset-banner" style="display:none" class="preview-banner"></div>
+
+<!-- MAIN CONTENT -->
+<main id="main-content">
+  <!-- Dynamically rendered -->
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <span>Homeschool Curriculum Hub &middot; Oregon</span>
+  <span>&middot;</span>
+  <a href="#" id="teacher-toggle">&#128105;&#8205;&#127979; Teacher Mode</a>
+</footer>
+
+<script>
+// ─── PIN GATE ─────────────────────────────────────────────────────────────────
+(function(){
+  var gate  = document.getElementById('pin-gate');
+  var input = document.getElementById('pin-input');
+  var btn   = document.getElementById('pin-btn');
+  if (sessionStorage.getItem('ck_auth') === '1') { gate.classList.add('hidden'); return; }
+  function check() {
+    if (input.value === '1899') {
+      sessionStorage.setItem('ck_auth', '1');
+      gate.classList.add('hidden');
+    } else {
+      input.classList.add('error');
+      input.value = '';
+      setTimeout(function(){ input.classList.remove('error'); }, 400);
+    }
+  }
+  btn.addEventListener('click', check);
+  input.addEventListener('keydown', function(e){ if (e.key === 'Enter') check(); });
+  input.focus();
+})();
+
+// ─── CURRICULUM DATA ──────────────────────────────────────────────────────────
+const CURR = {
+  gr6: [
+    // Unit 1: Into the Wild (weeks 1-6)
+    {
+      unit: 1, unitName: "Into the Wild", weekTitle: "Introduction & Setup",
+      unitFile: "la_unit1.html", weekAnchor: "#week1",
+      days: [
+        { tag: "reading",  task: "Choose your book from the list; read the opening chapter; write first impressions in your journal (Who do we meet? Where are we? What's the mood?)" },
+        { tag: "research", task: "Look up your author; read a short bio. Write one paragraph: What inspired them? Does this change how you read the opening?" },
+        { tag: "reading",  task: "Read chapters 2–3. Draw your protagonist in your reading journal; include 3 details pulled from the text." },
+        { tag: "grammar",  task: "Intro to phrases vs. clauses. Identify 5 sentence structures from your novel; write 3 original sentences using one phrase and one clause each." },
+        { tag: "project",  task: "Begin your Character Profile Sheet: draw or describe your protagonist, fill in name, species, home, and one quote from the text." }
+      ]
+    },
+    {
+      unit: 1, unitName: "Into the Wild", weekTitle: "Character Analysis",
+      unitFile: "la_unit1.html", weekAnchor: "#week2",
+      days: [
+        { tag: "reading",  task: "Read assigned chapters focusing on your protagonist under pressure. How do they respond when things get hard?" },
+        { tag: "writing",  task: "Write a character analysis paragraph: motivation, personality, and one key trait. Use at least one quote from the text." },
+        { tag: "reading",  task: "Compare two characters as foils. How does each one bring out something different in the other?" },
+        { tag: "grammar",  task: "Subordinate clauses: identify 3 in your book, then write 3 original complex sentences using subordinate clauses." },
+        { tag: "project",  task: "Add to your Character Profile Sheet. Discuss: what makes a character change over the course of a story?" }
+      ]
+    },
+    {
+      unit: 1, unitName: "Into the Wild", weekTitle: "Setting & World-Building",
+      unitFile: "la_unit1.html", weekAnchor: "#week3",
+      days: [
+        { tag: "reading",  task: "Mark every setting detail in your assigned chapters. What does the author want you to see, smell, hear, and feel?" },
+        { tag: "project",  task: "Draw a map of your book's world using evidence from the text. Label at least 5 locations mentioned in the story." },
+        { tag: "writing",  task: "Write a 'field guide' entry for the setting as if you're a scientist visiting for the first time. Use sensory details." },
+        { tag: "grammar",  task: "Prepositional phrases: identify 5 in your book showing place or time, then write 5 original sentences using them." },
+        { tag: "project",  task: "Add your map to your portfolio. Discuss: why does setting shape story? How would this story change in a different place?" }
+      ]
+    },
+    {
+      unit: 1, unitName: "Into the Wild", weekTitle: "Theme Emerges",
+      unitFile: "la_unit1.html", weekAnchor: "#week4",
+      days: [
+        { tag: "reading",  task: "Read the climax chapters. Track how tension builds — note the moments where everything feels most at stake." },
+        { tag: "writing",  task: "Respond to this question: what is this book really about underneath the adventure? Write your answer in 2–3 sentences." },
+        { tag: "writing",  task: "Find 2 quotes that support your theme idea and write a theme paragraph: claim + evidence + analysis." },
+        { tag: "grammar",  task: "Complex sentence combining practice. Revise your theme paragraph to include at least 2 complex sentences." },
+        { tag: "sharing",  task: "Does the theme appear in real life? Share a personal connection to your theme with Mom — give a specific example." }
+      ]
+    },
+    {
+      unit: 1, unitName: "Into the Wild", weekTitle: "Climax & Resolution",
+      unitFile: "la_unit1.html", weekAnchor: "#week5",
+      days: [
+        { tag: "reading",  task: "Read the climax and falling action. Write a 1-paragraph summary: what happened, and what changed?" },
+        { tag: "writing",  task: "Analysis: did the ending feel earned? What clues earlier in the book set it up? Write 3–4 sentences." },
+        { tag: "writing",  task: "Character change paragraph: who is the protagonist now vs. who they were in chapter 1? Use specific evidence." },
+        { tag: "grammar",  task: "Sentence variety review: revise an earlier paragraph to vary your sentence openings and lengths." },
+        { tag: "project",  task: "Finish reading. Choose your showcase project: diorama or illustrated scene card. Gather your materials." }
+      ]
+    },
+    {
+      unit: 1, unitName: "Into the Wild", weekTitle: "Gallery Walk Showcase",
+      unitFile: "la_unit1.html", weekAnchor: "#week6",
+      days: [
+        { tag: "project",  task: "Gather materials; begin building your diorama or scene card. Sketch your plan before you start." },
+        { tag: "project",  task: "Continue building. Write your 2–3 sentence artist statement: what does your project show and why did you choose this scene?" },
+        { tag: "project",  task: "Finish the build. Add your Character Profile and map to your portfolio — arrange everything neatly." },
+        { tag: "writing",  task: "Reading journal reflection: what was the most surprising thing you learned about storytelling from this book?" },
+        { tag: "sharing",  task: "SHOWCASE: Gallery Walk! Present your project and explain your choices — what did you make and what does it mean?" }
+      ]
+    },
+    // Unit 2: Nature's Voice (weeks 7-12)
+    {
+      unit: 2, unitName: "Nature's Voice", weekTitle: "What Is Nonfiction?",
+      unitFile: "la_unit2.html", weekAnchor: "#week1",
+      days: [
+        { tag: "reading",  task: "Choose your nonfiction book and read the introduction. What big question is the author trying to answer?" },
+        { tag: "reading",  task: "Identify nonfiction text features: table of contents, headings, captions, glossary. How does each one help the reader?" },
+        { tag: "reading",  task: "Read chapters 1–2. Take notes on sticky notes or in a doc — jot the most important idea from each section." },
+        { tag: "grammar",  task: "Subject-verb agreement: find 5 examples in your text, then write 5 original sentences using tricky subjects." },
+        { tag: "project",  task: "Start your Nature Journal with your first outdoor observation entry. Write what you see, hear, and notice." }
+      ]
+    },
+    {
+      unit: 2, unitName: "Nature's Voice", weekTitle: "Central Idea",
+      unitFile: "la_unit2.html", weekAnchor: "#week2",
+      days: [
+        { tag: "reading",  task: "Read 2–3 chapters. As you read, track the central idea — what keeps coming up? What is the book really about?" },
+        { tag: "writing",  task: "Write a central idea statement: 'This book argues that...' Back it up with one piece of evidence from the text." },
+        { tag: "writing",  task: "Find 3 pieces of evidence that support the central idea. Write a brief note explaining how each one connects." },
+        { tag: "grammar",  task: "Commas in lists and compound sentences: find 3 examples in your book, then write 4 original sentences." },
+        { tag: "project",  task: "Add a nature observation sketch to your journal. Write 2 descriptive sentences about what you drew." }
+      ]
+    },
+    {
+      unit: 2, unitName: "Nature's Voice", weekTitle: "Author's Purpose & Point of View",
+      unitFile: "la_unit2.html", weekAnchor: "#week3",
+      days: [
+        { tag: "reading",  task: "After reading today's chapters, ask: what does the author want you to do, think, or feel? Write 2–3 sentences." },
+        { tag: "writing",  task: "Identify the author's point of view: is it scientific, personal, or persuasive? Find 2 quotes that prove your answer." },
+        { tag: "reading",  task: "Find one other source about the same nature topic. Compare: do they agree with your author, or see it differently?" },
+        { tag: "grammar",  task: "Active vs. passive voice: find 2 examples of each in your text. Rewrite 2 passive sentences as active." },
+        { tag: "writing",  task: "Write a journal entry about a nature topic using the author's voice or style. Borrow their tone and approach." }
+      ]
+    },
+    {
+      unit: 2, unitName: "Nature's Voice", weekTitle: "Evaluating Arguments",
+      unitFile: "la_unit2.html", weekAnchor: "#week4",
+      days: [
+        { tag: "reading",  task: "Identify one argument the author makes and the evidence they use to support it. Write both in your own words." },
+        { tag: "writing",  task: "Is the evidence strong? What's missing? Write 3–4 sentences evaluating the author's argument." },
+        { tag: "research", task: "Find a counterargument: who would disagree with the author, and what would they say? Take notes." },
+        { tag: "grammar",  task: "Transitions and signal words for argument (however, therefore, as a result). Write 4 sentences using them." },
+        { tag: "project",  task: "In your Nature Journal, make an evidence-based claim about something you observed. Back it up with at least one reason." }
+      ]
+    },
+    {
+      unit: 2, unitName: "Nature's Voice", weekTitle: "Research & Synthesis",
+      unitFile: "la_unit2.html", weekAnchor: "#week5",
+      days: [
+        { tag: "research", task: "Find one additional source on your nature topic. Compare its main claims to your book — do they agree?" },
+        { tag: "writing",  task: "Write a synthesis paragraph: what do your two sources agree on? Where do they differ?" },
+        { tag: "writing",  task: "Draft your Nature Journal final essay — persuasive or informational. Use your notes and evidence from both sources." },
+        { tag: "revision", task: "Revise your essay for clarity: is every claim backed up? Do your paragraphs flow?" },
+        { tag: "sharing",  task: "Present one nature observation to Mom using evidence to explain your thinking. Teach her something you learned." }
+      ]
+    },
+    {
+      unit: 2, unitName: "Nature's Voice", weekTitle: "Nature Journal Showcase",
+      unitFile: "la_unit2.html", weekAnchor: "#week6",
+      days: [
+        { tag: "project",  task: "Finalize your Nature Journal: it should have 4 observation entries and your final essay." },
+        { tag: "project",  task: "Design a cover for your journal. It should reflect what your journal is about — use imagery from your observations." },
+        { tag: "writing",  task: "Write a Table of Contents and a brief introduction: what will the reader find inside, and why does it matter?" },
+        { tag: "revision", task: "Final proofread: read everything aloud and fix anything that sounds awkward or unclear." },
+        { tag: "sharing",  task: "SHOWCASE: Nature Journal Presentation! Share your best observation entry and read your essay aloud." }
+      ]
+    },
+    // Unit 3: The Hero's Journey (weeks 13-18)
+    {
+      unit: 3, unitName: "The Hero's Journey", weekTitle: "Story Structure",
+      unitFile: "la_unit3.html", weekAnchor: "#week1",
+      days: [
+        { tag: "reading",  task: "Learn the Hero's Journey map: ordinary world → call to adventure → trials → return. Draw it out as you learn." },
+        { tag: "writing",  task: "Map your chosen story onto the Hero's Journey. Label each stage and briefly explain where it appears." },
+        { tag: "reading",  task: "Go back to the text and find one quote for each Hero's Journey stage. Write them in your journal with labels." },
+        { tag: "grammar",  task: "Complex sentences with subordinate clauses: write 4 complex sentences about your hero's journey using subordinators." },
+        { tag: "writing",  task: "Which stage of the Hero's Journey is most important? Write a paragraph arguing for your choice with evidence." }
+      ]
+    },
+    {
+      unit: 3, unitName: "The Hero's Journey", weekTitle: "Character Development",
+      unitFile: "la_unit3.html", weekAnchor: "#week2",
+      days: [
+        { tag: "reading",  task: "Read your assigned chapters and track how the hero is changing. Note at least 3 specific moments of growth." },
+        { tag: "writing",  task: "Character arc paragraph: who is the hero at the start? Who are they now? Use specific evidence to show the change." },
+        { tag: "reading",  task: "Compare the hero to the mentor. What does the mentor give the hero that they couldn't find alone?" },
+        { tag: "grammar",  task: "Relative clauses (who, which, that): find 3 examples in your book, then write 4 original sentences using them." },
+        { tag: "sharing",  task: "Which character do you most identify with, and why? Share your answer with Mom and have a real conversation about it." }
+      ]
+    },
+    {
+      unit: 3, unitName: "The Hero's Journey", weekTitle: "Point of View",
+      unitFile: "la_unit3.html", weekAnchor: "#week3",
+      days: [
+        { tag: "writing",  task: "Identify the narrative point of view. Write a definition with an example from your text." },
+        { tag: "writing",  task: "Rewrite one scene from a different character's perspective. Keep the same events — change who's watching." },
+        { tag: "reading",  task: "Read a scene with an unreliable narrator. What does the character miss or misread? What does the reader notice?" },
+        { tag: "grammar",  task: "First vs. third person pronouns: rewrite two paragraphs — one switching first to third, one switching third to first." },
+        { tag: "writing",  task: "How would the story change if told from the villain's point of view? Write a 1-paragraph answer." }
+      ]
+    },
+    {
+      unit: 3, unitName: "The Hero's Journey", weekTitle: "Theme & Argument",
+      unitFile: "la_unit3.html", weekAnchor: "#week4",
+      days: [
+        { tag: "writing",  task: "Identify the book's central theme in one clear sentence. Be specific — avoid vague ideas like 'friendship is good.'" },
+        { tag: "research", task: "Find 3 quotes from the book that prove your theme claim. Write a brief note explaining how each one connects." },
+        { tag: "writing",  task: "Literary argument paragraph: theme claim + evidence + analysis. Make sure your analysis explains the connection." },
+        { tag: "writing",  task: "Add a counterclaim: how could someone argue the theme is different? Then write a rebuttal to that argument." },
+        { tag: "sharing",  task: "Does this theme appear in real life? Give a real-world example and share it with Mom in a discussion." }
+      ]
+    },
+    {
+      unit: 3, unitName: "The Hero's Journey", weekTitle: "Drafting the Argument",
+      unitFile: "la_unit3.html", weekAnchor: "#week5",
+      days: [
+        { tag: "writing",  task: "Outline your 5-paragraph argument essay: claim → 3 body paragraphs with evidence → counterargument → conclusion." },
+        { tag: "writing",  task: "Draft your introduction: write a hook, provide context for your reader, and state your claim clearly." },
+        { tag: "writing",  task: "Draft your 3 body paragraphs, one for each piece of evidence. Explain how each piece proves your claim." },
+        { tag: "writing",  task: "Draft your counterargument paragraph and your rebuttal. Engage the opposing view fairly before dismissing it." },
+        { tag: "writing",  task: "Draft your conclusion. Read the full essay aloud and note 3 specific things to improve." }
+      ]
+    },
+    {
+      unit: 3, unitName: "The Hero's Journey", weekTitle: "Atlas & Argument Showcase",
+      unitFile: "la_unit3.html", weekAnchor: "#week6",
+      days: [
+        { tag: "revision", task: "Revise your essay based on your notes. Focus on logic flow — does each paragraph lead to the next?" },
+        { tag: "project",  task: "Create your World Atlas: draw and label the map of your book's world from memory and text evidence." },
+        { tag: "project",  task: "Annotate your atlas with character journeys, key locations, and Hero's Journey stage labels." },
+        { tag: "revision", task: "Final polish on your essay and atlas. Check for spelling, punctuation, and clarity throughout." },
+        { tag: "sharing",  task: "SHOWCASE: Atlas & Argument! Share your map and present your essay claim to Mom." }
+      ]
+    },
+    // Unit 4: Art Meets Words (weeks 19-24)
+    {
+      unit: 4, unitName: "Art Meets Words", weekTitle: "Visuals Tell Stories",
+      unitFile: "la_unit4.html", weekAnchor: "#week1",
+      days: [
+        { tag: "reading",  task: "Look at 3 wordless picture book spreads. For each one, write 1–2 sentences describing what story it's telling." },
+        { tag: "writing",  task: "Read an illustrated passage. Write: what does the image add that the words alone don't say?" },
+        { tag: "project",  task: "Choose a scene from a book you love. Sketch a rough visual idea — don't worry about perfection, just get ideas down." },
+        { tag: "grammar",  task: "Descriptive adjectives and precise nouns: revise one of your earlier paragraphs to be more specific and vivid." },
+        { tag: "writing",  task: "Write a scene description so vivid that an illustrator could draw it exactly. Every detail should be deliberate." }
+      ]
+    },
+    {
+      unit: 4, unitName: "Art Meets Words", weekTitle: "Word Choice & Imagery",
+      unitFile: "la_unit4.html", weekAnchor: "#week2",
+      days: [
+        { tag: "reading",  task: "Read a poetry picture book. As you go, circle or note every word that feels especially right or surprising." },
+        { tag: "writing",  task: "Copy one striking line from what you read. Write 3–4 sentences about what makes it work." },
+        { tag: "writing",  task: "Draft a poem or flash fiction using at least 4 specific sensory images. Try to see each image before you write it." },
+        { tag: "revision", task: "Replace 3 generic words in your draft with precise, vivid alternatives. Read both versions aloud — notice the difference." },
+        { tag: "sharing",  task: "Read your poem aloud to Mom. Together, identify your strongest line and talk about what makes it work." }
+      ]
+    },
+    {
+      unit: 4, unitName: "Art Meets Words", weekTitle: "Story Structure",
+      unitFile: "la_unit4.html", weekAnchor: "#week3",
+      days: [
+        { tag: "writing",  task: "Outline your illustrated story: beginning, problem, rising action, climax, and resolution. Write 1 sentence per section." },
+        { tag: "writing",  task: "Draft your opening scene (3–5 sentences). Your reader should know the character, setting, and something is about to happen." },
+        { tag: "writing",  task: "Draft the rising action and climax. Make the climax feel like the highest point of tension in the story." },
+        { tag: "writing",  task: "Draft the resolution. Read the full story aloud — does it feel complete? Does the ending earn what the story built?" },
+        { tag: "revision", task: "Revise: focus on the climax. Is it the most vivid, intense moment of your story? Push it further if not." }
+      ]
+    },
+    {
+      unit: 4, unitName: "Art Meets Words", weekTitle: "Dialogue & Voice",
+      unitFile: "la_unit4.html", weekAnchor: "#week4",
+      days: [
+        { tag: "reading",  task: "Study how dialogue is formatted on the page. Read a passage where dialogue is doing heavy lifting — driving the scene." },
+        { tag: "writing",  task: "Add dialogue to your illustrated story — at least 4 exchanges. Make sure each exchange moves something forward." },
+        { tag: "revision", task: "Revise your dialogue: does each character sound different from the others? Are the dialogue tags varied?" },
+        { tag: "grammar",  task: "Quotation marks and dialogue punctuation: find 5 examples in a book, then write 5 lines of correctly formatted dialogue." },
+        { tag: "sharing",  task: "Read your dialogue aloud with Mom, each taking one character. Listen for what sounds natural vs. stiff." }
+      ]
+    },
+    {
+      unit: 4, unitName: "Art Meets Words", weekTitle: "Rising Action & Craft",
+      unitFile: "la_unit4.html", weekAnchor: "#week5",
+      days: [
+        { tag: "revision", task: "Revise your full story draft for craft. Vary sentence length, cut anything that drags, tighten wherever you can." },
+        { tag: "project",  task: "Sketch a rough layout for each illustrated scene. Where does text go? Where does the image go? What does each image show?" },
+        { tag: "project",  task: "Create at least 2 finished illustrations for your story. Focus on clarity and meaning more than technical perfection." },
+        { tag: "project",  task: "Match text to images: does each illustration complement what's written, or just repeat it? Adjust if needed." },
+        { tag: "writing",  task: "Write your author's note: who is this story for, and what inspired it?" }
+      ]
+    },
+    {
+      unit: 4, unitName: "Art Meets Words", weekTitle: "Author Event Showcase",
+      unitFile: "la_unit4.html", weekAnchor: "#week6",
+      days: [
+        { tag: "revision", task: "Final revision and proofread of your illustrated story. Read it aloud one more time from beginning to end." },
+        { tag: "project",  task: "Compile your story and illustrations into a finished book — stapled, folded, or digital. It should feel like a real book." },
+        { tag: "writing",  task: "Write your back cover copy: 2–3 sentences about the book. Make a reader want to open it." },
+        { tag: "sharing",  task: "Practice your author reading: choose one scene to read aloud dramatically. Practice delivery, pacing, and expression." },
+        { tag: "sharing",  task: "SHOWCASE: Author Event! Present your illustrated story as a published author — share it with the family." }
+      ]
+    },
+    // Unit 5: Speak Up for the Wild (weeks 25-30)
+    {
+      unit: 5, unitName: "Speak Up for the Wild", weekTitle: "Choose Your Cause",
+      unitFile: "la_unit5.html", weekAnchor: "#week1",
+      days: [
+        { tag: "research", task: "Choose a wildlife or environmental issue you care about. Write a paragraph explaining why it matters to you." },
+        { tag: "research", task: "Research the basics: what is the problem? Who is affected? What are the stakes if nothing changes?" },
+        { tag: "research", task: "Find 3 sources (book, article, video). Write down one key fact from each that surprised or alarmed you." },
+        { tag: "writing",  task: "Write your issue overview paragraph: explain the problem clearly to someone who has never heard of it." },
+        { tag: "sharing",  task: "What can YOU actually do about this issue? Brainstorm 3 concrete actions with Mom and discuss which feels most realistic." }
+      ]
+    },
+    {
+      unit: 5, unitName: "Speak Up for the Wild", weekTitle: "Evaluating Sources",
+      unitFile: "la_unit5.html", weekAnchor: "#week2",
+      days: [
+        { tag: "research", task: "Evaluate your 3 sources: are they credible? Current? Potentially biased? Write a brief note about each." },
+        { tag: "research", task: "Find one more source that disagrees with or complicates your view. What does it say?" },
+        { tag: "writing",  task: "Write a short comparison: how do your two best sources differ in their conclusions?" },
+        { tag: "grammar",  task: "Transitions in argument writing (however, therefore, in contrast): write 5 sentences using different transitions." },
+        { tag: "revision", task: "Update your research notes based on your new sources. Have your conclusions shifted at all?" }
+      ]
+    },
+    {
+      unit: 5, unitName: "Speak Up for the Wild", weekTitle: "Multiple Perspectives",
+      unitFile: "la_unit5.html", weekAnchor: "#week3",
+      days: [
+        { tag: "reading",  task: "Read about your issue from one group's perspective (scientists, local community, or government). Take notes." },
+        { tag: "reading",  task: "Read a second perspective on the same issue. How do the two groups see it differently?" },
+        { tag: "writing",  task: "Who has the most power to create change on this issue? Write a paragraph arguing for your answer." },
+        { tag: "writing",  task: "Write a letter from the perspective of an animal or ecosystem affected by this issue. Make it specific and vivid." },
+        { tag: "sharing",  task: "Read your perspective letter aloud. Discuss: how does changing who's speaking change what you care about?" }
+      ]
+    },
+    {
+      unit: 5, unitName: "Speak Up for the Wild", weekTitle: "Build the Argument",
+      unitFile: "la_unit5.html", weekAnchor: "#week4",
+      days: [
+        { tag: "writing",  task: "Write your advocacy claim statement: what do you want to change, and why? Make it specific and arguable." },
+        { tag: "writing",  task: "Outline your argument: claim + 3 pieces of evidence + counterclaim + rebuttal." },
+        { tag: "writing",  task: "Draft your argument essay: introduction, 3 body paragraphs (one per piece of evidence), and conclusion." },
+        { tag: "revision", task: "Revise for strong evidence and logical flow. Does each paragraph clearly connect to your claim?" },
+        { tag: "sharing",  task: "Share your draft with Mom. Ask her to pose one real question about your argument — then answer it." }
+      ]
+    },
+    {
+      unit: 5, unitName: "Speak Up for the Wild", weekTitle: "Revise & Strengthen",
+      unitFile: "la_unit5.html", weekAnchor: "#week5",
+      days: [
+        { tag: "revision", task: "Address Mom's question from Friday — does it change or sharpen your argument? Revise accordingly." },
+        { tag: "writing",  task: "Add a call to action to your conclusion: what should the reader DO after reading your essay?" },
+        { tag: "project",  task: "Prepare your advocacy presentation visual: poster, annotated map, or slideshow. Keep it focused." },
+        { tag: "sharing",  task: "Rehearse your 3-minute presentation. Time yourself and cut anything that goes over." },
+        { tag: "revision", task: "Final proofread of your essay. Check every sentence for clarity and correctness." }
+      ]
+    },
+    {
+      unit: 5, unitName: "Speak Up for the Wild", weekTitle: "Advocacy Presentation Showcase",
+      unitFile: "la_unit5.html", weekAnchor: "#week6",
+      days: [
+        { tag: "sharing",  task: "Final rehearsal: practice your opening 30 seconds until it's completely smooth. First impressions matter." },
+        { tag: "project",  task: "Complete your visual aid. Make sure it supports your argument — not just decoration." },
+        { tag: "sharing",  task: "Practice using only note cards with key points — not a full script. Trust yourself to know your content." },
+        { tag: "sharing",  task: "Full run-through with Mom as your audience. Ask for feedback and adjust based on what she says." },
+        { tag: "sharing",  task: "SHOWCASE: Advocacy Presentation! Make your case for your cause. Open the floor for questions." }
+      ]
+    },
+    // Unit 6: My Story, My Voice (weeks 31-36)
+    {
+      unit: 6, unitName: "My Story, My Voice", weekTitle: "Independent Reading Launch",
+      unitFile: "la_unit6.html", weekAnchor: "#week1",
+      days: [
+        { tag: "reading",  task: "Choose your independent reading book. Read the first chapter and write: what pulled you in? What do you want to find out?" },
+        { tag: "writing",  task: "Write a reading contract: your goal, your schedule, and what you'll create at the end of this book." },
+        { tag: "writing",  task: "Read today's chapters and journal: what drew you into this book? What's holding you there?" },
+        { tag: "grammar",  task: "Comma splices, run-ons, and fragments review: find one of each in a draft you've written, then fix them." },
+        { tag: "sharing",  task: "Share your book choice and your reasons with Mom. What made you pick this one over others?" }
+      ]
+    },
+    {
+      unit: 6, unitName: "My Story, My Voice", weekTitle: "Literary Analysis",
+      unitFile: "la_unit6.html", weekAnchor: "#week2",
+      days: [
+        { tag: "reading",  task: "Read assigned chapters. Track one literary element you've chosen: theme, symbol, or a recurring motif." },
+        { tag: "writing",  task: "Write a literary analysis paragraph about your chosen element: what is it, and what does it mean in the story?" },
+        { tag: "research", task: "Find two quotes from the book that support your analysis. Write them down with page numbers." },
+        { tag: "revision", task: "Add analysis after each quote. Don't just drop them in — explain what each quote proves about your claim." },
+        { tag: "sharing",  task: "Discuss: what does literature do that other kinds of writing can't? This is a real conversation — go deep." }
+      ]
+    },
+    {
+      unit: 6, unitName: "My Story, My Voice", weekTitle: "Character & Voice",
+      unitFile: "la_unit6.html", weekAnchor: "#week3",
+      days: [
+        { tag: "writing",  task: "Analyze the narrator's voice: how does it sound? What's its personality? Write 3–4 sentences describing it." },
+        { tag: "writing",  task: "Write a scene in the narrator's voice — something NOT in the book. Capture their way of seeing the world." },
+        { tag: "writing",  task: "Reflect: how does the narrator's voice affect your experience as a reader? Write a thoughtful paragraph." },
+        { tag: "writing",  task: "Draft a personal narrative paragraph in YOUR voice. Write about a small, specific moment — not a big event." },
+        { tag: "sharing",  task: "Read both pieces aloud: the narrator's voice and yours. Compare them — what's similar? What's different?" }
+      ]
+    },
+    {
+      unit: 6, unitName: "My Story, My Voice", weekTitle: "World-Building",
+      unitFile: "la_unit6.html", weekAnchor: "#week4",
+      days: [
+        { tag: "writing",  task: "Map the world of your book: the physical setting AND the social and emotional landscape. Draw or describe both." },
+        { tag: "writing",  task: "Write a 'field guide' entry for the most important setting in your book. Describe it as if for an outsider visiting." },
+        { tag: "project",  task: "Begin your Memory Map: a visual map of a real place that matters to you. Draw it out from memory." },
+        { tag: "project",  task: "Add labels and annotations to your Memory Map: what happened here? Why does this place matter?" },
+        { tag: "writing",  task: "Write a vivid prose passage describing your Memory Map place. Make a reader feel like they're standing there." }
+      ]
+    },
+    {
+      unit: 6, unitName: "My Story, My Voice", weekTitle: "Final Polish",
+      unitFile: "la_unit6.html", weekAnchor: "#week5",
+      days: [
+        { tag: "writing",  task: "Complete your personal narrative — the piece that best represents your voice and how you see the world." },
+        { tag: "revision", task: "Revise your literary analysis paragraph for your final portfolio. Make every sentence earn its place." },
+        { tag: "project",  task: "Finalize your Memory Map with all annotations. It should tell a story just from looking at it." },
+        { tag: "writing",  task: "Write your portfolio introduction: what did you learn about yourself as a reader and writer this year?" },
+        { tag: "revision", task: "Final proofread of everything you're submitting. Read it all aloud one last time." }
+      ]
+    },
+    {
+      unit: 6, unitName: "My Story, My Voice", weekTitle: "Celebration & Showcase",
+      unitFile: "la_unit6.html", weekAnchor: "#week6",
+      days: [
+        { tag: "project",  task: "Organize your portfolio: literary analysis, personal narrative, Memory Map, and portfolio introduction. Arrange it thoughtfully." },
+        { tag: "sharing",  task: "Choose your 'best piece' to read at the showcase. Why this one? Write a sentence explaining your choice." },
+        { tag: "sharing",  task: "Practice reading your chosen piece aloud with expression and confidence. Record yourself if that helps." },
+        { tag: "project",  task: "Prepare your display items. Write yourself a 'letter from a reader' about this student's growth this year." },
+        { tag: "sharing",  task: "SHOWCASE: Year-End Celebration! Present your portfolio and celebrate everything you've learned and created this year!" }
+      ]
+    }
+  ],
+
+  gr8: [
+    // Unit 1: Roll for Story (weeks 1-6)
+    {
+      unit: 1, unitName: "Roll for Story", weekTitle: "The Lore Reader — World-Building & Descriptive Writing",
+      unitFile: "la8_unit1.html", weekAnchor: "#w1",
+      days: [
+        { tag: "reading",  task: "Open a D&D setting description and read it aloud. Write two sentences: what you pictured, and one detail the author used to make it vivid." },
+        { tag: "reading",  task: "Re-read the passage and map the 5 senses. List what you find for sight, sound, smell, and touch. Say which sense the author uses best." },
+        { tag: "reading",  task: "Compare Forgotten Realms vs. Eberron descriptions. Write one 'vibe sentence' for each world. Which would you adventure in, and why?" },
+        { tag: "writing",  task: "Draft your own campaign setting (4–6 sentences, at least 2 senses). Describe where your adventure begins." },
+        { tag: "revision", task: "Re-read your setting draft. Add one detail that makes it feel more real. Then read it aloud to Mom." }
+      ]
+    },
+    {
+      unit: 1, unitName: "Roll for Story", weekTitle: "The Character Sheet — Character Creation & Narrative Writing",
+      unitFile: "la8_unit1.html", weekAnchor: "#w2",
+      days: [
+        { tag: "reading",  task: "Read a sample character backstory. Write: what makes this character feel real? Be specific — list at least 3 things." },
+        { tag: "project",  task: "Fill out your character sheet: name, class, race, personality traits, backstory seed, one goal, and one meaningful flaw." },
+        { tag: "writing",  task: "Draft your character's backstory — the story of how they became an adventurer (150+ words). Make it feel true." },
+        { tag: "revision", task: "Revise your backstory: add one specific memory and one moment of struggle. These details make a character feel lived-in." },
+        { tag: "sharing",  task: "Introduce your character aloud to Mom as if presenting them to the party. Speak as yourself, not in character." }
+      ]
+    },
+    {
+      unit: 1, unitName: "Roll for Story", weekTitle: "The Quest Log — Story Structure & Session Recaps",
+      unitFile: "la8_unit1.html", weekAnchor: "#w3",
+      days: [
+        { tag: "reading",  task: "Read a published session recap. Identify where the setup, conflict, and resolution happen. Write a brief note on each." },
+        { tag: "writing",  task: "Map a narrative arc onto a D&D encounter: inciting event → rising action → climax → resolution. Label each stage." },
+        { tag: "writing",  task: "Write a session recap for your character's first imaginary encounter (150–200 words). Make it feel like something really happened." },
+        { tag: "revision", task: "Tighten the pacing and sharpen the climax of your recap. Cut anything that slows the momentum." },
+        { tag: "sharing",  task: "Share your recap aloud with Mom. Discuss: what makes a great adventure hook that pulls players in immediately?" }
+      ]
+    },
+    {
+      unit: 1, unitName: "Roll for Story", weekTitle: "The Monster Manual — Informational Writing",
+      unitFile: "la8_unit1.html", weekAnchor: "#w4",
+      days: [
+        { tag: "reading",  task: "Read a Monster Manual entry. Identify the informational text features: classification, stats, description, and behavior sections." },
+        { tag: "research", task: "Choose your original monster. Brainstorm its traits, natural habitat, behavior patterns, and what makes it dangerous." },
+        { tag: "writing",  task: "Draft your monster entry: a vivid description paragraph plus a bullet list of key traits." },
+        { tag: "writing",  task: "Add a 'Tactics in Combat' section with specific actions your monster uses. Be precise — this is informational writing." },
+        { tag: "sharing",  task: "Read your monster entry aloud to Mom as a dramatic DM reveal. Commit to the tone." }
+      ]
+    },
+    {
+      unit: 1, unitName: "Roll for Story", weekTitle: "The DM's Script — Descriptive Writing & NPC Dialogue",
+      unitFile: "la8_unit1.html", weekAnchor: "#w5",
+      days: [
+        { tag: "reading",  task: "Read dialogue from a published adventure module. Notice how NPC voice is established — what makes each one distinct?" },
+        { tag: "project",  task: "Design two NPCs: what does each one want? How do they speak? Write 2–3 sample lines of dialogue for each." },
+        { tag: "writing",  task: "Write your DM opening script: setting description followed by NPC dialogue (3–4 lines each NPC)." },
+        { tag: "revision", task: "Sharpen the sensory detail in your setting description. Make the NPC voices more distinct from each other." },
+        { tag: "sharing",  task: "Perform your opening scene aloud. Adjust your delivery based on how it sounds — where does it drag?" }
+      ]
+    },
+    {
+      unit: 1, unitName: "Roll for Story", weekTitle: "The Campaign Showcase — Compile, Revise & Run It",
+      unitFile: "la8_unit1.html", weekAnchor: "#w6",
+      days: [
+        { tag: "project",  task: "Compile all written pieces into your Campaign Booklet: setting description, character backstory, monster entry, and NPC scripts." },
+        { tag: "revision", task: "Revise for world consistency. Does everything fit together? Would a player believe this is all one world?" },
+        { tag: "project",  task: "Design your booklet cover and table of contents. Make it feel like a real campaign document." },
+        { tag: "revision", task: "Final proofread and formatting polish. Check alignment, headings, and any typos." },
+        { tag: "sharing",  task: "SHOWCASE: Run your opening encounter with family as players! Be the DM for real." }
+      ]
+    },
+    // Unit 2: Debug, Build & Make Your Case (weeks 7-12)
+    {
+      unit: 2, unitName: "Debug, Build & Make Your Case", weekTitle: "Reading Technical Writing",
+      unitFile: "la8_unit2.html", weekAnchor: "#w1",
+      days: [
+        { tag: "reading",  task: "Read a published instruction manual. Identify numbered steps, warnings, and diagrams. Note what makes each element useful." },
+        { tag: "writing",  task: "Compare two sets of instructions on the same task. Which is clearer, and why? Write a specific comparison." },
+        { tag: "writing",  task: "Annotate a bad instruction set — mark what fails and what's missing. Be specific about what a reader would struggle with." },
+        { tag: "reading",  task: "Read a LEGO build guide. Analyze how each step is structured: what information comes first, and why?" },
+        { tag: "writing",  task: "Write your project proposal: 3–4 sentences about what you'll build, plus one risk you've thought through in advance." }
+      ]
+    },
+    {
+      unit: 2, unitName: "Debug, Build & Make Your Case", weekTitle: "Process & Documentation Basics",
+      unitFile: "la8_unit2.html", weekAnchor: "#w2",
+      days: [
+        { tag: "reading",  task: "Define documentation vocabulary: step, procedure, iteration, component, constraint. Write each in your own words with an example." },
+        { tag: "writing",  task: "Write the first 3 steps of a process you already know well. Imagine explaining it to someone who has never done it." },
+        { tag: "writing",  task: "Document a simple everyday process in exactly 5 precise steps. Every word counts — be specific." },
+        { tag: "writing",  task: "Add 'if/then' decision points to your process document. What should the reader do when something goes wrong?" },
+        { tag: "sharing",  task: "Have Mom follow your instructions exactly — don't help or clarify. Note what breaks down and what needs fixing." }
+      ]
+    },
+    {
+      unit: 2, unitName: "Debug, Build & Make Your Case", weekTitle: "Step-by-Step Technical Writing",
+      unitFile: "la8_unit2.html", weekAnchor: "#w3",
+      days: [
+        { tag: "project",  task: "Begin your build. Photograph or sketch Stage 1 before you move on — you'll need this for documentation." },
+        { tag: "writing",  task: "Write step-by-step instructions for Stage 1. Every action in order, written with enough detail to be reproducible." },
+        { tag: "project",  task: "Continue building Stage 2. Document each step with precise language as you go — don't wait until after." },
+        { tag: "revision", task: "Review your steps so far. Does someone with zero context understand them? Revise any that are vague or skip steps." },
+        { tag: "writing",  task: "Add a 'materials needed' section and a safety note to your build documentation." }
+      ]
+    },
+    {
+      unit: 2, unitName: "Debug, Build & Make Your Case", weekTitle: "Explaining Your Choices",
+      unitFile: "la8_unit2.html", weekAnchor: "#w4",
+      days: [
+        { tag: "reading",  task: "Read a 'why we built it this way' section from real engineering writing. What reasoning do engineers share publicly?" },
+        { tag: "writing",  task: "Write a paragraph explaining why you chose your build design. Connect your choices to the problem you were solving." },
+        { tag: "writing",  task: "Add a 'challenges and solutions' section to your build log. Be honest about what went wrong and how you fixed it." },
+        { tag: "writing",  task: "Draft a 'what I'd do differently' reflection. This is not failure — it's professional thinking." },
+        { tag: "revision", task: "Review with Mom: does your reasoning make sense to an outside reader? Revise anything that assumes too much." }
+      ]
+    },
+    {
+      unit: 2, unitName: "Debug, Build & Make Your Case", weekTitle: "Troubleshooting & Failure Writing",
+      unitFile: "la8_unit2.html", weekAnchor: "#w5",
+      days: [
+        { tag: "reading",  task: "Read how engineers write about failures — SpaceX blogs, LEGO designer interviews. Notice how they frame setbacks." },
+        { tag: "writing",  task: "Document one thing that went wrong in your build and why. Be specific, honest, and professional in your tone." },
+        { tag: "writing",  task: "Write a troubleshooting guide for the 3 most likely problems someone might encounter with your build." },
+        { tag: "revision", task: "Revise your failure writing to be professional, not just an excuse. Own the problem; describe the fix." },
+        { tag: "writing",  task: "Draft your build's FAQ section: 3 questions a user might realistically ask, with clear answers." }
+      ]
+    },
+    {
+      unit: 2, unitName: "Debug, Build & Make Your Case", weekTitle: "Final Document & Showcase",
+      unitFile: "la8_unit2.html", weekAnchor: "#w6",
+      days: [
+        { tag: "project",  task: "Compile all your documentation into your Final Build Document. It should read like a complete, professional manual." },
+        { tag: "project",  task: "Add photos, diagrams, or sketches to illustrate your steps. Every visual should add information, not just fill space." },
+        { tag: "writing",  task: "Write a one-paragraph executive summary of your build: what it is, how it works, and what problem it solves." },
+        { tag: "revision", task: "Final proofread and formatting pass. Check headings, numbering, and consistency throughout the document." },
+        { tag: "sharing",  task: "SHOWCASE: Present your build and its documentation! Demonstrate it working and walk Mom through your document." }
+      ]
+    },
+    // Unit 3: AI Ethics & Argument (weeks 13-18)
+    {
+      unit: 3, unitName: "AI Ethics & Argument", weekTitle: "Reading About Technology",
+      unitFile: "la8_unit3.html", weekAnchor: "#w1",
+      days: [
+        { tag: "reading",  task: "Read Asimov's Three Laws of Robotics. Write your gut reaction in your journal — do these laws seem reasonable? What's missing?" },
+        { tag: "reading",  task: "Read a Common Sense Media article about AI. Identify the author's main claim in one sentence." },
+        { tag: "writing",  task: "Compare Asimov's view to the article: what has changed since 1942? What has stayed the same?" },
+        { tag: "reading",  task: "Read an MIT Technology Review piece. Annotate it for evidence: mark every claim that is supported by facts." },
+        { tag: "writing",  task: "Reading response: what is the most important AI question that needs answering right now? Argue for your answer." }
+      ]
+    },
+    {
+      unit: 3, unitName: "AI Ethics & Argument", weekTitle: "Code Documentation",
+      unitFile: "la8_unit3.html", weekAnchor: "#w2",
+      days: [
+        { tag: "reading",  task: "What is code documentation? Read a real README file and identify what information it covers and why each section matters." },
+        { tag: "writing",  task: "Write comments explaining a short Python script (provided by teacher). Explain what each section does in plain English." },
+        { tag: "writing",  task: "Write a README for a simple program: what it does, how to run it, and what a user needs to know before starting." },
+        { tag: "writing",  task: "Document the inputs and outputs of one function in completely plain English — no code jargon allowed." },
+        { tag: "revision", task: "Polish your documentation. Is it clear to someone who has never seen a line of code? Revise until it is." }
+      ]
+    },
+    {
+      unit: 3, unitName: "AI Ethics & Argument", weekTitle: "Claude as a Writing Tool",
+      unitFile: "la8_unit3.html", weekAnchor: "#w3",
+      days: [
+        { tag: "research", task: "Ask Claude to explain one concept two completely different ways. Compare the outputs: what changed? What stayed the same?" },
+        { tag: "writing",  task: "Ask Claude for feedback on one of your paragraphs. Evaluate the suggestions — which are useful? Which miss the point?" },
+        { tag: "writing",  task: "Compare your original paragraph to Claude's suggested version. What did you keep? What did you reject? Why?" },
+        { tag: "writing",  task: "Write a short analysis: what is Claude good at as a writing tool? What does it get wrong or miss?" },
+        { tag: "sharing",  task: "Discuss with Mom: should students use AI writing tools? What should the rules be? Defend your position." }
+      ]
+    },
+    {
+      unit: 3, unitName: "AI Ethics & Argument", weekTitle: "AI Ethics — Entering the Argument",
+      unitFile: "la8_unit3.html", weekAnchor: "#w4",
+      days: [
+        { tag: "reading",  task: "Read a 'should AI be regulated?' debate article. Identify the claim and counterclaim. Write both in your own words." },
+        { tag: "writing",  task: "Practice counterclaim writing: restate the opposing view fairly and completely before you begin your response." },
+        { tag: "writing",  task: "Pick a side on one AI ethics question. Build your argument: claim + 3 reasons + evidence for each." },
+        { tag: "writing",  task: "Draft your argument paragraph: claim → evidence → reasoning → counterclaim → rebuttal. All in one paragraph." },
+        { tag: "sharing",  task: "Share your argument aloud with Mom. Invite real pushback. Defend your position using your evidence." }
+      ]
+    },
+    {
+      unit: 3, unitName: "AI Ethics & Argument", weekTitle: "Writing the Persuasive Essay",
+      unitFile: "la8_unit3.html", weekAnchor: "#w5",
+      days: [
+        { tag: "writing",  task: "Outline your persuasive essay: hook, 3 body paragraphs (each with claim + evidence + analysis), and conclusion." },
+        { tag: "writing",  task: "Draft your introduction and first body paragraph. Make your hook specific — avoid generic openings." },
+        { tag: "writing",  task: "Draft body paragraphs 2 and 3, plus your conclusion. Each body paragraph should build on the last." },
+        { tag: "revision", task: "Revise for logic flow: does each paragraph follow naturally from the one before it? Adjust transitions." },
+        { tag: "sharing",  task: "Read your essay aloud. Listen for awkward sentences or places where the logic jumps. Fix 3 specific issues." }
+      ]
+    },
+    {
+      unit: 3, unitName: "AI Ethics & Argument", weekTitle: "Final Project & Showcase",
+      unitFile: "la8_unit3.html", weekAnchor: "#w6",
+      days: [
+        { tag: "revision", task: "Finalize your persuasive essay. Polish citations and make sure every claim is supported with evidence." },
+        { tag: "project",  task: "Create a visual aid for your presentation: slide, poster, or diagram. Keep it to your most powerful points." },
+        { tag: "sharing",  task: "Rehearse presenting your argument in under 3 minutes. Time yourself — cut anything over the limit." },
+        { tag: "revision", task: "Address one specific criticism Mom raises about your argument. Revise to address it directly." },
+        { tag: "sharing",  task: "SHOWCASE: Deliver your argument! Then open the floor — respond to questions with your evidence." }
+      ]
+    },
+    // Unit 4: Music & the Written Word (weeks 19-24)
+    {
+      unit: 4, unitName: "Music & the Written Word", weekTitle: "Listening as a Writer",
+      unitFile: "la8_unit4.html", weekAnchor: "#w1",
+      days: [
+        { tag: "reading",  task: "Listen to one song from a genre you don't usually hear. Write your first, honest reaction: what do you notice?" },
+        { tag: "reading",  task: "Listen again focusing only on lyrics. Transcribe one full verse word for word." },
+        { tag: "writing",  task: "Read the lyrics as a poem: annotate for imagery and word choice. What is the songwriter doing at each line?" },
+        { tag: "writing",  task: "Write a paragraph: what is this song actually about underneath the surface? Go beyond the obvious subject." },
+        { tag: "sharing",  task: "Share your analysis with Mom. Compare your reactions — did you hear the same thing? Where did you differ?" }
+      ]
+    },
+    {
+      unit: 4, unitName: "Music & the Written Word", weekTitle: "Lyric Writing",
+      unitFile: "la8_unit4.html", weekAnchor: "#w2",
+      days: [
+        { tag: "reading",  task: "Study how professional lyricists create imagery (Kendrick Lamar, Taylor Swift, Bob Dylan). Analyze one specific verse." },
+        { tag: "writing",  task: "Draft a 4-line verse about something you care about. Focus on one strong, specific image. Avoid clichés." },
+        { tag: "writing",  task: "Expand to a full chorus + one verse. Try either rhyme OR rhythm — you don't have to do both." },
+        { tag: "revision", task: "Replace at least 2 generic words with specific, vivid alternatives. Read both versions aloud — notice the difference." },
+        { tag: "sharing",  task: "Read your lyrics aloud and record yourself. Listen back and adjust: where does it drag or feel forced?" }
+      ]
+    },
+    {
+      unit: 4, unitName: "Music & the Written Word", weekTitle: "Music Criticism",
+      unitFile: "la8_unit4.html", weekAnchor: "#w3",
+      days: [
+        { tag: "reading",  task: "Read two professional music reviews (Rolling Stone style). Identify how each review is structured and what argument it makes." },
+        { tag: "writing",  task: "Choose an album or song you know well. Outline what you'd say in a review: hook, context, analysis, recommendation." },
+        { tag: "writing",  task: "Draft your music review: hook, context, analysis of what works and what doesn't, and your recommendation." },
+        { tag: "revision", task: "Add one specific musical detail to your review: a rhythm pattern, an instrument choice, or one standout moment in the song." },
+        { tag: "sharing",  task: "Share your review with Mom. Discuss: what makes music criticism different from just expressing an opinion?" }
+      ]
+    },
+    {
+      unit: 4, unitName: "Music & the Written Word", weekTitle: "Liner Notes & Program Writing",
+      unitFile: "la8_unit4.html", weekAnchor: "#w4",
+      days: [
+        { tag: "reading",  task: "Read physical or online liner notes from a real album. What information do they include? What tone do they use?" },
+        { tag: "writing",  task: "Choose 5 songs for a playlist you'd curate. Write one sentence describing each song — what does it do?" },
+        { tag: "writing",  task: "Draft liner notes for your playlist: an intro paragraph explaining the playlist's concept, plus your song descriptions." },
+        { tag: "writing",  task: "Write a 'thank you' section in the style of real album credits. Who or what made this playlist possible?" },
+        { tag: "project",  task: "Format your liner notes to look like a real album booklet. Use layout and typography to create the right feel." }
+      ]
+    },
+    {
+      unit: 4, unitName: "Music & the Written Word", weekTitle: "The Profile — Writing About a Musician",
+      unitFile: "la8_unit4.html", weekAnchor: "#w5",
+      days: [
+        { tag: "reading",  task: "Read a musician profile from Rolling Stone or a similar publication. Note how the writer structures it: hook, background, analysis." },
+        { tag: "research", task: "Choose a musician to profile. Research their background, artistic development, and cultural impact. Take organized notes." },
+        { tag: "writing",  task: "Draft your profile: hook that captures their essence, background, artistic contribution, and your own critical take." },
+        { tag: "revision", task: "Add one direct quote (real or representative) and fact-check every claim you've made. Accuracy matters in profiles." },
+        { tag: "sharing",  task: "Share your profile aloud. Discuss: how is a profile different from a biography? What's the writer's role?" }
+      ]
+    },
+    {
+      unit: 4, unitName: "Music & the Written Word", weekTitle: "Portfolio & Showcase",
+      unitFile: "la8_unit4.html", weekAnchor: "#w6",
+      days: [
+        { tag: "project",  task: "Compile your lyrics, review, liner notes, and musician profile into your Music Writing portfolio." },
+        { tag: "writing",  task: "Write a portfolio introduction explaining what you explored, discovered, and learned this unit." },
+        { tag: "project",  task: "Design your portfolio cover and table of contents. The design should match the music writing aesthetic you've developed." },
+        { tag: "revision", task: "Final proofread of everything. Polish all four pieces before the showcase." },
+        { tag: "sharing",  task: "SHOWCASE: Share your favorite piece and explain why you chose it as the one that best represents your work." }
+      ]
+    },
+    // Unit 5: Field Research (weeks 25-30)
+    {
+      unit: 5, unitName: "Field Research", weekTitle: "Finding Your Question",
+      unitFile: "la8_unit5.html", weekAnchor: "#w1",
+      days: [
+        { tag: "research", task: "Brainstorm 6 topics you're genuinely curious about (AI + music, D&D design, video game music, LEGO history, etc.)." },
+        { tag: "writing",  task: "Narrow to one research question: it should be specific, debatable, and genuinely interesting to you." },
+        { tag: "research", task: "Do a 20-minute preliminary search. What sources exist? Note what you find and what's missing." },
+        { tag: "writing",  task: "Write your research plan: your main question, 3 sub-questions, and where you plan to look for answers." },
+        { tag: "sharing",  task: "Discuss your question with Mom. Let her ask follow-up questions — refine your research question based on the conversation." }
+      ]
+    },
+    {
+      unit: 5, unitName: "Field Research", weekTitle: "Source Evaluation",
+      unitFile: "la8_unit5.html", weekAnchor: "#w2",
+      days: [
+        { tag: "reading",  task: "Learn the CRAAP criteria: Currency, Relevance, Authority, Accuracy, Purpose. Write a definition for each in your own words." },
+        { tag: "writing",  task: "Evaluate your 3 sources from last week using the CRAAP criteria. Score each one and explain your reasoning." },
+        { tag: "research", task: "Find 2 more sources — at least one expert-authored or peer-reviewed. Evaluate them using CRAAP immediately." },
+        { tag: "writing",  task: "Create an annotated source list: each source plus 2 sentences explaining why it's trustworthy and relevant." },
+        { tag: "sharing",  task: "Discuss with Mom: why does source quality matter? What makes Wikipedia tricky as a research source?" }
+      ]
+    },
+    {
+      unit: 5, unitName: "Field Research", weekTitle: "Research Notes & Outline",
+      unitFile: "la8_unit5.html", weekAnchor: "#w3",
+      days: [
+        { tag: "research", task: "Read Source 1 carefully. Take notes entirely in your own words — paraphrase everything, quote only when the exact words matter." },
+        { tag: "research", task: "Read Source 2. Look for places where sources agree or disagree. Note every point of comparison." },
+        { tag: "research", task: "Read remaining sources. Complete your research notes. Highlight the most important information from each." },
+        { tag: "writing",  task: "Build your outline: thesis statement + 3 main points + supporting evidence for each point." },
+        { tag: "sharing",  task: "Review your outline with Mom. She asks one question about each main point — answer them on the spot." }
+      ]
+    },
+    {
+      unit: 5, unitName: "Field Research", weekTitle: "Drafting the Paper",
+      unitFile: "la8_unit5.html", weekAnchor: "#w4",
+      days: [
+        { tag: "writing",  task: "Draft your introduction: a hook that earns the reader's attention, context that frames your question, and your thesis." },
+        { tag: "writing",  task: "Draft body paragraph 1: your first main point + evidence from your sources + your own analysis of what it means." },
+        { tag: "writing",  task: "Draft body paragraphs 2 and 3. Each paragraph should make a distinct point that builds toward your conclusion." },
+        { tag: "writing",  task: "Draft your conclusion: restate your thesis in new words, explain the broader significance, and end with a closing image." },
+        { tag: "sharing",  task: "Read the full draft aloud. Does it flow? Note 3 specific things to fix — be precise about what needs work." }
+      ]
+    },
+    {
+      unit: 5, unitName: "Field Research", weekTitle: "Revision & Citation",
+      unitFile: "la8_unit5.html", weekAnchor: "#w5",
+      days: [
+        { tag: "revision", task: "Revise for clarity: find 2 places where you assume the reader knows something they don't. Fix those gaps." },
+        { tag: "revision", task: "Revise for evidence: is every major claim supported? Find any unsupported claims and add evidence or cut them." },
+        { tag: "writing",  task: "Add in-text citations and build your Works Cited page in MLA format. Check every entry for accuracy." },
+        { tag: "revision", task: "Read once more for grammar, transitions, and sentence variety. Mark anything that sounds repetitive or awkward." },
+        { tag: "sharing",  task: "Share your revised draft with Mom for feedback. Listen without defending — just take notes on what she says." }
+      ]
+    },
+    {
+      unit: 5, unitName: "Field Research", weekTitle: "Oral Presentation & Showcase",
+      unitFile: "la8_unit5.html", weekAnchor: "#w6",
+      days: [
+        { tag: "sharing",  task: "Prepare your presentation: 3–5 minutes, highlights only. Choose your most interesting points — not everything." },
+        { tag: "project",  task: "Create one visual aid: a map, timeline, diagram, or key quote display. It should add information, not just decorate." },
+        { tag: "sharing",  task: "Rehearse your presentation. Time yourself — cut anything that pushes you over 5 minutes." },
+        { tag: "revision", task: "Final revision of your paper based on any last feedback. Make it the best it can be." },
+        { tag: "sharing",  task: "SHOWCASE: Present your research! Deliver your talk, then answer Mom's questions. This is your expert moment." }
+      ]
+    },
+    // Unit 6: Make Your Case (weeks 31-36)
+    {
+      unit: 6, unitName: "Make Your Case", weekTitle: "Reading Great Arguments",
+      unitFile: "la8_unit6.html", weekAnchor: "#w1",
+      days: [
+        { tag: "reading",  task: "Watch a TED Talk (teacher selects). As you watch, note the hook, the structure, and how they end. Write what worked." },
+        { tag: "reading",  task: "Rhetoric mini-lesson: ethos (credibility), pathos (emotion), logos (logic). Write each in your own words with an example." },
+        { tag: "reading",  task: "Read MLK's 'I Have a Dream' and one other famous speech. Identify where each speaker uses ethos, pathos, and logos." },
+        { tag: "writing",  task: "Annotate one speech for anaphora, repetition, and emotional appeal. Mark every example you find." },
+        { tag: "writing",  task: "Which speech was more persuasive to you, and why? Write 3–4 sentences arguing for your choice." }
+      ]
+    },
+    {
+      unit: 6, unitName: "Make Your Case", weekTitle: "Building the Argument",
+      unitFile: "la8_unit6.html", weekAnchor: "#w2",
+      days: [
+        { tag: "writing",  task: "Choose your topic: something you genuinely care about and want to change in the world or your community." },
+        { tag: "writing",  task: "Write your claim statement and 3 supporting reasons. Each reason should stand on its own." },
+        { tag: "research", task: "Find evidence for each reason: a fact, a statistic, or a real example. Write down each with its source." },
+        { tag: "writing",  task: "Draft your counterclaim + rebuttal. Engage the opposing view seriously before you push back." },
+        { tag: "writing",  task: "Outline the full talk: hook → problem → argument → counterclaim → call to action." }
+      ]
+    },
+    {
+      unit: 6, unitName: "Make Your Case", weekTitle: "The Persuasive Essay",
+      unitFile: "la8_unit6.html", weekAnchor: "#w3",
+      days: [
+        { tag: "writing",  task: "Draft your introduction: a hook that creates urgency, context that frames the problem, and your claim." },
+        { tag: "writing",  task: "Draft your body paragraphs: claim + evidence + analysis for each. Explain why your evidence proves your point." },
+        { tag: "writing",  task: "Draft your conclusion and call to action. What do you want the reader to do, think, or feel after reading this?" },
+        { tag: "revision", task: "Revise for logic flow and transitions. Does every paragraph move forward? Cut anything that circles back." },
+        { tag: "sharing",  task: "Read your essay aloud to Mom. Note where her attention drifted — that's where you need to revise." }
+      ]
+    },
+    {
+      unit: 6, unitName: "Make Your Case", weekTitle: "Designing the Talk",
+      unitFile: "la8_unit6.html", weekAnchor: "#w4",
+      days: [
+        { tag: "writing",  task: "Convert your essay to a talk script. Make it shorter, more conversational, and more direct. Cut academic phrasing." },
+        { tag: "project",  task: "Create your visual aid: 3–5 slides, a poster, or a prop. Every element should serve your argument." },
+        { tag: "sharing",  task: "Practice your opening 60 seconds until it's nearly memorized. A strong opening earns the audience's trust." },
+        { tag: "sharing",  task: "Practice the full talk. Focus on eye contact and pacing — don't read from your script." },
+        { tag: "sharing",  task: "Record yourself on video. Watch it back and note 2 specific things to improve." }
+      ]
+    },
+    {
+      unit: 6, unitName: "Make Your Case", weekTitle: "Rehearsal & Refinement",
+      unitFile: "la8_unit6.html", weekAnchor: "#w5",
+      days: [
+        { tag: "revision", task: "Address your 2 improvement notes from the video recording. Practice those specific moments until they're solid." },
+        { tag: "sharing",  task: "Deliver your full talk to Mom and ask for one specific, honest criticism. No vague feedback — ask for precision." },
+        { tag: "revision", task: "Fix that one criticism. Then rehearse the full talk again with the revision integrated." },
+        { tag: "sharing",  task: "Run your full talk twice in a row. Time it — aim for 4–6 minutes. If over, cut; if under, add depth." },
+        { tag: "revision", task: "Polish your visual aid and sharpen your opening line. That first sentence sets everything up." }
+      ]
+    },
+    {
+      unit: 6, unitName: "Make Your Case", weekTitle: "Showcase — Year-End Celebration",
+      unitFile: "la8_unit6.html", weekAnchor: "#w6",
+      days: [
+        { tag: "sharing",  task: "Final talk rehearsal. Be calm, be prepared, be confident. You've done the work — now let it show." },
+        { tag: "project",  task: "Prepare your space and set up props or displays. Make the environment match the seriousness of your argument." },
+        { tag: "sharing",  task: "Optional: invite a wider audience — grandparents via video call, neighbors, friends. The bigger the audience, the better." },
+        { tag: "writing",  task: "Personal reflection: what did you learn this year? What are you most proud of? Write honestly." },
+        { tag: "sharing",  task: "SHOWCASE: Deliver your TED-style talk! Year-end celebration — you made it through a full year of great work!" }
+      ]
+    }
+  ]
+};
+
+// ─── UTILITIES ────────────────────────────────────────────────────────────────
+const DAY_NAMES  = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
+const MONTHS     = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DOW_SHORT  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const DOW_FULL   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+function todayLocal() {
+  const n = new Date();
+  return new Date(n.getFullYear(), n.getMonth(), n.getDate());
+}
+function parseLocalDate(str) {
+  const [y,m,d] = str.split('-').map(Number);
+  return new Date(y, m-1, d);
+}
+function countSchoolDays(start, end) {
+  let count = 0;
+  let cur = new Date(start);
+  while (cur <= end) {
+    const dow = cur.getDay();
+    if (dow !== 0 && dow !== 6) count++;
+    cur = new Date(cur.getTime() + 86400000);
+  }
+  return count;
+}
+function dateKey(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const dd = String(d.getDate()).padStart(2,'0');
+  return y+'-'+m+'-'+dd;
+}
+function addDays(d, n) {
+  return new Date(d.getTime() + n * 86400000);
+}
+function getMondayOf(d) {
+  const dow = d.getDay(); // 0=Sun
+  const diff = dow === 0 ? -6 : 1 - dow;
+  return addDays(d, diff);
+}
+function getTagClass(tag) {
+  const map = {
+    reading:'tag-reading', writing:'tag-writing', grammar:'tag-grammar',
+    research:'tag-research', project:'tag-project', making:'tag-making',
+    revision:'tag-revision', sharing:'tag-sharing', art:'tag-art'
+  };
+  return map[tag] || 'tag-project';
+}
+function formatDateShort(d) {
+  return MONTHS[d.getMonth()].slice(0,3) + ' ' + d.getDate();
+}
+function formatDateRange(mon, fri) {
+  if (mon.getMonth() === fri.getMonth()) {
+    return MONTHS[mon.getMonth()] + ' ' + mon.getDate() + '–' + fri.getDate() + ', ' + mon.getFullYear();
+  }
+  return MONTHS[mon.getMonth()].slice(0,3) + ' ' + mon.getDate() + ' – ' + MONTHS[fri.getMonth()].slice(0,3) + ' ' + fri.getDate() + ', ' + mon.getFullYear();
+}
+
+// ─── WEEK OFFSET STATE ────────────────────────────────────────────────────────
+let weekOffset = 0;
+try { weekOffset = parseInt(sessionStorage.getItem('ck_week_offset') || '0') || 0; } catch(e){}
+
+function setOffset(n) {
+  weekOffset = n;
+  try { sessionStorage.setItem('ck_week_offset', String(n)); } catch(e) {}
+  renderPage();
+}
+
+// ─── RENDERING ────────────────────────────────────────────────────────────────
+function renderWeekTable(grade, weekObj, mondayDate, todayDate) {
+  const color      = (grade === 'gr6') ? 'terra' : 'sky';
+  const cardClass  = (grade === 'gr6') ? 'terra-card' : 'sky-card';
+  const label      = (grade === 'gr6') ? '6TH GRADE — LANGUAGE ARTS' : '8TH GRADE — LANGUAGE ARTS';
+  const unitNum    = weekObj.unit;
+  const weekAnchorNum = parseInt(weekObj.weekAnchor.replace(/[^0-9]/g,'')) || 1;
+  const progress   = Math.round(((CURR[grade].indexOf(weekObj)) / 35) * 100);
+
+  let rows = '';
+  for (let di = 0; di < 5; di++) {
+    const day      = weekObj.days[di];
+    const dayDate  = addDays(mondayDate, di);
+    const dayKey   = dateKey(dayDate);
+    const doneKey  = 'ck_' + grade + '_done_' + dayKey;
+    const isDone   = !!localStorage.getItem(doneKey);
+    const isToday  = todayDate && dayDate.getTime() === todayDate.getTime();
+
+    let rowClass = '';
+    if (isToday) rowClass += ' is-today';
+    if (isDone)  rowClass += ' is-done';
+
+    const checkMark = isDone ? '<span class="done-check">&#10003;</span>' : '';
+    const tagClass  = getTagClass(day.tag);
+
+    let linkUrl = weekObj.unitFile + weekObj.weekAnchor;
+
+    rows += `<tr class="${rowClass.trim()}">
+      <td class="day-name-cell">
+        <div class="day-name">${DAY_NAMES[di].slice(0,3)}</div>
+        ${checkMark}
+      </td>
+      <td class="tag-cell"><span class="tag-pill ${tagClass}">${day.tag}</span></td>
+      <td class="task-cell"><span class="day-task-text">${day.task}</span></td>
+      <td class="link-cell">
+        <a class="open-link" href="${linkUrl}" title="Open lesson">&#8594;</a>
+      </td>
+    </tr>`;
+  }
+
+  return `<div class="week-card ${cardClass}">
+    <div class="week-card-header ${color}">
+      <div class="week-card-grade">${label}</div>
+      <div class="week-card-meta">Unit ${unitNum} of 6 &middot; Week ${weekAnchorNum} of 6</div>
+      <div class="week-card-unit-title">${weekObj.unitName} &middot; ${weekObj.weekTitle}</div>
+    </div>
+    <div class="card-progress-bar">
+      <div class="card-progress-bar-fill" style="width:${progress}%"></div>
+    </div>
+    <table class="day-table">${rows}</table>
+  </div>`;
+}
+
+// ─── MAIN RENDER ──────────────────────────────────────────────────────────────
+function renderPage() {
+  const main      = document.getElementById('main-content');
+  const today     = todayLocal();
+  const subText   = document.getElementById('week-sub-text');
+  const weekLabel = document.getElementById('week-label');
+  const btnPrev   = document.getElementById('btn-prev-week');
+  const btnNext   = document.getElementById('btn-next-week');
+  const btnThis   = document.getElementById('btn-this-week');
+  const progWrap  = document.getElementById('year-progress-wrap');
+  const progFill  = document.getElementById('year-progress-fill');
+  const progPct   = document.getElementById('year-progress-pct');
+  const banner    = document.getElementById('offset-banner');
+
+  const startStr = localStorage.getItem('ck_year_start');
+
+  // If no year start, show setup
+  if (!startStr) {
+    progWrap.style.display = 'none';
+    banner.style.display = 'none';
+    subText.textContent = 'School year not configured';
+    weekLabel.textContent = 'Week —';
+    main.innerHTML = `<div class="setup-banner">
+      <div>
+        <p>Before we start, when does your school year begin?</p>
+        <label for="setup-date">School year start date</label>
+        <input type="date" id="setup-date" value="2026-09-08">
+        <button class="btn-primary" onclick="saveStartDate()">Start School Year</button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  const start       = parseLocalDate(startStr);
+  const yearEnd     = addDays(start, 251); // ~36 weeks of Mon-Fri ≈ 180 school days spread over ~252 calendar days
+
+  // Find current week index (what school week is TODAY in?)
+  let currentWeekIdx = 0;
+  let todayIsSchoolDay = false;
+  if (today >= start) {
+    const dow = today.getDay();
+    todayIsSchoolDay = (dow >= 1 && dow <= 5);
+    // Find the Monday of the current calendar week
+    const currentMonday = getMondayOf(today);
+    const sdFromStart = countSchoolDays(start, currentMonday) - 1; // school days elapsed up to and including Monday
+    // If monday is before start, we're on week 0
+    if (currentMonday < start) {
+      currentWeekIdx = 0;
+    } else {
+      const daysElapsedMon = countSchoolDays(start, currentMonday);
+      currentWeekIdx = Math.floor((daysElapsedMon - 1) / 5);
+      if (currentWeekIdx < 0) currentWeekIdx = 0;
+    }
+  }
+
+  // Apply offset
+  let displayWeekIdx = currentWeekIdx + weekOffset;
+  displayWeekIdx = Math.max(0, Math.min(35, displayWeekIdx));
+
+  // Update navigation buttons
+  btnPrev.disabled  = displayWeekIdx <= 0;
+  btnNext.disabled  = displayWeekIdx >= 35;
+  btnThis.style.display = (weekOffset !== 0) ? 'inline-flex' : 'none';
+
+  // Compute Monday/Friday for the displayed week
+  // The Nth week (0-based) starts from the first school Monday
+  // We find the calendar Monday that corresponds to weekIndex
+  // Start from year start, advance by displayWeekIdx * 7 calendar days roughly
+  // Better: find start-of-school monday and add weeks
+  const schoolMonday = getMondayOf(start); // the Monday on or before school start
+  // Actually if start is a Wednesday, first school day week is that week
+  // The first "school week" is the week containing the start date
+  // Week 0's Monday = getMondayOf(start)
+  const week0Monday = getMondayOf(start);
+  const displayMonday = addDays(week0Monday, displayWeekIdx * 7);
+  const displayFriday = addDays(displayMonday, 4);
+
+  // Week number label (1-based)
+  const weekNum = displayWeekIdx + 1;
+  weekLabel.textContent = 'Week ' + weekNum + ' of 36';
+
+  const dateRange = formatDateRange(displayMonday, displayFriday);
+  subText.textContent = 'Week ' + weekNum + ' of 36 · ' + dateRange;
+
+  // Offset banner
+  if (weekOffset > 0) {
+    banner.style.display = 'block';
+    banner.className = 'preview-banner future';
+    banner.textContent = '▶ Looking ahead: Week ' + weekNum + ' (' + dateRange + ')';
+  } else if (weekOffset < 0) {
+    banner.style.display = 'block';
+    banner.className = 'preview-banner';
+    banner.textContent = '◄ Looking back: Week ' + weekNum + ' (' + dateRange + ')';
+  } else {
+    banner.style.display = 'none';
+  }
+
+  // Year progress
+  if (today >= start) {
+    const totalSchoolDays = 180;
+    const elapsed = Math.min(countSchoolDays(start, today), totalSchoolDays);
+    const pct = Math.round((elapsed / totalSchoolDays) * 100);
+    progWrap.style.display = 'block';
+    progFill.style.width = pct + '%';
+    progPct.textContent = pct + '% complete · Day ' + elapsed + ' of 180';
+  } else {
+    progWrap.style.display = 'none';
+  }
+
+  // Check edge cases for CURRENT week display
+  if (weekOffset === 0 && today < start) {
+    // Before school starts — show preview of week 1 with a note
+    const diffMs   = start - today;
+    const diffDays = Math.ceil(diffMs / 86400000);
+    main.innerHTML = `<div class="status-msg" style="margin-bottom:24px;">
+      <div class="emoji">&#128197;</div>
+      <h2>School starts ${MONTHS[start.getMonth()]} ${start.getDate()}, ${start.getFullYear()}</h2>
+      <p>${diffDays} day${diffDays !== 1 ? 's' : ''} to go &mdash; here's a preview of Week 1:</p>
+    </div>
+    <div class="grades-wrap">
+      ${renderWeekTable('gr6', CURR.gr6[0], week0Monday, null)}
+      ${renderWeekTable('gr8', CURR.gr8[0], week0Monday, null)}
+    </div>`;
+    return;
+  }
+
+  if (displayWeekIdx > 35) {
+    main.innerHTML = `<div class="status-msg"><div class="emoji">&#127881;</div>
+      <h2>School year complete!</h2>
+      <p>No more weeks in the curriculum. Incredible work this year!</p></div>`;
+    return;
+  }
+
+  const gr6Week = CURR.gr6[displayWeekIdx];
+  const gr8Week = CURR.gr8[displayWeekIdx];
+
+  // Only highlight today if offset = 0 (we're showing the current week)
+  const todayForHighlight = (weekOffset === 0) ? today : null;
+
+  main.innerHTML = `<div class="grades-wrap">
+    ${renderWeekTable('gr6', gr6Week, displayMonday, todayForHighlight)}
+    ${renderWeekTable('gr8', gr8Week, displayMonday, todayForHighlight)}
+  </div>`;
+}
+
+function saveStartDate() {
+  const val = document.getElementById('setup-date').value;
+  if (val) {
+    localStorage.setItem('ck_year_start', val);
+    renderPage();
+    updateTeacherPanel();
+  }
+}
+
+// ─── WEEK NAV ─────────────────────────────────────────────────────────────────
+document.getElementById('btn-prev-week').addEventListener('click', function() {
+  setOffset(weekOffset - 1);
+});
+document.getElementById('btn-next-week').addEventListener('click', function() {
+  setOffset(weekOffset + 1);
+});
+document.getElementById('btn-this-week').addEventListener('click', function() {
+  setOffset(0);
+});
+
+// ─── TEACHER MODE ─────────────────────────────────────────────────────────────
+function updateTeacherPanel() {
+  const startStr = localStorage.getItem('ck_year_start') || '2026-09-08';
+  document.getElementById('t-year-start').value = startStr;
+}
+
+document.getElementById('teacher-toggle').addEventListener('click', function(e) {
+  e.preventDefault();
+  if (sessionStorage.getItem('ck_teacher') === '1') {
+    document.getElementById('teacher-panel').classList.toggle('visible');
+    return;
+  }
+  const pin = window.prompt('Enter teacher PIN:');
+  if (pin === '1899') {
+    sessionStorage.setItem('ck_teacher', '1');
+    document.getElementById('teacher-panel').classList.add('visible');
+    updateTeacherPanel();
+  }
+});
+
+document.getElementById('t-save-date').addEventListener('click', function() {
+  const val = document.getElementById('t-year-start').value;
+  if (val) {
+    localStorage.setItem('ck_year_start', val);
+    renderPage();
+  }
+});
+
+document.getElementById('t-exit').addEventListener('click', function() {
+  sessionStorage.removeItem('ck_teacher');
+  document.getElementById('teacher-panel').classList.remove('visible');
+});
+
+if (sessionStorage.getItem('ck_teacher') === '1') {
+  document.getElementById('teacher-panel').classList.add('visible');
+  updateTeacherPanel();
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+renderPage();
+</script>
+</body>
+</html>
