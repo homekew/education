@@ -1638,7 +1638,7 @@ function renderSetupBanner() {
     <div>
       <p>Before we start, when does your school year begin?</p>
       <label for="setup-date">School year start date</label>
-      <input type="date" id="setup-date" value="2026-09-08">
+      <input type="date" id="setup-date" value="2026-09-01">
       <button class="btn-primary" onclick="saveStartDate()">Start School Year</button>
     </div>
   </div>`;
@@ -1655,7 +1655,7 @@ function saveStartDate() {
 
 // ─── TEACHER MODE ─────────────────────────────────────────────────────────────
 function updateTeacherPanel() {
-  const startStr = localStorage.getItem('ck_year_start') || '2026-09-08';
+  const startStr = localStorage.getItem('ck_year_start') || '2026-09-01';
   document.getElementById('t-year-start').value = startStr;
   updateTeacherUndoButtons();
 }
