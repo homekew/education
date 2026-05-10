@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Unit 3: Debug & Deploy — 8th Grade Language Arts</title>
+  <title>Unit 3: Star Wars: Who's Really the Hero? — 8th Grade Language Arts</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -89,6 +89,22 @@
     .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
     .vocab-item { font-size: 0.84rem; line-height: 1.5; color: var(--ink-soft); }
     .vocab-word { font-weight: 700; color: var(--ink); }
+
+    .teacher-note { background: var(--linen-dark); border: 1px solid var(--linen-deep); border-radius: 6px; padding: 12px 16px; margin: 12px 0; font-size: 0.8rem; color: var(--ink-muted); line-height: 1.6; }
+    .teacher-note-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; }
+
+    .structure-box { background: var(--sky-bg); border: 1px solid #c2d8e4; border-radius: 6px; padding: 14px 18px; margin: 10px 0; }
+    .structure-box-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #3a6a7a; margin-bottom: 8px; }
+    .structure-list { list-style: none; padding: 0; margin: 0; counter-reset: struct-counter; }
+    .structure-list li { counter-increment: struct-counter; padding-left: 28px; position: relative; margin-bottom: 5px; font-size: 0.84rem; color: var(--ink); line-height: 1.5; }
+    .structure-list li::before { content: counter(struct-counter) "."; position: absolute; left: 0; font-weight: 700; color: var(--sky); font-size: 0.8rem; top: 1px; }
+
+    .writing-summary { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 18px 24px; margin: 0 0 24px 0; }
+    .writing-summary-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 12px; }
+    .writing-summary table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+    .writing-summary th { text-align: left; font-weight: 600; color: var(--ink-soft); border-bottom: 1px solid var(--linen-deep); padding: 6px 10px 6px 0; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; }
+    .writing-summary td { padding: 7px 10px 7px 0; color: var(--ink); border-bottom: 1px solid var(--linen); vertical-align: top; line-height: 1.5; }
+    .writing-summary tr:last-child td { border-bottom: none; }
   </style>
 </head>
 <body>
@@ -134,809 +150,642 @@
 <!-- END PIN GATE -->
 
 <nav class="site-nav">
-  <a class="nav-brand" href="index.html"><span class="nav-dot"></span> Homeschool Curriculum</a>
-  <ul class="site-nav-links"><li><a href="today.html">Today</a></li><li><a href="this_week.html">This Week</a></li><li><a href="8th_grade_language_arts.html">← Language Arts</a></li></ul>
+  <a class="nav-brand" href="index_revised.html"><span class="nav-dot"></span> Carr Kids HQ</a>
+  <ul class="site-nav-links"><li><a href="today_revised.html">Today</a></li><li><a href="this_week_revised.html">This Week</a></li><li><a href="8th_grade_language_arts.html">← Language Arts</a></li></ul>
 </nav>
 <div class="page-header">
   <div class="eyebrow">Unit 3 of 6 · 8th Grade Language Arts</div>
-  <h1>Debug &amp; Deploy</h1>
-  <p class="tagline">Code, AI, and the future — write documentation, then argue your position on technology.</p>
+  <h1>Star Wars: Who's Really the Hero?</h1>
+  <p class="tagline">Literary argument — claim, evidence, analysis, counterclaim. Using the galaxy far, far away to build real high school writing skills.</p>
 </div>
-<nav class="week-nav"><a href="#overview">Overview</a><span class="sep">›</span><a href="#w1">Week 1</a> <a href="#w2">Week 2</a> <a href="#w3">Week 3</a> <a href="#w4">Week 4</a> <a href="#w5">Week 5</a> <a href="#w6">Week 6</a><span class="sep">›</span><a href="#showcase">Showcase</a></nav>
+<nav class="week-nav"><a href="#overview">Overview</a><span class="sep">›</span><a href="#w1">Week 1</a> <a href="#w2">Week 2</a> <a href="#w3">Week 3</a> <a href="#w4">Week 4</a><span class="sep">›</span><a href="#showcase">Showcase</a></nav>
 <div class="container">
   <div class="overview-strip" id="overview">
-    <div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">13–18 (December–January)</div></div>
-    <div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">Computing history articles · Asimov's Three Laws (1942) · AI ethics opinion pieces (Common Sense Media, MIT Technology Review) · student-selected current AI news article</div></div>
-    <div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Technical · Persuasive · Argument</div></div>
-    <div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">Scratch · Claude / Cowork · Google Docs</div></div>
-    <div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">Documented Scratch project + persuasive AI essay</div></div>
-    <div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR W.8.1 · W.8.2 · RI.8.8</div></div>
+    <div class="ov-item"><div class="ov-label">Weeks</div><div class="ov-val">9–12</div></div>
+    <div class="ov-item"><div class="ov-label">Anchor Text</div><div class="ov-val">Star Wars Episodes I–VI (film clips) · Darth Vader #1–3 (2015 comic, Kieron Gillen) · Star Wars Adventures (short comics)</div></div>
+    <div class="ov-item"><div class="ov-label">Writing Focus</div><div class="ov-val">Literary Argument</div></div>
+    <div class="ov-item"><div class="ov-label">Computer Tool</div><div class="ov-val">Google Docs</div></div>
+    <div class="ov-item"><div class="ov-label">Showcase</div><div class="ov-val">2-paragraph argument + oral defense</div></div>
+    <div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR RL.8.3 · W.8.1 · SL.8.4</div></div>
   </div>
 
   <div class="vocab-strip">
     <div class="vocab-strip-label">Key Vocabulary — 5 Words This Unit</div>
     <div class="vocab-grid">
-      <div class="vocab-item"><span class="vocab-word">algorithm</span> — a step-by-step set of instructions that a computer (or person) follows to complete a task</div>
-      <div class="vocab-item"><span class="vocab-word">argument</span> — a claim supported by evidence and reasoning, designed to persuade</div>
-      <div class="vocab-item"><span class="vocab-word">counterclaim</span> — a position that challenges or opposes your main argument</div>
-      <div class="vocab-item"><span class="vocab-word">bias</span> — a tendency to favor one perspective or outcome, which can distort reasoning or evidence</div>
-      <div class="vocab-item"><span class="vocab-word">ethics</span> — the study of right and wrong, especially in situations where values or interests conflict</div>
+      <div class="vocab-item"><span class="vocab-word">protagonist</span> — the character whose journey a story centers on; not always the same as the hero</div>
+      <div class="vocab-item"><span class="vocab-word">claim</span> — an arguable statement that takes a position and can be supported with evidence</div>
+      <div class="vocab-item"><span class="vocab-word">evidence</span> — specific, observable details from a text (action, dialogue, narrative framing) used to support a claim</div>
+      <div class="vocab-item"><span class="vocab-word">analysis</span> — the explanation of what evidence proves; the "because" after the "what"</div>
+      <div class="vocab-item"><span class="vocab-word">counterclaim</span> — a reasonable argument on the opposite side that a good arguer addresses directly</div>
     </div>
+  </div>
+
+  <div class="writing-summary">
+    <div class="writing-summary-label">Writing Task Summary — Teacher Reference</div>
+    <table>
+      <thead><tr><th>When</th><th>Task</th><th>Format &amp; Length</th></tr></thead>
+      <tbody>
+        <tr><td>W1 Fri</td><td>3 claim statements</td><td>"[Character] is [claim] because [reason]." — 3 sentences, one claim each</td></tr>
+        <tr><td>W2 Tue</td><td>3 evidence + analysis pairs supporting claim</td><td>2 sentences per pair (evidence + "This supports my claim because…")</td></tr>
+        <tr><td>W2 Wed</td><td>3 evidence sentences for the counterargument</td><td>2 sentences per piece (evidence + "Someone might argue this shows…")</td></tr>
+        <tr><td>W3 Fri</td><td>1 complete argument paragraph</td><td>150–200 words · 7-sentence structure: claim → evidence → analysis → evidence → analysis → counterclaim → rebuttal</td></tr>
+        <tr><td>W4 Wed</td><td>2-paragraph argument</td><td>250–300 words · Para 1: claim + 2 evidence/analysis pairs · Para 2: counterclaim + rebuttal + closing</td></tr>
+        <tr><td>W4 Fri</td><td>Oral defense (no new writing)</td><td>Read argument aloud · answer 2 challenge questions · brief discussion</td></tr>
+      </tbody>
+    </table>
   </div>
 
   <!-- WEEK 1 -->
   <div class="week-card" id="w1">
-    <div class="week-header"><span class="week-num">W1</span><span class="week-title">Reading About Technology</span></div>
+    <div class="week-header"><span class="week-num">W1</span><span class="week-title">Reading Like an Arguer</span></div>
     <div class="week-body">
+      <p style="font-size:0.86rem; color:var(--ink-soft); margin-bottom:16px; line-height:1.6;">Goal: Understand the difference between <em>protagonist</em> (narrative center) and <em>hero</em> (moral ideal). Begin making arguable claims.</p>
       <div class="days-list">
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Mon</span>
-            <span class="day-summary">What is code? History of computing + who Turing was</span>
-            <span class="comp comp-read">Reading</span>
+            <span class="day-summary">Viewing: opening 10 min of Episode IV — who does the camera follow?</span>
+            <span class="comp comp-read">Viewing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Open your computing history article (mom will have it ready).</li>
-              <li>Read it all the way through once without stopping.</li>
-              <li>Go back and circle or highlight any part about Alan Turing.</li>
-              <li>Tell mom one thing Turing did that surprised you.</li>
+              <li>Watch the opening 10 minutes of <em>A New Hope</em> (Episode IV). Don't just watch — pay attention to camera choices. Who does the camera follow first? Who has the most screen time in those 10 minutes?</li>
+              <li>Open Google Docs. Write 2 sentences using the templates below.</li>
+              <li>Read your sentences back. Does the second one feel like a real claim — a position, not just a description?</li>
             </ol>
-            <div class="talk-tip">💬 Say out loud: "The thing I found most interesting was…" or "I didn't know that computers were invented because…"</div>
-            <div class="done-when">✓ Done when: you've read the article and shared one Turing fact out loud.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — Sentence Templates</div>
+              <p>Write these 2 sentences exactly — fill in the blanks:</p>
+              <p class="prompt-starter">"The opening of Episode IV focuses on ___ because ___."</p>
+              <p class="prompt-starter">"This suggests the protagonist is ___."</p>
+              <p>The first sentence describes what you observed. The second sentence is your interpretation — what that observation means. These are two different moves.</p>
+              <p class="prompt-length">Length: 2 sentences · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: 2 sentences in Google Docs — one observation, one interpretation.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Tue</span>
-            <span class="day-summary">Read "What is AI?" article — find the main claims</span>
+            <span class="day-summary">Reading: Darth Vader #1 (2015) — is Vader the protagonist of this comic?</span>
             <span class="comp comp-read">Reading</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Read the "What is AI and how does it work?" article.</li>
-              <li>While reading, put a star next to any sentence that makes a big claim (like "AI will change everything").</li>
-              <li>Find two sentences that are claims — things the writer is arguing, not just facts.</li>
-              <li>Tell mom the two claims you found.</li>
+              <li>Read the teacher-provided excerpt from <em>Darth Vader</em> #1 (2015, Kieron Gillen) — this is the scene right after Episode III where Vader is being rebuilt and punished by the Emperor.</li>
+              <li>Notice: whose perspective does the story follow? Who does the narration center on?</li>
+              <li>Open Google Docs. Write 2 sentences using the templates below.</li>
             </ol>
-            <div class="talk-tip">💬 Say out loud: "The writer claims that…" or "One thing they're arguing is…"</div>
-            <div class="done-when">✓ Done when: you've found and explained two claims from the article.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — Definition + Application</div>
+              <p>Write these 2 sentences:</p>
+              <p class="prompt-starter">Sentence 1: "A protagonist is ___." (define it in your own words — do not copy the vocab page)</p>
+              <p class="prompt-starter">Sentence 2: "In <em>Darth Vader</em> #1, Vader [is / is not] the protagonist because ___."</p>
+              <p>The point: the story follows Vader and centers on his experience. That makes him the protagonist regardless of whether he's a good person. Keep that idea in mind — it's what this whole unit is about.</p>
+              <p class="prompt-length">Length: 2 sentences · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: both sentences are in Google Docs. The definition must be in your own words.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Wed</span>
-            <span class="day-summary">Write: explain how a Scratch program works to someone who's never seen code</span>
-            <span class="comp comp-write">Writing</span>
+            <span class="day-summary">Viewing: Anakin/Padmé scenes from Episode III — does wanting good things make you a hero?</span>
+            <span class="comp comp-read">Viewing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Think of something from real life that works like code — a recipe, a traffic light, or a vending machine.</li>
-              <li>Open Google Docs and write your analogy at the top: "A Scratch program is like a [your choice] because…"</li>
-              <li>Explain what "input" means using your analogy (e.g., pressing buttons on a vending machine).</li>
-              <li>Explain what "process" means (e.g., the machine deciding what to give you).</li>
-              <li>Explain what "output" means (e.g., the snack drops out).</li>
-              <li>Write 3–5 sentences total. Short is fine — clarity wins.</li>
+              <li>Watch the 2 short teacher-selected clips from Episode III featuring Anakin and Padmé — approximately 5 minutes total. Pay attention to what Anakin says he wants and what he actually does.</li>
+              <li>Open Google Docs. Write 3 sentences using the templates below. Sentence 3 is your opinion — there is no wrong answer, but your answer has to be a sentence, not just "yes" or "no."</li>
             </ol>
-            <div class="talk-tip">💬 If writing feels hard, say it out loud first: "OK so a Scratch program is kind of like a [thing]…" — then type what you said.</div>
-            <div class="done-when">✓ Done when: you have 3–5 sentences in Google Docs that explain input, process, and output using a real-life analogy.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — 3-Sentence Analysis</div>
+              <p>Write these 3 sentences:</p>
+              <p class="prompt-starter">Sentence 1: "In these scenes, what Anakin wants is ___."</p>
+              <p class="prompt-starter">Sentence 2: "To get it, he ___."</p>
+              <p class="prompt-starter">Sentence 3: "Wanting something for a good reason [does / does not] make you a hero because ___."</p>
+              <p>Sentence 3 is genuinely your opinion. The point is to start thinking about what "hero" actually means — and whether good intentions are enough.</p>
+              <p class="prompt-length">Length: 3 sentences · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: all 3 sentences are in Google Docs, including your opinion in Sentence 3.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Thu</span>
-            <span class="day-summary">Open Scratch — build a simple animation or interactive story</span>
-            <span class="comp comp-make">Computer</span>
+            <span class="day-summary">Discussion + Writing: two definitions of "hero" — which character fits each one?</span>
+            <span class="comp comp-share">Discussion</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Open Scratch (scratch.mit.edu) — log in or use the offline editor.</li>
-              <li>Choose a sprite (character) and a background.</li>
-              <li>Add at least one "when green flag clicked" block to start your animation.</li>
-              <li>Make something happen — the sprite moves, says something, or changes costume.</li>
-              <li>Press the green flag and watch it work.</li>
-              <li>If you want to keep going and add more, great — but one working thing is the goal.</li>
+              <li>Discuss with Mom: the word "hero" actually gets used two different ways. <strong>Definition 1</strong> — the main character, the person the story centers on. <strong>Definition 2</strong> — someone who does morally good things. These are not always the same person. Can you name a character who fits one definition but not the other?</li>
+              <li>After the discussion, open Google Docs. Write 4 sentences using the exact format below — 2 sentences per definition, each about a different character.</li>
             </ol>
-            <div class="talk-tip">💬 If you get stuck, just try a different block and see what it does — experimenting is the right move in coding.</div>
-            <div class="done-when">✓ Done when: you have a Scratch project where something happens when you press the green flag.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — Two Definitions, Two Characters</div>
+              <p>Write all 4 sentences using this format exactly:</p>
+              <p class="prompt-starter">"By definition 1, ___ is the hero because ___."</p>
+              <p class="prompt-starter">"By definition 2, ___ is the hero because ___."</p>
+              <p>Use a different Star Wars character for each sentence. Your "because" needs to be specific — not just "because they are the main character" but what specifically makes them fit that definition.</p>
+              <p class="prompt-length">Length: 4 sentences total · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: 4 sentences in Google Docs — 2 using Definition 1, 2 using Definition 2, each about a different character.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Fri</span>
-            <span class="day-summary">Demo your Scratch animation — explain what each block does</span>
-            <span class="comp comp-share">Discussion</span>
+            <span class="day-summary">Writing: 3 claim statements — practice the form of an arguable position</span>
+            <span class="comp comp-write">Writing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Open your Scratch project from yesterday.</li>
-              <li>Show mom (or whoever is around) the finished animation.</li>
-              <li>Point to each block in the code and say what it does in plain English.</li>
-              <li>If you don't know what a block does, try removing it and see what breaks — that's how you find out.</li>
+              <li>A claim is an arguable statement — not a fact, not pure opinion, but a position you can defend with evidence. A fact can't be argued ("Darth Vader is Luke's father"). Pure opinion can't be proved ("Anakin is the best character"). A claim takes a position that a reasonable person could disagree with.</li>
+              <li>Write 3 claim statements about Star Wars. Use the exact format below. They don't have to be claims you personally believe — just practice making them arguable and specific.</li>
+              <li>Check each one: could a reasonable person disagree? If yes, it's a claim. If no (it's a fact) or it can't be proved (it's pure taste), revise it.</li>
             </ol>
-            <div class="talk-tip">💬 Say: "This block makes it… and this one tells it to… and if I take this one out, then…"</div>
-            <div class="done-when">✓ Done when: you've explained at least three blocks in your Scratch project out loud.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — Claim Statement</div>
+              <p>Write 3 claim statements. Each must follow this format exactly:</p>
+              <p class="prompt-starter">"[Character] is [your claim] because [specific reason from the story]."</p>
+              <p>Example of a strong claim: "Anakin Skywalker is the true protagonist of the Star Wars saga because the entire six-film arc traces his fall and redemption, not Luke's coming of age."</p>
+              <p>Example of what NOT to write: "Darth Vader is evil." (That's a fact the films establish, not an arguable claim.) / "Luke is the coolest character." (That's pure taste, not an arguable position.)</p>
+              <p class="prompt-length">Length: 3 sentences, one claim each · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: 3 claim statements in Google Docs, each following the exact format above.</div>
           </div>
         </div>
 
       </div>
-      <div class="prompt-box">
-        <div class="prompt-label">Weekly Writing Prompt</div>
-        <p>Explain how a computer program works to someone who has never seen one. Use a real-life analogy (recipe, traffic light, vending machine) to explain input, process, and output.</p>
-        <p class="prompt-starter">"A Scratch program is kind of like a ________, because…"</p>
-        <p class="prompt-length">Length: 3–5 sentences. One clear idea is better than a long confusing explanation.</p>
-      </div>
-      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist-label">Weekly Checklist</div>
       <div class="checklist">
-        <label class="check-item"><input type="checkbox"> Computing history read; one Turing fact shared aloud</label>
-        <label class="check-item"><input type="checkbox"> AI article read; two claims identified and explained</label>
-        <label class="check-item"><input type="checkbox"> Writing prompt: 3–5 sentences explaining input/process/output with a real-life analogy</label>
-        <label class="check-item"><input type="checkbox"> Scratch animation built — at least one thing happens when green flag is clicked</label>
-        <label class="check-item"><input type="checkbox"> Scratch demo done — explained what at least three blocks do out loud</label>
-        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What is your Scratch project supposed to do? Describe it to someone who hasn't seen it, in two sentences.</label>
+        <label class="check-item"><input type="checkbox"> Mon: 2 sentences about Episode IV opening — one observation, one interpretation</label>
+        <label class="check-item"><input type="checkbox"> Tue: 2 sentences — protagonist defined in own words + Vader answer</label>
+        <label class="check-item"><input type="checkbox"> Wed: 3 sentences — what Anakin wants, what he does, your opinion on good intentions</label>
+        <label class="check-item"><input type="checkbox"> Thu: 4 sentences — two definitions of "hero," two different characters</label>
+        <label class="check-item"><input type="checkbox"> Fri: 3 claim statements in the exact format provided</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> <strong>Week check-in:</strong> Read your 3 claims aloud. Which one do you most want to defend? You'll use it all of next week.</label>
       </div>
     </div>
   </div>
 
   <!-- WEEK 2 -->
   <div class="week-card" id="w2">
-    <div class="week-header"><span class="week-num">W2</span><span class="week-title">Code Documentation</span></div>
+    <div class="week-header"><span class="week-num">W2</span><span class="week-title">Finding Your Evidence</span></div>
     <div class="week-body">
+      <p style="font-size:0.86rem; color:var(--ink-soft); margin-bottom:16px; line-height:1.6;">Goal: Learn what counts as evidence in literary argument. Practice finding and writing evidence + analysis pairs.</p>
       <div class="days-list">
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Mon</span>
-            <span class="day-summary">What is a README? Read examples from real projects</span>
+            <span class="day-summary">Lesson: types of literary evidence — action, dialogue, narrative framing</span>
             <span class="comp comp-read">Reading</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Mom will pull up 2–3 README examples from real open-source coding projects.</li>
-              <li>Read through them and notice: what does each one tell you?</li>
-              <li>Find the part that explains what the project does.</li>
-              <li>Find the part that explains how to use it.</li>
-              <li>Tell mom: if you had no idea what this project was, would this README help you? Why or why not?</li>
+              <li>Read the teacher-provided one-page handout on types of literary evidence. The three types are: <strong>action</strong> (what a character does), <strong>dialogue</strong> (what a character says), and <strong>narrative framing</strong> (how the story presents them — camera angles, narration, other characters' reactions to them, visual composition in a comic panel).</li>
+              <li>After reading, open Google Docs. Copy the three type names as headers.</li>
+              <li>Under each header, write one example of that type of evidence from any Star Wars film. Be specific — name the film/scene/character.</li>
             </ol>
-            <div class="talk-tip">💬 Say: "A good README is like a… because it tells you…"</div>
-            <div class="done-when">✓ Done when: you've read two READMEs and shared your opinion on whether they were helpful.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — Evidence Types</div>
+              <p>In Google Docs, write this structure:</p>
+              <p class="prompt-starter">Action: "In [film/scene], [character] [does something specific]. This is action evidence."</p>
+              <p class="prompt-starter">Dialogue: "In [film/scene], [character] says '[specific line or paraphrase].' This is dialogue evidence."</p>
+              <p class="prompt-starter">Narrative Framing: "In [film/scene], the [camera / narration / other characters] [does something specific to frame the character]. This is framing evidence."</p>
+              <p>The "specific" part is required. "Luke does something brave" is not specific. "Luke runs into the hangar bay to rescue R2-D2 even after the base is under attack" is specific.</p>
+              <p class="prompt-length">Length: 3 sentences total, one per evidence type · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: 3 evidence examples in Google Docs — one per type, each naming a specific scene/character/moment.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Tue</span>
-            <span class="day-summary">Writing workshop: who is the audience? What do they need to know?</span>
+            <span class="day-summary">Evidence Hunt: 3 pieces of evidence that SUPPORT your claim</span>
             <span class="comp comp-write">Writing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Think about a piece of tech you know really well — your phone, a game, a device.</li>
-              <li>Imagine explaining it to your grandparent who has never used it.</li>
-              <li>What are the three most important things they'd need to know?</li>
-              <li>Write those three things as bullet points in Google Docs.</li>
-              <li>Then answer: what words would you NOT use when explaining to them?</li>
+              <li>Pick one of your three claim statements from Week 1, Friday. Write it at the top of your Google Doc as a header: "My Claim: ___"</li>
+              <li>Find 3 pieces of evidence from the films or comics that SUPPORT that claim. Think about all three types from Monday — try to use at least 2 different types.</li>
+              <li>For each piece of evidence, write 2 sentences using the format below.</li>
             </ol>
-            <div class="talk-tip">💬 "If I had to teach my grandparent to use [thing], I'd start by explaining… and I'd avoid saying…"</div>
-            <div class="done-when">✓ Done when: you have 3 bullet points explaining the tech to a non-expert audience.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — Evidence + Support</div>
+              <p>For each of your 3 pieces of evidence, write 2 sentences in this exact format:</p>
+              <p class="prompt-starter">Sentence 1: "In [film/comic], [describe specifically what happens, what is said, or how the scene frames the character]."</p>
+              <p class="prompt-starter">Sentence 2: "This supports my claim because ___."</p>
+              <p>Sentence 1 must be specific and observable — something anyone watching the same scene would agree happened. Sentence 2 is your interpretation of what it means.</p>
+              <p class="prompt-length">Length: 6 sentences total (2 per evidence piece, times 3) · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: claim written as header + 3 evidence/support pairs (6 sentences total) in Google Docs.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Wed</span>
-            <span class="day-summary">Plan your Scratch project: write a design spec</span>
+            <span class="day-summary">Evidence Hunt: 3 pieces of evidence AGAINST your claim</span>
             <span class="comp comp-write">Writing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Decide what your main Scratch project will be — a game, a story, a quiz, or something else.</li>
-              <li>Open Google Docs and write a title for your project.</li>
-              <li>Write one sentence: "The goal of this project is to…"</li>
-              <li>Write who it's for: "This project is for people who…"</li>
-              <li>List three features: "Feature 1: …, Feature 2: …, Feature 3: …"</li>
-              <li>Write one sentence about how someone plays or uses it.</li>
+              <li>Now find 3 pieces of evidence that someone could use to argue AGAINST your claim from Tuesday. This is not about admitting you're wrong — this is about knowing the other side cold. The best arguers do this.</li>
+              <li>For each piece, write 2 sentences using the format below. Notice the format is slightly different from Tuesday's — the second sentence uses "Someone might argue" not "This supports my claim."</li>
             </ol>
-            <div class="talk-tip">💬 Say the idea out loud first: "OK so my project is going to be a [thing] where you [do something]…" — then write what you just said.</div>
-            <div class="done-when">✓ Done when: your design spec has a title, goal, audience, three features, and how-to-use in Google Docs.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — Counter-Evidence</div>
+              <p>For each of your 3 counter-evidence pieces, write 2 sentences in this exact format:</p>
+              <p class="prompt-starter">Sentence 1: "In [film/comic], [describe specifically what happens, what is said, or how the scene frames the character]."</p>
+              <p class="prompt-starter">Sentence 2: "Someone might argue this shows ___ because ___."</p>
+              <p>Write the counter-evidence as strongly as you can. A weak counter-evidence ("some people might not agree") is useless. A strong one ("the film cuts to Obi-Wan's grief immediately after this scene, implying the audience is supposed to see Anakin as the villain, not the victim") is what you're aiming for.</p>
+              <p class="prompt-length">Length: 6 sentences total (2 per counter-evidence piece, times 3) · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: 3 counter-evidence/interpretation pairs (6 sentences total) in Google Docs.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Thu</span>
-            <span class="day-summary">Start building your Scratch project; add comments inside the code</span>
-            <span class="comp comp-make">Computer</span>
+            <span class="day-summary">Analysis Practice: write an analysis sentence after each piece of supporting evidence</span>
+            <span class="comp comp-write">Writing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Open Scratch and start a new project.</li>
-              <li>Build the first part of your project — the opening screen or the first action.</li>
-              <li>Right-click on one of your blocks and choose "Add Comment."</li>
-              <li>Write a short note explaining what that section of code does.</li>
-              <li>Add at least one more comment somewhere else in the code.</li>
+              <li>Go back to Tuesday's 3 evidence sentences (Sentence 1 of each pair — the descriptions). Copy them into a new section of your Google Doc.</li>
+              <li>After each one, write a new analysis sentence. This sentence explains what the evidence actually <em>proves</em> — not just what it shows, but what conclusion it forces.</li>
+              <li>Important rule: your analysis sentence cannot start with "This shows" or "This means." Force yourself to vary the sentence structure. See the format below for options.</li>
             </ol>
-            <div class="talk-tip">💬 Comments are notes to your future self — write them the way you'd explain it to a friend: "This part makes the character jump when you press space."</div>
-            <div class="done-when">✓ Done when: you've built the first section of your project and added at least two comments in the code.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — Analysis Sentence</div>
+              <p>After each evidence sentence, write one analysis sentence. It must start with one of these — not "This shows" or "This means":</p>
+              <p class="prompt-starter">"This proves [your claim] because ___."</p>
+              <p class="prompt-starter">"The effect of this is ___."</p>
+              <p class="prompt-starter">"By [doing/saying/framing this], the [film/comic] establishes ___."</p>
+              <p class="prompt-starter">"What this reveals about [character] is ___."</p>
+              <p>Analysis is the hardest move in argument writing. The gap between "here's what happened" and "here's what that proves" is where most arguments fall apart. Filling that gap clearly is the goal.</p>
+              <p class="prompt-length">Length: 3 analysis sentences (one after each of the 3 evidence sentences) · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: 3 analysis sentences added in Google Docs, none starting with "This shows" or "This means."</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Fri</span>
-            <span class="day-summary">Explain your project using only your written spec — no showing the screen</span>
+            <span class="day-summary">Oral: defend your evidence + analysis pairs to Mom — no writing today</span>
             <span class="comp comp-share">Discussion</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Close your laptop or turn away from the screen.</li>
-              <li>Read only from your written design spec document.</li>
-              <li>Explain your project to mom using only what you wrote — no pointing at the screen.</li>
-              <li>Ask: did she understand what it does from just the description?</li>
-              <li>Add one thing to the spec that you realize is missing.</li>
+              <li>Read your claim and your 3 evidence + analysis pairs aloud to Mom.</li>
+              <li>After each pair, Mom will ask one challenge question — "But couldn't that also mean ___?" or "Doesn't that actually prove the opposite?" Your job is to answer out loud, defending why your interpretation is the right one.</li>
+              <li>No writing today. This is oral argument practice — the same skill you'll need in the Week 4 showcase.</li>
+              <li>After all 3 pairs, Mom tells you: which defense was the strongest? Which was the weakest? Note that — it's something to fix in Week 3.</li>
             </ol>
-            <div class="talk-tip">💬 "Based on what I wrote, can you picture what this does? What part is confusing?"</div>
-            <div class="done-when">✓ Done when: you've explained the project from the spec alone and updated it with at least one improvement.</div>
+            <div class="talk-tip">You don't have to be right. You have to have a reason. "Because I think so" is not a reason. "Because in the same scene, the film also shows X, which confirms Y" is a reason.</div>
+            <div class="done-when">Done when: all 3 evidence + analysis pairs defended out loud.</div>
           </div>
         </div>
 
       </div>
-      <div class="prompt-box">
-        <div class="prompt-label">Weekly Writing Prompt</div>
-        <p>Write a design spec for your Scratch project. Include: project title, goal (one sentence), target audience, three main features, and how a user will interact with it.</p>
-        <p class="prompt-starter">"My project is called ______. The goal is to… It's designed for… The three main things it does are…"</p>
-        <p class="prompt-length">Length: about 6–8 sentences total. One clear sentence per section.</p>
-      </div>
-      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist-label">Weekly Checklist</div>
       <div class="checklist">
-        <label class="check-item"><input type="checkbox"> Two README examples read; opinion shared on whether they were helpful</label>
-        <label class="check-item"><input type="checkbox"> Audience exercise: 3 bullet points explaining tech to a non-expert, noting words to avoid</label>
-        <label class="check-item"><input type="checkbox"> Design spec written in Google Docs: title, goal, audience, 3 features, how-to-use</label>
-        <label class="check-item"><input type="checkbox"> Scratch project started; at least two code comments added</label>
-        <label class="check-item"><input type="checkbox"> Project explained from spec alone; at least one gap identified and filled</label>
-        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What is one thing Claude helped you with this week? What is one thing only you could decide?</label>
+        <label class="check-item"><input type="checkbox"> Mon: 3 evidence examples — one per type (action, dialogue, framing), each specific</label>
+        <label class="check-item"><input type="checkbox"> Tue: claim stated as header + 3 supporting evidence/support pairs (6 sentences)</label>
+        <label class="check-item"><input type="checkbox"> Wed: 3 counter-evidence/interpretation pairs (6 sentences)</label>
+        <label class="check-item"><input type="checkbox"> Thu: 3 analysis sentences added — none starting with "This shows" or "This means"</label>
+        <label class="check-item"><input type="checkbox"> Fri: all 3 evidence pairs defended orally; weakest defense identified</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> <strong>Week check-in:</strong> After defending your evidence aloud, is your claim still the one you want to argue — or did something shift?</label>
       </div>
     </div>
   </div>
 
   <!-- WEEK 3 -->
   <div class="week-card" id="w3">
-    <div class="week-header"><span class="week-num">W3</span><span class="week-title">Claude as a Writing Tool</span></div>
+    <div class="week-header"><span class="week-num">W3</span><span class="week-title">Building the Argument</span></div>
     <div class="week-body">
+      <p style="font-size:0.86rem; color:var(--ink-soft); margin-bottom:16px; line-height:1.6;">Goal: Write one complete argument paragraph using the full 7-sentence structure: claim → evidence → analysis → evidence → analysis → counterclaim → rebuttal.</p>
       <div class="days-list">
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Mon</span>
-            <span class="day-summary">Discuss: how does AI help writing — but not replace it?</span>
+            <span class="day-summary">Structure Lesson: the 7-sentence argument paragraph — build your outline</span>
             <span class="comp comp-read">Reading</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Ask mom: "What's the difference between AI helping you write and AI writing for you?"</li>
-              <li>Talk through it together — there's no wrong answer yet, just thinking out loud.</li>
-              <li>Think about a time you used a tool that made something easier but you still had to make decisions — cooking, gaming, building something.</li>
-              <li>Is AI like that? Why or why not? Talk it through.</li>
+              <li>Read the teacher-provided one-page handout on argument paragraph structure.</li>
+              <li>Open Google Docs. Copy the numbered template below — then fill in rough notes for each slot using your work from Weeks 1 and 2. This is an outline, not a draft. Bullets and fragments are fine today. Full sentences come Tuesday.</li>
             </ol>
-            <div class="talk-tip">💬 "I think AI is like [tool] because… but the difference is…"</div>
-            <div class="done-when">✓ Done when: you've had a real back-and-forth conversation about what AI does and doesn't do in writing.</div>
+            <div class="structure-box">
+              <div class="structure-box-label">Argument Paragraph Structure</div>
+              <ol class="structure-list">
+                <li>Claim — your arguable position (from Week 1 Fri)</li>
+                <li>Evidence 1 — one specific, observable detail from a film or comic</li>
+                <li>Analysis 1 — what that evidence proves about your claim</li>
+                <li>Evidence 2 — a second specific, observable detail</li>
+                <li>Analysis 2 — what that second piece of evidence proves</li>
+                <li>Counterclaim — the strongest reasonable argument against your claim</li>
+                <li>Rebuttal — why your claim is still stronger, even given that counterclaim</li>
+              </ol>
+            </div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — Outline Template</div>
+              <p>In Google Docs, copy this numbered list and fill in rough notes for each slot:</p>
+              <p class="prompt-starter">1. Claim: [your claim from W1 Fri, or revised version]</p>
+              <p class="prompt-starter">2. Evidence 1: [specific scene/action/dialogue — a few words is fine]</p>
+              <p class="prompt-starter">3. Analysis 1: [what does it prove?]</p>
+              <p class="prompt-starter">4. Evidence 2: [specific scene/action/dialogue — different from #2]</p>
+              <p class="prompt-starter">5. Analysis 2: [what does it prove?]</p>
+              <p class="prompt-starter">6. Counterclaim: [the best objection someone could raise]</p>
+              <p class="prompt-starter">7. Rebuttal: [why your claim wins anyway]</p>
+              <p class="prompt-length">Today is outline only — fragments and rough notes are fine. Full sentences start Tuesday.</p>
+            </div>
+            <div class="done-when">Done when: all 7 slots filled in Google Docs, even roughly.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Tue</span>
-            <span class="day-summary">Use Claude to help draft or revise a piece of writing — then reflect on it</span>
-            <span class="comp comp-make">Computer</span>
+            <span class="day-summary">Draft: write the full 7-sentence argument paragraph</span>
+            <span class="comp comp-write">Writing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Open Claude (or Cowork) on the computer.</li>
-              <li>Paste in a piece of writing you've done recently (the analogy from Week 1, or the design spec).</li>
-              <li>Ask Claude: "Can you improve this but keep it in my voice?"</li>
-              <li>Read what it gives back. Notice what changed.</li>
-              <li>Pick one sentence Claude wrote that you like better than yours — and one that you think misses the point.</li>
-              <li>Copy both into a new Google Doc with your notes on each.</li>
+              <li>Using your outline from Monday, write a full draft of your argument paragraph in Google Docs. Every sentence must follow the 7-sentence structure.</li>
+              <li>Do not skip sentences 6 and 7 (counterclaim and rebuttal) — they are the two sentences that prove you've thought about the other side. A paragraph without them isn't a full argument.</li>
+              <li>Write the full draft even if some sentences feel awkward. Getting all 7 structural elements down is the goal today — revision comes Wednesday and Thursday.</li>
             </ol>
-            <div class="talk-tip">💬 "This sentence Claude wrote is better because… but this one isn't right because…"</div>
-            <div class="done-when">✓ Done when: you have notes on one thing Claude improved and one thing that wasn't right.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — Full Argument Paragraph Draft</div>
+              <p>Write a single paragraph (no line breaks between sentences). All 7 structural elements must be present. Aim for 150–200 words.</p>
+              <p class="prompt-starter">Sentence 1 (Claim): "___" — your arguable position, stated directly.</p>
+              <p class="prompt-starter">Sentence 2 (Evidence 1): "In [film/comic], ___." — specific and observable.</p>
+              <p class="prompt-starter">Sentence 3 (Analysis 1): "This proves [claim] because ___." (or vary the opening — see Week 2 Thu)</p>
+              <p class="prompt-starter">Sentence 4 (Evidence 2): "In [film/comic], ___." — different from Sentence 2.</p>
+              <p class="prompt-starter">Sentence 5 (Analysis 2): "[Analysis sentence not starting with 'This shows'] ___."</p>
+              <p class="prompt-starter">Sentence 6 (Counterclaim): "One might argue that ___." — state it fairly; don't make it weak.</p>
+              <p class="prompt-starter">Sentence 7 (Rebuttal): "However, ___." — explain why your claim holds despite the counterclaim.</p>
+              <p class="prompt-length">Target: 150–200 words · One unbroken paragraph · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: all 7 structural elements are present in your draft paragraph.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Wed</span>
-            <span class="day-summary">Write a reflection on using Claude as a writing tool</span>
+            <span class="day-summary">Revision — Logic: is every sentence doing its job?</span>
             <span class="comp comp-write">Writing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Open the Google Doc from yesterday with your notes on Claude's edits.</li>
-              <li>Write 3–4 sentences answering: what did you ask Claude to do?</li>
-              <li>Write 1–2 sentences: what did it do well?</li>
-              <li>Write 1–2 sentences: what was wrong, unhelpful, or just not you?</li>
-              <li>Quote the one sentence Claude wrote that you kept — put it in quotation marks.</li>
-              <li>Write one sentence explaining why you kept it or changed it.</li>
+              <li>Read your draft out loud slowly. For each sentence, ask one question: "Is this sentence doing its job?"</li>
+              <li>Check your evidence sentences: are they specific and observable? Could someone who watched the same scene confirm what you described? If not, make them more specific.</li>
+              <li>Check your analysis sentences: do they explain what the evidence <em>proves</em>? Or do they just restate the evidence? Push past description into interpretation.</li>
+              <li>Check your counterclaim: does it fairly represent the other side — or is it a strawman (a weak, easy-to-knock-down version of the opposing argument)? Strengthen it if needed.</li>
+              <li>Check your rebuttal: does it explain why your claim is still stronger — or does it just repeat your claim? A good rebuttal engages with what's true about the counterclaim before explaining why it doesn't change the conclusion.</li>
+              <li>Make your revisions using Track Changes or a new text color so you can see what you changed.</li>
             </ol>
-            <div class="talk-tip">💬 Say it out loud first: "I asked Claude to… It was helpful when… But it messed up when…" — then write what you said.</div>
-            <div class="done-when">✓ Done when: your reflection has a direct quote from Claude and your opinion on whether it worked.</div>
+            <div class="talk-tip">The most common problem: the rebuttal just says "but my claim is still right" without explaining why. That's not a rebuttal — that's repetition. The rebuttal should acknowledge what's true about the other side, then explain the specific reason your claim survives it.</div>
+            <div class="done-when">Done when: logic revision complete — changes visible in Google Docs via Track Changes or color.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Thu</span>
-            <span class="day-summary">Continue Scratch project; use Claude to debug or explain an error</span>
-            <span class="comp comp-make">Computer</span>
+            <span class="day-summary">Revision — Language: precision and sentence variety</span>
+            <span class="comp comp-write">Writing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Open your Scratch project and keep building.</li>
-              <li>If something isn't working right, take a screenshot or describe the problem in words.</li>
-              <li>Go to Claude and ask: "My Scratch project is supposed to [do X] but instead it [does Y]. What might be wrong?"</li>
-              <li>Read Claude's suggestion and try it in Scratch.</li>
-              <li>Did it work? Tell mom what Claude suggested and whether it helped.</li>
+              <li>Read your revised draft from Wednesday. Find any of these vague words or phrases: <em>shows, proves, is important, very, really, a lot, interesting, good, bad, kind of, basically.</em> Highlight them.</li>
+              <li>Replace each highlighted word with something more precise. "This shows that Vader is bad" becomes "This establishes Vader as someone capable of cruelty even toward people he serves." The more specific, the stronger.</li>
+              <li>Now read the paragraph again for sentence variety. Read it out loud — do all your sentences have the same rhythm and length? That gets monotonous fast. Vary it: mix short direct sentences with longer complex ones. Make sure not every sentence starts with "In" or "This."</li>
+              <li>Goal: at least 3 different sentence structures in the paragraph. (You can count: starts-with-character, starts-with-action, starts-with-transition/connector word, inverted sentence, etc.)</li>
             </ol>
-            <div class="talk-tip">💬 Claude is great for debugging — describe exactly what you see and what you want, and it will help you figure out the gap.</div>
-            <div class="done-when">✓ Done when: you've made progress on the Scratch project and tried using Claude to solve at least one problem.</div>
+            <div class="talk-tip">Language precision and sentence variety are the difference between writing that sounds like a middle schooler and writing that sounds like someone going to high school. The thinking might be identical — the language is what signals confidence.</div>
+            <div class="done-when">Done when: vague language replaced with precise language, and at least 3 different sentence structures visible in the paragraph.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Fri</span>
-            <span class="day-summary">Share: one thing Claude helped with, one thing you had to do yourself</span>
-            <span class="comp comp-share">Discussion</span>
+            <span class="day-summary">Final Paragraph: submit clean draft + read aloud + oral defense</span>
+            <span class="comp comp-share">Showcase</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Look back at everything you did with Claude this week.</li>
-              <li>Name one specific thing Claude made easier or better.</li>
-              <li>Name one specific thing you had to decide yourself — something Claude couldn't do for you.</li>
-              <li>Share both with mom and talk about why the second one had to be yours.</li>
+              <li>Accept all tracked changes (or finalize your color-coded revisions). Your paragraph should now be clean — no tracked changes, no bullet points, no template labels. Just your paragraph.</li>
+              <li>Read it aloud to Mom. Hearing it out loud often catches things reading silently misses.</li>
+              <li>Mom will ask you one question that challenges your argument. Answer it out loud in 2–3 sentences. You can look at your paragraph while you answer, but your answer must go beyond what's already written.</li>
             </ol>
-            <div class="talk-tip">💬 "Claude helped me with… but I had to decide [thing] myself because… and AI can't do that because…"</div>
-            <div class="done-when">✓ Done when: you've named and explained one AI win and one thing that required your own judgment.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Final Paragraph — Submission Checklist</div>
+              <p>Before submitting, confirm:</p>
+              <p class="prompt-starter">All 7 structural elements are present (claim, E1, A1, E2, A2, counterclaim, rebuttal)</p>
+              <p class="prompt-starter">No vague language (shows, proves, very, really, interesting, good, bad)</p>
+              <p class="prompt-starter">At least 3 different sentence structures</p>
+              <p class="prompt-starter">Word count: 150–200 words</p>
+              <p class="prompt-starter">Clean format: one unbroken paragraph, full sentences, no bullets</p>
+              <p class="prompt-length">If it passes all 5 checks — it's ready.</p>
+            </div>
+            <div class="done-when">Done when: clean paragraph submitted in Google Docs + one oral challenge answered.</div>
           </div>
         </div>
 
       </div>
-      <div class="prompt-box">
-        <div class="prompt-label">Weekly Writing Prompt</div>
-        <p>Write a reflection on using AI as a writing tool. What did you ask Claude to do? What did it do well? What was wrong or just not you? Quote one sentence Claude wrote and explain what you did with it.</p>
-        <p class="prompt-starter">"I asked Claude to… The part that worked was… The part that felt off was… Here's what it wrote: '[quote]' — I [kept/changed/rejected] this because…"</p>
-        <p class="prompt-length">Length: 4–6 sentences. Must include one direct quote from Claude.</p>
-      </div>
-      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist-label">Weekly Checklist</div>
       <div class="checklist">
-        <label class="check-item"><input type="checkbox"> Discussion: AI as tool vs. AI as replacement — talked through with a real example</label>
-        <label class="check-item"><input type="checkbox"> Used Claude to revise a piece of writing; noted one improvement and one miss</label>
-        <label class="check-item"><input type="checkbox"> Reflection written with a direct Claude quote and your opinion on it</label>
-        <label class="check-item"><input type="checkbox"> Scratch project continued; Claude used to help debug or explain a problem</label>
-        <label class="check-item"><input type="checkbox"> Discussion: named one AI win and one thing that required your own decision</label>
-        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What is your AI ethics claim? Is it specific enough that a reasonable person could disagree with it?</label>
+        <label class="check-item"><input type="checkbox"> Mon: 7-slot outline completed in Google Docs</label>
+        <label class="check-item"><input type="checkbox"> Tue: full draft paragraph — all 7 structural elements present</label>
+        <label class="check-item"><input type="checkbox"> Wed: logic revision — changes visible via Track Changes or color</label>
+        <label class="check-item"><input type="checkbox"> Thu: language revision — vague words replaced, 3+ sentence structures</label>
+        <label class="check-item"><input type="checkbox"> Fri: clean final paragraph submitted (150–200 words) + one oral challenge answered</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> <strong>Week check-in:</strong> Look at your final paragraph next to your Week 1 Fri claim statement. How much more complex is the finished paragraph? That gap is what you learned how to do.</label>
       </div>
     </div>
   </div>
 
   <!-- WEEK 4 -->
   <div class="week-card" id="w4">
-    <div class="week-header"><span class="week-num">W4</span><span class="week-title">AI Ethics — Entering the Argument</span></div>
+    <div class="week-header"><span class="week-num">W4</span><span class="week-title">The Bigger Question — Is the Rebellion Justified?</span></div>
     <div class="week-body">
+      <p style="font-size:0.86rem; color:var(--ink-soft); margin-bottom:16px; line-height:1.6;">Goal: Apply argument skills to a new, morally complex question. Write a 2-paragraph argument. Showcase.</p>
+
+      <div class="teacher-note">
+        <div class="teacher-note-label">Teacher Context</div>
+        This week shifts from "who is the protagonist" to a more complex moral question. The Rebellion destroys the Death Star but also bombs infrastructure, recruits soldiers who die, and in Rogue One sacrifices an entire team on Scarif. Is that justified? There is no correct answer — the point is to make a supported argument. Use short clips from Rogue One and Return of the Jedi (teacher selects 2–3, approximately 10 minutes total). Cassian's "I've done terrible things for the Rebellion" line is particularly strong source material. If the student has seen Andor, that series is excellent for this discussion.
+      </div>
+
       <div class="days-list">
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Mon</span>
-            <span class="day-summary">Read two short op-eds on AI — one pro, one skeptical</span>
-            <span class="comp comp-read">Reading</span>
+            <span class="day-summary">Viewing: Rogue One clips — the Rebellion's moral complexity</span>
+            <span class="comp comp-read">Viewing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Mom will have two short articles ready — one that argues AI is great, one that argues it's risky.</li>
-              <li>Read the first article and note: what is the writer's main claim?</li>
-              <li>Read the second article and note: what is their main claim?</li>
-              <li>For each article, find one piece of evidence they use to back up their claim.</li>
-              <li>Tell mom which argument you find more convincing — and why.</li>
+              <li>Watch the teacher-selected clips from Rogue One: the Scarif mission, Jyn's recruitment, and Cassian telling Jyn that he's done terrible things for the Rebellion. Pay attention to what the Rebellion asks of its people, and what it costs.</li>
+              <li>After watching, open Google Docs. Write the question at the top of your document. Then write your initial position using the format below.</li>
+              <li>This position can change by Friday — it's not a commitment, just a starting point to push against.</li>
             </ol>
-            <div class="talk-tip">💬 "This writer argues that… and backs it up with… I found this [more/less] convincing because…"</div>
-            <div class="done-when">✓ Done when: you've identified the main claim and one piece of evidence in each article.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — Question + Initial Position</div>
+              <p>Write this at the top of a new Google Doc:</p>
+              <p class="prompt-starter">"The question for this week is: Is the Rebellion morally justified in what it does to defeat the Empire?"</p>
+              <p>Then write 1 sentence starting:</p>
+              <p class="prompt-starter">"My initial position is ___."</p>
+              <p>Your initial position should be a complete sentence that takes a stand — yes, no, or a qualified position (e.g., "Yes, but only when ___" or "No, because ___"). One sentence is enough for today.</p>
+              <p class="prompt-length">Length: 2 sentences total · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: question written + initial position sentence in Google Docs.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Tue</span>
-            <span class="day-summary">Argument structure: claim, reason, evidence, rebuttal — map both articles</span>
+            <span class="day-summary">Evidence: find 3 moments that complicate the Rebellion's moral picture</span>
             <span class="comp comp-write">Writing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Take out yesterday's two articles.</li>
-              <li>For Article 1, write: CLAIM = [one sentence]. REASON = [why they think that]. EVIDENCE = [what they cite].</li>
-              <li>For Article 2, do the same thing.</li>
-              <li>Now write one "rebuttal" — pick one claim and write one sentence pushing back on it.</li>
+              <li>Find 3 specific moments from any Star Wars film or comic where the Rebellion does something morally questionable OR where the Empire's actions clearly justify the Rebellion's response. (Both types count — you're building a complex picture, not a one-sided one.)</li>
+              <li>For each moment, write 2 sentences using the Week 2 evidence format.</li>
             </ol>
-            <div class="talk-tip">💬 Say the rebuttal out loud first: "OK they say [X], but the problem with that is…" — then write it.</div>
-            <div class="done-when">✓ Done when: both articles are mapped with claim, reason, evidence — plus one written rebuttal.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — Moral Evidence</div>
+              <p>For each of your 3 moments, write 2 sentences:</p>
+              <p class="prompt-starter">Sentence 1: "In [film/comic], [describe specifically what happens — action, dialogue, or framing]."</p>
+              <p class="prompt-starter">Sentence 2: "This could be used to argue ___ because ___."</p>
+              <p>Notice Sentence 2 uses "could be used to argue" — not "proves" or "shows." This is intentional. You're not committing to an interpretation yet. You're mapping the available evidence before you decide how to use it.</p>
+              <p class="prompt-length">Length: 6 sentences total (2 per moment, times 3) · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: 3 evidence/interpretation pairs in Google Docs.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Wed</span>
-            <span class="day-summary">Choose your position on an AI question — write a claim + 3 reasons outline</span>
+            <span class="day-summary">Draft: write your 2-paragraph argument</span>
             <span class="comp comp-write">Writing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Choose one of these questions: (A) Should AI be allowed to grade student writing? (B) Should there be an age limit on AI tools? (C) Does AI make creative work better or worse?</li>
-              <li>Decide your position — yes, no, or a nuanced answer.</li>
-              <li>Write your claim in one sentence: "I believe that [position] because…"</li>
-              <li>Write three separate reasons why — one sentence each.</li>
-              <li>You'll use these as the foundation for your essay next week.</li>
+              <li>Using your evidence from Tuesday and your initial position from Monday (revise it if your thinking has shifted), write a 2-paragraph argument in Google Docs.</li>
+              <li>This is longer than Week 3 — the goal is to stretch. Target 250–300 words total. That's two solid paragraphs, not two thin ones.</li>
             </ol>
-            <div class="talk-tip">💬 "I chose [question] because I actually care about it. My position is… and I think that because 1)… 2)… 3)…"</div>
-            <div class="done-when">✓ Done when: you have a one-sentence claim and three reasons written in Google Docs.</div>
+            <div class="prompt-box">
+              <div class="prompt-label">Writing Format — 2-Paragraph Argument</div>
+              <p><strong>Paragraph 1</strong> — Your Claim and Evidence:</p>
+              <p class="prompt-starter">Sentence 1: Claim — "The Rebellion [is / is not / is justified only when] ___ because ___."</p>
+              <p class="prompt-starter">Sentence 2: Evidence 1 — a specific moment that supports your claim.</p>
+              <p class="prompt-starter">Sentence 3: Analysis 1 — what that evidence proves (don't start with "This shows").</p>
+              <p class="prompt-starter">Sentence 4: Evidence 2 — a second specific moment.</p>
+              <p class="prompt-starter">Sentence 5: Analysis 2 — what that proves.</p>
+              <p style="margin-top: 10px;"><strong>Paragraph 2</strong> — Counterclaim, Rebuttal, and Closing:</p>
+              <p class="prompt-starter">Sentence 1: Counterclaim — "One might argue that ___." (the strongest version of the other side)</p>
+              <p class="prompt-starter">Sentence 2: Concession — "It is true that ___." (acknowledge what's valid about the counterclaim)</p>
+              <p class="prompt-starter">Sentence 3: Rebuttal — "However, ___." (why your claim still holds)</p>
+              <p class="prompt-starter">Sentence 4: Closing — Restate your position with more nuance than your opening claim. This sentence should be more complex than Paragraph 1, Sentence 1.</p>
+              <p class="prompt-length">Target: 250–300 words · 2 paragraphs · Typed in Google Docs</p>
+            </div>
+            <div class="done-when">Done when: both paragraphs drafted — Paragraph 1 has claim + 2 evidence/analysis pairs; Paragraph 2 has counterclaim + concession + rebuttal + closing.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Thu</span>
-            <span class="day-summary">Research your position — find 2 sources that support it</span>
-            <span class="comp comp-make">Computer</span>
+            <span class="day-summary">Revision: logic, language, and does Para 2 actually engage the counterargument?</span>
+            <span class="comp comp-write">Writing</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Open Google and search for your AI question — try phrases like "should AI grade writing pros and cons" or whatever fits your topic.</li>
-              <li>Find one article or source that supports your position.</li>
-              <li>Find one more source — doesn't have to be a perfect match, just relevant.</li>
-              <li>Copy the title and link of each source into your Google Doc.</li>
-              <li>Write one sentence under each link: what does this source say that helps your argument?</li>
+              <li>Apply the same two-pass revision process from Week 3: first logic (is every sentence doing its job?), then language (replace vague words, vary sentence structure).</li>
+              <li>Then ask one additional question about Paragraph 2: does it actually engage the counterargument — or does it dismiss it? A strong rebuttal acknowledges what's genuinely true about the other side before explaining why your claim is still stronger. If your Paragraph 2 just says "but the Rebellion was right anyway," revise it. Name something specific that makes the counterargument worth taking seriously, then explain why your claim survives it.</li>
+              <li>Read both paragraphs aloud after revising. The argument should build — Paragraph 2 should feel like a response to Paragraph 1, not a restart.</li>
             </ol>
-            <div class="talk-tip">💬 You don't need to read the whole article — skim for one useful fact or claim and write it down.</div>
-            <div class="done-when">✓ Done when: two source links are in your Google Doc, each with a one-sentence note on how they help your argument.</div>
+            <div class="talk-tip">The concession sentence in Paragraph 2 ("It is true that ___") is one of the most important moves in argument writing. It signals intellectual honesty. Readers trust writers who acknowledge complexity. Don't skip it or write a weak version of it.</div>
+            <div class="done-when">Done when: both revision passes complete + Paragraph 2 genuinely engages (not dismisses) the counterargument.</div>
           </div>
         </div>
 
         <div class="day-accordion">
           <div class="day-row" onclick="toggleDay(this)">
             <span class="day-name">Fri</span>
-            <span class="day-summary">Peer debate: defend your position against mom's counter-arguments</span>
-            <span class="comp comp-share">Discussion</span>
-            <span class="day-arrow">▾</span>
-          </div>
-          <div class="day-detail">
-            <ol class="step-list">
-              <li>Tell mom your AI question and your position.</li>
-              <li>Mom will argue the other side — her job is to challenge you.</li>
-              <li>Your job is to keep defending your position using your three reasons and your sources.</li>
-              <li>After the debate, tell mom: which of her counter-arguments was hardest to answer?</li>
-              <li>Write that counter-argument down — you'll need it for your essay.</li>
-            </ol>
-            <div class="talk-tip">💬 "My position is [X] because [reason 1]. Even though some people say [counter], I think [response]…"</div>
-            <div class="done-when">✓ Done when: you've debated for at least 5 minutes and written down the hardest counter-argument you faced.</div>
-          </div>
-        </div>
-
-      </div>
-      <div class="prompt-box">
-        <div class="prompt-label">Weekly Writing Prompt</div>
-        <p>Write your AI argument setup: your claim (1 sentence), your three reasons (1 sentence each), and the strongest counter-argument you can imagine (1 sentence).</p>
-        <p class="prompt-starter">"I believe that [position]. First, … Second, … Third, … The strongest argument against my view is… but I think…"</p>
-        <p class="prompt-length">Length: 5–7 sentences. This is the skeleton of your essay.</p>
-      </div>
-      <div class="checklist-label">✅ Weekly Checklist</div>
-      <div class="checklist">
-        <label class="check-item"><input type="checkbox"> Two AI op-eds read; main claim and one piece of evidence identified in each</label>
-        <label class="check-item"><input type="checkbox"> Argument structure mapped for both articles: claim, reason, evidence, rebuttal</label>
-        <label class="check-item"><input type="checkbox"> AI question chosen; claim + 3 reasons written in Google Docs</label>
-        <label class="check-item"><input type="checkbox"> Two supporting sources found and noted in Google Doc</label>
-        <label class="check-item"><input type="checkbox"> Debate done; hardest counter-argument written down</label>
-        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What is the strongest objection to your argument? How will you respond to it?</label>
-      </div>
-    </div>
-  </div>
-
-  <!-- WEEK 5 -->
-  <div class="week-card" id="w5">
-    <div class="week-header"><span class="week-num">W5</span><span class="week-title">Writing the Persuasive Essay</span></div>
-    <div class="week-body">
-      <div class="days-list">
-
-        <div class="day-accordion">
-          <div class="day-row" onclick="toggleDay(this)">
-            <span class="day-name">Mon</span>
-            <span class="day-summary">Review essay structure — hook, background, thesis, body, counter, conclusion</span>
-            <span class="comp comp-write">Writing</span>
-            <span class="day-arrow">▾</span>
-          </div>
-          <div class="day-detail">
-            <ol class="step-list">
-              <li>Look at the essay structure diagram mom will draw or show you.</li>
-              <li>Match each part to your own argument: what will your hook be? What's your thesis?</li>
-              <li>For each of your three reasons, decide what evidence you'll use (from your Week 4 sources).</li>
-              <li>Identify which counter-argument you'll address (the one from Friday's debate).</li>
-              <li>Write a brief outline — one bullet per section, just the main idea.</li>
-            </ol>
-            <div class="talk-tip">💬 Walk mom through your outline out loud before you write anything: "My intro will… then paragraph 1 is about… paragraph 2 is…"</div>
-            <div class="done-when">✓ Done when: you have a bullet-point outline for all five parts of your essay.</div>
-          </div>
-        </div>
-
-        <div class="day-accordion">
-          <div class="day-row" onclick="toggleDay(this)">
-            <span class="day-name">Tue</span>
-            <span class="day-summary">Draft your introduction and thesis sentence</span>
-            <span class="comp comp-write">Writing</span>
-            <span class="day-arrow">▾</span>
-          </div>
-          <div class="day-detail">
-            <ol class="step-list">
-              <li>Open Google Docs and start a new document titled "[Your AI question] — Essay Draft."</li>
-              <li>Write a hook — one sentence that starts with something interesting, surprising, or direct.</li>
-              <li>Write 1–2 sentences of background: what is the issue and why does it matter?</li>
-              <li>Write your thesis sentence — this should match your claim from Week 4.</li>
-              <li>Read the intro out loud. Does it sound like you? Is the thesis clear?</li>
-            </ol>
-            <div class="talk-tip">💬 Say your hook out loud first: "What if [interesting thing]?" or "Every day, [fact]…" — then write it.</div>
-            <div class="done-when">✓ Done when: you have an intro paragraph with a hook, 1–2 background sentences, and a thesis.</div>
-          </div>
-        </div>
-
-        <div class="day-accordion">
-          <div class="day-row" onclick="toggleDay(this)">
-            <span class="day-name">Wed</span>
-            <span class="day-summary">Draft three body paragraphs — one reason + one piece of evidence each</span>
-            <span class="comp comp-write">Writing</span>
-            <span class="day-arrow">▾</span>
-          </div>
-          <div class="day-detail">
-            <ol class="step-list">
-              <li>For body paragraph 1: write a topic sentence stating your first reason.</li>
-              <li>Write one sentence of evidence (from your sources or from logic/examples).</li>
-              <li>Write one sentence explaining how that evidence supports your reason.</li>
-              <li>Repeat for paragraphs 2 and 3.</li>
-              <li>Each paragraph: topic sentence + evidence + explanation = 3 sentences minimum.</li>
-            </ol>
-            <div class="talk-tip">💬 For each paragraph, say it out loud: "My second reason is… I know this because… This matters because…" — then write it.</div>
-            <div class="done-when">✓ Done when: three body paragraphs are drafted, each with a reason, evidence, and explanation.</div>
-          </div>
-        </div>
-
-        <div class="day-accordion">
-  <div class="day-row" onclick="toggleDay(this)">
-    <span class="day-name">Thu</span>
-    <span class="day-summary">Counterclaim practice — write the strongest objection to your own argument, then rebut it</span>
-    <span class="comp comp-write">Writing</span>
-    <span class="day-arrow">▾</span>
-  </div>
-  <div class="day-detail">
-    <ol class="step-list">
-      <li>Open your essay draft. Read your claim (thesis) out loud.</li>
-      <li>Now argue against yourself. Write the strongest possible objection — the reason someone who disagrees with you would give. Start with: "One might argue that…"</li>
-      <li>Write a 2–3 sentence rebuttal. Don't just say "but I'm right." Acknowledge the objection, then explain why your evidence still holds. Start with: "While it is true that… the evidence shows…"</li>
-      <li>Add your counterclaim + rebuttal paragraph to your essay draft, before your conclusion.</li>
-      <li>Read the whole essay aloud now. Does it feel more convincing with the counterargument included?</li>
-    </ol>
-    <div class="talk-tip">💬 Talk option: Argue both sides out loud first — say the objection as strongly as you can, then rebut it. Then write from what you said.</div>
-    <div class="done-when">✓ Done when: counterclaim paragraph (objection + 2–3 sentence rebuttal) added to essay draft</div>
-  </div>
-</div>
-
-        <div class="day-accordion">
-          <div class="day-row" onclick="toggleDay(this)">
-            <span class="day-name">Thu</span>
-            <span class="day-summary">Draft counter-argument paragraph and rebuttal; type full draft</span>
-            <span class="comp comp-make">Computer</span>
-            <span class="day-arrow">▾</span>
-          </div>
-          <div class="day-detail">
-            <ol class="step-list">
-              <li>Use the hardest counter-argument from Friday's debate.</li>
-              <li>Write one sentence fairly stating the other side: "Some people argue that…"</li>
-              <li>Write your rebuttal: "However, [your response]…"</li>
-              <li>Make sure your whole essay is in one Google Doc now — intro, 3 body paragraphs, counter+rebuttal.</li>
-              <li>You still need a conclusion — that comes tomorrow.</li>
-            </ol>
-            <div class="talk-tip">💬 "The strongest counter to my argument is… but I disagree because…"</div>
-            <div class="done-when">✓ Done when: counter-argument paragraph is drafted and your full draft (minus conclusion) is in one Google Doc.</div>
-          </div>
-        </div>
-
-        <div class="day-accordion">
-          <div class="day-row" onclick="toggleDay(this)">
-            <span class="day-name">Fri</span>
-            <span class="day-summary">Peer review: does the argument flow? Is the evidence convincing?</span>
-            <span class="comp comp-share">Discussion</span>
-            <span class="day-arrow">▾</span>
-          </div>
-          <div class="day-detail">
-            <ol class="step-list">
-              <li>Read your draft out loud to mom (or have her read it).</li>
-              <li>Ask her: does the argument make sense in order? Does each paragraph connect to the next?</li>
-              <li>Ask: is there any point where the evidence feels weak or doesn't really prove the reason?</li>
-              <li>Write down two specific things you want to improve before the final version.</li>
-            </ol>
-            <div class="talk-tip">💬 "Does my argument flow, or is there a jump somewhere? Which part did you find least convincing?"</div>
-            <div class="done-when">✓ Done when: you've had peer feedback and written down two specific revision goals.</div>
-          </div>
-        </div>
-
-      </div>
-      <div class="prompt-box">
-        <div class="prompt-label">Weekly Writing Prompt</div>
-        <p>Write your counter-argument paragraph: state the strongest opposing view fairly (1–2 sentences), then write your rebuttal explaining why your position is still correct (1–2 sentences).</p>
-        <p class="prompt-starter">"Some people argue that… They believe this because… However, I think… because…"</p>
-        <p class="prompt-length">Length: 3–4 sentences for the full counter/rebuttal paragraph.</p>
-      </div>
-      <div class="checklist-label">✅ Weekly Checklist</div>
-      <div class="checklist">
-        <label class="check-item"><input type="checkbox"> Essay outline completed — bullet point for each of the five sections</label>
-        <label class="check-item"><input type="checkbox"> Introduction drafted: hook + background + thesis</label>
-        <label class="check-item"><input type="checkbox"> Three body paragraphs drafted: reason + evidence + explanation each</label>
-        <label class="check-item"><input type="checkbox"> Counter-argument + rebuttal paragraph drafted; full draft assembled in Google Docs</label>
-        <label class="check-item"><input type="checkbox"> Peer review done; two specific revision goals written down</label>
-        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> Read your essay introduction aloud. Does the last sentence feel like a position you'd actually defend?</label>
-      </div>
-    </div>
-  </div>
-
-  <!-- WEEK 6 -->
-  <div class="week-card" id="w6">
-    <div class="week-header"><span class="week-num">W6</span><span class="week-title">Final Project &amp; Showcase</span></div>
-    <div class="week-body">
-      <div class="days-list">
-
-        <div class="day-accordion">
-          <div class="day-row" onclick="toggleDay(this)">
-            <span class="day-name">Mon</span>
-            <span class="day-summary">Finalize Scratch project; finish documentation and README</span>
-            <span class="comp comp-make">Computer</span>
-            <span class="day-arrow">▾</span>
-          </div>
-          <div class="day-detail">
-            <ol class="step-list">
-              <li>Open your Scratch project and do a final play-through.</li>
-              <li>Fix any obvious bugs — things that don't work the way you intended.</li>
-              <li>Check that all your code comments are there and make sense.</li>
-              <li>Open your design spec document from Week 2.</li>
-              <li>Update it to match the final project — did anything change from the original plan? Note it.</li>
-            </ol>
-            <div class="talk-tip">💬 A good README honestly says if the plan changed and why — that's real documentation, not cheating.</div>
-            <div class="done-when">✓ Done when: Scratch project is bug-checked, comments are in, and design spec is updated to match the final version.</div>
-          </div>
-        </div>
-
-        <div class="day-accordion">
-          <div class="day-row" onclick="toggleDay(this)">
-            <span class="day-name">Tue</span>
-            <span class="day-summary">Final revision of AI essay — apply feedback from Friday</span>
-            <span class="comp comp-make">Computer</span>
-            <span class="day-arrow">▾</span>
-          </div>
-          <div class="day-detail">
-            <ol class="step-list">
-              <li>Open your essay draft in Google Docs.</li>
-              <li>Look at the two revision goals you wrote on Friday.</li>
-              <li>Fix those two things first.</li>
-              <li>Write your conclusion paragraph: restate your thesis in new words, summarize your three reasons briefly, and end with a strong final sentence.</li>
-              <li>Read the whole essay out loud one more time and fix any sentence that sounds awkward.</li>
-            </ol>
-            <div class="talk-tip">💬 "My conclusion starts with: In conclusion, I still believe… My three reasons were… And finally, [strong closing sentence]."</div>
-            <div class="done-when">✓ Done when: conclusion is written and the two revision goals from peer feedback are addressed.</div>
-          </div>
-        </div>
-
-        <div class="day-accordion">
-          <div class="day-row" onclick="toggleDay(this)">
-            <span class="day-name">Wed</span>
-            <span class="day-summary">Prepare 5-minute showcase: demo the Scratch project + pick essay passages to read</span>
-            <span class="comp comp-write">Writing</span>
-            <span class="day-arrow">▾</span>
-          </div>
-          <div class="day-detail">
-            <ol class="step-list">
-              <li>Plan the order of your showcase: will you demo Scratch first or read the essay first?</li>
-              <li>For the Scratch demo: decide what you'll say while showing it — write 3–4 bullet points as notes.</li>
-              <li>For the essay: pick the two best sentences from your essay to read aloud.</li>
-              <li>Practice going through the showcase from start to finish once, talking aloud.</li>
-            </ol>
-            <div class="talk-tip">💬 You don't have to memorize anything — having bullet notes is totally fine for a showcase.</div>
-            <div class="done-when">✓ Done when: you have a showcase plan and you've run through it once out loud.</div>
-          </div>
-        </div>
-
-        <div class="day-accordion">
-          <div class="day-row" onclick="toggleDay(this)">
-            <span class="day-name">Thu</span>
-            <span class="day-summary">Rehearse the full showcase — live Scratch demo practice</span>
-            <span class="comp comp-share">Discussion</span>
-            <span class="day-arrow">▾</span>
-          </div>
-          <div class="day-detail">
-            <ol class="step-list">
-              <li>Set up your laptop with Scratch open and your essay on the screen.</li>
-              <li>Run the full showcase for mom — Scratch demo + essay reading.</li>
-              <li>Stay under 5 minutes.</li>
-              <li>After, ask mom: what was the clearest part? What was hardest to follow?</li>
-              <li>Make one small adjustment based on her feedback.</li>
-            </ol>
-            <div class="talk-tip">💬 Treat this exactly like the real showcase — same setup, same talk. It makes the real one much easier.</div>
-            <div class="done-when">✓ Done when: full rehearsal completed and one adjustment made based on feedback.</div>
-          </div>
-        </div>
-
-        <div class="day-accordion">
-          <div class="day-row" onclick="toggleDay(this)">
-            <span class="day-name">Fri</span>
-            <span class="day-summary">SHOWCASE: Live Scratch demo + persuasive essay reading</span>
+            <span class="day-summary">SHOWCASE: read aloud, defend 2 challenges, discuss real-world connection</span>
             <span class="comp comp-share">Showcase</span>
             <span class="day-arrow">▾</span>
           </div>
           <div class="day-detail">
             <ol class="step-list">
-              <li>Set up your showcase space with laptop ready.</li>
-              <li>Demo your Scratch project — explain what it does and show it working.</li>
-              <li>Read the two best passages from your AI essay.</li>
-              <li>Tell your audience what you found most interesting or surprising about this unit.</li>
+              <li>Read your final 2-paragraph argument aloud to Mom. Take it at a normal pace — not rushed.</li>
+              <li>Mom plays devil's advocate and asks 2 questions challenging your position. Answer each one out loud in 2–3 sentences. You can glance at your argument but your answers must go beyond what you already wrote.</li>
+              <li>Brief discussion: did your view on the Rebellion question change at all during this week? Does the question of whether the Rebellion is justified remind you of anything in real life — a conflict, a protest, a historical event, a news story? There's no required answer — just talk.</li>
             </ol>
-            <div class="talk-tip">💬 The showcase is a celebration of what you built and argued. You already know this stuff — just show it.</div>
-            <div class="done-when">✓ Done when: Scratch demo + essay reading completed for an audience.</div>
+            <div class="talk-tip">The real-world discussion at the end isn't extra credit — it's the point. Argument writing isn't just a school skill. The same structure (claim, evidence, analysis, counterclaim, rebuttal) is how real adults make real cases in real situations. You're learning that, not just an essay format.</div>
+            <div class="done-when">Done when: argument read aloud + 2 oral challenges answered + real-world discussion complete.</div>
           </div>
         </div>
 
       </div>
-      <div class="prompt-box">
-        <div class="prompt-label">Weekly Writing Prompt</div>
-        <p>Write your essay conclusion: restate your thesis in new words, briefly summarize your three main reasons, and end with a final sentence that's the most memorable in the essay.</p>
-        <p class="prompt-starter">"When I think about [AI question], I still believe… The three strongest reasons are… Ultimately, [final sentence that sticks]."</p>
-        <p class="prompt-length">Length: 3–5 sentences. Your last sentence should be the best one.</p>
-      </div>
-      <div class="checklist-label">✅ Weekly Checklist</div>
+      <div class="checklist-label">Weekly Checklist</div>
       <div class="checklist">
-        <label class="check-item"><input type="checkbox"> Scratch project finalized — bugs fixed, comments checked, design spec updated</label>
-        <label class="check-item"><input type="checkbox"> Essay revised based on peer feedback; conclusion paragraph written</label>
-        <label class="check-item"><input type="checkbox"> Showcase plan made — Scratch notes and two essay passages chosen</label>
-        <label class="check-item"><input type="checkbox"> Full showcase rehearsed; one adjustment made from feedback</label>
-        <label class="check-item"><input type="checkbox"> SHOWCASE delivered — Scratch demo + essay reading completed</label>
-        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> 💬 <strong>Week check-in:</strong> What did writing about AI teach you about how to think about AI?</label>
+        <label class="check-item"><input type="checkbox"> Mon: question + initial position sentence in Google Docs</label>
+        <label class="check-item"><input type="checkbox"> Tue: 3 moral evidence/interpretation pairs (6 sentences)</label>
+        <label class="check-item"><input type="checkbox"> Wed: 2-paragraph argument drafted (250–300 words, both paragraphs complete)</label>
+        <label class="check-item"><input type="checkbox"> Thu: logic + language revision complete; Paragraph 2 genuinely engages counterargument</label>
+        <label class="check-item"><input type="checkbox"> Fri: argument read aloud + 2 challenges answered orally + real-world discussion</label>
+        <label class="check-item" style="border-top:1px solid var(--linen-deep); margin-top:8px; padding-top:8px;"><input type="checkbox"> <strong>Unit check-in:</strong> Look at Week 1 Monday (2 observation sentences) and then at your Week 4 argument. That's the whole unit — from noticing who the camera follows to making a supported moral argument. What's the most useful thing you learned to do?</label>
       </div>
     </div>
   </div>
 
   <div class="showcase-box" id="showcase">
-    <div class="showcase-label">Unit Showcase</div>
-    <h3>Scratch Project + AI Persuasive Essay</h3>
-    <p>A live demo of a completed Scratch project with written documentation (design spec + code comments), plus a 5-paragraph persuasive essay arguing a specific position on AI. Presented in a 5-minute showcase combining demo and reading.</p>
+    <div class="showcase-label">Unit 3 Showcase</div>
+    <h3>2-Paragraph Argument + Oral Defense</h3>
+    <p>A complete 2-paragraph literary argument answering the question: "Is the Rebellion morally justified in what it does to defeat the Empire?" The argument uses the full claim → evidence → analysis → counterclaim → rebuttal structure developed across the unit. Presented by reading aloud, then defending the argument against 2 challenge questions in real time.</p>
   </div>
 </div>
-<footer class="site-footer">Homeschool Curriculum Hub · Oregon · <a href="8th_grade_language_arts.html">← Language Arts</a></footer>
+<footer class="site-footer">Carr Kids HQ · Oregon · <a href="8th_grade_language_arts.html">← Language Arts</a></footer>
 <script>
 function toggleDay(row) {
   var detail = row.nextElementSibling;

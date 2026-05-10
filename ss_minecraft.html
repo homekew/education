@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oregon History in Minecraft — Social Studies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, doc, setDoc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // ── PASTE YOUR FIREBASE CONFIG HERE ──────────────────────────────
+    const firebaseConfig = {
+      apiKey:            "REPLACE_WITH_YOUR_API_KEY",
+      authDomain:        "REPLACE.firebaseapp.com",
+      projectId:         "REPLACE_WITH_PROJECT_ID",
+      storageBucket:     "REPLACE.appspot.com",
+      messagingSenderId: "REPLACE",
+      appId:             "REPLACE"
+    };
+    // ─────────────────────────────────────────────────────────────────
+
+    const app = initializeApp(firebaseConfig);
+    const db  = getFirestore(app);
+
+    // Expose helpers on window so non-module scripts can call them
+    window._fbDb = db;
+    window._fbDoc = doc;
+    window._fbSetDoc = setDoc;
+    window._fbGetDoc = getDoc;
+    window._fbCollection = collection;
+    window._fbGetDocs = getDocs;
+
+    window._fbReady = true;
+    document.dispatchEvent(new Event('firebase-ready'));
+  </script>
+  <style>
+    :root { --linen:#FAF7F1; --linen-dark:#F0EBE0; --linen-deep:#DDD4C4; --terra:#ff1e3c; --terra-bg:#fff0f2; --terra-soft:#ffb3bc; --sage:#d2c35a; --sage-bg:#faf8e8; --sage-soft:#ece8b0; --sky:#7FA3B5; --sky-bg:#EBF3F7; --sky-soft:#b8d4e0; --ink:#2A2118; --ink-soft:#5C4F3D; --ink-muted:#9A8F81; --white:#FFFFFF; --moss:#5a7a4a; --moss-bg:#f0f5ec; --moss-soft:#b8d4a8; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Epilogue', sans-serif; background: var(--linen);
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='400'><g fill='none' stroke='%23d2c35a' stroke-width='1.5' opacity='0.22'><path d='M 62.0,24.0 L 58.9,33.7 L 48.7,33.7 L 56.9,39.6 L 53.8,49.3 L 62.0,43.3 L 70.2,49.3 L 67.1,39.6 L 75.3,33.7 L 65.1,33.7 Z'/><path d='M 220.0,14.0 L 217.5,21.6 L 209.5,21.6 L 216.0,26.3 L 213.5,33.9 L 220.0,29.2 L 226.5,33.9 L 224.0,26.3 L 230.5,21.6 L 222.5,21.6 Z'/><path d='M 390.0,22.0 L 387.1,31.0 L 377.6,31.0 L 385.3,36.5 L 382.4,45.5 L 390.0,39.9 L 397.6,45.5 L 394.7,36.5 L 402.4,31.0 L 392.9,31.0 Z'/><path d='M 160.0,267.0 L 157.1,276.0 L 147.6,276.0 L 155.3,281.5 L 152.4,290.5 L 160.0,284.9 L 167.6,290.5 L 164.7,281.5 L 172.4,276.0 L 162.9,276.0 Z'/><path d='M 320.0,260.0 L 317.8,266.9 L 310.5,266.9 L 316.4,271.2 L 314.1,278.1 L 320.0,273.8 L 325.9,278.1 L 323.6,271.2 L 329.5,266.9 L 322.2,266.9 Z'/></g></svg>");
+      background-size: 500px 400px; background-repeat: repeat; color: var(--ink); line-height: 1.7; font-size: 15px; }
+
+    nav.site-nav { background: var(--white); border-bottom: 1px solid var(--linen-deep); padding: 0 40px; height: 54px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+    .nav-brand { font-family: 'Fraunces', serif; font-size: 0.95rem; font-weight: 500; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 9px; }
+    .nav-dot { width: 8px; height: 8px; background: var(--terra); border-radius: 50%; display: inline-block; }
+    .site-nav-links { display: flex; gap: 28px; list-style: none; }
+    .site-nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--ink-muted); text-decoration: none; transition: color 0.15s; }
+    .site-nav-links a:hover { color: var(--terra); }
+
+    .page-header { background: var(--linen-dark); border-bottom: 1px solid var(--linen-deep); padding: 36px 40px 32px; }
+    .eyebrow { font-size: 0.67rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--moss); margin-bottom: 8px; }
+    .page-header h1 { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 500; color: var(--ink); margin-bottom: 0; }
+    .page-header .tagline { font-size: 0.95rem; color: var(--ink-soft); margin-top: 8px; }
+
+    .week-nav { background: var(--white); border-bottom: 2px solid var(--linen-deep); padding: 0 40px; position: sticky; top: 0; z-index: 100; display: flex; gap: 4px; flex-wrap: wrap; align-items: center; min-height: 44px; }
+    .week-nav a { color: var(--ink-muted); text-decoration: none; font-size: 0.77rem; font-weight: 600; padding: 10px 10px; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color 0.15s, border-color 0.15s; white-space: nowrap; }
+    .week-nav a:hover { color: var(--moss); border-color: var(--moss); }
+    .week-nav .sep { color: var(--linen-deep); font-size: 0.75rem; }
+    .week-nav .unit-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-muted); padding: 0 4px; }
+
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 40px; }
+
+    .overview-strip { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 20px 24px; margin: 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+    .ov-item .ov-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
+    .ov-item .ov-val { font-size: 0.9rem; color: var(--ink); line-height: 1.5; }
+
+    .role-banner { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0 0 24px 0; }
+    .role-card { border-radius: 8px; padding: 14px 18px; }
+    .role-card.r8 { background: var(--terra-bg); border: 1px solid var(--terra-soft); }
+    .role-card.r6 { background: var(--sky-bg); border: 1px solid var(--sky-soft); }
+    .role-card .role-name { font-size: 0.63rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+    .role-card.r8 .role-name { color: var(--terra); }
+    .role-card.r6 .role-name { color: var(--sky); }
+    .role-card .role-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+    .role-card .role-desc { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.5; }
+
+    .unit-section { margin-bottom: 40px; }
+    .unit-header { background: var(--moss-bg); border: 1px solid var(--moss-soft); border-radius: 8px; padding: 16px 24px; margin-bottom: 16px; }
+    .unit-eyebrow { font-size: 0.63rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--moss); margin-bottom: 4px; }
+    .unit-header h2 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+    .unit-header p { font-size: 0.87rem; color: var(--ink-soft); line-height: 1.5; }
+
+    .week-card { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+    .week-header { background: var(--linen-dark); border-bottom: 1px solid var(--linen-deep); padding: 16px 24px; display: flex; align-items: baseline; gap: 14px; }
+    .week-num { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 500; color: var(--moss); line-height: 1; }
+    .week-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); }
+    .week-body { padding: 20px 24px; }
+
+    .days-list { margin-bottom: 16px; }
+    .day-accordion { border: 1px solid var(--linen-deep); border-radius: 8px; overflow: hidden; margin-bottom: 7px; }
+    .day-row { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; background: var(--white); transition: background 0.15s; user-select: none; }
+    .day-row:hover { background: var(--linen); }
+    .day-row.open { background: var(--moss-bg); }
+    .day-name { font-weight: 700; color: var(--ink-soft); min-width: 40px; font-size: 0.82rem; flex-shrink: 0; }
+    .day-summary { flex: 1; font-size: 0.83rem; color: var(--ink); line-height: 1.4; }
+    .day-arrow { color: var(--ink-muted); font-size: 0.75rem; transition: transform 0.2s; flex-shrink: 0; }
+    .day-row.open .day-arrow { transform: rotate(180deg); }
+    .day-detail { display: none; padding: 0; background: var(--linen); border-top: 1px solid var(--linen-deep); }
+
+    .grade-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .grade-block { padding: 14px 18px 16px; }
+    .grade-block.g8 { background: #fff8f8; border-right: 1px solid var(--linen-deep); }
+    .grade-block.g6 { background: #f3f8fb; }
+    .grade-block-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .g8 .grade-block-label { color: var(--terra); }
+    .g6 .grade-block-label { color: var(--sky); }
+    .grade-block-label::before { content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .g8 .grade-block-label::before { background: var(--terra); }
+    .g6 .grade-block-label::before { background: var(--sky); }
+
+    .step-list { list-style: none; padding: 0; margin: 0 0 10px 0; counter-reset: step-counter; }
+    .step-list li { counter-increment: step-counter; padding-left: 28px; position: relative; margin-bottom: 8px; font-size: 0.83rem; color: var(--ink); line-height: 1.5; }
+    .step-list li::before { content: counter(step-counter) "."; position: absolute; left: 0; font-weight: 700; color: var(--ink-muted); font-size: 0.8rem; top: 1px; }
+    .talk-tip { background: var(--sage-bg); border-left: 3px solid var(--sage); border-radius: 0 5px 5px 0; padding: 7px 12px; margin: 8px 0; font-size: 0.8rem; color: #5c5210; line-height: 1.5; }
+    .done-when { font-size: 0.78rem; font-weight: 600; color: var(--moss); border-top: 1px solid var(--linen-deep); padding-top: 9px; margin-top: 10px; }
+
+    .prompt-box { background: var(--sage-bg); border: 1px solid var(--sage-soft); border-radius: 6px; padding: 14px 18px; margin-top: 12px; }
+    .prompt-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #7a6e1a; margin-bottom: 8px; }
+    .prompt-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 6px; }
+    .prompt-box p:last-child { margin-bottom: 0; }
+    .prompt-starter { font-style: italic; }
+    .prompt-length { font-size: 0.78rem; font-weight: 600; color: #7a6e1a; }
+
+    .joint-block { background: var(--moss-bg); border-top: 1px solid var(--moss-soft); padding: 14px 18px 16px; }
+    .joint-block .grade-block-label { color: var(--moss); }
+    .joint-block .grade-block-label::before { background: var(--moss); }
+
+    .showcase-box { background: var(--terra-bg); border: 1px solid var(--terra-soft); border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
+    .showcase-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--terra); margin-bottom: 8px; }
+    .showcase-box h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .showcase-box p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+
+    .vocab-strip { background: var(--white); border: 1px solid var(--linen-deep); border-radius: 8px; padding: 18px 24px; margin: 0 0 24px 0; }
+    .vocab-strip-label { font-size: 0.63rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 12px; }
+    .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+    .vocab-item { font-size: 0.84rem; line-height: 1.5; color: var(--ink-soft); }
+    .vocab-word { font-weight: 700; color: var(--ink); }
+
+    /* ── Day checkboxes ── */
+    .day-checks { display: flex; gap: 5px; flex-shrink: 0; }
+    .check-btn { border: 1.5px solid var(--linen-deep); border-radius: 4px; background: var(--white); font-family: 'Epilogue', sans-serif; font-size: 0.68rem; font-weight: 600; padding: 3px 7px; cursor: pointer; transition: all 0.15s; color: var(--ink-muted); white-space: nowrap; }
+    .check-btn:hover { border-color: var(--ink-muted); color: var(--ink); }
+    .check-btn.done-g8 { background: var(--terra-bg); border-color: var(--terra); color: var(--terra); }
+    .check-btn.done-g6 { background: var(--sky-bg); border-color: var(--sky); color: var(--sky); }
+
+    /* ── Submit zone ── */
+    .submit-zone { border-top: 1px solid var(--linen-deep); }
+    .submit-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .submit-panel { padding: 14px 18px 16px; }
+    .submit-panel.sp-g8 { background: #fff4f5; border-right: 1px solid var(--linen-deep); }
+    .submit-panel.sp-g6 { background: #f0f6fa; }
+    .sp-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .sp-g8 .sp-label { color: var(--terra); }
+    .sp-g6 .sp-label { color: var(--sky); }
+    .sp-textarea { width: 100%; min-height: 72px; padding: 8px 10px; font-family: 'Epilogue', sans-serif; font-size: 0.82rem; border: 1px solid var(--linen-deep); border-radius: 5px; background: var(--white); color: var(--ink); resize: vertical; outline: none; transition: border-color 0.15s; margin-bottom: 8px; display: block; }
+    .sp-textarea:focus { border-color: var(--sage); }
+    .sp-row { display: flex; align-items: center; gap: 10px; }
+    .sp-btn { padding: 6px 16px; background: var(--ink); color: var(--white); border: none; border-radius: 5px; font-family: 'Epilogue', sans-serif; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: background 0.15s; flex-shrink: 0; }
+    .sp-btn:hover { background: var(--ink-soft); }
+    .sp-btn:disabled { background: var(--linen-deep); cursor: default; }
+    .sp-status { font-size: 0.75rem; color: var(--moss); }
+    .sp-prev { font-size: 0.78rem; color: var(--ink-soft); background: var(--white); border: 1px solid var(--linen-deep); border-radius: 5px; padding: 8px 10px; margin-top: 8px; line-height: 1.5; display: none; }
+    .sp-prev-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 4px; }
+
+    footer.site-footer { background: var(--white); border-top: 1px solid var(--linen-deep); padding: 16px 40px; font-size: 0.75rem; color: var(--ink-muted); margin-top: 40px; }
+    @media (max-width: 700px) {
+      nav.site-nav, .page-header, .container, footer.site-footer, .week-nav { padding-left: 20px; padding-right: 20px; }
+      .grade-split { grid-template-columns: 1fr; }
+      .role-banner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PIN GATE -->
+<style>
+  #pin-gate { position: fixed; inset: 0; z-index: 9999; background: #FAF7F1; display: flex; align-items: center; justify-content: center; font-family: 'Epilogue', sans-serif; }
+  #pin-gate.hidden { display: none; }
+  .pin-box { text-align: center; background: #fff; border: 1px solid #DDD4C4; border-radius: 12px; padding: 48px 40px 40px; width: 320px; box-shadow: 0 4px 32px rgba(42,33,24,0.08); }
+  .pin-logo { width: 10px; height: 10px; background: #ff1e3c; border-radius: 50%; display: inline-block; margin-bottom: 16px; }
+  .pin-title { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; color: #2A2118; margin-bottom: 6px; }
+  .pin-sub { font-size: 0.8rem; color: #9A8F81; margin-bottom: 28px; }
+  #pin-input { width: 100%; padding: 11px 14px; font-size: 1.4rem; letter-spacing: 8px; text-align: center; border: 1px solid #DDD4C4; border-radius: 6px; background: #FAF7F1; color: #2A2118; font-family: 'Epilogue', sans-serif; outline: none; margin-bottom: 14px; transition: border-color 0.15s; }
+  #pin-input:focus { border-color: #d2c35a; }
+  #pin-input.error { border-color: #ff1e3c; animation: shake 0.3s; }
+  @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  #pin-btn { width: 100%; padding: 10px; background: #2A2118; color: #fff; border: none; border-radius: 6px; font-family: 'Epilogue', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: background 0.15s; }
+  #pin-btn:hover { background: #5C4F3D; }
+</style>
+<div id="pin-gate">
+  <div class="pin-box">
+    <div class="pin-logo"></div>
+    <div class="pin-title">Carr Kids HQ</div>
+    <div class="pin-sub">Enter your PIN to continue</div>
+    <input id="pin-input" type="password" inputmode="numeric" maxlength="4" placeholder="····" autocomplete="off">
+    <button id="pin-btn">Enter</button>
+  </div>
+</div>
+<script>
+  (function() {
+    var gate = document.getElementById('pin-gate');
+    var input = document.getElementById('pin-input');
+    var btn = document.getElementById('pin-btn');
+    if (sessionStorage.getItem('ck_auth') === '1') { gate.classList.add('hidden'); return; }
+    function check() {
+      if (input.value === '1899') { sessionStorage.setItem('ck_auth', '1'); gate.classList.add('hidden'); }
+      else { input.classList.add('error'); input.value = ''; setTimeout(function(){ input.classList.remove('error'); }, 400); }
+    }
+    btn.addEventListener('click', check);
+    input.addEventListener('keydown', function(e){ if (e.key === 'Enter') check(); });
+    input.focus();
+  })();
+</script>
+
+<nav class="site-nav">
+  <a class="nav-brand" href="index_revised.html"><span class="nav-dot"></span> Carr Kids HQ</a>
+  <ul class="site-nav-links">
+    <li><a href="today_revised.html">Today</a></li>
+    <li><a href="this_week_revised.html">This Week</a></li>
+    <li><a href="index_revised.html">← Hub</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">Social Studies · Semester-Long · Both Grades</div>
+  <h1>Oregon History in Minecraft</h1>
+  <p class="tagline">One shared world. Both of you building. Twelve weeks of Oregon history from first peoples to today.</p>
+</div>
+
+<nav class="week-nav">
+  <a href="#overview">Overview</a>
+  <span class="sep">›</span>
+  <span class="unit-label">Unit 1</span>
+  <a href="#w1">W1</a><a href="#w2">W2</a><a href="#w3">W3</a><a href="#w4">W4</a>
+  <span class="sep">›</span>
+  <span class="unit-label">Unit 2</span>
+  <a href="#w5">W5</a><a href="#w6">W6</a><a href="#w7">W7</a><a href="#w8">W8</a>
+  <span class="sep">›</span>
+  <span class="unit-label">Unit 3</span>
+  <a href="#w9">W9</a><a href="#w10">W10</a><a href="#w11">W11</a><a href="#w12">W12</a>
+</nav>
+
+<div class="container">
+  <div id="overview" style="padding-top: 32px;">
+    <div class="overview-strip">
+      <div class="ov-item"><div class="ov-label">Duration</div><div class="ov-val">12 weeks · 1 semester</div></div>
+      <div class="ov-item"><div class="ov-label">Units</div><div class="ov-val">3 units × 4 weeks</div></div>
+      <div class="ov-item"><div class="ov-label">Platform</div><div class="ov-val">Minecraft — same world, both building</div></div>
+      <div class="ov-item"><div class="ov-label">Writing</div><div class="ov-val">Google Docs · typed only</div></div>
+      <div class="ov-item"><div class="ov-label">Grades</div><div class="ov-val">6th &amp; 8th together</div></div>
+      <div class="ov-item"><div class="ov-label">Standards</div><div class="ov-val">OR SS.8 · RH.6-8 · WHST.6-8 · SL.8.4</div></div>
+    </div>
+
+    <div class="role-banner">
+      <div class="role-card r8">
+        <div class="role-name">8th Grade Role</div>
+        <div class="role-title">Historian &amp; Focal Builder</div>
+        <div class="role-desc">You research, plan, and build the <strong>centerpiece structure</strong> each week — the longhouse, the fort, the courthouse, the cannery. Your build is the landmark that defines the era. You also write a short <strong>Build Brief</strong> each week telling your partner what to build around yours, and keep a running History Log in Google Docs.</div>
+      </div>
+      <div class="role-card r6">
+        <div class="role-name">6th Grade Role</div>
+        <div class="role-title">Community Builder &amp; Chronicler</div>
+        <div class="role-desc">You read the brief and build the <strong>world around</strong> the centerpiece — the homes, paths, farms, markets, and everyday details that bring the place to life. Your builds give context to your partner's landmarks. Each week you write a short <strong>Build Report</strong> in Google Docs.</div>
+      </div>
+    </div>
+
+    <div class="vocab-strip">
+      <div class="vocab-strip-label">Semester Vocabulary</div>
+      <div class="vocab-grid">
+        <div class="vocab-item"><span class="vocab-word">indigenous</span> — originally from a place; Oregon's Native peoples have lived here 15,000+ years</div>
+        <div class="vocab-item"><span class="vocab-word">sovereignty</span> — the right of a people to govern themselves and control their land</div>
+        <div class="vocab-item"><span class="vocab-word">primary source</span> — a document created at the time of an event (journal, letter, map)</div>
+        <div class="vocab-item"><span class="vocab-word">settlement</span> — when people move to and occupy a new place, often displacing those already there</div>
+        <div class="vocab-item"><span class="vocab-word">statehood</span> — when a territory officially becomes a U.S. state (Oregon: 1859)</div>
+        <div class="vocab-item"><span class="vocab-word">perspective</span> — a point of view shaped by who you are and what you've experienced</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== UNIT 1 ===== -->
+  <div class="unit-section" id="unit1">
+    <div class="unit-header">
+      <div class="unit-eyebrow">Unit 1 · Weeks 1–4</div>
+      <h2>The First Oregonians</h2>
+      <p>Oregon's Native nations have lived here for at least 15,000 years. Before the world grows, you need to understand who this land belongs to. This unit maps the tribes, studies their architecture and lifestyles, and builds an Indigenous Oregon across three biomes — coast, valley, and plateau.</p>
+    </div>
+
+    <!-- W1 -->
+    <div class="week-card" id="w1">
+      <div class="week-header"><span class="week-num">W1</span><span class="week-title">Who Lived Here First — Oregon's Native Nations &amp; the Chinook</span></div>
+      <div class="week-body"><div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">Scout the world together · 8th: map tribes and plan build sites · 6th: read overview</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Research Oregon's tribal territories — search "Oregon tribal nations map." List the 9 major nations and which region each comes from (coast, valley, plateau, basin).</li>
+                  <li>Open Minecraft together and scout for three biomes: coastal area (Chinook), flat inland valley (Kalapuya), desert/mesa (plateau). You call out what you see — your partner navigates.</li>
+                  <li>Mark each site with a different colored block.</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">History Log Entry #1</div>
+                  <p><span class="prompt-starter">Oregon has [number] recognized tribal nations. The ones I hadn't heard of before today include [names]. The region with the most tribes is [region] because [geography reason].</span></p>
+                  <p class="prompt-length">3 sentences. Typed in Google Docs.</p>
+                </div>
+                <div class="done-when">✓ Done when: 9 tribes listed + log entry written + three build sites marked in Minecraft</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Read the overview your teacher gives you about Oregon's first peoples (1–2 paragraphs or 3–5 min video).</li>
+                  <li>Write 2 sentences in your Build Log: one thing that surprised you, one thing you already knew.</li>
+                  <li>Open Minecraft with your partner. Navigate to each biome they call out and help place the marker blocks.</li>
+                </ol>
+                <div class="done-when">✓ Done when: log entry written + three sites flagged together</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue</span>
+            <span class="day-summary">8th: Research Chinook plank houses + start building the longhouse · 6th: gather materials + clear site</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Research the Chinook Nation: plank house construction, size, materials, how they were laid out near water.</li>
+                  <li>In Minecraft, go to the coastal site and start building the main Chinook longhouse — your centerpiece. Use dark oak or spruce logs for the frame. Get the footprint and walls started today.</li>
+                  <li>Write one sentence in your History Log about what you're trying to represent.</li>
+                </ol>
+                <div class="done-when">✓ Done when: research done + longhouse frame started in Minecraft + log note written</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Look at 3–4 images of Chinook plank houses. Notice the roof shape, scale, and materials.</li>
+                  <li>In Minecraft, go to the coastal site and clear/flatten the area around where the longhouse will go. Gather spruce planks, logs, and slabs for the smaller houses you'll build later.</li>
+                  <li>Write one Build Log sentence: "A Chinook plank house looks like ___."</li>
+                </ol>
+                <div class="done-when">✓ Done when: images reviewed + site cleared + materials gathered + log sentence written</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed</span>
+            <span class="day-summary">8th: Finish longhouse + write Build Brief · 6th: Build 2–3 smaller plank houses</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Finish the Chinook longhouse today — roof, interior, any detail you can add (fire pit, sleeping areas using wool, storage).</li>
+                  <li>Write Build Brief #1 telling your partner what to build around it: how many smaller houses, where to place them, what other features (drying racks, canoe storage, fire pits) the village needs.</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Build Brief #1 Template</div>
+                  <p><strong>Centerpiece built:</strong> Chinook longhouse — [describe what you built].</p>
+                  <p><strong>What to build around it:</strong> [number] smaller plank houses, a [feature], a [feature] near the water.</p>
+                  <p><strong>Layout:</strong> Place the houses [arrangement]. Keep them [distance] from the water because [historical reason].</p>
+                  <p><strong>Materials:</strong> Use [blocks] for walls, [blocks] for roofs.</p>
+                  <p class="prompt-length">4–5 sentences. Typed and shared with partner.</p>
+                </div>
+                <div class="done-when">✓ Done when: longhouse complete + Build Brief written and shared</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Read Build Brief #1 when it's ready. While waiting, start building the first smaller plank house near the longhouse site.</li>
+                  <li>Build 2–3 smaller houses to surround the main longhouse. Keep them consistent in style — same materials, similar rooflines.</li>
+                </ol>
+                <div class="done-when">✓ Done when: 2–3 smaller houses built around the longhouse</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu</span>
+            <span class="day-summary">Both: Add village details — drying racks, fire pits, canoe storage, path to water</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Research what a Chinook village had beyond the houses — fish drying racks, canoe storage, curing areas.</li>
+                  <li>In Minecraft, build a canoe storage area (dark oak planks as canoe shapes on the ground near water) and a fish drying rack (fence posts + string).</li>
+                  <li>Add a sign at the longhouse entrance: "Chinook Longhouse — Community Center."</li>
+                </ol>
+                <div class="done-when">✓ Done when: canoe storage + drying rack built + sign placed</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Add community details around the village: fire pits (campfire blocks), a path from the houses down to the water, and a storage area (chests under a small roof).</li>
+                  <li>Place a sign at the village entrance: "Chinook Village — Oregon Coast."</li>
+                </ol>
+                <div class="done-when">✓ Done when: fire pits + path + storage + entrance sign added</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Joint tour · 8th reads History Log · 6th writes Build Report #1 · Discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="joint-block">
+              <div class="grade-block-label">Joint — Both Grades</div>
+              <ol class="step-list">
+                <li>Tour the finished Chinook village together. Each person points out what they built and why they made specific choices.</li>
+                <li><strong>8th grader:</strong> Read your History Log entry #1 aloud. Then share one fact about Chinook life that you tried to put into the build.</li>
+                <li><strong>6th grader:</strong> Write Build Report #1 — 3 sentences: what you built, one challenge, one thing you learned about Chinook villages.</li>
+                <li><strong>Discussion:</strong> "Looking at what we built — what does it tell someone walking through about how the Chinook lived?"</li>
+              </ol>
+              <div class="done-when">✓ Done when: tour given + log read aloud + Build Report #1 written</div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    </div><!-- end W1 -->
+
+    <!-- W2 -->
+    <div class="week-card" id="w2">
+      <div class="week-header"><span class="week-num">W2</span><span class="week-title">The Valley People — Kalapuya &amp; the Willamette</span></div>
+      <div class="week-body"><div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">8th: Research Kalapuya + start tule mat lodge · 6th: Read overview + clear valley site</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Research the Kalapuya (Willamette Valley). Focus on: tule mat lodges, camas root harvesting, seasonal movement. How were they different from the coastal Chinook?</li>
+                  <li>In Minecraft, go to the valley site. Start building a tule mat lodge — it's smaller and oval, not rectangular. Use wool or hay bales for the curved walls, a low sloping roof.</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">History Log — Kalapuya vs. Chinook</div>
+                  <p><span class="prompt-starter">The Kalapuya and Chinook both lived in Oregon but had different lives. The Kalapuya relied on [resource] while the Chinook depended on [resource]. This difference makes sense because [geographical reason].</span></p>
+                  <p class="prompt-length">3 sentences.</p>
+                </div>
+                <div class="done-when">✓ Done when: research done + lodge structure started + log entry written</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Look at images of Kalapuya tule mat houses — notice they're shorter, rounder, and more seasonal-looking than plank houses.</li>
+                  <li>In Minecraft, go to the valley site and flatten/clear the area. Gather wool (in natural colors — tan, brown, white), hay bales, and flower blocks (blue flowers = camas).</li>
+                  <li>Write one Build Log sentence about how a tule lodge looks different from the plank house you built last week.</li>
+                </ol>
+                <div class="done-when">✓ Done when: images reviewed + valley site cleared + materials gathered + log sentence written</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue–Wed</span>
+            <span class="day-summary">8th: Finish lodge + write Build Brief #2 · 6th: Build community lodges + camas fields</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Finish the main tule mat lodge in Minecraft. Add interior details — a central fire area, sleeping areas with wool, storage.</li>
+                  <li>Write Build Brief #2: what to build around the lodge (more lodges, camas fields, a food preparation area). Add a "Historical Context" sentence: one thing happening in Oregon at this time.</li>
+                </ol>
+                <div class="done-when">✓ Done when: lodge complete + Build Brief #2 written and shared</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Using Build Brief #2, build 2–3 more smaller lodges around the main one.</li>
+                  <li>Add a camas field nearby (blue flower blocks in a flat area — camas is what they farmed/harvested).</li>
+                  <li>Build a path connecting the valley camp to the coastal Chinook village — this represents the trade routes between Oregon's peoples.</li>
+                </ol>
+                <div class="done-when">✓ Done when: lodges + camas field + connecting path built</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu–Fri</span>
+            <span class="day-summary">Both: Add village details · Fri: compare the two villages in Minecraft</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Research the camas root — what was it used for? Who traded it? Write a 3-sentence "Artifact Note" in your History Log about the camas root as a historical artifact.</li>
+                  <li>In Minecraft, add a food preparation area to the valley camp: a fire pit, stone slabs as a work surface, storage chests. Place a sign: "Kalapuya Camp — Willamette Valley."</li>
+                </ol>
+                <div class="done-when">✓ Done when: Artifact Note written + prep area built + sign placed</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Add final community details to the valley site: more blue flower camas fields, a drying area (fence + string), labels on each lodge.</li>
+                  <li>Friday: tour both villages with your partner. Write Build Report #2 — 3 sentences including one about how the two villages feel different from each other.</li>
+                </ol>
+                <div class="done-when">✓ Done when: details added + Build Report #2 written Friday</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    </div><!-- end W2 -->
+
+    <!-- W3 -->
+    <div class="week-card" id="w3">
+      <div class="week-header"><span class="week-num">W3</span><span class="week-title">The Plateau &amp; Desert — Paiute, Cayuse &amp; Nez Perce</span></div>
+      <div class="week-body"><div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon–Tue</span>
+            <span class="day-summary">8th: Research plateau tribes + build main tipi · 6th: Clear desert site + gather materials</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Research the Northern Paiute (Great Basin) and Cayuse/Nez Perce (Columbia Plateau). How did horses change plateau life after the 1700s? What did their camps look like — tipis, mobile, near water?</li>
+                  <li>In Minecraft, go to the desert/mesa site. Build the main tipi — your centerpiece for this era. Use a pointed cone shape: stacked stair blocks with wool, narrow at top, wide at base. Make it larger than the other structures.</li>
+                  <li>Write a "Before &amp; After Horses" History Log entry (template below).</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">History Log — Before &amp; After Horses</div>
+                  <p><span class="prompt-starter">Before horses reached the plateau (~1700), the Cayuse traveled on foot and hunted [animals] by [method]. After horses arrived, they could [new capability], which changed [aspect of life] because [reason].</span></p>
+                  <p class="prompt-length">4 sentences (2 before, 2 after).</p>
+                </div>
+                <div class="done-when">✓ Done when: research done + main tipi built + log entry written</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Go to the desert/mesa site and clear a flat area. Gather materials: terracotta (for desert color), wool (for tipi covers), fence posts, hay bales.</li>
+                  <li>Read Build Brief #3 when it's ready. Start building 2–3 smaller tipis around the main one your partner is building.</li>
+                  <li>Add a horse pen (fence enclosure with 2–3 horses inside) — this is historically important for the plateau peoples.</li>
+                </ol>
+                <div class="done-when">✓ Done when: site cleared + smaller tipis built + horse pen added</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed–Thu</span>
+            <span class="day-summary">8th: Write "Two Perspectives" + add camp details · 6th: Finish camp + connect trail to world</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Write a "Two Perspectives" History Log entry: a Paiute elder and a U.S. government surveyor standing on the same piece of Oregon land — what does each person see?</li>
+                  <li>In Minecraft, add a river or stream near the plateau camp (plateau peoples followed water), a fire pit at the center of the tipi circle, and a sign: "Northern Paiute / Cayuse Camp — Eastern Oregon."</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Two Perspectives Template</div>
+                  <p><strong>The Paiute elder sees:</strong> <span class="prompt-starter">[what this land means — use, memory, family history, relationship to the land]</span></p>
+                  <p><strong>The U.S. surveyor sees:</strong> <span class="prompt-starter">[what this land means — resources, territory, ownership]</span></p>
+                  <p><strong>The key difference:</strong> <span class="prompt-starter">One sees land as [X], the other as [Y]. This would later cause [consequence].</span></p>
+                  <p class="prompt-length">2–3 sentences per perspective + 1 connecting sentence.</p>
+                </div>
+                <div class="done-when">✓ Done when: Two Perspectives written + river + fire pit + sign added to Minecraft</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Finish the plateau camp — add open space around the tipis (this camp is meant to be moved; don't make it too crowded), a stream/river edge, drying racks.</li>
+                  <li>Extend the path system: connect the plateau camp to the valley camp and eventually to the coast — one long trail linking all three Indigenous sites.</li>
+                  <li>Update your Build Log: "The plateau camp looks different from the Chinook village because ___."</li>
+                </ol>
+                <div class="done-when">✓ Done when: camp finished + trail connecting all three sites + log sentence written</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Joint: Walk the trail connecting all three villages · What does Oregon look like so far?</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="joint-block">
+              <div class="grade-block-label">Joint — Both Grades</div>
+              <ol class="step-list">
+                <li>Walk the trail from coast → valley → plateau together in Minecraft. See all three builds as one connected world.</li>
+                <li><strong>Discussion:</strong> "All three peoples lived in Oregon at the same time. What did they have in common? What made each one different based on where they lived?"</li>
+                <li><strong>8th grader:</strong> Read your Two Perspectives entry aloud.</li>
+                <li><strong>6th grader:</strong> Write Build Report #3 — 3 sentences covering what you built and what the trail connecting the three villages represents.</li>
+              </ol>
+              <div class="done-when">✓ Done when: trail walk + discussion + Two Perspectives read + Build Report #3 written</div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    </div><!-- end W3 -->
+
+    <!-- W4 -->
+    <div class="week-card" id="w4">
+      <div class="week-header"><span class="week-num">W4</span><span class="week-title">Unit 1 Showcase — Indigenous Oregon</span></div>
+      <div class="week-body"><div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon–Tue</span>
+            <span class="day-summary">8th: Write Land Acknowledgment + polish longhouse · 6th: Label all three sites + final details</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Read an example land acknowledgment (ask your teacher for one from a local Oregon institution).</li>
+                  <li>Write your own for this Minecraft world — name specific tribes, acknowledge their history, and include something specific you learned.</li>
+                  <li>Go back to the Chinook longhouse in Minecraft and polish it — add anything missing, update the sign, make it showcase-ready.</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Land Acknowledgment Template</div>
+                  <p><span class="prompt-starter">This Minecraft world represents land that is the ancestral homeland of the [tribe names] people. For [timeframe], they built their lives here — [one specific detail you learned]. We built this world to honor their history and to recognize that [what this acknowledgment means to you].</span></p>
+                  <p class="prompt-length">3–5 sentences. Will be read aloud at the showcase.</p>
+                </div>
+                <div class="done-when">✓ Done when: Land Acknowledgment written + longhouse polished</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Go through all three sites. Add proper signs with: tribe name, region, one key feature labeled (e.g., "Camas Field — Main food source").</li>
+                  <li>Fix anything unfinished — better paths, more lighting, any incomplete builds.</li>
+                  <li>Add a "Welcome" entrance sign at the start of the trail: "Oregon: First Peoples — [date range] — Built by [name]."</li>
+                </ol>
+                <div class="done-when">✓ Done when: all three sites labeled + polished + welcome sign placed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed–Thu</span>
+            <span class="day-summary">8th: Write Unit 1 Reflection · 6th: Write Final Build Report for Unit 1</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Review your History Log from Weeks 1–3. Write a Unit 1 Reflection — your biggest writing task so far.</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Unit 1 Reflection Template</div>
+                  <p><strong>What I learned:</strong> <span class="prompt-starter">Before this unit, I thought Oregon's Native peoples were [assumption]. Now I understand that [what changed in your thinking].</span></p>
+                  <p><strong>Most important thing:</strong> <span class="prompt-starter">The most important thing I learned is [fact or idea], because [why it matters].</span></p>
+                  <p><strong>Building it in Minecraft:</strong> <span class="prompt-starter">Building [specific structure] helped me understand [what it revealed] because [reason].</span></p>
+                  <p><strong>Still wondering:</strong> <span class="prompt-starter">One thing I still want to know is [question].</span></p>
+                  <p class="prompt-length">One full paragraph, 6–8 sentences. Typed.</p>
+                </div>
+                <div class="done-when">✓ Done when: Unit 1 Reflection written (6–8 sentences)</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Review your Build Reports from Weeks 1–3. Write a Final Unit 1 Build Report.</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Final Build Report — Unit 1</div>
+                  <p><span class="prompt-starter">In Unit 1, I built the community around three places: a [Chinook coast description], a [Kalapuya valley description], and a [plateau description]. The hardest build was [which one] because [reason]. The most interesting thing I learned while building was [specific fact]. If I could add one more thing to the world, it would be [idea] because [reason].</span></p>
+                  <p class="prompt-length">4–6 sentences. Typed.</p>
+                </div>
+                <div class="done-when">✓ Done when: Final Build Report written (4–6 sentences)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Unit 1 Showcase: Land Acknowledgment → full trail tour → share reflections</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="joint-block">
+              <div class="grade-block-label">Joint Showcase — Unit 1</div>
+              <ol class="step-list">
+                <li><strong>8th grader:</strong> Read the Land Acknowledgment aloud to open.</li>
+                <li><strong>6th grader:</strong> Lead the full trail tour — walk coast → valley → plateau, explaining each site.</li>
+                <li><strong>8th grader:</strong> Read a passage from your Unit 1 Reflection.</li>
+                <li><strong>Both:</strong> Each share one question you still have about Oregon's first peoples.</li>
+              </ol>
+              <div class="done-when">✓ Done when: acknowledgment read + tour given + reflection shared</div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    </div><!-- end W4 -->
+  </div><!-- end unit 1 -->
+
+  <!-- ===== UNIT 2 ===== -->
+  <div class="unit-section" id="unit2">
+    <div class="unit-header">
+      <div class="unit-eyebrow">Unit 2 · Weeks 5–8</div>
+      <h2>Exploration &amp; Change</h2>
+      <p>Lewis and Clark arrive in 1805. The Oregon Trail brings thousands of settlers in the 1840s. For Oregon's Native peoples, this era brings displacement, conflict, and loss. This unit adds the era of exploration and early settlement to your world — and asks hard questions about whose story gets told.</p>
+    </div>
+
+    <!-- W5 -->
+    <div class="week-card" id="w5">
+      <div class="week-header"><span class="week-num">W5</span><span class="week-title">Lewis &amp; Clark Reach Oregon — 1805</span></div>
+      <div class="week-body"><div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon</span>
+            <span class="day-summary">8th: Read journal excerpts + start Fort Clatsop · 6th: Build the Columbia River</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Read 2–3 short excerpts from the Lewis and Clark journals describing Oregon (lewisandclarkjournals.unl.edu or teacher's packet). Note: they were not discovering land — people already lived there. How do they describe the Native peoples they meet?</li>
+                  <li>In Minecraft, go to the coastal site and start building Fort Clatsop — the log fort where they wintered in 1805–06. Square log walls with a gate, simple interior rooms. Start the frame today.</li>
+                  <li>Write 2 History Log sentences: what Lewis and Clark found + one sentence about how they described the Native peoples.</li>
+                </ol>
+                <div class="done-when">✓ Done when: journals read + Fort Clatsop frame started + log sentences written</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Look at a map of the Lewis and Clark route through Oregon — they came down the Columbia River to the coast.</li>
+                  <li>In Minecraft, build/extend the river system to clearly represent the Columbia. Make it wide and prominent. Add a sign: "Columbia River."</li>
+                  <li>Clear a flat area near the Chinook village for the fort your partner is building — it will go right next to the existing village.</li>
+                </ol>
+                <div class="done-when">✓ Done when: Columbia River built + fort site cleared</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Tue–Thu</span>
+            <span class="day-summary">8th: Finish Fort Clatsop + write Two Voices · 6th: Add trail camp + build brief followed</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Finish Fort Clatsop — complete the log walls, add a gate, interior rooms (sleeping bunks as slabs, a storage room, a fire pit in the center). Add a sign: "Fort Clatsop — Winter 1805–06."</li>
+                  <li>Write a "Two Voices" History Log entry: what did the expedition mean from Lewis &amp; Clark's point of view vs. the Clatsop people's point of view?</li>
+                  <li>Write Build Brief #5 for your partner: a few smaller explorer camp structures to add nearby (campfire, supply tent, observation post).</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Two Voices Template</div>
+                  <p><strong>Lewis &amp; Clark's perspective:</strong> <span class="prompt-starter">For the Corps, reaching the Pacific meant [significance]. They saw Oregon as [description].</span></p>
+                  <p><strong>Clatsop perspective:</strong> <span class="prompt-starter">For the Clatsop people, this arrival meant [impact]. They had [context], and now [what changed].</span></p>
+                  <p class="prompt-length">2–3 sentences per voice.</p>
+                </div>
+                <div class="done-when">✓ Done when: Fort Clatsop complete + Two Voices written + Build Brief #5 shared</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Following Build Brief #5, add the explorer camp structures around the fort: a campfire area, a supply tent (wool + fence posts), an observation post (tower of wood with a lookout platform).</li>
+                  <li>Notice: you're now building right next to the Chinook village from Week 1. The fort and the village are neighbors. Place everything so both are clearly visible from a single viewpoint.</li>
+                </ol>
+                <div class="done-when">✓ Done when: explorer camp structures built next to Fort Clatsop</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Joint: Stand where you can see both the fort and the Chinook village · Read Two Voices</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="joint-block">
+              <div class="grade-block-label">Joint — Both Grades</div>
+              <ol class="step-list">
+                <li>Find a spot in Minecraft where you can see both Fort Clatsop and the Chinook village at the same time.</li>
+                <li><strong>Discussion:</strong> "The fort is right next to the village. One has been here for thousands of years. One was built in 1805. What does that tell you?"</li>
+                <li><strong>8th grader:</strong> Read your Two Voices entry aloud.</li>
+                <li><strong>6th grader:</strong> Write Build Report #5 — include a sentence about what it felt like to build the fort right next to the village you built in Week 1.</li>
+              </ol>
+              <div class="done-when">✓ Done when: shared viewpoint + discussion + Two Voices read + Build Report #5 written</div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    </div><!-- end W5 -->
+
+    <!-- W6 -->
+    <div class="week-card" id="w6">
+      <div class="week-header"><span class="week-num">W6</span><span class="week-title">The Oregon Trail — 1840s</span></div>
+      <div class="week-body"><div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon–Tue</span>
+            <span class="day-summary">8th: Research the Trail + build wagon circle · 6th: Build pioneer camp community</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Research the Oregon Trail: who traveled it, why, major hardships, how many people (1840–1870).</li>
+                  <li>In Minecraft, find a flat area leading toward the valley and build the centerpiece: a wagon circle — 4–6 covered wagons (white wool + oak planks) arranged in a circle with a fire pit in the center, as settlers did at night for protection.</li>
+                  <li>Write Build Brief #6 for your partner: the settlement area around the wagon circle.</li>
+                </ol>
+                <div class="done-when">✓ Done when: Trail researched + wagon circle built + Build Brief #6 shared</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Around the wagon circle, build the trail camp community: a medical tent (white wool), a supply area (chests under a lean-to), a water source (well), and rope corrals for livestock (fences).</li>
+                  <li>Add a sign: "Oregon Trail Camp — 1845."</li>
+                  <li>Build a dirt/gravel road leading into the camp from the east — the trail itself, coming from the right side of the map.</li>
+                </ol>
+                <div class="done-when">✓ Done when: trail camp community + sign + incoming road built</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed–Fri</span>
+            <span class="day-summary">8th: Build settler homestead + write Trail Journal · 6th: Add farm + Fri showcase</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Build the settler homestead nearby — a log cabin (oak logs + planks), a front door, a simple chimney, a small porch. This is where a family settled after reaching Oregon.</li>
+                  <li>Write a "Trail Journal" — a fictional entry from a 14-year-old on the trail in 1845, using real historical details.</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Trail Journal Entry</div>
+                  <p><strong>June 14, 1845 — Somewhere in present-day Oregon</strong></p>
+                  <p><span class="prompt-starter">We have been on the trail for [number] days. Today [specific event — river crossing, illness, broken axle]. I am [emotion] because [reason]. The land here looks like [description of Oregon landscape]. Ma says we will reach [destination] in [timeframe], but [complication]. I wonder if [reflection on leaving home or what lies ahead].</span></p>
+                  <p class="prompt-length">5–7 sentences. First person. Typed.</p>
+                </div>
+                <div class="done-when">✓ Done when: homestead built + Trail Journal entry written (5–7 sentences)</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Around the homestead, build the farm: a fenced field with crops (wheat, carrots), a small barn (red wool + oak), a well.</li>
+                  <li>Friday: Give a tour of the trail camp + homestead + farm together. Write Build Report #6 — include a sentence about the road coming in from the east and what it represents.</li>
+                </ol>
+                <div class="done-when">✓ Done when: farm built + Build Report #6 written Friday</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    </div><!-- end W6 -->
+
+    <!-- W7 -->
+    <div class="week-card" id="w7">
+      <div class="week-header"><span class="week-num">W7</span><span class="week-title">Conflict &amp; Displacement — The Treaty Era</span></div>
+      <div class="week-body"><div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon–Thu</span>
+            <span class="day-summary">Both: Research displacement + modify the Indigenous villages to show change</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Research Oregon's treaty era (1850s): the Donation Land Claim Act (1850) and what happened to Oregon's tribes. Note: Oregon's original constitution had a racist exclusion clause.</li>
+                  <li>In Minecraft, build a government boundary marker near the Chinook village — a stone wall or fence line with a sign: "U.S. Boundary — 1855 Treaty." This represents the imposed borders that displaced Native peoples.</li>
+                  <li>Write a History Log entry: "What treaties promised vs. what happened" (template below).</li>
+                  <li>Write Build Brief #7: tell your partner to reduce the size of the Chinook and Kalapuya villages — remove some houses — to show displacement.</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Treaties: Promised vs. Reality</div>
+                  <p><span class="prompt-starter">The treaties of the 1850s promised Oregon's tribes [what was promised]. In reality, [what actually happened]. The Cayuse War of 1848 showed that [what the conflict revealed]. As a result, [long-term consequence for Native peoples].</span></p>
+                  <p class="prompt-length">4 sentences. Typed.</p>
+                </div>
+                <div class="done-when">✓ Done when: boundary marker built + log entry written + Build Brief #7 shared</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Following Build Brief #7, modify the Chinook and Kalapuya villages — remove 1–2 houses from each, reduce the camas field, pull the buildings back from the fence line your partner built.</li>
+                  <li>This is an important and difficult build task. You're showing something real and painful. Take your time and be thoughtful.</li>
+                  <li>Write in your Build Log: "I changed [which village] to show [what you did] because [historical reason]."</li>
+                </ol>
+                <div class="done-when">✓ Done when: villages modified + log entry written</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Joint: Compare the world before and after · How do you show loss in Minecraft?</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="joint-block">
+              <div class="grade-block-label">Joint — Both Grades</div>
+              <ol class="step-list">
+                <li>Look at the world now: the settler homestead and growing town, the reduced Native villages, the boundary fence. Compare to what it looked like at the end of Unit 1.</li>
+                <li><strong>Discussion:</strong> "How do you show displacement in Minecraft? Did removing houses work? What can't you show in a block-building game?"</li>
+                <li><strong>8th grader:</strong> Write 2 History Log sentences about the hardest thing to research this week and why.</li>
+                <li><strong>6th grader:</strong> Write Build Report #7 — include how it felt to modify (take away) something you originally built.</li>
+              </ol>
+              <div class="done-when">✓ Done when: before/after discussion + both entries written</div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    </div><!-- end W7 -->
+
+    <!-- W8 -->
+    <div class="week-card" id="w8">
+      <div class="week-header"><span class="week-num">W8</span><span class="week-title">Unit 2 Showcase — Era of Change</span></div>
+      <div class="week-body"><div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon–Thu</span>
+            <span class="day-summary">8th: Write Argument Paragraph · 6th: Add timeline path + final polish</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Review your History Log from Weeks 5–7.</li>
+                  <li>Write a Unit 2 Argument Paragraph — take a position: <em>Was Oregon's history of settlement and displacement inevitable, or were there choices that could have gone differently?</em></li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Argument Paragraph — 7-Sentence Structure</div>
+                  <p><strong>Claim:</strong> <span class="prompt-starter">Oregon's history of [settlement/displacement] was [inevitable / not inevitable] because [reason].</span></p>
+                  <p><strong>Evidence 1:</strong> <span class="prompt-starter">For example, [specific historical fact].</span></p>
+                  <p><strong>Analysis 1:</strong> <span class="prompt-starter">This shows that [what the evidence means].</span></p>
+                  <p><strong>Evidence 2:</strong> <span class="prompt-starter">Another example is [second fact].</span></p>
+                  <p><strong>Analysis 2:</strong> <span class="prompt-starter">This demonstrates [connection to claim].</span></p>
+                  <p><strong>Counterclaim:</strong> <span class="prompt-starter">Some might argue that [opposing view].</span></p>
+                  <p><strong>Rebuttal:</strong> <span class="prompt-starter">However, [why your claim still holds].</span></p>
+                  <p class="prompt-length">7 sentences, 150–200 words. Typed.</p>
+                </div>
+                <div class="done-when">✓ Done when: Argument Paragraph written (7 sentences, 150–200 words)</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Add a timeline path through the world — a road or walkway with signs marking dates: 1805 (Fort Clatsop), 1840s (Oregon Trail), 1855 (Treaty Era).</li>
+                  <li>Do a final polish on all Unit 2 builds: Fort Clatsop, trail camp, homestead, boundary wall, modified villages.</li>
+                  <li>Write your Final Unit 2 Build Report (4–6 sentences: all builds, challenges, one thing learned).</li>
+                </ol>
+                <div class="done-when">✓ Done when: timeline path added + all builds polished + Final Unit 2 Build Report written</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Joint Showcase: Timeline walk-through + 8th reads argument paragraph</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="joint-block">
+              <div class="grade-block-label">Joint Showcase — Unit 2</div>
+              <ol class="step-list">
+                <li><strong>6th grader:</strong> Lead the timeline walk-through, stopping at each date sign to explain what was built and what it represents historically.</li>
+                <li><strong>8th grader:</strong> Read your Argument Paragraph aloud.</li>
+                <li><strong>Both:</strong> Respond — does your partner agree with the argument? What evidence would they add?</li>
+              </ol>
+              <div class="done-when">✓ Done when: timeline tour + argument read + response discussion</div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    </div><!-- end W8 -->
+  </div><!-- end unit 2 -->
+
+  <!-- ===== UNIT 3 ===== -->
+  <div class="unit-section" id="unit3">
+    <div class="unit-header">
+      <div class="unit-eyebrow">Unit 3 · Weeks 9–12</div>
+      <h2>Oregon Grows</h2>
+      <p>Oregon becomes a state in 1859. Industries emerge — logging, fishing, farming. Cities grow. By the end of this unit your Minecraft world spans 15,000 years of Oregon history, from the first peoples to the present day.</p>
+    </div>
+
+    <!-- W9 -->
+    <div class="week-card" id="w9">
+      <div class="week-header"><span class="week-num">W9</span><span class="week-title">Statehood — Oregon Joins the Union (1859)</span></div>
+      <div class="week-body"><div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon–Tue</span>
+            <span class="day-summary">8th: Research statehood + build courthouse · 6th: Build the town around it</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Research Oregon's statehood: when, why it took so long after settlement, what was controversial in Oregon's original constitution. (Note: Oregon's original constitution had a racist exclusion law — acknowledge this honestly.)</li>
+                  <li>In Minecraft, build the 1859 courthouse — your centerpiece: stone brick walls, a bell tower, columns on the front (pillar blocks), a sign: "Oregon Territorial Courthouse — 1859." Make it the largest and most prominent building in the new town area.</li>
+                  <li>Write Build Brief #9 for your partner: the pioneer town around the courthouse.</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">History Log — Oregon 1859</div>
+                  <p><span class="prompt-starter">When Oregon became a state in 1859, one thing it got right was [positive aspect]. However, one thing it got wrong was [specific wrong — exclusion laws, treatment of Native peoples]. This matters today because [connection to the present].</span></p>
+                  <p class="prompt-length">3 sentences. Be specific.</p>
+                </div>
+                <div class="done-when">✓ Done when: courthouse built + log entry written + Build Brief #9 shared</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Using Build Brief #9, build the pioneer town around the courthouse: a general store, a blacksmith (furnaces + anvils), 3–4 wooden homes along a main street, a well in the town square.</li>
+                  <li>Lay out a main street with the courthouse at the top — make the town feel organized, like a real 1859 Oregon settlement.</li>
+                  <li>Add a sign: "Oregon City — Statehood 1859."</li>
+                </ol>
+                <div class="done-when">✓ Done when: pioneer town built around courthouse + signed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Wed–Fri</span>
+            <span class="day-summary">8th: Write "Oregon Statesman" front page · 6th: Add school + Fri tour</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Write a mock newspaper front page: "The Oregon Statesman — February 14, 1859." Include a headline, a 4-sentence article, and a 3-sentence Letter to the Editor from a citizen either celebrating or criticizing an aspect of statehood.</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Oregon Statesman — Feb. 14, 1859</div>
+                  <p><strong>Headline:</strong> OREGON ADMITTED TO THE UNION — [your subheading]</p>
+                  <p><strong>Article (4 sentences):</strong> <span class="prompt-starter">Oregon officially became the 33rd state today. [how it happened]. [what this means for settlers]. [what remains unresolved — for Native peoples, excluded groups].</span></p>
+                  <p><strong>Letter to the Editor (3 sentences):</strong> <span class="prompt-starter">Dear Editor, I write to [celebrate/protest] Oregon's statehood because [reason]. [evidence]. [closing statement].</span></p>
+                  <p class="prompt-length">7 sentences total. Typed.</p>
+                </div>
+                <div class="done-when">✓ Done when: Oregon Statesman written (headline + 4-sentence article + 3-sentence letter)</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Add a school building to the town (oak planks, bell tower, small yard with a fence), and a road connecting this new 1859 town to the homestead from Week 6.</li>
+                  <li>Friday: Give a town tour together. Write Build Report #9.</li>
+                </ol>
+                <div class="done-when">✓ Done when: school + road built + Build Report #9 written Friday</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    </div><!-- end W9 -->
+
+    <!-- W10 -->
+    <div class="week-card" id="w10">
+      <div class="week-header"><span class="week-num">W10</span><span class="week-title">The Working State — Logging, Fishing &amp; Farming</span></div>
+      <div class="week-body"><div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon–Thu</span>
+            <span class="day-summary">8th: Research industries + build cannery/sawmill/granary · 6th: Build the worker community</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Research Oregon's three industries in the late 1800s: timber (Willamette Valley / Coast Range), salmon canning (Columbia River), wheat farming (Eastern Oregon).</li>
+                  <li>Pick one industry to build as your centerpiece: a <strong>sawmill</strong> (near a forest — large building with logs stacked outside, a water wheel), a <strong>cannery</strong> (on the Columbia — long industrial building, docks), or a <strong>grain elevator</strong> (Eastern Oregon — tall stone/brick tower near the wheat farm).</li>
+                  <li>Write Build Brief #10: what to build around your industrial centerpiece (worker housing, loading dock, storage).</li>
+                  <li>Write the Economy Report (template below).</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Economy Report — 3 Industries</div>
+                  <p><strong>Timber:</strong> <span class="prompt-starter">Oregon's timber industry grew because [reason]. Workers [what they did]. The impact on the land was [environmental note].</span></p>
+                  <p><strong>Salmon Fishing:</strong> <span class="prompt-starter">The Columbia River salmon industry [description]. This connects to Native peoples because [link to earlier history].</span></p>
+                  <p><strong>Wheat Farming:</strong> <span class="prompt-starter">Eastern Oregon wheat farming developed when [context] and shaped [what it shaped — towns, railroads].</span></p>
+                  <p class="prompt-length">3 sentences per industry = 9 sentences total. Typed.</p>
+                </div>
+                <div class="done-when">✓ Done when: industry centerpiece built + Build Brief #10 shared + Economy Report written</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Around your partner's industry centerpiece, build the worker community: small worker housing (4–6 simple cottages), a company store, a loading area or dock, paths between everything.</li>
+                  <li>Make it feel larger and busier than the 1859 pioneer town — this is the industrial era, things are growing fast.</li>
+                  <li>Write Build Report #10 — include why you think the industry your partner chose was important and one thing you learned while building.</li>
+                </ol>
+                <div class="done-when">✓ Done when: worker community built + Build Report #10 written</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Fri</span>
+            <span class="day-summary">Joint: Industry tour + connect back to Native history · Who benefited? Who didn't?</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="joint-block">
+              <div class="grade-block-label">Joint — Both Grades</div>
+              <ol class="step-list">
+                <li><strong>8th grader:</strong> Give a tour of the industry centerpiece you built. Read one section of the Economy Report.</li>
+                <li><strong>6th grader:</strong> Show the worker community and explain the scale difference from earlier builds.</li>
+                <li><strong>Discussion:</strong> "Oregon's industries made some people wealthy. Who got left out? Look at the whole world — what does it show about who benefited and who didn't?"</li>
+              </ol>
+              <div class="done-when">✓ Done when: industry tour + Economy Report section read + discussion complete</div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    </div><!-- end W10 -->
+
+    <!-- W11 -->
+    <div class="week-card" id="w11">
+      <div class="week-header"><span class="week-num">W11</span><span class="week-title">Modern Oregon — Cities, Nature &amp; Sovereignty</span></div>
+      <div class="week-body"><div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon–Wed</span>
+            <span class="day-summary">8th: Build tribal sovereignty center + write Then vs. Now · 6th: Build modern Portland neighborhood</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Research modern Oregon: tribal sovereignty today (Oregon's tribes have federal recognition and operate their own governments), environmental issues (salmon recovery, wildfire, old-growth debates).</li>
+                  <li>In Minecraft, build a Tribal Sovereignty Center — your centerpiece for modern Oregon. Place it near (but separate from) the reduced historical villages. Design it as a modern building but with traditional elements: a longhouse-inspired community hall next to a contemporary office building. Add a sign: "Confederated Tribes of [name] — Sovereign Nation, Est. [year]."</li>
+                  <li>Write the Then vs. Now entry (template below).</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Then vs. Now — Oregon Over Time</div>
+                  <p><strong>Choose one:</strong> the Columbia River / Willamette Valley / salmon / Oregon forests</p>
+                  <p><strong>For Oregon's first peoples:</strong> <span class="prompt-starter">The [topic] was [description — role, meaning, relationship].</span></p>
+                  <p><strong>During the 1800s:</strong> <span class="prompt-starter">The [topic] became [description — resource, industry, thing to control].</span></p>
+                  <p><strong>Today:</strong> <span class="prompt-starter">Today, the [topic] is [current state — conservation, tribal rights, environmental status].</span></p>
+                  <p><strong>What this shows:</strong> <span class="prompt-starter">This timeline reveals that [big-picture insight about Oregon].</span></p>
+                  <p class="prompt-length">5 sentences total. Typed.</p>
+                </div>
+                <div class="done-when">✓ Done when: Tribal Sovereignty Center built + Then vs. Now written</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Build a modern Portland neighborhood: multi-story buildings (concrete/stone brick), wide roads, a park with trees and benches, street lights (iron + glowstone), a coffee shop (because Portland).</li>
+                  <li>Make it feel clearly different from every other era in the world — taller, more dense, different materials.</li>
+                  <li>Write Build Report #11 — include what it felt like to build something modern right next to the ancient village builds you made in Week 1.</li>
+                </ol>
+                <div class="done-when">✓ Done when: modern neighborhood built + Build Report #11 written</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu–Fri</span>
+            <span class="day-summary">Both: Plan the Grand Showcase · Fly through the whole world together</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="joint-block">
+              <div class="grade-block-label">Joint — Both Grades</div>
+              <ol class="step-list">
+                <li>Fly through the entire world together in creative mode. See everything you've built across 11 weeks.</li>
+                <li><strong>Planning:</strong> Decide the showcase tour order. Who introduces each era? What will you each say at each stop?</li>
+                <li><strong>8th grader:</strong> Outline your Grand Reflection (due W12 Wed): "What does this world tell us about Oregon's history?"</li>
+                <li><strong>6th grader:</strong> Pick your three favorite builds to highlight and practice explaining each in 2–3 sentences.</li>
+              </ol>
+              <div class="done-when">✓ Done when: full-world flythrough + showcase plan + reflection outline started</div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    </div><!-- end W11 -->
+
+    <!-- W12 -->
+    <div class="week-card" id="w12">
+      <div class="week-header"><span class="week-num">W12</span><span class="week-title">Grand Showcase — Oregon Through Time</span></div>
+      <div class="week-body"><div class="days-list">
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Mon–Wed</span>
+            <span class="day-summary">8th: Write Grand Reflection · 6th: Final polish of entire world</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="grade-split">
+              <div class="grade-block g8">
+                <div class="grade-block-label">8th Grade — Focal Builder</div>
+                <ol class="step-list">
+                  <li>Review your entire History Log. Find the three most important things you wrote across all 11 weeks.</li>
+                  <li>Write your Grand Reflection — your biggest, most developed piece of writing this semester.</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Grand Reflection — 2 Paragraphs</div>
+                  <p><strong>Paragraph 1 — What I learned:</strong> <span class="prompt-starter">Before this semester, my understanding of Oregon's history was [description]. Over 12 weeks, the three most important things I learned were [#1], [#2], and [#3]. The idea that surprised me most was [thing] because [reason]. I also learned that history is about [insight — whose stories get told, how perspective shapes what we build and remember].</span></p>
+                  <p><strong>Paragraph 2 — What building showed me:</strong> <span class="prompt-starter">The Minecraft world tells Oregon's story by [how the builds represent history]. The most powerful moment in building was when I [specific build decision or realization]. One thing that's impossible to show in Minecraft is [gap — what can't blocks represent?], which matters because [why that gap is significant].</span></p>
+                  <p class="prompt-length">2 paragraphs, 4–5 sentences each. 200–250 words. Typed.</p>
+                </div>
+                <div class="done-when">✓ Done when: Grand Reflection written (2 paragraphs, 200–250 words)</div>
+              </div>
+              <div class="grade-block g6">
+                <div class="grade-block-label">6th Grade — Community Builder</div>
+                <ol class="step-list">
+                  <li>Do a full polish pass of the entire world — every build from W1 through W11. Fix anything unfinished, add missing signs, clean up paths and timeline markers.</li>
+                  <li>Write your Final Build Report for the semester.</li>
+                </ol>
+                <div class="prompt-box">
+                  <div class="prompt-label">Final Build Report — Semester</div>
+                  <p><span class="prompt-starter">Over this semester I built the community around [number] major structures representing Oregon history from [earliest era] to [most recent era]. My favorite build was [which one] because [reason]. The hardest build was [which one] because [challenge]. The most important thing I learned about Oregon is [fact or idea]. One question I still have is [question].</span></p>
+                  <p class="prompt-length">5 sentences. Typed.</p>
+                </div>
+                <div class="done-when">✓ Done when: world polished + Final Build Report written (5 sentences)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="day-accordion">
+          <div class="day-row" onclick="toggleDay(this)">
+            <span class="day-name">Thu–Fri</span>
+            <span class="day-summary">Grand Showcase — Full tour + both presentations + final discussion</span>
+            <span class="day-arrow">▾</span>
+          </div>
+          <div class="day-detail">
+            <div class="joint-block">
+              <div class="grade-block-label">Grand Showcase — Oregon Through Time</div>
+              <ol class="step-list">
+                <li><strong>8th grader:</strong> Read the Land Acknowledgment from Unit 1 to open the showcase.</li>
+                <li><strong>Both:</strong> Lead the full Minecraft tour together — walk through every era in order. Each person presents the builds they made, explains the historical context, and points out something specific they're proud of.</li>
+                <li><strong>8th grader:</strong> Read the Grand Reflection aloud.</li>
+                <li><strong>6th grader:</strong> Read the Final Build Report aloud.</li>
+                <li><strong>Both:</strong> Each answer: "If you could add one more thing to this world, what would it be and why?"</li>
+              </ol>
+              <div class="showcase-box">
+                <div class="showcase-label">Semester Complete</div>
+                <h3>Oregon Through Time — Built Together</h3>
+                <p>You've traced 15,000 years of Oregon history in a single Minecraft world. The Focal Builder built the landmarks that define each era. The Community Builder filled in the world around them. Together you made Oregon's history visible — from the first longhouse on the coast to the modern city, with everything complicated in between.</p>
+              </div>
+              <div class="done-when">✓ Done when: full tour given + both presentations delivered + final discussion complete</div>
+            </div>
+          </div>
+        </div>
+
+      </div></div>
+    </div><!-- end W12 -->
+  </div><!-- end unit 3 -->
+
+</div><!-- end container -->
+
+<footer class="site-footer">Oregon History in Minecraft · Social Studies · Both Grades · 12 Weeks</footer>
+
+<script>
+  // ── Toggle accordion ──────────────────────────────────────────────
+  function toggleDay(row) {
+    var detail = row.nextElementSibling;
+    var isOpen = row.classList.contains('open');
+    row.classList.toggle('open', !isOpen);
+    detail.style.display = isOpen ? 'none' : 'block';
+  }
+
+  // ── localStorage helpers ──────────────────────────────────────────
+  var LS_KEY = 'ck_ss_mc_';
+  function lsGet(key) { try { return JSON.parse(localStorage.getItem(LS_KEY + key) || 'null'); } catch(e) { return null; } }
+  function lsSet(key, val) { try { localStorage.setItem(LS_KEY + key, JSON.stringify(val)); } catch(e) {} }
+
+  // ── Firebase helpers (call after firebase-ready event) ────────────
+  function fbDocPath(dayKey, grade) {
+    return 'ss_oregon/' + dayKey + '_' + grade;
+  }
+
+  async function fbLoad(dayKey, grade) {
+    if (!window._fbReady) return null;
+    try {
+      var ref = window._fbDoc(window._fbDb, fbDocPath(dayKey, grade));
+      var snap = await window._fbGetDoc(ref);
+      return snap.exists() ? snap.data() : null;
+    } catch(e) { console.warn('Firebase read error:', e); return null; }
+  }
+
+  async function fbSave(dayKey, grade, data) {
+    if (!window._fbReady) return false;
+    try {
+      var ref = window._fbDoc(window._fbDb, fbDocPath(dayKey, grade));
+      await window._fbSetDoc(ref, data, { merge: true });
+      return true;
+    } catch(e) { console.warn('Firebase write error:', e); return false; }
+  }
+
+  // ── Checkbox toggle ───────────────────────────────────────────────
+  function toggleCheck(event, btn, dayKey, grade) {
+    event.stopPropagation();
+    var isDone = btn.classList.toggle('done-' + grade);
+    lsSet(dayKey + '_' + grade + '_checked', isDone);
+    if (window._fbReady) {
+      fbSave(dayKey, grade, { checked: isDone, checkedAt: isDone ? new Date().toISOString() : null });
+    }
+    // Update aria label
+    btn.setAttribute('title', (grade === 'g8' ? '8th grade' : '6th grade') + (isDone ? ' — done ✓' : ' — mark done'));
+  }
+
+  // ── Submit work ───────────────────────────────────────────────────
+  async function submitWork(dayKey, grade, btn) {
+    var panel = btn.closest('.submit-panel');
+    var textarea = panel.querySelector('.sp-textarea');
+    var status = panel.querySelector('.sp-status');
+    var prev = panel.querySelector('.sp-prev');
+    var text = textarea.value.trim();
+    if (!text) { status.textContent = '⚠ Nothing typed yet.'; return; }
+
+    btn.disabled = true;
+    status.textContent = 'Saving…';
+
+    var payload = {
+      text: text,
+      submittedAt: new Date().toISOString(),
+      grade: grade
+    };
+
+    // Save to localStorage always
+    lsSet(dayKey + '_' + grade + '_text', text);
+    lsSet(dayKey + '_' + grade + '_submittedAt', payload.submittedAt);
+
+    var saved = false;
+    if (window._fbReady) {
+      saved = await fbSave(dayKey, grade, payload);
+    }
+
+    if (saved) {
+      status.textContent = '✓ Submitted!';
+    } else {
+      status.textContent = '✓ Saved locally (Firebase not connected yet)';
+    }
+
+    // Show previous submission preview
+    if (prev) {
+      prev.style.display = 'block';
+      prev.querySelector('.sp-prev-text').textContent = text;
+    }
+
+    textarea.value = '';
+    btn.disabled = false;
+
+    // Auto-check the checkbox
+    var acc = btn.closest('.day-accordion');
+    var checkBtn = acc ? acc.querySelector('.check-btn.check-' + grade) : null;
+    if (checkBtn && !checkBtn.classList.contains('done-' + grade)) {
+      checkBtn.classList.add('done-' + grade);
+      lsSet(acc.dataset.dayKey + '_' + grade + '_checked', true);
+      if (window._fbReady) {
+        fbSave(acc.dataset.dayKey, grade, { checked: true, checkedAt: new Date().toISOString() });
+      }
+    }
+  }
+
+  // ── Enhance all day accordions ────────────────────────────────────
+  function enhanceAccordions() {
+    var accordions = document.querySelectorAll('.day-accordion');
+    accordions.forEach(function(acc, i) {
+      var weekCard = acc.closest('.week-card');
+      var weekId = weekCard ? (weekCard.id || 'w' + i) : 'w' + i;
+      var dayRows = weekCard ? weekCard.querySelectorAll('.day-accordion') : [];
+      var dayIdx = Array.from(dayRows).indexOf(acc);
+      var dayKey = weekId + '_d' + dayIdx;
+      acc.dataset.dayKey = dayKey;
+
+      var row = acc.querySelector('.day-row');
+      var detail = acc.querySelector('.day-detail');
+      if (!row || !detail) return;
+
+      // ── Inject checkboxes into row ──
+      var checksDiv = document.createElement('div');
+      checksDiv.className = 'day-checks';
+      checksDiv.innerHTML =
+        '<button class="check-btn check-g8" onclick="toggleCheck(event,this,\'' + dayKey + '\',\'g8\')" title="8th grade — mark done">8th ✓</button>' +
+        '<button class="check-btn check-g6" onclick="toggleCheck(event,this,\'' + dayKey + '\',\'g6\')" title="6th grade — mark done">6th ✓</button>';
+      var arrow = row.querySelector('.day-arrow');
+      row.insertBefore(checksDiv, arrow);
+
+      // ── Inject submit zone into detail ──
+      var zone = document.createElement('div');
+      zone.className = 'submit-zone';
+      zone.innerHTML =
+        '<div class="submit-panels">' +
+          '<div class="submit-panel sp-g8">' +
+            '<div class="sp-label">8th Grade — Submit Work</div>' +
+            '<textarea class="sp-textarea" placeholder="Type your History Log entry, Build Brief, or reflection here…"></textarea>' +
+            '<div class="sp-row">' +
+              '<button class="sp-btn" onclick="submitWork(\'' + dayKey + '\',\'g8\',this)">Submit</button>' +
+              '<span class="sp-status"></span>' +
+            '</div>' +
+            '<div class="sp-prev"><div class="sp-prev-label">Last submission</div><div class="sp-prev-text"></div></div>' +
+          '</div>' +
+          '<div class="submit-panel sp-g6">' +
+            '<div class="sp-label">6th Grade — Submit Work</div>' +
+            '<textarea class="sp-textarea" placeholder="Type your Build Log entry or Build Report here…"></textarea>' +
+            '<div class="sp-row">' +
+              '<button class="sp-btn" onclick="submitWork(\'' + dayKey + '\',\'g6\',this)">Submit</button>' +
+              '<span class="sp-status"></span>' +
+            '</div>' +
+            '<div class="sp-prev"><div class="sp-prev-label">Last submission</div><div class="sp-prev-text"></div></div>' +
+          '</div>' +
+        '</div>';
+      detail.appendChild(zone);
+
+      // ── Restore localStorage state ──
+      var g8Checked = lsGet(dayKey + '_g8_checked');
+      var g6Checked = lsGet(dayKey + '_g6_checked');
+      if (g8Checked) checksDiv.querySelector('.check-g8').classList.add('done-g8');
+      if (g6Checked) checksDiv.querySelector('.check-g6').classList.add('done-g6');
+
+      var g8Text = lsGet(dayKey + '_g8_text');
+      var g6Text = lsGet(dayKey + '_g6_text');
+      if (g8Text) {
+        var p8 = zone.querySelector('.sp-g8 .sp-prev');
+        p8.style.display = 'block';
+        p8.querySelector('.sp-prev-text').textContent = g8Text;
+      }
+      if (g6Text) {
+        var p6 = zone.querySelector('.sp-g6 .sp-prev');
+        p6.style.display = 'block';
+        p6.querySelector('.sp-prev-text').textContent = g6Text;
+      }
+    });
+  }
+
+  // ── Load Firebase state once ready ───────────────────────────────
+  async function loadFirebaseState() {
+    var accordions = document.querySelectorAll('.day-accordion[data-day-key]');
+    for (var acc of accordions) {
+      var dayKey = acc.dataset.dayKey;
+      for (var grade of ['g8', 'g6']) {
+        var data = await fbLoad(dayKey, grade);
+        if (!data) continue;
+        var checksDiv = acc.querySelector('.day-checks');
+        if (data.checked) {
+          var btn = checksDiv ? checksDiv.querySelector('.check-' + grade) : null;
+          if (btn) btn.classList.add('done-' + grade);
+          lsSet(dayKey + '_' + grade + '_checked', true);
+        }
+        if (data.text) {
+          var panel = acc.querySelector('.sp-' + grade);
+          if (panel) {
+            var prev = panel.querySelector('.sp-prev');
+            if (prev) {
+              prev.style.display = 'block';
+              prev.querySelector('.sp-prev-text').textContent = data.text;
+            }
+          }
+          lsSet(dayKey + '_' + grade + '_text', data.text);
+        }
+      }
+    }
+  }
+
+  // ── Init ─────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function() {
+    enhanceAccordions();
+  });
+
+  document.addEventListener('firebase-ready', function() {
+    loadFirebaseState();
+  });
+</script>
+</body>
+</html>
